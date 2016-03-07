@@ -34,4 +34,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::resource('user', 'UserController');
     Route::get('/home', 'HomeController@index');
+    Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
+    Route::get('post/tag/{tag}', 'PostController@indexTag');
+    Route::resource('corpus', 'CorpusController');
+    Route::resource('sentence', 'SentenceController');
 });

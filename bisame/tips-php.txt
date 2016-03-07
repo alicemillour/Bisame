@@ -1,0 +1,32 @@
+Demarrer projet Laravel 5.2
+
+php composer.phar create-project laravel/laravel bisame --prefer-dist
+
+
+/* DEBUGBAR */
+composer require barryvdh/laravel-debugbar
+ajout 	Barryvdh\Debugbar\ServiceProvider::class, dans config/app.php
+
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+
+/* AUTH */
+php artisan make:auth
+
+
+pour démarrer le serveur : php artisan serve --port=80
+fuser -k 8080/tcp
+connexion à la BDD : sudo apt-get install php5-mysql 
+Pour créer un controller avec toutes les méthodes : php artisan make:controller --resource UserController
+Connaître les ports utilisés : netstat -plten (+kill avec sudo)
+
+
+Rajouter un package : Le rajouter dans composer.json / php composer update / rajouter dans config/app.php
+php artisan db:seed
+ Pour lancer une population de seeds
+
+/* MODELS */
+php artisan make:model App\Models\MonModele
+
+
+
+
