@@ -32,12 +32,11 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::resource('user', 'UserController');
+    Route::resource('users', 'UserController');
     Route::get('/home', 'HomeController@index');
-    Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
+    Route::resource('posts', 'PostController', ['except' => ['show', 'edit', 'update']]);
     Route::get('post/tag/{tag}', 'PostController@indexTag');
-    Route::resource('corpus', 'CorpusController');
-    Route::resource('sentence', 'SentenceController');
-    //Route::resource('tag', 'TagController');
+    Route::resource('corpora', 'CorpusController', ['except' => ['create', 'edit', 'update']]);
+    Route::resource('sentences', 'SentenceController');
     Route::resource('query', 'QueryController');
 });

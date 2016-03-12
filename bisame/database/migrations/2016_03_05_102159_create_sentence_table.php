@@ -11,8 +11,7 @@ class CreateSentenceTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('corpus_id')->unsigned();
-			$table->foreign('corpus_id')->references('id')->on('corpus')
-			->onDelete('cascade');
+			$table->foreign('corpus_id')->references('id')->on('corpus');
 		});
 	}
 

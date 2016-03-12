@@ -1,4 +1,8 @@
-<?php namespace App\Http\Controllers;
+<?php 
+
+namespace App\Http\Controllers;
+
+use App\Repositories\CorpusRepository;
 
 class CorpusController extends Controller {
 
@@ -7,9 +11,19 @@ class CorpusController extends Controller {
    *
    * @return Response
    */
+  protected $corpusRepository;
+
+  public function __construct(CorpusRepository $corpusRepository)
+  {
+    $this->corpusRepository = $corpusRepository;
+  }
+
   public function index()
   {
-    
+    $corpora = $this->corpusRepository->getAndPaginate(20);
+    $links = $corpora->setPath('')->render();
+
+    return view('corpora.liste', compact('corpora', 'links'));
   }
 
   /**

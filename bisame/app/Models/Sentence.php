@@ -17,4 +17,8 @@ class Sentence extends Model {
 		return $this->belongsTo('App\Models\Corpus');
 	}
 
+	public function words()
+	{
+		return $this->hasMany('App\Models\Word');
+	}
 }

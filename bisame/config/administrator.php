@@ -67,11 +67,10 @@ return array(
 	 */
 	'menu' => array(
 		'users',
-<<<<<<< HEAD
 		'postags',
-=======
-		'corpora'
->>>>>>> 4ef5ed85c6d0c5dae98ffa9891802736880ec492
+		'corpora',
+		'words',
+		'sentences'
 		),
 
 	/**

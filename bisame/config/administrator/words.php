@@ -1,17 +1,17 @@
 <?php
 return array(
-    'title' => 'Corpora',
-    'single' => 'corpus',
-    'model' => 'App\Models\Corpus',
+    'title' => 'Words',
+    'single' => 'word',
+    'model' => 'App\Models\Word',
     'columns' => array(
         'id',
-        'name'
+        'value'
     ),
     'edit_fields' => array(
-        'name',
-        'sentences' => array (
+        'value',
+        'sentence' => array (
             'type' => 'relationship',
-            'title' => 'Sentences',
+            'title' => 'Sentence',
             'name_field' => 'name',
             )
     )
