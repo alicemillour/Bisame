@@ -66,7 +66,8 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
-		'users'
+		'users',
+		'postags',
 		),
 
 	/**
