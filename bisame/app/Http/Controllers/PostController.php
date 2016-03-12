@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\PostRepository;
+use App\Repositories\TagRepository;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
 
-    protected $postRepository;
+	protected $postRepository;
 
-    protected $nbrPerPage = 4;
+	protected $nbrPerPage = 4;
 
-    public function __construct(PostRepository $postRepository)
+	public function __construct(PostRepository $postRepository)
 	{
-		$this->middleware('auth', ['except' => 'index']);
+		$this->middleware('auth', ['except' => ['index', 'indexTag']]);
 		$this->middleware('admin', ['only' => 'destroy']);
 
 		$this->postRepository = $postRepository;
@@ -22,7 +23,7 @@ class PostController extends Controller
 
 	public function index()
 	{
-		$posts = $this->postRepository->getPaginate($this->nbrPerPage);
+		$posts = $this->postRepository->getWithUserAndTagsPaginate($this->nbrPerPage);
 		$links = $posts->setPath('')->render();
 
 		return view('posts.liste', compact('posts', 'links'));
@@ -39,7 +40,7 @@ class PostController extends Controller
 
 		$post = $this->postRepository->store($inputs);
 
-		if(isset($inputs['tags'])) 
+		if(isset($inputs['tags']))
 		{
 			$tagRepository->store($post, $inputs['tags']);
 		}
@@ -60,7 +61,7 @@ class PostController extends Controller
 		$links = $posts->setPath('')->render();
 
 		return view('posts.liste', compact('posts', 'links'))
-		->with('info', 'Résultats pour la recherche du mot-clé : ' . $tag);
+			->with('info', 'Résultats pour la recherche du mot-clé : ' . $tag);
 	}
 
 }

@@ -50,5 +50,8 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "psr-0": {
+        "Repositories": "app/"
     }
 }

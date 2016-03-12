@@ -27,6 +27,8 @@ php artisan db:seed
 /* MODELS */
 php artisan make:model App\Models\MonModele
 
+/* SEEDS */
+php artisan migrate:refresh --seed 
 
-
-
+/* DEBUGGAGE */
+dd($myvar) pour logger la valeur

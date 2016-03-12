@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories;
 
-use App\Tag;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 
 class TagRepository
@@ -31,12 +31,10 @@ class TagRepository
 				$tag_ref = new $this->tag([
 					'tag' => $tag,
 					'tag_url' => $tag_url
-				]);	
-
+				]);
 				$post->tags()->save($tag_ref);
 
 			} else {
-			
 				$post->tags()->attach($tag_ref->id);
 
 			}

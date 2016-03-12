@@ -17,5 +17,11 @@ class UserTableSeeder extends Seeder {
 				'admin' => rand(0, 1)
 			]);
 		}
+		DB::table('users')->insert([
+                                'name' => 'alice' . $i,
+                                'email' => 'alice.millour' . $i . '@abtela.eu',
+                                'password' => bcrypt('password'),
+                                'admin' => '1'
+			]);
 	}
 }

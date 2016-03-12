@@ -16,7 +16,7 @@ class PostRequest extends Request
 	{
 		return [
 			'titre' => 'required|max:80',
-			'contenu' => 'required'
+			'contenu' => 'required',
 			'tags' => ['Regex:/^[A-Za-z0-9-éèàù]{1,50}?(,[A-Za-z0-9-éèàù]{1,50})*$/']
 
 		];
