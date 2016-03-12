@@ -16,7 +16,7 @@
   <body>
     <header class="jumbotron">
       <div class="container">
-        <h1 class="page-header">{!! link_to_route('post.index', 'Les jus de raisin de l\'insignifiance') !!}</h1>
+        <h1 class="page-header">{!! link_to_route('post.index', 'Bisame') !!}</h1>
         @yield('header')
       </div>
     </header>
