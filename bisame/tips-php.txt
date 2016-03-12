@@ -15,7 +15,10 @@ php artisan make:auth
 
 pour démarrer le serveur : php artisan serve --port=80
 fuser -k 8080/tcp
+/* BDD */
 connexion à la BDD : sudo apt-get install php5-mysql 
+php artisan key:generate
+
 Pour créer un controller avec toutes les méthodes : php artisan make:controller --resource UserController
 Connaître les ports utilisés : netstat -plten (+kill avec sudo)
 

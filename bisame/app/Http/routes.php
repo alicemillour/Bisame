@@ -38,6 +38,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('post/tag/{tag}', 'PostController@indexTag');
     Route::resource('corpus', 'CorpusController');
     Route::resource('sentence', 'SentenceController');
-    Route::resource('tag', 'TagController');
+    //Route::resource('tag', 'TagController');
     Route::resource('query', 'QueryController');
 });

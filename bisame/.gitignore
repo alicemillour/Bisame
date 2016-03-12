@@ -1,0 +1,9 @@
+.DS_Store
+/vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+composer.json
+composer.phar
+composer.lock
+.env
