@@ -36,5 +36,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
     return $this->hasMany('App\Models\Post');
     }
+
+    public static $rules = array(
+        'name' => 'required',
+        'email' => 'unique:users',
+        'password' => 'required'
+    );
     
 }

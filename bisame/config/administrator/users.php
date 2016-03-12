@@ -5,12 +5,12 @@ return array(
     'model' => 'App\Models\User',
     'columns' => array(
         'id',
-        'name'
+        'name',
+        'email',
     ),
     'edit_fields' => array(
-        'name' => array(
-            'title' => 'First Name',
-            'type' => 'text',
-        ),
+        'name',
+        'email',
+        'password'
     )
 );
