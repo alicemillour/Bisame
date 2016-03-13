@@ -1,7 +1,7 @@
 <?php
 return array(
     'title' => 'Words',
-    'single' => 'word',
+    'single' => 'words',
     'model' => 'App\Models\Word',
     'columns' => array(
         'id',

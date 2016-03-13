@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Corpus extends Model {
 
-	protected $table = 'corpus';
+	protected $table = 'corpora';
 	public $timestamps = true;
 
 	public function sentences()

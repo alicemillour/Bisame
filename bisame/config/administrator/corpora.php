@@ -1,7 +1,7 @@
 <?php
 return array(
     'title' => 'Corpora',
-    'single' => 'corpus',
+    'single' => 'corpora',
     'model' => 'App\Models\Corpus',
     'columns' => array(
         'id',

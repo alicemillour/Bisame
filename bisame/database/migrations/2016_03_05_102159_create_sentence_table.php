@@ -7,16 +7,16 @@ class CreateSentenceTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('sentence', function(Blueprint $table) {
+		Schema::create('sentences', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('corpus_id')->unsigned()->nullable();
-			$table->foreign('corpus_id')->references('id')->on('corpus');
+			$table->foreign('corpus_id')->references('id')->on('corpora');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('sentence');
+		Schema::drop('sentences');
 	}
 }

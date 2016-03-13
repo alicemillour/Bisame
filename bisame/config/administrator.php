@@ -70,7 +70,8 @@ return array(
 		'postags',
 		'corpora',
 		'words',
-		'sentences'
+		'sentences',
+		'annotations'
 		),
 
 	/**

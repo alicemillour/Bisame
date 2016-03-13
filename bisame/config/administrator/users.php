@@ -1,7 +1,7 @@
 <?php
 return array(
     'title' => 'Users',
-    'single' => 'user',
+    'single' => 'users',
     'model' => 'App\Models\User',
     'columns' => array(
         'id',

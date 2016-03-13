@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sentence extends Model {
 
-	protected $table = 'sentence';
+	protected $table = 'sentences';
 	public $timestamps = true;
 
 	public function corpus()

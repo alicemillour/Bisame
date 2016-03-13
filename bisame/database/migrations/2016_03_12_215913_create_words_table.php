@@ -12,12 +12,12 @@ class CreateWordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('word', function(Blueprint $table) {
+        Schema::create('words', function(Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('value');
-            $table->integer('sentence_id')->unsigned()->nullable();;
-            $table->foreign('sentence_id')->references('id')->on('sentence');
+            $table->integer('sentence_id')->unsigned()->nullable();
+            $table->foreign('sentence_id')->references('id')->on('sentences');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateWordsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('word');
+        Schema::drop('words');
     }
 }

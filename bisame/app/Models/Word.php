@@ -15,7 +15,7 @@ class Word extends Model
         'value', 'sentence_id'
     ];
 
-	protected $table = 'word';
+	protected $table = 'words';
 	public $timestamps = true;
 
 	public function sentence()

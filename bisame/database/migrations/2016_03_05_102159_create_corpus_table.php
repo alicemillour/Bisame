@@ -7,7 +7,7 @@ class CreateCorpusTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('corpus', function(Blueprint $table) {
+		Schema::create('corpora', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name', 50)->unique();
@@ -16,6 +16,6 @@ class CreateCorpusTable extends Migration {
 
 	public function down()
 	{
-		Schema::drop('corpus');
+		Schema::drop('corpora');
 	}
 }
