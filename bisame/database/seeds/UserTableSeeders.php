@@ -14,14 +14,14 @@ class UserTableSeeder extends Seeder {
 				'name' => 'Nom' . $i,
 				'email' => 'email' . $i . '@blop.fr',
 				'password' => bcrypt('password'),
-				'admin' => rand(0, 1)
+				'is_admin' => false
 			]);
 		}
 		DB::table('users')->insert([
-                                'name' => 'alice' . $i,
-                                'email' => 'alice.millour' . $i . '@abtela.eu',
+                                'name' => 'alice',
+                                'email' => 'alice.millour@abtela.eu',
                                 'password' => bcrypt('password'),
-                                'admin' => '1'
+                                'is_admin' => true
 			]);
 	}
 }

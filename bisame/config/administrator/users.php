@@ -7,10 +7,12 @@ return array(
         'id',
         'name',
         'email',
+        'is_admin'
     ),
     'edit_fields' => array(
         'name',
         'email',
-        'password'
+        'password',
+        'is_admin'
     )
 );
