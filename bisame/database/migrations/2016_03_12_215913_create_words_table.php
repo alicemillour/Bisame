@@ -16,7 +16,7 @@ class CreateWordsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('value');
-            $table->integer('sentence_id')->unsigned();
+            $table->integer('sentence_id')->unsigned()->nullable();;
             $table->foreign('sentence_id')->references('id')->on('sentence');
         });
     }

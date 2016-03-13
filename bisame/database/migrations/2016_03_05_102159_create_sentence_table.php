@@ -10,7 +10,7 @@ class CreateSentenceTable extends Migration {
 		Schema::create('sentence', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->integer('corpus_id')->unsigned();
+			$table->integer('corpus_id')->unsigned()->nullable();
 			$table->foreign('corpus_id')->references('id')->on('corpus');
 		});
 	}

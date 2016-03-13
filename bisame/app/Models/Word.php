@@ -12,7 +12,7 @@ class Word extends Model
      * @var array
      */
     protected $fillable = [
-        'value',
+        'value', 'sentence_id'
     ];
 
 	protected $table = 'word';

@@ -1,17 +1,25 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\Models\\Corpus;
+use Flynsarmy\CsvSeeder\CsvSeeder;
 
-class CorpusTableSeeder extends Seeder {
+class CorpusTableSeeder extends CsvSeeder {
 
-	public function run()
-	{
-		//DB::table('corpus')->delete();
+    public function __construct()
+    {
+        $this->table = 'word';
+        $this->filename = base_path().'/database/seeds/csvs/wikipedia1_adjudication-UTF-8-2c.csv';
+        $this->csv_delimiter = ";";
+    }
 
-		// CorpusTableSeeder
-		Corpus::create(array(
-				'name' => 'wikipedia'
-			));
-	}
+    public function run()
+    {
+    	print("je suis la");
+        // Recommended when importing larger CSVs
+        DB::disableQueryLog();
+
+        // Uncomment the below to wipe the table clean before populating
+        DB::table($this->table)->truncate();
+
+        parent::run();
+    }
 }
