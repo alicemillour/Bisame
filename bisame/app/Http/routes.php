@@ -39,4 +39,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('corpora', 'CorpusController', ['except' => ['create', 'edit', 'update']]);
     Route::resource('sentences', 'SentenceController');
     Route::resource('query', 'QueryController');
+    Route::resource('games', 'GameController');
+    Route::get('/home/start', 'GameController@store');
 });

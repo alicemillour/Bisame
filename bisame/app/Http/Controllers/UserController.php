@@ -37,7 +37,7 @@ class UserController extends Controller
 
 	public function store(UserCreateRequest $request)
 	{
-		$this->setAdmin($request);
+		$game = Game::find($id);
 
 		$user = $this->userRepository->store($request->all());
 
