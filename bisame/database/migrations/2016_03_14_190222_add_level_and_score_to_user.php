@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostagTable extends Migration
+class AddLevelAndScoreToUser extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreatePostagTable extends Migration
      */
     public function up()
     {
-        Schema::create('postags', function (Blueprint $table) {
-            print("coucou");
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('users', function ($table) {
+            $table->integer('level')->default('0');
+            $table->integer('score')->default('0');
         });
     }
 
@@ -27,6 +25,6 @@ class CreatePostagTable extends Migration
      */
     public function down()
     {
-        Schema::drop('postags');
+        //
     }
 }

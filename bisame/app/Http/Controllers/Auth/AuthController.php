@@ -35,7 +35,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectAfterLogout = '/post';
+    protected $redirectAfterLogout = '/home';
 
     /**
      * Create a new authentication controller instance.

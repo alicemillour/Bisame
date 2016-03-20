@@ -5,18 +5,25 @@ return array(
     'model' => 'App\Models\Annotation',
     'columns' => array(
         'id',
+        'word_id',
+        'postag_id',
         'confidence_score'
     ),
     'edit_fields' => array(
-        'name',
         'user' => array (
             'type' => 'relationship',
-            'title' => 'Users',
+            'title' => 'User',
             'name_field' => 'name',
             ),
         'word' => array (
             'type' => 'relationship',
-            'title' => 'Mots',
+            'title' => 'Mot',
+            'name_field' => 'value',
+        ),
+        'postag' => array (
+            'type' => 'relationship',
+            'title' => 'POS-tag',
+            'name_field' => 'name',
         )
 
     )

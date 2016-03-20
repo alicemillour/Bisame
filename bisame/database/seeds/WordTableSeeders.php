@@ -2,12 +2,15 @@
 
 use Flynsarmy\CsvSeeder\CsvSeeder;
 
-class CorpusTableSeeder extends CsvSeeder {
+class WordTableSeeder extends CsvSeeder {
 
     public function __construct()
     {
-        $this->table = 'word';
-        $this->filename = base_path().'/database/seeds/csvs/wikipedia1_adjudication-UTF-8-2c.csv';
+
+        print("je suis la");
+        $this->table = 'words';
+        //$this->filename = base_path().'/database/seeds/csvs/wikipedia1_adjudication-UTF-8-2c.csv';
+        $this->filename = base_path().'/database/seeds/csvs/exemple-recettes.csv';
         $this->csv_delimiter = ";";
     }
 
@@ -18,7 +21,7 @@ class CorpusTableSeeder extends CsvSeeder {
         DB::disableQueryLog();
 
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->truncate();
+        //DB::table($this->table)->truncate();
 
         parent::run();
     }

@@ -16,7 +16,7 @@ class CorpusRepository {
 	public function getAndPaginate($n)
 	{
 		return $this->corpus
-			->orderBy('corpus.created_at', 'desc')
+			->orderBy('corpora.created_at', 'desc')
 			->paginate($n);
 	}
 

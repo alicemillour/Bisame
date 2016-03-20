@@ -18,6 +18,8 @@ class CreateWordsTable extends Migration
             $table->string('value');
             $table->integer('sentence_id')->unsigned()->nullable();
             $table->foreign('sentence_id')->references('id')->on('sentences');
+            //$table->integer('postag_id')->unsigned()->nullable();
+            //$table->foreign('postag_id')->references('id')->on('postags');
         });
     }
 

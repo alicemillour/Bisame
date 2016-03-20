@@ -5,7 +5,8 @@ return array(
     'model' => 'App\Models\Word',
     'columns' => array(
         'id',
-        'value'
+        'value',
+        'sentence_id',
     ),
     'edit_fields' => array(
         'value',

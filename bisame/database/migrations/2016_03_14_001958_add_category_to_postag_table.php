@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostagTable extends Migration
+class AddCategoryToPostagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreatePostagTable extends Migration
      */
     public function up()
     {
-        Schema::create('postags', function (Blueprint $table) {
-            print("coucou");
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('postags', function ($table) {
+            $table->enum('category', array('open', 'closed','other'));;
         });
     }
 
@@ -27,6 +24,6 @@ class CreatePostagTable extends Migration
      */
     public function down()
     {
-        Schema::drop('postags');
+        //
     }
 }
