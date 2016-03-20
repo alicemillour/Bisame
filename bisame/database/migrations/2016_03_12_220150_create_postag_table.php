@@ -13,7 +13,6 @@ class CreatePostagTable extends Migration
     public function up()
     {
         Schema::create('postags', function (Blueprint $table) {
-            print("coucou");
             $table->increments('id');
             $table->string('name');
             $table->timestamps();

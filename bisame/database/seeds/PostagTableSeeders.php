@@ -1,14 +1,17 @@
 <?php
-
+use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Database\Seeder;
 use App\Models\Postag;
 
+//class PostagTableSeeder extends CsvSeeder
 class PostagTableSeeder extends Seeder
 {
 
     public function __construct()
     {
         $this->table = 'postags';
+        //$this->filename = base_path().'/database/seeds/csvs/postags.csv';
+        //$this->csv_delimiter = ";";
     }
 
     /**
@@ -56,61 +59,71 @@ class PostagTableSeeder extends Seeder
 
         Postag::create(
             [
-                'name' => 'ADP'
+                'name' => 'ADP',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'AUX'
+                'name' => 'AUX',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'CONJ'
+                'name' => 'CONJ',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'DET'
+                'name' => 'DET',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'NUM'
+                'name' => 'NUM',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'PRON'
+                'name' => 'PRON',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'PART'
+                'name' => 'PART',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'SCONJ'
+                'name' => 'SCONJ',
+                'category' => 'closed'
             ]
         );
         Postag::create(
             [
-                'name' => 'PUNCT'
+                'name' => 'PUNCT',
+                'category' => 'other'
             ]
         );
         Postag::create(
             [
-                'name' => 'SYM'
+                'name' => 'SYM',
+                'category' => 'other'
             ]
         );
         Postag::create(
             [
-                'name' => 'X'
+                'name' => 'X',
+                'category' => 'other'
             ]
         );
 
-        print("je suis la !");
         // Recommended when importing larger CSVs
         DB::disableQueryLog();
 
