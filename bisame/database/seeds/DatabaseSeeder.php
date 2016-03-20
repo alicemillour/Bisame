@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
      $this->call('UserTableSeeder');
     // $this->call('PostTableSeeder');
     // $this->call('TagTableSeeder');
+        print("about to seed postag");
         $this->call('PostagTableSeeder');
         $this->call('CorpusTableSeeder');
         $this->call('SentenceTableSeeder');

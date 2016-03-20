@@ -18,6 +18,8 @@ class PostagTableSeeder extends Seeder
      */
     public function run()
     {
+        // Uncomment the below to wipe the table clean before populating
+        //DB::table($this->table)->truncate();
 
         Postag::create(
             [
@@ -45,7 +47,7 @@ class PostagTableSeeder extends Seeder
         [
             'name' => 'PROPN'
         ]
-    );
+        );
         Postag::create(
             [
                 'name' => 'VERB'
@@ -112,8 +114,7 @@ class PostagTableSeeder extends Seeder
         // Recommended when importing larger CSVs
         DB::disableQueryLog();
 
-        // Uncomment the below to wipe the table clean before populating
-        //DB::table($this->table)->truncate();
+
     }
 
 }

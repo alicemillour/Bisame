@@ -14,11 +14,12 @@ class AnnotationTableSeeder extends CsvSeeder {
 
     public function run()
     {
+        print("seeding annotation");
         // Recommended when importing larger CSVs
         DB::disableQueryLog();
 
         // Uncomment the below to wipe the table clean before populating
-        //DB::table($this->table)->truncate();
+        DB::table($this->table)->truncate();
 
         parent::run();
     }

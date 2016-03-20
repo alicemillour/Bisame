@@ -8,7 +8,6 @@ class UserTableSeeder extends Seeder {
     public function run()
 	{
 		DB::table('users')->delete();
-
 		for($i = 0; $i < 10; ++$i)
 		{
 			DB::table('users')->insert([
