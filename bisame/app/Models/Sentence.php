@@ -21,4 +21,9 @@ class Sentence extends Model {
 	{
 		return $this->hasMany('App\Models\Word');
 	}
+
+    public function games()
+    {
+        return $this->belongsToMany('App\Models\Game');
+    }
 }

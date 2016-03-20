@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GameSentence extends Model {
 
-	protected $table = 'gameSentences';
+	protected $table = 'game_sentence';
 	public $timestamps = true;
 
 	public function game()

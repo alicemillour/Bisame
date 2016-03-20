@@ -1,7 +1,7 @@
 <?php
 return array(
     'title' => 'Postags',
-    'single' => 'postags',
+    'single' => 'postag',
     'model' => 'App\Models\Postag',
     'columns' => array(
         'name',

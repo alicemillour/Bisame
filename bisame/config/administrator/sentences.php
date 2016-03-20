@@ -1,7 +1,7 @@
 <?php
 return array(
     'title' => 'Sentences',
-    'single' => 'sentences',
+    'single' => 'sentence',
     'model' => 'App\Models\Sentence',
     'columns' => array(
         'id'

@@ -71,7 +71,8 @@ return array(
 		'corpora',
 		'words',
 		'sentences',
-		'annotations'
+		'annotations',
+		'games'
 		),
 
 	/**
