@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
      $this->call('UserTableSeeder');
     // $this->call('PostTableSeeder');
     // $this->call('TagTableSeeder');
-        print('je vais seeder corpus');
-        $this->call('CorpusTableSeeder');
-        $this->call('WordTableSeeder');
         $this->call('PostagTableSeeder');
+        $this->call('CorpusTableSeeder');
+        $this->call('SentenceTableSeeder');
+        $this->call('WordTableSeeder');
         $this->call('AnnotationTableSeeder');
     Model::reguard();
 

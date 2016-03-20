@@ -14,7 +14,6 @@ class AnnotationTableSeeder extends CsvSeeder {
 
     public function run()
     {
-    	print("je suis la annotation");
         // Recommended when importing larger CSVs
         DB::disableQueryLog();
 

@@ -24,6 +24,8 @@ class AddCategoryToPostagTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('postags', function ($table) {
+            $table->dropColumn('category');
+        });
     }
 }
