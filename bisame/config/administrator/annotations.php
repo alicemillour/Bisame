@@ -5,8 +5,16 @@ return array(
     'model' => 'App\Models\Annotation',
     'columns' => array(
         'id',
-        'word_id',
-        'postag_id',
+        'word' => array(
+            'title' => "Word",
+            'relationship' => 'word', //this is the name of the Eloquent relationship method!
+            'select' => "(:table).value",
+        ),
+        'postag'=> array(
+            'title' => "POS-tag",
+            'relationship' => 'postag', //this is the name of the Eloquent relationship method!
+            'select' => "(:table).name",
+        ),
         'confidence_score'
     ),
     'edit_fields' => array(

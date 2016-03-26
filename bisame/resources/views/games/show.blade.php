@@ -20,7 +20,7 @@
 			<div class="sentence-container">
 				@foreach($sentence->words as $word)
 					<div class="word-container">
-						<div class="word">{{ $word->value }}</div>
+						<div class="word" id="{{ $word->id }}">{{ $word->value }}</div>
 						<div class="category"> </div>
 					</div>
 				@endforeach
@@ -41,7 +41,7 @@
 	    	<tbody>
 	    		@foreach($postags as $postag)
 	    		<tr>
-	    			<td>{{ $postag->name }}</td>
+	    			<td id="{{$postag->id}}">{{ $postag->name }}</td>
 	    		</tr>
 	    		@endforeach
 	    	</tbody>

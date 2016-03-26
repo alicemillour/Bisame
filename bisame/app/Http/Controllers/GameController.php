@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\Http\Requests;
+
 use App\Repositories\GameRepository;
 use App\Repositories\PostagRepository;
 use Illuminate\Support\Facades\Redirect;
@@ -44,8 +45,7 @@ class GameController extends Controller
     {
 		$current_user = Auth::user();
 		$game = $this->gameRepository->store(['user_id' => $current_user->id]);
-
-		return Redirect::route('games.edit', ['id' => $game->id]);
+		return Redirect::route('games.show', ['id' => $game->id]);
     }
 
     /**
@@ -56,22 +56,12 @@ class GameController extends Controller
      */
     public function show($id)
     {
-        //
+        $game = $this->gameRepository->getById($id);
+        $sentence = $game->sentences[1];
+        $postags = $this->postagRepository->all();
+        return view('games.show', compact('sentence', 'postags', 'game'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    	$game = $this->gameRepository->getById($id);
-    	$sentence = $game->sentences[1];
-        $postags = $this->postagRepository->all();
-        return view('games.edit', compact('sentence', 'postags'));
-    }
 
     /**
      * Update the specified resource in storage.
@@ -82,7 +72,7 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
 }

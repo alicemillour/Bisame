@@ -34,11 +34,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::resource('users', 'UserController');
     Route::get('/home', 'HomeController@index');
-    Route::resource('posts', 'PostController', ['except' => ['show', 'edit', 'update']]);
-    Route::get('post/tag/{tag}', 'PostController@indexTag');
-    Route::resource('corpora', 'CorpusController', ['except' => ['create', 'edit', 'update']]);
-    Route::resource('sentences', 'SentenceController');
-    Route::resource('query', 'QueryController');
+    Route::resource('annotations', 'AnnotationController', ['except' => ['show', 'create', 'edit', 'update']]);
     Route::resource('games', 'GameController');
     Route::get('/home/start', 'GameController@store');
 });
