@@ -27,12 +27,21 @@ $(document).ready(function(){
     });
 
     $('.main-button').click( function() {
+        annotations = [];
+        $('.word-container').each(function(index , word_container) {
+            annotation = {};
+            annotation['postag_id'] = $(word_container).find('.category').attr('id');
+            annotation['word_id'] = $(word_container).find('.word').attr('id');
+            if (annotation['postag_id']) {
+                annotations.push(annotation);
+            }
+        });
+        console.log(annotations);
         $.ajax({
             method : 'POST',
             url : "http://localhost:8000/annotations",
             data : {
-                postag_id : $('.selected').parent().find('.category').attr('id'),
-                word_id : $('.selected').attr('id')
+                annotations : annotations
             },
             success : function(response){
                 console.log("ANNOTATION CREATED");

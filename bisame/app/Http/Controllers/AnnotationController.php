@@ -50,11 +50,14 @@ class AnnotationController extends Controller
     public function store(Request $request)
     {
         $current_user = Auth::user();
-        $postag_id = $request->input('postag_id');
-        $word_id = $request->input('word_id');
-        if ($postag_id && $word_id) {
-            $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
-            'word_id' => $word_id, 'postag_id' => $postag_id]);
+        Log::info($request);
+        foreach ($request->input('annotations') as $annotation) {
+            $postag_id = $annotation['postag_id'];
+            $word_id = $annotation['word_id'];
+            if ($postag_id && $word_id) {
+                $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
+                'word_id' => $word_id, 'postag_id' => $postag_id]);
+            }
         }
     }
 
