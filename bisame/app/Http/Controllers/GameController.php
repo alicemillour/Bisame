@@ -78,22 +78,26 @@ class GameController extends Controller
     public function update(Request $request, $id)
     {
         $current_user = Auth::user();
-
-        foreach ($request->input('annotations') as $annotation) {
-            $postag_id = $annotation['postag_id'];
-            $word_id = $annotation['word_id'];
-            if ($postag_id && $word_id) {
-                $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
-                'word_id' => $word_id, 'postag_id' => $postag_id]);
-            }
-        }
         $game = $this->gameRepository->getById($id);
         $new_index = $game->sentence_index + 1;
-        $game->sentence_index = $new_index;
-        $game->save();
-        $sentence = $game->sentences[$new_index];
+        if ($new_index >= $game->sentences->count()) {
+            return;
+        } else {
+            foreach ($request->input('annotations') as $annotation) {
+                $postag_id = $annotation['postag_id'];
+                $word_id = $annotation['word_id'];
+                if ($postag_id && $word_id) {
+                    $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
+                    'word_id' => $word_id, 'postag_id' => $postag_id]);
+                }
+            }
 
-        return view('games.sentence', compact('sentence'));
+            $game->sentence_index = $new_index;
+            $game->save();
+            $sentence = $game->sentences[$new_index];
+
+            return view('games.sentence', compact('sentence'));
+        }
     }
 
 }
