@@ -6,17 +6,6 @@ $(document).ready(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('.word').hover(function() {
-        $(this).addClass('highlighted');
-    },
-    function() {
-        $(this).removeClass('highlighted');
-    });
-     $('.word').click(function() {
-        $('.word').removeClass('selected');
-        $(this).addClass('selected');
-        $('.categories-table').show();
-    });
 
     $('.categories-table').find('tr').click( function(){
         var row = $(this).find('td:first');
@@ -38,15 +27,32 @@ $(document).ready(function(){
         });
         console.log(annotations);
         $.ajax({
-            method : 'POST',
-            url : "http://localhost:8000/annotations",
+            method : 'PUT',
+            context: $("#main-container"),
             data : {
                 annotations : annotations
             },
             success : function(response){
                 console.log("ANNOTATION CREATED");
+                $("#sentence-container").html(response);
+                reload_javascript_on_words();
             },
             dataType : 'text'
         });
     });
+
+    function reload_javascript_on_words() {
+        $('.word').hover(function() {
+            $(this).addClass('highlighted');
+        },
+        function() {
+            $(this).removeClass('highlighted');
+        });
+         $('.word').click(function() {
+            $('.word').removeClass('selected');
+            $(this).addClass('selected');
+            $('.categories-table').show();
+        });
+    };
+    reload_javascript_on_words();
  });

@@ -6,7 +6,7 @@
 <script type="text/javascript" src="{{ asset('js/game.js') }}"></script>
 @endsection
 @section('content')
-<div class="container">
+<div class="container" id="main-container">
     <div class="row sentence-main-container">
         <article class="row bg-primary">
 		<div class="col-md-12">
@@ -17,8 +17,8 @@
 				</h1>
 			</header>
 			<hr>
-			<div class="sentence-container">
-				@foreach($sentence->words as $word)
+			<div class="sentence-container" id="sentence-container">
+				@foreach($sentences[0]->words as $word)
 					<div class="word-container">
 						<div class="word" id="{{ $word->id }}">{{ $word->value }}</div>
 						<div class="category"> </div>

@@ -14,7 +14,8 @@ class GameRepository extends ResourceRepository
 	}
     private function save(Game $game, Array $inputs)
 	{
-		$game->user_id = $inputs['user_id'];	
+		$game->user_id = $inputs['user_id'];
+		$game->sentence_index = $inputs['sentence_index'];
 		$game->save();
 	}
 
