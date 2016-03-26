@@ -83,12 +83,14 @@ class GameController extends Controller
         if ($new_index >= $game->sentences->count()) {
             return;
         } else {
-            foreach ($request->input('annotations') as $annotation) {
-                $postag_id = $annotation['postag_id'];
-                $word_id = $annotation['word_id'];
-                if ($postag_id && $word_id) {
-                    $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
-                    'word_id' => $word_id, 'postag_id' => $postag_id]);
+            if ($request->input('annotations')) {
+                foreach ($request->input('annotations') as $annotation) {
+                    $postag_id = $annotation['postag_id'];
+                    $word_id = $annotation['word_id'];
+                    if ($postag_id && $word_id) {
+                        $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
+                        'word_id' => $word_id, 'postag_id' => $postag_id]);
+                    }
                 }
             }
 
