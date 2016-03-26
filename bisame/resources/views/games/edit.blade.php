@@ -27,6 +27,9 @@
 			</div>
 		</div>
 		</article>
+		<div class="main-button">
+			<button>Valider</button>
+		</div>
     </div>
     <div class ="categorie-table-container">
 	    <table class="table table-hover categories-table" hidden="true">
