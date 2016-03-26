@@ -13,7 +13,6 @@
 }
 
 .categories-table {
-	width: 20%;
 } 
 
 .category {
@@ -29,4 +28,15 @@
 .sentence-container {
 	vertical-align:top;
 	margin: 20px;
+}
+
+.sentence-main-container {
+    float:left;
+    padding:10px;
+}
+
+.categorie-table-container {
+    float:right;
+    padding:5px;
+    width: 14%;
 }
