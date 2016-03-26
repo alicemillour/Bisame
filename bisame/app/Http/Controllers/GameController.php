@@ -7,6 +7,7 @@ use Auth;
 
 use App\Http\Requests;
 use App\Repositories\GameRepository;
+use App\Repositories\PostagRepository;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -14,10 +15,13 @@ class GameController extends Controller
 {
 
 	protected $gameRepository;
+    protected $postagRepository;
 
-    public function __construct(GameRepository $gameRepository)
+
+    public function __construct(GameRepository $gameRepository, PostagRepository $postagRepository)
 	{
 		$this->gameRepository = $gameRepository;
+        $this->postagRepository = $postagRepository;
 	}
 
     /**
@@ -65,7 +69,8 @@ class GameController extends Controller
     {
     	$game = $this->gameRepository->getById($id);
     	$sentence = $game->sentences[1];
-        return view('games.edit', compact('sentence'));
+        $postags = $this->postagRepository->all();
+        return view('games.edit', compact('sentence', 'postags'));
     }
 
     /**

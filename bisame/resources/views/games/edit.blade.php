@@ -18,14 +18,31 @@
 					</h1>
 				</header>
 				<hr>
-				<p>
+				<div class="sentence-container">
 					@foreach($sentence->words as $word)
-						<span class="word">{{ $word->value }}</span>
+						<div class="word-container">
+							<div class="word">{{ $word->value }}</div>
+							<div class="category"> </div>
+						</div>
 					@endforeach
-				</p>
+				</div>
 			</div>
 		</article>
         </div>
     </div>
+    <table class="table table-hover categories-table" hidden="true">
+    	<head>
+    		<tr>
+    			<th>Categorie</th>
+    		</tr>
+    	</head>
+    	<tbody>
+    		@foreach($postags as $postag)
+    		<tr>
+    			<td>{{ $postag->name }}</td>
+    		</tr>
+    		@endforeach
+    	</tbody>
+    </table>
 </div>
 @endsection

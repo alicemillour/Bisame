@@ -1,5 +1,7 @@
 .word {
 	font-size: 42px;
+	display:inline-block;
+	text-align: center;
 }
 
 .highlighted {
@@ -8,4 +10,23 @@
 
 .selected {
 	color: orange;
+}
+
+.categories-table {
+	width: 20%;
+} 
+
+.category {
+	font-size: 16px;
+	color: lightgreen;
+	text-align: center;
+}
+
+.word-container {
+	display: inline-block;
+	vertical-align:top;
+}
+.sentence-container {
+	vertical-align:top;
+	margin: 20px;
 }
