@@ -1,11 +1,10 @@
 @extends('layouts.app')
-
-<script type="text/javascript">
-    $(".word").click(function () {
-       $(this).css("background-color","yellow");
-    });
-</script>
-
+@section('style')
+<link href="{{ asset('css/game.css') }}" rel="stylesheet" type="text/css" >
+@endsection
+@section('script')
+<script type="text/javascript" src="{{ asset('js/game.js') }}"></script>
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
