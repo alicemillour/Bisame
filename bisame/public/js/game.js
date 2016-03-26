@@ -1,9 +1,13 @@
 $(document).ready(function(){
     console.log("ready");
     $('.word').hover(function() {
-        $(this).css('color', 'red');
+        $(this).addClass('highlighted');
     },
     function() {
-        $(this).css('color', 'white');
+        $(this).removeClass('highlighted');
+    });
+     $('.word').click(function() {
+        $('.word').removeClass('selected');
+        $(this).addClass('selected');
     });
  });
