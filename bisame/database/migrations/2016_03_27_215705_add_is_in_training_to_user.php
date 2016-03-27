@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSentenceIndexOnGame extends Migration
+class AddIsInTrainingToUser extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddSentenceIndexOnGame extends Migration
      */
     public function up()
     {
-        Schema::table('games', function ($table) {
-            $table->boolean('sentence_index')->default(0);
+        Schema::table('users', function ($table) {
+            $table->boolean('is_in_training')->default(true);
         });
     }
 
@@ -24,8 +24,8 @@ class AddSentenceIndexOnGame extends Migration
      */
     public function down()
     {
-        Schema::table('games', function ($table) {
-            $table->dropColumn('sentence_index');
-        });    
+        Schema::table('users', function ($table) {
+            $table->dropColumn('is_in_training');
+        });   
     }
 }

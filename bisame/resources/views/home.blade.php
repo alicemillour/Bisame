@@ -1,11 +1,22 @@
 @extends('layouts.app')
-
+@section('style')
+<link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
+@endsection
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class='btn btn-xs btn-info'>{!! link_to('/home/start', 'Commencer à jouer') !!}</div>
-        </div>
+    <div class="row main-container">
+        <span>
+            <a class='btn btn-default play-button' href="/home/start">Commencer à s'entraîner</a>
+        </span>
+        @if($game_available)
+	        <span>
+	            <a class='btn btn-default play-button' href="/home/start">Commencer à jouer</a>
+	        </span>
+		@else
+	        <span>
+	            <a class='btn btn-default play-button' href="/home/start" disabled>Commencer à jouer</a>
+	        </span>
+	    @endif
     </div>
 </div>
 @endsection
