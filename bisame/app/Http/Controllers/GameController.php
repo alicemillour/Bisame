@@ -49,7 +49,10 @@ class GameController extends Controller
     public function store(Request $request)
     {
 		$current_user = Auth::user();
-		$game = $this->gameRepository->store(['user_id' => $current_user->id]);
+        $game = $this->gameRepository->getWithUserId($current_user->id)->first();
+        if (!$game) {
+            $game = $this->gameRepository->store(['user_id' => $current_user->id]);
+        }
 		return Redirect::route('games.show', ['id' => $game->id]);
     }
 
