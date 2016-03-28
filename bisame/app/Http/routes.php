@@ -38,7 +38,3 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('games', 'GameController');
     Route::get('/home/start', 'GameController@store');
 });
-Route::get('/asset', [
-    'uses' => 'AssetController@get',
-    'as' => 'asset'
-]);
