@@ -1,35 +1,52 @@
+
+Skip to content
+This repository
+
+Pull requests
+Issues
+Gist
+
+@HeIice
+
+2
+0
+
+0
+
+HeIice/Bisame
+Code
+Issues 0
+Pull requests 0
+Wiki
+Pulse
+Graphs
+Settings
+Bisame/bisame/app/Http/Controllers/GameController.php
+3d10836 13 hours ago
+@epaillous epaillous get current game of user connected
+109 lines (90 sloc) 2.97 KB
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Auth;
 use Log;
-
 use App\Http\Requests;
-
 use App\Repositories\GameRepository;
 use App\Repositories\PostagRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\AnnotationRepository;
-
-
 class GameController extends Controller
 {
-
-	protected $gameRepository;
+    protected $gameRepository;
     protected $postagRepository;
     protected $annotationRepository;
-
     protected $gameSentenceIndex;
-
     public function __construct(GameRepository $gameRepository, PostagRepository $postagRepository, AnnotationRepository $annotationRepository)
-	{
-		$this->gameRepository = $gameRepository;
+    {
+        $this->gameRepository = $gameRepository;
         $this->postagRepository = $postagRepository;
         $this->annotationRepository = $annotationRepository;
-	}
-
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -37,9 +54,8 @@ class GameController extends Controller
      */
     public function create()
     {
-        
-    }
 
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -48,14 +64,13 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-		$current_user = Auth::user();
+        $current_user = Auth::user();
         $game = $this->gameRepository->getWithUserId($current_user->id)->first();
         if (!$game) {
             $game = $this->gameRepository->store(['user_id' => $current_user->id]);
         }
-		return Redirect::route('games.show', ['id' => $game->id]);
+        return Redirect::route('games.show', ['id' => $game->id]);
     }
-
     /**
      * Display the specified resource.
      *
@@ -69,8 +84,6 @@ class GameController extends Controller
         $postags = $this->postagRepository->all();
         return view('games.show', compact('sentences', 'postags', 'game'));
     }
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -92,17 +105,14 @@ class GameController extends Controller
                     $word_id = $annotation['word_id'];
                     if ($postag_id && $word_id) {
                         $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
-                        'word_id' => $word_id, 'postag_id' => $postag_id]);
+                            'word_id' => $word_id, 'postag_id' => $postag_id]);
                     }
                 }
             }
-
             $game->sentence_index = $new_index;
             $game->save();
             $sentence = $game->sentences[$new_index];
-
             return view('games.sentence', compact('sentence'));
         }
     }
-
 }
