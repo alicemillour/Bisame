@@ -31,7 +31,7 @@
 			<button>Valider</button>
 		</div>
     </div>
-    <div class ="categorie-table-container">
+    <div class ="categorie-table-container pull-right">
 	    <table class="table table-hover categories-table" hidden="true">
 	    	<head>
 	    		<tr>

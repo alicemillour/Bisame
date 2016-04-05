@@ -51,6 +51,7 @@ $(document).ready(function(){
          $('.word').click(function() {
             $('.word').removeClass('selected');
             $(this).addClass('selected');
+            $('.sentence-main-container').width('60%');
             $('.categories-table').show();
         });
     };
