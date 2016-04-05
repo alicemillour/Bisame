@@ -18,7 +18,7 @@
 			</header>
 			<hr>
 			<div class="sentence-container" id="sentence-container">
-				@foreach($sentences[0]->words as $word)
+				@foreach($sentences[$game->sentence_index]->words as $word)
 					<div class="word-container">
 						<div class="word" id="{{ $word->id }}">{{ $word->value }}</div>
 						<div class="category"> </div>

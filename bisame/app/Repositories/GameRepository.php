@@ -45,6 +45,6 @@ class GameRepository extends ResourceRepository
 
 	public function getWithUserId($user_id)
 	{
-		return $this->game->where('user_id', $user_id);
+		return $this->game->where('user_id', $user_id)->where('is_finished', 0);
 	}
 }
