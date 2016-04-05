@@ -16,6 +16,7 @@ class PostagController extends Controller
      */
     public function index()
     {
+        # $_GET['word_id'] to get the word id in parameters;
         return Postag::all();
     }
 

@@ -56,7 +56,7 @@ $(document).ready(function(){
             $('.word').removeClass('selected');
             $(this).addClass('selected');
             $('.sentence-main-container').width('60%');
-            get_words_postags();
+            get_words_postags($(this).attr('id'));
         });
     };
 
@@ -70,11 +70,14 @@ $(document).ready(function(){
         return content;
     }
 
-    function get_words_postags() {
+    function get_words_postags(word_id) {
         $.ajax({
             method : 'GET',
             url : "http://localhost:8000/postags",
             dataType: 'json',
+            data: {
+                word_id: word_id
+            },
             success : function(response){
             var content = create_table_with_postags(response);
             $('.categories-table').find('tbody').empty().append(content);
