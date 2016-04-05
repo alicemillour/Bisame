@@ -3,7 +3,8 @@
 <link href="{{ asset('css/game.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('script')
-<script type="text/javascript" src="{{ asset('js/game.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/game.js') }}">
+</script>
 @endsection
 @section('content')
 <div class="container" id="main-container">
@@ -33,17 +34,12 @@
     </div>
     <div class ="categorie-table-container pull-right">
 	    <table class="table table-hover categories-table" hidden="true">
-	    	<head>
+	    	<thead>
 	    		<tr>
 	    			<th>Categorie</th>
 	    		</tr>
-	    	</head>
+	    	</thead>
 	    	<tbody>
-	    		@foreach($postags as $postag)
-	    		<tr>
-	    			<td id="{{$postag->id}}">{{ $postag->name }}</td>
-	    		</tr>
-	    		@endforeach
 	    	</tbody>
 	    </table>
 	</div>

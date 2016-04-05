@@ -8,6 +8,7 @@ use App\Repositories\GameRepository;
 use App\Repositories\PostagRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\AnnotationRepository;
+
 class GameController extends Controller
 {
     protected $gameRepository;
@@ -55,8 +56,10 @@ class GameController extends Controller
     {
         $game = $this->gameRepository->getById($id);
         $sentences = $game->sentences;
-        $postags = $this->postagRepository->all();
-        return view('games.show', compact('sentences', 'postags', 'game'));
+
+        # ici, il faut créer un
+        # words_postags : [...]
+        return view('games.show', compact('sentences', 'game'));
     }
     /**
      * Update the specified resource in storage.

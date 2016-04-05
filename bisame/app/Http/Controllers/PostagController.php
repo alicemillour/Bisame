@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Models\Postag;
 
 class PostagController extends Controller
 {
@@ -15,7 +16,7 @@ class PostagController extends Controller
      */
     public function index()
     {
-        //
+        return Postag::all();
     }
 
     /**

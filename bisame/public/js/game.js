@@ -56,9 +56,32 @@ $(document).ready(function(){
             $('.word').removeClass('selected');
             $(this).addClass('selected');
             $('.sentence-main-container').width('60%');
-            $('.categories-table').show();
+            get_words_postags();
         });
     };
+
+    function create_table_with_postags(postags) {
+        var content = '';
+        for (var i = 0; i < postags.length; i++){
+            content += '<tr>';
+            content += '<td id=' + postags[i]['id'] + '>'+ postags[i]['name'] + '</td>';
+            content += '</tr>';
+        }
+        return content;
+    }
+
+    function get_words_postags() {
+        $.ajax({
+            method : 'GET',
+            url : "http://localhost:8000/postags",
+            dataType: 'json',
+            success : function(response){
+            var content = create_table_with_postags(response);
+            $('.categories-table').find('tbody').empty().append(content);
+            $('.categories-table').show();
+            }
+        });
+    }
 
     reload_javascript_on_words();
  });
