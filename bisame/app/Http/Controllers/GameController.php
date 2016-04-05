@@ -14,6 +14,7 @@ class GameController extends Controller
     protected $postagRepository;
     protected $annotationRepository;
     protected $gameSentenceIndex;
+
     public function __construct(GameRepository $gameRepository, PostagRepository $postagRepository, AnnotationRepository $annotationRepository)
     {
         $this->gameRepository = $gameRepository;
@@ -40,7 +41,7 @@ class GameController extends Controller
         $current_user = Auth::user();
         $game = $this->gameRepository->getWithUserId($current_user->id)->first();
         if (!$game) {
-            $game = $this->gameRepository->store(['user_id' => $current_user->id]);
+            $game = $this->gameRepository->store(['user_id' => $current_user->id, 'sentence_index' => 0]);
         }
         return Redirect::route('games.show', ['id' => $game->id]);
     }
@@ -66,26 +67,32 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $current_user = Auth::user();
         $game = $this->gameRepository->getById($id);
         $new_index = $game->sentence_index + 1;
+        if ($request->input('annotations')) {
+            $this->create_annotations($request->input('annotations'));
+        }
         if ($new_index >= $game->sentences->count()) {
+            # stop game is_finished = true
             return;
-        } else {
-            if ($request->input('annotations')) {
-                foreach ($request->input('annotations') as $annotation) {
-                    $postag_id = $annotation['postag_id'];
-                    $word_id = $annotation['word_id'];
-                    if ($postag_id && $word_id) {
-                        $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
-                            'word_id' => $word_id, 'postag_id' => $postag_id]);
-                    }
-                }
-            }
+         } else {
             $game->sentence_index = $new_index;
             $game->save();
             $sentence = $game->sentences[$new_index];
             return view('games.sentence', compact('sentence'));
+        }
+    }
+
+    private function create_annotations($annotations) 
+    {
+        $current_user = Auth::user();
+        foreach ($annotations as $annotation) {
+            $postag_id = $annotation['postag_id'];
+            $word_id = $annotation['word_id'];
+            if ($postag_id && $word_id) {
+                $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
+                    'word_id' => $word_id, 'postag_id' => $postag_id]);
+            }
         }
     }
 }

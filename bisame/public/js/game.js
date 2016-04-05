@@ -33,9 +33,13 @@ $(document).ready(function(){
                 annotations : annotations
             },
             success : function(response){
-                console.log("ANNOTATION CREATED");
-                $("#sentence-container").html(response);
-                reload_javascript_on_words();
+                if (response) {
+                    console.log("ANNOTATION CREATED");
+                    $("#sentence-container").html(response);
+                    reload_javascript_on_words();
+                } else {
+                    window.location.href = 'http://localhost:8000/home';
+                }
             },
             dataType : 'text'
         });
@@ -55,5 +59,6 @@ $(document).ready(function(){
             $('.categories-table').show();
         });
     };
+
     reload_javascript_on_words();
  });
