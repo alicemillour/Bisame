@@ -73,7 +73,8 @@ class GameController extends Controller
             $this->create_annotations($request->input('annotations'));
         }
         if ($new_index >= $game->sentences->count()) {
-            # stop game is_finished = true
+            $game->is_finished = true;
+            $game->save();
             return;
          } else {
             $game->sentence_index = $new_index;

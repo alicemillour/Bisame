@@ -3,10 +3,10 @@
 namespace App\Repositories;
 
 use App\Models\Game;
+use App\Models\Sentence;
 
 class GameRepository extends ResourceRepository
 {
-
 
     public function __construct(Game $game)
 	{
@@ -21,10 +21,10 @@ class GameRepository extends ResourceRepository
 
 	public function store(Array $inputs)
 	{
-		$game = new $this->game;		
-
+		$game = new $this->game;
+		$sentences = Sentence::all()->random(4);
 		$this->save($game, $inputs);
-
+		$game->sentences()->attach($sentences);
 		return $game;
 	}
 
