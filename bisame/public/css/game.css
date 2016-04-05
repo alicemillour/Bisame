@@ -2,6 +2,7 @@
 	font-size: 42px;
 	display:inline-block;
 	text-align: center;
+	margin-right: 10px;
 }
 
 .highlighted {
@@ -33,6 +34,7 @@
 .sentence-main-container {
     float:left;
     padding:10px;
+    max-width:100%;
 }
 
 .categorie-table-container {
