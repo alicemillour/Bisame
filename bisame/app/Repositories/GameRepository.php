@@ -22,7 +22,7 @@ class GameRepository extends ResourceRepository
 	public function store(Array $inputs)
 	{
 		$game = new $this->game;
-		$sentences = Sentence::all()->random(4);
+		$sentences = $this->get_sentences()->take(4);
 		$this->save($game, $inputs);
 		$game->sentences()->attach($sentences);
 		return $game;
@@ -46,5 +46,10 @@ class GameRepository extends ResourceRepository
 	public function getWithUserId($user_id)
 	{
 		return $this->game->where('user_id', $user_id)->where('is_finished', 0);
+	}
+
+	protected function get_sentences() 
+	{
+		return Sentence::all()->where('is_training', 0);
 	}
 }
