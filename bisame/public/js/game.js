@@ -33,9 +33,13 @@ $(document).ready(function(){
                 annotations : annotations
             },
             success : function(response){
-                console.log("ANNOTATION CREATED");
-                $("#sentence-container").html(response);
-                reload_javascript_on_words();
+                if (response) {
+                    console.log("ANNOTATION CREATED");
+                    $("#sentence-container").html(response);
+                    reload_javascript_on_words();
+                } else {
+                    window.location.href = 'http://localhost:8000/home';
+                }
             },
             dataType : 'text'
         });
@@ -51,8 +55,36 @@ $(document).ready(function(){
          $('.word').click(function() {
             $('.word').removeClass('selected');
             $(this).addClass('selected');
-            $('.categories-table').show();
+            $('.sentence-main-container').width('60%');
+            get_words_postags($(this).attr('id'));
         });
     };
+
+    function create_table_with_postags(postags) {
+        var content = '';
+        for (var i = 0; i < postags.length; i++){
+            content += '<tr>';
+            content += '<td id=' + postags[i]['id'] + '>'+ postags[i]['name'] + '</td>';
+            content += '</tr>';
+        }
+        return content;
+    }
+
+    function get_words_postags(word_id) {
+        $.ajax({
+            method : 'GET',
+            url : "http://localhost:8000/postags",
+            dataType: 'json',
+            data: {
+                word_id: word_id
+            },
+            success : function(response){
+            var content = create_table_with_postags(response);
+            $('.categories-table').find('tbody').empty().append(content);
+            $('.categories-table').show();
+            }
+        });
+    }
+
     reload_javascript_on_words();
  });

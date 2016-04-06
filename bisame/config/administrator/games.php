@@ -10,7 +10,8 @@ return array(
     		'relationship' => 'user', //this is the name of the Eloquent relationship method!
     		'select' => "(:table).name",
 		),
-		'created_at'
+		'created_at',
+		'is_finished'
     ),
     'edit_fields' => array(
 		'sentences' => array(

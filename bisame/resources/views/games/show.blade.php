@@ -3,7 +3,8 @@
 <link href="{{ asset('css/game.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('script')
-<script type="text/javascript" src="{{ asset('js/game.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/game.js') }}">
+</script>
 @endsection
 @section('content')
 <div class="container" id="main-container">
@@ -18,7 +19,7 @@
 			</header>
 			<hr>
 			<div class="sentence-container" id="sentence-container">
-				@foreach($sentences[0]->words as $word)
+				@foreach($sentences[$game->sentence_index]->words as $word)
 					<div class="word-container">
 						<div class="word" id="{{ $word->id }}">{{ $word->value }}</div>
 						<div class="category"> </div>
@@ -31,19 +32,14 @@
 			<button>Valider</button>
 		</div>
     </div>
-    <div class ="categorie-table-container">
+    <div class ="categorie-table-container pull-right">
 	    <table class="table table-hover categories-table" hidden="true">
-	    	<head>
+	    	<thead>
 	    		<tr>
 	    			<th>Categorie</th>
 	    		</tr>
-	    	</head>
+	    	</thead>
 	    	<tbody>
-	    		@foreach($postags as $postag)
-	    		<tr>
-	    			<td id="{{$postag->id}}">{{ $postag->name }}</td>
-	    		</tr>
-	    		@endforeach
 	    	</tbody>
 	    </table>
 	</div>

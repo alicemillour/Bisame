@@ -14,7 +14,7 @@
 	        </span>
 		@else
 	        <span>
-	            <a class='btn btn-default play-button' href="/home/start" disabled>Commencer à jouer</a>
+	            <a class='btn btn-default play-button' disabled>Commencer à jouer</a>
 	        </span>
 	    @endif
     </div>
