@@ -3,11 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Nanigans\SingleTableInheritance\SingleTableInheritanceTrait;
 
 class Game extends Model
 {
+    use SingleTableInheritanceTrait;
     protected $table = 'games';
     public $timestamps = true;
+    protected static $singleTableTypeField = 'type';
+    protected static $singleTableType = 'game';
+
+    protected static $singleTableSubclasses = [Training::class];
 
     public function sentences()
     {

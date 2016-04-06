@@ -36,6 +36,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('annotations', 'AnnotationController', ['except' => ['show', 'create', 'edit', 'update']]);
     Route::resource('games', 'GameController');
+    Route::resource('training', 'TrainingController');
     Route::get('/home/start', 'GameController@store');
+    Route::get('/home/training', 'TrainingController@store');
     Route::get('/postags', 'PostagController@index');
 });

@@ -11,7 +11,8 @@ return array(
     		'select' => "(:table).name",
 		),
 		'created_at',
-		'is_finished'
+		'is_finished',
+		'type'
     ),
     'edit_fields' => array(
 		'sentences' => array(

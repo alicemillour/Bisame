@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row main-container">
         <span>
-            <a class='btn btn-default play-button' href="/home/start">Commencer à s'entraîner</a>
+            <a class='btn btn-default play-button' href="/home/training">Commencer à s'entraîner</a>
         </span>
         @if($game_available)
 	        <span>
