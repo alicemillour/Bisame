@@ -5,21 +5,18 @@ use Auth;
 use Log;
 use App\Http\Requests;
 use App\Repositories\GameRepository;
-use App\Repositories\PostagRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\AnnotationRepository;
 
 class GameController extends Controller
 {
     protected $gameRepository;
-    protected $postagRepository;
     protected $annotationRepository;
     protected $gameSentenceIndex;
 
-    public function __construct(GameRepository $gameRepository, PostagRepository $postagRepository, AnnotationRepository $annotationRepository)
+    public function __construct(GameRepository $gameRepository, AnnotationRepository $annotationRepository)
     {
         $this->gameRepository = $gameRepository;
-        $this->postagRepository = $postagRepository;
         $this->annotationRepository = $annotationRepository;
     }
     /**

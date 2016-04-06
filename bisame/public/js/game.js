@@ -7,14 +7,6 @@ $(document).ready(function(){
         }
     });
 
-    $('.categories-table').find('tr').click( function(){
-        var row = $(this).find('td:first');
-        var category =  $('.selected').parent().find('.category');
-        category.text(row.text());
-        category.attr('id', row.attr('id'));
-        category.show();
-    });
-
     $('.main-button').click( function() {
         annotations = [];
         $('.word-container').each(function(index , word_container) {
@@ -81,8 +73,19 @@ $(document).ready(function(){
             success : function(response){
             var content = create_table_with_postags(response);
             $('.categories-table').find('tbody').empty().append(content);
+            add_on_click_on_categories_table();
             $('.categories-table').show();
             }
+        });
+    }
+
+    function add_on_click_on_categories_table() {
+        $('.categories-table').find('tr').click( function(){
+        var row = $(this).find('td:first');
+        var category =  $('.selected').parent().find('.category');
+        category.text(row.text());
+        category.attr('id', row.attr('id'));
+        category.show();
         });
     }
 

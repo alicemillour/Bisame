@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Postag;
+use App\Repositories\PostagRepository;
 
 class PostagController extends Controller
 {
+    protected $postagRepository;
+
+    public function __construct(PostagRepository $postagRepository)
+    {
+        $this->postagRepository = $postagRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +23,8 @@ class PostagController extends Controller
      */
     public function index()
     {
-        # $_GET['word_id'] to get the word id in parameters;
-        return Postag::all();
+        $word_id = $_GET['word_id'];
+        return $this->postagRepository->getPostagsForWordId($word_id);
     }
 
     /**
