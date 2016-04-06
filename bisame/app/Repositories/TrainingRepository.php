@@ -13,4 +13,6 @@ class TrainingRepository extends GameRepository {
 		$this->game = $training;
 	}
 
+
+	# override function store
 }
