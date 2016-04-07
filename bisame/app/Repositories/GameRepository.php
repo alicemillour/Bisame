@@ -22,8 +22,13 @@ class GameRepository extends ResourceRepository
 	public function store(Array $inputs)
 	{
 		$game = new $this->game;
-		$sentences = $this->get_sentences()->take(4);
-                print($sentences);
+		$sentences = $this->get_sentences();
+                $count = $sentences->count();
+                if ($count = $count < 10) {
+                    $sentences = $this->get_sentences()->take($count);
+                }else{
+                    $sentences = $this->get_sentences()->random(10);
+                }
 		$this->save($game, $inputs);
 		$game->sentences()->attach($sentences);
 		return $game;
