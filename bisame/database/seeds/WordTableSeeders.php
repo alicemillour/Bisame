@@ -25,8 +25,7 @@ class WordTableSeeder extends CsvSeeder {
     }
     
 	/**
-	 * OVERRIDE seedFromCSV($filename, $deliminator = ",")
-         * Collect data from a given CSV file and return as array
+	 * Collect data from a given CSV file and return as array
 	 *
 	 * @param string $filename
 	 * @param string $deliminator
@@ -124,7 +123,7 @@ class WordTableSeeder extends CsvSeeder {
             }
         }
         // Insert any leftover rows
-        // check if the data array explicitly if there are any values left to be inserted, if insert them
+        //check if the data array explicitly if there are any values left to be inserted, if insert them
         if ( count($data_words)  ){
             $this->insert_table($data_words,$this->words_table);
         }
