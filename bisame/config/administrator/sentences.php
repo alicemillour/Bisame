@@ -4,7 +4,9 @@ return array(
     'single' => 'sentence',
     'model' => 'App\Models\Sentence',
     'columns' => array(
-        'id'
+        'id',
+        'corpus_id',
+        'position'
     ),
     'edit_fields' => array(
         'corpus' => array (

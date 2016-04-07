@@ -13,7 +13,7 @@ return array(
         'sentence' => array (
             'type' => 'relationship',
             'title' => 'Sentence',
-            'name_field' => 'name',
+            'name_field' => 'id',
             )
     )
 );

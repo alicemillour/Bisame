@@ -13,7 +13,7 @@ return array(
         'sentences' => array (
             'type' => 'relationship',
             'title' => 'Sentences',
-            'name_field' => 'name',
+            'name_field' => 'id',
             ),
         'is_training'
     )

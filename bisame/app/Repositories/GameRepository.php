@@ -23,6 +23,7 @@ class GameRepository extends ResourceRepository
 	{
 		$game = new $this->game;
 		$sentences = $this->get_sentences()->take(4);
+                print($sentences);
 		$this->save($game, $inputs);
 		$game->sentences()->attach($sentences);
 		return $game;
@@ -50,6 +51,9 @@ class GameRepository extends ResourceRepository
 
 	protected function get_sentences() 
 	{
-		return Sentence::all()->where('is_training', 0);
+                return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
+                        ->select('sentences.*')
+                        ->where('corpora.is_training', 0)
+                        ->get();
 	}
 }
