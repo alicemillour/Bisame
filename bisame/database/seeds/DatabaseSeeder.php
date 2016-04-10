@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     $this->call('PostagTableSeeder');
     $this->call('CorpusTableSeeder');
     $this->call('WordTableSeeder');
-    //$this->call('AnnotationTableSeeder');
+    $this->call('AnnotationTableSeeder');
     Model::reguard();
 
     }

@@ -6,7 +6,6 @@ class WordTableSeeder extends CsvSeeder {
 
     public function __construct()
     {
-        $this->table='words';
         $this->words_table = 'words';
         $this->sentences_table = 'sentences';
         $this->filename = base_path().'/database/seeds/csvs/words.csv';
@@ -19,7 +18,8 @@ class WordTableSeeder extends CsvSeeder {
         DB::disableQueryLog();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->truncate();   
+        DB::table($this->words_table)->truncate();   
+        DB::table($this->sentences_table)->truncate();   
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         parent::run();
     }
