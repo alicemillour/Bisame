@@ -29,4 +29,9 @@ class AnnotationRepository extends ResourceRepository
 		return $annotation;
 	}
 
+	public function getByWordId($word_id)
+	{
+		return $this->game->where('word_id', $word_id)->first();
+	}
+
 }

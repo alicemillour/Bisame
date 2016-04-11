@@ -23,11 +23,8 @@ class PostagRepository extends ResourceRepository
 	}
 
 	public function getPostagsForWordId($word_id) {
-		$postags = Annotation::select(DB::raw('count(*) as annotation_count, postag_id as id, name'))
-                     ->join('postags', 'postags.id', '=', 'annotations.postag_id')
-                     ->where('word_id', $word_id)
-                     ->groupBy('postag_id')
-                     ->get();
+		$postags = $this->getDatabaseRequestPostagsForWordId($word_id)
+                     	->get();
 		debug($postags);
                 /* pb ici quand les deux préannotations sont identiques, la liste entière est renvoyée */
 		if (count($postags) > 1) {
@@ -35,6 +32,20 @@ class PostagRepository extends ResourceRepository
 		} else {
 			return $this->postag->all();
 		}
+	}
+
+	public function getReferenceForWordId($word_id) {
+		$postags = $this->getDatabaseRequestPostagsForWordId($word_id)
+						->orderBy('annotation_count', 'desc')
+                     	->get();
+        return $postags[0];
+	}
+
+	private function getDatabaseRequestPostagsForWordId($word_id) {
+		return Annotation::select(DB::raw('count(*) as annotation_count, postag_id as id, name'))
+                     ->join('postags', 'postags.id', '=', 'annotations.postag_id')
+                     ->where('word_id', $word_id)
+                     ->groupBy('postag_id');
 	}
 
 }

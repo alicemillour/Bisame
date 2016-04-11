@@ -17,7 +17,6 @@ $(document).ready(function(){
                 annotations.push(annotation);
             }
         });
-        console.log(annotations);
         $.ajax({
             method : 'PUT',
             context: $("#main-container"),
@@ -25,15 +24,22 @@ $(document).ready(function(){
                 annotations : annotations
             },
             success : function(response){
+                console.log(response);
                 if (response) {
-                    console.log("ANNOTATION CREATED");
-                    $("#sentence-container").html(response);
-                    reload_javascript_on_words();
+                    if (response.constructor === Array) {
+                        console.log("FALSE");
+                        show_message(true);
+                        render_correction(response);
+                    } else {
+                        show_message(false);
+                        console.log("ANNOTATION CREATED");
+                        $("#sentence-container").html(response);
+                        reload_javascript_on_words();
+                    }
                 } else {
                     window.location.href = 'http://localhost:8000/home';
                 }
             },
-            dataType : 'text'
         });
     });
 
@@ -52,6 +58,16 @@ $(document).ready(function(){
         });
     };
 
+    function render_correction(answers) {
+        for (var i = 0; i < answers.length; i++) {
+            if (answers[i]['is_correct'] == true) {
+                $('#' + answers[i]['word_id'] + '.word').removeClass('is-in-error').addClass('is-correct');
+            } else {
+                $('#' + answers[i]['word_id'] + '.word').removeClass('is-correct').addClass('is-in-error');
+            }
+        }
+    }
+
     function create_table_with_postags(postags) {
         var content = '';
         for (var i = 0; i < postags.length; i++){
@@ -62,6 +78,18 @@ $(document).ready(function(){
         return content;
     }
 
+    function show_message(is_in_error) {
+        if (is_in_error) {
+            $('#message-title').text("Erreur");
+            $('#message-content').text("T'es trop nul");
+            $('#message').removeClass('message-correct').addClass('message-error');
+        } else {
+            $('#message-title').text("Bravo");
+            $('#message-content').text("Vous avez tout bon");
+            $('#message').removeClass('message-error').addClass('message-correct');
+        }
+        $('#message').show();
+    }
     function get_words_postags(word_id) {
         $.ajax({
             method : 'GET',

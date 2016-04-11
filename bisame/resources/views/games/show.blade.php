@@ -31,6 +31,10 @@
 		<div class="main-button">
 			<button>Valider</button>
 		</div>
+		<div class="row" id="message" hidden=true>
+			<h2 id=message-title>Bravo</h2>
+			<p id=message-content>Vous avez tout bon !</p>
+		</div>
     </div>
     <div class ="categorie-table-container pull-right">
 	    <table class="table table-hover categories-table" hidden="true">

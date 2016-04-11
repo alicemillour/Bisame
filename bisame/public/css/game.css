@@ -46,3 +46,19 @@
 .main-button {
 	margin: 10px;
 }
+
+.is-correct {
+	color: green;
+}
+
+.is-in-error {
+	color: red;
+}
+
+.message-error {
+	background-color: lightpink;
+}
+
+.message-correct {
+	background-color: lightgreen;
+}
