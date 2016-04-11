@@ -10,6 +10,7 @@ return array(
             'relationship' => 'word', //this is the name of the Eloquent relationship method!
             'select' => "(:table).value",
         ),
+        'word_id',
         'postag'=> array(
             'title' => "POS-tag",
             'relationship' => 'postag', //this is the name of the Eloquent relationship method!

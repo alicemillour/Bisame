@@ -24,13 +24,16 @@ class GameRepository extends ResourceRepository
 		$game = new $this->game;
 		$sentences = $this->get_sentences();
                 $count = $sentences->count();
-                if ($count = $count < 10) {
+                if ($count < 4) {
                     $sentences = $this->get_sentences()->take($count);
                 }else{
-                    $sentences = $this->get_sentences()->random(10);
+                    $sentences = $this->get_sentences()->random(4);
                 }
+                /* get a random sentence from reference (=training?) */
+                $ref_sentence=$this->get_sentences()->random(1);
 		$this->save($game, $inputs);
 		$game->sentences()->attach($sentences);
+		$game->sentences()->attach($ref_sentence);
 		return $game;
 	}
 
@@ -59,6 +62,14 @@ class GameRepository extends ResourceRepository
                 return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 0)
+                        ->get();
+	}
+        
+        protected function get_reference_sentences() 
+	{
+                return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
+                        ->select('sentences.*')
+                        ->where('corpora.is_training', 1)
                         ->get();
 	}
 }

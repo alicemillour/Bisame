@@ -29,6 +29,7 @@ class PostagRepository extends ResourceRepository
                      ->groupBy('postag_id')
                      ->get();
 		debug($postags);
+                /* pb ici quand les deux préannotations sont identiques, la liste entière est renvoyée */
 		if (count($postags) > 1) {
 			return $postags;
 		} else {
