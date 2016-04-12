@@ -27,6 +27,11 @@ class PostagRepository extends ResourceRepository
 		return $this->postag->all();
 	}
 
+	public function count()
+	{
+		return $this->postag->count();
+	}
+
 	public function getPostagsForWordId($word_id) {
 		$postags = $this->getDatabaseRequestPostagsForWordId($word_id)
                      	->get();

@@ -46,6 +46,9 @@
 	    	<tbody>
 	    	</tbody>
 	    </table>
+		<div class="categories-button" hidden=true>
+			<button>Afficher toutes les catégories</button>
+		</div>
 	</div>
 </div>
 @endsection

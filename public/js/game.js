@@ -13,6 +13,10 @@ $(document).ready(function(){
         }
     });
 
+    $('.categories-button').click( function() {
+        get_words_postags(null);
+    });
+
     $('.main-button').click( function() {
         annotations = [];
         $('.word-container').each(function(index , word_container) {
@@ -36,7 +40,6 @@ $(document).ready(function(){
                         console.log("FALSE");
                         render_correction(response);
                     } else {
-                        show_message(false);
                         console.log("ANNOTATION CREATED");
                         $("#sentence-container").html(response);
                         reload_javascript_on_words();
@@ -129,10 +132,16 @@ $(document).ready(function(){
                 word_id: word_id
             },
             success : function(response){
-            var content = create_table_with_postags(response);
-            $('.categories-table').find('tbody').empty().append(content);
-            add_on_click_on_categories_table();
-            $('.categories-table').show();
+                console.log(response);
+                var content = create_table_with_postags(response['postags']);
+                $('.categories-table').find('tbody').empty().append(content);
+                add_on_click_on_categories_table();
+                $('.categories-table').show();
+                if (!response['all_categories']) {
+                    $('.categories-button').show();
+                } else {
+                    $('.categories-button').hide();
+                }
             }
         });
     }

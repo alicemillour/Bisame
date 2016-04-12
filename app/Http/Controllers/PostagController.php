@@ -25,7 +25,9 @@ class PostagController extends Controller
     {
         $word_id = $_GET['word_id'];
         debug($word_id);
-        return $this->postagRepository->getPostagsForWordId($word_id);
+        $postags = $this->postagRepository->getPostagsForWordId($word_id);
+        return ['postags' => $postags,
+                'all_categories' => $this->postagRepository->count() == count($postags)];
     }
 
     /**
