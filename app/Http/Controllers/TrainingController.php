@@ -112,10 +112,12 @@ class TrainingController extends GameController {
         $word_id = $annotation['word_id'];
         $postag_reference = $this->postagRepository
                                  ->getReferenceForWordId($word_id);
+        $postag = $this->postagRepository->getById($annotation['postag_id']);
         $everything_is_correct = $everything_is_correct && 
                                  ($postag_reference->id == $annotation['postag_id']);
         $answers[] = ['word_id'=> $word_id, 
-                      'is_correct'=> ($postag_reference->id == $annotation['postag_id'])];
+                      'is_correct'=> ($postag_reference->id == $annotation['postag_id']),
+                      'postag_description' => $postag->description];
     }
     return ["everything_is_correct" => $everything_is_correct,
               "answers" => $answers];

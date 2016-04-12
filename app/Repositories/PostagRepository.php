@@ -17,6 +17,11 @@ class PostagRepository extends ResourceRepository
 		$this->postag = $postag;
 	}
 
+	public function getById($id)
+	{
+		return $this->postag->findOrFail($id);
+	}
+
 	public function all()
 	{
 		return $this->postag->all();

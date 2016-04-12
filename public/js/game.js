@@ -1,3 +1,9 @@
+ErrorLevel = {
+    error : 0,
+    warning : 1,
+    ok : 2
+}
+
 $(document).ready(function(){
     console.log("ready");
 
@@ -28,7 +34,6 @@ $(document).ready(function(){
                 if (response) {
                     if (response.constructor === Array) {
                         console.log("FALSE");
-                        show_message(true);
                         render_correction(response);
                     } else {
                         show_message(false);
@@ -59,13 +64,19 @@ $(document).ready(function(){
     };
 
     function render_correction(answers) {
+        postags_descriptions = [];
+        error_status = ErrorLevel.error;
         for (var i = 0; i < answers.length; i++) {
             if (answers[i]['is_correct'] == true) {
                 $('#' + answers[i]['word_id'] + '.word').removeClass('is-in-error').addClass('is-correct');
+                error_status = ErrorLevel.warning;
             } else {
                 $('#' + answers[i]['word_id'] + '.word').removeClass('is-correct').addClass('is-in-error');
+                postags_descriptions.push(answers[i]['postag_description']);
             }
         }
+        if (postags_descriptions.length > 0) {error_status = ErrorLevel.error}
+        show_message(error_status, postags_descriptions);
     }
 
     function create_table_with_postags(postags) {
@@ -78,15 +89,34 @@ $(document).ready(function(){
         return content;
     }
 
-    function show_message(is_in_error) {
-        if (is_in_error) {
+    function create_errors_content(postag_descriptions) {
+        var content = '';
+        for (var i = 0; i < postag_descriptions.length; i++){
+            content += '<p>';
+            content += postag_descriptions[i];
+            content += '</p>';
+        }
+        return content;
+    } 
+
+    function show_message(is_in_error, postag_descriptions) {
+        switch(is_in_error) {
+            case ErrorLevel.error:
             $('#message-title').text("Erreur");
-            $('#message-content').text("T'es trop nul");
-            $('#message').removeClass('message-correct').addClass('message-error');
-        } else {
+            var content = create_errors_content(postag_descriptions);
+            $('#message-content').empty().append(content);
+            $('#message').removeClass('alert-success alert-warning').addClass('alert-danger');
+            break;
+            case ErrorLevel.warning:
+            $('#message-title').text("Bravo");
+            $('#message-content').text("Il reste des phrases à compléter");
+            $('#message').removeClass('alert-success alert-danger').addClass('alert-warning');
+            break;
+            case ErrorLevel.success:
             $('#message-title').text("Bravo");
             $('#message-content').text("Vous avez tout bon");
-            $('#message').removeClass('message-error').addClass('message-correct');
+            $('#message').removeClass('alert-danger alert-warning').addClass('alert-success');
+            break;
         }
         $('#message').show();
     }

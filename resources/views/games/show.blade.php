@@ -31,9 +31,9 @@
 		<div class="main-button">
 			<button>Valider</button>
 		</div>
-		<div class="row" id="message" hidden=true>
-			<h2 id=message-title>Bravo</h2>
-			<p id=message-content>Vous avez tout bon !</p>
+		<div class="alert alert-success" id="message" hidden=true>
+			<strong id=message-title>Bravo</strong>
+			<div id=message-content>Vous avez tout bon !</div>
 		</div>
     </div>
     <div class ="categorie-table-container pull-right">
