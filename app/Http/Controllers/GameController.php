@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Repositories\GameRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\AnnotationRepository;
+use App\Repositories\PostagRepository;
 
 class GameController extends Controller
 {
@@ -19,10 +20,11 @@ class GameController extends Controller
         return $this->gameRepository;
     }
 
-    public function __construct(GameRepository $gameRepository, AnnotationRepository $annotationRepository)
+    public function __construct(GameRepository $gameRepository, AnnotationRepository $annotationRepository, PostagRepository $postagRepository)
     {
         $this->gameRepository = $gameRepository;
         $this->annotationRepository = $annotationRepository;
+        $this->postagRepository = $postagRepository;
     }
     /**
      * Show the form for creating a new resource.
@@ -71,31 +73,31 @@ class GameController extends Controller
     {
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
+        $current_sentence = $game->sentences[$game->sentence_index];
         $new_index = $game->sentence_index + 1;
-        if ($request->input('annotations')) {
+        if ($current_sentence->is_training()) {
+            $this->manage_annotations_of_reference($request->input('annotations'), $current_sentence);
+        } else {
             $this->create_annotations($request->input('annotations'));
         }
         if ($new_index >= $game->sentences->count()) {
-            $game->is_finished = true;
-            $game->save();
-            return;
+            return $this->finish_game($game);
          } else {
-            $game->sentence_index = $new_index;
-            $game->save();
-            $sentence = $game->sentences[$new_index];
-            return view('games.sentence', compact('sentence'));
+            return $this->go_to_next_sentence($game, $new_index);
         }
     }
 
     private function create_annotations($annotations) 
     {
-        $current_user = Auth::user();
-        foreach ($annotations as $annotation) {
-            $postag_id = $annotation['postag_id'];
-            $word_id = $annotation['word_id'];
-            if ($postag_id && $word_id) {
-                $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
-                    'word_id' => $word_id, 'postag_id' => $postag_id]);
+        if ($annotations) {
+            $current_user = Auth::user();
+            foreach ($annotations as $annotation) {
+                $postag_id = $annotation['postag_id'];
+                $word_id = $annotation['word_id'];
+                if ($postag_id && $word_id) {
+                    $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
+                        'word_id' => $word_id, 'postag_id' => $postag_id]);
+                }
             }
         }
     }
@@ -109,5 +111,50 @@ class GameController extends Controller
         }
         return $game;
     }
+
+    private function go_to_next_sentence($game, $new_index) {
+        $game->sentence_index = $new_index;
+        $game->save();
+        $sentence = $game->sentences[$new_index];
+        return view('games.sentence', compact('sentence'));
+    }
+
+    private function finish_game($game) {
+        $game->is_finished = true;
+        $game->save();
+        return;
+    }
+
+    private function manage_annotations_of_reference($annotations, $current_sentence) 
+    {
+        if ($annotations) {
+           $status_annotations = $this->check_annotations($annotations, $current_sentence);
+           if (!$status_annotations['everything_is_correct']) {
+                $current_user = Auth::user();
+                $current_user->score =- 1;
+                $current_user->save();
+           }
+        }
+    }
+
+  protected function check_annotations($annotations, $sentence) 
+  {
+    $current_user = Auth::user();
+    $answers = [];
+    $everything_is_correct = (count($annotations) == count($sentence->words));
+    foreach ($annotations as $annotation) {
+        $word_id = $annotation['word_id'];
+        $postag_reference = $this->postagRepository
+                                 ->getReferenceForWordId($word_id);
+        $postag = $this->postagRepository->getById($annotation['postag_id']);
+        $everything_is_correct = $everything_is_correct && 
+                                 ($postag_reference->id == $annotation['postag_id']);
+        $answers[] = ['word_id'=> $word_id, 
+                      'is_correct'=> ($postag_reference->id == $annotation['postag_id']),
+                      'postag_description' => $postag->description];
+    }
+    return ["everything_is_correct" => $everything_is_correct,
+              "answers" => $answers];
+  }
 
 }

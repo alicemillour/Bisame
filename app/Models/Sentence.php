@@ -26,4 +26,9 @@ class Sentence extends Model {
     {
         return $this->belongsToMany('App\Models\Game');
     }
+
+    public function is_training()
+    {
+    	return $this->corpus->is_training;
+    }
 }
