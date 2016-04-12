@@ -59,6 +59,8 @@ class AnnotationTableSeeder extends CsvSeeder {
                 }
                 /*add column word_id for annotations*/
                 array_push($mapping, "word_id");
+                /*add column user_id for annotations*/
+                array_push($mapping, "user_id");
             }
             else
             {        
@@ -91,6 +93,10 @@ class AnnotationTableSeeder extends CsvSeeder {
                     continue;
                 $data_annotations[$row_count] = $row_annotation;
                 $data_annotations[$row_count]['word_id'] = $word_id;
+                $user_id=DB::table('users')
+                        ->where('is_admin', true)
+                        ->pluck('id')[0];
+                $data_annotations[$row_count]['user_id'] = $user_id;
 
                 // Chunk size reached, insert
                 if ( ++$row_count == $this->insert_chunk_size )
