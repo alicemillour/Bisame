@@ -1,7 +1,6 @@
 <?php
 
 return [
-    CLEARDB_DATABASE_URL environment variable and then split it out.
 
     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
