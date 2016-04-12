@@ -128,6 +128,9 @@ class TrainingController extends GameController {
     $new_index = $game->sentence_index + 1;
     if ($new_index >= $game->sentences->count()) {
       $game->is_finished = true;
+      $current_user = Auth::user();
+      $current_user->is_in_training = false;
+      $current_user->save();
       $game->save();
       return;
    } else {
