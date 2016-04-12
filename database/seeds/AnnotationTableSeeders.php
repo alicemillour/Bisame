@@ -13,7 +13,6 @@ class AnnotationTableSeeder extends CsvSeeder {
 
     public function run()
     {
-        print("seeding ANNOTATION");
          // Recommended when importing larger CSVs
         DB::disableQueryLog();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -82,10 +81,10 @@ class AnnotationTableSeeder extends CsvSeeder {
                         ->where('sentence_id', $sentence_id)
                         ->where('position', $word_position)
                         ->pluck('id')[0];
-                print("\n");
-                print($sentence_position);
-                print(" ");
-                print($word_position);
+                Log::info("sentence_position");
+                Log::info($sentence_position);
+                Log::info("word_position");
+                Log::info($word_position);
                 $row_annotation = $this->readRow($row, $mapping);
                 /* insert only non-empty rows from the csv file */
                 if ( !$row_annotation )
@@ -96,8 +95,8 @@ class AnnotationTableSeeder extends CsvSeeder {
                 // Chunk size reached, insert
                 if ( ++$row_count == $this->insert_chunk_size )
                 {
-                    print($data_annotations[$row_count-1]['word_id']);
-                    print("insertion\n");
+                    Log::info($data_annotations[$row_count-1]['word_id']);
+                    Log::info("insertion");
                     /* insert chunck in words table */
                     $this->insert_table($data_annotations,$this->table);
                     $row_count = 0;

@@ -21,8 +21,11 @@ class PostagTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::disableQueryLog();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         // Uncomment the below to wipe the table clean before populating
-        //DB::table($this->table)->truncate();
+        DB::table($this->table)->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         Postag::create(
             [
