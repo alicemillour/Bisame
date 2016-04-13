@@ -4,6 +4,7 @@ return array(
     'single' => 'postag',
     'model' => 'App\Models\Postag',
     'columns' => array(
+        'id',
         'name',
         'category',
     ),

@@ -12,10 +12,11 @@
         <article class="row bg-primary">
 		<div class="col-md-12">
 			<header>
-				<h1>Annotez ces mots
+				<h2>Cliquez sur un mot pour lui assigner une catégorie grammaticale 
+                                    <h3>(vous pouvez annoter plusieurs mots à la fois)</h3>    
 					<div class="pull-right">
 					</div>
-				</h1>
+				</h2>
 			</header>
 			<hr>
 			<div class="sentence-container" id="sentence-container">
@@ -32,15 +33,15 @@
 			<button>Valider</button>
 		</div>
 		<div class="alert alert-success" id="message" hidden=true>
-			<strong id=message-title>Bravo</strong>
-			<div id=message-content>Vous avez tout bon !</div>
+			<strong id=message-title>Bravo !</strong>
+			<div id=message-content>Toutes vos annotations sont correctes !</div>
 		</div>
     </div>
     <div class ="categorie-table-container pull-right">
 	    <table class="table table-hover categories-table" hidden="true">
 	    	<thead>
 	    		<tr>
-	    			<th>Categorie</th>
+	    			<th>Catégorie grammaticale</th>
 	    		</tr>
 	    	</thead>
 	    	<tbody>

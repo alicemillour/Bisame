@@ -111,12 +111,12 @@ $(document).ready(function(){
             $('#message').removeClass('alert-success alert-warning').addClass('alert-danger');
             break;
             case ErrorLevel.warning:
-            $('#message-title').text("Bravo");
-            $('#message-content').text("Il reste des phrases à compléter");
+            $('#message-title').text("Bravo !");
+            $('#message-content').text("Annotez les mots restant pour pouvoir passer à la suivante.");
             $('#message').removeClass('alert-success alert-danger').addClass('alert-warning');
             break;
             case ErrorLevel.success:
-            $('#message-title').text("Bravo");
+            $('#message-title').text("Bravo !");
             $('#message-content').text("Vous avez tout bon");
             $('#message').removeClass('alert-danger alert-warning').addClass('alert-success');
             break;
@@ -126,7 +126,7 @@ $(document).ready(function(){
     function get_words_postags(word_id) {
         $.ajax({
             method : 'GET',
-            url : "http://localhost:8000/postags",
+            url : "/postags",
             dataType: 'json',
             data: {
                 word_id: word_id
