@@ -70,7 +70,10 @@ class AnnotationTableSeeder extends CsvSeeder {
                 if ( !$row_full )
                     continue; 
                 
-                $corpus_id = $row_full["corpus_id"];
+                $corpus_id = DB::table('corpora')
+                        ->where('name', $row_full['corpus_name'])
+                        ->pluck('id')[0];
+
                 $sentence_position = $row_full["sentence_position"];
                 $word_position = $row_full["word_position"];
 
