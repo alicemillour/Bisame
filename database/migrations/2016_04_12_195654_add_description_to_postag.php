@@ -25,7 +25,7 @@ class AddDescriptionToPostag extends Migration
     public function down()
     {
         Schema::table('postags', function ($table) {
-            $table->text('description');
+            $table->dropColumn('description');
         });
     }
 }

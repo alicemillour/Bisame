@@ -16,11 +16,9 @@ class WordTableSeeder extends CsvSeeder {
     {
         // Recommended when importing larger CSVs
         DB::disableQueryLog();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->words_table)->truncate();   
-        DB::table($this->sentences_table)->truncate();   
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::table($this->words_table)->delete();   
+        DB::table($this->sentences_table)->delete();   
         parent::run();
     }
     
@@ -45,7 +43,12 @@ class WordTableSeeder extends CsvSeeder {
         $mapping = $this->mapping ?: [];
         $mapping_full = $this->mapping ?: [];
         $offset = $this->offset_rows;
-
+        $corpora_names = array(
+            "1" => "recettes",
+            "2" => "wikipedia1",
+            "3" => "wikipedia2",
+            "4" => "Hoflieferant_p53",
+        );
         while ( ($row = fgetcsv($handle, 0, $deliminator)) !== FALSE )
         {
             // Offset the specified number of rows
@@ -84,7 +87,11 @@ class WordTableSeeder extends CsvSeeder {
                  * $corpus_id_cur = $data_full[$row_count]["corpus_id"];
                 $sentence_pos_cur = $data_full[$row_count]["sentence_position"];
                  */
-                $corpus_id_cur = $row_full["corpus_id"];
+                $my_corpus_id = $row_full["my_corpus_id"];
+                $corpus_id_cur = DB::table('corpora')
+                        ->where('name', $corpora_names[$my_corpus_id])
+                        ->pluck('id')[0];
+
                 $sentence_pos_cur = $row_full["sentence_position"];
                 $sentence = DB::table('sentences')
                         ->where('corpus_id', $corpus_id_cur)
@@ -107,7 +114,6 @@ class WordTableSeeder extends CsvSeeder {
                     continue;
                 $data_words[$row_count] = $row_words;
                 $data_words[$row_count]['sentence_id'] = $sentence_id;
-
                 // Chunk size reached, insert
                 if ( ++$row_count == $this->insert_chunk_size )
                 {
