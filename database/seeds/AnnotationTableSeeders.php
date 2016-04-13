@@ -13,12 +13,8 @@ class AnnotationTableSeeder extends CsvSeeder {
 
     public function run()
     {
-         // Recommended when importing larger CSVs
-        DB::disableQueryLog();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->truncate();   
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::table($this->table)->delete();
         parent::run();
     }
     
@@ -60,7 +56,9 @@ class AnnotationTableSeeder extends CsvSeeder {
                 /*add column word_id for annotations*/
                 array_push($mapping, "word_id");
                 /*add column user_id for annotations*/
-                array_push($mapping, "user_id");
+                array_push($mapping, "user_id");   
+                /*add column postag_id for annotations*/          
+                array_push($mapping, "postag_id");
             }
             else
             {        
@@ -76,8 +74,9 @@ class AnnotationTableSeeder extends CsvSeeder {
 
                 $sentence_position = $row_full["sentence_position"];
                 $word_position = $row_full["word_position"];
+                $postag_name = $row_full["postag_name"];
 
-                /* retrieve sentence_id */
+                /* retrieve ids */
                 $sentence_id=DB::table('sentences')
                         ->where('corpus_id', $corpus_id)
                         ->where('position', $sentence_position)
@@ -85,6 +84,9 @@ class AnnotationTableSeeder extends CsvSeeder {
                 $word_id=DB::table('words')
                         ->where('sentence_id', $sentence_id)
                         ->where('position', $word_position)
+                        ->pluck('id')[0];
+                $postag_id=DB::table('postags')
+                        ->where('name', $postag_name)
                         ->pluck('id')[0];
                 Log::info("sentence_position");
                 Log::info($sentence_position);
@@ -96,6 +98,7 @@ class AnnotationTableSeeder extends CsvSeeder {
                     continue;
                 $data_annotations[$row_count] = $row_annotation;
                 $data_annotations[$row_count]['word_id'] = $word_id;
+                $data_annotations[$row_count]['postag_id'] = $postag_id;
                 $user_id=DB::table('users')
                         ->where('is_admin', true)
                         ->pluck('id')[0];
