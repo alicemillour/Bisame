@@ -27,35 +27,51 @@ class PostagRepository extends ResourceRepository
 		return $this->postag->all();
 	}
 
+        
 	public function count()
 	{
 		return $this->postag->count();
 	}
-
+              
 	public function getPostagsForWordId($word_id) {
-		$postags = $this->getDatabaseRequestPostagsForWordId($word_id)
-                     	->get();
-		debug($postags);
-                /* pb ici quand les deux préannotations sont identiques, la liste entière est renvoyée */
-		if (count($postags) > 1) {
-			return $postags;
-		} else {
-			return $this->postag->all();
-		}
-	}
+            $postags = $this->getDatabaseRequestPostagsForWordId($word_id)
+                    ->get();
+            debug("postags");
+            debug(count($postags));
+            if (count($postags) < 1) {
+                    return $this->postag->all();
 
-	public function getReferenceForWordId($word_id) {
-		$postags = $this->getDatabaseRequestPostagsForWordId($word_id)
-						->orderBy('annotation_count', 'desc')
-                     	->get();
-        return $postags[0];
+            } elseif (count($postags) == 1) {
+                    $first_postag = $this->getDatabaseRequestPostagsForWordId($word_id)->first();
+                    $complementary = $this->GetComplementaryPostags($first_postag)->random(1);
+                    $postags->push($complementary);
+            }
+                    return $this->sortPostagsByName($postags)->values()->all();
+        }
+        private function GetComplementaryPostags($postag){
+                   $complementary_postags=Postag::select('postags.*')
+                        ->where('id','!=', $postag['id'])->get();
+                   return $complementary_postags;
+        }
+        
+        public function getReferenceForWordId($word_id) {
+		$postags = $this->getDatabaseRequestPostagsForWordId($word_id)->get();
+                return $postags[0];
 	}
-
-	private function getDatabaseRequestPostagsForWordId($word_id) {
-		return Annotation::select(DB::raw('count(*) as annotation_count, postag_id as id, name'))
-                     ->join('postags', 'postags.id', '=', 'annotations.postag_id')
-                     ->where('word_id', $word_id)
-                     ->groupBy('postag_id');
+        
+        private function getDatabaseRequestPostagsForWordId($word_id) {
+                $annotations = Annotation::join('postags', 'postags.id', '=', 'annotations.postag_id')
+                        ->select(DB::raw('postag_id as id, name'))
+                        ->distinct()
+                        ->where('word_id', $word_id)
+                        ->orderBy('confidence_score','desc');
+                return $annotations;
 	}
-
+        
+        private function sortPostagsByName($postags) {
+                return $postags->sortBy(function($postags)
+                    {
+                      return $postags->name;
+                    });
+	}
 }
