@@ -21,7 +21,8 @@ return array(
 	 *
 	 *  @type array
 	 */
-	'middleware' => array(),
+	'middleware' => array('web'),
+
 
 	/**
 	 * Page title
@@ -83,7 +84,7 @@ return array(
 	 */
 	'permission'=> function()
 	{
-    	return true;
+            return Auth::user()->is_admin;
 	},
 
 	/**
