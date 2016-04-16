@@ -18,6 +18,7 @@ class TrainingController extends GameController {
       $this->annotationRepository = $annotationRepository;
       $this->trainingRepository = $trainingRepository;
       $this->postagRepository = $postagRepository;
+      $this->middleware('auth');
   }
 
   /**

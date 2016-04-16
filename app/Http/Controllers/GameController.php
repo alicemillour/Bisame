@@ -25,6 +25,7 @@ class GameController extends Controller
     $this->gameRepository = $gameRepository;
     $this->annotationRepository = $annotationRepository;
     $this->postagRepository = $postagRepository;
+    $this->middleware('auth');
   }
   /**
    * Show the form for creating a new resource.
