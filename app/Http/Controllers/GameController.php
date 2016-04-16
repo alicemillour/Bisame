@@ -57,6 +57,7 @@ class GameController extends Controller
   {
     $repository = $this->get_game_repository();
     $game = $repository->getById($id);
+    $this->authorize($game);
     $sentences = $game->sentences;
     return view('games.show', compact('sentences', 'game'));
   }
@@ -73,6 +74,7 @@ class GameController extends Controller
   {
     $repository = $this->get_game_repository();
     $game = $repository->getById($id);
+    $this->authorize($game);
     $current_sentence = $game->sentences[$game->sentence_index];
     $new_index = $game->sentence_index + 1;
     if ($current_sentence->is_training()) {

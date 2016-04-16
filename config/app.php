@@ -149,11 +149,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 		Barryvdh\Debugbar\ServiceProvider::class,
 	    Collective\Html\HtmlServiceProvider::class,
-	Frozennode\Administrator\AdministratorServiceProvider::class,
-
-        /*
-         * Application Service Providers...
-         */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
