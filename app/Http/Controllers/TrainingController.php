@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\TrainingRepository;
 use App\Repositories\AnnotationRepository;
 use App\Repositories\PostagRepository;
+use App\Repositories\SentenceRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
@@ -13,11 +14,14 @@ class TrainingController extends GameController {
 
   protected $trainingRepository;
 
-  public function __construct(TrainingRepository $trainingRepository, AnnotationRepository $annotationRepository, PostagRepository $postagRepository)
+  public function __construct(TrainingRepository $trainingRepository, 
+          AnnotationRepository $annotationRepository, PostagRepository $postagRepository, 
+          SentenceRepository $sentenceRepository)
   {
       $this->annotationRepository = $annotationRepository;
       $this->trainingRepository = $trainingRepository;
       $this->postagRepository = $postagRepository;
+      $this->sentenceRepository = $sentenceRepository;
       $this->middleware('auth');
   }
 

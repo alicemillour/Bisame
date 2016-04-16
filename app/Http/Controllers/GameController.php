@@ -8,10 +8,12 @@ use App\Repositories\GameRepository;
 use Illuminate\Support\Facades\Redirect;
 use App\Repositories\AnnotationRepository;
 use App\Repositories\PostagRepository;
+use App\Repositories\SentenceRepository;
 
 class GameController extends Controller
 {
-  protected $gameRepository;
+  protected $gameRepository;  
+  protected $sentenceRepository;
   protected $annotationRepository;
   protected $gameSentenceIndex;
 
@@ -20,11 +22,12 @@ class GameController extends Controller
     return $this->gameRepository;
   }
 
-  public function __construct(GameRepository $gameRepository, AnnotationRepository $annotationRepository, PostagRepository $postagRepository)
+  public function __construct(GameRepository $gameRepository, AnnotationRepository $annotationRepository, PostagRepository $postagRepository, SentenceRepository $sentenceRepository)
   {
     $this->gameRepository = $gameRepository;
     $this->annotationRepository = $annotationRepository;
     $this->postagRepository = $postagRepository;
+    $this->sentenceRepository = $sentenceRepository;
     $this->middleware('auth');
   }
   /**
@@ -143,7 +146,9 @@ class GameController extends Controller
   {
     $current_user = Auth::user();
     $answers = [];
-    $everything_is_correct = (count($annotations) == count($sentence->words));
+    $words=$this->sentenceRepository->getWordNotPunctCount($sentence['id']);
+    debug($words->word_not_punct_count);
+    $everything_is_correct = (count($annotations) == $words->word_not_punct_count);
     foreach ($annotations as $annotation) {
       $word_id = $annotation['word_id'];
       $postag_reference = $this->postagRepository
