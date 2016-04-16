@@ -61,7 +61,7 @@ public function getReferenceForWordId($word_id) {
 
 private function getDatabaseRequestPostagsForWordId($word_id) {
     $annotations = Annotation::join('postags', 'postags.id', '=', 'annotations.postag_id')
-    ->select(DB::raw('postag_id as id, name'))
+    ->select(DB::raw('postag_id as id, name, full_name'))
     ->distinct()
     ->where('word_id', $word_id)
     ->orderBy('confidence_score','desc');

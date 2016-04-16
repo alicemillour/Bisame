@@ -7,10 +7,12 @@ return array(
         'id',
         'name',
         'category',
+        'full_name'
     ),
     'edit_fields' => array(
         'name',
         'category',
-        'description'
+        'description',
+        'full_name'
     )
 );

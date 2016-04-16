@@ -86,7 +86,9 @@ $(document).ready(function(){
         var content = '';
         for (var i = 0; i < postags.length; i++){
             content += '<tr>';
-            content += '<td id=' + postags[i]['id'] + '>'+ postags[i]['name'] + '</td>';
+            content += '<td id=' + postags[i]['id'] + '>'+ postags[i]['name'] ;
+            content += '<span class=full-name-category> (' + postags[i]['full_name'] + ')</span>' ;
+            content += '</td>';
             content += '</tr>';
         }
         return content;

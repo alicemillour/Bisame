@@ -40,7 +40,7 @@
 .categorie-table-container {
     float:right;
     padding:5px;
-    width: 14%;
+    width: 18%;
 }
 
 .main-button {
@@ -61,4 +61,9 @@
 
 .message-correct {
 	background-color: lightgreen;
+}
+
+.full-name-category {
+	color: grey;
+	font-style: italic;
 }
