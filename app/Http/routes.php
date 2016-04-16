@@ -26,17 +26,11 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::resource('users', 'UserController');
     Route::get('/home', 'HomeController@index');
-    Route::resource('annotations', 'AnnotationController', ['except' => ['show', 'create', 'edit', 'update']]);
-    Route::resource('games', 'GameController');
-    Route::resource('training', 'TrainingController');
+    Route::resource('games', 'GameController', ['only' => ['update', 'show']]);
+    Route::resource('training', 'TrainingController', ['only' => ['update', 'show']]);
     Route::get('/home/start', 'GameController@store');
     Route::get('/home/training', 'TrainingController@store');
     Route::get('/postags', 'PostagController@index');

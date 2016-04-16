@@ -19,6 +19,6 @@ class Admin
 		{
 			return $next($request);
 		}
-		return new RedirectResponse(url('post/liste'));
+		return response('Unauthorized.', 401);
     }
 }

@@ -21,7 +21,7 @@ return array(
 	 *
 	 *  @type array
 	 */
-	'middleware' => array('web'),
+	'middleware' => array('web', 'auth', 'admin'),
 
 
 	/**
