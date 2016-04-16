@@ -19,6 +19,6 @@ class Admin
 		{
 			return $next($request);
 		}
-		return response('Unauthorized.', 401);
+		return abort(403);
     }
 }
