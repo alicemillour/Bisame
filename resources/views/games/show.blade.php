@@ -22,7 +22,7 @@
 			<div class="sentence-container" id="sentence-container">
 				@foreach($sentences[$game->sentence_index]->words as $word)
 					<div class="word-container">
-						<div class="word" id="{{ $word->id }}">{{ $word->value }}</div>
+						<div class="word" id="{{ $word->id }}" value="{{$word->value}}">{{ $word->value }}</div>
 						<div class="category"> </div>
 					</div>
 				@endforeach

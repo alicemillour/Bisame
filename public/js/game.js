@@ -45,24 +45,31 @@ $(document).ready(function(){
                         reload_javascript_on_words();
                     }
                 } else {
+                    // How can I test this value ?
                     window.location.href = 'http://localhost:8000/home';
                 }
-            },
+            }
         });
     });
 
     function reload_javascript_on_words() {
         $('.word').hover(function() {
-            $(this).addClass('highlighted');
+            if (!/[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]/.test($(this).attr('value'))){
+                $(this).addClass('highlighted');
+            }
         },
         function() {
-            $(this).removeClass('highlighted');
+            if (!/[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]/.test($(this).attr('value'))){
+                $(this).removeClass('highlighted');
+            }
         });
          $('.word').click(function() {
-            $('.word').removeClass('selected');
-            $(this).addClass('selected');
-            $('.sentence-main-container').width('60%');
-            get_words_postags($(this).attr('id'));
+            if (!/[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]/.test($(this).attr('value'))){
+                $('.word').removeClass('selected');
+                $(this).addClass('selected');
+                $('.sentence-main-container').width('60%');
+                get_words_postags($(this).attr('id'));
+        }
         });
     };
 
