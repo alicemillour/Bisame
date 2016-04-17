@@ -3,10 +3,8 @@ ErrorLevel = {
     warning : 1,
     ok : 2
 }
-
 $(document).ready(function(){
     console.log("ready");
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -16,7 +14,6 @@ $(document).ready(function(){
     $('.categories-button').click( function() {
         get_words_postags(null);
     });
-
     $('.main-button').click( function() {
         annotations = [];
         $('.word-container').each(function(index , word_container) {
@@ -54,17 +51,17 @@ $(document).ready(function(){
 
     function reload_javascript_on_words() {
         $('.word').hover(function() {
-            if (!/[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]/.test($(this).attr('value'))){
+            if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]$/.test($(this).attr('value'))){
                 $(this).addClass('highlighted');
             }
         },
         function() {
-            if (!/[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]/.test($(this).attr('value'))){
+            if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]$/.test($(this).attr('value'))){
                 $(this).removeClass('highlighted');
             }
         });
          $('.word').click(function() {
-            if (!/[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]/.test($(this).attr('value'))){
+            if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~]$/.test($(this).attr('value'))){
                 $('.word').removeClass('selected');
                 $(this).addClass('selected');
                 $('.sentence-main-container').width('60%');
