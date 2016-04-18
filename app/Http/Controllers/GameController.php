@@ -85,10 +85,13 @@ class GameController extends Controller
     } else {
       $this->create_annotations($request->input('annotations'));
     }
+    $words_annotables=$this->sentenceRepository->getWordNotPunctCount($current_sentence['id']);
+    
+    $everything_is_annotated = (count($request->input('annotations')) == $words_annotables->word_not_punct_count);
     if ($new_index >= $game->sentences->count()) {
       return $this->finish_game($game);
     } else {
-      return $this->go_to_next_sentence($game, $new_index);
+      return $this->go_to_next_sentence($game, $new_index, $everything_is_annotated);
     }
   }
 
@@ -117,11 +120,11 @@ class GameController extends Controller
     return $game;
   }
 
-  private function go_to_next_sentence($game, $new_index) {
+  private function go_to_next_sentence($game, $new_index, $everything_is_annotated) {
     $game->sentence_index = $new_index;
     $game->save();
     $sentence = $game->sentences[$new_index];
-    return view('games.sentence', compact('sentence'));
+    return view('games.sentence', compact('sentence','everything_is_annotated'));
   }
 
   private function finish_game($game) {
@@ -144,10 +147,8 @@ class GameController extends Controller
 
   protected function check_annotations($annotations, $sentence) 
   {
-    $current_user = Auth::user();
     $answers = [];
     $words=$this->sentenceRepository->getWordNotPunctCount($sentence['id']);
-    debug($words->word_not_punct_count);
     $everything_is_correct = (count($annotations) == $words->word_not_punct_count);
     foreach ($annotations as $annotation) {
       $word_id = $annotation['word_id'];
