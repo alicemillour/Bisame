@@ -1,6 +1,5 @@
-@if($everything_is_annotated)
-    <div id=message-content>Merci d'avoir annoté tous les mots de la phrase précédente ! On recommence ?</div>       
-@else
+@if($game_everything_is_annotated)
+    <div id=message-content>Merci d'avoir annoté tous les mots de la phrase précédente ! On recommence ?</div>
 @endif
 
 @foreach($sentence->words as $word)

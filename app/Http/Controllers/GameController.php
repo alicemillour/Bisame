@@ -87,11 +87,11 @@ class GameController extends Controller
     }
     $words_annotables=$this->sentenceRepository->getWordNotPunctCount($current_sentence['id']);
     
-    $everything_is_annotated = (count($request->input('annotations')) == $words_annotables->word_not_punct_count);
+    $game_everything_is_annotated = (count($request->input('annotations')) == $words_annotables->word_not_punct_count);
     if ($new_index >= $game->sentences->count()) {
       return $this->finish_game($game);
     } else {
-      return $this->go_to_next_sentence($game, $new_index, $everything_is_annotated);
+      return $this->go_to_next_sentence($game, $new_index, $game_everything_is_annotated);
     }
   }
 
@@ -120,11 +120,11 @@ class GameController extends Controller
     return $game;
   }
 
-  private function go_to_next_sentence($game, $new_index, $everything_is_annotated) {
+  private function go_to_next_sentence($game, $new_index, $game_everything_is_annotated) {
     $game->sentence_index = $new_index;
     $game->save();
     $sentence = $game->sentences[$new_index];
-    return view('games.sentence', compact('sentence','everything_is_annotated'));
+    return view('games.sentence', compact('game','sentence', 'game_everything_is_annotated'));
   }
 
   private function finish_game($game) {
