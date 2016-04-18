@@ -12,8 +12,7 @@
         <article class="row bg-primary">
 		<div class="col-md-12">
 			<header>
-				<h2>Cliquez sur un mot pour lui assigner une catégorie grammaticale 
-                                    <h3>(vous pouvez annoter plusieurs mots à la fois)</h3>    
+				<h2>Cliquez sur les mots pour leur assigner une catégorie grammaticale  
 					<div class="pull-right">
 					</div>
 				</h2>
@@ -30,7 +29,11 @@
 		</div>
 		</article>
 		<div class="main-button">
-			<button>Valider</button>
+                        @if($game['type']=='training')
+                            <button>Vérifier mes réponses</button>
+                        @else
+                            <button>Valider et passer à la phrase suivante</button>
+                        @endif
 		</div>
 		<div class="alert alert-success" id="message" hidden=true>
 			<strong id=message-title>Bravo !</strong>
