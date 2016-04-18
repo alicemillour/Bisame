@@ -26,7 +26,7 @@ class SentenceRepository extends ResourceRepository
         return Sentence::join('words','sentence_id','=','sentences.id')
                 ->select(DB::raw('count(*) as word_not_punct_count, value'))
                 ->where('sentence_id',$sentence_id)
-                ->whereRaw("value NOT REGEXP '^[[:punct:]]$'")->first();
+                ->whereRaw("value NOT REGEXP '^([[:punct:]]|„|“)$'")->first();
     }    
 
 }
