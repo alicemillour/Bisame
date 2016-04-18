@@ -24,10 +24,10 @@ class GameRepository extends ResourceRepository
 		$game = new $this->game;
 		$sentences = $this->get_sentences();
                 $count = $sentences->count();
-                if ($count < 4) {
+                if ($count < 3) {
                     $sentences = $this->get_sentences()->take($count);
                 }else{
-                    $sentences = $this->get_sentences()->random(4);
+                    $sentences = $this->get_sentences()->random(3);
                 }
                 /* get a random sentence from reference (=training?) */
                 $ref_sentence=$this->get_reference_sentences()->random(1);

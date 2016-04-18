@@ -57,7 +57,7 @@ class AddFullNameToPostagsSeeder extends Seeder
          ]);
         DB::table('postags')->where('name','PRON')
                 ->update([
-            'full_name' => 'Adjectif'
+            'full_name' => 'Pronom'
          ]);
         DB::table('postags')->where('name','PART')
                 ->update([
