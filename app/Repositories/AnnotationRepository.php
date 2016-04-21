@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Annotation;
+use Illuminate\Support\Facades\DB;
 
 class AnnotationRepository extends ResourceRepository
 {
@@ -33,5 +34,13 @@ class AnnotationRepository extends ResourceRepository
 	{
 		return $this->game->where('word_id', $word_id)->first();
 	}
-
+        
+        public function getScore($user_id)
+	{
+            /* returns annotation count for user*/
+            return $this->annotation->select(DB::raw('count(*) as annotation_count'))
+                ->where('user_id', $user_id)->first();
+        }  
+        
+        
 }
