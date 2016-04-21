@@ -157,8 +157,11 @@ class GameController extends Controller
       $postag = $this->postagRepository->getById($annotation['postag_id']);
       $everything_is_correct = $everything_is_correct && 
       ($postag_reference->id == $annotation['postag_id']);
+      debug($postag->full_name);
       $answers[] = ['word_id'=> $word_id, 
       'is_correct'=> ($postag_reference->id == $annotation['postag_id']),
+      'postag_name' => $postag->name,
+      'postag_full_name' => $postag->full_name,
       'postag_description' => $postag->description];
     }
     return ["everything_is_correct" => $everything_is_correct,

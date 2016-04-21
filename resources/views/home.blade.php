@@ -6,15 +6,15 @@
 <div class="container">
     <div class="row main-container">
         <span>
-            <a class='btn btn-default play-button' href="/home/training">Commencer à s'entraîner</a>
+            <a class='btn btn-default play-button' href="/home/training">S'entraîner</a>
         </span>
         @if($game_available)
 	        <span>
-	            <a class='btn btn-default play-button' href="/home/start">Commencer à jouer</a>
+	            <a class='btn btn-default play-button' href="/home/start">Jouer</a>
 	        </span>
 		@else
 	        <span>
-	            <a class='btn btn-default play-button' disabled>Commencer à jouer</a>
+	            <a class='btn btn-default play-button' disabled>Jouer</a>
 	        </span>
 	    @endif
     </div>

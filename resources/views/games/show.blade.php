@@ -12,7 +12,7 @@
         <article class="row bg-primary">
 		<div class="col-md-12">
 			<header>
-				<h2>Cliquez sur les mots pour leur assigner une catégorie grammaticale  
+				<h2>Cliquez sur les mots pour leur assigner une catégorie grammaticale
 					<div class="pull-right">
 					</div>
 				</h2>

@@ -13,7 +13,8 @@ class AddFullNameToPostagsSeeder extends Seeder
     {
         DB::table('postags')->where('name','ADJ')
                 ->update([
-            'full_name' => 'Adjectif'
+            'full_name' => 'Adjectif',
+            'description' => 'E <b>scheeni</b> Frau /  D\'r Mann isch <b>gröü</b> / <b>kleiner</b> / Der Renner isch de <b>schnellscht</b> vùn àlle/ d erschta <b>druckta</b> Bibel / ìn <b>kochendem</b> Sàlzwàsser / sina <b>Stroßburger</b> Druckarèi / ìm <b>dritta</b> Stock '
          ]);
         DB::table('postags')->where('name','ADV')
                 ->update([
@@ -21,15 +22,20 @@ class AddFullNameToPostagsSeeder extends Seeder
          ]);
         DB::table('postags')->where('name','INTJ')
                 ->update([
-            'full_name' => 'Interjection'
+            'full_name' => 'Interjection',
+            'description' => '<b>Bravo</b> !/ <b>O</b>, wie bin ich unglüecklich / <b>au</b>  '
+         
          ]);
         DB::table('postags')->where('name','NOUN')
                 ->update([
-            'full_name' => 'Nom commun'
+            'full_name' => 'Nom commun',
+            'description' => 'das <b>Gewünschte </b>/ das <b>Reisen </b>/ <b>Sìcherheitsnorma </b> / <b>Volkstum-Museum </b>/ ein <b>Porsche </b>/ da <b>Israelita </b> vum Elsàss/ <b>Novamber </b>/ <b>Sundaa </b>/ Uf <b>Hochditsch </b>
+'            
          ]);
         DB::table('postags')->where('name','PROPN')
                 ->update([
-            'full_name' => 'Nom propre'
+            'full_name' => 'Nom propre',
+            'description' => '<b>Auguste </b>,<b> Oberlin </b>,<b> Fifi </b>/<b> Peugeot</b>,<b> Kronenbourg </b>/<b> Contades </b>, <b>Straßburg</b>/ <b>Schwiz</b>, <b> Rhy</b>, <b> Alpe</b>'
          ]);
         DB::table('postags')->where('name','VERB')
                 ->update([
