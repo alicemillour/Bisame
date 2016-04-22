@@ -145,7 +145,7 @@ $(document).ready(function(){
         switch (is_in_error) {
             case ErrorLevel.error:
                 if (postag_names.length > 0) {
-                    $('#message-title').text("Vous avez des erreurs. Rappel sur les catégories que vous avez choisies :s");
+                    $('#message-title').text("Vous avez des erreurs. Rappel sur les catégories que vous avez choisies :");
                 } else {
                     /* no word has been annotated yet */
                     $('#message-title').text("Vous ne pouvez pas passer la phrase dans le mode entraînement");
