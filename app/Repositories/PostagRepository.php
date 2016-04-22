@@ -43,12 +43,13 @@ class PostagRepository extends ResourceRepository
 
     } elseif (count($postags) == 1) {
         $first_postag = $this->getDatabaseRequestPostagsForWordId($word_id)->first();
-        $complementary = $this->GetComplementaryPostags($first_postag)->random(1);
+        $complementary = $this->GetComplementaryRandomPostags($first_postag)->random(1);
         $postags->push($complementary);
     }
+    // If un des postags est AUX rajouter VERB et CONJ rajouter SCONJ
     return $this->sortPostagsByName($postags)->values()->all();
 }
-private function GetComplementaryPostags($postag){
+private function GetComplementaryRandomPostags($postag){
    $complementary_postags=Postag::select('postags.*')
    ->where('id','!=', $postag['id'])->get();
    return $complementary_postags;

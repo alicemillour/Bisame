@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use DB;
 
 class UserRepository extends ResourceRepository
 {
@@ -31,22 +32,28 @@ class UserRepository extends ResourceRepository
 	{
 		$user = new $this->user;		
 		$user->password = bcrypt($inputs['password']);
-
 		$this->save($user, $inputs);
 
 		return $user;
 	}
-
+   
 	public function getById($id)
 	{
 		return $this->user->findOrFail($id);
 	}
-
-	public function update($id, Array $inputs)
+        
+        public function update($id, Array $inputs)
 	{
 		$this->save($this->getById($id), $inputs);
 	}
 
+                
+        public function update_confidence_score($user_id, $new_confidence_score)
+	{
+            User::where('id', $user_id)
+                 ->update(['score' => $new_confidence_score]);      
+	}
+        
 	public function destroy($id)
 	{
 		$this->getById($id)->delete();

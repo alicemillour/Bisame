@@ -17,7 +17,8 @@ class AnnotationRepository extends ResourceRepository
 	{
 		$annotation->user_id = $inputs['user_id'];	
 		$annotation->postag_id = $inputs['postag_id'];
-		$annotation->word_id = $inputs['word_id'];	
+		$annotation->word_id = $inputs['word_id'];
+		$annotation->confidence_score = $inputs['confidence_score'];	
 		$annotation->save();
 	}
 
@@ -35,12 +36,47 @@ class AnnotationRepository extends ResourceRepository
 		return $this->game->where('word_id', $word_id)->first();
 	}
         
-        public function getScore($user_id)
+        public function get_user_annotation_count($user_id)
 	{
             /* returns annotation count for user*/
             return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                 ->where('user_id', $user_id)->first();
-        }  
+        }
         
         
+        public function get_number_correct_annotations($user_id)
+	{
+            return($this->annotation->select(DB::raw('count(word_id) as count'))
+                ->join('words','word_id', '=', 'words.id')
+                ->join('sentences','sentence_id', '=', 'sentences.id')
+                ->join('corpora','corpus_id', '=', 'corpora.id')
+                ->whereRaw("annotations.user_id=?
+                AND corpora.is_training=true
+                AND (word_id, annotations.postag_id) IN 
+                    (select word_id, annotations.postag_id FROM annotations, words, sentences, corpora, users
+                        WHERE annotations.user_id=users.id
+                        AND users.name=\"admin\"
+                        AND words.id=annotations.word_id
+                        AND sentences.id=words.sentence_id
+                        AND corpora.id=sentences.corpus_id
+                        AND corpora.is_training=true group by word_id)
+                ",Array($user_id))
+                 ->first());
+        }
+        
+        public function get_user_score($user_id)
+	{
+            /* returns user score in confidence % */
+            return $this->annotation->select(DB::raw('count(*) as annotation_count'))
+                ->where('user_id', $user_id)->first();
+        }
+        
+
+        
+        public function get_annotated_sentences_words($user_id)
+	{
+            /* returns user score in confidence % */
+            return $this->annotation->select(DB::raw('count(*) as annotation_count'))
+                ->where('user_id', $user_id)->first();
+        }
 }

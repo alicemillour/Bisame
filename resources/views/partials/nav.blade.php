@@ -24,14 +24,15 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                   
-                <li><a>Niveau : {{$niveau}}</a></li>
-                <li><a>Score : {{$nb_annotations}} points</a></li>
+
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Connexion</a></li>
                     <li><a href="{{ url('/register') }}">Inscription</a></li>
-                @else
+                @else          
+                <li><a>Niveau : {{$niveau}}</a></li>
+                <li><a>Score : {{$real_score}} points</a></li>
+                <li><a>Vous avez produit {{$nb_annotations}} annotations !</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                           {{$name}}<span class="caret"></span>

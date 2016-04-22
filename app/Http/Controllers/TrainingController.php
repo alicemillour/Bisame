@@ -85,6 +85,8 @@ class TrainingController extends GameController {
       $game->is_finished = true;
       $current_user = Auth::user();
       $current_user->is_in_training = false;
+      DB::table('users')->increment('level', 1, array('id' => $current_user->id));
+      $current_user->is_in_training = false;
       $current_user->save();
       $game->save();
       return;

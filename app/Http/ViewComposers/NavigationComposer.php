@@ -9,7 +9,6 @@
 namespace App\Http\ViewComposers;
 
 use App\Repositories\AnnotationRepository;
-use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -28,10 +27,12 @@ class NavigationComposer {
     
     public function compose(View $view) {
         if (Auth::check()){
-            $user_id =  Auth::user()->id;
+            $cur_user = Auth::user();
+            $user_id = $cur_user->id;
             $view->with('niveau', Auth::user()->level);
             $view->with('name', Auth::user()->name);
-            $view->with('nb_annotations', $this->annotationRepository->getScore($user_id)['annotation_count']);
+            $view->with('nb_annotations', $this->annotationRepository->get_user_score($user_id)['annotation_count']);
+            $view->with('real_score', intval($this->annotationRepository->get_user_score($user_id)['annotation_count']*$cur_user->score));
         }
     }
 }
