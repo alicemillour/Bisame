@@ -94,7 +94,11 @@ class GameController extends Controller
         /* update user confidence score */
         $number_total_annotable_words=$this->get_total_annotable_words($user_id)->count;
         $number_correct_annotations=$this->annotationRepository->get_number_correct_annotations($user_id)->count;
-        $new_confidence_score = $number_correct_annotations/$number_total_annotable_words;
+        if ($number_total_annotable_words != 0) {
+            $new_confidence_score = $number_correct_annotations/$number_total_annotable_words;
+        } else {
+            $new_confidence_score = 0;
+        }
         $this->userRepository->update_confidence_score($user_id, $new_confidence_score);
     } else {
         debug("sentence is regular");
