@@ -32,10 +32,10 @@
                 @else          
                     <li><a>Niveau : {{$niveau}}</a></li>
                     <li><a>Score : {{$real_score}} points</a></li>
-                    @if (Auth::user()->score=='0')
-                        <li><a>{{$no_annotation_yet}}Vous avez produit {{$nb_annotations}} annotations !</a></li>
-                    @else 
-                        <li><a>Vous n'avez pas encore produit d'annotation.</a></li>
+<!--                    @if (Auth::user()->score=='0')-->
+                        <li><a>Auth::user()->score Vous avez produit {{$nb_annotations}} annotations !</a></li>
+<!--                    @else 
+                        <li><a>Vous n'avez pas encore produit d'annotation.</a></li>-->
                     @endif
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
