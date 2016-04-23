@@ -54,6 +54,11 @@ class UserRepository extends ResourceRepository
                  ->update(['score' => $new_confidence_score]);      
 	}
         
+        public function get_level_by_id($user_id)
+	{
+            return User::select('level')->where('id', $user_id)->first()->level;      
+	}
+        
 	public function destroy($id)
 	{
 		$this->getById($id)->delete();

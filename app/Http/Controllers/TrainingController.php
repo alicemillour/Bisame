@@ -6,9 +6,11 @@ use App\Repositories\TrainingRepository;
 use App\Repositories\AnnotationRepository;
 use App\Repositories\PostagRepository;
 use App\Repositories\SentenceRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use DB; 
 
 class TrainingController extends GameController {
 
@@ -16,12 +18,13 @@ class TrainingController extends GameController {
 
   public function __construct(TrainingRepository $trainingRepository, 
           AnnotationRepository $annotationRepository, PostagRepository $postagRepository, 
-          SentenceRepository $sentenceRepository)
+          SentenceRepository $sentenceRepository, UserRepository $userRepository)
   {
       $this->annotationRepository = $annotationRepository;
       $this->trainingRepository = $trainingRepository;
       $this->postagRepository = $postagRepository;
       $this->sentenceRepository = $sentenceRepository;
+      $this->userRepository = $userRepository;
       $this->middleware('auth');
   }
 
@@ -85,7 +88,9 @@ class TrainingController extends GameController {
       $game->is_finished = true;
       $current_user = Auth::user();
       $current_user->is_in_training = false;
-      DB::table('users')->increment('level', 1, array('id' => $current_user->id));
+      if ($this->userRepository->get_level_by_id($current_user->id) == 0){
+        DB::table('users')->where('id', '=', $current_user->id)->increment('level', 1);
+      }
       $current_user->is_in_training = false;
       $current_user->save();
       $game->save();
