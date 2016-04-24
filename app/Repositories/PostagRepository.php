@@ -39,7 +39,7 @@ class PostagRepository extends ResourceRepository
     debug("postags");
     debug(count($postags));
     if (count($postags) < 1) {
-        return $this->postag->all();
+        return $this->GetPostagsExceptPunct()->all();
 
     } elseif (count($postags) == 1) {
         $first_postag = $this->getDatabaseRequestPostagsForWordId($word_id)->first();
@@ -50,10 +50,14 @@ class PostagRepository extends ResourceRepository
     return $this->sortPostagsByName($postags)->values()->all();
 }
 private function GetComplementaryRandomPostags($postag){
-   $complementary_postags=Postag::select('postags.*')
-   ->where('id','!=', $postag['id'])->get();
-   return $complementary_postags;
+   return (Postag::select('postags.*')
+   ->where('id','!=', $postag['id'])->where('name', 'NOT LIKE', "PUNCT")->get());
 }
+
+private function GetPostagsExceptPunct(){
+   return Postag::select('postags.*')->where('name', 'NOT LIKE', "PUNCT")->get();
+}
+
 
 public function getReferenceForWordId($word_id) {
   $postags = $this->getDatabaseRequestPostagsForWordId($word_id)->get();

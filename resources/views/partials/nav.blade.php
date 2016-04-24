@@ -31,7 +31,11 @@
                     <li><a href="{{ url('/register') }}">Inscription</a></li>
                 @else          
                     <li><a>Niveau : {{$niveau}}</a></li>
+                    @if ($real_score == 0)
+                    <li><a>Score : {{$real_score}} point</a></li>
+                    @else
                     <li><a>Score : {{$real_score}} points</a></li>
+                    @endif
                     @if ($nb_annotations == 0)
                     <li><a>Vous n'avez pas encore produit d'annotation.</a></li>
                     @else
