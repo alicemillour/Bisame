@@ -32,7 +32,7 @@
                 @else          
                     <li><a>Niveau : {{$niveau}}</a></li>
                     <li><a>Score : {{$real_score}} points</a></li>
-                    @if ($nb_annotations === '0')
+                    @if ($nb_annotations == 0)
                     <li><a>Vous n'avez pas encore produit d'annotation.</a></li>
                     @else
                     <li><a>Vous avez produit {{$nb_annotations}} annotations !</a></li>
