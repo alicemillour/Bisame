@@ -6,7 +6,7 @@
 }
 
 .highlighted {
-	color: lightblue;
+	color: lightblue !important;
 }
 
 .selected {

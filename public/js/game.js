@@ -49,7 +49,7 @@ $(document).ready(function(){
     });
 
     function reload_javascript_on_words() {
-        $('.word').hover(function () {
+        $('.word').not(".is-correct").hover(function () {
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
                 $(this).addClass('highlighted');
             }
@@ -59,7 +59,7 @@ $(document).ready(function(){
                         $(this).removeClass('highlighted');
                     }
                 });
-        $('.word').click(function () {
+        $('.word').not(".is-correct").click(function () {
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
                 $('.word').removeClass('selected');
                 $(this).addClass('selected');
@@ -77,8 +77,12 @@ $(document).ready(function(){
         error_status = ErrorLevel.error;
         for (var i = 0; i < answers.length; i++) {
             if (answers[i]['is_correct'] === true) {
-                $('#' + answers[i]['word_id'] + '.word').removeClass('is-in-error').addClass('is-correct');
+                word = $('#' + answers[i]['word_id'] + '.word');
+                word.removeClass('is-in-error').addClass('is-correct');
                 error_status = ErrorLevel.warning;
+                word.removeClass('highlighted');
+                word.off('click');
+                word.unbind('mouseenter mouseleave');
             } else {
                 console.log(answers[i]['postag_description']);
                 $('#' + answers[i]['word_id'] + '.word').removeClass('is-correct').addClass('is-in-error');
@@ -196,6 +200,7 @@ $(document).ready(function(){
     function add_on_click_on_categories_table() {
         $('.categories-table').find('tr').click( function(){
         var row = $(this).find('td:first');
+        $('.selected').removeClass('is-in-error');
         var category =  $('.selected').parent().find('.category');
         category.text(row.text());
         category.attr('id', row.attr('id'));
