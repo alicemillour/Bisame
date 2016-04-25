@@ -102,27 +102,10 @@ $(document).ready(function(){
     function create_table_with_postags(postags) {
         var content = '';
         for (var i = 0; i < postags.length; i++) {
-            //content += '<tr id="popover" data-content="Content One" title="System Information">'
-            content += '<tr id="myPopover" data-placement="left" tabindex="50"  data-content="' + postags[i]['description'] + '" title="'+ postags[i]['description'] + '">';
-            //content += '<td>Utilities</td>'
+            content += '<tr  data-trigger="hover" title="'+ postags[i]['name'] + '" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
             content += '<td id=' + postags[i]['id'] + '>' + postags[i]['name'];
             content += '<span class=full-name-category> (' + postags[i]['full_name'] +') ';
             content += '</span>';
-            //content += '<img src="/images/question_mark.png" ';
-            //content += 'data-toggle="popover" data-placement="left" tabindex="50" </img></table>';
-            //content += 'title="' + postags[i]['name'] + '"';
-            //content += 'data-content="' + postags[i]['name'] + '"></img>';
-            content += '</td>';
-            content += '</tr>';
-        }
-        return content;
-    }
-    
-    function create_table_with_descriptions(postags) {
-        var content = '';
-        for (var i = 0; i < postags.length; i++) {
-            content += '<tr id="myPopover">';
-            content += '<td id=' + postags[i]['id'] + '>' ;
             content += '</td>';
             content += '</tr>';
         }
@@ -186,6 +169,7 @@ $(document).ready(function(){
                 console.log(response);
                 var content = create_table_with_postags(response['postags']);
                 $('.categories-table').find('tbody').empty().append(content);
+                $("[data-toggle=popover]").popover({html: true});
                 add_on_click_on_categories_table();
                 $('.categories-table').show();
                 if (!response['all_categories']) {
