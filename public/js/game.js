@@ -1,22 +1,30 @@
 ErrorLevel = {
-    error : 0,
-    warning : 1,
-    ok : 2
+    error: 0,
+    warning: 1,
+    ok: 2
 }
-$(document).ready(function(){
-    console.log("ready");
+$(document).ready(function () {
+    console.log("ready");  
+     $("#myPopover").popover({
+        title: '<h3 class="custom-title"><span class="glyphicon glyphicon-info-sign"></span> Popover Info</h3>',
+        content : "<p>This is a <em>simple example</em> demonstrating how to insert HTML code inside <mark><strong>Bootstrap popover</strong></mark>.</p>",
+        html: true
+    }); 
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-    $('.categories-button').click( function() {
+    $("tr[id=popover]").popover({placement:"top",trigger:"click"});
+    
+
+    $('.categories-button').click(function () {
         get_words_postags(null);
     });
-    $('.main-button').click( function() {
+    $('.main-button').click(function () {
         annotations = [];
-        $('.word-container').each(function(index , word_container) {
+        $('.word-container').each(function (index, word_container) {
             annotation = {};
             annotation['postag_id'] = $(word_container).find('.category').attr('id');
             annotation['word_id'] = $(word_container).find('.word').attr('id');
@@ -25,12 +33,12 @@ $(document).ready(function(){
             }
         });
         $.ajax({
-            method : 'PUT',
+            method: 'PUT',
             context: $("#main-container"),
-            data : {
-                annotations : annotations
+            data: {
+                annotations: annotations
             },
-            success : function(response){
+            success: function (response) {
                 console.log(response);
                 if (response) {
                     if (response.constructor === Array) {
@@ -38,6 +46,7 @@ $(document).ready(function(){
                         render_correction(response);
                     } else {
                         console.log("ANNOTATION CREATED");
+                        render_correction(response);
                         $("#sentence-container").html(response);
                         reload_javascript_on_words();
                     }
@@ -61,14 +70,13 @@ $(document).ready(function(){
                 });
         $('.word').not(".is-correct").click(function () {
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
-                $('.word').removeClass('selected');
+                $('.word').removeClass('selected');//.removeClass('is-in-error').removeClass('is-correct');
                 $(this).addClass('selected');
                 $('.sentence-main-container').width('60%');
                 get_words_postags($(this).attr('id'));
             }
         });
-    }
-    ;
+    };
 
     function render_correction(answers) {
         postags_descriptions = [];
@@ -193,4 +201,4 @@ $(document).ready(function(){
     }
 
     reload_javascript_on_words();
- });
+});
