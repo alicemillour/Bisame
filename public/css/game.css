@@ -8,7 +8,24 @@
 .highlighted {
 	color: lightblue !important;
 }
+.progress-bar {
+    background-color: lightblue;
+    color: #5A85A0;
+}
 
+.progress {
+    background-color: #f3f3f3;
+    border: 0;
+    height: 18px;
+    border-radius: 9px;    
+    width:350px;
+}
+.progressInnerLabel {
+    position: absolute;
+    text-align: center; 
+    color: black;  
+    height: 20px;    
+}
 .selected {
 	color: orange;
 }
@@ -30,7 +47,9 @@
 	vertical-align:top;
 	margin: 20px;
 }
-
+.background-colored{
+    background-color: #5A85A0;
+}
 .sentence-main-container {
     float:left;
     padding:10px;
@@ -45,6 +64,7 @@
 
 .main-button {
 	margin: 10px;
+        width: 217px;
 }
 
 .is-correct {
@@ -66,4 +86,7 @@
 .full-name-category {
 	color: grey;
 	font-style: italic;
+}
+.footer { 
+    position: absolute; bottom: 0; 
 }

@@ -84,6 +84,7 @@ class TrainingController extends GameController {
   private function get_next_sentence_or_finish($game)
   {
     $new_index = $game->sentence_index + 1;
+    $progression= $new_index*100/4;
     if ($new_index >= $game->sentences->count()) {
       $game->is_finished = true;
       $current_user = Auth::user();
@@ -100,9 +101,8 @@ class TrainingController extends GameController {
       $game->save();
       $sentence = $game->sentences[$new_index];
       $game_everything_is_annotated = false;
-      return view('games.sentence', compact('sentence','game_everything_is_annotated'));
+      return view('games.sentence', compact('sentence','game_everything_is_annotated','progression'));
     }
   }
 }
-
 ?>

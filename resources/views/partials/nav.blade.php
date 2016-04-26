@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/home') }}">
+            <a class="navbar-brand ostrich" href="{{ url('/home') }}">
                 Bisame
             </a>
         </div>

@@ -67,7 +67,8 @@ class GameController extends Controller
     $game = $repository->getById($id);
     $this->authorize($game);
     $sentences = $game->sentences;
-    return view('games.show', compact('sentences', 'game'));
+    $progression = 0;
+    return view('games.show', compact('sentences', 'game', 'progression'));
   }
 
 
@@ -86,6 +87,7 @@ class GameController extends Controller
     $this->authorize($game);
     $current_sentence = $game->sentences[$game->sentence_index];
     $new_index = $game->sentence_index + 1;
+    $progression = $new_index*100/4;
         debug($current_sentence->id);
     if ($current_sentence->is_training()) {
         debug("sentence is training");
@@ -110,7 +112,7 @@ class GameController extends Controller
     if ($new_index >= $game->sentences->count()) {
       return $this->finish_game($game);
     } else {
-      return $this->go_to_next_sentence($game, $new_index, $game_everything_is_annotated);
+      return $this->go_to_next_sentence($game, $new_index, $game_everything_is_annotated, $progression);
     }
   }
 
@@ -148,11 +150,11 @@ class GameController extends Controller
     return $game;
   }
 
-  private function go_to_next_sentence($game, $new_index, $game_everything_is_annotated) {
+  private function go_to_next_sentence($game, $new_index, $game_everything_is_annotated, $progression) {
     $game->sentence_index = $new_index;
     $game->save();
     $sentence = $game->sentences[$new_index];
-    return view('games.sentence', compact('game','sentence', 'game_everything_is_annotated'));
+    return view('games.sentence', compact('game','sentence', 'game_everything_is_annotated', 'progression'));
   }
 
   private function finish_game($game) {

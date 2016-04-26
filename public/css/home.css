@@ -4,10 +4,32 @@
   vertical-align: middle;
   width: 100%;
   text-align: center;
+  
+}
+.my-padding {
+	padding: 50px 30px 50px 80px;
+}
+.play-button {
+        width: 30%;
+	font-size: 30px;
+        margin-left: 60px;
+        margin-right: 60px;
+        background-color: #5A85A0;
+        border: 1px;	
+        border-style: solid;
+        border-color: #AC1E44;
+        border-radius: 3px;
+        padding: 2px 30px 1px 30px;
+        margin-bottom: 60px;
+}       
+
+.title { 
+    margin-top: 10vh;
+    font-size: 1000%;
+    text-align: center;
 }
 
-.play-button {
-	width: 40%;
-	margin: 30px;
-	font-size: 20px;
+.info-message {
+    text-align: center;
 }
+

@@ -9,25 +9,34 @@
 @section('content')
 <div class="container" id="main-container">
     <div class="row sentence-main-container">
-        <article class="row bg-primary">
-		<div class="col-md-12">
+        <article class="row bg-primary ">
+		<div class="col-md-12 background-colored">
 			<header>
-				<h2>Cliquez sur les mots pour leur assigner une catégorie grammaticale
+				<h2 class="ostrich">Cliquez sur les mots pour leur assigner une categorie grammaticale
 					<div class="pull-right">
 					</div>
 				</h2>
+                            
+                           
 			</header>
-			<hr>
-			<div class="sentence-container" id="sentence-container">
-				@foreach($sentences[$game->sentence_index]->words as $word)
+                        <hr>
+                        <div class="sentence-container" id="sentence-container"> 
+                            <div class="progress">
+                                <div class="progress-bar background-colored" role="progressbar" aria-valuenow="{{$progression}}"
+                                aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
+                                    <span><b>{{$progression}}%</b></span>
+                                </div>
+                            </div>
+                      		@foreach($sentences[$game->sentence_index]->words as $word)
 					<div class="word-container">
 						<div class="word" id="{{ $word->id }}" value="{{$word->value}}">{{ $word->value }}</div>
 						<div class="category"> </div>
 					</div>
 				@endforeach
 			</div>
+                        
 		</div>
-		</article>
+                </article>
 		<div class="main-button">
                         @if($game['type']=='training')
                             <button>Vérifier mes réponses</button>
@@ -44,7 +53,7 @@
 	    <table class="table table-hover categories-table" hidden="true">
 	    	<thead>
 	    		<tr>
-	    			<th>Catégorie grammaticale</th>
+                            <th class="ostrich" <h2>Categorie grammaticale </h2></th>
 	    		</tr>
 	    	</thead>
 	    	<tbody>

@@ -103,7 +103,7 @@ $(document).ready(function(){
     function create_table_with_postags(postags) {
         var content = '';
         for (var i = 0; i < postags.length; i++) {
-            content += '<tr  data-trigger="hover" title="'+ postags[i]['name'] + '" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
+            content += '<tr  data-trigger="hover" title="Exemples" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
             content += '<td id=' + postags[i]['id'] + '>' + postags[i]['name'];
             content += '<span class=full-name-category> (' + postags[i]['full_name'] +') ';
             content += '</span>';
