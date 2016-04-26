@@ -70,6 +70,11 @@ $(document).ready(function () {
                 });
         $('.word').not(".is-correct").click(function () {
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
+                $(this).removeClass('highlighted');
+            }
+        });
+        $('.word').click(function () {
+            if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
                 $('.word').removeClass('selected');//.removeClass('is-in-error').removeClass('is-correct');
                 $(this).addClass('selected');
                 $('.sentence-main-container').width('60%');
@@ -202,3 +207,4 @@ $(document).ready(function () {
 
     reload_javascript_on_words();
 });
+
