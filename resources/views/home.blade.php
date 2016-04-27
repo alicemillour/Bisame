@@ -24,7 +24,8 @@
 	@endif
     </div>
 </div>
-    <h4 class="info-message"> Bisame est une application permettant de recueillir des annotations grammaticales sur l'alsacien. 
-        Vous assignez des catégories grammaticales aux mots et nous construirons des corpus utilisables pour créer des outils de traitement.
+    <h4 class="info-message">
+        <br><spanclass="ostrich"> BISAME</span> est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
+        <br>Assignez des catégories grammaticales aux mots proposés, nous construirons des ressources et des outils pour inclure l'alsacien dans les technologies du langage !</br>.
     </h4>
 @endsection

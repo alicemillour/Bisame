@@ -53,7 +53,7 @@
 	    <table class="table table-hover categories-table" hidden="true">
 	    	<thead>
 	    		<tr>
-                            <th class="ostrich" <h2>Categorie grammaticale </h2></th>
+                            <th class="ostrich" <h2>Categories grammaticales</h2></th>
 	    		</tr>
 	    	</thead>
 	    	<tbody>

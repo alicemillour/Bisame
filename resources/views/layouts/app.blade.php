@@ -28,9 +28,9 @@
         }
 
         .fill {
-                width:100%;
+/*                width:100%;
                 height:100%;
-                background-size: 50%;
+                background-size: 50%;*/
                 /*background-image: url("/images/back-fake.jpeg");*/
                 background-repeat:no-repeat;
                 background-position: center top;
