@@ -171,6 +171,15 @@ $(document).ready(function(){
                 var content = create_table_with_postags(response['postags']);
                 $('.categories-table').find('tbody').empty().append(content);
                 $("[data-toggle=popover]").popover({html: true});
+                $('body').on('click', function (e) {
+                $('[data-toggle="popover"]').each(function () {
+                //the 'is' for buttons that trigger popups
+                //the 'has' for icons within a button that triggers a popup
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                        $(this).popover('hide');
+                }
+    });
+});
                 add_on_click_on_categories_table();
                 $('.categories-table').show();
                 if (!response['all_categories']) {
