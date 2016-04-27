@@ -5,6 +5,22 @@
 	margin-right: 10px;
 }
 
+a[data-toggle="popover"] + .popover {
+   opacity: 0 !important;
+}
+
+a[data-toggle="popover"]:hover + .popover {
+   opacity: 1 !important;
+}
+
+a[data-toggle="tooltip"] + .tooltip  {
+   opacity: 0 !important;
+}
+
+a[data-toggle="tooltip"]:hover + .tooltip  {
+   opacity: 1 !important;
+}
+
 .highlighted {
 	color: lightblue !important;
 }
