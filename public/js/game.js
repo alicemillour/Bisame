@@ -48,6 +48,8 @@ $(document).ready(function(){
                         render_correction(response);
                     } else {
                         console.log("ANNOTATION CREATED");
+                        $('#message').hide();
+
                         $("#sentence-container").html(response);
                         reload_javascript_on_words();
                     }
