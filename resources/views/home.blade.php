@@ -25,7 +25,7 @@
     </div>
 </div>
     <h4 class="info-message">
-        <br><spanclass="ostrich"> BISAME</span> est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
+        <br><b><span class="ostrich"> BISAME</span> </b>est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
         <br>Assignez des catégories grammaticales aux mots proposés, nous construirons des ressources et des outils pour inclure l'alsacien dans les technologies du langage !</br>.
     </h4>
 @endsection

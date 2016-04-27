@@ -37,7 +37,9 @@
                 margin-top: 60px;
         }
         .footer { 
-            position: absolute; bottom: 0; 
+            position: absolute; 
+            bottom: 0; 
+            margin-top: 15px;
             font-family: 'Ostrich-Rounded';
         }
         .fa-btn {

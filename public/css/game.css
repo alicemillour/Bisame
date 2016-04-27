@@ -9,11 +9,13 @@
 	color: lightblue !important;
 }
 .progress-bar {
+    margin-top: 0px;
     background-color: lightblue;
-    color: #5A85A0;
+    color: black;
 }
 
 .progress {
+    margin-top: 10px;    
     background-color: #f3f3f3;
     border: 0;
     height: 18px;
@@ -84,7 +86,7 @@
 }
 
 .full-name-category {
-	color: grey;
+	color: black;
 	font-style: italic;
 }
 .footer { 
