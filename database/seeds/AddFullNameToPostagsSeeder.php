@@ -122,7 +122,7 @@ Charles , wenn du wüescht , wie ich dich gern <b>hab (VERB)</b> ! '
         DB::table('postags')->where('name','PRON')
                 ->update([
             'full_name' => 'Pronom',
-            'description' => '-<b>Das</b> isch nit nume für d Bostauti eso gsi, sondern au für anderi<br> konzessionierti Buslinie und au für d <b>IisebahnDas</b>  isch d Andromeda-Galaxie<br>
+            'description' => '-<b>Das</b> isch nit nume für d Bostauti eso gsi, sondern au für anderi<br> konzessionierti Buslinie und au für d Iisebahn <b>Das</b>  isch d Andromeda-Galaxie<br>
 -er hét <b>kénni</b><br>
 -sie hànn <b>vìel</b> <br>
 -<b>Ma</b> weiß nìt gnàui, wo un wenn àss er d Technik vum Büechdrucka glehrt hàt.<br>

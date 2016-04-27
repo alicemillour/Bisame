@@ -6,7 +6,7 @@
 <div class="container">
     <div class="title ostrich"> BISAME </div>
 @if(!$game_available)
-    <h3 class="info-message">Commencez par l'entraînement pour débloquer le jeu :
+    <h3 class="info-message">Commencez par l'entraînement (quatre phrases) pour débloquer le jeu et commencer à gagner des points :
     </h3>
 @endif
     <div class="row main-container">
