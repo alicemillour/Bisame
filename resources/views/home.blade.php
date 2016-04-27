@@ -15,11 +15,11 @@
         </span> 
         @if($game_available)
 	        <span>
-	            <a class='btn btn-default play-button ostrich background-colored' href="/home/start">Jouer</a>
+	            <a class='btn btn-default play-button ostrich background-colored' href="/home/start">Produire des annotations !</a>
 	        </span>
 		@else
 	        <span>
-	            <a class='btn btn-default play-button ostrich background-colored' disabled>Jouer</a>
+	            <a class='btn btn-default play-button ostrich background-colored' disabled>Produire des annotations !</a>
 	        </span>
 	@endif
     </div>
