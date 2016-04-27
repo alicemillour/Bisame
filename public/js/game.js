@@ -177,6 +177,8 @@ $(document).ready(function(){
                 word_id: word_id
             },
             success: function (response) {
+                $("[data-toggle=popover]").popover("hide");
+
                 console.log(response);
                 var content = create_table_with_postags(response['postags']);
                 $('.categories-table').find('tbody').empty().append(content);
