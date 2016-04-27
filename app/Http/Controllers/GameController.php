@@ -52,8 +52,11 @@ class GameController extends Controller
    */
   public function store(Request $request)
   {
-    $game = $this->get_or_create_game();
-    return Redirect::route('games.show', ['id' => $game->id]);
+    $game = $this->get_or_create_game();    
+    $new_index = $game->sentence_index + 1;
+    $progression = $new_index*100/4;
+    $id=$game->id;
+    return Redirect::route('games.show', compact('sentences', 'game', 'progression'));
   }
   /**
    * Display the specified resource.
@@ -67,7 +70,8 @@ class GameController extends Controller
     $game = $repository->getById($id);
     $this->authorize($game);
     $sentences = $game->sentences;
-    $progression = 0;
+    $new_index = $game->sentence_index + 1;
+    $progression = $new_index*100/4;
     return view('games.show', compact('sentences', 'game', 'progression'));
   }
 
@@ -87,7 +91,7 @@ class GameController extends Controller
     $this->authorize($game);
     $current_sentence = $game->sentences[$game->sentence_index];
     $new_index = $game->sentence_index + 1;
-    $progression = $new_index*100/4;
+    $progression = ($new_index+1)*100/4;
         debug($current_sentence->id);
     if ($current_sentence->is_training()) {
         debug("sentence is training");
