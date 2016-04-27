@@ -1,17 +1,16 @@
 @extends('layouts.app')
-
+@section('style')
+<link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
+@endsection
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+    <div class="title ostrich"> BISAME </div>
 
-                <div class="panel-body">
-                    Your Application's Landing Page.
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <h4 class="info-message">
+        <br><b><span class="ostrich"> BISAME</span> </b>est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
+        <br>Assignez la bonne catégorie grammaticale aux mots proposés, nous construirons des ressources et des outils pour inclure l'alsacien dans les technologies du langage !</br>
+    </h4>
 </div>
+
 @endsection
