@@ -21,18 +21,18 @@
 			</header>
                         <hr>
                         <div class="sentence-container" id="sentence-container"> 
-                            <div class="progress">
-                                <div class="progress-bar background-colored" role="progressbar" aria-valuenow="{{$progression}}"
-                                aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
-                                    <span><b>{{$progression}}%</b></span>
-                                </div>
-                            </div>
-                      		@foreach($sentences[$game->sentence_index]->words as $word)
+                            	@foreach($sentences[$game->sentence_index]->words as $word)
 					<div class="word-container">
 						<div class="word" id="{{ $word->id }}" value="{{$word->value}}">{{ $word->value }}</div>
 						<div class="category"> </div>
 					</div>
 				@endforeach
+                                <div class="progress" color="white">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{$progression}}"
+                                aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
+                                <span>Phrase {{$game->sentence_index+1}}/4</span>     
+                                </div>
+                            </div>
 			</div>
                         
 		</div>

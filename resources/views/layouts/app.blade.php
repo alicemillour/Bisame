@@ -20,21 +20,23 @@
 
     <style>
         @font-face {font-family: "Ostrich-Rounded"; src: url('/images/ostrich-rounded.ttf') ;}
-        @font-face {font-family: "Cicle-Fina"; src: url('/images/cicle/Cicle_Fina.ttf') ;}
+        @font-face {font-family: "Cicle-Fina"; src: url('/images/cicle/Cicle_Semi.ttf') ;}
         .custom-fonts {font-family: "Cicle-Fina" }
         body {
-                font-family: 'Cicle-Fina';
-                background-color: #7FABC6;
+            font-family: 'Cicle-Fina';
+            background-color: #6eaaaa;
         }
-
+        .background-colored{
+            background-color: #6eaaaa;
+        }
         .fill {
-/*                width:100%;
+                width:100%;
                 height:100%;
-                background-size: 50%;*/
-                /*background-image: url("/images/back-fake.jpeg");*/
-                background-repeat:no-repeat;
-                background-position: center top;
-                margin-top: 60px;
+                background-size: 100%;
+                /*background-image: url("/images/back-fake.jpeg");*/   
+                /*background-repeat:no-repeat;*/
+                /*background-position: center top;*/
+                /*margin-top: 60px;*/
         }
         .footer { 
             position: absolute; 
@@ -51,12 +53,19 @@
         .fina{
             font-family: 'Cicle-Fina';
         }
-        
+
+        .light-background-colored{
+            background-color: rgb(249, 242, 236);
+        }
+        .title-app-navbar {
+           font-size: 150%;
+        }
     </style>
     @yield('style')
 </head>
 <body id="app-layout">
     @include('partials.nav')
+    <div class="fill">
     @yield('content')   
     @include('partials.footer')
     <!-- JavaScripts -->
@@ -64,5 +73,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     @yield('script')
+    </div>
 </body>
 </html>

@@ -9,19 +9,25 @@
 .my-padding {
 	padding: 50px 30px 50px 80px;
 }
+
 .play-button {
         width: 30%;
 	font-size: 30px;
         margin-left: 60px;
         margin-right: 60px;
-        background-color: #5A85A0;
         border: 1px;	
         border-style: solid;
         border-color: #AC1E44;
         border-radius: 3px;
         padding: 2px 30px 1px 30px;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
 }       
+.play-button:hover {
+    color: black;
+    background-color: rgb(249, 242, 236);
+    border-color: #285e8e; /*set the color you want here*/
+}
+
 
 .title { 
     margin-top: 10vh;
@@ -30,6 +36,7 @@
 }
 
 .info-message {
+    font-size: 110%;
     text-align: center;
 }
 
