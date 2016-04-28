@@ -155,7 +155,6 @@ class GameController extends Controller
   }
 
   private function go_to_next_sentence($game, $new_index, $game_everything_is_annotated, $progression) {
-    debug($progression);
     $game->sentence_index = $new_index;
     $game->save();
     $sentence = $game->sentences[$new_index];
