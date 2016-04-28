@@ -85,8 +85,8 @@ Dr erscht Druck <b>wo</b> ma vum Nàma Mentelin erfàhrt ìsch „ Augustinus �
             'description' => 'La catégorie regroupe les verbes hànn / hàn (avoir), sìnn / sín / sìì / sii (être), wère / waere / werre / war(d)e / wùrre / wurra (devenir), tüen / duen / düe : <br>
 -Sallamols <b>ìsch</b> nur z\' Mainz druckt <b>worra</b>. <br><br>
 <u>ATTENTION</u> : ils peuvent prendre l’étiquette VERB lorsqu’ils ont un sens lexical plein : <br>
-S Gschaft vum Johannes Mentelin <b>hàt</b> schnall Erfolg <b>bikumma (VERB)</b>, ar <b>ìsch</b> a riicher Mànn <b>worra (VERB)</b>. <br>
-Charles , wenn du wüescht , wie ich dich gern <b>hab (VERB)</b> ! '
+-S Gschaft vum Johannes Mentelin <b>hàt</b> schnall Erfolg <b>bikumma (VERB)</b>, ar <b>ìsch</b> a riicher Mànn <b>worra (VERB)</b>. <br>
+-Charles , wenn du wüescht , wie ich dich gern <b>hab (VERB)</b> ! '
          ]);
         DB::table('postags')->where('name','CONJ')
                 ->update([
@@ -127,7 +127,7 @@ Charles , wenn du wüescht , wie ich dich gern <b>hab (VERB)</b> ! '
 -sie hànn <b>vìel</b> <br>
 -<b>Ma</b> weiß nìt gnàui, wo un wenn àss er d Technik vum Büechdrucka glehrt hàt.<br>
 -Es ìsch miner Huet (c’est mon chapeau) Es ìsch <b>miner</b> (c’est le mien)<br>
--Es ìsch din Buech (C’est ton livre) Es ìsch <b>dins</b> (c’est le tien)
+-Es ìsch din Buech (C’est ton livre) Es ìsch <b>dins</b> (c’est le tien)<br>
 -D’r Mànn, <b>wo</b> gross ìsch … <br>
 -Republik isch ä Staatsform, <b>wo</b> sech aus Gägemodäu zur Monarchii und zur Despotii gseht.<br>
 -Er wäscht <b>sich</b> d’Händ <br>
