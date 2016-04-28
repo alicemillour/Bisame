@@ -3,9 +3,9 @@
 @section('content')
 <div class="container ">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default light-background-colored">
-                <div class="panel-heading light-background-colored">Inscription (<i>Vos informations personnelles ne seront pas conservées</i>)</div>
+        <div class="col-md-8 col-md-offset-2 ">
+            <div class="panel panel-default background-colored">
+                <div class="panel-heading background-colored">Inscription (<i>Vos informations personnelles ne seront pas conservées</i>)</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}

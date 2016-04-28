@@ -12,6 +12,13 @@
         <article class="row bg-primary ">
 		<div class="col-md-12 background-colored">
 			<header>
+                            
+                            @if($game['type']=='training')
+                            <h4> Bienvenue dans le mode Entraînement ! Ici, vous pouvez vérifier vos réponses au fur et à mesure. </h4>
+                            @else
+                            <h4> Bienvenue dans le mode Jeu ! Ici, nous ne corrigeons pas vos réponses. Vos points seront mis à jour à la fin de la séquence de quatre phrases. </h4>
+                            @endif
+                            
 				<h2 class="ostrich">Cliquez sur les mots pour leur assigner une categorie grammaticale
 					<div class="pull-right">
 					</div>

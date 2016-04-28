@@ -18,12 +18,12 @@
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-button-text">
                 <li><a href="{{ url('/home') }}">Accueil</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right navbar-button-text">
 
                 <!-- Authentication Links -->
                 @if (Auth::guest())

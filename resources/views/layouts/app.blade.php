@@ -55,7 +55,13 @@
             background-color: rgb(249, 242, 236);
         }
         .title-app-navbar {
-           font-size: 150%;
+           font-size: 180%;
+        }
+        .navbar-button-text {
+           font-size: 130%;
+        }
+        .white{
+            color: white;
         }
     </style>
     @yield('style')

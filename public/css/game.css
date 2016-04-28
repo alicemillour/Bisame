@@ -58,11 +58,13 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
     height: 20px;    
 }
 .selected {
-	color: #ffb380;
+	color: lightblue;
         /* font-weight: bold; */
 }
 
 .categories-table {
+    margin-top: 60%;
+    font-size: 120%;
 } 
 
 .category {

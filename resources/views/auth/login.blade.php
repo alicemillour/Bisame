@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default light-background-colored">
-                <div class="panel-heading light-background-colored ">Connexion</div>
+            <div class="panel panel-default background-colored">
+                <div class="panel-heading background-colored ">Connexion</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
@@ -54,7 +54,7 @@
                                     <i class="fa fa-btn fa-sign-in"></i>Connexion
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Mot de passe oublié?</a>
+                                <a class="btn btn-link white" href="{{ url('/password/reset') }}">Mot de passe oublié?</a>
                             </div>
                         </div>
                     </form>

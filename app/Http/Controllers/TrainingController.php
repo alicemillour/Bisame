@@ -84,12 +84,12 @@ class TrainingController extends GameController {
   private function get_next_sentence_or_finish($game)
   {
     $new_index = $game->sentence_index + 1;
-    $progression= $new_index*100/4;
+    $progression= ($new_index + 1)*100/4;
     if ($new_index >= $game->sentences->count()) {
       $game->is_finished = true;
       $current_user = Auth::user();
       $current_user->is_in_training = false;
-      if ($this->userRepository->get_level_by_id($current_user->id) == 0){
+      if ($this->userRepository->get_level_by_id($current_user->id) === 0){
         DB::table('users')->where('id', '=', $current_user->id)->increment('level', 1);
       }
       $current_user->is_in_training = false;
