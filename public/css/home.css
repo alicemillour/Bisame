@@ -11,7 +11,7 @@
 }
 
 .play-button {
-        width: 33%;
+        width: 29%;
 	font-size: 30px;
         margin-left: 60px;
         margin-right: 60px;
@@ -21,6 +21,7 @@
         border-radius: 3px;
         padding: 2px 30px 1px 30px;
         margin-bottom: 40px;
+        margin-top: 40px;
 }       
 .play-button:hover {
     color: black;
