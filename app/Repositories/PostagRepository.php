@@ -34,6 +34,7 @@ class PostagRepository extends ResourceRepository
   }
   
   public function getPostagsForWordId($word_id) {
+
     $postags = $this->getDatabaseRequestPostagsForWordId($word_id)
     ->get();
     debug("postags");
@@ -46,8 +47,14 @@ class PostagRepository extends ResourceRepository
         $complementary = $this->GetComplementaryRandomPostags($first_postag)->random(1);
         $postags->push($complementary);
     }
+    
+    /* generate random proposition 1 on 10 cases */  
+    if  (rand(0,10) == 7) {
+        return null; //$this->getTwoDifferentPostags($postags);
+    }else{
     // If un des postags est AUX rajouter VERB et CONJ rajouter SCONJ
-    return $this->sortPostagsByName($postags)->values()->all();
+        return $this->sortPostagsByName($postags)->values()->all();
+    }
 }
 private function GetComplementaryRandomPostags($postag){
    return (Postag::select('postags.*')
