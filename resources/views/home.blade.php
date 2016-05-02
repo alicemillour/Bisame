@@ -4,20 +4,13 @@
 @endsection
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script>
-//$(document).ready(function () {
-//    $('#memberModal').modal('show');
-//});
-</script>
-<!--<script>
-    $("[data-toggle='modal']").modal();
-</script>-->
+
 {{$coming_from}}
 @section('content')
-@if($coming_from == game )
+<!--@if($coming_from == game )
 coucou
 @endif
-<!-- Modal -->
+ Modal 
 <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -57,7 +50,7 @@ coucou
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
 <div class="scroll-left background-colored fina">
 <p>{{$nb_total_annotations}} annotations produites à ce jour !</p>
@@ -84,7 +77,7 @@ coucou
 	@endif
     </div>
     <h4 class="info-message">
-        <br><b><span class="ostrich"> BISAME</span> </b>est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
+        <br><b><span class="ostrich">BISAME</span> </b>est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
         <br>Assignez la bonne catégorie grammaticale aux mots proposés, nous construirons des ressources et des outils pour inclure l'alsacien dans les technologies du langage !</br>
     </h4>
 </div>
