@@ -31,8 +31,8 @@ class NavigationComposer {
             $user_id = $cur_user->id;
             $view->with('niveau', Auth::user()->level);
             $view->with('name', Auth::user()->name);
-            $view->with('nb_annotations', $this->annotationRepository->get_user_score($user_id)['annotation_count']);
-            $view->with('real_score', intval($this->annotationRepository->get_user_score($user_id)['annotation_count']*$cur_user->score));
+            $view->with('nb_annotations', $this->annotationRepository->get_user_annotation_count($user_id)['annotation_count']);
+            $view->with('real_score', intval($this->annotationRepository->get_user_annotation_count($user_id)['annotation_count']*$cur_user->score));
         }
     }
 }
