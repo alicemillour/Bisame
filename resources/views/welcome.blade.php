@@ -2,7 +2,12 @@
 @section('style')
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
+
 @section('content')
+<div class="scroll-left background-colored fina">
+<p>{{$nb_total_annotations}} annotations produites à ce jour !</p>
+</div>
+
 <div class="container">
     <div class="title ostrich"> BISAME </div>
         <div class="row main-container">

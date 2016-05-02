@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default light-background-colored">
-    <div class="container light-background-colored">
+    <div class="light-background-colored">
         <div class="navbar-header ">
 
             <!-- Collapsed Hamburger -->

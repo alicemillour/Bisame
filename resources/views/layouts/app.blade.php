@@ -63,6 +63,9 @@
         .white{
             color: white;
         }
+        .navbar.navbar-default.light-background-colored {
+            margin-bottom: 0;
+        }
     </style>
     @yield('style')
 </head>
