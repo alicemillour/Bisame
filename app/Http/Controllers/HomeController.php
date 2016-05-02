@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Repositories\AnnotationRepository;
+
 use Auth;
 
 class HomeController extends Controller
@@ -13,8 +15,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+      protected $annotationRepository;  
+
+    public function __construct(AnnotationRepository $annotationRepository)
     {
+        $this->annotationRepository = $annotationRepository;
         $this->middleware('auth');
     }
 
@@ -27,6 +32,7 @@ class HomeController extends Controller
     {
         $current_user = Auth::user();
         $game_available = ($current_user->is_in_training == false);
-        return view('home', compact('game_available'));
+        $nb_total_annotations = $this->annotationRepository->get_total_non_admin_annotations()['annotation_count'];
+        return view('home', compact('game_available','current_user', 'nb_total_annotations'));
     }
 }
