@@ -31,7 +31,7 @@
                     <li><a href="{{ url('/register') }}">Inscription</a></li>
                 @else     
                
-                <li><a><b>Total des annotations produites par les utilisateurs : {{$nb_total_annotations}}</b> !</a></li>
+                <li><a><b>Déjà {{$nb_total_annotations}} annotations produites</b> !</a></li>
                     <li><a>Niveau : {{$niveau}}</a></li>
                     @if ($real_score == 0)
                     <li><a>Score : {{$real_score}} point</a></li>
