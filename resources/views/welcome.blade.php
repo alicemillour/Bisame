@@ -4,9 +4,7 @@
 @endsection
 
 @section('content')
-<!--<div class="scroll-left background-colored fina">
-<p>{{$nb_total_annotations}} annotations produites à ce jour !</p>
-</div>-->
+
 
 <div class="container">
     <div class="title ostrich"> BISAME </div>

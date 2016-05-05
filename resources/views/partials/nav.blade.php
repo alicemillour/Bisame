@@ -30,7 +30,6 @@
                     <li><a href="{{ url('/login') }}">Connexion</a></li>
                     <li><a href="{{ url('/register') }}">Inscription</a></li>
                 @else     
-               
                 <li><a><b>Déjà {{$nb_total_annotations}} annotations produites</b> !</a></li>
                     <li><a>Niveau : {{$niveau}}</a></li>
                     @if ($real_score == 0)
