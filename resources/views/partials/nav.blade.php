@@ -29,7 +29,9 @@
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Connexion</a></li>
                     <li><a href="{{ url('/register') }}">Inscription</a></li>
-                @else          
+                @else     
+               
+                <li><a><b>Total des annotations produites par les utilisateurs : {{$nb_total_annotations}}</b> !</a></li>
                     <li><a>Niveau : {{$niveau}}</a></li>
                     @if ($real_score == 0)
                     <li><a>Score : {{$real_score}} point</a></li>

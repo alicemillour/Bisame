@@ -2,14 +2,14 @@
 @section('style')
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 @section('content')
 
-<div class="scroll-left background-colored fina">
+<!--<div class="scroll-left background-colored fina">
 <p>{{$nb_total_annotations}} annotations produites à ce jour !</p>
-</div>
+</div>-->
 
 <div class="container">
     <div class="title ostrich">BISAME</div>
