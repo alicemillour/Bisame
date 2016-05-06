@@ -78,5 +78,7 @@
             </div>
         </div>
     </div>
+    <center><h4>La création d'un compte ne vous engage à rien. Si vous ne souhaitez pas communiquer votre adresse e-mail, vous pouvez donner une adresse factice. Il faudra simplement vous en souvenir pour pouvoir vous connecter à nouveau !</h4>
+    </center>
 </div>
 @endsection
