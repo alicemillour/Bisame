@@ -67,13 +67,19 @@
         padding: 2px 30px 1px 30px;
         margin-bottom: 40px;
         margin-top: 40px;
+        background-color: transparent;
 }       
-.play-button:hover {
+.active-button:hover {
     color: black;
-    background-color: rgb(249, 242, 236);
+    background-color: rgba(249, 242, 236, 0.25);
     border-color: #285e8e; /*set the color you want here*/
 }
 
+.b-disabled{
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: .35 !important;
+}
 
 .title { 
     margin-top: 10vh;

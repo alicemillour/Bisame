@@ -6,7 +6,9 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 @section('content')
-
+<div style="background-image:url('{{ url('images/strasOK.jpg') }}'); background-size: cover; 
+    background-repeat: no-repeat;    background-attachment: fixed;
+    background-position: center">
 <div class="container">
     <div class="title ostrich">BISAME</div>
 @if(!$game_available)
@@ -18,15 +20,15 @@
 @endif
     <div class="row main-container">
         <span>
-            <a class='btn btn-default play-button ostrich background-colored' href="/home/training">S'entrainer</a>
+            <a class='btn btn-default play-button active-button ostrich' href="/home/training">S'entrainer</a>
         </span> 
         @if($game_available)
 	        <span>
-	            <a class='btn btn-default play-button ostrich background-colored' href="/home/start">Produire des annotations !</a>
+	            <a class='btn btn-default play-button active-button ostrich' href="/home/start">Produire des annotations !</a>
 	        </span>
 		@else
 	        <span>
-	            <a class='btn btn-default play-button ostrich background-colored' disabled>Produire des annotations !</a>
+	            <a class='btn btn-default play-button b-disabled ostrich' disabled>Produire des annotations !</a>
 	        </span>
 	@endif
     </div>

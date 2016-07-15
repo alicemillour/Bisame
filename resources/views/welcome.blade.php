@@ -4,7 +4,9 @@
 @endsection
 
 @section('content')
-
+<div style="background-image:url('{{ url('images/strasOK.jpg') }}'); background-size: cover; 
+    background-repeat: no-repeat;    background-attachment: fixed;
+    background-position: center">
 
 <div class="container">
     <div class="title ostrich"> BISAME </div>
