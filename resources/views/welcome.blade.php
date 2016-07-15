@@ -13,11 +13,11 @@
         <div class="row main-container">
 
         <span>
-            <a class='btn btn-default play-button ostrich background-colored' href="/login">Connexion</a>
+            <a class='btn btn-default play-button active-button ostrich' href="/login">Connexion</a>
         </span>
 
         <span>
-            <a class='btn btn-default play-button ostrich background-colored' href="/register">Inscription</a>
+            <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
         </span>
         </div>
         <h3 class="info-message">
