@@ -2,12 +2,9 @@
 @section('style')
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
-
 @section('content')
-<div style="background-image:url('{{ url('images/strasOK.jpg') }}'); background-size: cover; 
-    background-repeat: no-repeat;    background-attachment: fixed;
-    background-position: center">
-
+<div class="fill">
+        
 <div class="container">
     <div class="title ostrich"> BISAME </div>
         <div class="row main-container">
@@ -29,7 +26,6 @@
             <br> Alice </br>
           
         </h3>
-</div>
  <BR>&nbsp;<BR>
  <BR>&nbsp;<BR>
  <BR>&nbsp;<BR>
@@ -39,4 +35,6 @@
  <BR>&nbsp;<BR>
  <BR>&nbsp;<BR>
 
+</div>
+    </div>
 @endsection

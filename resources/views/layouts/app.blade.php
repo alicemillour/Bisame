@@ -26,15 +26,6 @@
         .background-colored{
             background-color: #6eaaaa;
         }
-        .fill {
-                width:100%;
-                height:100%;
-                background-size: 100%;
-                /*background-image: url("/images/back-fake.jpeg");*/   
-                /*background-repeat:no-repeat;*/
-                /*background-position: center top;*/
-                /*margin-top: 60px;*/
-        }
         .footer { 
             position: absolute; 
             bottom: 0; 
@@ -52,11 +43,14 @@
         }
 
         .light-background-colored{
-            background-color: rgb(249, 242, 236);
+            
+            background-color: #545454;
+            /*background-color: rgb(249, 242, 236);*/
         }
         .title-app-navbar {
            font-size: 180%;
         }
+                
         .navbar-button-text {
            font-size: 130%;
         }
@@ -65,13 +59,28 @@
         }
         .navbar.navbar-default.light-background-colored {
             margin-bottom: 0;
+            border-color: #545454;
         }
+        .navbar-default .navbar-nav > li > a {
+            color: #CECECE;
+        }
+        .navbar-default .navbar-brand {
+            color: #CECECE;
+        }
+        .fill { 
+            background: url(images/background.png) no-repeat center center fixed; 
+            -webkit-background-size: 100% auto;
+            -moz-background-size: 100% auto;
+            -o-background-size: 100% auto;
+            background-size: 100% auto;
+        }
+
     </style>
     @yield('style')
 </head>
+<!--<div class="fill">-->
 <body id="app-layout">
     @include('partials.nav')
-    <!--<div class="fill">-->
     @yield('content')   
 <!--    @include('partials.footer')-->
     <!-- JavaScripts -->
@@ -79,6 +88,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     @yield('script')
-    <!--</div>-->
 </body>
+<!--</div>-->
 </html>

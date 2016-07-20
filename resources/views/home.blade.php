@@ -6,9 +6,7 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 @section('content')
-<div style="background-image:url('{{ url('images/strasOK.jpg') }}'); background-size: cover; 
-    background-repeat: no-repeat;    background-attachment: fixed;
-    background-position: center">
+<div class="fill">
 <div class="container">
     <div class="title ostrich">BISAME</div>
 @if(!$game_available)
@@ -48,6 +46,6 @@
  <BR>&nbsp;<BR>
  <BR>&nbsp;<BR>
 
-</div>
+</div></div>
 
 @endsection
