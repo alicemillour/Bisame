@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand ostrich title-app-navbar" href="{{ url('/') }}">
+            <a class="navbar-brand ostrich title-app-navbar my-navbar-hover" href="{{ url('/') }}">
                 <b> Bisame </b> 
             </a>
         </div>
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav navbar-button-text">
-                <li><a href="{{ url('/home') }}">Accueil</a></li>
+                <li><a class="my-navbar-hover" href="{{ url('/home') }}">Accueil</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -30,20 +30,20 @@
                     <li><a href="{{ url('/login') }}">Connexion</a></li>
                     <li><a href="{{ url('/register') }}">Inscription</a></li>
                 @else     
-                <li><a><b>Déjà {{$nb_total_annotations}} annotations produites</b> !</a></li>
-                    <li><a>Niveau : {{$niveau}}</a></li>
+                <li><a class ="incognito"><b> Déjà {{$nb_total_annotations}} annotations produites</b> !</a></li>
+                    <li><a class ="incognito" >Niveau : {{$niveau}}</a></li>
                     @if ($real_score == 0)
-                    <li><a>Score : {{$real_score}} point</a></li>
+                    <li><a class ="incognito">Score : {{$real_score}} point</a></li>
                     @else
-                    <li><a>Score : {{$real_score}} points</a></li>
+                    <li><a class ="incognito">Score : {{$real_score}} points</a></li>
                     @endif
                     @if ($nb_annotations == 0)
-                    <li><a>Vous n'avez pas encore produit d'annotation.</a></li>
+                    <li><a class ="incognito">Vous n'avez pas encore produit d'annotation.</a></li>
                     @else
-                    <li><a>Vous avez produit {{$nb_annotations}} annotations !</a></li>
+                    <li><a class ="incognito">Vous avez produit {{$nb_annotations}} annotations !</a></li>
                     @endif
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle my-navbar-hover" data-toggle="dropdown" role="button" aria-expanded="false">
                           {{$name}}<span class="caret"></span>
                         </a>
 

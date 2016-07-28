@@ -57,7 +57,6 @@
            
 .play-button {
     width: 33vw;
-
     white-space: normal;
     font-size: 25px;
     border: 1px;	
@@ -65,8 +64,6 @@
     border-color: #AC1E44;
     border-radius: 3px;
     padding: 2px 30px 1px 30px;
-/*    padding-left:50px;
-    padding-right:50px;*/
     text-align: center;
     margin-left: 60px;
     margin-right: 60px;
