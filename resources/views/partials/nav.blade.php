@@ -27,8 +27,8 @@
 
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Connexion</a></li>
-                    <li><a href="{{ url('/register') }}">Inscription</a></li>
+                    <li><a  class="my-navbar-hover" href="{{ url('/login') }}">Connexion</a></li>
+                    <li><a  class="my-navbar-hover"  href="{{ url('/register') }}">Inscription</a></li>
                 @else     
                 <li><a class ="incognito"><b> Déjà {{$nb_total_annotations}} annotations produites</b> !</a></li>
                     <li><a class ="incognito" >Niveau : {{$niveau}}</a></li>
