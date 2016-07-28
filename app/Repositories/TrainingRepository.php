@@ -13,7 +13,7 @@ class TrainingRepository extends GameRepository {
 		$this->game = $training;
 	}
 
-
+        
 	protected function get_sentences() 
 	{
 		return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')

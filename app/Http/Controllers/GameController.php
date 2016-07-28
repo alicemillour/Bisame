@@ -148,7 +148,10 @@ class GameController extends Controller
     $current_user = Auth::user();
     $repository = $this->get_game_repository();
     $game = $repository->getWithUserId($current_user->id)->first();
-    if (!$game) {
+    /* check wether the last current game is of the right type or not */
+    if (!$game ||  $game->get_single_table_type() !=
+            $this->get_game_repository()->game->get_single_table_type() )
+             {
       $game = $repository->store(['user_id' => $current_user->id, 'sentence_index' => 0]);
     }
     return $game;
