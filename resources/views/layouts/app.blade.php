@@ -68,11 +68,11 @@
             color: #CECECE;
         }
         .fill { 
-            background: url(images/background.png) no-repeat center center fixed; 
-            -webkit-background-size: 100% auto;
-            -moz-background-size: 100% auto;
-            -o-background-size: 100% auto;
-            background-size: 100% auto;
+            margin:0;
+            padding:0;
+            background: url(images/background.png) no-repeat center fixed; 
+            -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+            background-size: cover; /* version standardisée */
         }
 
     </style>
