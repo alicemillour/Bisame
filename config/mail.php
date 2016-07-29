@@ -54,8 +54,8 @@ return [
     |
     */
 
-    'from' => ['address' => 'alice.millour@gmail.com', 'name' => 'Admin'],
-
+    'from' => ['address' => env('MAIL_FROM'), 'name' => env('MAIL_NAME')],
+    'contact_email' => 'alice.millour@abtela.eu',
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

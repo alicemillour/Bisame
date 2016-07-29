@@ -11,6 +11,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('partials.nav', 'App\Http\ViewComposers\NavigationComposer');
+        view()->composer('contact', 'App\Http\ViewComposers\ContactComposer');
+
     }
     /**
      * Register any application services.

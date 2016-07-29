@@ -36,4 +36,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home/start', 'GameController@store');
     Route::get('/home/training', 'TrainingController@store');
     Route::get('/postags', 'PostagController@index');
+    Route::get('contact', 'ContactController@showForm');
+    Route::post('contact', 'ContactController@sendContactInfo');
 });
+
+//Route::post('/send', 'EmailController@send');

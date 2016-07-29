@@ -21,8 +21,12 @@
             <ul class="nav navbar-nav navbar-button-text">
                 <li><a class="my-navbar-hover" href="{{ url('/home') }}">Accueil</a></li>
             </ul>
-
             <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right navbar-button-text">
+              <li> <i class="icon-search icon-white"></i>
+                <a class="my-navbar-hover" href="/contact"> <i class="fa fa-envelope-o" aria-hidden="true"></i> Un commentaire ?</a>
+              </li>
+            </ul>
             <ul class="nav navbar-nav navbar-right navbar-button-text">
 
                 <!-- Authentication Links -->
