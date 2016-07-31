@@ -26,8 +26,9 @@ class PostagController extends Controller
         $word_id = $_GET['word_id'];
         debug($word_id);
         $postags = $this->postagRepository->getPostagsForWordId($word_id);
+        /* -1 because of punct tag not displayed */
         return ['postags' => $postags,
-                'all_categories' => $this->postagRepository->count() == count($postags)];
+                'all_categories' => $this->postagRepository->count()-1 == count($postags)];
     }
 
     /**

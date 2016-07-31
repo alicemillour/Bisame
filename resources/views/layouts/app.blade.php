@@ -45,6 +45,8 @@
         .light-background-colored{
             
             background-color: #545454;
+            margin-bottom: 0;
+            border-color: #545454;
             /*background-color: rgb(249, 242, 236);*/
         }
         .title-app-navbar {
@@ -61,10 +63,7 @@
         .white{
             color: white;
         }
-        .navbar.navbar-default.light-background-colored {
-            margin-bottom: 0;
-            border-color: #545454;
-        }
+
         .navbar-default .navbar-nav > li > a {
             color: #CECECE;
         }
@@ -81,11 +80,15 @@
 
     </style>
     @yield('style')
+    @section('page-header')
+
+@stop
 </head>
 <!--<div class="fill">-->
-<body id="app-layout">
+
     @include('partials.nav')
     @yield('content')   
+<body id="app-layout">
 <!--    @include('partials.footer')-->
     <!-- JavaScripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

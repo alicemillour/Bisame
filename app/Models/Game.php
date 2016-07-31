@@ -11,7 +11,7 @@ class Game extends Model
     protected $table = 'games';
     public $timestamps = true;
     protected static $singleTableTypeField = 'type';
-   protected static $singleTableType = 'game';
+    protected static $singleTableType = 'game';
 
     protected static $singleTableSubclasses = [Training::class];
 
