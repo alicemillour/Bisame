@@ -1,5 +1,4 @@
 @extends('layouts.app', ['meta_description' => 'Contact Form'])
-
 @section('content')
 <br>
 <div class="container">
@@ -26,7 +25,6 @@
                                 @endif
                                 </div>
                         </div>
-                    
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Adresse e-mail</label>
                                 <div class="col-md-6">
@@ -63,13 +61,7 @@
                         </div>
                         </div>
                     </form>
-                
             </div>
-            
-                            
         </div>
-    </div>                    
-      </div>
     </div>
-  </div>
 @endsection

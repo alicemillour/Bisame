@@ -5,62 +5,67 @@ namespace App\Repositories;
 use App\Models\User;
 use DB;
 
-class UserRepository extends ResourceRepository
-{
+class UserRepository extends ResourceRepository {
 
     //protected $user;
 
-    public function __construct(User $user)
-	{
-		$this->user = $user;
-	}
-    private function save(User $user, Array $inputs)
-	{
-		$user->name = $inputs['name'];
-		$user->email = $inputs['email'];	
-		$user->admin = isset($inputs['admin']);	
+    public function __construct(User $user) {
+        $this->user = $user;
+    }
 
-		$user->save();
-	}
+    private function save(User $user, Array $inputs) {
+        $user->name = $inputs['name'];
+        $user->email = $inputs['email'];
+        $user->admin = isset($inputs['admin']);
 
-	public function getPaginate($n)
-	{
-		return $this->user->paginate($n);
-	}
+        $user->save();
+    }
 
-	public function store(Array $inputs)
-	{
-		$user = new $this->user;		
-		$user->password = bcrypt($inputs['password']);
-		$this->save($user, $inputs);
+    public function getPaginate($n) {
+        return $this->user->paginate($n);
+    }
 
-		return $user;
-	}
-   
-	public function getById($id)
-	{
-		return $this->user->findOrFail($id);
-	}
-        
-        public function update($id, Array $inputs)
-	{
-		$this->save($this->getById($id), $inputs);
-	}
+    public function store(Array $inputs) {
+        $user = new $this->user;
+        $user->password = bcrypt($inputs['password']);
+        $this->save($user, $inputs);
 
-                
-        public function update_confidence_score($user_id, $new_confidence_score)
-	{
-            User::where('id', $user_id)
-                 ->update(['score' => $new_confidence_score]);      
-	}
-        
-        public function get_level_by_id($user_id)
-	{
-            return User::select('level')->where('id', $user_id)->first()->level;      
-	}
-        
-	public function destroy($id)
-	{
-		$this->getById($id)->delete();
-	}
+        return $user;
+    }
+
+    public function getById($id) {
+        return $this->user->findOrFail($id);
+    }
+
+    public function update($id, Array $inputs) {
+        $this->save($this->getById($id), $inputs);
+    }
+
+    public function update_confidence_score($user_id, $new_confidence_score) {
+        User::where('id', $user_id)
+                ->update(['score' => $new_confidence_score]);
+    }
+
+    public function get_best_users_by_score() {
+        return User::orderBy('score', 'desc')->take(5)->get();
+    }
+
+    public function get_best_users_by_quantity() {
+        return User::join("annotations", function($join) {
+                            $join->on("annotations.user_id", "=", "users.id");
+                        })
+                        ->select(DB::raw('count(*) as quantity, users.*'))
+                        ->groupBy('users.id')
+                        ->orderBy('quantity', 'desc')
+                        ->take(5)->get();
+    }
+
+    public function get_level_by_id($user_id) {
+        return User::select('level')->where('id', $user_id)->first()->level;
+    }
+
+    public function destroy($id) {
+        $this->getById($id)->delete();
+    }
+
 }

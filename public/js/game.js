@@ -1,9 +1,9 @@
 ErrorLevel = {
-    error : 0,
-    warning : 1,
-    ok : 2
+    error: 0,
+    warning: 1,
+    ok: 2
 }
-$(document).ready(function(){
+$(document).ready(function () {
     console.log("ready");
     $.ajaxSetup({
         headers: {
@@ -11,22 +11,23 @@ $(document).ready(function(){
         }
     });
 
-    $('.categories-button').click( function() {
+    $('.categories-button').click(function () {
         get_words_postags(null);
     });
-    $('body').on('click', function (e) {
-                    $('[data-toggle="popover"]').each(function () {
-                    //the 'is' for buttons that trigger popups
-                    //the 'has' for icons within a button that triggers a popup
-                    if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-                            $(this).popover('hide');
-                            }
-                        });
-    });
     
-    $('.main-button').click( function() {
+    $('body').on('click', function (e) {
+        $('[data-toggle="popover"]').each(function () {
+            //the 'is' for buttons that trigger popups
+            //the 'has' for icons within a button that triggers a popup
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                $(this).popover('hide');
+            }
+        });
+    });
+
+    $('.main-button').click(function () {
         annotations = [];
-        $('.word-container').each(function(index , word_container) {
+        $('.word-container').each(function (index, word_container) {
             annotation = {};
             annotation['postag_id'] = $(word_container).find('.category').attr('id');
             annotation['word_id'] = $(word_container).find('.word').attr('id');
@@ -35,12 +36,12 @@ $(document).ready(function(){
             }
         });
         $.ajax({
-            method : 'PUT',
+            method: 'PUT',
             context: $("#main-container"),
-            data : {
-                annotations : annotations
+            data: {
+                annotations: annotations
             },
-            success : function(response){
+            success: function (response) {
                 console.log(response);
                 if (response) {
                     if (response.constructor === Array) {
@@ -99,7 +100,7 @@ $(document).ready(function(){
             } else {
                 console.log(answers[i]['postag_description']);
                 $('#' + answers[i]['word_id'] + '.word').removeClass('is-correct').addClass('is-in-error');
-                if (postags_names.indexOf(answers[i]['postag_name']) === -1){
+                if (postags_names.indexOf(answers[i]['postag_name']) === -1) {
                     postags_descriptions.push(answers[i]['postag_description']);
                     postags_full_names.push(answers[i]['postag_full_name']);
                     postags_names.push(answers[i]['postag_name']);
@@ -111,20 +112,20 @@ $(document).ready(function(){
         }
         show_message(error_status, postags_names, postags_full_names, postags_descriptions);
     }
-    
+
     function create_table_with_postags(postags) {
         var content = '';
         for (var i = 0; i < postags.length; i++) {
             content += '<tr  data-trigger="hover" title="Exemples" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
             content += '<td id=' + postags[i]['id'] + '>' + postags[i]['name'];
-            content += '<span class=full-name-category> (' + postags[i]['full_name'] +') ';
+            content += '<span class=full-name-category> (' + postags[i]['full_name'] + ') ';
             content += '</span>';
             content += '</td>';
             content += '</tr>';
         }
         return content;
     }
-    
+
     function create_errors_content(postag_names, postag_full_names, postag_descriptions) {
         var content = '';
         content += '<ul>';
@@ -150,8 +151,8 @@ $(document).ready(function(){
                     /* no word has been annotated yet */
                     $('#message-title').text("Vous ne pouvez pas passer la phrase dans le mode entraînement");
                     /* Je veux des messages différents en fonction du type de jeu 
-                    * $('#message-title').text("Vous devez annoter au moins un mot !");
-                    */
+                     * $('#message-title').text("Vous devez annoter au moins un mot !");
+                     */
                 }
                 var content = create_errors_content(postag_names, postag_full_names, postag_descriptions);
                 $('#message-content').empty().append(content)
@@ -185,7 +186,7 @@ $(document).ready(function(){
                 var content = create_table_with_postags(response['postags']);
                 $('.categories-table').find('tbody').empty().append(content);
                 $("[data-toggle=popover]").popover({html: true});
-               
+
                 add_on_click_on_categories_table();
                 $('.categories-table').show();
                 if (!response['all_categories']) {
@@ -193,20 +194,22 @@ $(document).ready(function(){
                 } else {
                     $('.categories-button').hide();
                 }
+
             }
         });
     }
 
     function add_on_click_on_categories_table() {
-        $('.categories-table').find('tr').click( function(){
-        var row = $(this).find('td:first');
-        $('.selected').removeClass('is-in-error');
-        var category =  $('.selected').parent().find('.category');
-        category.text(row.text());
-        category.attr('id', row.attr('id'));
-        category.show();
+        $('.categories-table').find('tr').click(function () {
+            var row = $(this).find('td:first');
+            $('.selected').removeClass('is-in-error');
+            var category = $('.selected').parent().find('.category');
+            category.text(row.text());
+            category.attr('id', row.attr('id'));
+            category.show();
         });
+
     }
 
     reload_javascript_on_words();
- });
+});

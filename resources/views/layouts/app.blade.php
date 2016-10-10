@@ -23,6 +23,7 @@
             font-family: 'Cicle-Fina';
             background-color: #6eaaaa;
         }
+
         .background-colored{
             background-color: #6eaaaa;
         }

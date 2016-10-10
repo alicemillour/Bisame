@@ -9,53 +9,61 @@
 @endsection
 @section('content')
 <div class="fill">
-<div class="container">
-    <br><br>
-    <div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has($msg))
-      <p class="alert alert-{{ $msg }} fade-in">{{ Session::get($msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
-    @endforeach
-  </div>
-    <div class="title ostrich">BISAME</div>
-@if(!$game_available)
-    <h3 class="info-message"> Commencez par l'entraînement (quatre phrases) pour débloquer le jeu et commencer à gagner des points : <br>
-    </h3>
-@else
-    <h3 class="info-message"> Bravo, vous avez débloqué la phase de production d'annotations ! A vous de jouer !<br>
-    </h3>
-@endif
-    <div class="row main-container">
-        <span>
-            <a class='btn btn-default play-button active-button ostrich' href="/home/training">S'entrainer</a>
-        </span> 
-        @if($game_available)
-	        <span>
-	            <a class='btn btn-default play-button active-button ostrich' href="/home/start">Produire des annotations !</a>
-	        </span>
-		@else
-	        <span>
-	            <a class='btn btn-default play-button b-disabled ostrich' disabled>Produire des annotations !</a>
-	        </span>
-	@endif
-    </div>
-    <h4 class="info-message">
-        <br><b><span class="ostrich">BISAME</span> </b>est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
-        <br>Assignez la bonne catégorie grammaticale aux mots proposés, nous construirons des ressources et des outils pour inclure l'alsacien dans les technologies du langage !</br>
-    </h4>
-    <h4 class="info-message">
-        <br>Contact : Alice Millour - alice.millour@abtela.eu </br>
-    </h4>
- <BR>&nbsp;<BR>
- <BR>&nbsp;<BR>
- <BR>&nbsp;<BR>
- <BR>&nbsp;<BR>
- <BR>&nbsp;<BR>
- <BR>&nbsp;<BR>
- <BR>&nbsp;<BR>
- <BR>&nbsp;<BR>
+    <div class="container">
+        <div id="main">
+            <br><br>
+            <div class="flash-message">
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has($msg))
+                <p class="alert alert-{{ $msg }} fade-in">{{ Session::get($msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+                @endforeach
+            </div>
+            <div class="title ostrich">BISAME</div>
+            @if(!$game_available)
+            <h3 class="info-message"> Commencez par l'entraînement (quatre phrases) pour débloquer le jeu et commencer à gagner des points : <br>
+            </h3>
+            @else
+            <h3 class="info-message"> Bravo, vous avez débloqué la phase de production d'annotations ! A vous de jouer !<br>
+            </h3>
+            @endif
+            <div class="row main-container">
+                <span>
+                    <a class='btn btn-default play-button active-button ostrich' href="/home/training">S'entrainer</a>
+                </span> 
+                @if($game_available)
+                <span>
+                    <a class='btn btn-default play-button active-button ostrich' href="/home/start">Produire des annotations !</a>
+                </span>
+                @else
+                <span>
+                    <a class='btn btn-default play-button b-disabled ostrich' disabled>Produire des annotations !</a>
+                </span>
+                @endif
+            </div>
+            <h4 class="info-message">
+                <br><b><span class="ostrich">BISAME</span> </b>est une application permettant de recueillir des annotations linguistiques auprès des locuteurs de l'alsacien. </br>
+                <br>Assignez la bonne catégorie grammaticale aux mots proposés, nous construirons des ressources et des outils pour inclure l'alsacien dans les technologies du langage !</br>
+            </h4>
+            <h4 class="info-message">
+                <br>Contact : Alice Millour - alice.millour@abtela.eu </br>
+            </h4>
 
-</div></div>
+            <!--    @include('partials.comment')-->
+            @yield('content')   
+            <BR>&nbsp;<BR>
+            <BR>&nbsp;<BR>
+            <BR>&nbsp;<BR>
+            <BR>&nbsp;<BR>
+            <BR>&nbsp;<BR>
+            <BR>&nbsp;<BR>
+            <BR>&nbsp;<BR>
+            <BR>&nbsp;<BR>
+        </div>
+        <div id="scoreboard" style="float: left;">
+            @include('partials.scoreboard')
+        </div>
+    </div>
+</div>
 
 @endsection
