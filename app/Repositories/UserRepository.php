@@ -47,7 +47,7 @@ class UserRepository extends ResourceRepository {
     }
 
     public function get_best_users_by_score() {
-        return User::orderBy('score', 'desc')->take(5)->get();
+        return User::orderBy('score', 'desc')->where('is_admin', '=', '0')->take(5)->get();
     }
 
     public function get_best_users_by_quantity() {
@@ -57,6 +57,7 @@ class UserRepository extends ResourceRepository {
                         ->select(DB::raw('count(*) as quantity, users.*'))
                         ->groupBy('users.id')
                         ->orderBy('quantity', 'desc')
+                        ->where('is_admin', '=', '0')
                         ->take(5)->get();
     }
 
