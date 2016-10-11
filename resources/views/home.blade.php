@@ -48,8 +48,6 @@
             <h4 class="info-message">
                 <br>Contact : Alice Millour - alice.millour@abtela.eu </br>
             </h4>
-
-            <!--    @include('partials.comment')-->
             @yield('content')   
             <BR>&nbsp;<BR>
             <BR>&nbsp;<BR>
