@@ -1,3 +1,7 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+
 <nav class="navbar navbar-default navbar-fixed-top light-background-colored"  id="topnavbar">
     <div class="container-fluid">
         <div class="light-background-colored">
@@ -44,7 +48,7 @@
                     <li><a class ="incognito">Vous avez produit {{$nb_annotations}} annotations !</a></li>
                     @endif
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle my-navbar-hover" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle my-navbar-hover my-navbar-click" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{$name}}<span class="caret"></span>
                         </a>
 

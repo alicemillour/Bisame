@@ -29,6 +29,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
+    Route::get('/chat', 'chatpageController@index');
     //Route::get('/', 'WelcomeController@index');
 
     Route::resource('games', 'GameController', ['only' => ['update', 'show']]);
@@ -39,5 +40,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('contact', 'ContactController@showForm');
     Route::post('contact', 'ContactController@sendContactInfo');
 });
+
+Route::post('sendmessage', 'chatController@sendMessage');
 
 //Route::post('/send', 'EmailController@send');

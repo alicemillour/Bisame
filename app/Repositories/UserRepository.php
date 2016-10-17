@@ -47,7 +47,13 @@ class UserRepository extends ResourceRepository {
     }
 
     public function get_best_users_by_score() {
-        return User::orderBy('score', 'desc')->where('is_admin', '=', '0')->take(5)->get();
+        return User::join("annotations", function($join) {
+                            $join->on("annotations.user_id", "=", "users.id");
+                        })
+                        ->select(DB::raw('count(*) as quantity, users.*'))
+                        ->groupBy('users.id')
+                        ->orderBy('score', 'desc')
+                        ->where('is_admin', '=', '0')->take(5)->get();
     }
 
     public function get_best_users_by_quantity() {
