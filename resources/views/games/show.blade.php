@@ -66,7 +66,7 @@
             @if($game['type']=='training')
             <h5><b> &nbsp &nbsp Vous pouvez vérifiez vos réponses à tout moment.</b></h5>
             @else
-            <h5><b> &nbsp &nbsp Dans ce mode, vous pouvez passer à la phrase suivante même avec une phrase partiellement annotée.</b> </h5>
+            <h5><b> &nbsp &nbsp Dans ce mode, vous pouvez passer à la phrase suivante même si vous n'avez pas annoté tous les mots.</b> </h5>
             @endif
             <div class="alert alert-success" id="message" hidden=true>
                 <strong id=message-title>Bravo !</strong>

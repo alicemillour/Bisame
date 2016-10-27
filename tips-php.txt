@@ -35,3 +35,4 @@ php artisan migrate:refresh --seed
 
 /* DEBUGGAGE */
 dd($myvar) pour logger la valeur
+git push heroku develop:master

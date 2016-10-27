@@ -7,8 +7,6 @@ ErrorLevel = {
 $('body').on('hidden.bs.popover', function (e) {
     $(e.target).data("bs.popover").inState.click = false;
 });
-
-
 $(document).ready(function () {
     console.log("ready");
     $.ajaxSetup({
@@ -16,7 +14,6 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
     /*enable click button in popover */
     $(document).on('click', ".words-categories-button", function () {
         get_words_postags(null);
@@ -27,8 +24,6 @@ $(document).ready(function () {
             $(this).css('opacity', '0.5')
         })
     });
-
-
     $('.main-button').click(function () {
         annotations = [];
         $('.word-container').each(function (index, word_container) {
@@ -63,14 +58,12 @@ $(document).ready(function () {
             }
         });
     });
-
     function reload_javascript_on_words() {
         console.log("reload");
         $('.word').each(function () {
             console.log("loading postags");
             get_words_postags($(this).attr('id'));
         });
-
         $('.word').not(".is-correct").hover(
                 function () {
                     if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
@@ -95,8 +88,6 @@ $(document).ready(function () {
                     }
                 }
         );
-
-
     }
     ;
     function render_correction(answers) {
@@ -242,7 +233,6 @@ $(document).ready(function () {
                 }).popover();
 //                $('#' + word_id).popover().css('left','75%');
                 add_on_click_on_categories_table();
-
                 $('#' + word_id).on('click', function () {
                     $('.word').not(this).popover('hide');
                 });
@@ -253,16 +243,19 @@ $(document).ready(function () {
     }
 
     function add_on_click_on_categories_table() {
+
+        $('.categories-table').find('tr').hover(function () {
+            $(this).addClass("category-row");
+        });
+
         $('.categories-table').find('tr').click(function () {
             var row = $(this).find('td:first');
-            $(this).find('td:first').css('color','blue');
             $('.selected').removeClass('is-in-error');
             var category = $('.selected').parent().find('.category');
             category.text(row.text());
             category.attr('id', row.attr('id'));
             category.show();
             $('.word.selected').popover('hide');
-
         });
         $('.word.selected').find('tr').click(function () {
             var row = $(this).find('td:first');
