@@ -7,7 +7,10 @@
         <ul class="nav nav-tabs">
             <li class="active" style="font-size: 1.5em;" ><a data-toggle="pill" style="color:black" href="#home"> Top 5 </a></li>
             <!--<li><a data-toggle="pill" style="color:black" href="#menu1">Score global</a></li>-->
-            <li class="pull-right"><a data-toggle="pill" style="color:black" href="#info" > <i class="fa fa-question-circle-o fa-2x" aria-hidden="true"></i></a></li>
+            <!--<li class="pull-right"><a data-toggle="pill" style="color:black" href="#info" > <i class="fa fa-question-circle-o fa-2x" aria-hidden="true"></i></a></li>-->
+            <li class="pull-right ostrich"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" > ? </a></li>
+            <!--<li class="pull-right"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" >{{ HTML::image('images/question_mark.jpg') }}</a></li>-->
+            <!--<li class="pull-right ostrich"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" ><img src="images/question_mark.jpg"></a></li>-->
         </ul>
 
         <div class="tab-content">
@@ -16,7 +19,7 @@
                     <span class="score" style="text-align: center; display: inline-block;">
                         @foreach($users_score as $key=>$user)
                         @if($key == 0)
-                        <span  style="text-align: center; display: inline-block; font-size: 1.5em;"> {{$key + 1}}. {{$user->name}} 
+                        <span  style="text-align: center; display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} 
                         </span> <span style="font-size: 0.7em; line-height: 10%"> ({{$user->quantity}} annotations) </span> 
                         @else
                         {{$key + 1}}. {{$user->name}} <span style="font-size: 0.7em"> ({{$user->quantity}} annotations) </span>

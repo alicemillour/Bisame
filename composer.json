@@ -10,7 +10,9 @@
        	"barryvdh/laravel-debugbar": "^2.2", 
 	"flynsarmy/csv-seeder": "1.0.*",
         "laravelcollective/html": "5.2.*",
-        "nanigans/single-table-inheritance": "0.6.*"
+        "nanigans/single-table-inheritance": "0.6.*",
+        "predis/predis": "^1.1",
+	"illuminate/html": "5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
