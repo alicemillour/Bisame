@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * Description of NavigationComposer
+ * Description of ScoreboardComposer
  *
  * @author alice
  */
