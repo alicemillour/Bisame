@@ -4,9 +4,11 @@
     text-align: center;
     padding-right: 5px;
     padding-left: 5px;
-    cursor: pointer;
 }
 
+.not-punct{
+    cursor: pointer;
+}
 a[data-toggle="popover"] + .popover {
     opacity: 0 !important;
 }
@@ -139,6 +141,14 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 
 #blocJeu  {
     padding-top: 20px;
+}
+
+.table > tbody > tr > td{
+    cursor: pointer;
+}
+
+.category-label{
+    text-align: center;
 }
 
 .category-row:hover {

@@ -2,7 +2,7 @@ ErrorLevel = {
     error: 0,
     warning: 1,
     ok: 2
-}
+};
 /* fix for popovers */
 $('body').on('hidden.bs.popover', function (e) {
     $(e.target).data("bs.popover").inState.click = false;
@@ -16,19 +16,28 @@ $(document).ready(function () {
     });
     /*enable click button in popover */
     $(document).on('click', ".words-categories-button", function () {
+        console.log("click sur autres categories");
         get_words_postags(null);
     });
-    /*enable hover categories in popover */
-    $(document).on('hover', ".category", function () {
-        $('.category').hover(function () {
-            $(this).css('opacity', '0.5')
-        })
+
+
+    /* enable click on rows in categories tables */
+    $(document).on('click', ".table > tbody > tr", function () {
+        console.log("in click on categories table");
+        var row = $(this).find('td:first');
+        $('.selected').removeClass('is-in-error');
+        var category = $('.selected').parent().find('.category-label');
+        category.text(row.text());
+        category.attr('id', row.attr('id'));
+        category.show();
+        $('.word.selected').popover('hide');
     });
+
     $('.main-button').click(function () {
         annotations = [];
         $('.word-container').each(function (index, word_container) {
             annotation = {};
-            annotation['postag_id'] = $(word_container).find('.category').attr('id');
+            annotation['postag_id'] = $(word_container).find('.category-label').attr('id');
             annotation['word_id'] = $(word_container).find('.word').attr('id');
             if (annotation['postag_id']) {
                 annotations.push(annotation);
@@ -41,7 +50,6 @@ $(document).ready(function () {
                 annotations: annotations
             },
             success: function (response) {
-                console.log(response);
                 if (response) {
                     if (response.constructor === Array) {
                         console.log("FALSE");
@@ -60,9 +68,12 @@ $(document).ready(function () {
     });
     function reload_javascript_on_words() {
         console.log("reload");
+        console.log("loading postags");
         $('.word').each(function () {
-            console.log("loading postags");
-            get_words_postags($(this).attr('id'));
+            if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
+                get_words_postags($(this).attr('id'));
+                $(this).addClass('not-punct');
+            }
         });
         $('.word').not(".is-correct").hover(
                 function () {
@@ -79,12 +90,10 @@ $(document).ready(function () {
         $('.word').not(".is-correct").click(
                 function () {
                     if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
-                        console.log("focus on word");
                         $('.word').removeClass('selected');
                         $('.word').removeClass('is-in-error');
                         $(this).addClass('selected');
                         $('.sentence-main-container').width('60%');
-                        get_words_postags($(this).attr('id'));
                     }
                 }
         );
@@ -104,7 +113,6 @@ $(document).ready(function () {
                 word.off('click');
                 word.unbind('mouseenter mouseleave');
             } else {
-                console.log(answers[i]['postag_description']);
                 $('#' + answers[i]['word_id'] + '.word').removeClass('is-correct').addClass('is-in-error');
                 if (postags_names.indexOf(answers[i]['postag_name']) === -1) {
                     postags_descriptions.push(answers[i]['postag_description']);
@@ -132,9 +140,8 @@ $(document).ready(function () {
         return content;
     }
     function create_table_with_postags_on_word(postags, word_id) {
-
-
-        var content = '<table class="table categories-table" id="categories-table[' + word_id + ']" style="display: table;">';
+        var content = '';
+        content += '<table class="table table-hover categories-table" id="categories-table[' + word_id + ']" style="display: table;">';
         content += '<thead>';
         content += '<tr>';
         content += '<th class="ostrich" style="text-align: center"> <h3> <b>Categories grammaticales</b></h3></th>';
@@ -143,7 +150,7 @@ $(document).ready(function () {
         content += '<tbody>';
         for (var i = 0; i < postags.length; i++) {
             content += '<tr  data-trigger="hover" title="Exemples" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
-            content += '<td class="category" id=' + postags[i]['id'] + '>' + postags[i]['name'];
+            content += '<td  id=' + postags[i]['id'] + '>' + postags[i]['name'];
             content += '<span class=full-name-category> (' + postags[i]['full_name'] + ') ';
             content += '</span>';
             content += '</td>';
@@ -212,11 +219,10 @@ $(document).ready(function () {
                 word_id: word_id
             },
             success: function (response) {
-//                $("[data-toggle=popover]").popover("hide");
-                //'<div data-trigger="click" data-container="body" data-placement="bottom" data-toggle="popover" data-content="' + content + '">'
-                console.log(response);
-                var content = create_table_with_postags(response['postags']);
+                console.log("in get_words_postags");
                 var content_words = create_table_with_postags_on_word(response['postags'], word_id);
+                /* used to fill categories when all categories displayed */
+                var content = create_table_with_postags(response['postags']);
                 $('.categories-table').find('tbody').empty().append(content);
 //                if (!response['all_categories']) {
 //                    $('.categories-button').show();
@@ -227,40 +233,32 @@ $(document).ready(function () {
                     placement: 'bottom',
                     html: true,
                     animation: true,
-//                        delay: { 
-//             show: 150},
                     content: content_words,
                 }).popover();
-//                $('#' + word_id).popover().css('left','75%');
-                add_on_click_on_categories_table();
                 $('#' + word_id).on('click', function () {
                     $('.word').not(this).popover('hide');
                 });
-//                $('.categories-table').show();
-
+                console.log("end get_words_postags");
+                add_on_click_on_categories_table();
             }
         });
     }
 
     function add_on_click_on_categories_table() {
-
-        $('.categories-table').find('tr').hover(function () {
-            $(this).addClass("category-row");
-        });
-
-        $('.categories-table').find('tr').click(function () {
-            var row = $(this).find('td:first');
-            $('.selected').removeClass('is-in-error');
-            var category = $('.selected').parent().find('.category');
-            category.text(row.text());
-            category.attr('id', row.attr('id'));
-            category.show();
-            $('.word.selected').popover('hide');
-        });
+//        $('.categories-table').find('tr').click(function () {
+//            console.log("in click on categories table");
+//            var row = $(this).find('td:first');
+//            $('.selected').removeClass('is-in-error');
+//            var category = $('.selected').parent().find('.category-label');
+//            category.text(row.text());
+//            category.attr('id', row.attr('id'));
+//            category.show();
+//            $('.word.selected').popover('hide');
+//        });
         $('.word.selected').find('tr').click(function () {
             var row = $(this).find('td:first');
             $('.selected').removeClass('is-in-error');
-            var category = $('.selected').parent().find('.category');
+            var category = $('.selected').parent().find('.category-label');
             category.text(row.text());
             category.attr('id', row.attr('id'));
             category.show();
