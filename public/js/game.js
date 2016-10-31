@@ -97,6 +97,8 @@ $(document).ready(function () {
                     }
                 }
         );
+        /* enable click on rows in categories tables */
+        add_on_click_on_categories_table()
     }
     ;
     function render_correction(answers) {
@@ -255,14 +257,17 @@ $(document).ready(function () {
 //            category.show();
 //            $('.word.selected').popover('hide');
 //        });
-        $('.word.selected').find('tr').click(function () {
+        $(document).on('click', ".table > tbody > tr", function () {
+            console.log("in click on categories table");
             var row = $(this).find('td:first');
             $('.selected').removeClass('is-in-error');
             var category = $('.selected').parent().find('.category-label');
             category.text(row.text());
             category.attr('id', row.attr('id'));
             category.show();
+            $('.word.selected').popover('hide');
         });
+
     }
 
     reload_javascript_on_words();

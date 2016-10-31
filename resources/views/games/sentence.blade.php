@@ -5,7 +5,7 @@
 @foreach($sentence->words as $word)
 <div class="word-container">
     <div class="word" id="{{ $word->id }}" value="{{$word->value}}">{{ $word->value }}</div>
-    <div class="category"> </div>
+    <div class="category-label"> </div>
 </div>
 @endforeach
 <div class="progress">
