@@ -21,11 +21,11 @@
             .custom-fonts {font-family: "Cicle-Fina" }
             body {
                 font-family: 'Cicle-Fina';
-                background-color: #6eaaaa;
+                background-color: #86b8b9;
             }
 
             .background-colored{
-                background-color: #6eaaaa;
+                background-color: #86b8b9;
             }
             .footer { 
                 position: absolute; 
