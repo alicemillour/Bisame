@@ -43,6 +43,10 @@
                 font-family: 'Cicle-Fina';
             }
 
+            .foreground {
+                z-index:1 !important;
+            }
+            
             .light-background-colored{
                 background-color: #545454;
                 margin-bottom: 0;
@@ -91,7 +95,7 @@
             .fill { 
                 margin:0;
                 padding:0;
-                background: url(images/background.png) no-repeat center fixed; 
+                background: url(images/background-light.png) no-repeat center fixed; 
                 -webkit-background-size: cover; /* pour anciens Chrome et Safari */
                 background-size: cover; /* version standardisée */
             }
