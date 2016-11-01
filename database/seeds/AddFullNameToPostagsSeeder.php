@@ -20,7 +20,7 @@ class AddFullNameToPostagsSeeder extends Seeder
 -D’Äpfel sín <b>zitti(g)</b>.<br>
 -Si ältschta <b>bekànnta</b> Druckwark<br>
 -Er hét <b>grossi</b> ; er hétt e <b>schéni</b><br><br>
-<u>ATTENTION</u> : Ne pas confondre avec ADV (Adverbes) : <br>
+<u>ATTENTION</u> : Ne pas confondre avec <span class="other-cat"> ADV </span> (Adverbes) : <br>
 -S Gschaft vum Johannes Mentelin hàt <b>schnall</b> Erfolg bikumma<br>
 -Èr hétt <b>schén</b> gspìelt.'
          ]);
@@ -38,9 +38,9 @@ Ma weiß nìt gnàui , <b>wo</b> un <b>wenn</b> àss er d Technik vum Büechdruc
  &nbsp;&nbsp;&nbsp;&nbsp;-wo bim Notàr nìt <b>derbi</b> gsìì ìsch<br>
  &nbsp;&nbsp;&nbsp;&nbsp;-un hàt <b>derfer</b> a Gschaftsààteil vum Museum bikumma <br><br>
 Mais <u>ATTENTION</u> : <br>
-1. <u>Wenn</u> : conjonction de subordination (SCONJ) dans le sens de &quot si &quot : <br>
+1. <u>Wenn</u> : conjonction de subordination (<span class="other-cat"> SCONJ </span>) dans le sens de &quot si &quot : <br>
 <b>Wenn</b> dàs stìmmt, war àlso dr Johannes Mentelin , noch vor em Heinrich Eggestein , dr erscht Büechdrucker vu Stroßburri gsìì. <br>
-2. <u>Wo</u> : pronom (PRON) lorsqu’il est utilisé comme pronom relatif (qui/que):<br>
+2. <u>Wo</u> : pronom (<span class="other-cat"> PRON </span>) lorsqu’il est utilisé comme pronom relatif (qui/que):<br>
 Dr erscht Druck <b>wo</b> ma vum Nàma Mentelin erfàhrt ìsch „ Augustinus “ Tractatus de arte praedicandi, ìm Johr 1465 .'
 
          ]);
@@ -67,7 +67,7 @@ Dr erscht Druck <b>wo</b> ma vum Nàma Mentelin erfàhrt ìsch „ Augustinus �
             'description' => '-Pan <b>spilt</b> uf de Syrinx (Panflöte) und <b>tanzt</b> mit de Nymphe.
 <br><br>
 <u>ATTENTION</u> Verbes à particules : üssnùtze (exploiter) <br>
--Her <b>nùtzt</b> mich <b>üss (PART)</b>. (Il m’exploite) <br>
+-Her <b>nùtzt</b> mich <b>üss (<span class="other-cat"> PART </span>)</b>. (Il m’exploite) <br>
 -Er het mich <b>üssgenùtzt</b> ! (Il m’a exploité ) '
          ]);
         DB::table('postags')->where('name','ADP')
@@ -84,7 +84,7 @@ Dr erscht Druck <b>wo</b> ma vum Nàma Mentelin erfàhrt ìsch „ Augustinus �
             'full_name' => 'Auxiliaire',
             'description' => 'La catégorie regroupe les verbes hànn / hàn (avoir), sìnn / sín / sìì / sii (être), wère / waere / werre / war(d)e / wùrre / wurra (devenir), tüen / duen / düe : <br>
 -Sallamols <b>ìsch</b> nur z\' Mainz druckt <b>worra</b>. <br><br>
-<u>ATTENTION</u> : ils peuvent prendre l’étiquette VERB lorsqu’ils ont un sens lexical plein : <br>
+<u>ATTENTION</u> : ils peuvent prendre l’étiquette <span class="other-cat"> VERB </span> lorsqu’ils ont un sens lexical plein : <br>
 -S Gschaft vum Johannes Mentelin <b>hàt</b> schnall Erfolg <b>bikumma (VERB)</b>, ar <b>ìsch</b> a riicher Mànn <b>worra (VERB)</b>. <br>
 -Charles , wenn du wüescht , wie ich dich gern <b>hab (VERB)</b> ! '
          ]);
