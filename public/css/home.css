@@ -162,6 +162,10 @@
     overflow: hidden;
 }
 
+.tab-content > .tab-pane{
+    padding: 2%;
+}
+
 .nav-tabs li a{
     /*max-width: 100px;*/
 }
