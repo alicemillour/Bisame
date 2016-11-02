@@ -162,6 +162,14 @@
     overflow: hidden;
 }
 
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    max-width: 80% !important;
+    margin: 0 auto;
+}
+
 .tab-content > .tab-pane{
     padding: 2%;
 }
