@@ -42,7 +42,6 @@
                 <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Produire des annotations !</a>
             </span>
             @endif
-
         </div>
 
         <h4 class="info-message">

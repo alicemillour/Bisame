@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<br>">
+<br>
 <div class="container ">
     <div class="row">
         <div class="col-md-8 col-md-offset-2 ">
@@ -69,7 +69,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

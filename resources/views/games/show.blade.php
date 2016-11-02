@@ -40,8 +40,8 @@
             <div class="progress" color="white">
                 <div class="progress-bar" role="progressbar" aria-valuenow="{{$progression}}"
                      aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
-                    <span>Phrase {{$game->sentence_index+1}}/4</span>     
                 </div>
+                <div>Phrase {{$game->sentence_index+1}}/4</div>
             </div>
         </div>
 
@@ -91,7 +91,7 @@
             </div>-->
     <div class="main-footer">
         <h3> Rappel sur les catégories </h3>
-        <div class="fancy-border footer-container help" >
+        <div class="fancy-border footer-container" >
             @foreach($postags as $postag)
             <button class="accordion" > {{ $postag->name }} ({{ $postag->full_name }})</button>
             <div class="panel  semi-transparent">

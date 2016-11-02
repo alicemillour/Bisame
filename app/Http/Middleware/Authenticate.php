@@ -5,8 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Authenticate
-{
+class Authenticate {
+
     /**
      * Handle an incoming request.
      *
@@ -15,16 +15,17 @@ class Authenticate
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
+    public function handle($request, Closure $next, $guard = null) {
         if (Auth::guard($guard)->guest()) {
+            debug("guard is guest");
             if ($request->ajax() || $request->wantsJson()) {
                 return abort(403);
-            } else {
+            } elseif (!$request->is("/")) {
                 return redirect()->guest('login');
             }
         }
-
+        
         return $next($request);
     }
+
 }
