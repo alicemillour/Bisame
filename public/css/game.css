@@ -1,9 +1,45 @@
+
+
+.main{
+    position: relative; }
+@media screen and (min-width: 1280px) {
+    .main {
+        padding-right: 20%; } 
+}
+
+.main-container {
+    vertical-align: middle;
+    /*text-align: center;*/
+    margin: 0 auto;
+    overflow: hidden;
+    width: 90%;
+    padding:20px;
+}
+
+.semi-transparent {
+    background-color: rgba(249, 242, 236, 0.4);
+}
+
+.main-footer {
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 400px;
+}
+@media screen and (min-width: 1280px) {
+    .main-footer {
+        position: absolute;
+        top: 0%;
+        right: 1%;
+        width: 20%; } 
+}
+
 .word {
-    font-size: 42px;
+    font-size: 180%;
     display:inline-block;
     text-align: center;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 2px;
+    padding-left: 2px;
 }
 
 .not-punct{
@@ -26,7 +62,7 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 }
 
 .highlighted {
-    color: lightblue !important;
+    color: #0078ae !important;
 }
 .progress-bar {
     margin-top: 0px;
@@ -59,22 +95,17 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
     position: absolute;
     text-align: center; 
     color: black;  
+    font-weight: bold;  
     height: 20px;    
 }
 .selected {
-    color: lightblue;
+    color: #0078ae;
     /* font-weight: bold; */
 }
 
 .categories-table {
     font-size: 120%;
 } 
-
-/*.category {
-    font-size: 14px;
-    color: black;
-    text-align: center;
-}*/
 
 .word-container {
     display: inline-block;
@@ -156,6 +187,59 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
     cursor: pointer;
 }
 
-.container {
+/*.container {
     width: 80%;
+}*/
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    padding:18px;
+    outline: none;
+    transition: 0.4s;
+    font-size: 1.4em;
+    background-color: rgba(249, 242, 236, 0.7);
+
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    /*background-color: #BEDAC8;*/
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 12px 18px;
+    color: black;
+    display: none;
+    font-size: 16px;
+}
+
+.panel{
+    margin-bottom: 0px !important;
+}
+/* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+div.panel.show {
+    display: block;
+}
+
+button.accordion:after {
+    content: '\02795';  Unicode character for "plus" sign (+) 
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796";  /* Unicode character for "minus" sign (-) */
+}
+
+
+
+.other-cat{
+    font-weight: bold;
+    color: #f35000;
 }

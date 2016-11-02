@@ -3,10 +3,15 @@ ErrorLevel = {
     warning: 1,
     ok: 2
 };
+
 /* fix for popovers */
 $('body').on('hidden.bs.popover', function (e) {
     $(e.target).data("bs.popover").inState.click = false;
 });
+
+/* set help menu to screen height */
+$('.help').css('max-height',$(window).height()*0.8);
+
 $(document).ready(function () {
     console.log("ready");
     $.ajaxSetup({
@@ -18,6 +23,7 @@ $(document).ready(function () {
     $(document).on('click', ".words-categories-button", function () {
         console.log("click sur autres categories");
         get_words_postags(null);
+        $(this).css('display','none');
     });
 
 
@@ -151,7 +157,8 @@ $(document).ready(function () {
         content += '</thead>';
         content += '<tbody>';
         for (var i = 0; i < postags.length; i++) {
-            content += '<tr  data-trigger="hover" title="Exemples" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
+//            content += '<tr  data-trigger="hover" title="Exemples" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
+            content += '<tr>';
             content += '<td  id=' + postags[i]['id'] + '>' + postags[i]['name'];
             content += '<span class=full-name-category> (' + postags[i]['full_name'] + ') ';
             content += '</span>';
@@ -173,7 +180,8 @@ $(document).ready(function () {
             content += postag_names[i];
             content += ' (<i>';
             content += postag_full_names[i];
-            content += ' </i>) : ';
+            content += ' </i>) :';
+            content += ' <h4 style="text-align:center"> Quelques exemples <h4> <br> ';
             content += postag_descriptions[i];
             content += '</p></li>';
         }
@@ -269,6 +277,27 @@ $(document).ready(function () {
         });
 
     }
+    /* js for accordion help menu */
 
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    $(acc[0]).css({'border-top-left-radius': '10px', 'border-top-right-radius': '10px'});
+    $(acc[acc.length - 1]).css({'border-bottom-left-radius': '10px', 'border-bottom-right-radius': '10px'});
+    var toggle_acc = false;
+    $(acc[acc.length - 1]).on('click', function () {
+        if (toggle_acc == false) {
+            $(acc[acc.length - 1]).css({'border-bottom-left-radius': '0px', 'border-bottom-right-radius': '0px'})
+            toggle_acc = true;
+        } else {
+            $(acc[acc.length - 1]).css({'border-bottom-left-radius': '10px', 'border-bottom-right-radius': '10px'})
+            toggle_acc = false;
+        }
+    });
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("show");
+        }
+    }
     reload_javascript_on_words();
 });

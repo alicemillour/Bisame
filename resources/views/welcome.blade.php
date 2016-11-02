@@ -3,8 +3,6 @@
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('content')
-<div class="fill">
-
     <div class="main-container">
         <div class="title ostrich"> BISAME </div>
         <div class="button-wrapper">
@@ -28,15 +26,14 @@
 
             </h3>
         </div>
+<!--        <BR>&nbsp;<BR>
         <BR>&nbsp;<BR>
         <BR>&nbsp;<BR>
         <BR>&nbsp;<BR>
         <BR>&nbsp;<BR>
         <BR>&nbsp;<BR>
         <BR>&nbsp;<BR>
-        <BR>&nbsp;<BR>
-        <BR>&nbsp;<BR>
+        <BR>&nbsp;<BR>-->
 
     </div>
-</div>
 @endsection

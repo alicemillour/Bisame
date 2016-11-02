@@ -46,7 +46,7 @@
             .foreground {
                 z-index:1 !important;
             }
-            
+
             .light-background-colored{
                 background-color: #545454;
                 margin-bottom: 0;
@@ -95,10 +95,30 @@
             .fill { 
                 margin:0;
                 padding:0;
-                background: url(images/background-light.png) no-repeat center fixed; 
-                -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-                background-size: cover; /* version standardisée */
+                background: url('/images/background.png') no-repeat center fixed; 
+                -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
+                background-size: cover;  /* version standardisée */
+                /*background-size: contain;*/
+                /*                        background-size: auto 100%;*/
+                /*background-repeat: no-repeat;*/
+                background-position: left top;
             }
+            .fancy-border{
+                border: 1px solid white;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+            }
+            .footer-container {
+                vertical-align: middle;
+                overflow-y : auto;
+                position : relative;
+                margin: 0 auto;
+            }
+/*            @media screen and (max-width: 1280px) {
+            .footer-container {
+                max-width: 40%;
+            }
+            }*/
 
         </style>
         @yield('style')
@@ -110,14 +130,14 @@
 
     @include('partials.nav')
     @yield('content')   
-    <body id="app-layout">
-        <!--    @include('partials.footer')-->
-        <!-- JavaScripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-    <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
-    @yield('script')
+    <body class="fill" id="app-layout"/> 
+    <!--    @include('partials.footer')-->
+    <!-- JavaScripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+<script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
+@yield('script')
 </body>
 <!--</div>-->
 </html>

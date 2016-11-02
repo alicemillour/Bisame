@@ -10,12 +10,10 @@
     text-align: center;
     overflow: hidden;
     width: 100%;
-    margin: 0 auto;
-    width: 100%; }
-@media screen and (min-width: 900px) {
-    .main-container {
-        display: table; } 
-}
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: 1%; }
 
 .main-footer {
     position: relative;
@@ -143,12 +141,12 @@
 .info-message {
     font-size: 140%;
     margin: 0.5% 0%;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 
 #scoreboard {
-    max-width: 350px;
-    margin: 0 auto;
     background-color: rgba(249, 242, 236, 0.4);
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
@@ -158,8 +156,6 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     overflow: hidden;
-    clear : both;
-    margin:1%;
 }
 
 .nav-tabs li a{
@@ -177,12 +173,7 @@
     vertical-align:middle;
 }
 
-.fancy-border{
-    border: 1px solid white;
-    padding: 5px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-}
+
 
 .score{
     display: inline-block;

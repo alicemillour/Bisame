@@ -65,13 +65,24 @@ class GameController extends Controller {
      * @return Response
      */
     public function show($id) {
+        $postags = DB::table("postags as cp")
+                ->where("cp.name", "!=", "PUNCT")
+                ->orderBy('name', 'asc')
+                ->get();
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
         $this->authorize($game);
         $sentences = $game->sentences;
         $new_index = $game->sentence_index + 1;
         $progression = $new_index * 100 / 4;
-        return view('games.show', compact('sentences', 'game', 'progression'));
+        debug($postags);
+        foreach ($postags as $postag) {
+            $postag->description = html_entity_decode($postag->description);
+            debug($postag->description);
+        }
+
+        debug($postags);
+        return view('games.show', compact('sentences', 'game', 'progression', 'postags'));
     }
 
     /**
