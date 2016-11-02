@@ -1,5 +1,3 @@
-
-
 .main{
     position: relative; }
 @media screen and (min-width: 1280px) {
@@ -10,10 +8,11 @@
 .main-container {
     vertical-align: middle;
     /*text-align: center;*/
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     overflow: hidden;
     width: 90%;
-    padding:20px;
+    padding:2%;
+    margin: 2%;
 }
 
 .semi-transparent {
@@ -23,8 +22,13 @@
 .main-footer {
     position: relative;
     text-align: center;
-    margin: 0 auto;
-    max-width: 400px;
+}
+
+.main-footer > h3 {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 2%;
+    margin-left: 0px;
 }
 @media screen and (min-width: 1280px) {
     .main-footer {
@@ -114,12 +118,6 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 .sentence-container {
     vertical-align:top;
     /*margin: 20px;*/
-}
-
-.sentence-main-container {
-    float:left;
-    padding:10px;
-    max-width:100%;
 }
 
 .categorie-table-container {

@@ -40,8 +40,9 @@
             <div class="progress" color="white">
                 <div class="progress-bar" role="progressbar" aria-valuenow="{{$progression}}"
                      aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
+                    
+                <div>{{$game->sentence_index+1}}/4</div>
                 </div>
-                <div>Phrase {{$game->sentence_index+1}}/4</div>
             </div>
         </div>
 

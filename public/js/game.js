@@ -10,7 +10,7 @@ $('body').on('hidden.bs.popover', function (e) {
 });
 
 /* set help menu to screen height */
-$('.help').css('max-height',$(window).height()*0.8);
+$('.footer-container').css('max-height',$(window).height()*0.8);
 
 $(document).ready(function () {
     console.log("ready");
@@ -270,7 +270,7 @@ $(document).ready(function () {
             var row = $(this).find('td:first');
             $('.selected').removeClass('is-in-error');
             var category = $('.selected').parent().find('.category-label');
-            category.text(row.text());
+            category.text(row.text().split(" ")[0]);
             category.attr('id', row.attr('id'));
             category.show();
             $('.word.selected').popover('hide');

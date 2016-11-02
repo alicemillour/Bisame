@@ -20,6 +20,10 @@
     text-align: center;
     margin: 0 auto;
 }
+
+.help {
+    overflow-y : auto;
+}
 @media screen and (min-width: 1280px) {
     .main-footer {
         bottom: 0;
