@@ -7,14 +7,15 @@ class AnnotationTableSeeder extends CsvSeeder {
     public function __construct()
     {
         $this->table = 'annotations';
-        $this->filename = base_path().'/database/seeds/csvs/pre_annotations.csv';
+//        $this->filename = base_path().'/database/seeds/csvs/pre_annotations.csv';
+        $this->filename = base_path().'/database/seeds/csvs/pre_annotations_1.csv';
         $this->csv_delimiter = ";";
     }
 
     public function run()
     {
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->delete();
+//        DB::table($this->table)->delete();
         parent::run();
     }
     
