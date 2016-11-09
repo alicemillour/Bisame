@@ -115,11 +115,11 @@
                 margin: 0 auto;
                 max-width: 400px;
             }
-/*            @media screen and (max-width: 1280px) {
-            .footer-container {
-                max-width: 40%;
-            }
-            }*/
+            /*            @media screen and (max-width: 1280px) {
+                        .footer-container {
+                            max-width: 40%;
+                        }
+                        }*/
 
         </style>
         @yield('style')
