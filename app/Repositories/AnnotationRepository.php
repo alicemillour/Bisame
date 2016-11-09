@@ -51,7 +51,7 @@ class AnnotationRepository extends ResourceRepository
                         AND words.id=annotations.word_id
                         AND sentences.id=words.sentence_id
                         AND corpora.id=sentences.corpus_id
-                        AND corpora.is_training=true group by word_id)
+                        AND corpora.is_training=true group by word_id order by annotations.confidence_score desc)
                 ",Array($user_id))
                  ->first());
         }

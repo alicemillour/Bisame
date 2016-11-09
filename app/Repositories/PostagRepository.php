@@ -28,13 +28,12 @@ class PostagRepository extends ResourceRepository {
 
     public function getPostagsForWordId($word_id) {
         $postags = $this->getDatabaseRequestPostagsForWordId($word_id)->get();
-        debug("postags");
-        debug($postags);
-        debug(count($postags));
         if (count($postags) < 1) {
+            /* si on n'a pas de préannotation */
             return $this->GetPostagsExceptPunct()->all();
         } elseif (count($postags) == 1) {
             $first_postag = $this->getDatabaseRequestPostagsForWordId($word_id)->first();
+            /* get second random postag */
             $complementary = $this->GetComplementaryRandomPostags($first_postag)->random(1);
             $postags->push($complementary);
         }
@@ -66,7 +65,7 @@ class PostagRepository extends ResourceRepository {
     }
 
     private function getDatabaseRequestPostagsForWordId($word_id) {
-        /* get postag for word according to confidence score of previosly chosen postags */
+        /* get existing annotation for word_id */
         $annotations = Annotation::join('postags', 'postags.id', '=', 'annotations.postag_id')
                 ->select(DB::raw('postag_id as id, name, full_name, description'))
                 ->distinct()
