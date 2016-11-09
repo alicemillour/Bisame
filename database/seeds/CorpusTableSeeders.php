@@ -17,7 +17,7 @@ class CorpusTableSeeder extends CsvSeeder {
         // Recommended when importing larger CSVs
         DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->delete();
+//        DB::table($this->table)->delete();
         parent::run();
     }
 }
