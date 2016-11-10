@@ -29,10 +29,10 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
-    Route::get('/', 'WelcomeController@index');
+    Route::get('/', 'HomeController@index');
     Route::get('/chat', 'chatpageController@index');
     //Route::get('/', 'WelcomeController@index');
-
+    Route::get('user/{id}', 'UserController@showProfile');
     Route::resource('games', 'GameController', ['only' => ['update', 'show']]);
     Route::resource('training', 'TrainingController', ['only' => ['update', 'show']]);
     Route::get('/home/start', 'GameController@store');
