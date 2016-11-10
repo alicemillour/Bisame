@@ -17,7 +17,7 @@
                         <br>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Nom d'utilisateur</label>
+                            <label class="col-md-4 control-label">Nom d'utilisateur <br><span style="font-size: smaller"><i>(susceptible d'apparaître dans le tableau des scores)</i></span></label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                 @if ($errors->has('name'))

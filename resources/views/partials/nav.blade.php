@@ -13,16 +13,12 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand ostrich title-app-navbar my-navbar-hover" href="{{ url('/') }}">
-                    <b> Bisame </b> 
+                <a class="navbar-brand ostrich title-app-navbar my-navbar-hover" href="{{ url('/home') }}">
+                    <i class="fa fa-home fa-fw" aria-hidden="true"></i><b> Bisame </b> 
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-button-text">
-                    <li><a class="my-navbar-hover" href="{{ url('/home') }}">Accueil</a></li>
-                </ul>
                 <!-- Right Side Of Navbar -->
 
                 <ul class="nav navbar-nav navbar-right navbar-button-text">
@@ -62,6 +58,3 @@
         </div>
     </div>
 </nav>
-
-
-    
