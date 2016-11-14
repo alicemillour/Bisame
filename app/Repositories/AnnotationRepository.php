@@ -31,7 +31,7 @@ class AnnotationRepository extends ResourceRepository {
         return $this->game->where('word_id', $word_id)->first();
     }
 
-    public function get_number_correct_annotations($user_id) {
+    public function get_number_correct_annotations_on_reference($user_id) {
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -50,7 +50,8 @@ class AnnotationRepository extends ResourceRepository {
                         ->first());
     }
 
-    public function get_number_annotations($user_id) {
+    public function get_number_annotations_on_reference($user_id) {
+        /* */
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -63,7 +64,7 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_user_annotation_count($user_id) {
-        /* returns user score in confidence % */
+        /* returns number of annotations on all sentences */
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->where('user_id', $user_id)->first();
     }

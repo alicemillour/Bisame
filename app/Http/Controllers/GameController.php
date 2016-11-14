@@ -103,32 +103,26 @@ class GameController extends Controller {
         debug($current_sentence->id);
         if ($current_sentence->is_training()) {
             debug("sentence is training");
-            //$this->manage_annotations_of_reference($request->input('annotations'), $current_sentence);
+            /* creation of annotation on reference sentence */
             $this->create_annotations($request->input('annotations'), $current_sentence);
             /* update user confidence score */
             $number_total_annotable_words = $this->get_total_annotable_words($user_id)->count; //->count;
-
-            $number_annotated_words = $this->annotationRepository->get_number_annotations($user_id)->count;
-            debug(" debugging number_annotated_words");
-            debug($number_annotated_words);
-            $number_correct_annotations = $this->annotationRepository->get_number_correct_annotations($user_id)->count;
-            debug(" debugging correct annotations");
-            debug($number_correct_annotations);
-//            return;
+            /* nombre de mots annotés sur les phrases de référence */
+            $number_annotated_words_on_reference = $this->annotationRepository->get_number_annotations_on_reference($user_id)->count;
+            $number_correct_annotations_on_reference = $this->annotationRepository->get_number_correct_annotations_on_reference($user_id)->count;
 
 
-            if ($number_total_annotable_words != 0) {
+            if ($number_annotated_words_on_reference != 0) {
                 /* old version with total_annotable_words taken into account */
 //                $new_confidence_score = $number_correct_annotations / $number_total_annotable_words;
                 /* here we only consider the errors made by the user on annotated words */
-                $new_confidence_score = $number_correct_annotations / $number_annotated_words;
+                $new_confidence_score = $number_correct_annotations_on_reference / $number_annotated_words_on_reference;
             } else {
                 $new_confidence_score = 0;
             }
             $this->userRepository->update_confidence_score($user_id, $new_confidence_score);
         } else {
-            debug("sentence is regular");
-            /* create annotation on non-training sentence */
+            /* create annotation on non-reference sentence */
             $this->create_annotations($request->input('annotations'), $current_sentence);
         }
         $words_annotables = $this->sentenceRepository->getWordNotPunctCount($current_sentence['id']);
@@ -148,7 +142,7 @@ class GameController extends Controller {
                 $postag_id = $annotation['postag_id'];
                 $word_id = $annotation['word_id'];
                 if ($current_sentence->is_training()) {
-                    /* if current sentence belongs to training corpus, annotation is created with no confidence_score */
+                    /* if current annotation is made on the training corpus, annotation is created with no confidence_score */
                     $confidence_score = null;
                 } else {
                     /* else annotation.confidence_score is set to user.score */
