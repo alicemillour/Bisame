@@ -106,10 +106,22 @@ class GameController extends Controller {
             //$this->manage_annotations_of_reference($request->input('annotations'), $current_sentence);
             $this->create_annotations($request->input('annotations'), $current_sentence);
             /* update user confidence score */
-            $number_total_annotable_words = $this->get_total_annotable_words($user_id)->count;
+            $number_total_annotable_words = $this->get_total_annotable_words($user_id)->count; //->count;
+
+            $number_annotated_words = $this->annotationRepository->get_number_annotations($user_id)->count;
+            debug(" debugging number_annotated_words");
+            debug($number_annotated_words);
             $number_correct_annotations = $this->annotationRepository->get_number_correct_annotations($user_id)->count;
+            debug(" debugging correct annotations");
+            debug($number_correct_annotations);
+//            return;
+
+
             if ($number_total_annotable_words != 0) {
-                $new_confidence_score = $number_correct_annotations / $number_total_annotable_words;
+                /* old version with total_annotable_words taken into account */
+//                $new_confidence_score = $number_correct_annotations / $number_total_annotable_words;
+                /* here we only consider the errors made by the user on annotated words */
+                $new_confidence_score = $number_correct_annotations / $number_annotated_words;
             } else {
                 $new_confidence_score = 0;
             }
@@ -212,17 +224,14 @@ class GameController extends Controller {
     }
 
     public function get_total_annotable_words($user_id) {
-        return (Word::select(DB::raw('count(*) as count'))->whereRaw("
-                    value NOT REGEXP '^([[:punct:]]|„|“)$' AND
-                    sentence_id
-                    IN
-                   (SELECT sentences.id FROM annotations, words, sentences, corpora                   
-                    WHERE words.id=annotations.word_id
-                    AND sentences.id=words.sentence_id
-                    AND corpora.id=sentences.corpus_id
-                    AND corpora.is_training=true
-                    AND user_id=?)", Array($user_id))
-                        ->first());
+        return DB::select(DB::raw("select count(words.id) as count from words, sentences, corpora, game_sentence, games 
+                    where game_sentence.game_id=games.id 
+                    and games.user_id=:userid
+                    and words.sentence_id=sentences.id
+                    and words.value NOT REGEXP '^([[:punct:]]|„|“)$'
+                    and game_sentence.sentence_id=sentences.id
+    and sentences.corpus_id=corpora.id and corpora.is_training=true"), array(
+                    'userid' => $user_id))[0]; //->first()
     }
 
 }

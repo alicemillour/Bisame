@@ -9,7 +9,6 @@
             <!--<li><a data-toggle="pill" style="color:black" href="#menu1">Score global</a></li>-->
             <!--<li class="pull-right"><a data-toggle="pill" style="color:black" href="#info" > <i class="fa fa-question-circle-o fa-2x" aria-hidden="true"></i></a></li>-->
             <li class="pull-right ostrich"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" > ? </a></li>
-            <!--<li class="pull-right"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" >{{ HTML::image('images/question_mark.jpg') }}</a></li>-->
             <!--<li class="pull-right ostrich"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" ><img src="images/question_mark.jpg"></a></li>-->
         </ul>
 
