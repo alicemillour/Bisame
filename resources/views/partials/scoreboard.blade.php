@@ -21,11 +21,10 @@
                         <span  style="text-align: center; display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} 
                         </span> <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span> 
                         @else
-                        {{$key + 1}}. {{$user->name}} 
-                        <!--<span style="font-size: 0.7em"> ({{$user->quantity}}&nbsp;annotations) </span>-->
-                        @endif
-                        <br>
-                        @endforeach
+                        {{$key + 1}}. {{$user->name}} <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span> 
+                    @endif
+                    <br>
+                    @endforeach
                     </span>
                 </div>
             </div>
