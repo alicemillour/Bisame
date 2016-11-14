@@ -19,9 +19,9 @@
                         @foreach($users_score as $key=>$user)
                         @if($key == 0)
                         <span  style="text-align: center; display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} 
-                        </span> <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span> 
+                        <!--</span> <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span>--> 
                         @else
-                        {{$key + 1}}. {{$user->name}} <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span> 
+                        {{$key + 1}}. {{$user->name}} <!-- <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span> -->
                     @endif
                     <br>
                     @endforeach
