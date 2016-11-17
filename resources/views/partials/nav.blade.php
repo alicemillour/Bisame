@@ -25,6 +25,7 @@
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
+                    <li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b> Déjà {{$nb_total_annotations}} annotations produites par {{ $nb_total_users }} participants </b> !</a></li>
                     <li><a  class="my-navbar-hover" href="{{ url('/login') }}">Connexion</a></li>
                     <li><a  class="my-navbar-hover"  href="{{ url('/register') }}">Inscription</a></li>
                     @else     

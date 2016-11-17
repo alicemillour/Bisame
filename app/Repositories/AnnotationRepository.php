@@ -68,6 +68,10 @@ class AnnotationRepository extends ResourceRepository {
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->where('user_id', $user_id)->first();
     }
+    public function get_users_scores_and_annotation_counts() {
+        /* returns number of annotations on all sentences */
+        return $this->annotation->select(DB::raw('name, score, count(*) as annotation_count'))->get();
+    }
 
     public function get_total_non_admin_annotations() {
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))

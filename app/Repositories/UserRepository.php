@@ -70,6 +70,9 @@ class UserRepository extends ResourceRepository {
     public function get_level_by_id($user_id) {
         return User::select('level')->where('id', $user_id)->first()->level;
     }
+    public function get_user_count() {
+        return User::select(DB::raw('count(*) as count'))->first();
+    }
 
     public function destroy($id) {
         $this->getById($id)->delete();
