@@ -8,7 +8,7 @@ class UserTableSeeder extends Seeder {
     public function run()
 	{
             // Uncomment the below to wipe the table clean before populating
-            DB::table('users')->delete();   
+//            DB::table('users')->delete();   
 //		for($i = 0; $i < 10; ++$i)
 //		{
 //			DB::table('users')->insert([
@@ -19,17 +19,17 @@ class UserTableSeeder extends Seeder {
 //			]);
 //		}
             DB::table('users')->insert([
-                            'name' => 'Admin',
-                            'email' => 'alice.millour@abtela.eu',
-                            'password' => bcrypt('B!$@m3'),
+                            'name' => 'Admin2',
+                            'email' => 'alice.millour2@abtela.eu',
+                            'password' => bcrypt('B!$@m32'),
                             'is_admin' => true
             ]);
-            DB::table('users')->insert([
-                            'name' => 'Gamer',
-                            'email' => 'test@gamer.bisame',
-                            'password' => bcrypt('g@m3rB3'),
-                            'is_admin' => true,
-                            'is_in_training' => false
-            ]);
+//            DB::table('users')->insert([
+//                            'name' => 'Gamer',
+//                            'email' => 'test@gamer.bisame',
+//                            'password' => bcrypt('g@m3rB3'),
+//                            'is_admin' => true,
+//                            'is_in_training' => false
+//            ]);
 	}
 }
