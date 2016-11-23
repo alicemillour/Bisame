@@ -46,13 +46,13 @@ class UserRepository extends ResourceRepository {
                 ->update(['score' => $new_confidence_score]);
     }
 
-    public function get_best_users_by_score() {
+    public function get_best_users_by_real_score() {
         return User::join("annotations", function($join) {
                             $join->on("annotations.user_id", "=", "users.id");
                         })
-                        ->select(DB::raw('count(*) as quantity, users.*'))
+                        ->select(DB::raw('count(*)*score as real_score, users.*'))
                         ->groupBy('users.id')
-                        ->orderBy('score', 'desc')
+                        ->orderBy('real_score', 'desc')
                         ->where('is_admin', '=', '0')->take(5)->get();
     }
 

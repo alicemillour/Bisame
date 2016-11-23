@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 $(document).ready(function () {
     console.log("ready navbar");
     // getting the color before the color is changed ( not sure this is needed )
