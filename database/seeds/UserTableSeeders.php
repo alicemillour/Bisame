@@ -29,7 +29,6 @@ class UserTableSeeder extends Seeder {
             $number_correct_annotations_on_reference = $this->annotationRepository->get_number_correct_annotations_on_reference($user->id)->count;
             if ($number_annotated_words_on_reference != 0) {
                 $new_confidence_score = $number_correct_annotations_on_reference / $number_annotated_words_on_reference;
-                debug($new_confidence_score);
                 DB::table('users')->where('users.id', $user->id)->update(['score' => $new_confidence_score]);
             }
         }
