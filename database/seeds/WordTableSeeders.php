@@ -20,11 +20,9 @@ class WordTableSeeder extends CsvSeeder {
 //        DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
 //        DB::table($this->words_table)->delete();
-//        DB::table($this->sentences_table)->delete();
-        Word::where('id',26102)->update(['value' => ","]);
+//        DB::table($this->sentences_table)->delete();       
         
-        
-//        parent::run();
+        parent::run();
     }
 
     /**

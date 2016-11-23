@@ -12,8 +12,8 @@ class CorpusTableSeeder extends CsvSeeder {
     }
 
     public function run() {
-        DB::table('corpora')->where('name', 'wikipedia1')->orWhere('name', 'wikipedia2')->orWhere('name', 'Hoflieferant_p53')
-                ->update(['is_training' => '1']);
+//        DB::table('corpora')->where('name', 'wikipedia1')->orWhere('name', 'wikipedia2')->orWhere('name', 'Hoflieferant_p53')
+//                ->update(['is_training' => '1']);
         // Recommended when importing larger CSVs
 //        DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
