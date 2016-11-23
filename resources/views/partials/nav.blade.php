@@ -24,11 +24,11 @@
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                    <li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b> Déjà {{$non_admin_annotations}} annotations produites par {{ $nb_total_users }} participants </b> !</a></li>
+                    <!--<li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b> Déjà {{$non_admin_annotations}} annotations produites par {{ $nb_total_users }} participants </b> !</a></li>-->
                     <li><a  class="my-navbar-hover" href="{{ url('/login') }}">Connexion</a></li>
                     <li><a  class="my-navbar-hover"  href="{{ url('/register') }}">Inscription</a></li>
                     @else     
-                    <li><a class ="incognito"><b> Déjà {{$non_admin_annotations}} annotations produites</b> !</a></li>
+                    <!--<li><a class ="incognito"><b> Déjà {{$non_admin_annotations}} annotations produites</b> !</a></li>-->
                     <li><a class ="incognito" >Niveau : {{$niveau}}</a></li>
                     @if ($real_score == 0)
                     <li><a class ="incognito">Score : {{$real_score}} point</a></li>
