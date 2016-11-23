@@ -15,13 +15,19 @@
                 <a class="navbar-brand ostrich title-app-navbar my-navbar-hover" href="{{ url('/home') }}">
                     <i class="fa fa-home fa-fw" aria-hidden="true"></i><b> Bisame </b> 
                 </a>
+                <!--<div class="collapse navbar-collapse" id="app-navbar-collapse">-->
+                    <ul class="nav navbar-nav navbar-right navbar-button-text">
+                        <li><a class="my-navbar-hover navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
+                                <b> Les textes originaux ! </b>                 </a></li>
+                    </ul>
+                <!--</div>-->
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Right Side Of Navbar -->
 
                 <ul class="nav navbar-nav navbar-right navbar-button-text">
-
+                    <li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b> Déjà {{$non_admin_annotations}} annotations produites par {{ $nb_total_users }} participants </b> !</a></li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                     <li><a  class="my-navbar-hover" href="{{ url('/login') }}">Connexion</a></li>

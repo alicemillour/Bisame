@@ -37,10 +37,16 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home/start', 'GameController@store');
     Route::get('/home/training', 'TrainingController@store');
     Route::get('/postags', 'PostagController@index');
+    Route::get('/textes', 'TexteController@index');
     Route::get('contact', 'ContactController@showForm');
     Route::post('contact', 'ContactController@sendContactInfo');
 });
 
+
+
 Route::post('sendmessage', 'chatController@sendMessage');
+
+Route::get('admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']);
+//Route::get('admin', ['uses' => 'AdminController@index', 'middleware' => 'auth']);
 
 //Route::post('/send', 'EmailController@send');
