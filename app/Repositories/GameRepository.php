@@ -47,8 +47,8 @@ class GameRepository extends ResourceRepository {
             $ref_sentence = $this->get_reference_sentences()->random(1);
             $this->save($game, $inputs);
             $game->sentences()->attach($sentences);
-            $game->sentences()
-            
+            $game->sentences()->attach($ref_sentence);
+            return $game;
         }
     }
 
@@ -76,8 +76,8 @@ class GameRepository extends ResourceRepository {
     }
 
     protected function get_sentences_from_orthal() {
-        $name="orthal";
-                debug(Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')->where('corpora.id', 322)
+        $name = "orthal";
+        debug(Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')->where('corpora.id', 322)
                         ->select('sentences.*')
                         ->get());
 
