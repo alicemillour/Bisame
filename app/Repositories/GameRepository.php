@@ -23,7 +23,7 @@ class GameRepository extends ResourceRepository {
             $user_id = Auth::user()->id;
             debug($user_id);
             $game = new $this->game;
-            if ($user_id == 102) {
+            if ($user_id == 1202) {
                 $sentences = $this->get_sentences_from_orthal();
             } else {
                 $sentences = $this->get_sentences();
@@ -31,13 +31,13 @@ class GameRepository extends ResourceRepository {
             $count = $sentences->count();
             if ($count < 3) {
                 debug("count < 3");
-                if ($user_id == 102) {
+                if ($user_id == 1202) {
                     $sentences = $this->get_sentences_from_orthal()->take($count);
                 } else {
                     $sentences = $this->get_sentences()->take($count);
                 }
             } else {
-                if ($user_id == 102) {
+                if ($user_id == 1202) {
                     $sentences = $this->get_sentences_from_orthal()->random(3);
                 } else {
                     $sentences = $this->get_sentences()->random(3);
@@ -47,9 +47,7 @@ class GameRepository extends ResourceRepository {
             $ref_sentence = $this->get_reference_sentences()->random(1);
             $this->save($game, $inputs);
             $game->sentences()->attach($sentences);
-            $game->sentences()->attach($ref_sentence);
-            return $game;
-//            return;
+            $game->sentences()
             
         }
     }
