@@ -1,6 +1,9 @@
 <?php
 
 use Flynsarmy\CsvSeeder\CsvSeeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Models\Word;
 
 class WordTableSeeder extends CsvSeeder {
 
@@ -18,7 +21,10 @@ class WordTableSeeder extends CsvSeeder {
         // Uncomment the below to wipe the table clean before populating
 //        DB::table($this->words_table)->delete();
 //        DB::table($this->sentences_table)->delete();
-        parent::run();
+        Word::where('id',26102)->update(['value' => ","]);
+        
+        
+//        parent::run();
     }
 
     /**
@@ -124,7 +130,7 @@ class WordTableSeeder extends CsvSeeder {
     public function insert_table(array $seedData, $table) {
         try {
             DB::table($table)->insert($seedData);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Log::error("CSV insert failed: " . $e->getMessage() . " - CSV " . $this->filename);
             return FALSE;
         }
