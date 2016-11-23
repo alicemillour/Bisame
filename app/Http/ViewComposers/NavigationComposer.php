@@ -19,28 +19,29 @@ use Illuminate\View\View;
  * @author alice
  */
 class NavigationComposer {
+
     //put your code here
     protected $annotationRepository;
     protected $userRepository;
 
     public function __construct(AnnotationRepository $annotationRepository, UserRepository $userRepository) {
-         $this->annotationRepository = $annotationRepository;
-         $this->userRepository = $userRepository;
+        $this->annotationRepository = $annotationRepository;
+        $this->userRepository = $userRepository;
     }
-    
+
     public function compose(View $view) {
-        if (Auth::check()){
+        if (Auth::check()) {
             $cur_user = Auth::user();
             $user_id = $cur_user->id;
             $view->with('niveau', Auth::user()->level);
             $view->with('name', Auth::user()->name);
-            $view->with('nb_total_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
+            $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
             $view->with('nb_annotations', $this->annotationRepository->get_user_annotation_count($user_id)['annotation_count']);
-            $view->with('real_score', intval($this->annotationRepository->get_user_annotation_count($user_id)['annotation_count']*$cur_user->score));
+            $view->with('real_score', intval($this->annotationRepository->get_user_annotation_count($user_id)['annotation_count'] * $cur_user->score));
         } else {
-                        $view->with('nb_total_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
-                        $view->with('nb_total_users', $this->userRepository->get_user_count()['count']);
-
+            $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
+            $view->with('nb_total_users', $this->userRepository->get_user_count()['count']);
         }
     }
+
 }

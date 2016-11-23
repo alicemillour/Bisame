@@ -1,11 +1,10 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <nav class="navbar navbar-default navbar-fixed-top light-background-colored"  id="topnavbar">
     <div class="container-fluid">
         <div class="light-background-colored">
             <div class="navbar-header ">
 
                 <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed light-background-colored" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed light-background-colored" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle Navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -25,11 +24,11 @@
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                    <li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b> Déjà {{$nb_total_annotations}} annotations produites par {{ $nb_total_users }} participants </b> !</a></li>
+                    <li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b> Déjà {{$non_admin_annotations}} annotations produites par {{ $nb_total_users }} participants </b> !</a></li>
                     <li><a  class="my-navbar-hover" href="{{ url('/login') }}">Connexion</a></li>
                     <li><a  class="my-navbar-hover"  href="{{ url('/register') }}">Inscription</a></li>
                     @else     
-                    <li><a class ="incognito"><b> Déjà {{$nb_total_annotations}} annotations produites</b> !</a></li>
+                    <li><a class ="incognito"><b> Déjà {{$non_admin_annotations}} annotations produites</b> !</a></li>
                     <li><a class ="incognito" >Niveau : {{$niveau}}</a></li>
                     @if ($real_score == 0)
                     <li><a class ="incognito">Score : {{$real_score}} point</a></li>
@@ -46,11 +45,12 @@
                             {{$name}}<span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu" role="menu">     
+                            <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Mon profil</a></li>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
                         </ul>
                     </li>
-                        <li> <i class="icon-search icon-white"></i>
+                    <li> <i class="icon-search icon-white"></i>
                         <a class="my-navbar-hover" href="/contact"> <i class="fa fa-envelope-o" aria-hidden="true"></i> Un commentaire ?</a>
                     </li>
                     @endif
