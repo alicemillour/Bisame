@@ -17,8 +17,8 @@
                 </a>
                 <!--<div class="collapse navbar-collapse" id="app-navbar-collapse">-->
                     <ul class="nav navbar-nav navbar-right navbar-button-text">
-                        <li><a class="my-navbar-hover navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
-                                <b> Les textes originaux</b>  !                 </a></li>
+<!--                        <li><a class="my-navbar-hover navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
+                                <b> Les textes originaux</b>  !                 </a></li>-->
                     </ul>
                 <!--</div>-->
             </div>
@@ -27,8 +27,10 @@
                 <!-- Right Side Of Navbar -->
 
                 <ul class="nav navbar-nav navbar-right navbar-button-text">
-                    <li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b>Déjà {{$non_admin_annotations}} annotations produites par {{ $nb_total_users }} participants </b> !</a></li></a></li>
-
+                                            <li><a class="my-navbar-hover navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
+                                <b> Les textes originaux</b>  !                 </a></li>
+                    <li><a class ="incognito" style="float: none;display: inline-block;text-align: center;"><b>Déjà 7846 annotations produites par 161 participants </b> !</a></li></a></li>
+              
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                     <li><a  class="my-navbar-hover" href="{{ url('/login') }}">Connexion</a></li>
