@@ -18,7 +18,7 @@
                 <!--<div class="collapse navbar-collapse" id="app-navbar-collapse">-->
                     <ul class="nav navbar-nav navbar-right navbar-button-text">
                         <li><a class="my-navbar-hover navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
-                                <b> Les textes originaux ! </b>                 </a></li>
+                                <b> Les textes originaux</b>  !                 </a></li>
                     </ul>
                 <!--</div>-->
             </div>
