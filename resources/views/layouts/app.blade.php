@@ -128,9 +128,10 @@
         @stop
     </head>
     <!--<div class="fill">-->
-
     @include('partials.nav')
+
     @yield('content')   
+
     <body class="fill" id="app-layout"/> 
     <!--    @include('partials.footer')-->
     <!-- JavaScripts -->
