@@ -15,36 +15,42 @@
                     </div>-->
         <!--            <div class="col-md-8 background-colored">-->
 
-        <header>  
-            @if($game['type']=='training')
-            <h4> Bienvenue dans le mode Entraînement ! Ici, vous pouvez vérifier vos réponses au fur et à mesure. </h4>
+        <header> 
+            @if($no_sentence)
+            <h4> Vous avez annoté toutes les phrases disponibles, <a style="color:#AC1E44;text-align: center" href="/contact" style="color:black" target="_top">Contactez-moi !</a> </h4>
+
+            
             @else
-            <h4> Bienvenue dans le mode Jeu ! Ici, nous ne corrigeons pas vos réponses. Vos points seront mis à jour à la fin de la séquence de quatre phrases. </h4>
-            @endif
+                @if($game['type']=='training')
+                <h4> Bienvenue dans le mode Entraînement ! Ici, vous pouvez vérifier vos réponses au fur et à mesure. </h4>
+                @else
+                <h4> Bienvenue dans le mode Jeu ! Ici, nous ne corrigeons pas vos réponses. Vos points seront mis à jour à la fin de la séquence de quatre phrases. </h4>
+                @endif
 
-            <h2 class="ostrich">Cliquez sur les mots pour leur assigner une categorie grammaticale
-                <div class="pull-right">
+                <h2 class="ostrich">Cliquez sur les mots pour leur assigner une categorie grammaticale
+                    <div class="pull-right">
+                    </div>
+                </h2>
+
+
+                </header>
+                <hr>
+                <div class="sentence-container" id="sentence-container"> 
+                    @foreach($sentences[$game->sentence_index]->words as $word)
+                    <div class="word-container">
+                        <div class="word" id="{{ $word->id }}" value="{{$word->value}}">{{ $word->value }}</div>
+                        <div class="category-label"> </div>
+                    </div>
+                    @endforeach
+                    <div class="progress" color="white">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{$progression}}"
+                             aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
+
+                        <div>{{$game->sentence_index+1}}/4</div>
+                        </div>
+                    </div>
                 </div>
-            </h2>
 
-
-        </header>
-        <hr>
-        <div class="sentence-container" id="sentence-container"> 
-            @foreach($sentences[$game->sentence_index]->words as $word)
-            <div class="word-container">
-                <div class="word" id="{{ $word->id }}" value="{{$word->value}}">{{ $word->value }}</div>
-                <div class="category-label"> </div>
-            </div>
-            @endforeach
-            <div class="progress" color="white">
-                <div class="progress-bar" role="progressbar" aria-valuenow="{{$progression}}"
-                     aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
-                    
-                <div>{{$game->sentence_index+1}}/4</div>
-                </div>
-            </div>
-        </div>
 
         <!--</div>-->
         <!--</article>-->
@@ -71,6 +77,7 @@
         </div>
     </div>
 
+            @endif
 
     <!--        <div class="main-footer">
                 <div class ="categorie-table-container pull-right">

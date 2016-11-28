@@ -41,7 +41,7 @@ class AnnotationRepository extends ResourceRepository {
                 AND (word_id, annotations.postag_id) IN 
                     (select word_id, annotations.postag_id FROM annotations, words, sentences, corpora, users
                         WHERE annotations.user_id=users.id
-                        AND users.name=\"Admin\"
+                        AND users.id=92
                         AND words.id=annotations.word_id
                         AND sentences.id=words.sentence_id
                         AND corpora.id=sentences.corpus_id

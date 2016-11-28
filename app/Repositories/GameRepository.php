@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Game;
 use App\Models\Sentence;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GameRepository extends ResourceRepository {
 
@@ -26,29 +27,36 @@ class GameRepository extends ResourceRepository {
             if ($user_id == 1202) {
                 $sentences = $this->get_sentences_from_orthal();
             } else {
-                $sentences = $this->get_sentences();
+                $sentences = $this->get_sentences($user_id);
             }
-            $count = $sentences->count();
-            if ($count < 3) {
-                debug("count < 3");
-                if ($user_id == 1202) {
-                    $sentences = $this->get_sentences_from_orthal()->take($count);
-                } else {
-                    $sentences = $this->get_sentences()->take($count);
-                }
+            if ($sentences->count() == 0) {
+                $this->save($game, $inputs);
+                $game->sentences()->attach($sentences);
+                /* game is not null !! */
+                return $game;
             } else {
-                if ($user_id == 1202) {
-                    $sentences = $this->get_sentences_from_orthal()->random(3);
+                $count = $sentences->count();
+                debug($count);
+                if ($count < 3) {
+                    if ($user_id == 1202) {
+                        $sentences = $this->get_sentences_from_orthal()->take($count);
+                    } else {
+                        $sentences = $this->get_sentences($user_id)->take($count);
+                    }
                 } else {
-                    $sentences = $this->get_sentences()->random(3);
+                    if ($user_id == 1202) {
+                        $sentences = $this->get_sentences_from_orthal()->random(3);
+                    } else {
+                        $sentences = $this->get_sentences($user_id)->random(3);
+                    }
                 }
+                /* get a random sentence from reference (=training?) */
+                $ref_sentence = $this->get_reference_sentences()->random(1);
+                $this->save($game, $inputs);
+                $game->sentences()->attach($sentences);
+                $game->sentences()->attach($ref_sentence);
+                return $game;
             }
-            /* get a random sentence from reference (=training?) */
-            $ref_sentence = $this->get_reference_sentences()->random(1);
-            $this->save($game, $inputs);
-            $game->sentences()->attach($sentences);
-            $game->sentences()->attach($ref_sentence);
-            return $game;
         }
     }
 
@@ -68,14 +76,18 @@ class GameRepository extends ResourceRepository {
         return $this->game->where('user_id', $user_id)->where('is_finished', 0);
     }
 
-    protected function get_sentences() {
+    protected function get_sentences($user_id) {
+        /* forces user to annotate on sentences he has'nt annotated yet */
+        $id_annotated_sentences = Sentence::select(DB::raw('sentences.id'))->join('words', 'sentences.id', '=', 'words.sentence_id')->join('annotations', 'annotations.word_id', '=', 'words.id')
+                        ->whereRaw("annotations.user_id=? AND annotations.confidence_score<10 AND annotations.confidence_score is not NULL", Array($user_id))->get();
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 0)
+                        ->whereNotIn('sentences.id', $id_annotated_sentences)
                         ->get();
     }
 
-    protected function get_sentences_from_orthal() {
+    protected function get_sentences_from_orthal($user_id) {
         $name = "orthal";
         debug(Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')->where('corpora.id', 322)
                         ->select('sentences.*')

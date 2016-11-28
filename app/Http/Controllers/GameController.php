@@ -54,7 +54,6 @@ class GameController extends Controller {
         $game = $this->get_or_create_game();
         $new_index = $game->sentence_index + 1;
         $progression = $new_index * 100 / 4;
-        $id = $game->id;
         return Redirect::route('games.show', compact('sentences', 'game', 'progression'));
     }
 
@@ -69,6 +68,7 @@ class GameController extends Controller {
                 ->where("cp.name", "!=", "PUNCT")
                 ->orderBy('name', 'asc')
                 ->get();
+        
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
         $this->authorize($game);
@@ -80,9 +80,19 @@ class GameController extends Controller {
             $postag->description = html_entity_decode($postag->description);
             debug($postag->description);
         }
+        
 
-        debug($postags);
-        return view('games.show', compact('sentences', 'game', 'progression', 'postags'));
+        debug($postags); 
+        
+        if ($sentences->count() == 0) {
+            $no_sentence = true;
+            return view('games.show', compact('no_sentence','sentences','game', 'progression', 'postags'));
+        } else {
+            debug($sentences);
+            debug("il y a sentence");
+            $no_sentence=false;
+            return view('games.show', compact('no_sentence','sentences', 'game', 'progression', 'postags'));
+        }
     }
 
     /**
