@@ -8,6 +8,8 @@
 </script>
 @endsection
 @section('content')
+
+@include('partials.nav')
 <div class="main">
     <div class="main-container">
         <h3> Vous trouverez sur cette page les liens vers les différents textes utilisés </h3>

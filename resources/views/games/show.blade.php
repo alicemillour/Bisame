@@ -8,6 +8,8 @@
 </script>
 @endsection
 @section('content')
+
+@include('partials.nav')
 <div class="main">
     <div class="main-container semi-transparent fancy-border">      
         <!--            <div class="col-md-2 background-colored" id="Mon compte">

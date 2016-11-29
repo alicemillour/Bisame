@@ -7,7 +7,9 @@
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 @endsection
+
 @section('content')
+@include('partials.nav')
 <div class="main">
     <div class="main-container">
         <div class="title ostrich"> BISAME </div>

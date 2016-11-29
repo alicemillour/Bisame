@@ -1,5 +1,7 @@
 @extends('layouts.app', ['meta_description' => 'Contact Form'])
 @section('content')
+
+@include('partials.nav')
 <br>
 <div class="container">
     <div class="row">
