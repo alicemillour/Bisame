@@ -14,7 +14,7 @@ class TrainingRepository extends GameRepository {
 	}
 
         
-	protected function get_sentences() 
+	protected function get_sentences($user_id) 
 	{
 		return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
