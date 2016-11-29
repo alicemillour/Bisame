@@ -33,15 +33,14 @@ class NavigationComposer {
         if (Auth::check()) {
             $cur_user = Auth::user();
             $user_id = $cur_user->id;
-            $view->with('niveau', Auth::user()->level);
-            $view->with('name', Auth::user()->name);
-            $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
-            $view->with('nb_annotations', $this->annotationRepository->get_user_annotation_count($user_id)['annotation_count']);
-            $view->with('real_score', intval($this->annotationRepository->get_user_annotation_count($user_id)['annotation_count'] * $cur_user->score));
-            $view->with('nb_total_users', $this->userRepository->get_user_count()['count']);
+            $view->with('niveau', Auth::user()->level)
+                    ->with('name', Auth::user()->name)
+                    ->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count'])
+                    ->with('nb_annotations', $this->annotationRepository->get_user_annotation_count($user_id)['annotation_count'])
+                    ->with('nb_total_users', $this->userRepository->get_user_count()['count']);
         } else {
-            $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
-            $view->with('nb_total_users', $this->userRepository->get_user_count()['count']);
+            $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count'])
+                    ->with('nb_total_users', $this->userRepository->get_user_count()['count']);
         }
     }
 
