@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top light-background-colored"  id="topnavbar">
+<nav class="navbar navbar-default navbar-fixed-top light-background-colored" role="navigation" id="topnavbar">
     <div class="container-fluid">
         <div class="light-background-colored">
             <div class="navbar-header ">

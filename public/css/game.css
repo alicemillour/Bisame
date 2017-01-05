@@ -68,6 +68,11 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 .highlighted {
     color: #0078ae !important;
 }
+
+.auto-annotated {
+    color: #A75E0B !important;
+}
+
 .progress-bar {
     margin-top: 0px;
     background-color: lightblue;
@@ -246,3 +251,5 @@ button.accordion.active:after {
     font-weight: bold;
     color: #f35000;
 }
+
+

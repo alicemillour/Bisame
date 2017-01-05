@@ -10,7 +10,7 @@ $('body').on('hidden.bs.popover', function (e) {
 });
 
 /* set help menu to screen height */
-$('.footer-container').css('max-height',$(window).height()*0.8);
+$('.footer-container').css('max-height', $(window).height() * 0.8);
 
 $(document).ready(function () {
     console.log("ready");
@@ -23,7 +23,7 @@ $(document).ready(function () {
     $(document).on('click', ".words-categories-button", function () {
         console.log("click sur autres categories");
         get_words_postags(null);
-        $(this).css('display','none');
+        $(this).css('display', 'none');
     });
 
 
@@ -79,8 +79,19 @@ $(document).ready(function () {
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
                 get_words_postags($(this).attr('id'));
                 $(this).addClass('not-punct');
+                console.log("pretag");
+                console.log($(this).attr('tag'))
+                if ($(this).attr('tag')) {
+                    $(this).removeClass('highlighted');
+                    $(this).addClass('auto-annotated');
+                    var category = $(this).parent().find('.category-label');
+                    category.text($(this).attr('tag'));
+                    category.show();
+                }
             }
+
         });
+
         $('.word').not(".is-correct").hover(
                 function () {
                     if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {

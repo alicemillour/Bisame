@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('partials.nav', 'App\Http\ViewComposers\NavigationComposer');
         view()->composer('partials.scoreboard', 'App\Http\ViewComposers\ScoreboardComposer');
         view()->composer('contact', 'App\Http\ViewComposers\ContactComposer');
+        view()->composer('stats.show', 'App\Http\ViewComposers\StatsComposer');
 
     }
     /**

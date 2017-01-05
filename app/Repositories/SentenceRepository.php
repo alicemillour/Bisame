@@ -28,5 +28,10 @@ class SentenceRepository extends ResourceRepository
                 ->where('sentence_id',$sentence_id)
                 ->whereRaw("value NOT REGEXP '^([[:punct:]]|„|“)$'")->first();
     }    
-
+    public function getWords($sentence_id)
+    {
+        return Sentence::select('words.id')
+                ->join('words','words.sentence_id','=','sentences.id')
+                ->where('sentence_id',$sentence_id)->toArray();
+    }
 }

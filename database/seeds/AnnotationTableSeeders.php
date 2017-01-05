@@ -90,10 +90,7 @@ class AnnotationTableSeeder extends CsvSeeder {
                 $postag_id=DB::table('postags')
                         ->where('name', $postag_name)
                         ->pluck('id')[0];
-                Log::info("sentence_position");
-                Log::info($sentence_position);
-                Log::info("word_position");
-                Log::info($word_position);
+
                 $row_annotation = $this->readRow($row, $mapping);
                 /* insert only non-empty rows from the csv file */
                 if ( !$row_annotation )

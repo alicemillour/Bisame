@@ -24,11 +24,11 @@ class GameRepository extends ResourceRepository {
             $user_id = Auth::user()->id;
             debug($user_id);
             $game = new $this->game;
-            if ($user_id == 1202) {
-                $sentences = $this->get_sentences_from_orthal();
-            } else {
+//            if ($user_id == 1202) {
+//                $sentences = $this->get_sentences_from_orthal();
+//            } else {
                 $sentences = $this->get_sentences($user_id);
-            }
+//            }
             if ($sentences->count() == 0) {
                 $this->save($game, $inputs);
                 $game->sentences()->attach($sentences);
@@ -83,8 +83,10 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 0)
+                        ->where('corpora.is_active', 1)
                         ->whereNotIn('sentences.id', $id_annotated_sentences)
                         ->get();
+        
     }
 
     protected function get_sentences_from_orthal($user_id) {

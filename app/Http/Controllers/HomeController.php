@@ -37,7 +37,7 @@ class HomeController extends Controller {
             $non_admin_annotations = $this->annotationRepository->get_total_non_admin_annotations()['annotation_count'];
             $nb_total_users = $this->userRepository->get_user_count()['count'];
 
-            return view('home', compact('game_available', 'current_user')); //, 'non_admin_annotations','nb_total_users'));
+            return view('home', compact('game_available', 'current_user','non_admin_annotations','nb_total_users'));
         } else {
             return view('home');
         }
