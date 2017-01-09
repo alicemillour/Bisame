@@ -84,18 +84,20 @@ $(document).ready(function () {
                 console.log("pretag");
                 console.log($(this).attr('tag'))
                 if ($(this).attr('tag')) {
-                    $(this).addClass('auto-annotated');
                     $('#right_' + word_id).css({'display': 'inline'});
                     $('#left_' + word_id).css({'display': 'inline'});
                     $('#right_' + word_id).css({'visibility': 'hidden'});
                     $('#left_' + word_id).css({'visibility': 'hidden'});
                     var category = $(this).parent().find('.category-label');
+                    category.addClass('auto-annotated');
                     category.text($(this).attr('tag'));
                     category.show();
+                } else {
+                    $('#question_' + word_id).css({'display': 'inline'});
                 }
             }
-
         });
+
 
         $('.word').not(".is-correct").hover(
                 function () {
@@ -155,25 +157,42 @@ $(document).ready(function () {
         }
         );
 
+
+        $('.question-label').click(function () {
+            $('.word.selected').popover('hide');
+            $('.word').removeClass('selected');
+            var category = $(this).parent().find('.category-label');
+            category.empty();
+            category.removeClass('auto-annotated');
+            word_id = $(this).attr('id').match(/[0-9]+/);
+            $('#' + word_id).addClass('selected');
+            $('#' + word_id).popover('show');
+        });
+
         $('.leftlabel').click(function () {
+            word_id = $(this).attr('id').match(/[0-9]+/);
             $('.word.selected').popover('hide');
             $('.word').removeClass('selected');
             $('#right_' + word_id).css({'display': 'none'});
             $('#left_' + word_id).css({'display': 'none'});
             var category = $(this).parent().find('.category-label');
             category.empty();
+            category.removeClass('auto-annotated');
             $('#' + word_id).addClass('selected');
             $('#' + word_id).popover('show');
             $('#' + word_id).removeClass('auto-annotated');
         });
 
         $('.rightlabel').click(function () {
+            word_id = $(this).attr('id').match(/[0-9]+/);
             $('.word.selected').popover('hide');
             $('.word').removeClass('selected');
             $('#right_' + word_id).css({'display': 'none'});
             $('#left_' + word_id).css({'display': 'none'});
             $('#' + word_id).addClass('selected');
             $('#' + word_id).removeClass('auto-annotated');
+            var category = $(this).parent().find('.category-label');
+            category.removeClass('auto-annotated');
         });
         /* enable click on rows in categories tables */
         add_on_click_on_categories_table()
@@ -342,9 +361,11 @@ $(document).ready(function () {
             var row = $(this).find('td:first');
             $('.selected').removeClass('is-in-error');
             var category = $('.selected').parent().find('.category-label');
+            var question = $('.selected').parent().find('.question-label');
             category.text(row.text().split(" ")[0]);
             category.attr('id', row.attr('id'));
             category.show();
+            question.css({'display': 'none'});
             $('.word.selected').popover('hide');
         });
 

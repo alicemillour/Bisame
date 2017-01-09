@@ -70,6 +70,7 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 }
 
 .auto-annotated {
+    font-weight: bold;
     color: #CF7864;
 }
 
@@ -257,8 +258,8 @@ button.accordion.active:after {
     color: #f35000;
 }
 
-.leftlabel,.rightlabel{
-    cursor: pointer;
+.leftlabel,.rightlabel, .question-label{
+     cursor: pointer;
 }
 
 
