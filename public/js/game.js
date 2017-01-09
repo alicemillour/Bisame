@@ -72,18 +72,23 @@ $(document).ready(function () {
             }
         });
     });
+    
     function reload_javascript_on_words() {
         console.log("reload");
         console.log("loading postags");
         $('.word').each(function () {
+            word_id = $(this).prop('id')
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
                 get_words_postags($(this).attr('id'));
                 $(this).addClass('not-punct');
                 console.log("pretag");
                 console.log($(this).attr('tag'))
                 if ($(this).attr('tag')) {
-                    $(this).removeClass('highlighted');
                     $(this).addClass('auto-annotated');
+                    $('#right_' + word_id).css({'display': 'inline'});
+                    $('#left_' + word_id).css({'display': 'inline'});
+                    $('#right_' + word_id).css({'visibility': 'hidden'});
+                    $('#left_' + word_id).css({'visibility': 'hidden'});
                     var category = $(this).parent().find('.category-label');
                     category.text($(this).attr('tag'));
                     category.show();
@@ -104,6 +109,7 @@ $(document).ready(function () {
                     }
                 }
         );
+
         $('.word').not(".is-correct").click(
                 function () {
                     if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
@@ -114,6 +120,61 @@ $(document).ready(function () {
                     }
                 }
         );
+        console.log("loading js on labels");
+        $('.word').hover(
+                function () {
+                    word_id = $(this).attr('id').match(/[0-9]+/);
+                    console.log(word_id);
+                    $(this).css('display', 'block');
+                    $('#right_' + word_id).css({'visibility': 'visible'});
+                    $('#left_' + word_id).css({'visibility': 'visible'});
+                }
+        );
+        $('.word').mouseleave(function () {
+            word_id = $(this).attr('id').match(/[0-9]+/);
+            console.log(word_id);
+            $('#right_' + word_id).css({'visibility': 'hidden'});
+            $('#left_' + word_id).css({'visibility': 'hidden'});
+        }
+        );
+
+        $('.labels').hover(
+                function () {
+                    word_id = $(this).attr('name').match(/[0-9]+/);
+                    console.log(word_id);
+                    $(this).css('display', 'block');
+                    $('#right_' + word_id).css({'visibility': 'visible'});
+                    $('#left_' + word_id).css({'visibility': 'visible'});
+                }
+        );
+        $('.labels').mouseleave(function () {
+            word_id = $(this).attr('name').match(/[0-9]+/);
+            console.log(word_id);
+            $('#right_' + word_id).css({'visibility': 'hidden'});
+            $('#left_' + word_id).css({'visibility': 'hidden'});
+        }
+        );
+
+        $('.leftlabel').click(function () {
+            $('.word.selected').popover('hide');
+            $('.word').removeClass('selected');
+            $('#right_' + word_id).css({'display': 'none'});
+            $('#left_' + word_id).css({'display': 'none'});
+            var category = $(this).parent().find('.category-label');
+            category.empty();
+            $('#' + word_id).addClass('selected');
+            $('#' + word_id).popover('show');
+            $('#' + word_id).removeClass('auto-annotated');
+        });
+
+        $('.rightlabel').click(function () {
+            $('.word.selected').popover('hide');
+            $('.word').removeClass('selected');
+            $('#right_' + word_id).css({'display': 'none'});
+            $('#left_' + word_id).css({'display': 'none'});
+            $('#' + word_id).addClass('selected');
+            $('#' + word_id).removeClass('auto-annotated');
+        });
         /* enable click on rows in categories tables */
         add_on_click_on_categories_table()
     }
@@ -310,5 +371,6 @@ $(document).ready(function () {
             this.nextElementSibling.classList.toggle("show");
         }
     }
+
     reload_javascript_on_words();
 });

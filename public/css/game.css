@@ -70,7 +70,12 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 }
 
 .auto-annotated {
-    color: #A75E0B !important;
+    color: #CF7864;
+}
+
+.alert-message {
+    color: red !important;
+    font-weight: bold;
 }
 
 .progress-bar {
@@ -250,6 +255,10 @@ button.accordion.active:after {
 .other-cat{
     font-weight: bold;
     color: #f35000;
+}
+
+.leftlabel,.rightlabel{
+    cursor: pointer;
 }
 
 

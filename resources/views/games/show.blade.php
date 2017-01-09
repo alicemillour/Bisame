@@ -34,14 +34,23 @@
                 <div class="pull-right">
                 </div>
             </h2>
+            <!--<h4 class="ostrich alert-message">Nouveau !</h4>-->
 
         </header>
         <hr>
         <div class="sentence-container" id="sentence-container"> 
             @foreach($sentences[$game->sentence_index]->words as $word)
-            <div class="word-container">
+            <div class="word-container" style="text-align:center">
+                @if( !empty($pretag) )
                 <div class="word" id="{{ $word->id }}" value="{{$word->value}}" tag="{{$pretag[$word->id]}}">{{ $word->value }}</div>
-                <div class="category-label"> </div>
+                @else
+                <div class="word" id="{{ $word->id }}" value="{{$word->value}}" tag="{{$pretag[$word->id]}}">{{ $word->value }}</div>
+                @endif
+                <div class="labels" style="text-align: center ; display:block" name="category-label[{{ $word->id }}]">
+                    <img class="leftlabel" id="left_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">
+                    <span class="category-label" > </span>
+                    <img class="rightlabel" id="right_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px;display: none" src="/images/check.png">
+                </div>
             </div>
             @endforeach
             <div class="progress" color="white">

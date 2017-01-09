@@ -75,15 +75,15 @@ class GameController extends Controller {
         $sentences = $game->sentences;
         $new_index = $game->sentence_index + 1;
         $progression = $new_index * 100 / 4;
-        $pretag = debug($postags);
         foreach ($postags as $postag) {
             $postag->description = html_entity_decode($postag->description);
             debug($postag->description);
         }
         debug($postags);
         /* sending pretag for first sentence */
-        $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[0]->id);
-
+        $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index - 1]->id);
+        debug("pretag");
+        debug($pretag);
         if ($sentences->count() == 0) {
             $no_sentence = true;
             return view('games.show', compact('no_sentence', 'sentences', 'game', 'progression', 'postags', 'pretag'));
@@ -182,7 +182,11 @@ class GameController extends Controller {
         $game->sentence_index = $new_index;
         $game->save();
         $sentence = $game->sentences[$new_index];
-        $pretag = $this->annotationRepository->get_pretag_by_sentence_id($sentence->id);
+        if ($new_index == 3) {
+            $pretag = null;
+        } else {
+            $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index]->id);
+        }
         return view('games.sentence', compact('game', 'sentence', 'game_everything_is_annotated', 'progression', 'pretag'));
     }
 
