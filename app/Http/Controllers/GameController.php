@@ -81,9 +81,11 @@ class GameController extends Controller {
         }
         debug($postags);
         /* sending pretag for first sentence */
-        $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index - 1]->id);
+        $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index-1]->id);
         debug("pretag");
-        debug($pretag);
+        if($pretag->count()==0){
+            $pretag=null;
+        }
         if ($sentences->count() == 0) {
             $no_sentence = true;
             return view('games.show', compact('no_sentence', 'sentences', 'game', 'progression', 'postags', 'pretag'));
