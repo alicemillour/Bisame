@@ -360,13 +360,20 @@ $(document).ready(function () {
             console.log("in click on categories table");
             var row = $(this).find('td:first');
             $('.selected').removeClass('is-in-error');
+            word_id = $('.selected').attr('id').match(/[0-9]+/);
+
             var category = $('.selected').parent().find('.category-label');
             var question = $('.selected').parent().find('.question-label');
             category.text(row.text().split(" ")[0]);
             category.attr('id', row.attr('id'));
             category.show();
+            category.removeClass('auto-annotated');
             question.css({'display': 'none'});
             $('.word.selected').popover('hide');
+
+            $('#right_' + word_id).css({'display': 'none'});
+            $('#left_' + word_id).css({'display': 'none'});
+
         });
 
     }
