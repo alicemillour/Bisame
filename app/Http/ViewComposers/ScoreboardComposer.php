@@ -19,18 +19,20 @@ use Illuminate\View\View;
  * @author alice
  */
 class ScoreboardComposer {
+
     //put your code here
     protected $userRepository;
     protected $annotationRepository;
 
     public function __construct(UserRepository $userRepository, AnnotationRepository $annotationRepository) {
-         $this->userRepository = $userRepository;
-         $this->annotationRepository = $annotationRepository;
+        $this->userRepository = $userRepository;
+        $this->annotationRepository = $annotationRepository;
     }
-    
+
     public function compose(View $view) {
 //        get_users_and_annotation_counts())
-            $view->with('users_score', $this->userRepository->get_best_users_by_real_score())
-                    ->with('users_quantity', $this->userRepository->get_best_users_by_quantity());
+        $view->with('users_score', $this->userRepository->get_best_users_by_real_score())
+                ->with('users_quantity', $this->userRepository->get_best_users_by_quantity());
     }
+
 }

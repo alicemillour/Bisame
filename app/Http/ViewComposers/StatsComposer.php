@@ -18,20 +18,22 @@ use Illuminate\View\View;
  * @author alice
  */
 class StatsComposer {
+
     //put your code here
     protected $wordRepository;
 
     public function __construct(WordRepository $wordRepository) {
-         $this->wordRepository = $wordRepository;
+        $this->wordRepository = $wordRepository;
     }
-    
+
     public function compose(View $view) {
 //        get_users_and_annotation_counts())
-            $view->with('ref_tokens', $this->wordRepository->get_number_tokens(true)['count'])
-                    ->with('ref_types', $this->wordRepository->get_number_types(true)['count'])
-            ->with('non_ref_tokens', $this->wordRepository->get_number_tokens(false)['count'])
-                    ->with('non_ref_types', $this->wordRepository->get_number_types(false)['count'])
-            ->with('total_tokens', $this->wordRepository->get_total_number_tokens()['count'])
-                    ->with('total_types', $this->wordRepository->get_total_number_types()['count']);
+        $view->with('ref_tokens', $this->wordRepository->get_number_tokens(true)['count'])
+                ->with('ref_types', $this->wordRepository->get_number_types(true)['count'])
+                ->with('non_ref_tokens', $this->wordRepository->get_number_tokens(false)['count'])
+                ->with('non_ref_types', $this->wordRepository->get_number_types(false)['count'])
+                ->with('total_tokens', $this->wordRepository->get_total_number_tokens()['count'])
+                ->with('total_types', $this->wordRepository->get_total_number_types()['count']);
     }
+
 }
