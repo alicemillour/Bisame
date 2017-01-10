@@ -191,6 +191,8 @@ $(document).ready(function () {
             $('#' + word_id).addClass('selected');
             $('#' + word_id).removeClass('auto-annotated');
             var category = $(this).parent().find('.category-label');
+            category.text($('#'+word_id).attr('tag'));  
+            category.attr('id', $('#'+word_id).attr('potential_tag_id'));
             category.removeClass('auto-annotated');
         });
         
@@ -416,8 +418,5 @@ $(document).ready(function () {
             this.nextElementSibling.classList.toggle("show");
         }
     }
-
-
-
     reload_javascript_on_words();
 });

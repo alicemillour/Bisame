@@ -94,31 +94,32 @@ class AnnotationRepository extends ResourceRepository {
 
         $collection_melt = collect();
         foreach ($melt_tags_array as $result) {
-            $collection_melt->put($result->word_id, $result->postag_id);
+            $collection_melt->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
         }
         $melt_tags = $collection_melt->toArray();
 
         $collection_tt = collect();
-        foreach ($treetagger_tags_array as $result) {
-            $collection_tt->put($result->word_id, $result->postag_id);
+        foreach ($treetagger_tags_array as $key => $result) {
+            $collection_tt->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
         }
         $treetagger_tags = $collection_tt->toArray();
-
+        debug("treetagger");
+        debug($treetagger_tags);
+        
         $collection_pretag = collect();
         foreach ($melt_tags as $key => $melt_tag) {
-//            debug($key);
             if ($melt_tag == $treetagger_tags[$key]) {
                 $collection_pretag->put($key, $melt_tag);
             } else {
                 $collection_pretag->put($key, null);
             }
-        }
-//        debug($collection_pretag[89808]);
+        }   
+        debug($collection_pretag);
         return $collection_pretag;
     }
 
     public function get_pretag_by_sentence_and_tagger($sentence_id, $tagger_name) {
-        return $this->annotation->select(DB::raw('words.id as word_id, postags.name as postag_id'))
+        return $this->annotation->select(DB::raw('words.id as word_id, postags.id as postag_id, postags.name as postag_name'))
                         ->join('words', 'words.id', '=', 'annotations.word_id')
                         ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
                         ->join('postags', 'postags.id', '=', 'annotations.postag_id')
@@ -138,21 +139,21 @@ class AnnotationRepository extends ResourceRepository {
 
     public function get_annotated_words($corpus_id) {
         return($this->annotation->select(DB::raw('words.id'))
-                ->join('words', 'words.id', '=', 'annotations.word_id')
-                ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
-                ->join('corpora', 'corpus_id', '=', 'corpora.id')
-                ->where('annotations.confidence_score', '<', '10')
-                ->where('corpus_id', '=', $corpus_id)
+                        ->join('words', 'words.id', '=', 'annotations.word_id')
+                        ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
+                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                        ->where('annotations.confidence_score', '<', '10')
+                        ->where('corpus_id', '=', $corpus_id)
 //                ->where('user_id', '>', '192')
-                ->get());
+                        ->get());
     }
-    
+
     public function count_annotable_words($corpus_id) {
         return($this->words->select(DB::raw('count(words.id) as count'))
-                ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
-                ->join('corpora', 'corpus_id', '=', 'corpora.id')
-                ->where('corpus_id', '=', $corpus_id)
-                ->first());
+                        ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
+                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                        ->where('corpus_id', '=', $corpus_id)
+                        ->first());
     }
 
 }

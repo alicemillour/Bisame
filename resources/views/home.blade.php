@@ -68,6 +68,7 @@
                                  aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
                             </div>
                         </div>
+                <br>
                         
                 </div>
                 <br>

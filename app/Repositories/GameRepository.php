@@ -31,8 +31,6 @@ class GameRepository extends ResourceRepository {
                 $sentences = $this->get_sentences_from_orthal();
             } else {
                 $sentences = $this->get_sentences($user_id);
-                debug("count");
-                debug($sentences->count());
             }
             if ($sentences->count() == 0) {
                 $this->save($game, $inputs);

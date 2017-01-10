@@ -54,7 +54,8 @@
             @foreach($sentences[$game->sentence_index]->words as $word)
             <div class="word-container" style="text-align:center">
                 @if($pretag)
-                <div class="word" id="{{ $word->id }}" value="{{$word->value}}" tag="{{$pretag[$word->id]}}">{{ $word->value }}</div>
+                <!--potential_tag_id="$pretag[$word->id]"-->
+                <div class="word" id="{{ $word->id }}" value="{{$word->value}}" potential_tag_id="{{$pretag[$word->id]['postag_id']}}" tag="{{$pretag[$word->id]['postag_name']}}">{{ $word->value }}</div>
                 @else
                 <div class="word" id="{{ $word->id }}" value="{{$word->value}}" tag="">{{ $word->value }}</div>
                 @endif
