@@ -72,7 +72,7 @@ $(document).ready(function () {
             }
         });
     });
-    
+
     function reload_javascript_on_words() {
         console.log("reload");
         console.log("loading postags");
@@ -157,7 +157,6 @@ $(document).ready(function () {
         }
         );
 
-
         $('.question-label').click(function () {
             $('.word.selected').popover('hide');
             $('.word').removeClass('selected');
@@ -194,8 +193,26 @@ $(document).ready(function () {
             var category = $(this).parent().find('.category-label');
             category.removeClass('auto-annotated');
         });
+        
         /* enable click on rows in categories tables */
         add_on_click_on_categories_table()
+//        $('#tags').on('keyup', function (e) {
+//            var tagElems = $('#tag-help').children(".panel");
+//            console.log("tagElems");
+//            console.log(tagElems);
+//            for (var i = 0; i < tagElems.length; i++) {
+//                var look = "<b>" + $(this).val().toLowerCase() + "</b>";
+//                var panel_content = $(tagElems).eq(i).text().toLowerCase();
+//                if (panel_content.search(look) !== -1) {
+//                    console.log(look);
+//                    console.log(panel_content);
+//                    console.log(panel_content.search(look));
+//                    panel_to_show = $(tagElems).eq(i);
+//                }
+//            }
+//            panel_to_show.collapse("show");
+//
+//        });
     }
     ;
     function render_correction(answers) {
@@ -399,6 +416,8 @@ $(document).ready(function () {
             this.nextElementSibling.classList.toggle("show");
         }
     }
+
+
 
     reload_javascript_on_words();
 });

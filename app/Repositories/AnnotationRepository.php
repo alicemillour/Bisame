@@ -3,12 +3,14 @@
 namespace App\Repositories;
 
 use App\Models\Annotation;
+use App\Models\Word;
 use Illuminate\Support\Facades\DB;
 
 class AnnotationRepository extends ResourceRepository {
 
-    public function __construct(Annotation $annotation) {
+    public function __construct(Annotation $annotation, Word $words) {
         $this->annotation = $annotation;
+        $this->words = $words;
     }
 
     private function save(Annotation $annotation, Array $inputs) {
@@ -87,7 +89,6 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_pretag_by_sentence_id($sentence_id) {
-
         $melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
         $treetagger_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "TreeTagger");
 
@@ -124,6 +125,34 @@ class AnnotationRepository extends ResourceRepository {
                         ->where('sentence_id', '=', $sentence_id)
                         ->where('annotations.tagger', 'like', $tagger_name)
                         ->get();
+    }
+
+    public function get_unannotated_words($corpus_id) {
+        return $this->words->select(DB::raw('count(words.id) as count'))
+                        ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
+                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                        ->where('corpus_id', '=', $corpus_id)
+                        ->whereNotIn('words.id', $this->get_annotated_words($corpus_id))
+                        ->first();
+    }
+
+    public function get_annotated_words($corpus_id) {
+        return($this->annotation->select(DB::raw('words.id'))
+                ->join('words', 'words.id', '=', 'annotations.word_id')
+                ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->where('annotations.confidence_score', '<', '10')
+                ->where('corpus_id', '=', $corpus_id)
+//                ->where('user_id', '>', '192')
+                ->get());
+    }
+    
+    public function count_annotable_words($corpus_id) {
+        return($this->words->select(DB::raw('count(words.id) as count'))
+                ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->where('corpus_id', '=', $corpus_id)
+                ->first());
     }
 
 }

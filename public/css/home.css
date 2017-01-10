@@ -149,7 +149,10 @@
     margin: 0 auto;
 }
 
-
+.alert-message {
+    color: red !important;
+    font-weight: bold;
+}
 #scoreboard {
     background-color: rgba(249, 242, 236, 0.4);
     -webkit-hyphens: auto;

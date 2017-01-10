@@ -3,12 +3,14 @@
 namespace App\Repositories;
 
 use App\Models\Word;
+use App\Models\Sentence;
 use Illuminate\Support\Facades\DB;
 
 class WordRepository extends ResourceRepository {
 
-    public function __construct(Word $word) {
+    public function __construct(Word $word,Sentence $sentence) {
         $this->word = $word;
+        $this->sentence = $sentence;
     }
 
     public function getByWordId($word_id) {
@@ -34,5 +36,16 @@ class WordRepository extends ResourceRepository {
     
     public function get_total_number_types() {
         return($this->word->select(DB::raw('count(distinct(value)) as count'))->first());
+    }
+    public function get_words_number($corpus_id) {
+        return($this->word->select(DB::raw('count(words.id) as count'))
+                ->join('sentences', 'sentence_id', '=', 'sentences.id')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->where('corpora.id','=',$corpus_id)->first());
+    }
+    public function get_sentences_number($corpus_id) {
+        return($this->sentence->select(DB::raw('count(sentences.id) as count'))
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->where('corpora.id','=',$corpus_id)->first());
     }
 }

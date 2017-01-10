@@ -20,15 +20,20 @@ class GameRepository extends ResourceRepository {
     }
 
     public function store(Array $inputs) {
+        debug("store");
         if (Auth::check()) {
+            debug("auth checked");
+
             $user_id = Auth::user()->id;
             debug($user_id);
             $game = new $this->game;
-//            if ($user_id == 1202) {
-//                $sentences = $this->get_sentences_from_orthal();
-//            } else {
+            if ($user_id == 1202) {
+                $sentences = $this->get_sentences_from_orthal();
+            } else {
                 $sentences = $this->get_sentences($user_id);
-//            }
+                debug("count");
+                debug($sentences->count());
+            }
             if ($sentences->count() == 0) {
                 $this->save($game, $inputs);
                 $game->sentences()->attach($sentences);
@@ -80,13 +85,13 @@ class GameRepository extends ResourceRepository {
         /* forces user to annotate on sentences he has'nt annotated yet */
         $id_annotated_sentences = Sentence::select(DB::raw('sentences.id'))->join('words', 'sentences.id', '=', 'words.sentence_id')->join('annotations', 'annotations.word_id', '=', 'words.id')
                         ->whereRaw("annotations.user_id=? AND annotations.confidence_score<10 AND annotations.confidence_score is not NULL", Array($user_id))->get();
+        
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 0)
                         ->where('corpora.is_active', 1)
                         ->whereNotIn('sentences.id', $id_annotated_sentences)
                         ->get();
-        
     }
 
     protected function get_sentences_from_orthal($user_id) {

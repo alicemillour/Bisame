@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider {    //put your code here
         view()->composer('partials.scoreboard', 'App\Http\ViewComposers\ScoreboardComposer');
         view()->composer('contact', 'App\Http\ViewComposers\ContactComposer');
         view()->composer('stats.show', 'App\Http\ViewComposers\StatsComposer');
+        view()->composer('home', 'App\Http\ViewComposers\HomeComposer');
     }
 
     /**

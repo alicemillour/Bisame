@@ -30,11 +30,23 @@
             <h4> Bienvenue dans le mode Jeu ! Ici, nous ne corrigeons pas vos réponses. Vos points seront mis à jour à la fin de la séquence de quatre phrases. </h4>
             @endif
 
+
+
             <h2 class="ostrich">Cliquez sur les mots pour leur assigner une categorie grammaticale
                 <div class="pull-right">
                 </div>
             </h2>
-            <!--<h4 class="ostrich alert-message">Nouveau !</h4>-->
+            @if($game['type']=='training')
+            @else
+            <h4><span class="ostrich alert-message"><u>Nouveau</u> : </span>  Des catégories vous sont parfois suggérées
+                (en <span class="auto-annotated" style="font-size: 0.8em"> ROUGE </span>) vous devez les valider 
+                (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/check.png">)
+                ou les corriger (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">).
+                Les mots sans catégorie ( <img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/question.png">   ) restent à annoter. <br>
+                En cas de doute, consultez-le rappel sur les catégories à droite ou 
+                <a style="color:#AC1E44;" href="mailto:alice.millour@abtela.eu?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a> !
+            </h4>
+            @endif
 
         </header>
         <hr>
@@ -112,17 +124,19 @@
     <div class="main-footer">
         <h3> Rappel sur les catégories </h3>
         <div class="fancy-border footer-container" >
-
+            <!--<input id="tags" />-->
+            <div class="panel-group" id="tag-help">
             @foreach($postags as $postag)
 
             <button class="accordion" > {{ $postag->name }} ({{ $postag->full_name }})</button>
-            <div class="panel semi-transparent">
+            <div class="panel more-transparent">
                 <h4> Quelques exemples :  </h4>
                 <div style="text-align : left">
                     {!! $postag->description !!}
                 </div>
             </div>
             @endforeach
+        </div>
         </div>
     </div>
 </div> 
