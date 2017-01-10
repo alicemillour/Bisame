@@ -53,15 +53,15 @@
                 <div class="fancy-border" style="background-color:rgba(249, 242, 236, 0.4)">
                     <h4><span class="ostrich alert-message"><u>Nouveau </u> ! <br><br>
                         </span>  Les outils créés grâce aux annotations produites jusqu'à maintenant nous  <br>
-                        permettent de faciliter le processus d'annotation en vous proposant une catégorie probable. <br>
+                        rendent plus facile l'annotation en vous proposant une catégorie probable. <br>
                         Validez-les (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/check.png">)
                         ou corrigez-les (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">) dans la phase de production d'annotations ! </h4>
-                    <br>
+
                     <h4><span class="ostrich alert-message"><u>Nouveau Corpus</u> : <br> </span><br>
                         En ce moment, le Vautour est à l'honneur
                         (<a href="https://als.wikipedia.org/wiki/Altweltgeier" style="color:black"  target="_blank" >article Wikipédia</a>) : <br>
                         <!--Il reste : <b> ? phrases à annoter sur {{$total_sentences->count}}, </b>--> 
-                        <br> Il reste <b> {{$unannotated_words->count}} mots à annoter sur {{$total_words->count}}</b>. <br><br>
+                        <br> Il reste <b> {{$unannotated_words->count}} mots à annoter (ensemble !)</b>. <br><br>
                         
                         <div class="progress" style="width:80%; margin: 0 auto">
                             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{$progression}}"
