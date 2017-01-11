@@ -61,6 +61,8 @@ class PostagRepository extends ResourceRepository {
 
     public function getReferenceForWordId($word_id) {
         $postags = $this->getDatabaseRequestPostagsForWordId($word_id)->get();
+        debug("annotations");
+        debug($postags);
         return $postags[0];
     }
 
@@ -70,7 +72,7 @@ class PostagRepository extends ResourceRepository {
                 ->select(DB::raw('postag_id as id, name, full_name, description'))
                 ->distinct()
                 ->where('word_id', $word_id)
-                ->orderBy('confidence_score', 'asc');
+                ->orderBy('confidence_score', 'desc');
         return $annotations;
     }
 
