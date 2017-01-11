@@ -101,7 +101,8 @@ class TrainingController extends GameController {
       $game->save();
       $sentence = $game->sentences[$new_index];
       $game_everything_is_annotated = false;
-      return view('games.sentence', compact('sentence','game','game_everything_is_annotated','progression'));
+      $pretag=null;
+      return view('games.sentence', compact('sentence','game','game_everything_is_annotated','progression','pretag'));
     }
   }
 }
