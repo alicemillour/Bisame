@@ -70,7 +70,7 @@ class PostagRepository extends ResourceRepository {
                 ->select(DB::raw('postag_id as id, name, full_name, description'))
                 ->distinct()
                 ->where('word_id', $word_id)
-                ->where('confidence_score', '=', '100');
+                ->orderBy('confidence_score', 'desc');
         return $annotations;
     }
 
