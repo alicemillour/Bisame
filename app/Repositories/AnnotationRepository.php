@@ -151,13 +151,13 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_distinct_annotated_words($corpus_id) {
-        return($this->annotation->select(DB::raw('words.id'))
+        return($this->annotation->select(DB::raw('distinct(words.id)'))
                         ->join('words', 'words.id', '=', 'annotations.word_id')
                         ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('annotations.confidence_score', '<', '10')
                         ->where('corpus_id', '=', $corpus_id)
-//                ->where('user_id', '>', '192')
+                ->where('user_id', '>', '192')
                         ->get());
     }
 
