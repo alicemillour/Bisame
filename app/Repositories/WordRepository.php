@@ -43,6 +43,12 @@ class WordRepository extends ResourceRepository {
                 ->join('corpora', 'corpus_id', '=', 'corpora.id')
                 ->where('corpora.id','=',$corpus_id)->first());
     }
+    public function get_types_number($corpus_id) {
+        return($this->word->select(DB::raw('count(distinct(words.value)) as count'))
+                ->join('sentences', 'sentence_id', '=', 'sentences.id')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->where('corpora.id','=',$corpus_id)->first());
+    }
     public function get_sentences_number($corpus_id) {
         return($this->sentence->select(DB::raw('count(sentences.id) as count'))
                 ->join('corpora', 'corpus_id', '=', 'corpora.id')

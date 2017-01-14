@@ -36,7 +36,7 @@ class HomeComposer {
 //        get_users_and_annotation_counts())
         debug($this->annotationRepository->get_unannotated_words(323));
         
-        $progression = $this->annotationRepository->get_annotated_words(323)->count() * 100 / $this->annotationRepository->count_annotable_words(323)->count;
+        $progression = $this->annotationRepository->get_distinct_annotated_words(323)->count() * 100 / $this->annotationRepository->count_annotable_words(323)->count;
         
         $view
                 ->with('total_sentences', $this->wordRepository->get_sentences_number(323))

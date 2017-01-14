@@ -65,7 +65,7 @@ class PostagRepository extends ResourceRepository {
                 ->distinct()
                 ->where('word_id', $word_id)
                 ->where('confidence_score', '=','100')->first();
-        return $annotations;
+        return $annotations;    
     }
 
     private function getDatabaseRequestPostagsForWordId($word_id) {

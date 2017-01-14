@@ -25,7 +25,8 @@
 
             @else
             @if($game['type']=='training')
-            <h4> Bienvenue dans le mode Entraînement ! Ici, vous pouvez vérifier vos réponses au fur et à mesure. </h4>
+            <h4> Bienvenue dans le mode Entraînement !  <br>
+                Pour passer à la phrase suivante, vous devez avoir trouvé les bonnes catégories pour tous les mots.</h4>
             @else
             <h4> Bienvenue dans le mode Jeu ! Ici, nous ne corrigeons pas vos réponses. Vos points seront mis à jour à la fin de la séquence de quatre phrases. </h4>
             @endif
