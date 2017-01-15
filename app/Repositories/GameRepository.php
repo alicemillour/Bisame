@@ -81,9 +81,8 @@ class GameRepository extends ResourceRepository {
 
     protected function get_sentences($user_id) {
         /* forces user to annotate on sentences he has'nt annotated yet */
-        /* UPDATE : forces to annotate unannotated sentences */
         $id_annotated_sentences = Sentence::select(DB::raw('sentences.id'))->join('words', 'sentences.id', '=', 'words.sentence_id')->join('annotations', 'annotations.word_id', '=', 'words.id')
-                        ->whereRaw("annotations.confidence_score<10 AND annotations.confidence_score is not NULL")->get();
+                        ->whereRaw("annotations.user_id=? AND annotations.confidence_score<10 AND annotations.confidence_score is not NULL", Array($user_id))->get();
         
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
