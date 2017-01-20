@@ -37,7 +37,7 @@ class HomeComposer {
         debug($this->annotationRepository->get_unannotated_words(323));
         
         $progression = $this->annotationRepository->get_distinct_annotated_words(323)->count() * 100 / $this->annotationRepository->count_annotable_words(323)->count;
-        $progression_hoch = $this->annotationRepository->get_distinct_annotated_words(324)->count() * 100 / $this->annotationRepository->count_annotable_words(324)->count;
+        $progression_hoch = $this->annotationRepository->get_distinct_annotated_words(325)->count() * 100 / $this->annotationRepository->count_annotable_words(325)->count;
         
         $view
                 ->with('total_sentences', $this->wordRepository->get_sentences_number(323))
@@ -45,10 +45,10 @@ class HomeComposer {
                 ->with('progression', $progression)
                 ->with('unannotated_words', $this->annotationRepository->get_unannotated_words(323))
                 
-                ->with('total_sentences_Hoch', $this->wordRepository->get_sentences_number(324))
-                ->with('total_words_Hoch', $this->wordRepository->get_words_number(324))
+                ->with('total_sentences_Hoch', $this->wordRepository->get_sentences_number(325))
+                ->with('total_words_Hoch', $this->wordRepository->get_words_number(325))
                 ->with('progression_Hoch', $progression_hoch)
-                ->with('unannotated_words_Hoch', $this->annotationRepository->get_unannotated_words(324));
+                ->with('unannotated_words_Hoch', $this->annotationRepository->get_unannotated_words(325));
     }
 
 }

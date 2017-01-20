@@ -11,7 +11,7 @@ class WordTableSeeder extends CsvSeeder {
         $this->words_table = 'words';
         $this->sentences_table = 'sentences';
 //         $this->filename = base_path() . '/database/seeds/csvs/words.csv';
-        $this->filename = base_path() . '/database/seeds/csvs/words_weiss.csv';
+        $this->filename = base_path() . '/database/seeds/csvs/words_wikipedia-janvier.csv';
         $this->csv_delimiter = ";";
     }
 

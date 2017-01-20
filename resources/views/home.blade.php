@@ -69,11 +69,16 @@
                             </div>
                         </div>
                         <br>
-                        
-                        <span class="ostrich alert-message"><u>Nouveau Corpus</u> : <br> </span><br>
-                        
-                        Un nouveau texte de Raymond Weissenburger, <i>E Hochzit in de 50er Johre</i> est disponible !<br>
-                        (Le texte complet est disponible <a href="/textes"  style="color:black"  target="_blank" >ici, rubrique Œuvres Littéraires</a>)
+
+                        <span class="ostrich alert-message"><u>Nouveaux Corpus</u> : <br> </span><br>
+
+<!--                        Un nouveau texte de Raymond Weissenburger, <i>E Hochzit in de 50er Johre</i> est disponible !<br>
+(Le texte complet est disponible <a href="/textes"  style="color:black"  target="_blank" >ici, rubrique Œuvres Littéraires</a>)
+                        -->
+                        De nouveaux articles sont disponibles : (<a href="https://als.wikipedia.org/wiki/Tony_Troxler" style="color:black"  target="_blank" >Tony Troxler</a>, 
+                        <a href="https://als.wikipedia.org/wiki/Kernkraftwerk_Fessenheim" style="color:black"  target="_blank" >Àtomkràftwark vu Fassena</a> et 
+                        <a href="https://als.wikipedia.org/wiki/Delphine_Wespiser" style="color:black"  target="_blank" >Delphine Wespiser</a>)
+                        <br>
                         <br> Il reste <b> {{$unannotated_words_Hoch->count}} mots à annoter </b> (ensemble !). <br><br>
 
                         <div class="progress" style="width:80%; margin: 0 auto">
