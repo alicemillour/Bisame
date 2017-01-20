@@ -57,19 +57,34 @@
                         Validez-les (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/check.png">)
                         ou corrigez-les (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">) dans la phase de production d'annotations ! </h4>
 
-                    <h4><span class="ostrich alert-message"><u>Nouveau Corpus</u> : <br> </span><br>
+                    <h4>
                         En ce moment, le Vautour est à l'honneur
                         (<a href="https://als.wikipedia.org/wiki/Altweltgeier" style="color:black"  target="_blank" >article Wikipédia</a>) : <br>
                         <!--Il reste : <b> ? phrases à annoter sur {{$total_sentences->count}}, </b>--> 
-                        <br> Il reste <b> {{$unannotated_words->count}} mots à annoter (ensemble !)</b>. <br><br>
-                        
+                        <br> Il reste <b> {{$unannotated_words->count}} mots à annoter (ensemble)</b>. <br><br>
+
                         <div class="progress" style="width:80%; margin: 0 auto">
                             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{$progression}}"
                                  aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
                             </div>
                         </div>
-                <br>
+                        <br>
                         
+                        <span class="ostrich alert-message"><u>Nouveau Corpus</u> : <br> </span><br>
+                        
+                        Un nouveau texte de Raymond Weissenburger, <i>E Hochzit in de 50er Johre</i> est disponible !<br>
+                        
+                        <br> Il reste <b> {{$unannotated_words_Hoch->count}} mots à annoter (ensemble)</b>. <br><br>
+
+                        <div class="progress" style="width:80%; margin: 0 auto">
+                            <div class="progress-bar progress-bar-alert" role="progressbar" aria-valuenow="{{$progression_Hoch}}"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:{{$progression_Hoch}}%">
+                            </div>
+                        </div>
+                        <br>
+                    </h4>
+
+
                 </div>
                 <br>
 

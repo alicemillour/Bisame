@@ -71,26 +71,25 @@ class GameController extends Controller {
 
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
+                debug("GAME");
+        debug($game);
         $this->authorize($game);
         $sentences = $game->sentences;
         $new_index = $game->sentence_index + 1;
         $progression = $new_index * 100 / 4;
         foreach ($postags as $postag) {
             $postag->description = html_entity_decode($postag->description);
-            debug($postag->description);
         }
-        debug($postags);
-        /* sending pretag for first sentence */
-        $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index - 1]->id);
-        debug("pretag");
-        if ($pretag->count() == 0) {
-            $pretag = null;
-        }
+
         if ($sentences->count() == 0) {
             $no_sentence = true;
             return view('games.show', compact('no_sentence', 'sentences', 'game', 'progression', 'postags', 'pretag'));
         } else {
-            debug($sentences);
+            /* sending pretag for first sentence */
+            $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index - 1]->id);
+            if ($pretag->count() == 0) {
+                $pretag = null;
+            }
             $no_sentence = false;
             return view('games.show', compact('no_sentence', 'sentences', 'game', 'progression', 'postags', 'pretag'));
         }
