@@ -61,7 +61,7 @@
                         En ce moment, le Vautour est à l'honneur
                         (<a href="https://als.wikipedia.org/wiki/Altweltgeier" style="color:black"  target="_blank" >article Wikipédia</a>) : <br>
                         <!--Il reste : <b> ? phrases à annoter sur {{$total_sentences->count}}, </b>--> 
-                        <br> Il reste <b> {{$unannotated_words->count}} mots à annoter (ensemble)</b>. <br><br>
+                        <br> Il reste <b> {{$unannotated_words->count}} mots à annoter</b> (ensemble !). <br><br>
 
                         <div class="progress" style="width:80%; margin: 0 auto">
                             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{$progression}}"
@@ -73,8 +73,8 @@
                         <span class="ostrich alert-message"><u>Nouveau Corpus</u> : <br> </span><br>
                         
                         Un nouveau texte de Raymond Weissenburger, <i>E Hochzit in de 50er Johre</i> est disponible !<br>
-                        
-                        <br> Il reste <b> {{$unannotated_words_Hoch->count}} mots à annoter (ensemble)</b>. <br><br>
+                        (Le texte complet est disponible <a href="/textes"  style="color:black"  target="_blank" >ici, rubrique Œuvres Littéraires</a>)
+                        <br> Il reste <b> {{$unannotated_words_Hoch->count}} mots à annoter </b> (ensemble !). <br><br>
 
                         <div class="progress" style="width:80%; margin: 0 auto">
                             <div class="progress-bar progress-bar-alert" role="progressbar" aria-valuenow="{{$progression_Hoch}}"

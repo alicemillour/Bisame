@@ -70,6 +70,13 @@
                             <ul>@include('partials.gerard1')</ul>
                         </div>
                     </li>
+                    <br>
+                    <li> 
+                        <button class="accordion accordion-second" >﻿<i> E Hochzit in de 50er Johre </i> - Raymond Weissenburger</button>
+                        <div style="white-space: pre-wrap" class="panel semi-transparent ">
+                            <ul>@include('partials.raymond')</ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="semi-transparent"> <br> </div>
