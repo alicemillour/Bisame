@@ -31,7 +31,7 @@
         <div>
             <h2> Annotations </h2>
             Total annotations produites par les utilisateurs : {{$total_annotations}} <br>
-            Total annotations produites par les utilisateurs sur du corpus inconnu : {{$total_annotations_not_reference}} correspond à {{$total_phrases_non_reference}} phrases.
+            Total annotations produites par les utilisateurs sur du corpus inconnu : {{$total_annotations_not_reference}} correspond à {{$total_phrases_non_reference}} phrases soit {{$total_distinct_words_annotated}} words.
 
         </div>
         <div>

@@ -81,17 +81,18 @@ class GameRepository extends ResourceRepository {
 
     protected function get_sentences($user_id) {
         /* forces user to annotate on sentences he has'nt annotated yet */
-        $id_annotated_sentences = Sentence::select(DB::raw('sentences.id'))
+        $id_annotated_sentences = Sentence::select(DB::raw('sentences.id, count(distinct(users.id)) as count_user '))
                     ->join('words', 'sentences.id', '=', 'words.sentence_id')
                     ->join('annotations', 'annotations.word_id', '=', 'words.id')
-                    ->whereRaw("annotations.confidence_score<10", Array($user_id))
-                ->get();
-        return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
-                        ->select('sentences.*')
-                        ->where('corpora.is_training', 0)
+                    ->join('users', 'users.id', '=', 'annotations.user_id')
+                    ->join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
+                        ->where('corpora.is_training', 0)   
                         ->where('corpora.is_active', 1)
-                        ->whereNotIn('sentences.id', $id_annotated_sentences)
-                        ->get();
+                    ->whereRaw("annotations.confidence_score<10")
+                    ->groupBy('sentences.id')
+                    ->having('count_user','<','2')
+                    ->get();
+        return $id_annotated_sentences;
     }
 
     protected function get_sentences_from_orthal($user_id) {

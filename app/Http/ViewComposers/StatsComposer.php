@@ -41,8 +41,8 @@ class StatsComposer {
                 ->with('sentences_323', $this->wordRepository->get_sentences_number(323)['count'])
                 ->with('total_annotations', $this->annotationRepository->get_total_annotations()['count'])
                 ->with('total_annotations_not_reference', $this->annotationRepository->get_total_annotations_not_reference()['count'])
+                ->with('total_distinct_words_annotated', $this->annotationRepository->get_total_words_annotated()['count'])
                 ->with('total_phrases_non_reference', $this->annotationRepository->get_total_sentences_annotated_not_reference()['count'])
                 ->with('total_types', $this->wordRepository->get_total_number_types()['count']);
     }
-
 }

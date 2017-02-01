@@ -21,7 +21,12 @@ class WordRepository extends ResourceRepository {
         return($this->word->select(DB::raw('count(words.id) as count'))
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
-                        ->where('corpora.is_training','=',$corpus_is_training)->first());
+                        ->where('corpora.is_training','=',$corpus_is_training)
+                
+                        ->where('corpora.id', '!=',324)
+                        ->where('corpora.id', '!=',322)
+                
+                ->first());
     }
     
     public function get_number_types($corpus_is_training) {

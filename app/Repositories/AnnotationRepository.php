@@ -175,6 +175,12 @@ class AnnotationRepository extends ResourceRepository {
                         ->first());
     }
 
+        public function get_total_words_annotated() {
+        return($this->annotation->select(DB::raw('count(distinct(annotations.word_id)) as count'))
+                        ->where('user_id', '>', 202)
+                        ->first());
+    }
+    
     public function get_total_annotations_not_reference() {
         return($this->annotation->select(DB::raw('count(annotations.id) as count'))
                         ->join('words', 'words.id', '=', 'annotations.word_id')
