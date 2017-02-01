@@ -90,9 +90,14 @@ class GameRepository extends ResourceRepository {
                         ->where('corpora.is_active', 1)
                     ->whereRaw("annotations.confidence_score<10")
                     ->groupBy('sentences.id')
-                    ->having('count_user','<','2')
+                    ->having('count_user','>','2')
                     ->get();
-        return $id_annotated_sentences;
+        return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
+                        ->select('sentences.*')
+                        ->where('corpora.is_training', 0)
+                        ->where('corpora.is_active', 1)
+                        ->whereNotIn('sentences.id', $id_annotated_sentences)
+                        ->get();
     }
 
     protected function get_sentences_from_orthal($user_id) {
