@@ -110,9 +110,7 @@ class GameController extends Controller {
         $current_sentence = $game->sentences[$game->sentence_index];
         $new_index = $game->sentence_index + 1;
         $progression = ($new_index + 1) * 100 / 4;
-        debug($current_sentence->id);
         if ($current_sentence->is_training()) {
-            debug("sentence is training");
             /* creation of annotation on reference sentence */
             $this->create_annotations($request->input('annotations'), $current_sentence);
             /* update user confidence score */
@@ -158,7 +156,6 @@ class GameController extends Controller {
                     /* else annotation.confidence_score is set to user.score */
                     $confidence_score = $current_user->score;
                 }
-                debug($confidence_score);
                 if ($postag_id && $word_id) {
                     $annotation = $this->annotationRepository->store(['user_id' => $current_user->id,
                         'word_id' => $word_id, 'postag_id' => $postag_id, 'confidence_score' => $confidence_score]);

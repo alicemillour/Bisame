@@ -18,9 +18,11 @@
             Word tokens : {{$total_tokens}}
             Word types : {{$total_types}}
             <h3>Données de référence</h3>
+            Sentences : {{$ref_sentences}}
             Word tokens : {{$ref_tokens}}
             Word types : {{$ref_types}}
             <h3>Données brutes</h3>
+            Sentences : {{$not_ref_sentences}}
             Word tokens : {{$non_ref_tokens}}
             Word types : {{$non_ref_types}}
             <h3>Corpus Altweiger</h3>
@@ -31,7 +33,9 @@
         <div>
             <h2> Annotations </h2>
             Total annotations produites par les utilisateurs : {{$total_annotations}} <br>
-            Total annotations produites par les utilisateurs sur du corpus inconnu : {{$total_annotations_not_reference}} correspond à {{$total_phrases_non_reference}} phrases soit {{$total_distinct_words_annotated}} words.
+            Total annotations produites par les utilisateurs sur du corpus inconnu : {{$total_annotations_not_reference}} correspond à {{$total_phrases_non_reference}} phrases soit {{$total_distinct_words_annotated_not_ref}} words.
+            <br>
+            Total annotations produites par les utilisateurs sur du corpus de ref : {{$total_annotations_reference}} correspond à {{$total_phrases_reference}} phrases soit {{$total_distinct_words_annotated_ref}} words.
 
         </div>
         <div>

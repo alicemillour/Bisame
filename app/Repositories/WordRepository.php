@@ -22,10 +22,8 @@ class WordRepository extends ResourceRepository {
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('corpora.is_training','=',$corpus_is_training)
-                
                         ->where('corpora.id', '!=',324)
                         ->where('corpora.id', '!=',322)
-                
                 ->first());
     }
     
@@ -33,6 +31,14 @@ class WordRepository extends ResourceRepository {
         return($this->word->select(DB::raw('count(distinct(value)) as count'))
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                        ->where('corpora.is_training','=',$corpus_is_training)->first());
+    }
+    public function get_number_sentences($corpus_is_training) {
+        return($this->word->select(DB::raw('count(distinct(sentences.id)) as count'))
+                        ->join('sentences', 'sentence_id', '=', 'sentences.id')
+                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                        ->where('corpora.id', '!=',324)
+                        ->where('corpora.id', '!=',322)
                         ->where('corpora.is_training','=',$corpus_is_training)->first());
     }
     public function get_total_number_tokens() {

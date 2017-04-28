@@ -43,8 +43,7 @@ class HomeComposer {
                 ->with('total_sentences', $this->wordRepository->get_sentences_number(323))
                 ->with('total_words', $this->wordRepository->get_words_number(323))
                 ->with('progression', $progression)
-                ->with('unannotated_words', $this->annotationRepository->get_unannotated_words(323))
-                
+                ->with('unannotated_words', $this->annotationRepository->get_unannotated_words(323))                
                 ->with('total_sentences_Hoch', $this->wordRepository->get_sentences_number(325))
                 ->with('total_words_Hoch', $this->wordRepository->get_words_number(325))
                 ->with('progression_Hoch', $progression_hoch)
