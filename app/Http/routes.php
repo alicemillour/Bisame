@@ -38,6 +38,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home/training', 'TrainingController@store');
     Route::get('/postags', 'PostagController@index');
     Route::get('/textes', 'TexteController@index');
+    Route::resource('corpora', 'CorporaController');
     Route::get('/stats', 'StatsController@index');
     Route::get('contact', 'ContactController@showForm');
     Route::post('contact', 'ContactController@sendContactInfo');
