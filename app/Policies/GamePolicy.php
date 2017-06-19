@@ -31,7 +31,7 @@ class GamePolicy
 
     public function update(User $user, Game $game)
     {
-        return $user->id === $game->user_id;
+        return $user->id == $game->user_id;
     }
 
     /**
@@ -44,6 +44,6 @@ class GamePolicy
 
     public function show(User $user, Game $game)
     {
-        return $user->id === $game->user_id;
+        return $user->id == $game->user_id;
     }
 }

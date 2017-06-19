@@ -31,11 +31,14 @@
             Sentences : {{$sentences_323}}
         </div>
         <div>
+            <h2> {{$days_of_annotation}} jours d'annotation </h2>
             <h2> Annotations </h2>
             Total annotations produites par les utilisateurs : {{$total_annotations}} <br>
             Total annotations produites par les utilisateurs sur du corpus inconnu : {{$total_annotations_not_reference}} correspond à {{$total_phrases_non_reference}} phrases soit {{$total_distinct_words_annotated_not_ref}} words.
             <br>
             Total annotations produites par les utilisateurs sur du corpus de ref : {{$total_annotations_reference}} correspond à {{$total_phrases_reference}} phrases soit {{$total_distinct_words_annotated_ref}} words.
+            <h2> {{$trained_user}} participants ont finalisé la phase d'entraînement </h2>
+            <h2> {{$participant}} participants ont produit des annotations </h2>
 
         </div>
         <div>

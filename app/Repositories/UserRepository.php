@@ -73,6 +73,12 @@ class UserRepository extends ResourceRepository {
     public function get_user_count() {
         return User::select(DB::raw('count(*) as count'))->first();
     }
+    public function get_not_training_count() {
+        return User::select(DB::raw('count(*) as count'))->where('is_in_training', '=', '0')->first();
+    }
+    public function get_participant_count() {
+        return User::select(DB::raw('count(*) as count'))->where('score', '!=', '0')->first();
+    }
 
     public function destroy($id) {
         $this->getById($id)->delete();

@@ -9,6 +9,7 @@
 namespace App\Http\ViewComposers;
 
 use App\Repositories\WordRepository;
+use App\Repositories\UserRepository;
 use App\Repositories\AnnotationRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -23,10 +24,12 @@ class StatsComposer {
     //put your code here
     protected $wordRepository;
     protected $annotationRepository;
+    protected $userRepository;
 
-    public function __construct(WordRepository $wordRepository, AnnotationRepository $annotationRepository) {
+    public function __construct(WordRepository $wordRepository, AnnotationRepository $annotationRepository, UserRepository $userRepository) {
         $this->wordRepository = $wordRepository;
         $this->annotationRepository = $annotationRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function compose(View $view) {
@@ -41,6 +44,9 @@ class StatsComposer {
                 ->with('words_323', $this->wordRepository->get_words_number(323)['count'])
                 ->with('types_323', $this->wordRepository->get_types_number(323)['count'])
                 ->with('sentences_323', $this->wordRepository->get_sentences_number(323)['count'])
+                ->with('days_of_annotation', $this->annotationRepository->get_days_of_annotation()['count'])
+                ->with('trained_user', $this->userRepository->get_not_training_count()['count'])
+                ->with('participant', $this->userRepository->get_participant_count()['count'])
                 ->with('total_annotations', $this->annotationRepository->get_total_annotations()['count'])
                 ->with('total_annotations_not_reference', $this->annotationRepository->get_total_annotations_not_reference()['count'])
                 ->with('total_annotations_reference', $this->annotationRepository->get_total_annotations_reference()['count'])
