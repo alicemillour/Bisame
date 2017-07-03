@@ -43,6 +43,7 @@ $(document).ready(function () {
         annotations = [];
         $('.word-container').each(function (index, word_container) {
             annotation = {};
+            console.log("here");
             annotation['postag_id'] = $(word_container).find('.category-label').attr('id');
             annotation['word_id'] = $(word_container).find('.word').attr('id');
             if (annotation['postag_id']) {
@@ -79,7 +80,7 @@ $(document).ready(function () {
         $('.word').each(function () {
             word_id = $(this).prop('id')
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
-                get_words_postags($(this).attr('id'));
+               // get_words_postags($(this).attr('id'));
                 $(this).addClass('not-punct');
                 console.log("pretag");
                 console.log($(this).attr('tag'))

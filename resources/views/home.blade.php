@@ -60,7 +60,7 @@
                     <h4>
                         En ce moment, le Vautour est à l'honneur
                         (<a href="https://als.wikipedia.org/wiki/Altweltgeier" style="color:black"  target="_blank" >article Wikipédia</a>) : <br>
-                        <!--Il reste : <b> ? phrases à annoter sur {{$total_sentences->count}}, </b>--> 
+                        Il reste : <b> ? phrases à annoter sur {{$total_sentences->count}}, </b>
                         <br> Il reste <b> {{$unannotated_words->count}} mots à annoter</b> (ensemble !). <br><br>
 
                         <div class="progress" style="width:80%; margin: 0 auto">

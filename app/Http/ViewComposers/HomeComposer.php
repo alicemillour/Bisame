@@ -35,9 +35,11 @@ class HomeComposer {
     public function compose(View $view) {
 //        get_users_and_annotation_counts())
         debug($this->annotationRepository->get_unannotated_words(323));
-        
-        $progression = $this->annotationRepository->get_distinct_annotated_words(323)->count() * 100 / $this->annotationRepository->count_annotable_words(323)->count;
-        $progression_hoch = $this->annotationRepository->get_distinct_annotated_words(325)->count() * 100 / $this->annotationRepository->count_annotable_words(325)->count;
+        // TODO : check if division by 0
+         $progression = 1;
+        $progression_hoch = 1;
+        //$progression = $this->annotationRepository->get_distinct_annotated_words(323)->count() * 100 / $this->annotationRepository->count_annotable_words(323)->count;
+        //$progression_hoch = $this->annotationRepository->get_distinct_annotated_words(325)->count() * 100 / $this->annotationRepository->count_annotable_words(325)->count;
         
         $view
                 ->with('total_sentences', $this->wordRepository->get_sentences_number(323))

@@ -71,12 +71,14 @@ class GameController extends Controller {
 
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
-                debug("GAME");
+        debug("GAME");
         debug($game);
+        # TODO : comprendre pourquoi ça fait planter la prod
         $this->authorize($game);
         $sentences = $game->sentences;
         $new_index = $game->sentence_index + 1;
         $progression = $new_index * 100 / 4;
+
         foreach ($postags as $postag) {
             $postag->description = html_entity_decode($postag->description);
         }
@@ -166,6 +168,7 @@ class GameController extends Controller {
 
     protected function get_or_create_game() {
         $current_user = Auth::user();
+        debug($current_user);
         $repository = $this->get_game_repository();
         $game = $repository->getWithUserId($current_user->id)->first();
         /* check wether the last current game is of the right type or not */
