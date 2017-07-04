@@ -1,0 +1,201 @@
+.main{
+    position: relative; }
+@media screen and (min-width: 1280px) {
+    .main {
+        padding-right: 20%; } 
+}
+
+.main-container {
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: 1%; }
+
+.main-footer {
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.help {
+    overflow-y : auto;
+}
+@media screen and (min-width: 1280px) {
+    .main-footer {
+        bottom: 0;
+        padding-bottom: 200px;
+        position: absolute;
+        right: 1%;
+        top: 5%;
+        width: 20%; } }
+
+.my-padding {
+    padding: 50px 30px 50px 80px;
+}
+
+.scroll-left {
+    height: 50px;	
+    overflow: hidden;
+    position: relative;
+    color: black;
+}
+.scroll-left p {
+    position: absolute;
+    font-size: 130%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform:translateX(-50%);
+    -webkit-transform:translateX(-50%);	
+    transform:translateX(-50%);
+    /* Apply animation to this element */	
+    -moz-animation: scroll-left linear 0s infinite;
+    -webkit-animation: scroll-left 0s linear infinite;
+    animation: scroll-left 25s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left {
+    0%   { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes scroll-left {
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes scroll-left {
+    0%   { 
+        -moz-transform: translateX(100%); /* Browser bug fix */
+        -webkit-transform: translateX(100%); /* Browser bug fix */
+        transform: translateX(100%); 		
+    }
+    100% { 
+        -moz-transform: translateX(-100%); /* Browser bug fix */
+        -webkit-transform: translateX(-100%); /* Browser bug fix */
+        transform: translateX(-100%); 
+    }
+}
+
+.button-wrapper { 
+    overflow:hidden;
+    margin:0 auto;
+    text-align:center;
+}
+.play-button {
+    /*width: 33vw;*/
+    white-space: normal;
+    font-size: 25px;
+    border: 1px;	
+    border-style: solid;
+    border-color: #AC1E44;
+    border-radius: 3px;
+    padding: 2px 30px 1px 30px;
+    text-align: center;
+    /*    margin-left: 60px;
+        margin-right: 60px;
+        margin-bottom: 40px;
+        margin-top: 40px;*/
+    min-width: 200px;
+    /*max-width: 300px;*/
+    background-color: rgba(249, 242, 236, 0.4);
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+    margin: 0.5% 2%;
+    display:inline-block;
+
+} 
+#play-button-1 {
+    /*width:140px;*/
+} 
+#play-button-2 {
+    overflow:hidden;
+} 
+
+#validate:hover:after{
+    pointer-events: auto;
+}
+.active-button:hover {
+    color: black;
+    background-color: rgba(249, 242, 236, 0.2);
+    border-color: #285e8e; /*set the color you want here*/
+}
+
+.b-disabled{
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: .35 !important;
+}
+
+.title { 
+    /*margin-top: 10vh;*/
+    /*font-size: 1000%;*/
+    font-size: 900%;
+    text-align: center;
+}
+
+.info-message {
+    font-size: 140%;
+    margin: 0.5% 0%;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.alert-message {
+    color: red !important;
+    font-weight: bold;
+}
+#scoreboard {
+    background-color: rgba(249, 242, 236, 0.4);
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    overflow: hidden;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    max-width: 80% !important;
+    margin: 0 auto;
+}
+
+.tab-content > .tab-pane{
+    padding: 2%;
+}
+
+.nav-tabs li a{
+    /*max-width: 100px;*/
+}
+
+.nav-tabs>li>a, .nav-tabs>li>a>div {
+    height:100%;
+    vertical-align:middle;
+    display:table;
+}
+
+.nav-tabs>li>a span {
+    display:table-cell;
+    vertical-align:middle;
+}
+
+
+
+.score{
+    display: inline-block;
+    text-align: left; 
+    font-size: 2em;
+}
