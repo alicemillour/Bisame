@@ -14,7 +14,7 @@
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" >
+        <link rel="shortcut icon" href="{{ asset('images/favicon-krik.ico') }}" >
         <style>
             @font-face {font-family: "Ostrich-Rounded"; src: url('/images/ostrich-rounded.ttf') ;}
             @font-face {font-family: "Cicle-Fina"; src: url('/images/cicle/Cicle_Semi.ttf') ;}
@@ -43,6 +43,9 @@
                 font-family: 'Ostrich-Rounded';
             }
             .fina{
+                font: 400 2rem/2.3rem 'Raleway';
+            }
+            .fina-old{
                 font-family: 'Cicle-Fina';
             }
 
@@ -65,8 +68,8 @@
             .title-app-navbar {
                 font-size: 180%;
             }
-            .my-navbar-hover:hover {
-                color: #DDAB18 !important;
+            .nav > li > a.my-navbar-hover:focus, .nav > li > a.my-navbar-hover:hover{
+                color:#ddab18 !important;
             }
 
             .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
@@ -74,6 +77,14 @@
                 color: black !important;
             }
 
+            .navbar-default .navbar-nav > li > a.no-hover:focus, .navbar-default .navbar-nav > li > a.no-hover:hover{
+                color: #CECECE !important;
+            }
+            
+            .navbar-default .navbar-brand:hover {
+                color: #ddab18 !important;
+            }
+            
             .dropdown-menu {
                 background-color: #545454 !important;
                 color: white !important;
@@ -103,19 +114,19 @@
             .fill { 
                 margin:0;
                 padding:0;
-               background: url('/images/ka.jpg') no-repeat center fixed;
+                background: url('/images/ka.jpg') no-repeat center fixed;
                /* background: url('/images/gwad_sat_blue_huile.jpg') no-repeat center fixed; */
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                 background-size: cover;  /* version standardisée */
                 /*background-size: contain;*/
                 /*                        background-size: auto 100%;*/
                 /*background-repeat: no-repeat;*/
-                background-position: left top;
+                background-position: left top;  
+                position: relative;
             }
             .fancy-border{
                 border: 1px solid white;
-                -moz-border-radius: 10px;
-                -webkit-border-radius: 10px;
+                
             }
             .footer-container {
                 vertical-align: middle;
