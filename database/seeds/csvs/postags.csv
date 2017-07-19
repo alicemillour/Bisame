@@ -7,7 +7,7 @@ PROPN;open
 VERB;open
 ADP;closed
 AUX;closed
-CONJ;closed
+CCONJ;closed
 DET;closed
 NUM;closed
 PRON;closed
@@ -16,3 +16,7 @@ SCONJ;closed
 PUNCT;other
 SYM;other
 X;other
+PART+VERB;other
+ADP+PRON;other
+PRON+PRON;other
+VERB+PRON;other

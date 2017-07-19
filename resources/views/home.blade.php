@@ -12,7 +12,7 @@
 @include('partials.nav')
 <div class="main">
     <div class="main-container">
-        <div class="title ostrich"> BISAME </div>
+        <div class="title ostrich">  Krik !  </div>
         <div class="button-wrapper">
             @if (Auth::guest())
             <span>
@@ -48,9 +48,7 @@
             </div>
             <br>
             @endif
-            <div class="info-message">
-
-                <div class="fancy-border" style="background-color:rgba(249, 242, 236, 0.4)">
+            <div class="info-message-trans background-colored fancy-border">
                     <h4><span class="ostrich alert-message"><u>Nouveau </u> ! <br><br>
                         </span>  Les outils créés grâce aux annotations produites jusqu'à maintenant  <br>
                         facilitent l'annotation en vous proposant une catégorie probable. <br>
@@ -90,15 +88,11 @@
                     </h4>
 
 
-                </div>
-                <br>
 
-            </div>
-
-
+       <!--  
         </div>
-        <div class="info-wrapper">
-            <h3 class="info-message" style="text-align: center; margin: 0 auto;">
+        <div class="info-wrapper"> 
+            <h3 class="info-message" style="text-align: center; margin: 0 auto;">-->
                 <br> L'<b class="ostrich">alsacien</b> fait partie de la grande majorité des "langues peu dotées" au sens des technologies du langage.</br>  
                 <br> Aucun des outils des nouvelles technologies de la langue - par exemple : correction orthographique, aide à la traduction, extraction d'information - qui contribuent à faire exister les langues sur Internet n'est développé pour l'alsacien.</br> 
                 <br> La raison ? Il existe très peu de données "annotées", c'est-à-dire enrichies d'informations linguistiques, à partir desquelles développer de tels outils.
@@ -117,6 +111,7 @@
             </h3>
         </div>
     </div>
+           </div>
     <div class="main-footer">
         <div class="footer-container" id="scoreboard">
             @include('partials.scoreboard')

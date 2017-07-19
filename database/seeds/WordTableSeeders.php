@@ -11,7 +11,7 @@ class WordTableSeeder extends CsvSeeder {
         $this->words_table = 'words';
         $this->sentences_table = 'sentences';
 //         $this->filename = base_path() . '/database/seeds/csvs/words.csv';
-        $this->filename = base_path() . '/database/seeds/csvs/words_wikipedia-janvier.csv';
+        $this->filename = base_path() . '/database/seeds/csvs/ctraining_words.csv';
         $this->csv_delimiter = ";";
     }
 
@@ -19,7 +19,6 @@ class WordTableSeeder extends CsvSeeder {
         // Recommended when importing larger CSVs
 //        DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
-//        DB::table($this->words_table)->delete();
 //        DB::table($this->sentences_table)->delete();       
         
         parent::run();

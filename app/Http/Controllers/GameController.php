@@ -64,6 +64,7 @@ class GameController extends Controller {
      * @return Response
      */
     public function show($id) {
+        debug("entering show");
         $postags = DB::table("postags as cp")
                 ->where("cp.name", "!=", "PUNCT")
                 ->orderBy('name', 'asc')
@@ -103,6 +104,7 @@ class GameController extends Controller {
      * @return Response
      */
     public function update(Request $request, $id) {
+        debug("entering update game");
         $user_id = Auth::user()->id;
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
@@ -177,14 +179,19 @@ class GameController extends Controller {
     }
 
     private function go_to_next_sentence($game, $new_index, $game_everything_is_annotated, $progression) {
+        debug("going to next sentence");
         $game->sentence_index = $new_index;
         $game->save();
         $sentence = $game->sentences[$new_index];
         if ($new_index == 3) {
             $pretag = null;
-        } else {
+        } else {            
             $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index]->id);
+            if ($pretag->count() == 0) {
+                $pretag = null;
+            }
         }
+        debug("leaving next sentence");
         return view('games.sentence', compact('game', 'sentence', 'game_everything_is_annotated', 'progression', 'pretag'));
     }
 
@@ -208,6 +215,7 @@ class GameController extends Controller {
     }
 
     protected function check_annotations($annotations, $sentence) {
+        debug("checking annotations");
         $answers = [];
         $words = $this->sentenceRepository->getWordNotPunctCount($sentence['id']);
         $everything_is_correct = (count($annotations) == $words->word_not_punct_count);
@@ -218,6 +226,8 @@ class GameController extends Controller {
             $postag = $this->postagRepository->getById($annotation['postag_id']);
             $everything_is_correct = $everything_is_correct &&
                     ($postag_reference->id == $annotation['postag_id']);
+            debug("im in game controller");
+            debug($postag_reference);
             $answers[] = ['word_id' => $word_id,
                 'is_correct' => ($postag_reference->id == $annotation['postag_id']),
                 'postag_name' => $postag->name,

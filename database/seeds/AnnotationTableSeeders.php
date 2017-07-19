@@ -9,7 +9,7 @@ class AnnotationTableSeeder extends CsvSeeder {
         $this->table = 'annotations';
 //        $this->filename = base_path().'/database/seeds/csvs/references.csv';
 //        $this->filename = base_path().'/database/seeds/csvs/pre_annotations.csv';
-        $this->filename = base_path().'/database/seeds/csvs/pre_annotations_1.csv';
+        $this->filename = base_path().'/database/seeds/csvs/ref_preannotation.csv';
         $this->csv_delimiter = ";";
     }
 
@@ -77,16 +77,20 @@ class AnnotationTableSeeder extends CsvSeeder {
                 $sentence_position = $row_full["sentence_position"];
                 $word_position = $row_full["word_position"];
                 $postag_name = $row_full["postag_name"];
-
+                Log::debug($postag_name);
                 /* retrieve ids */
                 $sentence_id=DB::table('sentences')
                         ->where('corpus_id', $corpus_id)
                         ->where('position', $sentence_position)
                         ->pluck('id')[0];  
+                Log::debug($sentence_id);
+                Log::debug($word_position);
                 $word_id=DB::table('words')
                         ->where('sentence_id', $sentence_id)
                         ->where('position', $word_position)
                         ->pluck('id')[0];
+                
+                Log::debug($word_id);
                 $postag_id=DB::table('postags')
                         ->where('name', $postag_name)
                         ->pluck('id')[0];

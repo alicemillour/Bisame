@@ -16,6 +16,7 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     private function save(Annotation $annotation, Array $inputs) {
+        debug("in save annotation");
         $annotation->user_id = $inputs['user_id'];
         $annotation->postag_id = $inputs['postag_id'];
         $annotation->word_id = $inputs['word_id'];

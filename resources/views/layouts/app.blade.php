@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Bisame</title>
+        <title>Krik</title>
 
         <!-- Fonts -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -25,7 +25,10 @@
             }
 
             .background-colored{
-                background-color: #86b8b9;
+/*                background-color: #86b8b9;*/
+                background-color: white;
+                opacity: 0.8;   
+
             }
             .footer { 
                 position: absolute; 
@@ -53,13 +56,18 @@
                 border-color: #545454;
                 /*background-color: rgb(249, 242, 236);*/
             }
+            .dark-background-colored{
+                    background-color: black;
+                    margin-bottom: 0;
+                    border-color: black;
+                    /*background-color: rgb(249, 242, 236);*/
+            }
             .title-app-navbar {
                 font-size: 180%;
             }
             .my-navbar-hover:hover {
-                color: #87b8b8 !important;
+                color: #DDAB18 !important;
             }
-
 
             .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
                 background-color: #CECECE !important;
@@ -95,7 +103,8 @@
             .fill { 
                 margin:0;
                 padding:0;
-                background: url('/images/background.png') no-repeat center fixed; 
+               background: url('/images/ka.jpg') no-repeat center fixed;
+               /* background: url('/images/gwad_sat_blue_huile.jpg') no-repeat center fixed; */
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                 background-size: cover;  /* version standardisée */
                 /*background-size: contain;*/
