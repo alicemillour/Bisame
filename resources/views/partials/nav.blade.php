@@ -27,9 +27,9 @@
                 <!-- Right Side Of Navbar -->
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="my-navbar-hover navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
+                    <!-- <li><a class="my-navbar-hover navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
                        <b> Les textes originaux</b>  ! 
-                    </a></li>
+                    </a></li> -->
                     <li><a class="no-hover" style="float: none;display: inline-block;text-align: center;">
                             <b>Déjà {{$non_admin_annotations}} annotations produites par {{$nb_total_users}} participants </b> !</a></li>
                     <!-- Authentication Links -->

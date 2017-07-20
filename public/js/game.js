@@ -398,9 +398,9 @@ $(document).ready(function () {
     }
     /* js for accordion help menu */
 
-    var acc = document.getElementsByClassName("accordion");
+   var acc = document.getElementsByClassName("accordion");
     var i;
-    $(acc[0]).css({'border-top-left-radius': '10px', 'border-top-right-radius': '10px'});
+/*     $(acc[0]).css({'border-top-left-radius': '10px', 'border-top-right-radius': '10px'});
     $(acc[acc.length - 1]).css({'border-bottom-left-radius': '10px', 'border-bottom-right-radius': '10px'});
     var toggle_acc = false;
     $(acc[acc.length - 1]).on('click', function () {
@@ -411,7 +411,7 @@ $(document).ready(function () {
             $(acc[acc.length - 1]).css({'border-bottom-left-radius': '10px', 'border-bottom-right-radius': '10px'})
             toggle_acc = false;
         }
-    });
+    }); */
     for (i = 0; i < acc.length; i++) {
         acc[i].onclick = function () {
             this.classList.toggle("active");

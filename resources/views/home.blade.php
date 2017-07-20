@@ -59,10 +59,10 @@
             </div>
 
               </div>
-          </div>
-        <br>
         
             @endif
+          </div>
+        <br>
 
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
