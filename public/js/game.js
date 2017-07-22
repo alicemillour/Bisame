@@ -303,27 +303,27 @@ $(document).ready(function () {
         switch (is_in_error) {
             case ErrorLevel.error:
                 if (postag_names.length > 0) {
-                    $('#message-title').text("Vous avez des erreurs. Rappel sur les catégories que vous avez choisies :");
+                    $('#message-title').text("Annotation incorrecte… Awa ! ti ni on érrè. Rappel sur les catégories choisies :");
                 } else {
                     /* no word has been annotated yet */
-                    $('#message-title').text("Vous ne pouvez pas passer la phrase dans le mode entraînement");
+                    $('#message-title').text("Vous ne pouvez pas passer la phrase dans le mode entraînement : choisissez des catégories et validez vos réponses pour tous les mots de la phrase.");
                     /* Je veux des messages différents en fonction du type de jeu 
                      * $('#message-title').text("Vous devez annoter au moins un mot !");
                      */
                 }
                 var content = create_errors_content(postag_names, postag_full_names, postag_descriptions);
                 $('#message-content').empty().append(content)
-                $('#message').removeClass('alert-success alert-warning').addClass('alert-danger');
+                $('#message').removeClass('alert-success alert-warning').addClass('alert-danger my-alert');
                 break;
             case ErrorLevel.warning:
-                $('#message-title').text("Bravo !");
+                $('#message-title').text("Annotation(s) correcte(s) ! Woulo !");
                 $('#message-content').text("Annotez les mots restants pour pouvoir passer à la phrase suivante.");
-                $('#message').removeClass('alert-success alert-danger').addClass('alert-warning');
+                $('#message').removeClass('alert-success alert-danger').addClass('alert-warning my-alert');
                 break;
             case ErrorLevel.success:
                 $('#message-title').text("Bravo !");
                 $('#message-content').text("Vous avez tout bon");
-                $('#message').removeClass('alert-danger alert-warning').addClass('alert-success');
+                $('#message').removeClass('alert-danger alert-warning').addClass('alert-success my-alert');
                 break;
         }
         $('#message').show();

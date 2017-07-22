@@ -118,31 +118,40 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_pretag_by_sentence_id($sentence_id) {
-        $melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
-        $treetagger_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "TreeTagger");
+        #$melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
+        #$treetagger_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "TreeTagger");
 
+        $list_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "list");
+        $melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "melt");
+        
         $collection_melt = collect();
         foreach ($melt_tags_array as $result) {
             $collection_melt->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
         }
         $melt_tags = $collection_melt->toArray();
 
-        $collection_tt = collect();
-        foreach ($treetagger_tags_array as $key => $result) {
-            $collection_tt->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
+        $collection_list = collect();
+        foreach ($list_tags_array as $key => $result) {
+            $collection_list->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
         }
-        $treetagger_tags = $collection_tt->toArray();
-        debug("treetagger");
-        debug($treetagger_tags);
+        $list_tags = $collection_list->toArray();
+        debug("list");
+        debug($list_tags);
 
         $collection_pretag = collect();
         foreach ($melt_tags as $key => $melt_tag) {
-            if ($melt_tag == $treetagger_tags[$key]) {
+             
+             
+                if ( array_key_exists($key,$list_tags) && $melt_tag == $list_tags[$key]) {
                 $collection_pretag->put($key, $melt_tag);
-            } else {
+            
+            
+                } else {
+                debug("no pretag");
                 $collection_pretag->put($key, null);
-            }
+                }
         }
+ debug("collection pretags !"); 
         debug($collection_pretag);
         return $collection_pretag;
     }

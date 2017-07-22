@@ -125,6 +125,7 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
+                        ->where('corpora.name', 'like', 'cref_entrainement')
                         ->get();
     }
 

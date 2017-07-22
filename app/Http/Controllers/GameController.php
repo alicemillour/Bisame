@@ -183,15 +183,17 @@ class GameController extends Controller {
         $game->sentence_index = $new_index;
         $game->save();
         $sentence = $game->sentences[$new_index];
-        if ($new_index == 3) {
-            $pretag = null;
-        } else {            
+//        if ($new_index == 3) {
+//            $pretag = null;
+//        } else {            
             $pretag = $this->annotationRepository->get_pretag_by_sentence_id($game->sentences[$new_index]->id);
             if ($pretag->count() == 0) {
                 $pretag = null;
-            }
+                
+//            }
         }
         debug("leaving next sentence");
+        debug("pretag : $pretag");
         return view('games.sentence', compact('game', 'sentence', 'game_everything_is_annotated', 'progression', 'pretag'));
     }
 

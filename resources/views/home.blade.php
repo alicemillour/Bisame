@@ -45,11 +45,11 @@
             @endif
             <div class="button-wrapper">
                 <span>
-                    <a class='btn btn-default play-button active-button ostrich' id="play-button-1" href="/home/training">S'entrainer</a>
+                    <a class='btn btn-default play-button active-button' id="play-button-1" href="/home/training"> Essayé é komprann jé la <br> <span class="ostrich" style="font-size: 0.9em"> (S'entrainer) </span> </a>
                 </span> 
                 @if($game_available)
                 <span>
-                    <a class='btn btn-default play-button active-button ostrich' id="play-button-2" href="/home/start">Produire des annotations !</a>
+                    <a class='btn btn-default play-button active-button ' id="play-button-2" href="/home/start"> Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a>
                 </span>
                 @else
                 <span>
@@ -66,10 +66,10 @@
 
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-                               @include('partials.creole-intro')
+               @include('partials.creole-intro')
             </div>
         </div>
-        
+        <br>
           
        <!--  
         </div>
