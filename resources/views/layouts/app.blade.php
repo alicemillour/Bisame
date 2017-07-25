@@ -114,7 +114,7 @@
             .fill { 
                 margin:0;
                 padding:0;
-                background: url('/images/ka.jpg') no-repeat center fixed;
+                background: url('/images/ka-c.jpg') no-repeat center fixed;
                /* background: url('/images/gwad_sat_blue_huile.jpg') no-repeat center fixed; */
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                 background-size: cover;  /* version standardisée */
