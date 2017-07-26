@@ -95,7 +95,7 @@
             .fill { 
                 margin:0;
                 padding:0;
-                background: url('/images/background.png') no-repeat center fixed; 
+                background: url('/images/Ballon.jpg') no-repeat center fixed; 
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                 background-size: cover;  /* version standardisée */
                 /*background-size: contain;*/

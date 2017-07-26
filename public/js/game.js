@@ -307,7 +307,7 @@ $(document).ready(function () {
                     $('#message-title').text("Vous avez des erreurs. Rappel sur les catégories que vous avez choisies :");
                 } else {
                     /* no word has been annotated yet */
-                    $('#message-title').text("Vous ne pouvez pas passer la phrase dans le mode entraînement");
+                    $('#message-title').text("Dans le mode entraînement, vous devez annoter tous les mots pour pouvoir passer à la phrase suivante, proposez une catégorie pour pouvoir vérifier votre réponse");
                     /* Je veux des messages différents en fonction du type de jeu 
                      * $('#message-title').text("Vous devez annoter au moins un mot !");
                      */
