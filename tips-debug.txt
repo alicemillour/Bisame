@@ -1,0 +1,7 @@
+Class log does not exist in ... => corriger un fichier de conf (espaces, virgules etc.)
+
+Connexion à la base de données distante : vérifier le password avec mysql -u root -p 
+
+Pour avoir la débug bar / dé cacher la config : config:clear
+
+
