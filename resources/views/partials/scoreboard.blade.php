@@ -2,7 +2,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <div class="fancy-border">
-    <h2 style='text-align: center'>Classement des <br> contributeurs</h2>
+    <h2 style='text-align: center; color:black' >Classement des <br> contributeurs</h2> 
     <div class="fancy-border">
         <ul class="nav nav-tabs">
             <li class="active" style="font-size: 1.5em;" ><a data-toggle="pill" style="color:black" href="#home"> Top 5 </a></li>
@@ -15,15 +15,16 @@
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
                 <div style="text-align: center; margin-top: 5px; display: inline-block;">
-                    <span class="score" style="text-align: center; display: inline-block;">
+                    <span class="score" style="color:black;text-align: center; display: inline-block;">
                         @foreach($users_score as $key=>$user)
                         @if($key == 0)
                         <span  style="text-align: center; display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}} points)
                         <!--</span> <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span>--> 
                         @else
-                        {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}} points)
+                        <span  style="text-align: center; display: inline-block; font-size: 0.7em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}} points)
                         <!--<span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span>--> 
-                    @endif
+                        </span>
+                        @endif
                     <br>
                     @endforeach
                     </span>

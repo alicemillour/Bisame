@@ -7,7 +7,7 @@ class CorpusTableSeeder extends CsvSeeder {
     public function __construct() {
         $this->table = 'corpora';
         //$this->filename = base_path().'/database/seeds/csvs/wikipedia1_adjudication-UTF-8-2c.csv';
-        $this->filename = base_path() . '/database/seeds/csvs/corpora_1.csv';
+        $this->filename = base_path() . '/database/seeds/csvs/corpora.csv';
         $this->csv_delimiter = ";";
     }
 

@@ -7,7 +7,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default background-colored">
-                <div class="panel-heading background-colored text-center">Formulaire de contact</div>
+                <div class="panel-heading background-colored text-center" style="font-size: 1.3em"> <b> Un commentaire, une critique, une idée d’amélioration ? Palé ban mwen ! </b>
+</div>
                 <div class="panel-body"></div>
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/contact') }}">
                     {!! csrf_field() !!}
@@ -46,7 +47,7 @@
                         <label class="col-md-4 control-label">Votre message</label>
                         <div class="col-md-6">
                             <textarea rows="8" class="form-control" id="message"
-                                      accesskey="" name="message" placeholder="Un commentaire, une critique, une idée d'amélioration ?">{{ old('message') }}</textarea>
+                                      accesskey="" name="message" placeholder="">{{ old('message') }}</textarea>
                             @if ($errors->has('message'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('message') }}</strong>

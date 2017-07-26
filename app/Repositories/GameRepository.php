@@ -54,7 +54,7 @@ class GameRepository extends ResourceRepository {
                     }
                 }
                 /* get a random sentence from reference (=training?) */
-                $ref_sentence = $this->get_reference_sentences()->random(1);
+                $ref_sentence = $this->get_evaluation_sentences()->random(1);
                 $this->save($game, $inputs);
                 $game->sentences()->attach($sentences);
                 $game->sentences()->attach($ref_sentence);
@@ -125,7 +125,15 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
+                        ->where('corpora.name', 'like', 'cref_entrainement')
                         ->get();
     }
 
+        protected function get_evaluation_sentences() {
+        return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
+                        ->select('sentences.*')
+                        ->where('corpora.is_training', 1)
+                        ->where('corpora.name', 'like', 'cref_evaluation')
+                        ->get();
+    }
 }
