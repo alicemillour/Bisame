@@ -11,10 +11,11 @@
 @include('partials.nav')
 <div class="main">
     <div class="main-container">
-
-        <div class="title ostrich">  Krik !  </div>
+        <div  style="max-width:90%;margin:0 auto;">
+        <div class="title ostrich">&nbsp;Krik !</div>
+        </div>
         <div class="fill">
-              <div class="info-message-trans background-colored fancy-border">
+        <div class="info-message-trans background-colored fancy-border">
             
         <div class="button-wrapper" >
             @if (Auth::guest())

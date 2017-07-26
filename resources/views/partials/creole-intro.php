@@ -1,6 +1,6 @@
 <br>
 
-<b style="font-size: 1.3em"> Gwadoupéen Doubout </b>!<b style="font-size: 1.3em">  <br>
+<b style="font-size: 1.3em"> Gwadoupéen Doubout </b><span style="font-size: 1.3em">!</span><b style="font-size: 1.3em">  <br>
 Kréyòl-la sé tan nou, an nou ba-y valè a-y, an nou voyé-y monté.<br><br>
 </b>
 
