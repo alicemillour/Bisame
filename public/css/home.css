@@ -125,7 +125,8 @@
 }
 .active-button:hover {
     color: black;
-    background-color: rgba(249, 242, 236, 0.2);
+    
+        font-weight: bold;
     border-color: #285e8e; /*set the color you want here*/
 }
 
@@ -138,16 +139,20 @@
 .title { 
     /*margin-top: 10vh;*/
     /*font-size: 1000%;*/
-    font-size: 900%;
+    color: #dea016;
+    font-size: 1400%;
+    font-weight: 600;
     text-align: center;
+   /*text-shadow: -3px 0 red, 0 1px red, 1px 0 red, 0 -3px red;  */
+    text-shadow: -3px 0 black, 0 1px black, 1px 0 black, 0 -3px black;  
 }
 
-.info-message {
+.info-message-trans {
     font-size: 140%;
-    margin: 0.5% 0%;
-    max-width: 80%;
-    padding:2%;
+    max-width: 90%;
     margin: 0 auto;
+    padding: 1%;
+    /* background-color:rgba(249, 242, 236, 0.9); */
 }
 
 .alert-message {
@@ -199,4 +204,65 @@
     display: inline-block;
     text-align: left; 
     font-size: 2em;
+}
+
+.module {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg);
+  background-attachment: fixed;
+  width: 400px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+}
+.fill > header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10px;
+  background: inherit;
+  background-attachment: fixed;
+}
+.fill > header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: inherit;
+  background-attachment: fixed;
+  -webkit-filter: blur(12px);
+  filter: blur(12px);
+  transform: scale(2) translateY(20px);
+}
+
+.info-message > header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: inherit;
+  background-attachment: fixed;
+  -webkit-filter: blur(12px);
+  filter: blur(12px);
+  transform: scale(2) translateY(20px);
+}
+
+.fill > header > h1 {
+  margin: 1;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+#percent {
+ position: absolute;   
+ left: 50%;
 }

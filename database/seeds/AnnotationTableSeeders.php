@@ -9,14 +9,14 @@ class AnnotationTableSeeder extends CsvSeeder {
         $this->table = 'annotations';
 //        $this->filename = base_path().'/database/seeds/csvs/references.csv';
 //        $this->filename = base_path().'/database/seeds/csvs/pre_annotations.csv';
-        $this->filename = base_path().'/database/seeds/csvs/pre_annotations_1.csv';
+        $this->filename = base_path().'/database/seeds/csvs/pre_annotations.csv';
         $this->csv_delimiter = ";";
     }
 
     public function run()
     {
         // Uncomment the below to wipe the table clean before populating
-//        DB::table($this->table)->delete();
+        DB::table($this->table)->delete();
         parent::run();
     }
     
@@ -77,26 +77,41 @@ class AnnotationTableSeeder extends CsvSeeder {
                 $sentence_position = $row_full["sentence_position"];
                 $word_position = $row_full["word_position"];
                 $postag_name = $row_full["postag_name"];
-                Log::debug("sentence_position");
-                Log::debug($sentence_position);
-                Log::debug("word_position");
-                Log::debug($word_position);
+
+                $tagger = $row_full["tagger"];
                 Log::debug($postag_name);
+                
                 /* retrieve ids */
                 $sentence_id=DB::table('sentences')
                         ->where('corpus_id', $corpus_id)
                         ->where('position', $sentence_position)
-                        ->pluck('id')[0]; 
-                debug($sentence_id);
+
+                        ->pluck('id')[0];  
+                Log::debug("sentence_id $sentence_id");
+                Log::debug("word position $word_position");
+                
+                #Log::debug("word id $word_id");
+
                 $word_id=DB::table('words')
                         ->where('sentence_id', $sentence_id)
                         ->where('position', $word_position)
                         ->pluck('id')[0];
+
                 debug($word_id);
                 $postag_id=DB::table('postags')
                         ->where('name', $postag_name)
                         ->pluck('id')[0];
                 debug($postag_id);
+
+                
+                Log::debug($word_id);
+                if ( $postag_name != null ) {   
+                $postag_id=DB::table('postags')
+                        ->where('name', $postag_name)
+                        ->pluck('id')[0];
+                } else {
+                    $postag_id=null;
+                }
                 $row_annotation = $this->readRow($row, $mapping);
                 /* insert only non-empty rows from the csv file */
                 if ( !$row_annotation )
@@ -104,11 +119,12 @@ class AnnotationTableSeeder extends CsvSeeder {
                 $data_annotations[$row_count] = $row_annotation;
                 $data_annotations[$row_count]['word_id'] = $word_id;
                 $data_annotations[$row_count]['postag_id'] = $postag_id;
+                $data_annotations[$row_count]['tagger'] = $tagger;
                 $user_id=DB::table('users')
                         ->where('is_admin', true)
                         ->pluck('id')[0];
                 $data_annotations[$row_count]['user_id'] = $user_id;
-
+            
                 // Chunk size reached, insert
                 if ( ++$row_count == $this->insert_chunk_size )
                 {

@@ -16,6 +16,7 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     private function save(Annotation $annotation, Array $inputs) {
+        debug("in save annotation");
         $annotation->user_id = $inputs['user_id'];
         $annotation->postag_id = $inputs['postag_id'];
         $annotation->word_id = $inputs['word_id'];
@@ -36,6 +37,23 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_number_correct_annotations_on_reference($user_id) {
+        debug("in get on ref");
+        debug($this->annotation->select(DB::raw('count(word_id) as count'))
+                        ->join('words', 'word_id', '=', 'words.id')
+                        ->join('sentences', 'sentence_id', '=', 'sentences.id')
+                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                        ->whereRaw("annotations.user_id=?
+                AND corpora.is_training=true
+                AND (word_id, annotations.postag_id) IN 
+                    (select word_id, annotations.postag_id FROM annotations, words, sentences, corpora, users
+                        WHERE annotations.user_id=users.id
+                        AND annotations.confidence_score=100
+                        AND words.id=annotations.word_id
+                        AND sentences.id=words.sentence_id
+                        AND corpora.id=sentences.corpus_id
+                        AND corpora.is_training=true group by word_id order by annotations.confidence_score desc)
+                ", Array($user_id))
+                        ->first());
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -45,7 +63,7 @@ class AnnotationRepository extends ResourceRepository {
                 AND (word_id, annotations.postag_id) IN 
                     (select word_id, annotations.postag_id FROM annotations, words, sentences, corpora, users
                         WHERE annotations.user_id=users.id
-                        AND users.id=92
+                        AND users.id=3
                         AND words.id=annotations.word_id
                         AND sentences.id=words.sentence_id
                         AND corpora.id=sentences.corpus_id
@@ -56,6 +74,7 @@ class AnnotationRepository extends ResourceRepository {
 
     public function get_number_annotations_on_reference($user_id) {
         /* */
+        
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -64,11 +83,14 @@ class AnnotationRepository extends ResourceRepository {
                             AND words.id=annotations.word_id
                         AND sentences.id=words.sentence_id
                         AND corpora.id=sentences.corpus_id
-                AND corpora.is_training=true", Array($user_id))->first());
+                        AND corpora.is_training=true", Array($user_id))->first());
     }
 
     public function get_user_annotation_count($user_id) {
         /* returns number of annotations on all sentences */
+        debug($this->annotation->select(DB::raw('count(*) as annotation_count'))
+                        ->where('user_id', $user_id)->first());
+       
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->where('user_id', $user_id)->first();
     }
@@ -96,31 +118,40 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_pretag_by_sentence_id($sentence_id) {
-        $melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
-        $treetagger_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "TreeTagger");
+        #$melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
+        #$treetagger_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "TreeTagger");
 
+        $list_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "list");
+        $melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "melt");
+        
         $collection_melt = collect();
         foreach ($melt_tags_array as $result) {
             $collection_melt->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
         }
         $melt_tags = $collection_melt->toArray();
 
-        $collection_tt = collect();
-        foreach ($treetagger_tags_array as $key => $result) {
-            $collection_tt->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
+        $collection_list = collect();
+        foreach ($list_tags_array as $key => $result) {
+            $collection_list->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
         }
-        $treetagger_tags = $collection_tt->toArray();
-        debug("treetagger");
-        debug($treetagger_tags);
+        $list_tags = $collection_list->toArray();
+        debug("list");
+        debug($list_tags);
 
         $collection_pretag = collect();
         foreach ($melt_tags as $key => $melt_tag) {
-            if ($melt_tag == $treetagger_tags[$key]) {
+             
+             
+                if ( array_key_exists($key,$list_tags) && $melt_tag == $list_tags[$key]) {
                 $collection_pretag->put($key, $melt_tag);
-            } else {
+            
+            
+                } else {
+                debug("no pretag");
                 $collection_pretag->put($key, null);
-            }
+                }
         }
+ debug("collection pretags !"); 
         debug($collection_pretag);
         return $collection_pretag;
     }
@@ -162,7 +193,7 @@ class AnnotationRepository extends ResourceRepository {
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('annotations.confidence_score', '<', '10')
                         ->where('corpus_id', '=', $corpus_id)
-                ->where('user_id', '>', '192')
+               # ->where('user_id', '>', '192')
                         ->get());
     }
 
