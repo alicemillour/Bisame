@@ -12,7 +12,7 @@
 <div class="main">
     <div class="main-container">
         <div  style="max-width:90%;margin:0 auto;">
-        <div class="title ostrich">&nbsp;Krik !</div>
+        <div class="title ostrich"> Bisame </div>
         </div>
         <div class="fill">
         <div class="info-message-trans background-colored fancy-border">
@@ -58,10 +58,10 @@
                 </span>
                 @endif
             </div>
-<<<<<<< HEAD
+
             <br>
-            @endif
-            <div class="info-message">
+
+                        <div class="info-message">
 
                 <div class="fancy-border" style="background-color:rgba(249, 242, 236, 0.4)">
                     <h4><span class="ostrich alert-message"><u>Nouveau </u> ! <br><br>
@@ -93,18 +93,18 @@
                         <a href="https://als.wikipedia.org/wiki/Delphine_Wespiser" style="color:black"  target="_blank" >Delphine Wespiser</a>)
                         <br>
                         <br> Il reste <b> {{$unannotated_words_Hoch->count}} mots à annoter </b> (ensemble !). <br><br>
-=======
->>>>>>> fd38e80b6c220ae93016cb9302b9eef4835ccc76
+
 
               </div>
         
-            @endif
           </div>
+            @endif
+            </div>
         <br>
 
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-               @include('partials.creole-intro')
+               @include('partials.alsacien-intro')
             </div>
         </div>
         <br>

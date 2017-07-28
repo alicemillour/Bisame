@@ -66,7 +66,7 @@ return [
             'password'  => $password, */
 	    'host'      => 'localhost',
             /*'database'  => 'krik_local',*/
-            'database'  => 'heroku_0389c6f21167f14',
+            'database'  => 'bisame_local',
 	  /*  'database' => 'bisame',*/
             'username'  => 'root',
             'password'  => 'root',
