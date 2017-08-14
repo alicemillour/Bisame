@@ -27,38 +27,48 @@ class GameRepository extends ResourceRepository {
             $user_id = Auth::user()->id;
             debug($user_id);
             $game = new $this->game;
-            if ($user_id == 1202) {
-                $sentences = $this->get_sentences_from_orthal();
-            } else {
-                $sentences = $this->get_sentences($user_id);
-            }
-            if ($sentences->count() == 0) {
+            if ($game->get_single_table_type()=='training') {
+                debug("game is training");
+                $sentences = $this->get_sentences($user_id)->take(4);
                 $this->save($game, $inputs);
                 $game->sentences()->attach($sentences);
-                /* game is not null !! */
                 return $game;
             } else {
-                $count = $sentences->count();
-                debug($count);
-                if ($count < 3) {
-                    if ($user_id == 1202) {
-                        $sentences = $this->get_sentences_from_orthal()->take($count);
-                    } else {
-                        $sentences = $this->get_sentences($user_id)->take($count);
-                    }
+                if ($user_id == 1202) {
+                    $sentences = $this->get_sentences_from_orthal();
                 } else {
-                    if ($user_id == 1202) {
-                        $sentences = $this->get_sentences_from_orthal()->random(3);
-                    } else {
-                        $sentences = $this->get_sentences($user_id)->random(3);
-                    }
+                    $sentences = $this->get_sentences($user_id);
                 }
-                /* get a random sentence from reference (=training?) */
-                $ref_sentence = $this->get_reference_sentences()->random(1);
-                $this->save($game, $inputs);
-                $game->sentences()->attach($sentences);
-                $game->sentences()->attach($ref_sentence);
-                return $game;
+                if ($sentences->count() == 0) {
+                    $this->save($game, $inputs);
+                    $game->sentences()->attach($sentences);
+                    /* game is not null !! */
+                    return $game;
+                } else {
+                    $count = $sentences->count();
+                    debug($count);
+                    if ($count < 3) {
+                        if ($user_id == 1202) {
+                            $sentences = $this->get_sentences_from_orthal()->take($count);
+                        } else {
+                            $sentences = $this->get_sentences($user_id)->take($count);
+                        }
+                    } else {
+                        if ($user_id == 1202) {
+                            $sentences = $this->get_sentences_from_orthal()->random(3);
+                        } else {
+                            $sentences = $this->get_sentences($user_id)->random(3);
+                        }
+                    }
+                    /* get a random sentence from reference (=training?) */
+                    $ref_sentence = $this->get_evaluation_sentences()->random(1);
+
+                    $this->save($game, $inputs);
+                    $game->sentences()->attach($sentences);
+                    $game->sentences()->attach($ref_sentence); 
+
+                    }
+                    return $game;
             }
         }
     }
@@ -125,7 +135,15 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
+                        ->where('corpora.name', 'like', 'cref_entrainement')
                         ->get();
     }
 
+        protected function get_evaluation_sentences() {
+        return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
+                        ->select('sentences.*')
+                        ->where('corpora.is_training', 1)
+                        ->where('corpora.name', 'like', 'cref_evaluation')
+                        ->get();
+    }
 }

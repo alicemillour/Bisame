@@ -25,10 +25,10 @@
 
             @else
             @if($game['type']=='training')
-            <h4> Bienvenue dans le mode Entraînement !  <br>
+            <h4> Wopso ! Bienvenue dans le mode <b>Entraînement </b> : 
                 Pour passer à la phrase suivante, vous devez avoir trouvé les bonnes catégories pour tous les mots.</h4>
             @else
-            <h4> Bienvenue dans le mode Jeu ! Ici, nous ne corrigeons pas vos réponses. Vos points seront mis à jour à la fin de la séquence de quatre phrases. </h4>
+            <h4> Bienvenue dans le mode <b>Production d'annotations </b>! Ici, nous ne corrigeons pas vos réponses. Vos points seront mis à jour à la fin de la séquence de quatre phrases. </h4>
             @endif
 
 
@@ -39,13 +39,13 @@
             </h2>
             @if($game['type']=='training')
             @else
-            <h4><span class="ostrich alert-message"><u>Nouveau</u> : </span>  Des catégories vous sont parfois suggérées
-                (en <span class="auto-annotated" style="font-size: 0.8em"> ROUGE </span>) vous devez les valider 
+            <h4>Lorsqu'une catégorie est suggérée
+                (en <span class="auto-annotated" style="font-size: 0.8em"> ROUGE</span>), il faut la valider
                 (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/check.png">)
-                ou les corriger (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">).
+                ou la corriger (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">).
                 Les mots sans catégorie ( <img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/question.png">   ) restent à annoter. <br>
-                En cas de doute, consultez-le rappel sur les catégories à droite ou 
-                <a style="color:#AC1E44;" href="mailto:alice.millour@abtela.eu?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a> !
+                En cas de doute, consultez le rappel sur les catégories à droite ou 
+                <a style="color:#1e1eac;" href="mailto:g.feler@hotmail.com?Subject=[Krik]Contact" style="color:black" target="_top">contactez-moi</a> !
             </h4>
             @endif
 
@@ -98,7 +98,7 @@
         <h5><b> &nbsp &nbsp Dans ce mode, vous pouvez passer à la phrase suivante même si vous n'avez pas annoté tous les mots.</b> </h5>
         @endif
         <div class="alert alert-success" id="message" hidden=true>
-            <strong id=message-title>Bravo !</strong>
+            <strong id=message-title style="text-align: center">Bravo !</strong>
             <div id=message-content>Toutes vos annotations sont correctes !</div>
         </div>
     </div>
@@ -124,7 +124,7 @@
                 </div>
             </div>-->
     <div class="main-footer">
-        <h3> Rappel sur les catégories </h3>
+        <h3 class="semi-transparent"> Rappel sur les catégories : </h3>
         <div class="fancy-border footer-container" >
             <!--<input id="tags" />-->
             <div class="panel-group" id="tag-help">

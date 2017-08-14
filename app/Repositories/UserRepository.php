@@ -42,6 +42,8 @@ class UserRepository extends ResourceRepository {
     }
 
     public function update_confidence_score($user_id, $new_confidence_score) {
+        debug("updating confidence score");
+        User::where('id');
         User::where('id', $user_id)
                 ->update(['score' => $new_confidence_score]);
     }
