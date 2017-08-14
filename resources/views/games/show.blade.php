@@ -125,7 +125,9 @@
             </div>-->
     <div class="main-footer">
         <h3 class="semi-transparent"> Rappel sur les catégories : </h3>
-        <div class="fancy-border footer-container" >
+
+        <div class="footer-container" >       
+            
             <!--<input id="tags" />-->
             <div class="panel-group" id="tag-help">
             @foreach($postags as $postag)

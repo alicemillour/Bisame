@@ -13,7 +13,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand ostrich title-app-navbar my-navbar-hover" style="white-space: nowrap;" href="{{ url('/home') }}">
-                    <i class="fa fa-home fa-fw" aria-hidden="true"></i><b> Krik </b> 
+                    <i class="fa fa-home fa-fw" aria-hidden="true"></i><b> Bisame </b> 
                 </a>
                 <!--<div class="collapse navbar-collapse" id="app-navbar-collapse">-->
                     <ul class="nav navbar-nav navbar-right navbar-button-text">

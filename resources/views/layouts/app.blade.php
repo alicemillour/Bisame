@@ -135,7 +135,6 @@
                 overflow-y : auto;
                 position : relative;
                 margin: 0 auto;
-                max-width: 400px;
             }
             /*            @media screen and (max-width: 1280px) {
                         .footer-container {
