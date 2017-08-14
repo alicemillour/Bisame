@@ -30,12 +30,12 @@
                 opacity: 0.9;   
 
             }
-            .footer { 
+/*            .footer { 
                 position: absolute; 
                 bottom: 0; 
                 margin-top: 15px;
                 font-family: 'Ostrich-Rounded';
-            }
+            }*/
             .fa-btn {
                 margin-right: 6px;
             }
@@ -151,7 +151,7 @@
     <!--<div class="fill">-->
     @yield('content')
     <body class="fill" id="app-layout"/> 
-    <!--    @include('partials.footer')-->
+    @include('partials.footer')
     <!-- JavaScripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

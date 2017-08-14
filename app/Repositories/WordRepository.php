@@ -61,7 +61,6 @@ class WordRepository extends ResourceRepository {
                 ->where('corpora.id','=',$corpus_id)->first());
     }
     public function get_sentences_number($corpus_id) {
-        debug("HERE");
         return($this->sentence->select(DB::raw('count(sentences.id) as count'))
                 ->join('corpora', 'corpus_id', '=', 'corpora.id')
                 ->where('corpora.id','=',$corpus_id)->first());
