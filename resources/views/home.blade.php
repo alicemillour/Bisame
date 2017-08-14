@@ -51,40 +51,12 @@
                     @if($game_available)
                     <span>
                         <a class='btn btn-default play-button active-button ' id="play-button-2" href="/home/start"> <span class="ostrich" style="font-size: 0.9em"> Produire des annotations </span> </a>
+                    </span>                    
+                    @else
+                    <span>
+                        <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Produire des annotations !</a>
                     </span>
-                    
-                    @else
-                    @if(!$game_available)
-                    <h3 class="info-message">Commencez par l'entraînement (quatre phrases) pour débloquer le jeu et commencer à gagner des points :
-                    </h3>
-                    <br>
-                    @else
-                    <h3 class="info-message" style="-webkit-backdrop-filter: blur(5px); backdrop-filter:blur(5px)">Bravo, vous avez débloqué la phase de production d'annotations ! A vous de jouer !
-                    </h3>
-                    <br>
-                    <div class="progress" style="width:50%; margin: 0 auto">
-                        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{$progression}}"
-                             aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
-                        </div>
-                        <div class="percent" style="font-size:0.8em">Plus que <b> {{$unannotated_words->count}} mots à annoter (ensemble)</b></div >
-                    </div>
-                    <br>
                     @endif
-                    <div class="button-wrapper">
-                        <span>
-                            <a class='btn btn-default play-button active-button' id="play-button-1" href="/home/training"> Essayé é komprann jé la <br> <span class="ostrich" style="font-size: 0.9em"> (S'entrainer) </span> </a>
-                        </span> 
-                        @if($game_available)
-                        <span>
-                            <a class='btn btn-default play-button active-button ' id="play-button-2" href="/home/start"> Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a>
-                        </span>
-                        @else
-                        <span>
-                            <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Produire des annotations !</a>
-                        </span>
-                        @endif
-                    </div>
-                    
                 </div>
                 
                 @endif
@@ -112,5 +84,4 @@
         </div> 
     </div> 
 </div> 
-</div>
 @endsection
