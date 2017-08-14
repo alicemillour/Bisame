@@ -1,0 +1,20 @@
+#### TIPS pour utiliser BISAME avec les deux branches bisame2 et krik2017
+
+https://github.com/alicemillour/Bisame/branches
+
+Les deux branches ne doivent jamais avoir des commits de retard sur master, que des commits d'avance.
+Pour faire une modif qui impacte les deux branches :
+
+git checkout master
+modif
+git commit -m "modif sur master"
+git push origin master
+
+
+git checkout B1
+git fetch --all
+git merge origin/master
+git commit -m "merge"
+git push origin B1
+
+idem avec B2
