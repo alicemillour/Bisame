@@ -304,7 +304,7 @@ $(document).ready(function () {
         switch (is_in_error) {
             case ErrorLevel.error:
                 if (postag_names.length > 0) {
-                    $('#message-title').text("Annotation incorrecte… Awa ! ti ni on érrè. Rappel sur les catégories choisies :");
+                    $('#message-title').text("Certaines catégories ne sont pas les bonnes. Rappel sur les catégories choisies :");
                 } else {
                     /* no word has been annotated yet */
                     $('#message-title').text("Dans le mode entraînement, vous devez annoter tous les mots pour pouvoir passer à la phrase suivante, proposez une catégorie pour pouvoir vérifier votre réponse");
@@ -318,7 +318,7 @@ $(document).ready(function () {
                 $('#message').removeClass('alert-success alert-warning').addClass('alert-danger my-alert');
                 break;
             case ErrorLevel.warning:
-                $('#message-title').text("Annotation(s) correcte(s) ! Woulo !");
+                $('#message-title').text("Annotation(s) correcte(s) !");
                 $('#message-content').text("Annotez les mots restants pour pouvoir passer à la phrase suivante.");
                 $('#message').removeClass('alert-success alert-danger').addClass('alert-warning my-alert');
                 break;

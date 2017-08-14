@@ -14,7 +14,7 @@
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-        <link rel="shortcut icon" href="{{ asset('images/favicon-krik2.ico') }}" >
+        <link rel="shortcut icon" href="{{ asset('images/favicon-rond3.png') }}" >
         <style>
             @font-face {font-family: "Ostrich-Rounded"; src: url('/images/ostrich-rounded.ttf') ;}
             @font-face {font-family: "Cicle-Fina"; src: url('/images/cicle/Cicle_Semi.ttf') ;}
@@ -69,7 +69,7 @@
                 font-size: 180%;
             }
             .nav > li > a.my-navbar-hover:focus, .nav > li > a.my-navbar-hover:hover{
-                color:#ddab18 !important;
+                color:#f69a47 !important;
             }
 
             .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
@@ -82,7 +82,7 @@
             }
             
             .navbar-default .navbar-brand:hover {
-                color: #ddab18 !important;
+                color: #f69a47 !important;
             }
             
             .dropdown-menu {
@@ -115,7 +115,7 @@
                 margin:0;
                 padding:0;
 
-                background: url('/images/Ballon.jpg') no-repeat center fixed; 
+                background: url('/images/PAN_2017_75084.jpg') no-repeat center fixed; 
                /* background: url('/images/gwad_sat_blue_huile.jpg') no-repeat center fixed; */
 
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
