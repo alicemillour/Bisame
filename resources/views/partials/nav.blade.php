@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="dark-background-colored">
             <div class="navbar-header ">
-
+                
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed dark-background-colored" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle Navigation</span>
