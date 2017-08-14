@@ -121,8 +121,8 @@ class AnnotationRepository extends ResourceRepository {
         #$melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
         #$treetagger_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "TreeTagger");
 
-        $list_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "list");
-        $melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "melt");
+        $list_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "Treetagger");
+        $melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
         
         $collection_melt = collect();
         foreach ($melt_tags_array as $result) {
