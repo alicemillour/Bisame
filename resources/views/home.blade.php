@@ -116,7 +116,7 @@
 
 
         </div>
-</div>
+    </div>
     <div class="main-footer">
         <div class="footer-container" id="scoreboard">
             @include('partials.scoreboard')
