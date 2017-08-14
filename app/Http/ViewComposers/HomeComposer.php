@@ -37,7 +37,9 @@ class HomeComposer {
         debug($this->annotationRepository->get_unannotated_words(32));
         
      //      $progression = $this->annotationRepository->get_distinct_annotated_words(32)->count() * 100 / $this->annotationRepository->count_annotable_words(32)->count;
-         $progression = 1;
+         //$progression = 1;
+         $progression = $this->annotationRepository->get_distinct_annotated_words(32)->count() * 100 / $this->annotationRepository->count_annotable_words(32)->count;
+        debug($progression);
         //$progression_hoch = $this->annotationRepository->get_distinct_annotated_words(325)->count() * 100 / $this->annotationRepository->count_annotable_words(325)->count;
         $progression_hoch = 1;    
         $view
