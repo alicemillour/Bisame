@@ -35,7 +35,7 @@
                 @else
                 <h3 class="info-message" style="-webkit-backdrop-filter: blur(5px); backdrop-filter:blur(5px)">Bravo, vous avez débloqué la phase de production d'annotations ! A vous de jouer !
                 </h3>
-                <br>
+                @include('partials.news')
                 <div class="progress" style="width:50%; margin: 0 auto">
                     <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{$progression}}"
                          aria-valuemin="0" aria-valuemax="100" style="width:{{$progression}}%">
@@ -64,14 +64,14 @@
             @endif
         </div>
         <br>
-        
+        <br>  
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-                @include('partials.creole-intro')
+                @include('partials.intro')
             </div>
         </div>
         <br>
-        
+  
         <!--  
          </div>
          <div class="info-wrapper"> 
@@ -84,5 +84,4 @@
         @include('partials.scoreboard')
     </div> 
 </div> 
-</div>
 @endsection
