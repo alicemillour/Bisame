@@ -19,7 +19,7 @@ class WordTableSeeder extends CsvSeeder {
         // Recommended when importing larger CSVs
 //        DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->sentences_table)->delete();       
+       // DB::table($this->sentences_table)->delete();       
         
         parent::run();
     }

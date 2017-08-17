@@ -16,7 +16,7 @@ class AnnotationTableSeeder extends CsvSeeder {
     public function run()
     {
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->delete();
+//        DB::table($this->table)->delete();
         parent::run();
     }
     

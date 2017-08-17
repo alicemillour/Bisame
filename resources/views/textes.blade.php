@@ -23,9 +23,9 @@
                     <li><a style="color: black" target="_blank" href="https://als.wikipedia.org/wiki/Johannes_Mentelin"> Johannes Mentelin </a> </li>
                     <br>
                     <li><a style="color: black" target="_blank" href="https://als.wikipedia.org/wiki/Orthal"> Orthal </a> </li>
-
+                    
                 </ul>
-
+                
             </div>
             <div class="semi-transparent"> <br> </div>
             <button class="accordion" > <i class="fa fa-cutlery" aria-hidden="true"></i> Recettes de cuisine </button>
@@ -36,11 +36,11 @@
                     <li><a style="color: black" target="_blank" href="http://www.olcalsace.org/sites/default/files/publications/recette_flan_asperges.pdf"> Flan aux asperges </a> </li>
                     <br>
                     <li><a style="color: black" target="_blank" href="http://www.olcalsace.org/sites/default/files/publications/recette_sabayon.pdf"> Fraises et rhubarbe au sabayon </a> </li>
-
+                    
                 </ul>
             </div>
             <div class="semi-transparent"> <br> </div>
-
+            
             <button class="accordion" > <i class="fa fa-book" aria-hidden="true"></i> Œuvres littéraires </button>
             <div class="panel semi-transparent">
                 <ul>
@@ -71,21 +71,23 @@
                         </div>
                     </li>
                     <br>
-<!--                    <li> 
+                    <li> 
                         <button class="accordion accordion-second" >﻿<i> E Hochzit in de 50er Johre </i> - Raymond Weissenburger</button>
-                        <div style="white-space: pre-wrap" class="panel semi-transparent ">
+                         
+                        <div style="white-space: pre-wrap" class="panel semi-transparent ">                           
                             <ul>@include('partials.raymond')</ul>
                         </div>
-                    </li>-->
+                       
+                    </li>
                 </ul>
             </div>
             <div class="semi-transparent"> <br> </div>
         </div>
         <br>
     </div>
-
+    
     <div class="main-footer">
-
+        
     </div>
 </div>
 @endsection

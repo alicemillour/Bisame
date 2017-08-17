@@ -1,4 +1,5 @@
 <div style="white-space: pre-wrap; text-align: center">
+     <a href="{{ url('/download_txt/E_Hochzit_in_de_50er_Johre.docx') }}" download="E Hochzit in de 50er Johre">Téléchargement (docx)</a>
     <h3> E Hochzit in de 50er Johre </h3>
     vum Raymond Weissenburger
 </div>

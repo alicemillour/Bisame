@@ -34,20 +34,20 @@ class HomeComposer {
 
     public function compose(View $view) {
 //        get_users_and_annotation_counts())
-        debug($this->annotationRepository->get_unannotated_words(323));
+        debug($this->annotationRepository->get_unannotated_words(326));
         
         
-        //      $progression = $this->annotationRepository->get_distinct_annotated_words(32)->count() * 100 / $this->annotationRepository->count_annotable_words(32)->count;
-        $progression = 1;
-        //$progression = $this->annotationRepository->get_distinct_annotated_words(323)->count() * 100 / $this->annotationRepository->count_annotable_words(323)->count;
+        $progression = $this->annotationRepository->get_distinct_annotated_words(326)->count() * 100 / $this->annotationRepository->count_annotable_words(326)->count;
+        // $progression = 1;
+        //$progression = $this->annotationRepository->get_distinct_annotated_words(326)->count() * 100 / $this->annotationRepository->count_annotable_words(326)->count;
         debug($progression);
         //$progression_hoch = $this->annotationRepository->get_distinct_annotated_words(325)->count() * 100 / $this->annotationRepository->count_annotable_words(325)->count;
         $progression_hoch = 1;    
         $view
-                ->with('total_sentences', $this->wordRepository->get_sentences_number(323))
-                ->with('total_words', $this->wordRepository->get_words_number(323))
+                ->with('total_sentences', $this->wordRepository->get_sentences_number(326))
+                ->with('total_words', $this->wordRepository->get_words_number(326))
                 ->with('progression', $progression)
-                ->with('unannotated_words', $this->annotationRepository->get_unannotated_words(323))                
+                ->with('unannotated_words', $this->annotationRepository->get_unannotated_words(326))                
                 ->with('total_sentences_Hoch', $this->wordRepository->get_sentences_number(325))
                 ->with('total_words_Hoch', $this->wordRepository->get_words_number(325))
                 ->with('progression_Hoch', $progression_hoch)
