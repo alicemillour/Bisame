@@ -132,10 +132,11 @@ class GameRepository extends ResourceRepository {
     }
 
     protected function get_reference_sentences() {
+        debug("getting reference sentences");
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
-                        ->where('corpora.name', 'like', 'cref_entrainement')
+                        ->where('corpora.id', '=', '62')
                         ->get();
     }
 
@@ -143,7 +144,7 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
-                        ->where('corpora.name', 'like', 'cref_evaluation')
+                        ->whereRaw('corpora.id=42 or corpora.id=52 or corpora.id=72')
                         ->get();
     }
 }

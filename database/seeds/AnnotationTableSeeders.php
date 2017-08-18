@@ -75,12 +75,16 @@ class AnnotationTableSeeder extends CsvSeeder {
                         ->pluck('id')[0];
 
                 $sentence_position = $row_full["sentence_position"];
-                $word_position = $row_full["word_position"];
+                Log::debug("sentenceposition $sentence_position");
+                $word_position = $row_full["word_position"];            
+                Log::debug("wordposition $word_position");
                 $postag_name = $row_full["postag_name"];
 
                 $tagger = $row_full["tagger"];
                 Log::debug($postag_name);
-                
+                $value= $row_full["value"];
+                                Log::debug("value $value");
+
                 /* retrieve ids */
                 $sentence_id=DB::table('sentences')
                         ->where('corpus_id', $corpus_id)
@@ -90,8 +94,7 @@ class AnnotationTableSeeder extends CsvSeeder {
                 Log::debug("sentence_id $sentence_id");
                 Log::debug("word position $word_position");
                 
-                #Log::debug("word id $word_id");
-
+                
                 $word_id=DB::table('words')
                         ->where('sentence_id', $sentence_id)
                         ->where('position', $word_position)

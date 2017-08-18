@@ -80,7 +80,7 @@ $(document).ready(function () {
         $('.word').each(function () {
             word_id = $(this).prop('id')
             if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
-               // get_words_postags($(this).attr('id'));
+                get_words_postags($(this).attr('id'));
                 $(this).addClass('not-punct');
                 console.log("pretag");
                 console.log($(this).attr('tag'))

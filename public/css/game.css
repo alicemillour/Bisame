@@ -20,7 +20,7 @@
 }
 
 .more-transparent {
-    background-color: rgba(249, 242, 236, 0.6);
+    background-color: rgba(249, 242, 236, 0.75);
 }
 
 .main-footer {
@@ -214,7 +214,7 @@ button.accordion {
     outline: none;
     transition: 0.4s;
     font-size: 1.4em;
-    background-color: rgba(249, 242, 236, 0.80);
+    background-color: rgba(249, 242, 236, 0.85);
 }
 
 button.accordion-second {

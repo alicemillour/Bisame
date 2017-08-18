@@ -70,6 +70,7 @@ class PostagRepository extends ResourceRepository {
 
     private function getDatabaseRequestPostagsForWordId($word_id) {
         /* get existing annotation for word_id */
+        debug("getting postags for word id ");
         $annotations = Annotation::join('postags', 'postags.id', '=', 'annotations.postag_id')
                 ->select(DB::raw('postag_id as id, name, full_name, description'))
                 ->distinct()
