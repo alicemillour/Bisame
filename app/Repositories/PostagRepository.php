@@ -60,12 +60,12 @@ class PostagRepository extends ResourceRepository {
     }
 
     public function getReferenceForWordId($word_id) {
-        $annotations = Annotation::join('postags', 'postags.id', '=', 'annotations.postag_id')
-                ->select(DB::raw('postag_id as id, name, full_name, description'))
-                ->distinct()
+        debug("reference for word id $word_id");
+        $annotation_ref = Annotation::select(DB::raw('id as id, postag_id as postag_id'))
                 ->where('word_id', $word_id)
                 ->orderBy('confidence_score','desc')->first();
-        return $annotations;    
+      
+       return $annotation_ref->postag;   
     }
 
     private function getDatabaseRequestPostagsForWordId($word_id) {
