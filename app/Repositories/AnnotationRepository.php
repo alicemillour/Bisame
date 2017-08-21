@@ -38,7 +38,7 @@ class AnnotationRepository extends ResourceRepository {
 
     public function get_number_correct_annotations_on_reference($user_id) {
         debug("in get on ref");
-        debug($this->annotation->select(DB::raw('count(word_id) as count'))
+        $annotations=$this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
@@ -53,7 +53,8 @@ class AnnotationRepository extends ResourceRepository {
                         AND corpora.id=sentences.corpus_id
                         AND corpora.is_training=true group by word_id order by annotations.confidence_score desc)
                 ", Array($user_id))
-                        ->first());
+                        ->first();
+        debug($annotations->count);
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -63,7 +64,7 @@ class AnnotationRepository extends ResourceRepository {
                 AND (word_id, annotations.postag_id) IN 
                     (select word_id, annotations.postag_id FROM annotations, words, sentences, corpora, users
                         WHERE annotations.user_id=users.id
-                        AND users.id=3
+                        AND annotations.confidence_score=100
                         AND words.id=annotations.word_id
                         AND sentences.id=words.sentence_id
                         AND corpora.id=sentences.corpus_id
