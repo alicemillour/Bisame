@@ -98,7 +98,7 @@
     <div class="main-container">
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-                @include('partials.alsacien-intro')
+                @include('partials.intro')
             </div>
         </div>
     </div>
