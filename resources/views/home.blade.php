@@ -17,8 +17,17 @@
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
                 
+                @if (Auth::guest())
                 <div class="button-wrapper" >
-                    @if (Auth::guest())
+                    
+                    <span>
+                        <a class='btn btn-default play-button active-button ostrich' href="/login">Connexion</a>
+                    </span>
+                    
+                    <span>
+                        <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
+                    </span>  
+                    @include('partials.why')
                     <span>
                         <a class='btn btn-default play-button active-button ostrich' href="/login">Connexion</a>
                     </span>
@@ -27,6 +36,7 @@
                         <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
                     </span>
                 </div>
+                
                 @else
                 @if(!$game_available)
                 <h3 class="info-message">Commencez par l'entraînement (quatre phrases) pour débloquer le jeu et commencer à gagner des points :
@@ -58,9 +68,12 @@
                     </span>
                     @endif
                 </div>
-            </div>
-            @endif
-        </div>
+                @endif      
+            </div>       
+        </div>        
+        <br>
+        <br>  
+        
         <br>
         <br>  
         <div class="fill">
@@ -69,17 +82,11 @@
             </div>
         </div>
         <br>
-  
-        <!--  
-         </div>
-         <div class="info-wrapper"> 
-             <h3 class="info-message" style="text-align: center; margin: 0 auto;">-->
-        
-    </div> 
-    <div class="main-footer">
-        <div class="footer-container" id="scoreboard">
-            @include('partials.scoreboard')
-        </div> 
-    </div> 
+    </div>         
 </div> 
+<div class="main-footer">
+    <div class="footer-container" id="scoreboard">
+        @include('partials.scoreboard')
+    </div> 
+</div>   
 @endsection

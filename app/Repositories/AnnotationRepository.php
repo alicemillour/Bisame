@@ -75,7 +75,17 @@ class AnnotationRepository extends ResourceRepository {
 
     public function get_number_annotations_on_reference($user_id) {
         /* */
-        
+        debug("number annotations on ref");
+        debug($this->annotation->select(DB::raw('count(word_id) as count'))
+                        ->join('words', 'word_id', '=', 'words.id')
+                        ->join('sentences', 'sentence_id', '=', 'sentences.id')
+                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                        ->whereRaw("annotations.user_id=?
+                            AND words.id=annotations.word_id
+                        AND sentences.id=words.sentence_id
+                        AND corpora.id=sentences.corpus_id
+                        AND corpora.is_training=true", Array($user_id))->first());
+//        return $a;
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')

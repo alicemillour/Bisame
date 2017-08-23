@@ -266,3 +266,9 @@
  position: absolute;   
  left: 50%;
 }
+
+.question {
+    background-color: #fbc764;
+}
+
+li{ text-align: left}

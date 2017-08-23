@@ -12,7 +12,7 @@
 @include('partials.nav')
 <div class="main">
     <div class="main-container">
-        <h3> Vous trouverez sur cette page les liens vers les différents textes utilisés </h3>
+        <h3 style="color:white"> Vous trouverez sur cette page les liens vers les différents textes utilisés </h3>
         <br>
         <div class="fancy-border " >
             <button class="accordion" > <i class="fa fa-wikipedia-w" aria-hidden="true"></i> Pages Wikipédia </button>

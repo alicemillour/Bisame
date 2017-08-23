@@ -8,7 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta property="og:image" content="{{ asset('images/ppic.jpg') }}" />
         <meta property="og:description" content="Bisame est un projet de recherche collaboratif visant à favoriser la diffusion de l'alsacien. Venez participer !" />
-        
+
         <title>Bisame</title>
 
         <!-- Fonts -->

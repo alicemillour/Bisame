@@ -194,6 +194,7 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 
 .category-label{
     text-align: center;
+    font-weight: bold;
 }
 
 .category-row:hover {
