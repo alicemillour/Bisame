@@ -57,6 +57,16 @@ class UserRepository extends ResourceRepository {
                         ->orderBy('real_score', 'desc')
                         ->where('is_admin', '=', '0')->take(5)->get();
     }
+    
+    public function get_best_users_by_real_score_month() {
+        return User::join("annotations", function($join) {
+                            $join->on("annotations.user_id", "=", "users.id");
+                        })->whereRaw('annotations.created_at > DATE_SUB(CURDATE(), INTERVAL 1 MONTH)')
+                        ->select(DB::raw('count(*)*score as real_score, users.*'))
+                        ->groupBy('users.id')
+                        ->orderBy('real_score', 'desc')
+                        ->where('is_admin', '=', '0')->take(5)->get();
+    }
 
     public function get_best_users_by_quantity() {
         return User::join("annotations", function($join) {
