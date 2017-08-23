@@ -32,7 +32,8 @@ class ScoreboardComposer {
     public function compose(View $view) {
 //        get_users_and_annotation_counts())
         $view->with('users_score', $this->userRepository->get_best_users_by_real_score())
-                ->with('users_quantity', $this->userRepository->get_best_users_by_quantity());
+                ->with('users_quantity', $this->userRepository->get_best_users_by_quantity())
+                ->with('users_month', $this->userRepository->get_best_users_by_real_score_month());
     }
 
 }

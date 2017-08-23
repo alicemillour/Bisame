@@ -11,7 +11,7 @@
 @include('partials.nav')
 <div class="main">
     <div class="main-container">
-        <div  style="max-width:90%;margin:0 auto;">
+        <div  style="max-width:100%;margin:0 auto;">
             <div class="title ostrich"> Bisame </div>
         </div>
         <div class="fill">
