@@ -58,10 +58,10 @@
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
                         </ul>
                     </li>
-                    <li> <i class="icon-search icon-white"></i>
-                        <a class="my-navbar-hover" href="/contact"> <i class="fa fa-envelope-o" aria-hidden="true"></i> Un commentaire ?</a>
-                    </li>
                     @endif
+                                        <li> <i class="icon-search icon-white"></i>
+                        <a class="my-navbar-hover" href="/contact"> <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact </a>
+                    </li>
                 </ul>
             </div>
         </div>

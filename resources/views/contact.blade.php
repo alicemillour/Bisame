@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default background-colored">
-                <div class="panel-heading background-colored text-center" style="font-size: 1.3em"> <b> Un commentaire, une critique, une idée d’amélioration ? Palé ban mwen ! </b>
+                <div class="panel-heading background-colored text-center" style="font-size: 1.3em"> <b> Une question, un commentaire, une critique, une idée d’amélioration ? C'est ici !</b>
 </div>
                 <div class="panel-body"></div>
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/contact') }}">
