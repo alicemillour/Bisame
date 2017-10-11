@@ -50,7 +50,13 @@ class HomeComposer {
                 ->with('total_sentences_Hoch', $this->wordRepository->get_sentences_number(325))
                 ->with('total_words_Hoch', $this->wordRepository->get_words_number(325))
                 ->with('progression_Hoch', $progression_hoch)
-                ->with('unannotated_words_Hoch', $this->annotationRepository->get_unannotated_words(325));
+                ->with('total_annotations_not_reference', $this->annotationRepository->get_total_annotations_not_reference()['count'])
+                ->with('unannotated_words_Hoch', $this->annotationRepository->get_unannotated_words(325))
+                ->with('nb_total_users', $this->userRepository->get_users_count()['count'])
+                ->with('nb_total_part', $this->userRepository->get_participant_count()['count'])
+                ->with('trained_user', $this->userRepository->get_not_training_count()['count'])
+                
+;
     }
 
 }

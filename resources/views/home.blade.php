@@ -54,13 +54,11 @@
                     </span>
                     @else
                     <span>
-                        <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Produire des annotations !</a>
+                        <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a>
                     </span>
                     @endif
                 </div>
-                
             </div>
-            
             @endif
         </div>
         <br>
@@ -78,11 +76,10 @@
              <h3 class="info-message" style="text-align: center; margin: 0 auto;">-->
         
     </div>
-</div>
-<div class="main-footer">
-    <div class="footer-container" id="scoreboard">
-        @include('partials.scoreboard')
+    <div class="main-footer">
+        <div class="footer-container" id="scoreboard">
+            @include('partials.scoreboard')
+        </div> 
     </div> 
-</div> 
 </div>
 @endsection

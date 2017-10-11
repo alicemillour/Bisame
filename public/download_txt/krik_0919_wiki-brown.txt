@@ -1,0 +1,1 @@
+Lil/PROPN -la/DET ka/PART fè/VERB 158/NUM kilomet/NOUN karé/NOUN é/CCONJ tini/VERB twa/NUM komin/NOUN Mari-Galant/PROPN :/PUNCT pli/ADV gran/ADJ la/ADV sé/VERB Granbou/PROPN ,/PUNCT lézot/ADJ -la/DET sé/VERB Sen-Lwi/PROPN épi/CCONJ Kapestè/PROPN ./PUNCT 
