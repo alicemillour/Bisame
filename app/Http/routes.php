@@ -42,6 +42,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/stats', 'StatsController@index');
     Route::get('contact', 'ContactController@showForm');
     Route::post('contact', 'ContactController@sendContactInfo');
+    Route::get('/redirect', 'SocialAuthController@redirect');
+    Route::get('/callback', 'SocialAuthController@callback');
 });
 
 

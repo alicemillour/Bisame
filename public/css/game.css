@@ -268,5 +268,7 @@ button.accordion.active:after {
 #message{
     font-size: 1.3em;
 }
-
-
+/*
+.not-punct.selected {
+    border:1px solid black;
+}*/

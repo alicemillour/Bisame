@@ -359,9 +359,18 @@ $(document).ready(function () {
                 }).popover();
                 $('#' + word_id).on('click', function () {
                     $('.word').not(this).popover('hide');
+                                    $('#' + word_id).popover({
+                    placement: 'bottom',
+                    html: true,
+                    animation: true,
+                    content: content_words,
+                }).popover();
                 });
                 console.log("end get_words_postags");
                 add_on_click_on_categories_table();
+            },
+            error: function(resultat, statut, erreur){
+                console.log("error");
             }
         });
     }
