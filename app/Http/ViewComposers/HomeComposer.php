@@ -47,6 +47,7 @@ class HomeComposer {
                 ->with('total_sentences', $this->wordRepository->get_sentences_number(326))
                 ->with('total_words', $this->wordRepository->get_words_number(326))
                 ->with('progression', $progression)
+
                 ->with('unannotated_words', $this->annotationRepository->get_unannotated_words(326))                
 //                ->with('total_sentences_Hoch', $this->wordRepository->get_sentences_number(325))
 //                ->with('total_words_Hoch', $this->wordRepository->get_words_number(325))
@@ -63,6 +64,7 @@ class HomeComposer {
                 ->with('total_phrases_non_reference', $this->annotationRepository->get_total_sentences_annotated_not_reference()['count'])
                 ->with('days_of_annotation', $this->annotationRepository->get_days_of_annotation()['count'])
                 ;
+
     }
 
 }

@@ -82,10 +82,11 @@ class UserRepository extends ResourceRepository {
     public function get_level_by_id($user_id) {
         return User::select('level')->where('id', $user_id)->first()->level;
     }
-    public function get_user_count() {
+    public function get_users_count() {
         return User::select(DB::raw('count(*) as count'))->first();
     }
     public function get_not_training_count() {
+        debug("get not training users");
         return User::select(DB::raw('count(*) as count'))->where('is_in_training', '=', '0')->first();
     }
     public function get_participant_count() {

@@ -46,7 +46,7 @@ class NavigationComposer {
         } else {
 //            debug($this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
             $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
-            $view->with('nb_total_users', $this->userRepository->get_user_count()['count']);
+            $view->with('nb_total_users', $this->userRepository->get_participant_count()['count']);
         }
     }
 

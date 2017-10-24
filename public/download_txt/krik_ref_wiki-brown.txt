@@ -1,0 +1,34 @@
+Ou/PRON poko/ADV ba-y/VERB+PRON lajan/NOUN oben/CCONJ ou/PRON ja/ADV ba-y/VERB+PRON li/PRON ?/PUNCT
+A_fòs/ADP makak/NOUN karésé/VERB pitit/NOUN a'y/PRON ,/PUNCT i/PRON kyouwé/VERB 'y/PRON ./PUNCT
+Two/ADV présé/VERB pa/ADV ka/PART fè/AUX jou/NOUN ouvè/VERB ./PUNCT
+An/DET chandèl/NOUN ,/PUNCT kabrit/NOUN ka/PART sanb/VERB ti/ADJ fi/NOUN
+A_fòs/SCONJ frékanté/VERB chyen/NOUN ou/PRON ka/PART trapé/VERB pis'/NOUN
+sé/VERB gren/NOUN diri/NOUN ka/PART fè/VERB sak/NOUN diri/NOUN ./PUNCT
+Malé/NOUN pa/ADV ni/VERB klakson/NOUN ./PUNCT
+An/PRON enkyèt/ADJ kon/ADP tikyèt/NOUN a/ADP finèt/NOUN nèf/ADJ a/ADP katrè/NUM -d/ADP maten/NOUN
+Pli/ADV gran/ADJ kilti/NOUN a/ADP Mari-Galant/PROPN sé/VERB kann/NOUN avè/ADP kiles/PRON yo/PRON ka/PART fè/VERB sik/NOUN é/CCONJ wonm/NOUN ./PUNCT
+Rakoun/NOUN la/DET sé/VERB amblem/NOUN Pak/NOUN national/ADJ Gwadloup/PROPN men/ADV sé/VERB on/DET jan/NOUN ki/PRON té/PART introdwi/VERB kon/ADP mangous/NOUN ou/CCONJ rat'/NOUN
+Sapoti/NOUN sé/VERB on/DET fwi/NOUN a/ADP sapotiyé/NOUN ,/PUNCT chè/NOUN a-y/PRON sikré/ADJ on_pil/ADV é/CCONJ an/ADP tchè/NOUN a/ADP fwi/NOUN la/DET ni/VERB ti/ADJ grenn'/NOUN nwè/ADJ
+Milatress/PROPN Solitid/PROPN sé/VERB an/DET figui/NOUN istorik/ADJ a/ADP résistans/NOUN a/ADP esklav/NOUN neg/ADJ an/ADP Gwadloup/PROPN ,/PUNCT Solitid/PROPN té/PART egzisté/VERB mé/CCONJ listwa/NOUN ay/PRON sé/VERB on/DET kont/NOUN ./PUNCT
+Tini/VERB onlo/DET dot/DET biten/NOUN pou/ADP vwè/VERB :/PUNCT -/PUNCT Gel/PROPN Gran/PROPN Gouf/PROPN ,/PUNCT sé/VERB on/DET gran/ADJ twou/NOUN ki/PRON fouyé/VERB adan/ADP falez/NOUN -la/DET é/CCONJ adan/ADP kiles/PRON lanmè/NOUN -la/DET ka/PART rantré/VERB -/PUNCT Kay/PROPN Plat/PROPN ,/PUNCT sé/VERB on/DET falèz/NOUN plat/ADJ anba/ADP kiles/PRON lanmè/NOUN la/DET ka/PART rantré/VERB -/PUNCT Moulen/PROPN Béza/PROPN ,/PUNCT sé/VERB on/DET moulen/NOUN yo/PRON rikonsui/VERB avè/ADP zel/NOUN a-y/PRON -/PUNCT Bitasyon/PROPN Mira/PROPN ,/PUNCT sé/VERB on/DET bitasyon/NOUN an/ADP tan/NOUN lontan/ADJ moun/NOUN pé/AUX vizité/VERB ./PUNCT
+Bib/PROPN -la/DET :/PUNCT labib/PROPN ,/PUNCT évé/CCONJ vié/ADJ épi/CCONJ nouvo/ADJ testaman/NOUN sé/VERB Bondyé/PROPN ki/PRON inspiré/VERB -y/PRON ,/PUNCT sé/VERB sèl/ADJ vrè/ADJ biten/NOUN ki/PRON matjé/VERB et/CCONJ on/DET lalwa/NOUN pou/ADP tout/DET krétien/NOUN ki/PRON ka/PART viv/VERB ./PUNCT
+On/DET sèl/ADJ sauvè/NOUN pou/ADP mond/NOUN -la/DET ,/PUNCT pou/ADP tala/PRON ki/PRON kréyé/VERB syèl/NOUN épi/CCONJ latè/NOUN sé/VERB li/PRON ,/PUNCT li/PRON sé/VERB sèl/ADJ bondyé/NOUN ki/PRON vrè/ADJ ./PUNCT
+Hay/VERB chyen/NOUN mé/CCONJ di/VERB dan/NOUN a'y/PRON blan/ADJ ./PUNCT
+Chak/DET bourgo/NOUN ka/PART halé/VERB kaz/NOUN a'y/PRON ./PUNCT
+Zafé/NOUN kabwit/NOUN pa/ADV zafé/NOUN lapen/NOUN ./PUNCT
+Chat/NOUN pa/ADV la/ADV ,/PUNCT rat/NOUN ka/PART bay/VERB bal/NOUN ./PUNCT
+Achté/VERB van/NOUN pou/ADP vann/VERB lè/NOUN ./PUNCT
+Sé/VERB zanmi/NOUN fè/VERB si/SCONJ krab/NOUN pa/ADV ni/VERB tèt/NOUN ./PUNCT
+Kassav/PROPN sé/VERB on/DET gwoup/NOUN dé/DET mizik/NOUN gwadloupéyen/ADJ ./PUNCT
+Sé/VERB zouk/NOUN yo/PRON ka/PART fè/VERB ./PUNCT
+Yonn/DET dé/DET bitin/NOUN ki/SCONJ ka/PART interesé/VERB sé/DET moun/NOUN plis/ADV sé/VERB la/DET Touw/PROPN Efel/PROPN ./PUNCT
+Sé/VERB yon/DET plass/NOUN ni/VERB pliss/ADV moun/NOUN kay/PART+VERB asi/ADV la/DET tè/PROPN ./PUNCT
+Pou/ADP ay/VERB vwè/VERB -y/PRON ou/PRON dwèt/AUX ka/PART pwan/VERB métro/NOUN Champ-de-Mars/PROPN ./PUNCT
+Raton/NOUN lavè/ADJ de/ADP Gwadloupkrié/PROPN Rakoon/NOUN an/ADP Gwadloup/PROPN ,/PUNCT sé/VERB on/DET jan/NOUN raton/NOUN lavè/ADJ ,/PUNCT défwa/ADV konsidéré/VERB kon/ADV an/DET sou-jan/NOUN raton/NOUN lavè/ADJ ./PUNCT
+Nou/PRON pé/VERB vwey'/VERB+PRON an/ADP léta/NOUN sauvaj/ADJ an/ADP Pak/PROPN National/PROPN Gwadloup/PROPN ,/PUNCT asi/ADP lilet/NOUN Basté/PROPN ./PUNCT
+Nou/PRON pé/VERB vwey'/VERB+PRON osi/ADV an/ADP Pak/NOUN géolojik/ADJ é/CCONJ a/ADP Mamnel/PROPN (/PUNCT rout/NOUN a/ADP travésé/NOUN -la/DET )/PUNCT ./PUNCT
+Sa/DET nou/PRON ka/PART kriyé/VERB la/DET "/PUNCT Véritable/PROPN Jéus/PROPN Eglise/PROPN "/PUNCT sé/VERB on/DET légliz/NOUN endépandan/ADJ ki/SCONJ vin/VERB vwè/VERB jou/NOUN a/ADP Pékin/PROPN an/ADP Chine/PROPN an/ADP 1917/NUM ./PUNCT
+Sé/VERB on/DET lyannaj/NOUN chinwa/ADJ a/ADP on/DET koté/NOUN protèstan/ADJ a/ADP légliz/NOUN krétyén/ADJ ki/SCONJ koumansé/VERB grandi/VERB lè/SCONJ lanné/NOUN 1900/NUM rivé/VERB ./PUNCT
+Egliz/NOUN -lasa/DET ni/VERB 1,5/NUM milyon/NOUN fidèl/NOUN asi/ADP Latè/PROPN ./PUNCT
+Sé/VERB on/DET légliz/NOUN pantkotist/ADJ ,/PUNCT kivédi/SCONJ moun/NOUN ka/PART pòté/VERB onlo/ADV pòwtalans/NOUN don/NOUN a/ADP Lèspwi/PROPN Sen/PROPN ./PUNCT
+Maladi/NOUN vin/VERB a/ADP chouval/NOUN i/PRON ka/PART alé/VERB a/ADP pyé/NOUN ./PUNCT

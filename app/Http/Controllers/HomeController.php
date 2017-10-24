@@ -35,7 +35,7 @@ class HomeController extends Controller {
             $current_user = Auth::user();
             $game_available = ($current_user->is_in_training == false);
             $non_admin_annotations = $this->annotationRepository->get_total_non_admin_annotations()['annotation_count'];
-            $nb_total_users = $this->userRepository->get_user_count()['count'];
+            $nb_total_users = $this->userRepository->get_users_count()['count'];
 
             return view('home', compact('game_available', 'current_user','non_admin_annotations','nb_total_users'));
         } else {

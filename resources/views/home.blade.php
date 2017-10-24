@@ -64,10 +64,11 @@
                     </span>                    
                     @else
                     <span>
-                        <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Produire des annotations !</a>
+                        <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a>
                     </span>
                     @endif
                 </div>
+<<<<<<< HEAD
                 <br>
                 <br>    
                 @include('partials.why')
@@ -76,6 +77,12 @@
             </div>       
         </div>        
  
+=======
+            </div>
+            @endif
+        </div>
+        <br>
+>>>>>>> 6886fc321a0467f396e0a790ea0b2571d05a615f
         
         <br>
         <br>  
@@ -85,6 +92,7 @@
             </div>
         </div>
         <br>
+<<<<<<< HEAD
     </div>         
 </div> 
 <div class="main-footer">
@@ -92,4 +100,19 @@
         @include('partials.scoreboard')
     </div> 
 </div>   
+=======
+        
+        <!--  
+         </div>
+         <div class="info-wrapper"> 
+             <h3 class="info-message" style="text-align: center; margin: 0 auto;">-->
+        
+    </div>
+    <div class="main-footer">
+        <div class="footer-container" id="scoreboard">
+            @include('partials.scoreboard')
+        </div> 
+    </div> 
+</div>
+>>>>>>> 6886fc321a0467f396e0a790ea0b2571d05a615f
 @endsection
