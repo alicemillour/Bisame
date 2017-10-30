@@ -97,15 +97,6 @@ class GameRepository extends ResourceRepository {
                     ->whereRaw("annotations.confidence_score<10", Array($user_id))
                     ->get();
         
-        
-SELECT distinct(sentence_id) as sentences, count(annotations.id) as ccount
-FROM bisame_local.annotations, words, sentences 
-where words.id=annotations.word_id 
-and words.sentence_id=sentences.id 
-and annotations.tagger like "" 
-and sentences.corpus_id=326 
-group by word_id
-having ccount<2;
 
         
         $id_annotated_sentences_twice = Sentence::select(DB::raw('distinct(sentences.id) as sentences_ids, count(annotations.id) as ccount'))

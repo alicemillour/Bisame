@@ -24,7 +24,6 @@ class PostagController extends Controller
     public function index()
     {
         $word_id = $_GET['word_id'];
-        debug("word id");
         debug($word_id);
         $postags = $this->postagRepository->getPostagsForWordId($word_id);
         /* -1 because of punct tag not displayed */

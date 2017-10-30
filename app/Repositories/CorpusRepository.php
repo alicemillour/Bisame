@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Corpus;
+use Illuminate\Support\Facades\DB;
 
 class CorpusRepository {
 
@@ -19,5 +20,9 @@ class CorpusRepository {
 			->orderBy('corpora.created_at', 'desc')
 			->paginate($n);
 	}
+        
+        public function get_current_unnanotated_corpus() {
+        return ($this->corpus->select(DB::raw('id as id'))->where('is_training', '=', '0')->where('is_active','=','1')->first());
+    }
 
 }
