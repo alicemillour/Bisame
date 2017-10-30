@@ -64,7 +64,6 @@ class GameController extends Controller {
      * @return Response
      */
     public function show($id) {
-        debug("entering show");
         $postags = DB::table("postags as cp")
                 ->where("cp.name", "!=", "PUNCT")
                 ->orderBy('name', 'asc')
@@ -72,12 +71,11 @@ class GameController extends Controller {
 
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
-                debug("GAME");
-        debug($game);
         $this->authorize($game);
         $sentences = $game->sentences;
         $new_index = $game->sentence_index + 1;
         $progression = $new_index * 100 / 4;
+
         foreach ($postags as $postag) {
             $postag->description = html_entity_decode($postag->description);
         }
@@ -104,7 +102,6 @@ class GameController extends Controller {
      * @return Response
      */
     public function update(Request $request, $id) {
-        debug("entering update game");
         $user_id = Auth::user()->id;
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
@@ -168,6 +165,7 @@ class GameController extends Controller {
 
     protected function get_or_create_game() {
         $current_user = Auth::user();
+        debug($current_user);
         $repository = $this->get_game_repository();
         $game = $repository->getWithUserId($current_user->id)->first();
         /* check wether the last current game is of the right type or not */
