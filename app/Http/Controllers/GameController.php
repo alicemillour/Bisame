@@ -64,7 +64,6 @@ class GameController extends Controller {
      * @return Response
      */
     public function show($id) {
-        debug("entering show");
         $postags = DB::table("postags as cp")
                 ->where("cp.name", "!=", "PUNCT")
                 ->orderBy('name', 'asc')
@@ -72,9 +71,6 @@ class GameController extends Controller {
 
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
-        debug("GAME");
-        debug($game);
-        # TODO : comprendre pourquoi ça fait planter la prod
         $this->authorize($game);
         $sentences = $game->sentences;
         $new_index = $game->sentence_index + 1;
@@ -106,7 +102,6 @@ class GameController extends Controller {
      * @return Response
      */
     public function update(Request $request, $id) {
-        debug("entering update game");
         $user_id = Auth::user()->id;
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
