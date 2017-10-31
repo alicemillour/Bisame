@@ -39,9 +39,6 @@ class NavigationComposer {
             $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
             $view->with('nb_annotations', $this->annotationRepository->get_user_annotation_count($user_id)['annotation_count']);
             $view->with('nb_total_users', $this->userRepository->get_participant_count()['count']);
-            debug("valeurs de score dans la navbar");
-            debug($this->annotationRepository->get_user_annotation_count($user_id)['annotation_count']);
-            debug($cur_user->score);
             $view->with('real_score', intval($this->annotationRepository->get_user_annotation_count($user_id)['annotation_count'] * $cur_user->score));
         } else {
 //            debug($this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);

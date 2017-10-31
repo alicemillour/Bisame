@@ -57,7 +57,7 @@
                                     <i class="fa fa-btn fa-sign-in"></i>Connexion
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Mot de passe oublié?</a>
+                                <a class="btn btn-link white" href="{{ url('/password/reset') }}">Mot de passe oublié?</a>
                             </div>
                         </div>
                     </form>

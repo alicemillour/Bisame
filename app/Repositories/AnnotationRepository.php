@@ -38,23 +38,6 @@ class AnnotationRepository extends ResourceRepository {
 
     public function get_number_correct_annotations_on_reference($user_id) {
         debug("in get on ref");
-        $annotations=$this->annotation->select(DB::raw('count(word_id) as count'))
-                        ->join('words', 'word_id', '=', 'words.id')
-                        ->join('sentences', 'sentence_id', '=', 'sentences.id')
-                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
-                        ->whereRaw("annotations.user_id=?
-                AND corpora.is_training=true
-                AND (word_id, annotations.postag_id) IN 
-                    (select word_id, annotations.postag_id FROM annotations, words, sentences, corpora, users
-                        WHERE annotations.user_id=users.id
-                        AND annotations.confidence_score=100
-                        AND words.id=annotations.word_id
-                        AND sentences.id=words.sentence_id
-                        AND corpora.id=sentences.corpus_id
-                        AND corpora.is_training=true group by word_id order by annotations.confidence_score desc)
-                ", Array($user_id))
-                        ->first();
-        debug($annotations->count);
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -74,18 +57,6 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_number_annotations_on_reference($user_id) {
-        /* */
-        debug("number annotations on ref");
-        debug($this->annotation->select(DB::raw('count(word_id) as count'))
-                        ->join('words', 'word_id', '=', 'words.id')
-                        ->join('sentences', 'sentence_id', '=', 'sentences.id')
-                        ->join('corpora', 'corpus_id', '=', 'corpora.id')
-                        ->whereRaw("annotations.user_id=?
-                            AND words.id=annotations.word_id
-                        AND sentences.id=words.sentence_id
-                        AND corpora.id=sentences.corpus_id
-                        AND corpora.is_training=true", Array($user_id))->first());
-//        return $a;
         return($this->annotation->select(DB::raw('count(word_id) as count'))
                         ->join('words', 'word_id', '=', 'words.id')
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -127,23 +98,21 @@ class AnnotationRepository extends ResourceRepository {
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->where('user_id', $user_id)->first();
     }
-        
+    
+    public function get_pretaggers() {
+        return $this->annotation->select(DB::raw('distinct tagger'))
+                ->where('tagger','not like', '')
+                ->where('tagger','not like','ref')->get();
+    }
+    
     public function get_pretag_by_sentence_id($sentence_id) {
-//        debug("sentence");
-//        debug($this->sentence);
-//        if (!$this->sentence) {
-//            $first_tags_array = $this->get_first_pretag_by_sentence_in_ref($sentence_id);
-//            $second_tags_array = $this->get_second_pretag_by_sentence_in_ref($sentence_id);
-//            
-//        }
-//         else {
-            $first_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "Treetagger");
-            $second_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
-//        }
-        #$melt_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "MElt");
-        #$treetagger_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, "TreeTagger");
-            
-            
+        /* get the names of the two pretaggers */
+        $first_tagger = $this->get_pretaggers()[0]['tagger'];
+        $second_tagger = $this->get_pretaggers()[1]['tagger'];
+    
+        $first_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, $first_tagger);
+        $second_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, $second_tagger);
+
             
         $collection_first = collect();
         foreach ($first_tags_array as $result) {
@@ -168,35 +137,10 @@ class AnnotationRepository extends ResourceRepository {
                 $collection_pretag->put($key, null);
                 }
         }
-        debug("collection pretags !"); 
         debug($collection_pretag);
         return $collection_pretag;
     }
     
-//    public function get_first_pretag_by_sentence_in_ref($sentence_id) {
-//        return $this->annotation->select(DB::raw('words.id as word_id, postags.id as postag_id, postags.name as postag_name'))
-//                        ->join('words', 'words.id', '=', 'annotations.word_id')
-//                        ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
-//                        ->join('postags', 'postags.id', '=', 'annotations.postag_id')
-//                        ->where('sentence_id', '=', $sentence_id)
-//                        ->orderBy('annotations.confidence_score','desc')
-//                        ->take(1)
-//                        ->get();
-//    }
-//    
-//    public function get_second_pretag_by_sentence_in_ref($sentence_id) {
-//        return $this->annotation->select(DB::raw('words.id as word_id, postags.id as postag_id, postags.name as postag_name'))
-//                        ->join('words', 'words.id', '=', 'annotations.word_id')
-//                        ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
-//                        ->join('postags', 'postags.id', '=', 'annotations.postag_id')
-//                        ->where('sentence_id', '=', $sentence_id)
-//                        ->orderBy('annotations.confidence_score','desc')
-//                        ->skip(1)
-//                        ->take(1)
-//                        ->get();
-//    }
-
-
     public function get_pretag_by_sentence_and_tagger($sentence_id, $tagger_name) {
         return $this->annotation->select(DB::raw('words.id as word_id, postags.id as postag_id, postags.name as postag_name'))
                         ->join('words', 'words.id', '=', 'annotations.word_id')

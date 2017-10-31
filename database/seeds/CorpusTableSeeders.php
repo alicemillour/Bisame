@@ -13,7 +13,6 @@ class CorpusTableSeeder extends CsvSeeder {
     public function run() {
        
         // Recommended when importing larger CSVs
-        Log::debug("hello");
         DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
 //        DB::table($this->table)->delete();

@@ -47,18 +47,10 @@ class GameRepository extends ResourceRepository {
                 } else {
                     $count = $sentences->count();
                     debug($count);
-                    if ($count < 3) {
-                        if ($user_id == 1202) {
-                            $sentences = $this->get_sentences_from_orthal()->take($count);
-                        } else {
+                    if ($count < 3) {                      
                             $sentences = $this->get_sentences($user_id)->take($count);
-                        }
                     } else {
-                        if ($user_id == 1202) {
-                            $sentences = $this->get_sentences_from_orthal()->random(3);
-                        } else {
                             $sentences = $this->get_sentences($user_id)->random(3);
-                        }
                     }
                     /* get a random sentence from reference (=training?) */
                     $ref_sentence = $this->get_evaluation_sentences()->random(1);
@@ -98,7 +90,6 @@ class GameRepository extends ResourceRepository {
                     ->get();
         
 
-        
         $id_annotated_sentences_twice = Sentence::select(DB::raw('distinct(sentences.id) as sentences_ids, count(annotations.id) as ccount'))
             ->join('words', 'sentences.id', '=', 'words.sentence_id')
             ->join('annotations', 'annotations.word_id', '=', 'words.id')
@@ -114,23 +105,11 @@ class GameRepository extends ResourceRepository {
                         ->get();
     }
 
-    protected function get_sentences_from_orthal($user_id) {
-        $name = "orthal";
-        debug(Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')->where('corpora.id', 322)
-                        ->select('sentences.*')
-                        ->get());
-
-        return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')->where('corpora.id', 322)
-                        ->select('sentences.*')
-                        ->get();
-    }
-
     protected function get_reference_sentences() {
-        debug("getting reference sentences");
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
-                        ->where('corpora.id', '=', '62')
+                        ->where('corpora.is_active', 0)
                         ->get();
     }
 
@@ -138,7 +117,7 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
-                        ->whereRaw('corpora.id=42 or corpora.id=52 or corpora.id=72')
+                        ->where('corpora.is_active', 1)
                         ->get();
     }
 }
