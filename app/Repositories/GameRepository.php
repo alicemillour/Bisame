@@ -47,18 +47,10 @@ class GameRepository extends ResourceRepository {
                 } else {
                     $count = $sentences->count();
                     debug($count);
-                    if ($count < 3) {
-                        if ($user_id == 1202) {
-                            $sentences = $this->get_sentences_from_orthal()->take($count);
-                        } else {
+                    if ($count < 3) {                      
                             $sentences = $this->get_sentences($user_id)->take($count);
-                        }
                     } else {
-                        if ($user_id == 1202) {
-                            $sentences = $this->get_sentences_from_orthal()->random(3);
-                        } else {
                             $sentences = $this->get_sentences($user_id)->random(3);
-                        }
                     }
                     /* get a random sentence from reference (=training?) */
                     $ref_sentence = $this->get_evaluation_sentences()->random(1);
@@ -91,43 +83,25 @@ class GameRepository extends ResourceRepository {
 
     protected function get_sentences($user_id) {
         /* forces user to annotate on sentences he has'nt annotated yet */
-        $id_annotated_sentences = Sentence::select(DB::raw('sentences.id'))
+        $id_annotated_sentences_user = Sentence::select(DB::raw('sentences.id'))
                     ->join('words', 'sentences.id', '=', 'words.sentence_id')
                     ->join('annotations', 'annotations.word_id', '=', 'words.id')
                     ->whereRaw("annotations.confidence_score<10", Array($user_id))
-                ->get();
+                    ->get();
+        
+
+        $id_annotated_sentences_twice = Sentence::select(DB::raw('distinct(sentences.id) as sentences_ids, count(annotations.id) as ccount'))
+            ->join('words', 'sentences.id', '=', 'words.sentence_id')
+            ->join('annotations', 'annotations.word_id', '=', 'words.id')
+            ->whereRaw("annotations.confidence_score<10", Array($user_id))
+            ->get();
+        
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 0)
                         ->where('corpora.is_active', 1)
-                        ->whereNotIn('sentences.id', $id_annotated_sentences)
-                        ->get();
-        
-        /* forces user to annotate on sentences he hasn't annotated yet */
-//        $id_annotated_sentences = Sentence::select(DB::raw('sentences.id, count(distinct(users.id)) as count_user '))
-//                    ->join('words', 'sentences.id', '=', 'words.sentence_id')
-//                    ->join('annotations', 'annotations.word_id', '=', 'words.id')
-//                    ->join('users', 'users.id', '=', 'annotations.user_id')
-//                    ->join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
-//                    ->where('corpora.is_training', 0)   
-//                    ->where('corpora.is_active', 1)
-//                    ->whereRaw("annotations.confidence_score<10")
-//                    ->groupBy('sentences.id')
-//                    ->having('count_user','>','2')
-//                    ->get();
-//        
-//        return Sentence::select('sentences.*')->whereNotIn('sentences.id', $id_annotated_sentences)
-//                        ->get();
-    }
-
-    protected function get_sentences_from_orthal($user_id) {
-        $name = "orthal";
-        debug(Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')->where('corpora.id', 322)
-                        ->select('sentences.*')
-                        ->get());
-
-        return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')->where('corpora.id', 322)
-                        ->select('sentences.*')
+                        ->whereNotIn('sentences.id', $id_annotated_sentences_user)
+                        ->whereNotIn('sentences.id', $id_annotated_sentences_twice)
                         ->get();
     }
 
@@ -135,7 +109,7 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
-                        ->where('corpora.name', 'like', 'cref_entrainement')
+                        ->where('corpora.is_active', 0)
                         ->get();
     }
 
@@ -143,7 +117,7 @@ class GameRepository extends ResourceRepository {
         return Sentence::join('corpora', 'corpora.id', '=', 'sentences.corpus_id')
                         ->select('sentences.*')
                         ->where('corpora.is_training', 1)
-                        ->where('corpora.name', 'like', 'cref_evaluation')
+                        ->where('corpora.is_active', 1)
                         ->get();
     }
 }

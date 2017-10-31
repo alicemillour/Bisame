@@ -20,7 +20,7 @@
 }
 
 .more-transparent {
-    background-color: rgba(249, 242, 236, 0.6);
+    background-color: rgba(249, 242, 236, 0.85);
 }
 
 .main-footer {
@@ -194,6 +194,7 @@ a[data-toggle="tooltip"]:hover + .tooltip  {
 
 .category-label{
     text-align: center;
+    font-weight: bold;
 }
 
 .category-row:hover {
@@ -214,7 +215,7 @@ button.accordion {
     outline: none;
     transition: 0.4s;
     font-size: 1.4em;
-    background-color: rgba(249, 242, 236, 0.80);
+    background-color: rgba(249, 242, 236, 0.95);
 }
 
 button.accordion-second {
@@ -267,5 +268,7 @@ button.accordion.active:after {
 #message{
     font-size: 1.3em;
 }
-
-
+/*
+.not-punct.selected {
+    border:1px solid black;
+}*/

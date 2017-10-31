@@ -29,8 +29,8 @@
         bottom: 0;
         padding-bottom: 200px;
         position: absolute;
-        right: 1%;
-        top: 5%;
+        right: 5%;
+        top: 8%;
         width: 20%; } }
 
 .my-padding {
@@ -139,17 +139,17 @@
 .title { 
     /*margin-top: 10vh;*/
     /*font-size: 1000%;*/
-    color: #dea016;
-    font-size: 1400%;
-    font-weight: 600;
+    color: white;
+    font-size: 1800%;
+    font-weight: 400;
     text-align: center;
    /*text-shadow: -3px 0 red, 0 1px red, 1px 0 red, 0 -3px red;  */
-    text-shadow: -3px 0 black, 0 1px black, 1px 0 black, 0 -3px black;  
+     text-shadow: -4px 0 black, 0 1px black, 1px 0 black, 0 -4px black;  
 }
 
 .info-message-trans {
     font-size: 140%;
-    max-width: 90%;
+    max-width: 70%;
     margin: 0 auto;
     padding: 1%;
     /* background-color:rgba(249, 242, 236, 0.9); */
@@ -160,7 +160,7 @@
     font-weight: bold;
 }
 #scoreboard {
-    background-color: rgba(249, 242, 236, 0.4);
+    background-color: rgba(249, 242, 236, 0.8);
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
@@ -266,3 +266,9 @@
  position: absolute;   
  left: 50%;
 }
+
+.question {
+    background-color: #fbc764;
+}
+
+li{ text-align: left}

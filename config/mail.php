@@ -55,7 +55,7 @@ return [
     */
 
     'from' => ['address' => env('MAIL_FROM'), 'name' => env('MAIL_NAME')],
-    'contact_email' => 'g.feler@hotmail.com',
+    'contact_email' => 'alice.millour@paris-sorbonne.fr',
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
