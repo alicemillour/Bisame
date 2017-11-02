@@ -48,6 +48,7 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::post('sendmessage', 'chatController@sendMessage');
 
+Route::get('admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']);
 //Route::get('admin', ['uses' => 'AdminController@index', 'middleware' => 'auth']);
 
 //Route::post('/send', 'EmailController@send');
