@@ -99,13 +99,6 @@ class AnnotationTableSeeder extends CsvSeeder {
                         ->where('sentence_id', $sentence_id)
                         ->where('position', $word_position)
                         ->pluck('id')[0];
-
-                debug($word_id);
-                $postag_id=DB::table('postags')
-                        ->where('name', $postag_name)
-                        ->pluck('id')[0];
-                debug($postag_id);
-
                 
                 Log::debug($word_id);
                 if ( $postag_name != null ) {   

@@ -43,7 +43,6 @@ $(document).ready(function () {
         annotations = [];
         $('.word-container').each(function (index, word_container) {
             annotation = {};
-            console.log("here");
             annotation['postag_id'] = $(word_container).find('.category-label').attr('id');
             annotation['word_id'] = $(word_container).find('.word').attr('id');
             if (annotation['postag_id']) {
@@ -199,23 +198,6 @@ $(document).ready(function () {
         
         /* enable click on rows in categories tables */
         add_on_click_on_categories_table()
-//        $('#tags').on('keyup', function (e) {
-//            var tagElems = $('#tag-help').children(".panel");
-//            console.log("tagElems");
-//            console.log(tagElems);
-//            for (var i = 0; i < tagElems.length; i++) {
-//                var look = "<b>" + $(this).val().toLowerCase() + "</b>";
-//                var panel_content = $(tagElems).eq(i).text().toLowerCase();
-//                if (panel_content.search(look) !== -1) {
-//                    console.log(look);
-//                    console.log(panel_content);
-//                    console.log(panel_content.search(look));
-//                    panel_to_show = $(tagElems).eq(i);
-//                }
-//            }
-//            panel_to_show.collapse("show");
-//
-//        });
     }
     ;
     function render_correction(answers) {
@@ -304,20 +286,18 @@ $(document).ready(function () {
         switch (is_in_error) {
             case ErrorLevel.error:
                 if (postag_names.length > 0) {
+                    /*TODO DIFF $('#message-title').text("Annotation incorrecte… Awa ! ti ni on érrè. Rappel sur les catégories choisies :");*/
                     $('#message-title').text("Certaines catégories ne sont pas les bonnes. Rappel sur les catégories choisies :");
                 } else {
                     /* no word has been annotated yet */
-                    $('#message-title').text("Dans le mode entraînement, vous devez annoter tous les mots pour pouvoir passer à la phrase suivante, proposez une catégorie pour pouvoir vérifier votre réponse");
-
-                    /* Je veux des messages différents en fonction du type de jeu 
-                     * $('#message-title').text("Vous devez annoter au moins un mot !");
-                     */
+                    $('#message-title').text("Vous ne pouvez pas passer la phrase dans le mode entraînement : choisissez des catégories et validez vos réponses pour tous les mots de la phrase.");
                 }
                 var content = create_errors_content(postag_names, postag_full_names, postag_descriptions);
                 $('#message-content').empty().append(content)
                 $('#message').removeClass('alert-success alert-warning').addClass('alert-danger my-alert');
                 break;
             case ErrorLevel.warning:
+                /* TODO DIFF $('#message-title').text("Annotation(s) correcte(s) ! Woulo !"); */
                 $('#message-title').text("Annotation(s) correcte(s) !");
                 $('#message-content').text("Annotez les mots restants pour pouvoir passer à la phrase suivante.");
                 $('#message').removeClass('alert-success alert-danger').addClass('alert-warning my-alert');

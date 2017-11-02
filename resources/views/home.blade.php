@@ -12,6 +12,7 @@
 <div class="main">
     <div class="main-container">
         <div  style="max-width:100%;margin:0 auto;">
+            <!-- TODO DIFF <div class="title ostrich">&nbsp;Krik !</div> -->
             <div class="title ostrich"> Bisame </div>
         </div>
         <div class="fill">
@@ -60,11 +61,14 @@
                     </span> 
                     @if($game_available)
                     <span>
+                        <!-- TODO DIFF <a class='btn btn-default play-button active-button ' id="play-button-2" href="/home/start"> Maké sé fraz-la ! <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a> -->         
                         <a class='btn btn-default play-button active-button ' id="play-button-2" href="/home/start"> <span class="ostrich" style="font-size: 0.9em"> Produire des annotations </span> </a>
                     </span>                    
                     @else
                     <span>
-                        <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a>
+                        <!-- TODO DIFF <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a> -->
+                        <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled> <span class="ostrich" style="font-size: 0.9em"> Produire des annotations </span> </a>
+                        
                     </span>
                     @endif
                 </div>
@@ -81,7 +85,8 @@
         <br>  
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-                @include('partials.intro')
+                <!-- TODO DIFF @include('partials.creole-intro') -->
+                @include('partials.alsacien-intro')
             </div>
         </div>
         <br>
