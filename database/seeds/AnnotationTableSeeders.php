@@ -7,16 +7,16 @@ class AnnotationTableSeeder extends CsvSeeder {
     public function __construct()
     {
         $this->table = 'annotations';
-//        $this->filename = base_path().'/database/seeds/csvs/references.csv';
+        $this->filename = base_path().'/database/seeds/csvs/references.csv';
 //        $this->filename = base_path().'/database/seeds/csvs/pre_annotations.csv';
-        $this->filename = base_path().'/database/seeds/csvs/pre_annotations.csv';
+//        $this->filename = base_path().'/database/seeds/csvs/ref_preannotation.csv';
         $this->csv_delimiter = ";";
     }
 
     public function run()
     {
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->table)->delete();
+//        DB::table($this->table)->delete();
         parent::run();
     }
     
@@ -75,20 +75,26 @@ class AnnotationTableSeeder extends CsvSeeder {
                         ->pluck('id')[0];
 
                 $sentence_position = $row_full["sentence_position"];
-                $word_position = $row_full["word_position"];
+                Log::debug("sentenceposition $sentence_position");
+                $word_position = $row_full["word_position"];            
+                Log::debug("wordposition $word_position");
                 $postag_name = $row_full["postag_name"];
+
                 $tagger = $row_full["tagger"];
                 Log::debug($postag_name);
-                
+                $value= $row_full["value"];
+                                Log::debug("value $value");
+
                 /* retrieve ids */
                 $sentence_id=DB::table('sentences')
                         ->where('corpus_id', $corpus_id)
                         ->where('position', $sentence_position)
+
                         ->pluck('id')[0];  
                 Log::debug("sentence_id $sentence_id");
                 Log::debug("word position $word_position");
                 
-                #Log::debug("word id $word_id");
+                
                 $word_id=DB::table('words')
                         ->where('sentence_id', $sentence_id)
                         ->where('position', $word_position)

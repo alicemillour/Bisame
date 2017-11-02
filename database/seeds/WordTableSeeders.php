@@ -19,7 +19,7 @@ class WordTableSeeder extends CsvSeeder {
         // Recommended when importing larger CSVs
 //        DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
-        DB::table($this->sentences_table)->delete();       
+       // DB::table($this->sentences_table)->delete();       
         
         parent::run();
     }
@@ -87,11 +87,16 @@ class WordTableSeeder extends CsvSeeder {
                         ->where('position', $sentence_pos_cur)
                         ->first();
                 /* insert new sentence ... A déplacer : créer data_sentences */
+                
                 if ($sentence == null) {
+                    log::debug("pas de phrase");
+                    log::debug($corpus_id_cur);
+                    log::debug($sentence_pos_cur);
                     DB::table('sentences')->insert(['corpus_id' => $corpus_id_cur, 'position' => $sentence_pos_cur]);
                 }
 
                 /* retrieve sentence_id */
+                log::debug($sentence_pos_cur);
                 $sentence_id = DB::table('sentences')
                                 ->where('corpus_id', $corpus_id_cur)
                                 ->where('position', $sentence_pos_cur)
@@ -102,7 +107,9 @@ class WordTableSeeder extends CsvSeeder {
                 if (!$row_words)
                     continue;
                 $data_words[$row_count] = $row_words;
+                
                 $data_words[$row_count]['sentence_id'] = $sentence_id;
+                Log::debug($data_words[$row_count]['value']);
                 // Chunk size reached, insert
                 if (++$row_count == $this->insert_chunk_size) {
                     /* insert chunck in words table */

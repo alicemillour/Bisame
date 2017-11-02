@@ -32,13 +32,13 @@ class UserTableSeeder extends Seeder {
                 DB::table('users')->where('users.id', $user->id)->update(['score' => $new_confidence_score]);
             }
         }
-//            DB::table('users')->insert([
-//                            'name' => 'Gamer',
-//                            'email' => 'test@gamer.bisame',
-//                            'password' => bcrypt('g@m3rB3'),
-//                            'is_admin' => true,
-//                            'is_in_training' => false
-//            ]);
+            DB::table('users')->insert([
+                            'name' => 'Admin',
+                            'email' => 'admin@game.bisame',
+                            'password' => bcrypt('My@dM1nB3'),
+                            'is_admin' => true,
+                            'is_in_training' => false
+            ]);
         }
     }
     
