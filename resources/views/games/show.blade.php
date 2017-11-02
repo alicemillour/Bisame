@@ -25,6 +25,7 @@
 
             @else
             @if($game['type']=='training')
+            <!-- TODO DIFF <h4> Wopso ! Bienvenue dans le mode <b>Entraînement </b> : -->
             <h4> Wopso ! Bienvenue dans le mode <b>Entraînement </b> : 
                 Pour passer à la phrase suivante, vous devez avoir trouvé les bonnes catégories pour tous les mots.</h4>
             @else
@@ -125,7 +126,9 @@
             </div>-->
     <div class="main-footer">
         <h3 class="semi-transparent"> Rappel sur les catégories : </h3>
-        <div class="fancy-border footer-container" >
+
+        <div class="fancy-border footer-container" >       
+            
             <!--<input id="tags" />-->
             <div class="panel-group" id="tag-help">
             @foreach($postags as $postag)

@@ -68,7 +68,6 @@
                     <span>
                         <!-- TODO DIFF <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a> -->
                         <a class='btn btn-default play-button b-disabled ostrich' id="play-button-2" disabled>Maké sé fraz-la ! <br> <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a>
-                        
                     </span>
                     @endif
                 </div>
