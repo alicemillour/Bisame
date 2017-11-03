@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        <meta property="og:image" content="{{ asset('images/ppic.jpg') }}" />
+        <meta property="og:description" content="Bisame est un projet de recherche collaboratif visant à favoriser la diffusion de l'alsacien. Venez participer !" />
+        <!-- TODO DIFF <title>Krik !</title> -->
         <title>Krik !</title>
 
         <!-- Fonts -->
@@ -14,6 +17,7 @@
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+        <!-- TODO DIFF <link rel="shortcut icon" href="{{ asset('images/favicon-krik2.ico') }}" > -->
         <link rel="shortcut icon" href="{{ asset('images/favicon-krik2.ico') }}" >
         <style>
             @font-face {font-family: "Ostrich-Rounded"; src: url('/images/ostrich-rounded.ttf') ;}
@@ -30,12 +34,12 @@
                 opacity: 0.9;   
 
             }
-            .footer { 
+/*            .footer { 
                 position: absolute; 
                 bottom: 0; 
                 margin-top: 15px;
                 font-family: 'Ostrich-Rounded';
-            }
+            }*/
             .fa-btn {
                 margin-right: 6px;
             }
@@ -69,6 +73,7 @@
                 font-size: 180%;
             }
             .nav > li > a.my-navbar-hover:focus, .nav > li > a.my-navbar-hover:hover{
+                /* TODO DIFF color:#f69a47 !important; */
                 color:#ddab18 !important;
             }
 
@@ -82,6 +87,7 @@
             }
             
             .navbar-default .navbar-brand:hover {
+                /* TODO DIFF color:#f69a47 !important; */
                 color: #ddab18 !important;
             }
             
@@ -114,8 +120,8 @@
             .fill { 
                 margin:0;
                 padding:0;
+                /*TODO DIFF  background: url('/images/PAN_2017_75084.jpg') no-repeat center fixed; */
                 background: url('/images/ka-c.jpg') no-repeat center fixed;
-               /* background: url('/images/gwad_sat_blue_huile.jpg') no-repeat center fixed; */
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                 background-size: cover;  /* version standardisée */
                 /*background-size: contain;*/
@@ -133,7 +139,6 @@
                 overflow-y : auto;
                 position : relative;
                 margin: 0 auto;
-                max-width: 400px;
             }
             /*            @media screen and (max-width: 1280px) {
                         .footer-container {
@@ -150,7 +155,7 @@
     <!--<div class="fill">-->
     @yield('content')
     <body class="fill" id="app-layout"/> 
-    <!--    @include('partials.footer')-->
+    <!-- @include('partials.footer') -->
     <!-- JavaScripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
