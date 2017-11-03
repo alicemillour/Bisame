@@ -13,7 +13,7 @@
     <div class="main-container">
         <div  style="max-width:100%;margin:0 auto;">
             <!-- TODO DIFF <div class="title ostrich">&nbsp;Krik !</div> -->
-            <div class="title ostrich"> Bisame </div>
+            <div class="title ostrich">&nbsp;Krik !</div>
         </div>
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
