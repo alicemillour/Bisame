@@ -98,7 +98,8 @@
     <div class="main-container">
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-                @include('partials.intro')
+                <!-- TODO DIFF @include('partials.alsacien-intro') -->
+                @include('partials.creole-intro')
             </div>
         </div>
     </div>
