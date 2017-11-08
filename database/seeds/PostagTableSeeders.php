@@ -8,7 +8,7 @@ class PostagTableSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = 'postags';
-        $this->filename = base_path().'/database/seeds/csvs/postags.csv';
+        $this->filename = base_path().'/database/seeds/csvs/'. App::getLocale() . '/postags.csv';
         $this->csv_delimiter = ";";
     }
 

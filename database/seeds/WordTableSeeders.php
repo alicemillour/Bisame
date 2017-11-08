@@ -10,16 +10,15 @@ class WordTableSeeder extends CsvSeeder {
     public function __construct() {
         $this->words_table = 'words';
         $this->sentences_table = 'sentences';
-         $this->filename = base_path() . '/database/seeds/csvs/words.csv';
-//        $this->filename = base_path() . '/database/seeds/csvs/ctraining_words.csv';
+        $this->filename = base_path() . '/database/seeds/csvs/'. App::getLocale() . '/words.csv';
         $this->csv_delimiter = ";";
     }
 
     public function run() {
         // Recommended when importing larger CSVs
-//        DB::disableQueryLog();
+        // DB::disableQueryLog();
         // Uncomment the below to wipe the table clean before populating
-       // DB::table($this->sentences_table)->delete();       
+        // DB::table($this->sentences_table)->delete();       
         
         parent::run();
     }
