@@ -1,0 +1,69 @@
+name;full_name;description
+ADJ;Adjectif;"-Im <b>fréje</b> Land <br>
+-Uff em <b>truckene</b> Bodde.<br>
+-Ich mëcht e Kilo <b>zittigi</b> Äpfel<br>
+-D’Äpfel sín <b>zitti(g)</b>.<br>
+-Si ältschta <b>bekànnta</b> Druckwark<br>
+-Er hét <b>grossi</b> ; er hétt e <b>schéni</b><br><br>
+<u>ATTENTION</u> : Ne pas confondre avec <span class=""other-cat""> ADV </span> (Adverbes) : <br>
+-S Gschaft vum Johannes Mentelin hàt <b>schnall</b> Erfolg bikumma<br>
+-Èr hétt <b>schén</b> gspìelt."
+ADV;Adverbe;"<p>-&Igrave;m Gs&agrave;mta h&agrave;t\'r <strong>ungfahr</strong> 40 Biacher unter Duck gm&agrave;cht.<br /> -<strong>Wann</strong> kommscht du&nbsp;?<br /> -Bi deana Musika isch o Ibrahim Ferrer <strong>dabei</strong> gsi.<br /> -&Egrave;r h&eacute;tt <strong>sch&eacute;n</strong> gsp&igrave;elt.<br /> -<u>N&igrave;mm</u> : Ar &igrave;sch uffem Kirchhof vu dr St.-Michaels-Kapelle ( wo\'s <strong>n&igrave;mm</strong> g&igrave;tt ) vergr&agrave;wa. <br /> -Cas <u>Wo / wenn</u> : Ma wei&szlig; n&igrave;t gn&agrave;ui , <strong>wo</strong> un <strong>wenn</strong> &agrave;ss er d Technik vum B&uuml;echdrucka glehrt h&agrave;t. <br /> -<u>Equivalents alsaciens des adverbes pronominaux allemands</u> : daf&uuml;r, dabei, deswegen, trotzdem, hierauf, hierzu, hiermit :<br /> &nbsp;&nbsp;&nbsp;&nbsp;-wo bim Not&agrave;r n&igrave;t <strong>derbi</strong> gs&igrave;&igrave; &igrave;sch<br /> &nbsp;&nbsp;&nbsp;&nbsp;-un h&agrave;t <strong>derfer</strong> a Gschafts&agrave;&agrave;teil vum Museum bikumma</p>
+<p><br /> Mais <u>ATTENTION</u> : <br /> 1. <u>Wenn</u> : conjonction de subordination (<span class=""other-cat""> SCONJ </span>) dans le sens de &amp;quot si &amp;quot : <br /> <strong>Wenn</strong> d&agrave;s st&igrave;mmt, war &agrave;lso dr Johannes Mentelin , noch vor em Heinrich Eggestein , dr erscht B&uuml;echdrucker vu Stro&szlig;burri gs&igrave;&igrave;. <br /> 2. <u>Wo</u> : pronom (<span class=""other-cat""> PRON </span>) lorsqu&rsquo;il est utilis&eacute; comme pronom relatif (qui/que):<br /> Dr erscht Druck <strong>wo</strong> ma vum N&agrave;ma Mentelin erf&agrave;hrt &igrave;sch &bdquo; Augustinus &ldquo; Tractatus de arte praedicandi, &igrave;m Johr 1465</p>"
+INTJ;Interjection;-<b>Ohü</b> ! Diss klingt m'r zue gelehrt! <br>-<b>Bravo</b> ! <br> -<b>O</b>, wie bin ich unglüecklich <br> -<b>au</b>  
+NOUN;Nom commun;"-das <b>Gewünschte</b><br> -das <b>Reisen </b><br> -<b>Sìcherheitsnorma </b><br> -<b>Volkstum-Museum </b><br> -ein <b>Porsche </b><br> -da <b>Israelita </b> vum Elsàss<br> -<b>Novamber </b>, <b>Sundaa </b><br> -Uf <b>Hochditsch </b>
+"
+PROPN;Nom propre;-<b>Auguste </b>,<b> Oberlin </b>,<b> Fifi </b> <br>-<b>Peugeot</b>,<b> Kronenbourg </b><br>-<b>Contades </b>, <b>Straßburg</b><br>-<b>Schwiz</b>, <b> Rhy</b>, <b> Alpe</b>
+VERB;Verbe;"-Pan <b>spilt</b> uf de Syrinx (Panflöte) und <b>tanzt</b> mit de Nymphe.
+<br><br>
+<u>ATTENTION</u> Verbes à particules : üssnùtze (exploiter) <br>
+-Her <b>nùtzt</b> mich <b>üss (<span class=""other-cat""> PART </span>)</b>. (Il m’exploite) <br>
+-Er het mich <b>üssgenùtzt</b> ! (Il m’a exploité ) "
+ADP;Préposition;"-Vu Glodderdal bis Denzlinge verlauft au die Badisch Wistross an dr Glodder <b>entlang</b>.<br>
+-<b>Noh</b> ebbena 20 Johr Büechdruckarèi ìsch Mentelin àm 12. Dezamber 1478 z'Stroßburri gstorwa.<br>"
+AUX;Auxiliaire;"<p>La cat&eacute;gorie regroupe les verbes h&agrave;nn / h&agrave;n (avoir), s&igrave;nn / s&iacute;n / s&igrave;&igrave; / sii (&ecirc;tre), w&egrave;re / waere / werre / war(d)e / w&ugrave;rre / wurra (devenir), t&uuml;en / duen / d&uuml;e : <br /> -Sallamols <strong>&igrave;sch</strong> nur z' Mainz druckt <strong>worra</strong>. <br />-&igrave;ch <strong>t&uuml;a</strong> a Kugelhupf assa</p>
+<p><br /> <u>ATTENTION</u> : ils peuvent prendre l&rsquo;&eacute;tiquette <span class=""other-cat""> VERB </span> lorsqu&rsquo;ils ont un sens lexical plein : <br /> -S Gschaft vum Johannes Mentelin <strong>h&agrave;t (AUX)</strong> schnall Erfolg <strong>bikumma (VERB)</strong>, ar <strong>&igrave;sch (AUX)</strong> a riicher M&agrave;nn <strong>worra (VERB)</strong>. <br /> -Charles , wenn du w&uuml;escht , wie ich dich gern <strong>hab (VERB)</strong> !<br />-'s <strong>t&uuml;at (VERB)</strong> m'r leid, ar <strong>t&uuml;at (VERB)</strong> nix!</p>"
+CONJ;Conjonction;"Les conjonctions de coordination (Awer, denn, oder, un…) :<br>
+-<b>Àwer</b>  Johannes Mentelin hàt wohrschins scho zìmlig friajher fànga-n-à drucka, sogàr scho ànna 1458. <br>
+-Si wird i verschidene Kantön <b>als</b>  Iiwohnergmeind bezeichnet. <br>
+-Cas <u> Als </u> : <br>
+&nbsp;&nbsp;&nbsp;&nbsp;-<b>Àls</b> Berüef ìsch 'r zeerscht „ Guldschriiwer “ ( Kalligraph un Büechschriiwer ) gsìì un hàt noochhar <b>àls</b> bìschäfliger Notàr gschàft."
+DET;Déterminant;"-Du, Auguste, hierotsch <b>d'</b> mademoiselle Riemer.<br>
+-Si ältschta bekànnta Druckwark ìsch <b>a</b> làtiinischa Bibel ìn 49 Ziila („B49“), <b>dr</b> erscht Bànd ìsch vum Johr 1460.<br>
+-<b>zèll</b> Kìnd ìsch krànk<br>
+-ich hàbb <b>zèller</b> Mann gsèhn <br>
+-er hét <b>kénn</b> Kìnder<br> 
+-sie hànn <b>vìel</b> Kìnder<br>
+-Es ìsch <b>miner</b> Huet<br> 
+-Es ìsch <b>din</b> Buech<br> 
+-Der Krämer, <b>dessen</b>  Ware gepfändet wurde, ist ...<br>
+-<b>Welschin</b> isch dä Huät?<br>"
+NUM;Nombre;"-<b>dréj</b> Uehr<br>
+-àm <b>zehne</b> <br>
+-e Vìertel ìwer <b>zwei</b><br>
+-Ìm Gsàmta hàt'r ungfahr <b>40</b>  Biacher unter Duck gmàcht."
+PRON;Pronom;"-<b>Das</b> isch nit nume für d Bostauti eso gsi, sondern au für anderi<br> konzessionierti Buslinie und au für d Iisebahn <b>Das</b>  isch d Andromeda-Galaxie<br>
+-er hét <b>kénni</b><br>
+-sie hànn <b>vìel</b> <br>
+-<b>Ma</b> weiß nìt gnàui, wo un wenn àss er d Technik vum Büechdrucka glehrt hàt.<br>
+-Es ìsch miner Huet (c’est mon chapeau) Es ìsch <b>miner</b> (c’est le mien)<br>
+-Es ìsch din Buech (C’est ton livre) Es ìsch <b>dins</b> (c’est le tien)<br>
+-D’r Mànn, <b>wo</b> gross ìsch … <br>
+-Republik isch ä Staatsform, <b>wo</b> sech aus Gägemodäu zur Monarchii und zur Despotii gseht.<br>
+-Er wäscht <b>sich</b> d’Händ <br>
+-Sie kaufe <b>sich</b> e nejs Auto<br>
+-Ar fragt <b>wer</b>  kommt <br>
+-Ja, <b>was</b>  isch do ze mache, nüsstelle kann.<br>
+-Sina Kenntnissa hàt'r àlso känna lehra, antwader direkt z'Mainz oder dur <b>ebber</b> wo-n-ìhm dàs zeigt hàt, vìllìcht dr Heinrich Eggestein.<br>"
+PART;Particule;"<p>1. Les <span style=""text-decoration: underline;"">particules s&eacute;parables</span> des verbes</p>
+<p>- &Igrave;ch m&agrave;ch a Obst<strong> &agrave;b</strong><br /> - Her n&ugrave;tzt mich <strong>&uuml;ss</strong> <br /> - &igrave;ch schlof<strong> i <br /></strong> - Im Winter fliege d trockne Bletter durch d&rsquo; Luft <strong>herum</strong>.&nbsp; </p>
+<p>
+2. Autres </p>
+<p> - <strong>Ja</strong> papa, er isch noch do.<br /> - Ma wei&szlig; <strong>n&igrave;t</strong> gn&agrave;ui, wo un wenn &agrave;ss er d Technik vum B&uuml;echdrucka glehrt h&agrave;t.&gt;<br />- <strong>och</strong>, <strong>blo&szlig;</strong>, <strong>halt</strong>, <strong>mal</strong>, <strong>nicht</strong>, <strong>sehr</strong>, <strong>&uuml;beraus</strong>, <strong>sogar</strong>, <strong>selbst</strong>, <strong>auch</strong>, <strong>erst</strong>, <strong>schon</strong>, <strong>&uuml;berhaupt</strong>&nbsp; usw...</p>
+"
+SCONJ;Conjonction de subordination;"-Ma weiß nìt gnàui, wo un wenn <b>àss</b> er d Technik vum Büechdrucka glehrt hàt. <br>
+-<b>Wenn</b> dàs stìmmt, war àlso dr Johannes Mentelin, noch vor em Heinrich Eggestein, dr erscht Büechdrucker vu Stroßburri gsìì."
+PUNCT;Ponctuation;
+SYM;Symbole;"<b>*</b>  um 1410 z'Schlettstàdt; <b>†</b>  12. Dezamber 1478 z'Stroßburri"
+X;Mot étranger;Eh <b>bien</b>  , ich will sehn , wer Herr im Hüs isch , ich odder Ihr !
+ADP+DET;Préposition + Déterminant;"<p>-Ere Tielekt werd as Walsert&uuml;tsch bizaichnet, wo <strong>zum</strong> gr&ouml;sste Tail zum H&ouml;chstalemannische und <strong>zum</strong> chliinere Tail <strong>zum</strong> Hochalemannische gh&ouml;rt. (contraction <em>zu</em> + <em>dem</em>)<br /> -<strong>am</strong> besten (contraction <em>am </em>+ <em>dem</em>)</p>"
