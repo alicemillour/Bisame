@@ -1,14 +1,17 @@
 @extends('layouts.app')
 @section('style')
+<meta charset="utf-8">
 <link href="{{ asset('css/game.css') }}" rel="stylesheet" type="text/css" >
 <!--<link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >-->
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ asset('js/game.js') }}">
 </script>
+<script>
+@include('js.data-js')
+</script>
 @endsection
 @section('content')
-
 @include('partials.nav')
 
 <div class="main">    
