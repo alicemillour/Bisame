@@ -25,8 +25,8 @@ $(document).ready(function () {
         get_words_postags(null);
         $(this).css('display', 'none');
     });
-
-
+    
+    
     /* enable click on rows in categories tables */
     $(document).on('click', ".table > tbody > tr", function () {
         console.log("in click on categories table");
@@ -38,7 +38,7 @@ $(document).ready(function () {
         category.show();
         $('.word.selected').popover('hide');
     });
-
+    
     $('.main-button').click(function () {
         annotations = [];
         $('.word-container').each(function (index, word_container) {
@@ -72,7 +72,7 @@ $(document).ready(function () {
             }
         });
     });
-
+    
     function reload_javascript_on_words() {
         console.log("reload");
         console.log("loading postags");
@@ -97,66 +97,66 @@ $(document).ready(function () {
                 }
             }
         });
-
-
+        
+        
         $('.word').not(".is-correct").hover(
                 function () {
                     if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
                         $(this).addClass('highlighted');
-                    }
-                },
-                function () {
-                    if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
-                        $(this).removeClass('highlighted');
-                    }
-                }
-        );
-
+            }
+        },
+        function () {
+            if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
+                $(this).removeClass('highlighted');
+            }
+        }
+                );
+        
         $('.word').not(".is-correct").click(
                 function () {
                     if (!/^[!"#$%&'()*+, \-./:;<=>?@ [\\\]^_`{|}~„“]$/.test($(this).attr('value'))) {
                         $('.word').removeClass('selected');
-                        $('.word').removeClass('is-in-error');
-                        $(this).addClass('selected');
-                        $('.sentence-main-container').width('60%');
-                    }
-                }
-        );
+                $('.word').removeClass('is-in-error');
+                $(this).addClass('selected');
+                $('.sentence-main-container').width('60%');
+            }
+        }
+                );
         console.log("loading js on labels");
         $('.word').hover(
                 function () {
                     word_id = $(this).attr('id').match(/[0-9]+/);
-                    console.log(word_id);
-                    $(this).css('display', 'block');
-                    $('#right_' + word_id).css({'visibility': 'visible'});
-                    $('#left_' + word_id).css({'visibility': 'visible'});
-                }
-        );
+            // console.log(word_id);
+            $(this).css('display', 'block');
+            $('#right_' + word_id).css({'visibility': 'visible'});
+            $('#left_' + word_id).css({'visibility': 'visible'});
+        }
+                );
         $('.word').mouseleave(function () {
             word_id = $(this).attr('id').match(/[0-9]+/);
-            console.log(word_id);
+            // console.log(word_id);
             $('#right_' + word_id).css({'visibility': 'hidden'});
             $('#left_' + word_id).css({'visibility': 'hidden'});
         }
-        );
-
+                );
+        
         $('.labels').hover(
                 function () {
                     word_id = $(this).attr('name').match(/[0-9]+/);
-                    console.log(word_id);
-                    $(this).css('display', 'block');
-                    $('#right_' + word_id).css({'visibility': 'visible'});
-                    $('#left_' + word_id).css({'visibility': 'visible'});
-                }
-        );
+            // console.log(word_id);
+            $(this).css('display', 'block');
+            $('#right_' + word_id).css({'visibility': 'visible'});
+            $('#left_' + word_id).css({'visibility': 'visible'});
+        }
+                );
         $('.labels').mouseleave(function () {
             word_id = $(this).attr('name').match(/[0-9]+/);
-            console.log(word_id);
+            // console.log(word_id);
             $('#right_' + word_id).css({'visibility': 'hidden'});
             $('#left_' + word_id).css({'visibility': 'hidden'});
         }
-        );
-
+                );
+        
         $('.question-label').click(function () {
             $('.word.selected').popover('hide');
             $('.word').removeClass('selected');
@@ -167,7 +167,7 @@ $(document).ready(function () {
             $('#' + word_id).addClass('selected');
             $('#' + word_id).popover('show');
         });
-
+        
         $('.leftlabel').click(function () {
             word_id = $(this).attr('id').match(/[0-9]+/);
             $('.word.selected').popover('hide');
@@ -181,7 +181,7 @@ $(document).ready(function () {
             $('#' + word_id).popover('show');
             $('#' + word_id).removeClass('auto-annotated');
         });
-
+        
         $('.rightlabel').click(function () {
             word_id = $(this).attr('id').match(/[0-9]+/);
             $('.word.selected').popover('hide');
@@ -227,7 +227,7 @@ $(document).ready(function () {
         }
         show_message(error_status, postags_names, postags_full_names, postags_descriptions);
     }
-
+    
     function create_table_with_postags(postags) {
         var content = '';
         for (var i = 0; i < postags.length; i++) {
@@ -250,7 +250,7 @@ $(document).ready(function () {
         content += '</thead>';
         content += '<tbody>';
         for (var i = 0; i < postags.length; i++) {
-//            content += '<tr  data-trigger="hover" title="Exemples" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
+            //            content += '<tr  data-trigger="hover" title="Exemples" data-container="body" data-placement="left" data-toggle="popover" data-content="' + postags[i]['description'] + '">';
             content += '<tr>';
             content += '<td  id=' + postags[i]['id'] + '>' + postags[i]['name'];
             content += '<span class=full-name-category> (' + postags[i]['full_name'] + ') ';
@@ -264,7 +264,7 @@ $(document).ready(function () {
         content += '</div>'
         return content;
     }
-
+    
     function create_errors_content(postag_names, postag_full_names, postag_descriptions) {
         var content = '';
         content += '<ul>';
@@ -281,13 +281,13 @@ $(document).ready(function () {
         content += '</ul>';
         return content;
     }
-
+    
     function show_message(is_in_error, postag_names, postag_full_names, postag_descriptions) {
         switch (is_in_error) {
             case ErrorLevel.error:
                 if (postag_names.length > 0) {
                     /*TODO DIFF $('#message-title').text("Annotation incorrecte… Awa ! ti ni on érrè. Rappel sur les catégories choisies :");*/
-                    $('#message-title').text("Certaines catégories ne sont pas les bonnes. Rappel sur les catégories choisies :");
+                    $('#message-title').text(trans('game.message-error'));                    
                 } else {
                     /* no word has been annotated yet */
                     $('#message-title').text("Vous ne pouvez pas passer la phrase dans le mode entraînement : choisissez des catégories et validez vos réponses pour tous les mots de la phrase.");
@@ -298,8 +298,9 @@ $(document).ready(function () {
                 break;
             case ErrorLevel.warning:
                 /* TODO DIFF $('#message-title').text("Annotation(s) correcte(s) ! Woulo !"); */
-                $('#message-title').text("Annotation(s) correcte(s) !");
+                $('#message-title').text(trans('game.message-success'));
                 $('#message-content').text("Annotez les mots restants pour pouvoir passer à la phrase suivante.");
+                $('#message-title').append(trans('game.message'));
                 $('#message').removeClass('alert-success alert-danger').addClass('alert-warning my-alert');
                 break;
             case ErrorLevel.success:
@@ -310,8 +311,8 @@ $(document).ready(function () {
         }
         $('#message').show();
     }
-
-
+    
+    
     function get_words_postags(word_id) {
         $.ajax({
             method: 'GET',
@@ -326,11 +327,11 @@ $(document).ready(function () {
                 /* used to fill categories when all categories displayed */
                 var content = create_table_with_postags(response['postags']);
                 $('.categories-table').find('tbody').empty().append(content);
-//                if (!response['all_categories']) {
-//                    $('.categories-button').show();
-//                } else {
-//                    $('.categories-button').hide();
-//                }
+                //                if (!response['all_categories']) {
+                //                    $('.categories-button').show();
+                //                } else {
+                //                    $('.categories-button').hide();
+                //                }
                 $('#' + word_id).popover({
                     placement: 'bottom',
                     html: true,
@@ -345,24 +346,24 @@ $(document).ready(function () {
             }
         });
     }
-
+    
     function add_on_click_on_categories_table() {
-//        $('.categories-table').find('tr').click(function () {
-//            console.log("in click on categories table");
-//            var row = $(this).find('td:first');
-//            $('.selected').removeClass('is-in-error');
-//            var category = $('.selected').parent().find('.category-label');
-//            category.text(row.text());
-//            category.attr('id', row.attr('id'));
-//            category.show();
-//            $('.word.selected').popover('hide');
-//        });
+        //        $('.categories-table').find('tr').click(function () {
+        //            console.log("in click on categories table");
+        //            var row = $(this).find('td:first');
+        //            $('.selected').removeClass('is-in-error');
+        //            var category = $('.selected').parent().find('.category-label');
+        //            category.text(row.text());
+        //            category.attr('id', row.attr('id'));
+        //            category.show();
+        //            $('.word.selected').popover('hide');
+        //        });
         $(document).on('click', ".table > tbody > tr", function () {
             console.log("in click on categories table");
             var row = $(this).find('td:first');
             $('.selected').removeClass('is-in-error');
             word_id = $('.selected').attr('id').match(/[0-9]+/);
-
+            
             var category = $('.selected').parent().find('.category-label');
             var question = $('.selected').parent().find('.question-label');
             category.text(row.text().split(" ")[0]);
@@ -371,18 +372,18 @@ $(document).ready(function () {
             category.removeClass('auto-annotated');
             question.css({'display': 'none'});
             $('.word.selected').popover('hide');
-
+            
             $('#right_' + word_id).css({'display': 'none'});
             $('#left_' + word_id).css({'display': 'none'});
-
+            
         });
-
+        
     }
     /* js for accordion help menu */
-
-   var acc = document.getElementsByClassName("accordion");
+    
+    var acc = document.getElementsByClassName("accordion");
     var i;
-/*     $(acc[0]).css({'border-top-left-radius': '10px', 'border-top-right-radius': '10px'});
+    /*     $(acc[0]).css({'border-top-left-radius': '10px', 'border-top-right-radius': '10px'});
     $(acc[acc.length - 1]).css({'border-bottom-left-radius': '10px', 'border-bottom-right-radius': '10px'});
     var toggle_acc = false;
     $(acc[acc.length - 1]).on('click', function () {
@@ -402,3 +403,19 @@ $(document).ready(function () {
     }
     reload_javascript_on_words();
 });
+
+function trans(key,attributes){
+    try {
+        var translation = translations[key];
+        if(attributes){
+            for(attribute in attributes){
+                translation = translation.replace(':'+attribute,attributes[attribute]);
+            }
+        }
+    }
+    catch(err) {
+        var translation = key;
+    }
+
+    return translation;
+}

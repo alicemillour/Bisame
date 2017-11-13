@@ -7,6 +7,7 @@
 <script type="text/javascript" src="{{ asset('js/game.js') }}">
 </script>
 @endsection
+@include('js.data-js')
 @section('content')
 
 @include('partials.nav')
