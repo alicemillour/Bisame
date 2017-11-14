@@ -9,7 +9,7 @@
         <meta property="og:image" content="{{ asset('images/ppic.jpg') }}" />
         <meta property="og:description" content="Bisame est un projet de recherche collaboratif visant à favoriser la diffusion de l'alsacien. Venez participer !" />
         <!-- TODO DIFF <title>Krik !</title> -->
-        <title>Bisame</title>
+        <title> {{ trans('home.app-name') }} </title>
 
         <!-- Fonts -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -18,7 +18,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         <!-- TODO DIFF <link rel="shortcut icon" href="{{ asset('images/favicon-krik2.ico') }}" > -->
-        <link rel="shortcut icon" href="{{ asset('images/favicon-rond3.png') }}" >
+        <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
         <style>
             @font-face {font-family: "Ostrich-Rounded"; src: url('/images/ostrich-rounded.ttf') ;}
             @font-face {font-family: "Cicle-Fina"; src: url('/images/cicle/Cicle_Semi.ttf') ;}
@@ -72,10 +72,6 @@
             .title-app-navbar {
                 font-size: 180%;
             }
-            .nav > li > a.my-navbar-hover:focus, .nav > li > a.my-navbar-hover:hover{
-                /* TODO DIFF color:#f69a47 !important; */
-                color:#f69a47 !important;
-            }
 
             .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
                 background-color: #CECECE !important;
@@ -84,11 +80,6 @@
 
             .navbar-default .navbar-nav > li > a.no-hover:focus, .navbar-default .navbar-nav > li > a.no-hover:hover{
                 color: #CECECE !important;
-            }
-            
-            .navbar-default .navbar-brand:hover {
-                /* TODO DIFF color:#f69a47 !important; */
-                color: #f69a47 !important;
             }
             
             .dropdown-menu {
@@ -117,19 +108,6 @@
             .navbar-default .navbar-brand {
                 color: #CECECE;
             }
-            .fill { 
-                margin:0;
-                padding:0;
-                /*TODO DIFF  background: url('/images/PAN_2017_75084.jpg') no-repeat center fixed; */
-                background: url('/images/PAN_2017_75084.jpg') no-repeat center fixed; 
-                -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
-                background-size: cover;  /* version standardisée */
-                /*background-size: contain;*/
-                /*                        background-size: auto 100%;*/
-                /*background-repeat: no-repeat;*/
-                background-position: left top;  
-                position: relative;
-            }
             .fancy-border{
                 border: 1px solid white;
                 
@@ -144,9 +122,9 @@
                         .footer-container {
                             max-width: 40%;
                         }
-                        }*/
-
+                        }*/   
         </style>
+        <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
         @yield('style')
         @section('page-header')
 

@@ -98,8 +98,7 @@
     <div class="main-container">
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-                <!-- TODO DIFF @include('partials.alsacien-intro') -->
-                @include('partials.alsacien-intro')
+                @include('partials.' . App::getLocale() . '-intro')
             </div>
         </div>
     </div>

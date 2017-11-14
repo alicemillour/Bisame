@@ -11,7 +11,6 @@
 @include('js.data-js')
 </script>
 @endsection
-@include('js.data-js')
 @section('content')
 @include('partials.nav')
 
