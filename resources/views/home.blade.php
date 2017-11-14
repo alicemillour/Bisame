@@ -28,7 +28,7 @@
                     <span>
                         <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
                     </span>  
-                    @include('partials.why')
+                    @include('partials.why-'.App::getLocale())
                     <span>
                         <a class='btn btn-default play-button active-button ostrich' href="/login">Connexion</a>
                     </span>
@@ -73,7 +73,7 @@
                 </div>
                 <br>
                 <br>    
-                @include('partials.why')
+                @include('partials.why-'.App::getLocale())
 
                 @endif      
             </div>       

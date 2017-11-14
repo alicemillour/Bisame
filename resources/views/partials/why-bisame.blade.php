@@ -7,8 +7,8 @@ En pratique, il s'agit d'associer des catégories grammaticales à des mots alsa
 <div class="media">
         <div class="media-body">
                 <video width="800" height="400" controls>  
-    <source src="{{ asset('video/annotation.mp4') }}" type="video/mp4">  
-    <source src="{{URL::asset('video/annotation.ogv')}}" type="video/ogg">  
+    <source src="{{ asset('video/annotation-bisame.mp4') }}" type="video/mp4">  
+    <source src="{{URL::asset('video/annotation-bisame.ogv')}}" type="video/ogg">  
     Votre navigateur ne supporte pas les formats vidéo mp4 et ogv.
                 </video>
 <!--            <iframe width="900" height="500" src="{{ asset('video/annotation.mp4') }}" frameborder="0" allowfullscreen>
