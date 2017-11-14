@@ -3,14 +3,14 @@
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('content')
-    
+
 @include('partials.nav')
 <br>
 <div class="container ">
     <div class="main-container ">
         <div class="fill">
                 <div class="info-message-trans background-colored fancy-border">
-                
+                    
                 <div class="panel panel-default background-colored">
                     <div class="panel-heading background-colored text-center">Inscription (<i>Vos informations personnelles ne seront pas conservées</i>)</div>
                     <div class="panel-body">
@@ -21,7 +21,7 @@
                                 <a href="mailto:alice.millour@abtela.eu?Subject=[Bisame]Inscription" style="color:black" target="_top">me contacter</a>
                             </h4>
                             <br>
-                            
+                                
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Nom d'utilisateur <br><span style="font-size: smaller"><i>(susceptible d'apparaître dans le tableau des scores)</i></span></label>
                                 <div class="col-md-6">
@@ -33,13 +33,13 @@
                                     @endif
                                 </div>
                             </div>
-                            
+                                
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Adresse e-mail <span class="notbold" style="color: red;">*</span></label> 
-                                
+                                    
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                    
+                                        
                                     @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -47,13 +47,13 @@
                                     @endif
                                 </div>
                             </div>
-                            
+                                
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Mot de passe</label>
-                                
+                                    
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password">
-                                    
+                                        
                                     @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -61,13 +61,13 @@
                                     @endif
                                 </div>
                             </div>
-                            
+                                
                             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Confirmation du mot de passe</label>
-                                
+                                    
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password_confirmation">
-                                    
+                                        
                                     @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -75,7 +75,7 @@
                                     @endif
                                 </div>
                             </div>
-                            
+                                
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
@@ -94,20 +94,20 @@
             </div>
         </div>
     </div>
-        <br/>
+    <br/>
     <div class="main-container">
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
-                <!-- TODO DIFF @include('partials.alsacien-intro') -->
-                @include('partials.creole-intro')
+                @include('partials.' . App::getLocale() . '-intro')
+        
             </div>
         </div>
     </div>
-    
+        
 </div>
-    
+
 @endsection
-    
+
 @section('css')
 <style type="text/css">
     
@@ -115,5 +115,5 @@
         font-weight:normal !important;
     }
 </style>
-    
+
 @stop

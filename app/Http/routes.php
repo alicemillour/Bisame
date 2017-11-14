@@ -44,7 +44,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('contact', 'ContactController@sendContactInfo');
 });
 
-
+Route::get('/asset', [
+	'uses' => 'AssetController@get', 
+	'as' => 'asset'
+]);
 
 Route::post('sendmessage', 'chatController@sendMessage');
 
