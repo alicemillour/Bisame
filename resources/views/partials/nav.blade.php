@@ -59,7 +59,7 @@
                         </ul>
                     </li>
                     @endif
-                                        <li> <i class="icon-search icon-white"></i>
+                    <li> <i class="icon-search icon-white"></i>
                         <a class="my-navbar-hover" href="/contact"> <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact </a>
                     </li>
                 </ul>
