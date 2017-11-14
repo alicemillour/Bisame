@@ -1,0 +1,23 @@
+.fill { 
+    margin:0;
+    padding:0;
+    /*TODO DIFF  background: url('/images/PAN_2017_75084.jpg') no-repeat center fixed; */
+    background: url('/images/back-krik.jpg') no-repeat center fixed;
+    -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
+    background-size: cover;  /* version standardisée */
+    /*background-size: contain;*/
+    /*                        background-size: auto 100%;*/
+    /*background-repeat: no-repeat;*/
+    background-position: left top;  
+    position: relative;
+}
+
+.navbar-default .navbar-brand:hover {
+    /* TODO DIFF color:#f69a47 !important; */
+    color: #ddab18 !important;
+}
+
+.nav > li > a.my-navbar-hover:focus, .nav > li > a.my-navbar-hover:hover{
+    /* TODO DIFF color:#f69a47 !important; */
+    color:#ddab18 !important;
+}

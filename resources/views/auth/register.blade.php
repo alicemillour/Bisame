@@ -9,7 +9,7 @@
 <div class="container ">
     <div class="main-container ">
         <div class="fill">
-                <div class="info-message-trans background-colored fancy-border">
+            <div class="info-message-trans background-colored fancy-border">
                 
                 <div class="panel panel-default background-colored">
                     <div class="panel-heading background-colored text-center">Inscription (<i>Vos informations personnelles ne seront pas conservées</i>)</div>
@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-        <br/>
+    <br/>
     <div class="main-container">
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
