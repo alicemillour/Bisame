@@ -74,11 +74,11 @@
                 <br>
                 <br>    
                 @include('partials.why')
-                
+
                 @endif      
             </div>       
         </div>        
-        
+
         
         <br>
         <br>  

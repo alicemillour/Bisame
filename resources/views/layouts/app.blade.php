@@ -122,7 +122,8 @@
                         .footer-container {
                             max-width: 40%;
                         }
-                        }*/   
+                        }*/
+
         </style>
         <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
         @yield('style')
