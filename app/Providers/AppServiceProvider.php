@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\View;
 use App\Repositories\AnnotationRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Schema;
-use Laravel\Dusk\DuskServiceProvider;
+// use Laravel\Dusk\DuskServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {    //put your code here
 
@@ -30,9 +30,9 @@ class AppServiceProvider extends ServiceProvider {    //put your code here
      * @return void
      */
     public function register() {
-        if ($this->app->environment('local', 'testing')) {
-            $this->app->register(DuskServiceProvider::class);
-        }
+        // if ($this->app->environment('local', 'testing')) {
+        //     $this->app->register(DuskServiceProvider::class);
+        // }
     }
 
 }
