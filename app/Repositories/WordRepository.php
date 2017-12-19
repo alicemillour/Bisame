@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Word;
-use App\Models\Sentence;
+use App\Word;
+use App\Sentence;
 use Illuminate\Support\Facades\DB;
 
 class WordRepository extends ResourceRepository {

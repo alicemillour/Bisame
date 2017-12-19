@@ -2,7 +2,7 @@
 return array(
     'title' => 'Corpora',
     'single' => 'corpus',
-    'model' => 'App\Models\Corpus',
+    'model' => 'App\Corpus',
     'columns' => array(
         'id',
         'name',

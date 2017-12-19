@@ -1,6 +1,3 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <div class="fancy-border">
     <h2 style='text-align: center; color:black' >Classement des <br> contributeurs</h2> 
     <div class="fancy-border">

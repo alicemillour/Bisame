@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Postag;
-use App\Models\Annotation;
+use App\Postag;
+use App\Annotation;
 use DB;
 
 class PostagRepository extends ResourceRepository {

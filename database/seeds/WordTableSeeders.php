@@ -3,7 +3,7 @@
 use Flynsarmy\CsvSeeder\CsvSeeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Models\Word;
+use App\Word;
 
 class WordTableSeeder extends CsvSeeder {
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Word;
+use App\Word;
 use App\Repositories\AnnotationRepository;
 use App\Repositories\GameRepository;
 use App\Repositories\PostagRepository;
@@ -71,7 +71,7 @@ class GameController extends Controller {
 
         $repository = $this->get_game_repository();
         $game = $repository->getById($id);
-        $this->authorize($game);
+        $this->authorize('show', $game);
         $sentences = $game->sentences;
         $new_index = $game->sentence_index + 1;
         $progression = $new_index * 100 / 4;

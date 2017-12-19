@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Models\Annotation;
-use App\Models\Word;
-use App\Models\Sentence;
+use App\Annotation;
+use App\Word;
+use App\Sentence;
 use Illuminate\Support\Facades\DB;
 
 class AnnotationRepository extends ResourceRepository {

@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Sentence;
-use App\Models\Word;
+use App\Sentence;
+use App\Word;
 use DB;
 
 class SentenceRepository extends ResourceRepository

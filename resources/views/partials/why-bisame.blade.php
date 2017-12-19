@@ -6,7 +6,7 @@ Nous invitons tout dialectophone, passioné (ou non !) de grammaire, à particip
 En pratique, il s'agit d'associer des catégories grammaticales à des mots alsaciens : 
 <div class="media">
         <div class="media-body">
-                <video width="800" height="400" controls>  
+                <video width="100%" controls>  
     <source src="{{ asset('video/annotation-bisame.mp4') }}" type="video/mp4">  
     <source src="{{URL::asset('video/annotation-bisame.ogv')}}" type="video/ogg">  
     Votre navigateur ne supporte pas les formats vidéo mp4 et ogv.

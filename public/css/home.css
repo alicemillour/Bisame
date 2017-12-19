@@ -143,6 +143,7 @@
     font-size: 1800%;
     font-weight: 400;
     text-align: center;
+    line-height: 300px;
    /*text-shadow: -3px 0 red, 0 1px red, 1px 0 red, 0 -3px red;  */
      text-shadow: -4px 0 black, 0 1px black, 1px 0 black, 0 -4px black;  
 }

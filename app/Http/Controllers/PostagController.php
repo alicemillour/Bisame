@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Postag;
+use App\Postag;
 use App\Repositories\PostagRepository;
 
 class PostagController extends Controller

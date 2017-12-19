@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Repositories\AnnotationRepository;
+use App\Jobs\ChangeLocale;
+use App\Recipe;
 use Auth;
 
 class WelcomeController extends Controller {
@@ -14,27 +16,27 @@ class WelcomeController extends Controller {
      *
      * @return void
      */
-    protected $annotationRepository;
-
     public function __construct(AnnotationRepository $annotationRepository) {
-        $this->annotationRepository = $annotationRepository;
-        $this->middleware('auth');
+        $this->middleware('admin',['only'=>'language']);
+    }
+
+    public function welcome() {
+        return view('welcome', [
+            'recipes' => Recipe::latest()->limit(3)->get(),
+        ]);
     }
 
     /**
-     * Show the application dashboard.
+     * Change language.
      *
-     * @return \Illuminate\Http\Response
+     * @param  App\Jobs\ChangeLocale $changeLocale
+     * @return Illuminate\Http\Response
      */
-    public function index() {
-        if (!(Auth::guest())) {
-            $current_user = Auth::user();
-            $game_available = ($current_user->is_in_training == false);
-            $nb_total_annotations = $this->annotationRepository->get_total_non_admin_annotations()['annotation_count'];
-            return view('welcome', compact('game_available', 'current_user', 'nb_total_annotations'));
-        } else {
-            return view('welcome');
-        }
-    }
+    public function language(
+        ChangeLocale $changeLocale)
+    {
+        $this->dispatch($changeLocale);
+        return redirect('');
+    }    
 
 }

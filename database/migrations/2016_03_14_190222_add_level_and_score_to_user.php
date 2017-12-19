@@ -25,8 +25,9 @@ class AddLevelAndScoreToUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('level');
-            $table->dropColumn('score');
-        });    }
+        // Schema::table('users', function ($table) {
+        //     $table->dropColumn('level');
+        //     $table->dropColumn('score');
+        // });    
+    }
 }

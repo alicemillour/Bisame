@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Corpus;
+use App\Corpus;
 use Illuminate\Support\Facades\DB;
 
 class CorpusRepository {

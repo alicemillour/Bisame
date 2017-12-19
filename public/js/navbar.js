@@ -11,9 +11,9 @@ $(document).ready(function () {
         // setting the color previously picked
         $(this).css({'color': thecolor});
     });
-    $(document.body).css('padding-top', $('#topnavbar').height() + 10);
+    $(document.body).css('padding-top', $('#topnavbar').height() + 30);
     $(window).resize(function () {
         console.log("adding padding");
-        $(document.body).css('padding-top', $('#topnavbar').height() + 10);
+        $(document.body).css('padding-top', $('#topnavbar').height() + 30);
     });
 });

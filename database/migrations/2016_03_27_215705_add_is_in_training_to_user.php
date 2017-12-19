@@ -24,8 +24,8 @@ class AddIsInTrainingToUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('is_in_training');
-        });   
+        // Schema::table('users', function ($table) {
+        //     $table->dropColumn('is_in_training');
+        // });   
     }
 }

@@ -12,27 +12,41 @@
         <title> {{ trans('home.app-name') }} </title>
 
         <!-- Fonts -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
         <!-- Styles -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-        <!-- TODO DIFF <link rel="shortcut icon" href="{{ asset('images/favicon-krik2.ico') }}" > -->
         <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
-            @font-face {font-family: "Ostrich-Rounded"; src: url('/images/ostrich-rounded.ttf') ;}
-            @font-face {font-family: "Cicle-Fina"; src: url('/images/cicle/Cicle_Semi.ttf') ;}
+            @font-face {font-family: "Ostrich-Rounded"; src: url({{asset('/images/ostrich-rounded.ttf')}}) ;}
+            @font-face {font-family: "Cicle-Fina"; src: url({{asset('/images/cicle/Cicle_Semi.ttf')}}) ;}
             .custom-fonts {font-family: "Cicle-Fina" }
             body {
-                font-family: 'Cicle-Fina';
-                background-color: #86b8b9;
+                font-size:14px;
             }
-
+            .fill {
+                margin:0;
+                padding:0;
+                background: url({{ asset('/images/back-'.App::getLocale().'.jpg') }}) no-repeat center fixed;
+                -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
+                background-size: cover;  /* version standardisée */
+                background-position: left top;  
+                position: relative;
+            }            
+/*            .card-header {
+                color: #333;
+                background-color: #f5f5f5;
+                border-color: #ddd;
+            }*/
             .background-colored{
 /*                background-color: #86b8b9;*/
                 background-color: white;
                 opacity: 0.9;   
 
+            }
+
+            .bg-dark {
+                color:white;
             }
 /*            .footer { 
                 position: absolute; 
@@ -47,7 +61,7 @@
                 font-family: 'Ostrich-Rounded';
             }
             .fina{
-                font: 400 2rem/2.3rem 'Raleway';
+                font: 400 1.25rem 'Raleway';
             }
             .fina-old{
                 font-family: 'Cicle-Fina';
@@ -70,7 +84,7 @@
                     /*background-color: rgb(249, 242, 236);*/
             }
             .title-app-navbar {
-                font-size: 180%;
+                font-size: 125%;
             }
 
             .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
@@ -78,7 +92,7 @@
                 color: black !important;
             }
 
-            .navbar-default .navbar-nav > li > a.no-hover:focus, .navbar-default .navbar-nav > li > a.no-hover:hover{
+            li.nav-item > a.no-hover:focus, li.nav-item > a.no-hover:hover{
                 color: #CECECE !important;
             }
             
@@ -90,22 +104,25 @@
                 background-color:#545454 !important;
                 color: #FCF8E3 !important;
             } 
-            .dropdown-menu>li>a{
+            .dropdown-menu > li > a {
                 background-color:#545454 !important;
                 color: #FCF8E3 !important;
             } 
             .navbar-button-text {
-                font-size: 130%;
+                font-size: 120%;
             }
 
             .white{
                 color: white;
             }
 
-            .navbar-default .navbar-nav > li > a {
+            .navbar-dark .navbar-nav .nav-link {
                 color: #CECECE;
             }
-            .navbar-default .navbar-brand {
+            .navbar-dark .navbar-nav .nav-link:hover {
+                color: #f69a47;
+            }
+            .navbar-dark {
                 color: #CECECE;
             }
             .fancy-border{
@@ -118,6 +135,12 @@
                 position : relative;
                 margin: 0 auto;
             }
+            .container-fluid {
+                z-index:10;
+            }
+            .fixed-bottom {
+                z-index: 5;
+            }
             /*            @media screen and (max-width: 1280px) {
                         .footer-container {
                             max-width: 40%;
@@ -126,27 +149,40 @@
 
         </style>
         <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
+
         @yield('style')
+
         @section('page-header')
 
         @stop
     </head>
-    <!--<div class="fill">-->
-    @yield('content')
-    <body class="fill" id="app-layout"/> 
-    @include('partials.footer-'.App::getLocale())
-    <!-- JavaScripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-<script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
-<script>
-    {!! Html::script(route('asset',['asset'=>'js/master.js'])) !!}
-</script>
+    
+    <body class="fill" id="app">
+
+        @include('partials.nav')
+
+        @include('shared/alerts')
+        
+        @include('shared/badges')
+
+        <div class="container-fluid">
+            @yield('content')
+        </div>
+
+        @include('partials.footer-'.App::getLocale())
+        <!-- JavaScripts -->
+        <script>
+            var base_url = '{{ asset('') }}';
+        </script>    
+        <script src="{{ asset('/js/all.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
 
 
-@yield('script')
+        @yield('scripts')
 
-</body>
-<!--</div>-->
+
+    </body>
+
 </html>

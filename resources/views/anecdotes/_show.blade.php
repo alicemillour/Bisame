@@ -1,0 +1,2 @@
+<label>{{ __('recipes.anecdote-by',['name'=>$anecdote->author->name]) }}</label>
+<div class="translatable" data-id="{{ $anecdote->id }}" data-type="App\Anecdote" data-attribute="content">{!! e($anecdote->content) !!}</div>

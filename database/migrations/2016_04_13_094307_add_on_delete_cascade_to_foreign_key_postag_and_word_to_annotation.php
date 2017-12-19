@@ -29,11 +29,11 @@ class AddOnDeleteCascadeToForeignKeyPostagAndWordToAnnotation extends Migration
      */
     public function down()
     {
-    Schema::table('annotations', function ($table) {
-            $table->dropForeign('annotations_postag_id_foreign');
-            $table->dropForeign('annotations_word_id_foreign');
-            $table->foreign('postag_id')->references('id')->on('postags');
-            $table->foreign('word_id')->references('id')->on('words');
-    });
+    // Schema::table('annotations', function ($table) {
+    //         $table->dropForeign('annotations_postag_id_foreign');
+    //         $table->dropForeign('annotations_word_id_foreign');
+    //         $table->foreign('postag_id')->references('id')->on('postags');
+    //         $table->foreign('word_id')->references('id')->on('words');
+    // });
     }
 }

@@ -26,9 +26,9 @@ class AddOnDeleteCascadeToForeignKeyUserToAnnotation extends Migration
      */
     public function down()
     {
-    Schema::table('annotations', function ($table) {
-            $table->dropForeign('annotations_user_id_foreign');
-            $table->foreign('user_id')->references('id')->on('users');
-        });
+    // Schema::table('annotations', function ($table) {
+    //         $table->dropForeign('annotations_user_id_foreign');
+    //         $table->foreign('user_id')->references('id')->on('users');
+    //     });
     }
 }

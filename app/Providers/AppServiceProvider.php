@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Repositories\AnnotationRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Schema;
+use Laravel\Dusk\DuskServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {    //put your code here
 
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider {    //put your code here
         view()->composer('stats.show', 'App\Http\ViewComposers\StatsComposer');
         view()->composer('home', 'App\Http\ViewComposers\HomeComposer');
         view()->composer('partials.why', 'App\Http\ViewComposers\WhyComposer');
+        Schema::defaultStringLength(191);
     }
 
     /**
@@ -27,7 +30,9 @@ class AppServiceProvider extends ServiceProvider {    //put your code here
      * @return void
      */
     public function register() {
-        //
+        if ($this->app->environment('local', 'testing')) {
+            $this->app->register(DuskServiceProvider::class);
+        }
     }
 
 }

@@ -2,7 +2,7 @@
 return array(
     'title' => 'Words',
     'single' => 'word',
-    'model' => 'App\Models\Word',
+    'model' => 'App\Word',
     'columns' => array(
         'id',
         'value',

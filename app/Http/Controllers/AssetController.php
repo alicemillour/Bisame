@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ExportedCorpus;
+use App\ExportedCorpus;
 use Response, View;
 
 use App\Http\Controllers\Controller;

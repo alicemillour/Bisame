@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,19 +13,20 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Models\Game' => 'App\Policies\GamePolicy',
-        'App\Models\Training' => 'App\Policies\GamePolicy',
+        'App\Game' => 'App\Policies\GamePolicy',
+        'App\Training' => 'App\Policies\TrainingPolicy',
+        'App\User' => 'App\Policies\UserPolicy',
+        'App\Recipe' => 'App\Policies\RecipePolicy',        
     ];
 
     /**
      * Register any application authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        $this->registerPolicies($gate);
+        $this->registerPolicies();
 
         //
     }

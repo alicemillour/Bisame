@@ -26,9 +26,9 @@ class AddOnDeleteCascadeToForeignKeySentenceToWord extends Migration
      */
     public function down()
     {
-       Schema::table('words', function ($table) {
-            $table->dropForeign('words_sentence_id_foreign');
-            $table->foreign('sentence_id')->references('id')->on('sentences');
-        });
+       // Schema::table('words', function ($table) {
+       //      $table->dropForeign('words_sentence_id_foreign');
+       //      $table->foreign('sentence_id')->references('id')->on('sentences');
+       //  });
     }
 }

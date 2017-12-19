@@ -2,13 +2,8 @@
 @section('style')
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
-@section('script')
-<!--<script type="text/javascript" src="{{ asset('js/game.js') }}"></script>-->
-<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-@endsection
+
 @section('content')
-@include('partials.nav')
 <div class="main">
     <div class="main-container">
         <div  style="max-width:100%;margin:0 auto;">

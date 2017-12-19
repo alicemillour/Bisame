@@ -1,0 +1,15 @@
+// Body
+$body-bg: #86b8b9;
+
+// Fonts
+
+$font-family-sans-serif: 'Cicle-Fina', sans-serif;
+$font-family-base:            $font-family-sans-serif !default;
+
+// Brands
+$theme-colors: (
+  "primary": #337ab7
+);
+
+
+@import "node_modules/bootstrap/scss/bootstrap";

@@ -2,7 +2,7 @@
 return array(
     'title' => 'Sentences',
     'single' => 'sentence',
-    'model' => 'App\Models\Sentence',
+    'model' => 'App\Sentence',
     'columns' => array(
         'id',
         'corpus_id',

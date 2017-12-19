@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Training;
-use App\Models\Sentence;
+use App\Training;
+use App\Sentence;
 
 class TrainingRepository extends GameRepository {
 

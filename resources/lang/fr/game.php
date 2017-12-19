@@ -62,7 +62,7 @@ return [
 	'play-rigor-mortis' => 'Jouer à rigor mortis',
 	'go-up-level' => "Tu montes d'un niveau !",
 	'progress-phenomenom' => 'Ta progression sur ce phénomène',
-	'points-won-today' => ":username a gagné :score points aujourdh'hui",
+	'points-won-today' => ":name a gagné :score points aujourdh'hui",
 	'or' => 'ou',
 	'parties-won' => 'Parties gagnées',
 	'perfect-parties' => 'Parties parfaites',

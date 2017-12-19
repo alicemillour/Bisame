@@ -26,9 +26,9 @@ class AddOnDeleteCascadeToForeignKeyUsersToGame extends Migration
      */
     public function down()
     {
-    Schema::table('games', function ($table) {
-            $table->dropForeign('games_user_id_foreign');
-            $table->foreign('user_id')->references('id')->on('users');
-    });
+    // Schema::table('games', function ($table) {
+    //         $table->dropForeign('games_user_id_foreign');
+    //         $table->foreign('user_id')->references('id')->on('users');
+    // });
     }
 }

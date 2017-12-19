@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Game;
-use App\Models\Sentence;
+use App\Game;
+use App\Sentence;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 

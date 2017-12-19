@@ -2,7 +2,7 @@
 return array(
     'title' => 'Annotations',
     'single' => 'annotation',
-    'model' => 'App\Models\Annotation',
+    'model' => 'App\Annotation',
     'columns' => array(
         'id',
         'word' => array(

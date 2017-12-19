@@ -26,9 +26,9 @@ class AddOnDeleteCascadeToForeignKeyCorpusToSentence extends Migration
      */
     public function down()
     {
-        Schema::table('sentences', function ($table) {
-            $table->dropForeign('sentences_corpus_id_foreign');
-            $table->foreign('corpus_id')->references('id')->on('corpora');
-        });
+        // Schema::table('sentences', function ($table) {
+        //     $table->dropForeign('sentences_corpus_id_foreign');
+        //     $table->foreign('corpus_id')->references('id')->on('corpora');
+        // });
     }
 }

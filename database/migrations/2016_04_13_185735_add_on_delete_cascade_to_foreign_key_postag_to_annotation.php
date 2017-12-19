@@ -26,9 +26,9 @@ class AddOnDeleteCascadeToForeignKeyPostagToAnnotation extends Migration
      */
     public function down()
     {
-        Schema::table('annotations', function ($table) {
-            $table->dropForeign('annotations_postag_id_foreign');
-            $table->foreign('postag_id')->references('id')->on('postags');
-        });
+        // Schema::table('annotations', function ($table) {
+        //     $table->dropForeign('annotations_postag_id_foreign');
+        //     $table->foreign('postag_id')->references('id')->on('postags');
+        // });
     }
 }

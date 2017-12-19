@@ -24,8 +24,8 @@ class AddIsAdminToUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('is_admin');
-        });
+        // Schema::table('users', function ($table) {
+        //     $table->dropColumn('is_admin');
+        // });
     }
 }

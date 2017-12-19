@@ -16,9 +16,9 @@ class ChangeScoreTypeToFloatInUser extends Migration
         DB::statement('ALTER TABLE users MODIFY COLUMN score float');
     }
 
-    public function down()
-    {
-        DB::statement('ALTER TABLE users MODIFY COLUMN score int');
-    }   
+    // public function down()
+    // {
+    //     DB::statement('ALTER TABLE users MODIFY COLUMN score int');
+    // }   
 
     }

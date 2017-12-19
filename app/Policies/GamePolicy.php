@@ -3,8 +3,8 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\User;
-use App\Models\Game;
+use App\User;
+use App\Game;
 
 class GamePolicy
 {
@@ -24,8 +24,8 @@ class GamePolicy
     /**
      * Determine if the given game can be updated by the user.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Game  $game
+     * @param  App\User  $user
+     * @param  App\Game  $game
      * @return bool
      */
 
@@ -37,8 +37,8 @@ class GamePolicy
     /**
      * Determine if the given game can be seen by the user.
      *
-     * @param  App\Models\User  $user
-     * @param  App\Models\Game  $game
+     * @param  App\User  $user
+     * @param  App\Game  $game
      * @return bool
      */
 

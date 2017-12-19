@@ -2,7 +2,7 @@
 return array(
     'title' => 'Games',
     'single' => 'game',
-    'model' => 'App\Models\Game',
+    'model' => 'App\Game',
     'columns' => array(
         'id',
         'user_name' => array(

@@ -2,7 +2,7 @@
 return array(
     'title' => 'Postags',
     'single' => 'postag',
-    'model' => 'App\Models\Postag',
+    'model' => 'App\Postag',
     'columns' => array(
         'id',
         'name',

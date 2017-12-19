@@ -1,6 +1,7 @@
 <?php
 
 use Flynsarmy\CsvSeeder\CsvSeeder;
+use App\Corpus;
 
 class AnnotationTableSeeder extends CsvSeeder {
 

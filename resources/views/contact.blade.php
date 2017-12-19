@@ -2,19 +2,18 @@
 @section('content')
 
 @include('partials.nav')
-<br>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default background-colored">
-                <div class="panel-heading background-colored text-center" style="font-size: 1.3em"> <b> Une question, un commentaire, une critique, une idée d’amélioration ? C'est ici !</b>
-</div>
-                <div class="panel-body"></div>
+        <div class="col-md-8 offset-md-2">
+            <div class="card background-colored">
+                <h6 class="card-header text-center" style="font-size: 1.3em"> <b> Une question, un commentaire, une critique, une idée d’amélioration ? C'est ici !</b>
+                </h6>
+                <div class="card-body"></div>
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/contact') }}">
                     {!! csrf_field() !!}
 
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Nom</label>
+                    <div class="form-group row{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label class="col-md-4 col-form-label text-right">Nom</label>
                         <div class="col-md-6">
                             @if (Auth::guest())
                             <input type="text" class="form-control" name="name" value="{{old('name')}}">
@@ -28,8 +27,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Adresse e-mail</label>
+                    <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label class="col-md-4 col-form-label text-right">Adresse e-mail</label>
                         <div class="col-md-6">
                             @if (Auth::guest())
                             <input type="email" class="form-control" name="email" value="{{old('email')}}">
@@ -43,8 +42,8 @@
                             @endif
                         </div>
                     </div> 
-                    <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label">Votre message</label>
+                    <div class="form-group row{{ $errors->has('message') ? ' has-error' : '' }}">
+                        <label class="col-md-4 col-form-label text-right">Votre message</label>
                         <div class="col-md-6">
                             <textarea rows="8" class="form-control" id="message"
                                       accesskey="" name="message" placeholder="">{{ old('message') }}</textarea>
@@ -55,8 +54,8 @@
                             @endif
                         </div>
                     </div> 
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-8">
+                    <div class="form-group row">
+                        <div class="col-md-6 offset-md-8">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-btn fa-envelope-o"></i>Envoyer
                             </button>

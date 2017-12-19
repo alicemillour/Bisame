@@ -71,16 +71,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | SMTP Server Username
+    | SMTP Server name
     |--------------------------------------------------------------------------
     |
-    | If your SMTP server requires a username for authentication, you should
+    | If your SMTP server requires a name for authentication, you should
     | set it here. This will get used to authenticate with your server on
     | connection. You may also set the "password" value below this one.
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'name' => env('MAIL_name'),
 
     /*
     |--------------------------------------------------------------------------

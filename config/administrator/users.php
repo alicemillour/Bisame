@@ -2,7 +2,7 @@
 return array(
     'title' => 'Users',
     'single' => 'users',
-    'model' => 'App\Models\User',
+    'model' => 'App\User',
     'columns' => array(
         'id',
         'name',

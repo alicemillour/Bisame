@@ -28,7 +28,7 @@ php artisan db:seed
  Pour lancer une population de seeds
 
 /* MODELS */
-php artisan make:model App\Models\MonModele
+php artisan make:model App\MonModele
 
 /* SEEDS */
 php artisan migrate:refresh --seed 

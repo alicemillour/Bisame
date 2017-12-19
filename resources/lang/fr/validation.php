@@ -105,7 +105,7 @@ return array(
 
     'attributes' => array(
         "name" => "Nom",
-        "username" => "Pseudo",
+        "name" => "Pseudo",
         "email" => "E-mail",
         "first_name" => "Prénom",
         "last_name" => "Nom",

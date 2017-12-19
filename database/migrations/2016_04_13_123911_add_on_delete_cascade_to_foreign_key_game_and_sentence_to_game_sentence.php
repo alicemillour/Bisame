@@ -29,11 +29,11 @@ class AddOnDeleteCascadeToForeignKeyGameAndSentenceToGameSentence extends Migrat
      */
     public function down()
     {
-    Schema::table('game_sentence', function ($table) {
-            $table->dropForeign('game_sentence_game_id_foreign');
-            $table->foreign('game_id')->references('id')->on('games');
-            $table->dropForeign('game_sentence_sentence_id_foreign');
-            $table->foreign('sentence_id')->references('id')->on('sentences');
-    });
+    // Schema::table('game_sentence', function ($table) {
+    //         $table->dropForeign('game_sentence_game_id_foreign');
+    //         $table->foreign('game_id')->references('id')->on('games');
+    //         $table->dropForeign('game_sentence_sentence_id_foreign');
+    //         $table->foreign('sentence_id')->references('id')->on('sentences');
+    // });
     }
 }
