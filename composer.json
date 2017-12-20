@@ -9,6 +9,7 @@
         "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-translation-manager": "^0.4.1",
         "components/font-awesome": "^4.7",
+        "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
         "flynsarmy/csv-seeder": "1.0.*",
         "intervention/image": "^2.4",
