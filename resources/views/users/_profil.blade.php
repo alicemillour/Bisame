@@ -16,7 +16,7 @@
     {!! Form::label('email', __('users.attributes.email'), ['class' => 'col-sm-3 col-form-label']) !!}
 
     <div class="col-sm-9">
-      {!! Form::text('email', null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.email'), 'required', 'readonly']) !!}
+      {!! Form::text('email', null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.email'), '', 'readonly']) !!}
 
       @if ($errors->has('email'))
           <span class="invalid-feedback">{{ $errors->first('email') }}</span>

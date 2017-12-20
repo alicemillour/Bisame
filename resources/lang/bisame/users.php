@@ -13,6 +13,7 @@ return [
 
   'attributes' => [
     'username' => 'Pseudonyme',
+    'name' => 'Pseudonyme',    
     'email' => 'Email',
     'password' => 'Mot de passe',
     'password_confirmation' => 'Confirmation du mot de passe',
