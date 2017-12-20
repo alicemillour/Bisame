@@ -19,7 +19,7 @@ class User  extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_admin', 'level', 'score', 'posX', 'posY', 'age_group_id'
+        'name', 'email', 'password', 'is_admin', 'level', 'score', 'posX', 'posY', 'age_group_id', 'avatar_id'
     ];
 
     /**
@@ -110,6 +110,11 @@ class User  extends Authenticatable
         return $this->belongsTo('App\AgeGroup');
     }
 
+    public function avatar()
+    {
+        return $this->belongsTo('App\Avatar');
+    }
+
     /**
      * Encrypt the user's password.
      *
@@ -120,7 +125,6 @@ class User  extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
-
     
     public function likesEntity($entity): bool
     {

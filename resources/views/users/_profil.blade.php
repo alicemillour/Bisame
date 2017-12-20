@@ -58,6 +58,17 @@
 
 {!! Form::close() !!}
 
+
+<h4 class="card-title" id="title-avatar">Avatar</h4>
+@if($user->avatar)
+  <img id="avatar"  style="width:100px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />
+  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-primary">Modifier mon avatar</button>
+@else
+  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-primary">Choisi un avatar</button>
+@endif
+
+
+
 <h4 class="card-title">Informations facultatives</h4>
 <div class="form-group">
   {!! Form::label('age_group_id', __('Quel est votre âge ?'), ['class' => '']) !!}
@@ -100,6 +111,18 @@
     </div>
   </div>
 </div>
+
+@component('components.modals.default', ['id' => 'avatarsModal'])
+    @slot('title')
+        Choisir son avatar
+    @endslot
+    <div class="">
+      @foreach($avatars as $avatar)
+        <img style="width:40px;" class="avatar mr-1 mb-1" id="{{ $avatar->id }}" src="{{ asset('img/avatars/'.$avatar->image) }}" />
+      @endforeach
+    </div>
+@endcomponent
+
 
 @section('scripts')
   <script type="text/javascript">
@@ -225,5 +248,24 @@ var can_modify_position = false;
     $( window ).resize(function() {
       placeAnchor();
     });
+
+    $('.avatar').click(function(event){
+      if($('#avatar').length==0){
+        $('#title-avatar').after('<img style="width:100px" src="'+$(this).attr('src')+'" id="avatar" />');
+      } else {
+        $('#avatar').attr('src',$(this).attr('src'));
+      }
+      $('#avatarsModal').modal('hide');
+
+      $.post( "{{ route('users.update-avatar') }}", {
+        avatar_id: $(this).attr('id')
+      }).done(function( data ) {
+
+      }).fail(function( data ) {
+        alert( "Erreur lors de l'enregistrement de votre avatar" );
+      });
+
+    })
+
   </script>
 @endsection

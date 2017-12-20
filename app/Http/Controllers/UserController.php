@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateUser;
 use App\Http\Requests\UpdateUserPosition;
 use App\Http\Requests\UpdateUserAge;
+use App\Http\Requests\UpdateUserAvatar;
 use App\User;
 use App\Role;
 use App\AgeGroup;
 use App\Badge;
+use App\Avatar;
 
 class UserController extends Controller
 {
@@ -40,6 +42,7 @@ class UserController extends Controller
             'recipes' => $user->recipes()->latest()->limit(3)->get(),
             'age_groups' => AgeGroup::get(),
             'badges' => Badge::get(),
+            'avatars' => Avatar::get(),
             // 'recipes' => $user->recipes()->withCount('comments')->latest()->limit(3)->get(),
             // 'comments' => $user->comments()->with('post.author')->latest()->limit(5)->get(),
             // 'roles' => Role::all()
@@ -97,6 +100,19 @@ class UserController extends Controller
         $this->authorize('update', $user);
 
         $user->update(array_filter($request->only(['age_group_id'])));
+
+        return __('users.updated');
+    }
+    /**
+    * Update the specified resource in storage.
+    */
+    public function updateAvatar(UpdateUserAvatar $request)
+    {
+        $user = auth()->user();
+
+        $this->authorize('update', $user);
+
+        $user->update(array_filter($request->only(['avatar_id'])));
 
         return __('users.updated');
     }

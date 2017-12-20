@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\Avatar;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,12 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'avatar_id' => function () {
+        	$avatar = Avatar::inRandomOrder()->first();
+        	if($avatar)
+            	return $avatar->id;
+            else
+            	return null;
+        },        
     ];
 });

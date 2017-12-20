@@ -132,11 +132,9 @@
                 margin: 0 auto;
             }
             .container-fluid {
-                z-index:10;
+                padding-bottom: 40px;
             }
-            .fixed-bottom {
-                z-index: 5;
-            }
+
             /*            @media screen and (max-width: 1280px) {
                         .footer-container {
                             max-width: 40%;

@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1 class="text-center">{{ $user->name }}</h1>
+	<h1 class="text-center fill">{{ $user->name }}</h1>
 
 	<div class="row">
 		<div class="col-lg-6">
@@ -34,6 +34,7 @@
 				@empty
 				    <p class="card-text">{{ $user->name }} n'a pas encore saisi de recette</p>
 				@endforelse	
+				<a href="{{ route('recipes.user',$user) }}" class="card-link btn btn-primary">Toutes les recettes de {{ $user->name }}</a>
 				<a href="{{ route('recipes.create') }}" class="card-link btn-primary btn-sm">{{ __('recipes.new-recipe') }}</a>
 			</div>
 		</div>

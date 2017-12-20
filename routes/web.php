@@ -63,6 +63,7 @@ Route::get('recipes/user/{user}', 'RecipeController@user')->name('recipes.user')
 Route::resource('users', 'UserController');
 Route::post('users/update-position', 'UserController@updatePosition')->name('users.update-position');
 Route::post('users/update-age', 'UserController@updateAge')->name('users.update-age');
+Route::post('users/update-avatar', 'UserController@updateAvatar')->name('users.update-avatar');
 Route::resource('translations', 'AlternativeTextController')->middleware('auth');
 Route::resource('likes', 'LikeController');
 
