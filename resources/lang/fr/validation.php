@@ -63,6 +63,7 @@ return array(
     "required_without"     => "Le champ :attribute est obligatoire quand :values n'est pas présent.",
     "required_without_all" => "Le champ :attribute est requis quand aucun de :values n'est présent.",
     "same"                 => "Les champs :attribute et :other doivent être identiques.",
+    "string"               => "Le champ :attribute doit être une chaîne de caractères.",
     "size"                 => array(
         "numeric" => "La valeur de :attribute doit être :size.",
         "file"    => "La taille du fichier de :attribute doit être de :size kilobytes.",
