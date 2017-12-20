@@ -8,17 +8,17 @@
                 <div class="info-message-trans background-colored fancy-border">
                     
                 <div class="card background-colored">
-                    <h5 class="card-header text-center">Inscription (<i>Vos informations personnelles ne seront pas conservées</i>)</h5>
+                    <h5 class="card-header text-center">Inscription (<i>Vos informations personnelles ne sont pas conservées</i>)</h5>
                     <div class="card-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {!! csrf_field() !!}
                             <div class="info-message mb-2">
-                                Il est nécessaire de s'inscrire pour pouvoir participer. Pour toute question, 
-                                <a href="mailto:alice.millour@abtela.eu?Subject=[Bisame]Inscription" style="color:black" target="_top">me contacter</a>
+                                Il est nécessaire de s'inscrire pour pouvoir participer. Pour toute question, contactez-nous <i>via</i> le
+                                {!! link_to('contact','formulaire de contact',['target'=>'_blank']) !!}
                             </div>
                                 
                             <div class="form-group row{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label class="col-md-4 col-form-label text-right">Nom d'utilisateur/Pseudo <span class="notbold" style="color: red;">*</span><br><span style="font-size: smaller"><i>(susceptible d'apparaître dans le tableau des scores)</i></span></label>
+                                <label class="col-md-4 col-form-label text-right">Nom d'utilisateur / Pseudo&nbsp;<span class="notbold" style="color: red;">*</span><br><span style="font-size: smaller"></span></label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                     @if ($errors->has('name'))
@@ -79,10 +79,10 @@
                                 </div>
                             </div>
                             <div class="info-message text-center small">
-                                <span class="notbold" style="color: red;">*</span> Choix du pseudonyme, exemples: personnage de BD/film/série, 3 lettres du nom+3 lettres du prénom (évitez de mettre votre nom de famille).<br/>
-                                <span class="notbold" style="color: red;">**</span><strong>Facultatif</strong> (vous pouvez créer un compte sans adresse email. Le cas échéant,
+                                <span class="notbold" style="color: red;">*</span> Exemples : personnage de BD/film/série, 3 lettres de votre prénom+3 lettres de votre nom <br>(afin de préserver votre anonymat, nous conseillons de ne pas utiliser votre prénom et votre nom de famille complets dans votre pseudonyme).<br/>
+                                <span class="notbold" style="color: red;">**</span><strong>Facultatif</strong> : vous pouvez créer un compte sans adresse e-mail ; le cas échéant,
                                 nous ne serons pas en mesure de prendre contact avec vous, 
-                                ni de réinitialiser votre mot de passe.)
+                                ni de réinitialiser votre mot de passe.
                             </div>
                         </form>
                     </div>
@@ -92,7 +92,6 @@
     
         <div class="fill mt-3 text-left">
             <div class="info-message-trans background-colored fancy-border">
-                <alert>TODO : adapter la charte à la plate forme PLURAL</alert>
                 @include('partials.' . App::getLocale() . '-charte')
             </div>
         </div>
