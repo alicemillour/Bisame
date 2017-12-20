@@ -2,6 +2,7 @@
 
 return array (
   'app-name' => 'Corpus en sauce',
+  'all' => 'Toutes les recettes',
   'text-intro' => 'Proposez vos recettes en alsacien.',
   'new-recipe' => 'Ajouter une recette',
   'last-recipes' => 'Dernières recettes',

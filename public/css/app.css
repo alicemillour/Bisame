@@ -152,7 +152,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #86b8b9;
+  background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -606,7 +606,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #86b8b9;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1986,7 +1986,7 @@ pre code {
 }
 
 .table .table {
-  background-color: #86b8b9;
+  background-color: #fff;
 }
 
 .table-sm th,
@@ -2152,7 +2152,7 @@ pre code {
 }
 
 .table .thead-dark th {
-  color: #86b8b9;
+  color: #fff;
   background-color: #212529;
   border-color: #32383e;
 }
@@ -2164,7 +2164,7 @@ pre code {
 }
 
 .table-dark {
-  color: #86b8b9;
+  color: #fff;
   background-color: #212529;
 }
 
@@ -3918,8 +3918,8 @@ tbody.collapse.show {
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  -webkit-box-shadow: 0 0 0 1px #86b8b9, 0 0 0 0.2rem rgba(51, 122, 183, 0.25);
-          box-shadow: 0 0 0 1px #86b8b9, 0 0 0 0.2rem rgba(51, 122, 183, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(51, 122, 183, 0.25);
+          box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(51, 122, 183, 0.25);
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
@@ -4157,9 +4157,9 @@ tbody.collapse.show {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #86b8b9;
-  border-color: #ddd #ddd #86b8b9;
+  color: #fff;
+  background-color: #fff;
+  border-color: #ddd #ddd #fff;
 }
 
 .nav-tabs .dropdown-menu {
