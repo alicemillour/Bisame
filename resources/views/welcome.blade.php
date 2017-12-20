@@ -3,13 +3,25 @@
 @section('content')
 <div class="container-fluid">
 <div class="row">
+  <div class="col-12 mb-4">
+      <div class="card">
+        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Bienvenue sur Plural !</a></h4>
+        <div class="card-body">
+          <alert>TODO : description de la plate forme PLURAL (qui sommes-nous, raison d'être et objectif de la plate-forme)</alert>
+        </div>
+      </div>    
+  </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
       <div class="card">
         <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.app-name') }}</a></h4>
         <div class="card-body">
-          <div class="">{{ __('recipes.text-intro') }}</div>
-          <a href="{{ route('recipes.create') }}" class="card-link">{{ __('recipes.new-recipe') }}</a>
-          <a href="{{ route('recipes.index') }}" class="card-link">Consulter les recettes</a>           
+          {{-- <div class="">{{ __('recipes.text-intro') }}</div> --}}
+          <div class="text-center btn-wrapper">
+            <a href="{{ route('recipes.create') }}" class="btn btn-primary">{{ __('recipes.new-recipe') }}</a>
+            <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+          </div>
           <hr/>
           <h4 class="card-text">{{ __('recipes.last-recipes') }}</h4>
 
@@ -27,16 +39,17 @@
     <div class="col-sm-4">
       <div class="card">
         <h4 class="card-header text-center"><a href="#">{{ __('improvisation-game.app-name') }}</a></h4>
-        <div class="card-body">
+        <div class="card-body text-center">
           <p class="card-text">{{ __('improvisation-game.text-intro') }}</p>
         </div>
       </div>
     </div>
     <div class="col-sm-4">
     <div class="card">
-      <h4 class="card-header text-center"><a href="{{ route('annotator') }}">{{ __('game.app-name') }}</a></h4>
-      <div class="card-body">
+      <h4 class="card-header text-center"><a href="{{ route('home-game') }}">{{ __('game.app-name') }}</a></h4>
+      <div class="card-body text-center">
         <div class="card-text">{{ __('game.text-intro') }}</div>
+        <a href="{{ route('home-game') }}" class="card-link btn btn-primary mt-3">Participer</a>  
       </div>
     </div>
     </div>

@@ -10,6 +10,6 @@
                 <a style="color:#AC1E44;" href="https://www.francebleu.fr/emissions/l-alsace-vue-par-le-net-en-alsacien/elsass/l-alsace-vue-par-le-net-en-alsacien-57"
                    target="_blank"> <br> <b> Lien vers la chronique de Pierre Nuss (France Bleu Elsass)</b></a> 
                 <span>
-                    <img style="margin:1%" height="42" width="42" src="/images/fbe.png"/>  
+                    <img style="margin:1%" height="42" width="42" src="{{ asset('images/fbe.png') }}"/>  
 
                 </span>

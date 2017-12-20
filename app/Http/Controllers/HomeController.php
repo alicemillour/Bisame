@@ -21,7 +21,6 @@ class HomeController extends Controller {
     public function __construct(AnnotationRepository $annotationRepository, UserRepository $userRepository) {
         $this->annotationRepository = $annotationRepository;
         $this->userRepository = $userRepository;
-        $this->middleware('auth');
     }
 
     /**

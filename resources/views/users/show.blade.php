@@ -32,9 +32,9 @@
 				    <p class="card-text text-truncate">{{ $recipe->content }}</p>
 				    
 				@empty
-				    <p class="card-text">Vous n'avez pas encore saisi de recette</p>
+				    <p class="card-text">{{ $user->name }} n'a pas encore saisi de recette</p>
 				@endforelse	
-				<a href="{{ route('recipes.create') }}" class="card-link">{{ __('recipes.new-recipe') }}</a>
+				<a href="{{ route('recipes.create') }}" class="card-link btn-primary btn-sm">{{ __('recipes.new-recipe') }}</a>
 			</div>
 		</div>
 		</div>

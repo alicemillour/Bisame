@@ -14,22 +14,23 @@
             <div class="info-message-trans background-colored fancy-border">
                 
                 @if (Auth::guest())
-                <div class="button-wrapper" >
-                    
-                    <span>
-                        <a class='btn btn-default play-button active-button ostrich' href="/login">Connexion</a>
-                    </span>
-                    
-                    <span>
-                        <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
-                    </span>  
+                <div class="button-wrapper">
+                    <div class="mb-4">
+                        <span>
+                            <a class='btn btn-default play-button active-button ostrich' href="{{ route('login') }}">Connexion</a>
+                        </span>
+                        
+                        <span>
+                            <a class='btn btn-default play-button active-button ostrich' href="{{ route('register') }}">Inscription</a>
+                        </span>
+                    </div>
                     @include('partials.why-'.App::getLocale())
                     <span>
-                        <a class='btn btn-default play-button active-button ostrich' href="/login">Connexion</a>
+                        <a class='btn btn-default play-button active-button ostrich' href="{{ route('login') }}">Connexion</a>
                     </span>
                     
                     <span>
-                        <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
+                        <a class='btn btn-default play-button active-button ostrich' href="{{ route('register') }}">Inscription</a>
                     </span>
                 </div>
                 

@@ -9,11 +9,7 @@
         <meta property="og:image" content="{{ asset('images/ppic.jpg') }}" />
         <meta property="og:description" content="Bisame est un projet de recherche collaboratif visant à favoriser la diffusion de l'alsacien. Venez participer !" />
         <!-- TODO DIFF <title>Krik !</title> -->
-        <title> {{ trans('home.app-name') }} </title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-        <!-- Styles -->
+        <title> {{ trans('home.app-name') }} </title>   
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -146,7 +142,13 @@
                             max-width: 40%;
                         }
                         }*/
+            alert {
+                color : red;
+            }
 
+            a.btn-default {
+                color: black;
+            }
         </style>
         <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
 
@@ -161,7 +163,7 @@
 
         @include('partials.nav')
 
-        @include('shared/alerts')
+        {{-- @include('shared/alerts') --}}
         
         @include('shared/badges')
 
@@ -181,7 +183,6 @@
 
 
         @yield('scripts')
-
 
     </body>
 

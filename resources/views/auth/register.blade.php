@@ -18,7 +18,7 @@
                             </div>
                                 
                             <div class="form-group row{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label class="col-md-4 col-form-label text-right">Nom d'utilisateur <br><span style="font-size: smaller"><i>(susceptible d'apparaître dans le tableau des scores)</i></span></label>
+                                <label class="col-md-4 col-form-label text-right">Nom d'utilisateur/Pseudo <span class="notbold" style="color: red;">*</span><br><span style="font-size: smaller"><i>(susceptible d'apparaître dans le tableau des scores)</i></span></label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                     @if ($errors->has('name'))
@@ -30,7 +30,7 @@
                             </div>
                                 
                             <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label class="col-md-4 col-form-label text-right">Adresse e-mail <span class="notbold" style="color: red;">*</span></label> 
+                                <label class="col-md-4 col-form-label text-right">Adresse e-mail <span class="notbold" style="color: red;">**</span></label> 
                                     
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -79,9 +79,10 @@
                                 </div>
                             </div>
                             <div class="info-message text-center small">
-                                <span class="notbold" style="color: red;">*</span> Vous pouvez créer un compte avec une adresse invalide. Le cas échéant,
+                                <span class="notbold" style="color: red;">*</span> Choix du pseudonyme, exemples: personnage de BD/film/série, 3 lettres du nom+3 lettres du prénom (évitez de mettre votre nom de famille).<br/>
+                                <span class="notbold" style="color: red;">**</span><strong>Facultatif</strong> (vous pouvez créer un compte sans adresse email. Le cas échéant,
                                 nous ne serons pas en mesure de prendre contact avec vous, 
-                                ni de réinitialiser votre mot de passe.
+                                ni de réinitialiser votre mot de passe.)
                             </div>
                         </form>
                     </div>
@@ -89,6 +90,13 @@
             </div>
         </div>
     
+        <div class="fill mt-3 text-left">
+            <div class="info-message-trans background-colored fancy-border">
+                <alert>TODO : adapter la charte à la plate forme PLURAL</alert>
+                @include('partials.' . App::getLocale() . '-charte')
+            </div>
+        </div>
+
         <div class="fill mt-3">
             <div class="info-message-trans background-colored fancy-border">
                 @include('partials.' . App::getLocale() . '-intro')

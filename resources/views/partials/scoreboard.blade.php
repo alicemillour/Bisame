@@ -2,11 +2,11 @@
     <h2 style='text-align: center; color:black' >Classement des <br> contributeurs</h2> 
     <div class="fancy-border">
         <ul class="nav nav-tabs">
-            <li class="active" style="font-size: 1.5em;" ><a data-toggle="pill" style="color:black" href="#week"> Cette semaine </a></li>
-            <li style="font-size: 1.5em;" ><a data-toggle="pill" style="color:black" href="#home"> Top 5 </a></li>
+            <li class="nav-item" style="font-size: 1.5em;" ><a class="nav-link active" data-toggle="pill" style="color:black" href="#week"> Cette semaine </a></li>
+            <li class="nav-item" style="font-size: 1.5em;" ><a class="nav-link" data-toggle="pill" style="color:black" href="#home"> Top 5 </a></li>
             <!--<li><a data-toggle="pill" style="color:black" href="#menu1">Score global</a></li>-->
             <!--<li class="pull-right"><a data-toggle="pill" style="color:black" href="#info" > <i class="fa fa-question-circle-o fa-2x" aria-hidden="true"></i></a></li>-->
-            <li class="pull-right ostrich"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" > ? </a></li>
+            <li class="nav-item pull-right ostrich"><a class="nav-link" data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" > ? </a></li>
             <!--<li class="pull-right ostrich"><a data-toggle="pill" style="color:black; font-size: 1.5em; font-weight: 600" href="#info" ><img src="images/question_mark.jpg"></a></li>-->
         </ul>
         
