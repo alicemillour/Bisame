@@ -41,6 +41,12 @@
 
             }
 
+            .info-message-trans {
+                padding: 1.25rem;
+                /* background-color:rgba(249, 242, 236, 0.9); */
+            }
+                
+
             .bg-dark {
                 color:white;
             }
@@ -123,7 +129,6 @@
             }
             .fancy-border{
                 border: 1px solid white;
-                
             }
             .footer-container {
                 vertical-align: middle;
