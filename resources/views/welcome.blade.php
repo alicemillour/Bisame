@@ -27,12 +27,21 @@
 
           @forelse ($recipes as $recipe)
             <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}</h6>
-              <p class="card-text text-truncate">{{ $recipe->content }}</p>
-              
+            <small class="text-muted">
+              @component('users._avatar', ['user' => $recipe->author])
+
+              @endcomponent
+              {{ __('recipes.recipe-by') }}
+              {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+            </small>
+            <br/>
+            <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
+            <p class="text-right"><a class="" href="{{ route('recipes.show',$recipe) }}">lire la suite...</a></p>
+            <hr/>
           @empty
               <p class="card-text">Aucune recette</p>
           @endforelse 
-       
+          
         </div>
       </div>
     </div>
