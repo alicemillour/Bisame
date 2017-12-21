@@ -22,7 +22,9 @@
                     </p>
                     <hr/>
                     <h4 class="card-title mt-3">Suppression de votre compte</h4>
+                    <div class="text-right">
                     <button type="button" class="btn btn-danger"onclick="$('#modalDeleteAccount').modal();">Supprimer mon compte</button>
+                	</div>
                 </div>
             </div>
         </div>
