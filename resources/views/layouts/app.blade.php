@@ -152,6 +152,10 @@
             a.btn-default {
                 color: black;
             }
+            #home {
+                padding-bottom: 40px;
+                font-size: 120%;
+            }
         </style>
         <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
 
@@ -166,7 +170,7 @@
 
         @include('partials.nav')
 
-        {{-- @include('shared/alerts') --}}
+        @include('shared/alerts')
         
         @include('shared/badges')
 
