@@ -11,9 +11,9 @@
                 <p class="card-text">
                     @include('users/_profil')
                 </p>
-                <div class="container">
+                <!--<div class="container">-->
                     <button type="button" class="btn btn-danger"onclick="$('#modalDeleteAccount').modal();">Supprimer mon compte</button>
-                </div>
+                <!--</div>-->
             </div>
         </div>
     </div>
