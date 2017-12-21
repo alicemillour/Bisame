@@ -3,13 +3,13 @@
 @section('content')
   
   @include ('recipes/_search')
-<div id="recipe">
+<div id="recipe" class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
+      <a class="nav-link page-title" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Plus</a>
+      <a class="nav-link page-title active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Plus</a>
     </li>
   </ul>
   <div class="bg-white p-3">
@@ -48,7 +48,11 @@
       </div>
     <div class="mb-1 row">
       <div class="col-sm-8">
-        <small class="text-muted">{{ __('recipes.recipe-by') }}{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}</small>
+        <small class="text-muted">
+          @component('users._avatar', ['user' => $recipe->author])
+          @endcomponent
+          {{ __('recipes.recipe-by') }}{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+        </small>
         <div class="mb-1">
           <small class="text-muted">{{ __('recipes.preparation-time') }} : {{ $recipe->preparation_time }}</small>
         </div>

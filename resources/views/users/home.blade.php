@@ -34,7 +34,7 @@
                     @endforelse	
                     <a href="{{ route('recipes.create') }}" class="card-link">{{ __('recipes.new-recipe') }}</a>
                     <br> <a href="{{ route('recipes.user',$user) }}" class="card-link">{{ __('recipes.my-recipes') }}</a>
-                    <br> <a href="{{ route('recipes.show',$user) }}" class="card-link">{{ __('recipes.all') }}</a>
+                    <br> <a href="{{ route('recipes.index') }}" class="card-link">{{ __('recipes.all') }}</a>
                 </div>
             </div>
             <div class="card mt-3">

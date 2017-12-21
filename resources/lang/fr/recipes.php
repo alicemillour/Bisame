@@ -3,6 +3,7 @@
 return array (
   'new-recipe' => 'Ajouter une recette',
   'last-recipes' => 'Dernières recettes',
+  'last-recipes-by' => 'Dernières recettes de :name',
   'recipe' => 'Recette',
   'created' => 'Votre recette a bien été enregistrée',
   'anecdote-created' => 'Votre anecdote a bien été enregistrée',
