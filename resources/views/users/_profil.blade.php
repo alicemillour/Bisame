@@ -28,55 +28,9 @@
     {{-- <a id="cancel_edit" href="{{ route('users.show', $user) }}" class="btn btn-secondary">{{ __('forms.actions.cancel') }}</a> --}}
     {!! Form::submit("Enregistrer mon profil", ['class' => 'btn btn-success']) !!}
   </div>
-<h4 class="card-title" id="title-avatar">Modifier votre mot de passe</h4>
-  <div class="form-group row">
-    {!! Form::label('password', __('users.attributes.password'), ['class' => 'col-sm-3 col-form-label']) !!}
-
-    <div class="col-sm-9">
-      {!! Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.password'), '']) !!}
-
-      @if ($errors->has('password'))
-          <span class="invalid-feedback">{{ $errors->first('password') }}</span>
-      @endif
-    </div>
-  </div>
-
-  <div class="form-group row">
-    {!! Form::label('password_confirmation', __('users.attributes.password_confirmation'), ['class' => 'col-sm-3 col-form-label']) !!}
-
-    <div class="col-sm-9">
-      {!! Form::password('password_confirmation', ['class' => 'form-control' . ($errors->has('password_confirmation') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.password_confirmation')]) !!}
-
-      @if ($errors->has('password_confirmation'))
-          <span class="invalid-feedback">{{ $errors->first('password_confirmation') }}</span>
-      @endif
-    </div>
-  </div>
-
-{{--   <div class="form-group form-group-show">
-    <button id="edit_profil" class="btn btn-success">Editer mon profil</button>
-  </div> --}}
-
-  <div class="form-group text-right">
-    <button class="btn btn-success">Modifier mon mot de passe</button>
-  </div>
-
-
-
-{!! Form::close() !!}
-
-<hr/>
-<h4 class="card-title" id="title-avatar">Avatar</h4>
-@if($user->avatar)
-  <img id="avatar"  style="width:100px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />
-  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Modifier mon avatar</button>
-@else
-  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Choisi un avatar</button>
-@endif
-
 <hr/>
 
-<h4 class="card-title mt-3">Informations facultatives</h4>
+<h4 class="card-title mt-3" id="title-infos">Informations facultatives</h4>
 <div class="row">
 
   <div class="form-group col-6">
@@ -122,6 +76,39 @@
     </div>
   </div>
 </div>
+<hr/>
+<h4 class="card-title" id="title-avatar">Modifier votre mot de passe</h4>
+  <div class="form-group row">
+    {!! Form::label('password', __('users.attributes.password'), ['class' => 'col-sm-3 col-form-label']) !!}
+
+    <div class="col-sm-9">
+      {!! Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.password'), '']) !!}
+
+      @if ($errors->has('password'))
+          <span class="invalid-feedback">{{ $errors->first('password') }}</span>
+      @endif
+    </div>
+  </div>
+
+  <div class="form-group row">
+    {!! Form::label('password_confirmation', __('users.attributes.password_confirmation'), ['class' => 'col-sm-3 col-form-label']) !!}
+
+    <div class="col-sm-9">
+      {!! Form::password('password_confirmation', ['class' => 'form-control' . ($errors->has('password_confirmation') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.password_confirmation')]) !!}
+
+      @if ($errors->has('password_confirmation'))
+          <span class="invalid-feedback">{{ $errors->first('password_confirmation') }}</span>
+      @endif
+    </div>
+  </div>
+
+  <div class="form-group text-right">
+    <button class="btn btn-success">Modifier mon mot de passe</button>
+  </div>
+
+
+
+{!! Form::close() !!}
 @component('components.modals.default', ['id' => 'avatarsModal'])
     @slot('title')
         Choisir son avatar
@@ -261,7 +248,7 @@ var can_modify_position = false;
 
     $('.avatar').click(function(event){
       if($('#avatar').length==0){
-        $('#title-avatar').after('<img style="width:100px" src="'+$(this).attr('src')+'" id="avatar" />');
+        $('#choose-avatar').before('<img style="width:50px" src="'+$(this).attr('src')+'" id="avatar" />');
       } else {
         $('#avatar').attr('src',$(this).attr('src'));
       }
