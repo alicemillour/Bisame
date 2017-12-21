@@ -19,6 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">Statistiques</h3>
+                    @include('users/_leaderboard')
                 </div>
             </div>
             <div class="card mt-3">
@@ -46,7 +47,7 @@
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </div>
 
 <div class="modal fade" id="modalDeleteAccount" role="dialog">
