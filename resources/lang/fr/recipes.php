@@ -22,7 +22,7 @@ return array (
   'cooking-time' => 'Temps de cuisson',
   'total-time' => 'Temps total',
   'number-servings' => 'Nombre de portions',
-  'servings' => 'portion|portions',
+  'servings' => '{1} portion|[2,*]portions',
   'label-servings' => 'Portions',
   'for-n-persons' => 'pour :number personnes',
   'for-n-person' => 'pour :number personne',

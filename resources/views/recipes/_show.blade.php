@@ -7,7 +7,7 @@
 	        <img src="{{ asset($recipe->medias->first()->filename) }}" style="width:100%;" />
 	      @endif
 		    <div class="float-right">
-		        <i class="fa fa-heart likeable" style="color:#ac1e44;" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
+		        <i class="fa fa-heart likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
 		        @auth
 		            @if(Auth::user()->likesEntity($recipe))
 		              Vous aimez cette recette
@@ -26,15 +26,18 @@
 	    <h4>{{ link_to_route('recipes.show', $recipe->title, $recipe) }}</h4>
 	</div>
 	<p class="card-text">
-		<small class="text-muted">
-		@component('users._avatar', ['user' => $recipe->author])
+		<span class="text-muted">
+			@component('users._avatar', ['user' => $recipe->author])
 
-		@endcomponent
-		{{ __('recipes.recipe-by') }}
-		{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}</small>
+			@endcomponent
+			{{ __('recipes.recipe-by') }}
+			{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+		</span>
 	</p>
 	
     <div class="card-text text-truncate">{{ $recipe->content }}</div>
+    <div class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe) }}</div>
+
 
   </div>
 </div>
