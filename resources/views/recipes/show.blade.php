@@ -26,7 +26,7 @@
 {{--           <div class="p-2 text-nowrap"><small>{{ $recipe->total_time }}</small> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
           <div class="p-2 text-nowrap"><small>{{ $recipe->servings }} {{ trans_choice('recipes.servings',$recipe->servings) }}</small> <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i></div> --}}
           <div class="p-2 text-nowrap">
-            <i class="fa fa-heart fa-2x likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
+            <i class="fa fa-heart fa-2x likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" data-content="
             @auth
                 @if(Auth::user()->likesEntity($recipe))
                   Vous aimez cette recette
