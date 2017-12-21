@@ -94,7 +94,7 @@ class UserRepository extends ResourceRepository {
     }
 
     public function destroy($id) {
-        $this->getById($id)->delete();
+        $this->getById($id)->softDeletes();
     }
 
 }

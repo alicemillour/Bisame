@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUser;
 use App\Http\Requests\UpdateUserPosition;
 use App\Http\Requests\UpdateUserAge;
 use App\Http\Requests\UpdateUserAvatar;
+use App\Repositories\UserRepository;
 use App\User;
 use App\Role;
 use App\AgeGroup;
@@ -115,5 +116,22 @@ class UserController extends Controller
         $user->update(array_filter($request->only(['avatar_id'])));
 
         return __('users.updated');
+    }
+    
+        /**
+     * Delete the account of the user.
+     *
+     * @param  UserRepository  $users
+     * @return \Illuminate\Http\Response
+     */
+    public function getDelete(UserRepository $users)
+    {
+        Auth::user()->name = 'deleted_'.Auth::user()->id;
+        Auth::user()->email = null;
+        Auth::user()->save();
+        Auth::user()->delete();
+//        $users->destroy(Auth::user()->id);
+        Auth::logout();
+        return redirect('');
     }
 }
