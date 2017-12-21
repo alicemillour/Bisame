@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container text-center">
-    <div class="fill">
-        <div class="info-message-trans background-colored fancy-border">
             <h1 class="text-center"> Hopla {{ $user->name }} !</h1>
             
             <div class="row">
@@ -50,8 +47,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-        
+
 @endsection
