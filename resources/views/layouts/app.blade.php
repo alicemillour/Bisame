@@ -170,14 +170,16 @@
 
         @include('partials.nav')
 
-        @include('shared/alerts')
-        
         @include('shared/badges')
 
         @include('discussion/report')
 
         <div class="container-fluid">
+            
+            @include('shared/alerts')
+
             @yield('content')
+            
         </div>
 
         @include('partials.footer-'.App::getLocale())

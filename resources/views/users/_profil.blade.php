@@ -1,10 +1,10 @@
 {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user]]) !!}
-
+<h4 class="card-title" id="title-avatar">Votre profil</h4>
   <div class="form-group row">
     {!! Form::label('name', __('users.attributes.name'), ['class' => 'col-sm-3 col-form-label']) !!}
 
     <div class="col-sm-9">
-      {!! Form::text('name', null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.name'), 'required', 'readonly']) !!}
+      {!! Form::text('name', null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.name'), 'required', '']) !!}
 
       @if ($errors->has('name'))
           <span class="invalid-feedback">{{ $errors->first('name') }}</span>
@@ -16,7 +16,7 @@
     {!! Form::label('email', __('users.attributes.email'), ['class' => 'col-sm-3 col-form-label']) !!}
 
     <div class="col-sm-9">
-      {!! Form::text('email', null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.email'), '', 'readonly']) !!}
+      {!! Form::text('email', null, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.email'), '', '']) !!}
 
       @if ($errors->has('email'))
           <span class="invalid-feedback">{{ $errors->first('email') }}</span>
@@ -24,11 +24,16 @@
     </div>
   </div>
 
+  <div class="form-group text-right">
+    {{-- <a id="cancel_edit" href="{{ route('users.show', $user) }}" class="btn btn-secondary">{{ __('forms.actions.cancel') }}</a> --}}
+    {!! Form::submit("Enregistrer mon profil", ['class' => 'btn btn-success']) !!}
+  </div>
+<h4 class="card-title" id="title-avatar">Modifier votre mot de passe</h4>
   <div class="form-group row">
     {!! Form::label('password', __('users.attributes.password'), ['class' => 'col-sm-3 col-form-label']) !!}
 
     <div class="col-sm-9">
-      {!! Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.password'), 'readonly']) !!}
+      {!! Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.password'), '']) !!}
 
       @if ($errors->has('password'))
           <span class="invalid-feedback">{{ $errors->first('password') }}</span>
@@ -36,7 +41,7 @@
     </div>
   </div>
 
-  <div class="form-group form-group-hidden d-none row">
+  <div class="form-group row">
     {!! Form::label('password_confirmation', __('users.attributes.password_confirmation'), ['class' => 'col-sm-3 col-form-label']) !!}
 
     <div class="col-sm-9">
@@ -48,70 +53,75 @@
     </div>
   </div>
 
-  <div class="form-group form-group-show">
+{{--   <div class="form-group form-group-show">
     <button id="edit_profil" class="btn btn-success">Editer mon profil</button>
+  </div> --}}
+
+  <div class="form-group text-right">
+    <button class="btn btn-success">Modifier mon mot de passe</button>
   </div>
-  <div class="form-group form-group-hidden d-none">
-    <a id="cancel_edit" href="{{ route('users.show', $user) }}" class="btn btn-secondary">{{ __('forms.actions.cancel') }}</a>
-    {!! Form::submit(__('forms.actions.save'), ['class' => 'btn btn-success']) !!}
-  </div>
+
+
 
 {!! Form::close() !!}
 
-
+<hr/>
 <h4 class="card-title" id="title-avatar">Avatar</h4>
 @if($user->avatar)
   <img id="avatar"  style="width:100px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />
-  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-primary">Modifier mon avatar</button>
+  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Modifier mon avatar</button>
 @else
-  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-primary">Choisi un avatar</button>
+  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Choisi un avatar</button>
 @endif
 
+<hr/>
 
+<h4 class="card-title mt-3">Informations facultatives</h4>
+<div class="row">
 
-<h4 class="card-title">Informations facultatives</h4>
-<div class="form-group">
-  {!! Form::label('age_group_id', __('Quel est votre âge ?'), ['class' => '']) !!}
-  <div class="custom-controls-stacked">
+  <div class="form-group col-6">
+    {!! Form::label('age_group_id', __('Quel est votre âge ?'), ['class' => '']) !!}
+    <div class="custom-controls-stacked">
 
-    @foreach($age_groups as $age_group)
-      <label class="custom-control custom-radio radio-age">
-        <input id="radio1" name="age_group_id" type="radio" value="{{ $age_group->id }}" class="custom-control-input" {{ ($age_group->id==$user->age_group_id)?'checked':'' }}>
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">{{ __('users.age-group.'.$age_group->slug) }}</span>
-      </label>
-    @endforeach
+      @foreach($age_groups as $age_group)
+        <label class="custom-control custom-radio radio-age">
+          <input id="radio1" name="age_group_id" type="radio" value="{{ $age_group->id }}" class="custom-control-input" {{ ($age_group->id==$user->age_group_id)?'checked':'' }}>
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">{{ __('users.age-group.'.$age_group->slug) }}</span>
+        </label>
+      @endforeach
 
+    </div>
+  </div>
+
+  <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
+    {!! Form::label('position', __('Où avez-vous appris l\'alsacien ?'), ['class' => '']) !!}
+    <div class="custom-controls-stacked">  
+    <label class="custom-control custom-radio radio-position">
+      <input id="radio-position-1" name="radio" type="radio" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ __('users.dk') }}</span>
+    </label>
+    <label class="custom-control custom-radio radio-position" data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+      <input id="radio-position-2" name="radio" type="radio" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ __('users.place-on-a-map') }}</span>
+    </label>
+    </div>
+    <div class="collapse" id="collapseMap">
+      <div>
+        <button class="btn btn-success btn-sm" id="modify-position">Modifier ma position</button>
+      </div>
+      <div class="alert alert-info explanation-map d-none">
+        <em>Cliquez sur la carte à l'endroit où vous avez appris l'alsacien :</em>
+      </div>
+      <div style="position:relative;">
+        <img style="position:relative;left:0;top:0;width:50%;" id="map" src="{{ asset('img/Carte_Alsace.svg') }}" />
+        <i id="anchor" style="position:absolute;" class="fa fa-child fa-2x d-none" aria-hidden="true"></i>
+      </div>
+    </div>
   </div>
 </div>
-<div class="form-group">
-  {!! Form::label('position', __('Où avez-vous appris l\'alsacien ?'), ['class' => '']) !!}
-  <div class="custom-controls-stacked">  
-  <label class="custom-control custom-radio radio-position">
-    <input id="radio-position-1" name="radio" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">{{ __('users.dk') }}</span>
-  </label>
-  <label class="custom-control custom-radio radio-position" data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
-    <input id="radio-position-2" name="radio" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">{{ __('users.place-on-a-map') }}</span>
-  </label>
-  </div>
-  <div class="collapse" id="collapseMap">
-    <div>
-      <button class="btn btn-success btn-sm" id="modify-position">Modifier ma position</button>
-    </div>
-    <div class="alert alert-info explanation-map d-none">
-      <em>Cliquez sur la carte à l'endroit où vous avez appris l'alsacien :</em>
-    </div>
-    <div style="position:relative;">
-      <img style="position:relative;left:0;top:0;width:30%;" id="map" src="{{ asset('img/Carte_Alsace.svg') }}" />
-      <i id="anchor" style="position:absolute;" class="fa fa-child fa-2x d-none" aria-hidden="true"></i>
-    </div>
-  </div>
-</div>
-
 @component('components.modals.default', ['id' => 'avatarsModal'])
     @slot('title')
         Choisir son avatar
@@ -201,7 +211,7 @@ var can_modify_position = false;
         }).done(function( data ) {
           $('.explanation-map').addClass('d-none');
           $('#modify-position').show();
-          $('#map').css({'width':'30%'});
+          $('#map').css({'width':'50%'});
           can_modify_position = false;
           placeAnchor();
         }).fail(function( data ) {

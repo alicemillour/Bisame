@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-// use App\Report;
+use App\Report;
 use App\User;
 use App\Role;
 use Response, Mail;

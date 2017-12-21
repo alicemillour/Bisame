@@ -14,7 +14,7 @@
 	@php
 		$thread = $entity->discussion->messages;
 	@endphp
-	{{ count($thread) }} {{ trans_choice('discussions.comments',count($thread)) }}
+	{{ count($thread) }} {{ count($thread)>1 ? __('discussions.comments'):__('discussions.comment') }}
 	@include('discussion.message',['parent_id'=>null])
 @else
 	Personne n'a encore commenté.

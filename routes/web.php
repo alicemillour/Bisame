@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //ReportController
-Route::post('report/send', 'ReportController@postSend')->middleware('auth');
+Route::post('report/send', 'ReportController@postSend');
 
 // DiscussionController
 Route::group(array('before' => 'auth'), function ()

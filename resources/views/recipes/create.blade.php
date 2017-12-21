@@ -88,7 +88,7 @@ foreach(old('ingredient') as $ingredient){
 		<div class="col-3 align-content-start">
 			<label for="description" class="control-label">{{ __('recipes.preparation-time') }}</label>	
 		</div>
-		<div class="col-2">
+		<div class="col-3">
 			
 			<input type="number" name="preparation_time_hour" class="form-control d-inline {{ ($errors->has('preparation_time_hour') ? ' is-invalid' : '') }}" value="{{ old('preparation_time_hour')??0 }}" style="width:4rem">
 			<label for="description" class="control-label">{{ __('recipes.hours') }}</label>
@@ -113,7 +113,7 @@ foreach(old('ingredient') as $ingredient){
 		<div class="col-3 align-content-start">
 			<label for="description" class="control-label">{{ __('recipes.cooking-time') }}</label>
 		</div>
-		<div class="col-2">
+		<div class="col-3">
 			<input type="number" name="cooking_time_hour" class="form-control d-inline {{ ($errors->has('cooking_time_hour') ? ' is-invalid' : '') }}" value="{{ old('cooking_time_hour')??0 }}" style="width:4rem"> 
 			<label for="cooking_time_hour" class="control-label">{{ __('recipes.hours') }}</label>
 			@if($errors->has('cooking_time_hour'))
@@ -143,7 +143,7 @@ foreach(old('ingredient') as $ingredient){
 			<label for="description" class="control-label">{{ __('recipes.label-servings') }}</label>
 		</div>
 		<div class="col-3">
-			<input type="number" name="servings" class="form-control d-inline {{ ($errors->has('servings') ? ' is-invalid' : '') }}" value="{{ old('servings')??4 }}" style="width:4rem"> 
+			<input type="number" name="servings" class="form-control d-inline {{ ($errors->has('servings') ? ' is-invalid' : '') }}" value="{{ old('servings')??0 }}" style="width:4rem">
 			<label for="servings" class="control-label">{{ __('recipes.persons') }}</label>
 			@if($errors->has('servings'))
 			    <span class="invalid-feedback">{{ $errors->first('servings') }}</span>

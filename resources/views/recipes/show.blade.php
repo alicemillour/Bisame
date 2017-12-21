@@ -3,13 +3,13 @@
 @section('content')
   
   @include ('recipes/_search')
-<div id="recipe">
+<div id="recipe" class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
+      <a class="nav-link page-title" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Plus</a>
+      <a class="nav-link page-title active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Plus</a>
     </li>
   </ul>
   <div class="bg-white p-3">
@@ -42,38 +42,51 @@
           </div>
         </div>
         <div class="col-lg-12 d-flex flex-row justify-content-start">
-          <div class="pl-0 py-2 pr-2 text-nowrap"><small>{{ $recipe->total_time }}</small> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
-          <div class="p-2 text-nowrap"><small>{{ $recipe->servings }} {{ trans_choice('recipes.servings',$recipe->servings) }}</small> <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i></div>
+          @if($recipe->has_time)
+            <div class="pl-0 py-2 pr-2 text-nowrap"><small>{{ $recipe->total_time }}</small> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
+          @endif
+          @if($recipe->servings)
+            <div class="p-2 text-nowrap"><small>{{ $recipe->servings }} {{ trans_choice('recipes.servings',$recipe->servings) }}</small> <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i></div>
+          @endif
         </div>
       </div>
     <div class="mb-1 row">
       <div class="col-sm-8">
-        <small class="text-muted">{{ __('recipes.recipe-by') }}{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}</small>
-        <div class="mb-1">
-          <small class="text-muted">{{ __('recipes.preparation-time') }} : {{ $recipe->preparation_time }}</small>
-        </div>
-        <div class="mb-1">
-          <small class="text-muted">{{ __('recipes.cooking-time') }} : {{ $recipe->cooking_time }}</small>
-        </div>        
+        <span class="text-muted">
+          @component('users._avatar', ['user' => $recipe->author])
+          @endcomponent
+          {{ __('recipes.recipe-by') }}{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+        </span>
+        @if($recipe->has_time)
+          <div class="mb-1">
+            <small class="text-muted">{{ __('recipes.preparation-time') }} : {{ $recipe->preparation_time }}</small>
+          </div>
+          <div class="mb-1">
+            <small class="text-muted">{{ __('recipes.cooking-time') }} : {{ $recipe->cooking_time }}</small>
+          </div>
+        @endif        
       </div>
 
       @if($recipe->contributors)
         <div class="col-sm-4 flex-column text-right plus-tab d-none">
           <div>{{ __('recipes.contributors') }}</div>
           <div>
-            <small class="text-muted author" data-user-id="{{ $recipe->author->id }}">{{ $recipe->author->name }}</small>
+            <span class="text-muted author" data-user-id="{{ $recipe->author->id }}">{{ $recipe->author->name }}</span>
           </div> 
           @foreach($recipe->contributors as $user)
           <div>
-            <small class="text-muted contributor" data-user-id="{{ $user->id }}">{{ $user->name }}</small>
+            <span class="text-muted contributor" data-user-id="{{ $user->id }}">{{ $user->name }}</span>
           </div> 
           @endforeach
         </div>
       @endif
     </div>
-    
-    <h4>{{ __('recipes.ingredients') }} ({{ $recipe->servings>1 ?__('recipes.for-n-persons',['number'=>$recipe->servings]):__('recipes.for-n-person',['number'=>$recipe->servings]) }})</h4>
-    
+    @if($recipe->ingredients->count())
+      <h4>{{ __('recipes.ingredients') }}
+    @endif
+    @if($recipe->servings)
+     ({{ $recipe->servings>1 ?__('recipes.for-n-persons',['number'=>$recipe->servings]):__('recipes.for-n-person',['number'=>$recipe->servings]) }})</h4>
+    @endif
     <table>
       @foreach($recipe->ingredients as $ingredient)
       <tr>
@@ -91,11 +104,6 @@
     @each('anecdotes/_show', $recipe->anecdotes, 'anecdote', 'anecdotes/_empty')
 
     @include('anecdotes/_new',['recipe'=>$recipe])
-
-{{--     @if($recipe->commentary)
-      
-      <div id="recipe" class="translatable" data-id="{{ $recipe->id }}" data-type="App\Recipe" data-attribute="commentary">{!! e($recipe->commentary) !!}</div>
-    @endif --}}
 
     </div>
 

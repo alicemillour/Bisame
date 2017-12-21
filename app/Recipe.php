@@ -100,4 +100,14 @@ class Recipe extends Model
 	{
 	    return "{$this->preparation_time_hour} h {$this->preparation_time_minute} min";
 	}
+
+	/**
+	 * Get the recipe's preparation time.
+	 *
+	 * @return string
+	 */
+	public function getHasTimeAttribute()
+	{
+	    return $this->cooking_time_hour || $this->cooking_time_minute || $this->preparation_time_hour || $this->preparation_time_minute;
+	}
 }
