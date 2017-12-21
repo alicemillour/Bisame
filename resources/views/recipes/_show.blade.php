@@ -7,7 +7,7 @@
 	        <img src="{{ asset($recipe->medias->first()->filename) }}" style="width:100%;" />
 	      @endif
 		    <div class="float-right">
-		        <i class="fa fa-heart fa-2x likeable text-warning" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
+		        <i class="fa fa-heart likeable" style="color:#ac1e44;" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
 		        @auth
 		            @if(Auth::user()->likesEntity($recipe))
 		              Vous aimez cette recette
@@ -19,7 +19,7 @@
 		        @endauth
 		        " data-type="App\Recipe" data-id="{{ $recipe->id }}">
 		        </i>
-				<span class="likes-count badge badge-pill badge-primary badge-notify" data-id="{{ $recipe->id }}">{{ $recipe->likes_count }}</span>
+				<span class="likes-count" data-id="{{ $recipe->id }}">{{ $recipe->likes_count }}</span>
 			</div>
 
 	    </div>

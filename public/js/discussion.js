@@ -26,7 +26,6 @@ function showThread(event){
                         }, 500);
                     }                    
                 });
-
             }
             if(statusTxt == "error")
                 alert("Error: " + xhr.status + ": " + xhr.statusText);
@@ -110,4 +109,8 @@ $(document).on('click', ".delete-message" ,function( event ) {
             }
         });
     }
+});
+$(document).on('click', ".report" ,function( event ) {
+    event.preventDefault();
+    $('#reportModal').modal('show');
 });

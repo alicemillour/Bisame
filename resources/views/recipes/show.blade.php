@@ -3,7 +3,7 @@
 @section('content')
   
   @include ('recipes/_search')
-
+<div id="recipe">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
@@ -26,7 +26,7 @@
 {{--           <div class="p-2 text-nowrap"><small>{{ $recipe->total_time }}</small> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
           <div class="p-2 text-nowrap"><small>{{ $recipe->servings }} {{ trans_choice('recipes.servings',$recipe->servings) }}</small> <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i></div> --}}
           <div class="p-2 text-nowrap">
-            <i class="fa fa-heart likeable" style="font-size:1.3rem;" aria-hidden="true" data-content="
+            <i class="fa fa-heart fa-2x likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
             @auth
                 @if(Auth::user()->likesEntity($recipe))
                   Vous aimez cette recette
@@ -38,7 +38,7 @@
             @endauth
             " data-type="App\Recipe" data-id="{{ $recipe->id }}">
             </i>
-            <span class="likes-count badge badge-pill badge-primary badge-notify" data-id="{{ $recipe->id }}">{{ $recipe->likes_count }}</span>
+            <span class="likes-count" data-id="{{ $recipe->id }}">{{ $recipe->likes->count() }}</span>
           </div>
         </div>
         <div class="col-lg-12 d-flex flex-row justify-content-start">
@@ -113,7 +113,7 @@
     @endcomponent
 
   </div>
-
+</div>
 @endsection
 
 @section('scripts')
@@ -659,7 +659,7 @@ foreach($recipe->ingredients as $ingredient){
 @section('style')
 {{-- <link href="{{ asset('css/jquery.highlight-within-textarea.css') }}" rel="stylesheet"> --}}
 <style>
-.popper, .tooltip {
+.popper {
     position: absolute;
     background: white;
     color: #333;

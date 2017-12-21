@@ -15,13 +15,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        $this->call('BadgesTableSeeder');
+        $this->call('AgeGroupsTableSeeder');
         $this->call('UserTableSeeder');
         $this->call('PostagTableSeeder');
         $this->call('CorpusTableSeeder');
         $this->call('WordTableSeeder');
         $this->call('AnnotationTableSeeder');
-        $this->call('BadgesTableSeeder');
-        $this->call('AgeGroupsTableSeeder');
+
 
         // Roles
         $role_admin = Role::firstOrCreate(['slug' => Role::ROLE_ADMIN]);

@@ -174,6 +174,8 @@
         
         @include('shared/badges')
 
+        @include('discussion/report')
+
         <div class="container-fluid">
             @yield('content')
         </div>

@@ -71,6 +71,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
     Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\UploadController@upload');
 });
+
+//ReportController
+Route::post('report/send', 'ReportController@postSend')->middleware('auth');
+
 // DiscussionController
 Route::group(array('before' => 'auth'), function ()
 {
