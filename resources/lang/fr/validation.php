@@ -35,6 +35,7 @@ return array(
     "digits"               => "Le champ :attribute doit avoir :digits chiffres.",
     "digits_between"       => "Le champ :attribute doit avoir entre :min and :max chiffres.",
     "email"                => "Le champ :attribute doit être une adresse email valide.",
+    "errors"                => "Votre formulaire comporte des erreurs.",
     "exists"               => "Le champ :attribute sélectionné est invalide.",
     "image"                => "Le champ :attribute doit être une image.",
     "in"                   => "Le champ :attribute est invalide.",
@@ -105,6 +106,7 @@ return array(
     */
 
     'attributes' => array(
+        "servings" => "Le nombre de portions",
         "name" => "Nom",
         "name" => "Pseudo",
         "email" => "E-mail",

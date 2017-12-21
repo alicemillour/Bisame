@@ -34,8 +34,9 @@
 
 				@forelse ($recipes as $recipe)
 					<h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}</h6>
-				    <p class="card-text text-truncate">{{ $recipe->content }}</p>
-				    
+				    <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
+				    <p class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite", $recipe, ['class' => 'card-link' ]) }}</p>
+				    <hr/>
 				@empty
 				    <p class="card-text">{{ $user->name }} n'a pas encore saisi de recette</p>
 				@endforelse	

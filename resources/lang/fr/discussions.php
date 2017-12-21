@@ -15,6 +15,7 @@ return [
 
     'follow' => 'Suivre la discussion',
     'reply' => 'Répondre',
-    'comments' => 'Commentaire|Commentaires',
+    'comments' => 'Commentaires',
+    'comment' => 'Commentaire',
 
 ];

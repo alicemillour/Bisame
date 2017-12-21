@@ -27,8 +27,6 @@
 			  {!! Form::open(['url' => 'report/send', 'style'=>'display:none;', 'method' => 'post', 'role' => 'form', 'class'=>'form-message', 'data-id'=>$entity->id]) !!}
 				<div class="form-group">
 					<textarea class="message" name="content" type="text" placeholder="Répondre." style="width: 100%;"></textarea><br/>
-{{--					<input type="checkbox" name="follow-thread" value="1" /> {{ __('discussions.follow') }} <a target="_blank" href="{{ url('faq#follow-thread') }}" class="scroll badge-help badge badge-pill badge-success">?</a>
---}}
 				</div>
 				<input type="hidden" name="entity_id" value="{{ $entity->id }}" />
 				<input type="hidden" name="entity_type" value="{{ get_class($entity) }}" />

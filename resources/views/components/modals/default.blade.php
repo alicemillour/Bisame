@@ -12,9 +12,11 @@
       <div class="modal-body">
         {{ $slot }}
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+      @if(!isset($footer) || $footer)
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      @endif
     </div>
   </div>
 </div>

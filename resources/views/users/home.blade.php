@@ -11,6 +11,8 @@
                     <p class="card-text">
                         @include('users/_profil')
                     </p>
+                    <hr/>
+                    <h4 class="card-title mt-3">Suppression de votre compte</h4>
                     <button type="button" class="btn btn-danger"onclick="$('#modalDeleteAccount').modal();">Supprimer mon compte</button>
                 </div>
             </div>
@@ -18,9 +20,12 @@
         <div class="col-lg-5 pt-3 pt-lg-0">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Statistiques</h3>
+                    <h3 class="card-title">Badges</h3>
+                    <p class="card-text">
+                        @include('users/_badges')
+                    </p>
                 </div>
-            </div>
+            </div>        	
             <div class="card mt-3">
                 <div class="card-body">
                     <h3 class="card-title">{{ __('recipes.your-last-recipes') }}</h3>
@@ -39,12 +44,9 @@
             </div>
             <div class="card mt-3">
                 <div class="card-body">
-                    <h3 class="card-title">Badges</h3>
-                    <p class="card-text">
-                        @include('users/_badges')
-                    </p>
+                    <h3 class="card-title">Statistiques</h3>
                 </div>
-            </div>
+            </div>            
         </div>
 	</div>
 </div>
