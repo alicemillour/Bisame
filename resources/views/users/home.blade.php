@@ -42,11 +42,12 @@
                     <h3 class="card-title">{{ __('recipes.your-last-recipes') }}</h3>
                     
                     @forelse ($recipes as $recipe)
-                    <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}</h6>
-		            <div class="d-inline float-right">
-		            	<i class="fa fa-heart fa-2x like"></i>
-		            	<span class="likes-count">{{ $recipe->likes->count() }}</span>
-		        	</div>
+                    <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
+			            <div class="d-inline float-right">
+			            	<i class="fa fa-heart like"></i>
+			            	<span class="likes-count">{{ $recipe->likes->count() }}</span>
+			        	</div>
+                    </h6>
                     <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
                     <p class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe, ['class' => '' ]) }}</p>
                     <hr/>

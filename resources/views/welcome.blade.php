@@ -26,14 +26,19 @@
           <h4 class="card-text">{{ __('recipes.last-recipes') }}</h4>
 
           @forelse ($recipes as $recipe)
-            <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}</h6>
-            <small class="text-muted">
+            <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
+                <div class="d-inline float-right">
+                    <i class="fa fa-heart like"></i>
+                    <span class="likes-count">{{ $recipe->likes->count() }}</span>
+                </div>
+            </h6>
+            <span class="text-muted">
               @component('users._avatar', ['user' => $recipe->author])
 
               @endcomponent
               {{ __('recipes.recipe-by') }}
               {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
-            </small>
+            </span>
             <br/>
             <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
             <p class="text-right"><a class="" href="{{ route('recipes.show',$recipe) }}">lire la suite...</a></p>
