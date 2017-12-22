@@ -17,7 +17,9 @@
       <div class="card">
         <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.app-name') }}</a></h4>
         <div class="card-body">
-          {{-- <div class="">{{ __('recipes.text-intro') }}</div> --}}
+          <div class="text-center">
+            <p class="card-text">{{ __('recipes.text-intro') }}</p>
+          </div>
           <div class="text-center btn-wrapper">
             <a href="{{ route('recipes.create') }}" class="btn btn-primary">{{ __('recipes.new-recipe') }}</a>
             <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>

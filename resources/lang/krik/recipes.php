@@ -2,7 +2,9 @@
 
 return array (
   'app-name' => 'Corpus en sauce',
+  'all' => 'Toutes les recettes',
   'new-recipe' => 'Ajouter une recette',
+  'text-intro' => 'Proposez ou consultez des recettes en créole guadeloupéen.',  
   'last-recipes' => 'Dernières recettes',
   'recipe' => 'Recette',
   'created' => 'Votre recette a bien été enregistrée',
