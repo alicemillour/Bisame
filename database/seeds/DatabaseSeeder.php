@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         $this->call('BadgesTableSeeder');
         $this->call('AgeGroupsTableSeeder');
-        $this->call('UserTableSeeder');
-        $this->call('PostagTableSeeder');
-        $this->call('CorpusTableSeeder');
-        $this->call('WordTableSeeder');
-        $this->call('AnnotationTableSeeder');
+        // $this->call('UserTableSeeder');
+        // $this->call('PostagTableSeeder');
+        // $this->call('CorpusTableSeeder');
+        // $this->call('WordTableSeeder');
+        // $this->call('AnnotationTableSeeder');
 
 
         // Roles

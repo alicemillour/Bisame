@@ -17,7 +17,9 @@
       <div class="card">
         <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.app-name') }}</a></h4>
         <div class="card-body">
-          {{-- <div class="">{{ __('recipes.text-intro') }}</div> --}}
+          <div class="text-center">
+            <p class="card-text">{{ __('recipes.text-intro') }}</p>
+          </div>
           <div class="text-center btn-wrapper">
             <a href="{{ route('recipes.create') }}" class="btn btn-primary">{{ __('recipes.new-recipe') }}</a>
             <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
@@ -26,14 +28,19 @@
           <h4 class="card-text">{{ __('recipes.last-recipes') }}</h4>
 
           @forelse ($recipes as $recipe)
-            <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}</h6>
-            <small class="text-muted">
+            <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
+                <div class="d-inline float-right">
+                    <i class="fa fa-heart like"></i>
+                    <span class="likes-count">{{ $recipe->likes->count() }}</span>
+                </div>
+            </h6>
+            <span class="text-muted">
               @component('users._avatar', ['user' => $recipe->author])
 
               @endcomponent
               {{ __('recipes.recipe-by') }}
               {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
-            </small>
+            </span>
             <br/>
             <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
             <p class="text-right"><a class="" href="{{ route('recipes.show',$recipe) }}">lire la suite...</a></p>

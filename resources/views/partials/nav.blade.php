@@ -73,7 +73,7 @@
         @endif
         <li class="nav-item">
             <i class="icon-search icon-white"></i>
-            <a class="nav-link my-navbar-hover" href="/contact">
+            <a class="nav-link my-navbar-hover" href="{{ route('contact') }}">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact 
             </a>
         </li>

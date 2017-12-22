@@ -4,16 +4,27 @@
 
 <div id="home">
     <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-7 clearfix">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-center">Hopla {{ $user->name }} !</h4>
+                    <h4 class="card-title text-center">Hopla {{ $user->name }} !
+						<span class="float-right">                    	
+						@if($user->avatar)
+						  <img id="avatar"  style="width:50px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />
+						  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Modifier mon avatar</button>
+						@else
+						  <button id="choose-avatar" onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Choisi un avatar</button>
+						@endif
+						</span>
+                    </h4>
                     <p class="card-text">
                         @include('users/_profil')
                     </p>
                     <hr/>
                     <h4 class="card-title mt-3">Suppression de votre compte</h4>
+                    <div class="text-right">
                     <button type="button" class="btn btn-danger"onclick="$('#modalDeleteAccount').modal();">Supprimer mon compte</button>
+                	</div>
                 </div>
             </div>
         </div>
@@ -31,9 +42,15 @@
                     <h3 class="card-title">{{ __('recipes.your-last-recipes') }}</h3>
                     
                     @forelse ($recipes as $recipe)
-                    <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}</h6>
-                    <p class="card-text text-truncate">{{ $recipe->content }}</p>
-                    
+                    <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
+			            <div class="d-inline float-right">
+			            	<i class="fa fa-heart like"></i>
+			            	<span class="likes-count">{{ $recipe->likes->count() }}</span>
+			        	</div>
+                    </h6>
+                    <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
+                    <p class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe, ['class' => '' ]) }}</p>
+                    <hr/>
                     @empty
                     <p class="card-text">Vous n'avez pas encore saisi de recette</p>
                     @endforelse	

@@ -34,14 +34,14 @@ class ContactController extends Controller {
                         ->replyTo($data['email']);
             });
             Session::flash('success', 'Merci, votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.');
-            return redirect('/home');
+            return redirect('/');
         } catch (\Swift_TransportException $STe) {
             // logging error
             $string = date("Y-m-d H:i:s") . ' - ' . $STe->getMessage() . PHP_EOL;
             file_put_contents("errorlog.txt", $string  . $request->get('name') . "\n" .  $request->get('email'). "\n" .  $request->get('message') . "\n", FILE_APPEND);
             // send error note to user
             Session::flash('danger', 'Un problème est survenu lors de l\'envoi de votre message, nous allons tenter de résoudre ce problème rapidement. N\'hésitez pas à nous contacter par mail à l\'adresse disponible en bas de page');
-            return redirect('/home');
+            return redirect('/');
         }
     }
 
