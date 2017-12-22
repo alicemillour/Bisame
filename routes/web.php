@@ -40,7 +40,7 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
     Route::get('/textes', 'TexteController@index');
     Route::resource('corpora', 'CorporaController');
     Route::get('/stats', 'StatsController@index');
-    Route::get('contact', 'ContactController@showForm');
+    Route::get('contact', 'ContactController@showForm')->name('contact');
     Route::post('contact', 'ContactController@sendContactInfo');
 // });
 
