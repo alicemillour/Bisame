@@ -77,7 +77,7 @@ class UserController extends Controller
         $user->update(array_filter($request->only(['name', 'email', 'password'])));
 
         if($request->has('email') && $request->input('email')==""){
-            $user->email = '';
+            $user->email = null;
             $user->save();
         }
         return redirect()->route('users.home')->withSuccess(__('users.updated'));
