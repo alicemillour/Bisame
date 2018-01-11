@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
+
 use App\Like;
 use DB;
 
@@ -154,5 +156,7 @@ class User  extends Authenticatable
 
     }
     
+
+
     
 }

@@ -49,6 +49,7 @@ class ImportAvatars extends Command
      */
     public function handle()
     {
+//        Avatar::truncate();
         $avatars_directory = $this->app['path.public']. DIRECTORY_SEPARATOR . 'img'. DIRECTORY_SEPARATOR . 'avatars';        
         $files_avatar = $this->files->allFiles($avatars_directory);
         foreach($files_avatar as $file){

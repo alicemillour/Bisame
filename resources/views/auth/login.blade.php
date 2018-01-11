@@ -1,66 +1,61 @@
 @extends('layouts.app')
-
+@section('style')
+<link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
+@endsection
 @section('content')
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
+<div class="container text-center">
+    <div class="fill">
+        <div class="info-message-trans">
+            
             <div class="card background-colored">
-                <h6 class="card-header text-center">Connexion</h6>
+                <h5 class="card-header text-center">Connexion</h5>
                 <div class="card-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
-
+                        
                         <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 col-form-label text-right">Adresse e-mail ou Pseudo</label>
-
+                            
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="email" value="{{ old('email') }}">
-
+                                
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group row{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 col-form-label text-right">Mot de passe</label>
-
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
-
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Mot de passe oublié ?</a>
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 offset-md-4">
+                        </div>                        
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-3">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember"> Retenir mon mot de passe
                                     </label>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-6 offset-md-3">
+                                <button type="submit" class="btn btn-success btn-lg">
                                     <i class="fa fa-btn fa-sign-in"></i>Connexion
                                 </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Mot de passe oublié ?</a>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-8 offset-md-4">
-                                <a href="{{ url('register') }}"><strong>Pas encore inscrit ?</strong></a>
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-3">
+                                <a href="{{ url('register') }}">Pas encore inscrit ?</a>
                             </div>
                         </div>
                     </form>

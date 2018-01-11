@@ -35,7 +35,8 @@ class UserController extends Controller
     /**
     * Display the specified resource.
     */
-    public function home()
+    public function home(UserRepository $userR
+)
     {
         $user = auth()->user();
         return view('users.home', [
@@ -44,6 +45,9 @@ class UserController extends Controller
             'age_groups' => AgeGroup::get(),
             'badges' => Badge::get(),
             'avatars' => Avatar::get(),
+            'around_users' => $userR->get_around_users_by_real_score($user),
+            'rank' => $userR->get_rank_by_real_score($user)
+
             // 'recipes' => $user->recipes()->withCount('comments')->latest()->limit(3)->get(),
             // 'comments' => $user->comments()->with('post.author')->latest()->limit(5)->get(),
             // 'roles' => Role::all()
