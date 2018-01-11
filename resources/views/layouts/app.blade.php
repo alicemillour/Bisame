@@ -35,7 +35,7 @@
                 border-color: #ddd;
             }*/
             .background-colored{
-/*                background-color: #86b8b9;*/
+                /*background-color: #86b8b9;*/
                 background-color: white;
                 opacity: 0.9;   
 
@@ -43,7 +43,11 @@
 
             .info-message-trans {
                 padding: 1.25rem;
-                /* background-color:rgba(249, 242, 236, 0.9); */
+                background-color:transparent;
+            }
+
+            .info-message {
+                padding: 1.25rem;
             }
                 
 
