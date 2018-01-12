@@ -1,0 +1,7 @@
+corpus_name;sentence_position;position;value;PROPN;10;TreeTagger
+185_re7;1;1;la;X;10;TreeTagger
+185_re7;1;2;petite;ADJ;10;TreeTagger
+185_re7;1;3;maison;NOUN;10;TreeTagger
+185_re7;2;1;chante;VERB;10;TreeTagger
+185_re7;2;2;des;PRON;10;TreeTagger
+185_re7;2;3;chansons;NOUN;10;TreeTagger
