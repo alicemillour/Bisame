@@ -19,11 +19,11 @@ while read -r line; do
     fi
     eval $cmd
 done < $1/gsw-to-german.txt    
-sed -i '' -e "s/'\|\`\([a-z]*\)/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german 
-sed -i '' -e "s/’\([a-z]*\)/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german 
-sed -i '' -e "s/\([a-z]*\)'\|\`/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german
-sed -i '' -e "s/\([a-z]*\)’/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german
-sed -i '' -e 's/\([0-9]\)\./\1 /g' "$3"/preannotation/TreeTagger/recipes/$filename.words.german
-sed -i '' -e 's/\([0-9]\).\([0-9]\)/\1\2/g' "$3"/preannotation/TreeTagger/recipes/$filename.words.german
-sed -i '' -e 's/\([0-9]\),\([0-9]\)/\1\2/g' "$3"/preannotation/TreeTagger/recipes/$filename.words.german
-sed -i '' -e "s/\([a-z]*\)/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german
+sed -i   "s/'\|\`\([a-z]*\)/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german 
+sed -i   "s/’\([a-z]*\)/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german 
+sed -i   "s/\([a-z]*\)'\|\`/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german
+sed -i   "s/\([a-z]*\)’/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german
+sed -i   's/\([0-9]\)\./\1 /g' "$3"/preannotation/TreeTagger/recipes/$filename.words.german
+sed -i   's/\([0-9]\).\([0-9]\)/\1\2/g' "$3"/preannotation/TreeTagger/recipes/$filename.words.german
+sed -i   's/\([0-9]\),\([0-9]\)/\1\2/g' "$3"/preannotation/TreeTagger/recipes/$filename.words.german
+sed -i   "s/\([a-z]*\)/\1/g" "$3"/preannotation/TreeTagger/recipes/$filename.words.german

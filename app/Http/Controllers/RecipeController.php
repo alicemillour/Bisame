@@ -195,7 +195,6 @@ class RecipeController extends Controller
 //        Préannotation avec treetagger à corriger 
 //        $seeder = new AnnotationSeeder($corpus_path."/preannotation/TreeTagger/recipes/".$filename.'.treetag_pre-annotation_seed');
 //        $seeder->run();
-        
         return redirect('recipes/'.$recipe->id)->withSuccess(__('recipes.created'));
 
     }

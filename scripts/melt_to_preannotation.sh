@@ -11,7 +11,7 @@ echo "$2\n";
     filename=$(basename "$2" .txt.tok)
     echo "corpus_name;sentence_position;word_position;value;postag_name;confidence_score;tagger" > "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed 
     # escape slash
-    sed -i '' -e 's/\/\/PUNCT/_SLASH_\/PUNCT/g' "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
+    sed -i 's/\/\/PUNCT/_SLASH_\/PUNCT/g' "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
     line_nb=1;
     word_nb=1;    
     while read -r line;
@@ -30,9 +30,9 @@ echo "$2\n";
     done < "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
 
     # unescape * and escape ;
-    sed -i '' -e 's/\\\*/*/g' -e 's/;;;/;\";\";/g' "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed  > tmp.txt ; 
+    sed -e 's/;;;/;\";\";/g' "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed  > tmp.txt ; 
+    sed -i 's/\\\*/*/g' tmp.txt ; 
     cp tmp.txt "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed
     # unescape slash    
-    sed -i '' -e 's/_SLASH_/\//g' "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed
+    sed -i 's/_SLASH_/\//g' "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed
     cut -d';' -f5 "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed   > "$3"/preannotation/MElt/recipes/$filename.MEltTags
-
