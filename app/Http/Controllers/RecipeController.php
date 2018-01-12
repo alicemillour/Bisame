@@ -8,16 +8,16 @@ use App\User;
 use App\Media;
 use App\Anecdote;
 use App\Corpus;
+use App;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRecipe;
 use App\Http\Requests\StoreAnecdote;
 use App\Traits\Badgeable;
-
+use App\Services\WordSeeder;
 use DB;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -147,18 +147,20 @@ class RecipeController extends Controller
         
         
         /* lancer les prétraitements */
-        $script_path = storage_path().'/app/scripts/';
+        $script_path = base_path().'/scripts/';
         $corpus_path = storage_path().'/app/corpus/';
+
         
         /* tokénisation */
         /* stage 1 : create a raw file with recipe content */  
         $filename = preg_replace('/\W+/', '_', $request->input('title'));
+        $corpus_name = $recipe->id."_".$filename;
         Storage::put('/corpus/raw/recipes/'.$filename.".txt", $request->input('content'));
         /* stage 2 : create the tokenized file from raw */
         $this->tokenize($filename, $script_path, $corpus_path);
         
         /* stage 3 : create word_seed from tok */
-        $this->tok_to_word_seed($filename, $script_path, $corpus_path);
+        $this->tok_to_word_seed($filename, $script_path, $corpus_path, $corpus_name);
 
         
         /* stage 4 : create MElt annotated file from tok */
@@ -176,11 +178,12 @@ class RecipeController extends Controller
 
         /* Création corpus */
         Corpus::create([
-            'name' => $recipe->id."_".$filename,
+            'name' => $corpus_name,
         ]);
         
         /* Seed words */
-        $seeder = new WordTableSeeder();
+        Log::debug($corpus_path."/word_seed/recipes/".$filename.'.word_seed');
+        $seeder = new WordSeeder($corpus_path."/word_seed/recipes/".$filename.'.word_seed');
         $seeder->run();
         return redirect('recipes')->withSuccess(__('recipes.created'));
     }
@@ -199,10 +202,10 @@ class RecipeController extends Controller
         }
     }
     
-    public function tok_to_word_seed(String $filename, $script_path, $corpus_path) {
+    public function tok_to_word_seed( $filename, $script_path, $corpus_path, $corpus_name) {
         $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
 
-        $command = escapeshellcmd($script_path . "tok_to_word_seed.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        $command = escapeshellcmd($script_path . "tok_to_word_seed.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path  . " " . $corpus_name);
         Log::debug("commande : " . $command);
         $process = new Process($command);
         $process->run();
@@ -211,6 +214,7 @@ class RecipeController extends Controller
             Log::debug("process failed !!!");            
             throw new ProcessFailedException($process);
         }
+
     }
     
     public function tok_to_melt(String $filename, $script_path, $corpus_path) {
