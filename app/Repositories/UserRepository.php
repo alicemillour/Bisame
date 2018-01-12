@@ -55,7 +55,7 @@ class UserRepository extends ResourceRepository {
                         })
                         ->select(DB::raw('count(*)*score as real_score, users.*'))
                         ->groupBy('users.id')
-                        ->orderBy('real_score', 'desc')
+                        ->orderBy('real_score', 'asc')
                         ->where('is_admin', '=', '0')->take(5)->get();
     }
     
@@ -67,7 +67,8 @@ class UserRepository extends ResourceRepository {
                             })
                             ->select(DB::raw('count(*)*score as real_score, users.*'))
                             ->groupBy('users.id')
-                            ->orderBy('real_score', 'asc')
+                            ->orderBy('real_score', 'desc')
+                            ->where('score','>','0')
                             ->skip($userRank-3)->take(5)->get();
         } else {
             return null;
@@ -118,7 +119,7 @@ class UserRepository extends ResourceRepository {
                             $join->on("annotations.user_id", "=", "users.id");
                         })
                         ->select(DB::raw('count(*)*score as real_score, users.*'))
-                        ->orderBy('real_score', 'asc')
+                        ->orderBy('real_score', 'desc')
                         ->groupBy('users.id')                                
                         ->where('users.id', '=', $user->id)
                         ->first();        
@@ -131,11 +132,11 @@ class UserRepository extends ResourceRepository {
                                 $join->on("annotations.user_id", "=", "users.id");
                             })
                             ->select(DB::raw('count(*)*score as real_score, users.*'))
-                            ->orderBy('real_score', 'asc')
+                            ->orderBy('real_score', 'desc')
                             ->groupBy('users.id')
                             ->get();
             $rank = $best_users->filter(function($item,$key) use ($cur_score) {
-                return $item->real_score <= $cur_score;
+                return $item->real_score >= $cur_score;
             })->count();
             return $rank;
         }                              

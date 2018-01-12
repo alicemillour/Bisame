@@ -8,14 +8,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title text-center">Hopla {{ $user->name }} !
-						<span class="float-right">                    	
-						@if($user->avatar)
-						  <img id="avatar"  style="width:50px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />
-						  <button onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Modifier mon avatar</button>
-						@else
-						  <button id="choose-avatar" onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Choisi un avatar</button>
-						@endif
-						</span>
+                        <span class="float-right">                    	
+                            @if($user->avatar)
+                            <img id="avatar"  style="width:50px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />
+                            <button onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Modifier mon avatar</button>
+                            @else
+                            <button id="choose-avatar" onclick="$('#avatarsModal').modal('show');" class="btn btn-success">Choisi un avatar</button>
+                            @endif
+                        </span>
                     </h4>
                     <p class="card-text">
                         @include('users/_profil')
@@ -23,15 +23,15 @@
                     <hr/>
                     <h4 class="card-title mt-3">Suppression de votre compte</h4>
                     <div class="text-right">
-                    <button type="button" class="btn btn-danger"onclick="$('#modalDeleteAccount').modal();">Supprimer mon compte</button>
-                	</div>
+                        <button type="button" class="btn btn-danger"onclick="$('#modalDeleteAccount').modal();">Supprimer mon compte</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-5 pt-3 pt-lg-0">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Badges</h3>
+                    <h3 class="card-title">{{ __('recipes.my-badges') }}</h3>
                     <p class="card-text">
                         @include('users/_badges')
                     </p>
@@ -39,14 +39,14 @@
             </div>        	
             <div class="card mt-3">
                 <div class="card-body">
-                    <h3 class="card-title">{{ __('recipes.your-last-recipes') }}</h3>
+                    <h3 class="card-title">{{ __('recipes.my-last-recipes') }}</h3>
                     
                     @forelse ($recipes as $recipe)
                     <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
-			            <div class="d-inline float-right">
-			            	<i class="fa fa-heart like"></i>
-			            	<span class="likes-count">{{ $recipe->likes->count() }}</span>
-			        	</div>
+                        <div class="d-inline float-right">
+                            <i class="fa fa-heart like"></i>
+                            <span class="likes-count">{{ $recipe->likes->count() }}</span>
+                        </div>
                     </h6>
                     <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
                     <p class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe, ['class' => '' ]) }}</p>
@@ -61,7 +61,7 @@
             </div>
             <div class="card mt-3">
                 <div class="card-body">
-                    <h3 class="card-title">Statistiques</h3>
+                    <h3 class="card-title">{{ __('recipes.my-stats') }}</h3>
                     @include('users/_leaderboard')
                 </div>
             </div>            

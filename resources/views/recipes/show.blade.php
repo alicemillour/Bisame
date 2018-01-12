@@ -2,7 +2,8 @@
 
 @section('content')
   
-  @include ('recipes/_search')
+  @include ('recipes/_search') 
+  
 <div id="recipe" class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">

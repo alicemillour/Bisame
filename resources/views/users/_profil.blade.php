@@ -4,7 +4,7 @@
     {!! Form::label('name', __('users.attributes.name'), ['class' => 'col-sm-3 col-form-label']) !!}
 
     <div class="col-sm-9">
-      {!! Form::text('name', null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.name'), 'required', '']) !!}
+      {!! Form::text('name', null, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.name'), 'required', '','readonly']) !!}
 
       @if ($errors->has('name'))
           <span class="invalid-feedback">{{ $errors->first('name') }}</span>
