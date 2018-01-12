@@ -7,6 +7,7 @@ use App\Ingredient;
 use App\User;
 use App\Media;
 use App\Anecdote;
+use App\Corpus;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRecipe;
 use App\Http\Requests\StoreAnecdote;
@@ -148,6 +149,14 @@ class RecipeController extends Controller
         /* stage 7 : germanize gsw corpus */
         $this->treetag($filename, $script_path, $corpus_path);
 
+        /* Création corpus */
+        Corpus::create([
+            'name' => $recipe->id."_".$filename,
+        ]);
+        
+        /* Seed words */
+        $seeder = new WordTableSeeder();
+        $seeder->run();
         return redirect('recipes')->withSuccess(__('recipes.created'));
     }
 
