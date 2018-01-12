@@ -147,8 +147,7 @@ class RecipeController extends Controller
                  
         /* stage 7 : germanize gsw corpus */
         $this->treetag($filename, $script_path, $corpus_path);
-        
-        return(true);
+
         return redirect('recipes')->withSuccess(__('recipes.created'));
     }
 
