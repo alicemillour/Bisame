@@ -2,7 +2,7 @@
 
 echo "début du script";
 echo "$2\n";
-
+export PATH=$PATH:'/usr/local/bin/';
 # $1 : scripts directory
 # $2 : raw file path
 # $3 : corpora directory
