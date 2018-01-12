@@ -17,4 +17,5 @@ class CorporaController extends Controller
     {    
         return view('corpora.show');
     }
+    
 }
