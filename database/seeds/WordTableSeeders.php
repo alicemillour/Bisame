@@ -7,10 +7,11 @@ use App\Word;
 
 class WordTableSeeder extends CsvSeeder {
 
-    public function __construct() {
+
+    public function __construct($filename = 'words.csv') {
         $this->words_table = 'words';
         $this->sentences_table = 'sentences';
-        $this->filename = base_path() . '/database/seeds/csvs/'. App::getLocale() . '/words.csv';
+        $this->filename = base_path() . '/database/seeds/csvs/'. App::getLocale() . '/'.$filename ;
         $this->csv_delimiter = ";";
     }
 
