@@ -11,7 +11,7 @@ echo "$2\n";
 
 filename=$(basename "$2" .txt.tok)
 echo "corpus_name;sentence_position;position;value" > "$3"/word_seed/recipes/$filename.word_seed
-sed -i 's/;/";"/g' "$3"/tokenized/recipes/$filename.txt.tok
+sed -i '' -e 's/;/";"/g' "$3"/tokenized/recipes/$filename.txt.tok
 line_nb=1;
 word_nb=1;  
 while read -r line;
@@ -24,5 +24,5 @@ do
         done    
     line_nb=$((line_nb + 1));
 done < "$3"/tokenized/recipes/$filename.txt.tok
-sed -i 's/";"/;/g' "$3"/tokenized/recipes/$filename.txt.tok
+sed -i '' -e 's/";"/;/g' "$3"/tokenized/recipes/$filename.txt.tok
 

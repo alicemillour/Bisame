@@ -5,15 +5,20 @@
   @include ('recipes/_search') 
   
 <div id="recipe" class="container">
+  
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link page-title" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link page-title active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Plus</a>
+      <a class="nav-link page-title active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="#pos" role="tab" aria-controls="pos" aria-selected="false">Annotation</a>
     </li>
   </ul>
-  <div class="bg-white p-3">
+
+  <div class="bg-white p-3" id="content-recipe">
     <div class="plus-tab d-none alert alert-info">
       Pour proposer une version dans une autre variété d'alsacien, sélectionnez du texte dans les zones grisées ou cliquez sur du texte en surbrillance.
     </div>
@@ -142,6 +147,11 @@
     @endcomponent
 
   </div>
+  
+  <div id="annotation" class="bg-white p-3 d-none">
+    TEST ANNOTATION
+  </div>
+
 </div>
 @endsection
 
@@ -540,10 +550,19 @@ foreach($recipe->ingredients as $ingredient){
     }
 
     $("#plus-tab").click(function(event) {
+        $('#annotation').addClass('d-none');
+        $('#content-recipe').removeClass('d-none');
         initPlusTab();
     })
 
+    $("#pos-tab").click(function(event) {
+        $('#content-recipe').addClass('d-none');
+        $('#annotation').removeClass('d-none');
+    })
+
     $("#recipe-tab").click(function(event) {
+        $('#annotation').addClass('d-none');
+        $('#content-recipe').removeClass('d-none');
         $('.translated').removeClass('highlight-translated');
         $('.plus-tab').addClass('d-none');
         $('.translatable').removeClass('highlight-translatable');
