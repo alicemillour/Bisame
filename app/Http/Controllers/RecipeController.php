@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreRecipe;
 use App\Http\Requests\StoreAnecdote;
 use App\Traits\Badgeable;
+use DB;
 
 class RecipeController extends Controller
 {
@@ -18,7 +19,7 @@ class RecipeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store','addAnecdote']);
+        $this->middleware('auth')->only(['create','store','addAnecdote','addMedia','favorite']);
     }
     /**
      * Display a listing of the resource.
@@ -60,6 +61,25 @@ class RecipeController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function favorite(Request $request)
+    {
+        return view('recipes.index', [
+            'recipes' => Recipe::with('author')->withCount('likes')->whereExists(function ($query) {
+                $query->select(DB::raw(1))
+                      ->from('likes')
+                      ->where('likes.user_id', auth()->user()->id)
+                      ->where('likes.likeable_type', 'App\Recipe')
+                      ->whereRaw('likes.likeable_id = recipes.id');
+            })->paginate(20),
+            'title' => __('recipes.favorite', ['search' => $request->input('search')])
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -90,13 +110,15 @@ class RecipeController extends Controller
             ]);
         }
 
-        if($request->input('filepath')){
-            Media::create([
-                'filename'=>$request->input('filepath'),
-                'user_id'=>auth()->user()->id,
-                'mediable_id' => $recipe->id,
-                'mediable_type' => "App\Recipe",
-            ]);
+        if($request->input('photos')){
+            foreach($request->input('photos') as $photo){
+                Media::create([
+                    'filename'  =>$photo,
+                    'user_id'   =>auth()->user()->id,
+                    'mediable_id' => $recipe->id,
+                    'mediable_type' => "App\Recipe",
+                ]);
+            }
         }
 
         if(is_array($request->input('ingredient'))){
@@ -137,6 +159,28 @@ class RecipeController extends Controller
     }
 
     /**
+     * Store a new anecdote.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addMedia(Request $request, Recipe $recipe)
+    {
+        if($request->input('photos')){
+            foreach($request->input('photos') as $photo){
+                Media::create([
+                    'filename'  =>$photo,
+                    'user_id'   =>auth()->user()->id,
+                    'mediable_id' => $recipe->id,
+                    'mediable_type' => "App\Recipe",
+                ]);
+            }
+        }
+
+        return redirect('recipes/'.$request->input('recipe_id'))->withSuccess(__('recipes.photo-added'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Recipe  $recipe
@@ -155,7 +199,9 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        // return view('recipes.edit');
+        $this->authorize('update', $recipe);
+
+        return view('recipes.edit',compact('recipe'));
     }
 
     /**
@@ -165,9 +211,39 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(StoreRecipe $request, Recipe $recipe)
     {
-        //
+        $this->authorize('update', $recipe);
+
+        $recipe->update($request->all());
+
+        Media::where('user_id', auth()->user()->id)->where('mediable_id', $recipe->id)->where('mediable_type', 'App\Recipe')->delete();
+        Ingredient::where('recipe_id', $recipe->id)->delete();
+
+        if($request->input('photos')){
+            foreach($request->input('photos') as $photo){
+                Media::create([
+                    'filename'  =>$photo,
+                    'user_id'   =>auth()->user()->id,
+                    'mediable_id' => $recipe->id,
+                    'mediable_type' => "App\Recipe",
+                ]);
+            }
+        }
+
+        if(is_array($request->input('ingredient'))){
+            $ingredients = $request->input('ingredient');
+            foreach($ingredients as $ingredient){
+                if($ingredient['name']) {
+                    Ingredient::create([
+                        'recipe_id' => $recipe->id,
+                        'name' => $ingredient['name'],
+                    ]);
+                }
+            }
+        }
+
+        return redirect('recipes')->withSuccess(__('recipes.updated'));
     }
 
     /**

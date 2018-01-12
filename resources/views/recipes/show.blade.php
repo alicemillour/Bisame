@@ -23,8 +23,6 @@
           <h1 class="translatable" data-type="App\Recipe" data-id="{{ $recipe->id }}" data-attribute="title">{{ $recipe->title }}</h1>
         </div>
         <div class="col-lg-5 d-flex flex-row text-right justify-content-end">
-{{--           <div class="p-2 text-nowrap"><small>{{ $recipe->total_time }}</small> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
-          <div class="p-2 text-nowrap"><small>{{ $recipe->servings }} {{ trans_choice('recipes.servings',$recipe->servings) }}</small> <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i></div> --}}
           <div class="p-2 text-nowrap">
             <i class="fa fa-heart fa-2x likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
             @auth
@@ -110,7 +108,29 @@
     <div class="col-sm-5">
       @if($recipe->medias->count()>0)
         <img src="{{ asset($recipe->medias->first()->filename) }}" style="width:100%;" />
-      @endif      
+      @endif
+      <form id="form-recipe" action="{{ route('recipes.add-media',$recipe) }}" method="POST">
+        {{ csrf_field() }}
+        <span class="input-group-btn">
+          <label class="btn btn-primary btn-sm">
+              <input type="file" id="photo" name="photo" style="display:none;"/>
+              <i class="fa fa-picture-o"></i> Ajouter une photo
+          </label>
+        </span>
+        <div id="thumbnails">
+          @if(old('photos'))
+            @foreach(old('photos') as $photo)
+            <div class="thumbnail ml-3 d-inline-block">
+              <img src="{{ asset($photo) }}" class="" />
+              <input type="hidden" name="photos[]" value="{{ $photo }}" /><br/>
+              <label>
+                <input type="radio" name="cover_picture" value="{{ $photo }}" {{ ($photo == old('cover_picture'))? 'checked="checked"':'' }}/> Photo de couverture
+              </label>
+            </div>  
+            @endforeach
+          @endif
+        </div>
+      </form>     
     </div>
 
     </div>
@@ -125,6 +145,10 @@
 @endsection
 
 @section('scripts')
+
+  <script type="text/javascript">
+    @include('js.recipe')
+  </script>
 
 <script type="text/javascript">
 @php
