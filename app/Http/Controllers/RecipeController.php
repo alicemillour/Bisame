@@ -11,7 +11,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreRecipe;
 use App\Http\Requests\StoreAnecdote;
 use App\Traits\Badgeable;
+
 use DB;
+
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
 
 class RecipeController extends Controller
 {
@@ -135,10 +143,123 @@ class RecipeController extends Controller
         }
 
         $this->checkBadge($request, 'recipe', auth()->user()->recipes()->count());
+        
+        
+        /* lancer les prétraitements */
+        $script_path = storage_path().'/app/scripts/';
+        $corpus_path = storage_path().'/app/corpus/';
+        
+        /* tokénisation */
+        /* stage 1 : create a raw file with recipe content */  
+        $filename = preg_replace('/\W+/', '_', $request->input('title'));
+        Storage::put('/corpus/raw/recipes/'.$filename.".txt", $request->input('content'));
+        /* stage 2 : create the tokenized file from raw */
+        $this->tokenize($filename, $script_path, $corpus_path);
+        
+        /* stage 3 : create word_seed from tok */
+        $this->tok_to_word_seed($filename, $script_path, $corpus_path);
+
+        
+        /* stage 4 : create MElt annotated file from tok */
+        /* TODO : modèle de MElt à vérifier */
+        $this->tok_to_melt($filename, $script_path, $corpus_path);
+        
+        /* stage 5 : create preannotation seed from MElt annotated file */
+        $this->melt_to_preannotation_seed($filename, $script_path, $corpus_path);
+        
+        /* stage 6 : germanize gsw corpus */
+        $this->germanize($filename, $script_path, $corpus_path);
+                 
+        /* stage 7 : germanize gsw corpus */
+        $this->treetag($filename, $script_path, $corpus_path);
 
         return redirect('recipes')->withSuccess(__('recipes.created'));
     }
 
+    public function tokenize(String $filename, String $script_path, String $corpus_path){
+        $raw_file_url = storage_path().'/app/corpus/raw/recipes/'.$filename.'.txt' ;
+        
+        $command = escapeshellcmd($script_path . "tokenize.sh " . $script_path . " " . $raw_file_url . " " . $corpus_path);
+        Log::debug("commande : " . $command);
+        $process = new Process($command);
+        $process->run();
+        // executes after the command finishes
+        if (!$process->isSuccessful()) {
+            Log::debug("process failed !!!");            
+            throw new ProcessFailedException($process);
+        }
+    }
+    
+    public function tok_to_word_seed(String $filename, $script_path, $corpus_path) {
+        $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
+
+        $command = escapeshellcmd($script_path . "tok_to_word_seed.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        Log::debug("commande : " . $command);
+        $process = new Process($command);
+        $process->run();
+        // executes after the command finishes
+        if (!$process->isSuccessful()) {
+            Log::debug("process failed !!!");            
+            throw new ProcessFailedException($process);
+        }
+    }
+    
+    public function tok_to_melt(String $filename, $script_path, $corpus_path) {
+        $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
+
+        $command = escapeshellcmd($script_path . "tok_to_melt.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        Log::debug("commande : " . $command);
+        $process = new Process($command);
+        $process->run();
+        // executes after the command finishes
+        if (!$process->isSuccessful()) {
+            Log::debug("process failed !!!");            
+            throw new ProcessFailedException($process);
+        }
+    }
+    
+    public function melt_to_preannotation_seed(String $filename, $script_path, $corpus_path) {
+        $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
+
+        $command = escapeshellcmd($script_path . "melt_to_preannotation.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        Log::debug("commande : " . $command);
+        $process = new Process($command);
+        $process->run();
+        // executes after the command finishes
+        if (!$process->isSuccessful()) {
+            Log::debug("process failed !!!");            
+            throw new ProcessFailedException($process);
+        }
+    }
+    
+    public function germanize(String $filename, $script_path, $corpus_path) {
+        $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
+
+        $command = escapeshellcmd($script_path . "germanize.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        Log::debug("commande : " . $command);
+        $process = new Process($command);
+        $process->run();
+        // executes after the command finishes
+        if (!$process->isSuccessful()) {
+            Log::debug("process failed !!!");            
+            throw new ProcessFailedException($process);
+        }
+    }
+    
+    public function treetag(String $filename, $script_path, $corpus_path) {
+        $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
+
+        $command = escapeshellcmd($script_path . "treetagger.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        Log::debug("commande : " . $command);
+        $process = new Process($command);
+        $process->run();
+        // executes after the command finishes
+        if (!$process->isSuccessful()) {
+            Log::debug("process failed !!!");            
+            throw new ProcessFailedException($process);
+        }
+    }
+    
     /**
      * Store a new anecdote.
      *

@@ -1,5 +1,5 @@
 {!! Form::open(['route' => 'recipes.search', 'method' => 'get']) !!}
-  <div class="d-flex flex-row justify-content-end">
+  <div class="d-flex flex-row justify-content-md-center">
     <div class="mr-3">
       <input type="text" name="search" class="form-control" placeholder="Trouver une recette...">
     </div>
