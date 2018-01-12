@@ -173,7 +173,7 @@ class RecipeController extends Controller
         /* stage 7 : germanize gsw corpus */
         $this->treetag($filename, $script_path, $corpus_path);
 
-        return redirect('recipes')->withSuccess(__('recipes.created'));
+        return redirect('recipes/'.$recipe->id)->withSuccess(__('recipes.created'));
     }
 
     public function tokenize(String $filename, String $script_path, String $corpus_path){
