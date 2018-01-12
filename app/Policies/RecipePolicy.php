@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\User;
-use App\Post;
+use App\Recipe;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class RecipePolicy
 {
     use HandlesAuthorization;
 
@@ -21,19 +21,19 @@ class PostPolicy
     }
 
     /**
-     * Determine whether the user can update the post.
+     * Determine whether the user can update the recipe.
      *
      * @param  User $user
-     * @param  Post $post
+     * @param  Recipe $recipe
      * @return bool
      */
-    public function update(User $user, Post $post): bool
+    public function update(User $user, Recipe $recipe): bool
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->id==$recipe->user_id;
     }
 
     /**
-     * Determine whether the user can store a post.
+     * Determine whether the user can store a recipe.
      *
      * @param  User $user
      * @return bool
@@ -44,13 +44,13 @@ class PostPolicy
     }
 
     /**
-     * Determine whether the user can delete the post.
+     * Determine whether the user can delete the recipe.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Recipe  $recipe
      * @return mixed
      */
-    public function delete(User $user, Post $post)
+    public function delete(User $user, Recipe $recipe)
     {
         return $user->isAdmin();
     }

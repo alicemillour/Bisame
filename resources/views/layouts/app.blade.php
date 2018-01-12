@@ -110,10 +110,7 @@
                 background-color:#545454 !important;
                 color: #FCF8E3 !important;
             } 
-            .dropdown-menu > li > a {
-                background-color:#545454 !important;
-                color: #FCF8E3 !important;
-            } 
+
             .navbar-button-text {
                 font-size: 120%;
             }
@@ -159,6 +156,13 @@
             #home {
                 padding-bottom: 40px;
                 font-size: 120%;
+            }
+            .btn-link {
+                color: rgb(206, 206, 206);
+            }
+            a.btn-link:hover, div.show a.btn-link {
+                color: #f69a47;
+                text-decoration: none;
             }
         </style>
         <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">

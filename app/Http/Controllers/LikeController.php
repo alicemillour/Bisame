@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Like;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreRecipe;
 
 class LikeController extends Controller
 {
