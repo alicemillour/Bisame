@@ -107,6 +107,10 @@ return array(
 
     'attributes' => array(
         "servings" => "Le nombre de portions",
+        "cooking_time_minute" => "Le nombre de minutes",
+        "preparation_time_minute" => "Le nombre de minutes",
+        "preparation_time_hour" => "Le nombre d'heures",
+        "cooking_time_hour" => "Le nombre d'heures",
         "name" => "Nom",
         "name" => "Pseudo",
         "email" => "E-mail",

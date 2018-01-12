@@ -2,11 +2,15 @@
 
 return array (
   'new-recipe' => 'Ajouter une recette',
+  'edit-recipe' => 'Éditer une recette',
   'last-recipes' => 'Dernières recettes',
   'last-recipes-by' => 'Dernières recettes de :name',
+  'favorite' => 'Mes recettes favorites',
   'recipe' => 'Recette',
   'created' => 'Votre recette a bien été enregistrée',
+  'updated' => 'Votre recette a bien été mise à jour',
   'anecdote-created' => 'Votre anecdote a bien été enregistrée',
+  'photo-added' => 'Votre photo a bien été enregistrée',
   'my-recipes' => 'Mon livre de recettes',
   'anecdote' => 'Anecdote',
   'anecdotes' => 'Anecdotes à propos de cette recette',

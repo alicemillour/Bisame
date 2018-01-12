@@ -56,8 +56,10 @@ Route::get('admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']
 Route::get('/home', 'UserController@home')->middleware('auth')->name('users.home');
 Route::get('/language', 'WelcomeController@language');
 
+Route::get('recipes/favorite', 'RecipeController@favorite')->name('recipes.favorite');
 Route::get('recipes/search', 'RecipeController@search')->name('recipes.search');
 Route::post('recipes/add-anecdote', 'RecipeController@addAnecdote');
+Route::post('recipes/{recipe}/add-media', 'RecipeController@addMedia')->name('recipes.add-media');
 Route::resource('recipes', 'RecipeController');
 Route::get('recipes/user/{user}', 'RecipeController@user')->name('recipes.user');
 
@@ -75,6 +77,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 //ReportController
 Route::post('report/send', 'ReportController@postSend');
+
+//ReportController
+Route::post('media/upload', 'MediaController@upload')->name('media.upload');
+Route::put('media/upload', 'MediaController@upload');
 
 // DiscussionController
 Route::group(array('before' => 'auth'), function ()

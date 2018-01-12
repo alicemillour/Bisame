@@ -7,18 +7,6 @@ use File;
 
 class StoreRecipe extends FormRequest
 {
-
-    public function boot(){
-        if($this->has('filepath')){
-            $filename = '/photos/12/sac.png';
-            $path = public_path($filename);
-            $file = File::get($path);
-            $type = File::mimeType($path);
-            $this->merge(['img' => $file]);
-            $validator->errors()->add('filepath',"TEST");
-          }
-    }
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -48,23 +36,6 @@ class StoreRecipe extends FormRequest
             // 'ingredient.*.quantity' => 'required_with:ingredient.*.name|max:100',
             'ingredient.*.name' => 'max:100',
         ];
-    }
-
-
-    /**
-     * Validate request
-     * @return
-     */
-    public function moreValidation($validator)
-    {
-        $validator->after(function($validator)
-        {
-            if($this->filled('filepath')){
-                $filename = $this->input('filepath');
-                $path = public_path($filename);
-                $file = File::get($path);
-            }
-        });
     }
 
     /**

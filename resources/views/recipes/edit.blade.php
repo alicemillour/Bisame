@@ -4,9 +4,11 @@
 <div class="row">
 <div id="create-recipe" class="col-12 col-md-6 offset-md-3 background-recipe">
 
-<h1 class="text-center">{{ __('recipes.new-recipe') }}</h1>
+<h1 class="text-center">{{ __('recipes.edit-recipe') }}</h1>
 
-{!! Form::open(['route' => 'recipes.store', 'method' => 'post', 'id' => 'form-recipe']) !!}
+{!! Form::model($recipe, ['url' => url('recipes/'.$recipe->id), 'method' => 'post', 'id' => 'form-recipe']) !!}
+
+<input type="hidden" name="_method" value="PUT">
 
 {!! Form::control('text', 'col-12', 'title', $errors, null, null, null, __('recipes.title')) !!}
 
@@ -19,14 +21,23 @@
 
 @php
 $_ingredients = array();
-if(null!==(old('ingredient')))
-foreach(old('ingredient') as $ingredient){
+if(null!==$recipe->ingredients)
+foreach($recipe->ingredients as $ingredient){
 	$_ingredients[]=$ingredient;
 }
 @endphp
 
 @forelse ($_ingredients as $index_ingredient => $ingredient)
 	<div class="d-flex row-ingredient">
+{{-- 		<div class="col-3">
+			<input type="text" name="ingredient[{{ $index_ingredient }}][quantity]" class="form-control d-inline quantity {{ ($errors->has('ingredient.'.$ingredient['index'].'.quantity') ? ' is-invalid' : '') }}" value="{{ $ingredient['quantity'] }}" style="width:100%" placeholder="{{  __('recipes.quantity') }}">
+			@if($errors->has('ingredient.'.$ingredient['index'].'.quantity'))
+			    <span class="invalid-feedback">{{ $errors->first('ingredient.'.$ingredient['index'].'.quantity') }}</span>
+			@endif
+		</div>
+		<div class="col-auto">
+			(de)
+		</div> --}}
 		<div class="col-6">
 			<input type="text" name="ingredient[{{ $index_ingredient }}][name]" class="form-control d-inline ingredient-name {{ ($errors->has('ingredient.'.$ingredient['index'].'.name') ? ' is-invalid' : '') }}" value="{{ $ingredient['name'] }}" style="width:100%" placeholder="{{  __('recipes.ingredient') }}">
 			@if($errors->has('ingredient.'.$ingredient['index'].'.name'))
@@ -41,6 +52,12 @@ foreach(old('ingredient') as $ingredient){
 	</div>
 @empty
 	<div class="d-flex row-ingredient">
+{{-- 		<div class="col-3">
+			<input type="text" name="ingredient[0][quantity]" class="form-control d-inline quantity" value="" style="width:100%" placeholder="{{  __('recipes.quantity') }}">
+		</div>
+		<div class="col-auto">
+			(de)
+		</div> --}}
 		<div class="col-6">
 			<input type="text" name="ingredient[0][name]" class="form-control d-inline ingredient-name" value="" style="width:100%" placeholder="{{  __('recipes.ingredient') }}">
 		</div>
@@ -61,7 +78,6 @@ foreach(old('ingredient') as $ingredient){
     <span class="invalid-feedback">{{ $errors->first('content') }}</span>
 @endif
 
-{!! Form::control('textarea', 'col-12', 'anecdote', $errors, null, old('anecdote')??'', null, __('recipes.add-anecdote') ) !!}
 <div class="ml-3 mb-3">
   <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTimes" aria-expanded="false" aria-controls="collapseTimes">
     Ajouter les temps de préparation et cuisson
@@ -81,7 +97,7 @@ foreach(old('ingredient') as $ingredient){
 			<label for="description" class="control-label">{{ __('recipes.hours') }}</label>
 
 			@if($errors->has('preparation_time_hour'))
-			    <span class="invalid-feedback">{{ $errors->first('preparation_time_hour') }}</span>
+			    <span class="invalid-feedback">{{ $errors->first('preparation_time_minute') }}</span>
 			@endif
 
 		</div>
@@ -153,13 +169,14 @@ foreach(old('ingredient') as $ingredient){
 </div>
 
 <div id="thumbnails">
-	@if(old('photos'))
-		@foreach(old('photos') as $photo)
+	@if($recipe->medias)
+		@foreach($recipe->medias as $photo)
 		<div class="thumbnail ml-3 d-inline-block">
-			<img src="{{ asset($photo) }}" class="" />
-			<input type="hidden" name="photos[]" value="{{ $photo }}" /><br/>
+			<img src="{{ asset($photo->filename) }}" class="" />
+			<input type="hidden" name="photos[]" value="{{ $photo->filename }}" /><br/>
 			<label>
-				<input type="radio" name="cover_picture" value="{{ $photo }}" {{ ($photo == old('cover_picture'))? 'checked="checked"':'' }}/> Photo de couverture
+				<input type="radio" name="cover_picture" value="{{ $photo->filename }}" {{ ($photo->id == $recipe->thumbnail_id)? 'checked="checked"':'' }}/> Photo de couverture
+				<i class="fa fa-trash-o float-right trash-photo" aria-hidden="true"></i>
 			</label>
 		</div>	
 		@endforeach
