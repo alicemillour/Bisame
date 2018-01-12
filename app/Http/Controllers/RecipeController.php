@@ -14,6 +14,7 @@ use App\Http\Requests\StoreRecipe;
 use App\Http\Requests\StoreAnecdote;
 use App\Traits\Badgeable;
 use App\Services\WordSeeder;
+use App\Services\AnnotationSeeder;
 use DB;
 
 use Illuminate\Support\Facades\Log;
@@ -168,13 +169,13 @@ class RecipeController extends Controller
         $this->tok_to_melt($filename, $script_path, $corpus_path);
         
         /* stage 5 : create preannotation seed from MElt annotated file */
-        $this->melt_to_preannotation_seed($filename, $script_path, $corpus_path);
+        $this->melt_to_preannotation_seed($filename, $script_path, $corpus_path, $corpus_name);
         
         /* stage 6 : germanize gsw corpus */
         $this->germanize($filename, $script_path, $corpus_path);
                  
         /* stage 7 : germanize gsw corpus */
-        $this->treetag($filename, $script_path, $corpus_path);
+        $this->treetag($filename, $script_path, $corpus_path, $corpus_name);
 
         /* Création corpus */
         Corpus::create([
@@ -185,6 +186,15 @@ class RecipeController extends Controller
         Log::debug($corpus_path."/word_seed/recipes/".$filename.'.word_seed');
         $seeder = new WordSeeder($corpus_path."/word_seed/recipes/".$filename.'.word_seed');
         $seeder->run();
+        
+        /* Seed preannotations */
+        Log::debug($corpus_path."/preannotation/MElt/recipes/".$filename.'.melt_pre-annotation_seed');
+        Log::debug($corpus_path."/preannotation/Treetagger/recipes/".$filename.'.treetag_pre-annotation_seed');
+        $seeder = new AnnotationSeeder($corpus_path."/preannotation/MElt/recipes/".$filename.'.melt_pre-annotation_seed');
+        $seeder->run();
+//        Préannotation avec treetagger à corriger 
+//        $seeder = new AnnotationSeeder($corpus_path."/preannotation/TreeTagger/recipes/".$filename.'.treetag_pre-annotation_seed');
+//        $seeder->run();
         
         return redirect('recipes/'.$recipe->id)->withSuccess(__('recipes.created'));
 
@@ -233,10 +243,10 @@ class RecipeController extends Controller
         }
     }
     
-    public function melt_to_preannotation_seed(String $filename, $script_path, $corpus_path) {
+    public function melt_to_preannotation_seed(String $filename, $script_path, $corpus_path, $corpus_name) {
         $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
 
-        $command = escapeshellcmd($script_path . "melt_to_preannotation.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        $command = escapeshellcmd($script_path . "melt_to_preannotation.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path. " " . $corpus_name);
         Log::debug("commande : " . $command);
         $process = new Process($command);
         $process->run();
@@ -261,10 +271,10 @@ class RecipeController extends Controller
         }
     }
     
-    public function treetag(String $filename, $script_path, $corpus_path) {
+    public function treetag(String $filename, $script_path, $corpus_path, $corpus_name) {
         $tokenized_file_url = storage_path().'/app/corpus/tokenized/recipes/'.$filename.'.txt.tok' ;
 
-        $command = escapeshellcmd($script_path . "treetagger.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path);
+        $command = escapeshellcmd($script_path . "treetagger.sh " . $script_path . " " . $tokenized_file_url . " " . $corpus_path . " " . $corpus_name);
         Log::debug("commande : " . $command);
         $process = new Process($command);
         $process->run();

@@ -6,9 +6,10 @@ echo "$2\n";
 # $1 : scripts directory
 # $2 : melt_tagged file path
 # $3 : corpora directory
+# $4 : corpus name
 
     filename=$(basename "$2" .txt.tok)
-    rm "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed 
+    echo "corpus_name;sentence_position;word_position;value;postag_name;confidence_score;tagger" > "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed 
     # escape slash
     sed -i 's/\/\/PUNCT/_SLASH_\/PUNCT/g' "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
     line_nb=1;
@@ -21,7 +22,8 @@ echo "$2\n";
         do
             real_word=$(echo $word | cut -d '/' -f1)
             tag=$(echo $word | cut -d '/' -f2)
-            echo "$filename;$line_nb;$word_nb;$real_word;$tag;10;MElt">> "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed 
+            echo "$4";
+            echo "$4;$line_nb;$word_nb;$real_word;$tag;10;MElt">> "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed 
             word_nb=$((word_nb + 1));
         done
         line_nb=$((line_nb + 1));
