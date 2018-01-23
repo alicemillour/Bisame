@@ -12,10 +12,10 @@
                 @endif
 
                 <div class="labels" style="text-align: center ; display:block" name="category-label[{{ $word->id }}]">
-                    <img class="leftlabel" id="left_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">
-                    <img class="question-label" id="question_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="/images/question.png">
+                    <img class="leftlabel" id="left_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="{{ asset('images/no.png') }}">
+                    <img class="question-label" id="question_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="{{ asset('images/question.png') }}">
                     <span class="category-label" > </span>
-                    <img class="rightlabel" id="right_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px;display: none" src="/images/check.png">
+                    <img class="rightlabel" id="right_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px;display: none" src="{{ asset('images/check.png') }}">
                 </div>
             </div>
 @endforeach

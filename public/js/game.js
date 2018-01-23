@@ -67,7 +67,7 @@ $(document).ready(function () {
                         reload_javascript_on_words();
                     }
                 } else {
-                    window.location.href = '/home';
+                    window.location.href = base_url+'home-game';
                 }
             }
         });
@@ -316,7 +316,7 @@ $(document).ready(function () {
     function get_words_postags(word_id) {
         $.ajax({
             method: 'GET',
-            url: "/postags",
+            url: base_url+"/postags",
             dataType: 'json',
             data: {
                 word_id: word_id

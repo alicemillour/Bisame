@@ -53,12 +53,12 @@
                 @endif
                 <div class="button-wrapper">
                     <span>
-                        <a class='btn btn-default play-button active-button' id="play-button-1" href="/home/training"> <span class="ostrich" style="font-size: 0.9em"> S'entrainer </span> </a>
+                        <a class='btn btn-default play-button active-button' id="play-button-1" href="{{ url('home/training') }}"> <span class="ostrich" style="font-size: 0.9em"> S'entrainer </span> </a>
                     </span> 
                     @if($game_available)
                     <span>
                         <!-- TODO DIFF <a class='btn btn-default play-button active-button ' id="play-button-2" href="/home/start"> Maké sé fraz-la ! <span class="ostrich" style="font-size: 0.9em"> (Produire des annotations) </span> </a> -->         
-                        <a class='btn btn-default play-button active-button ' id="play-button-2" href="/home/start">{{ trans('home.message-button-part1') }} <span class="ostrich" style="font-size: 0.9em"> {{ trans('home.message-button-part2') }}</span> </a>
+                        <a class='btn btn-default play-button active-button ' id="play-button-2" href="{{ url('home/start') }}">{{ trans('home.message-button-part1') }} <span class="ostrich" style="font-size: 0.9em"> {{ trans('home.message-button-part2') }}</span> </a>
                     </span>                    
                     @else
                     <span>

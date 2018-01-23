@@ -43,9 +43,9 @@
             @else
             <h4>Lorsqu'une catégorie est suggérée
                 (en <span class="auto-annotated" style="font-size: 0.8em"> ROUGE</span>), il faut la valider
-                (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/check.png">)
-                ou la corriger (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">).
-                Les mots sans catégorie ( <img tyle="padding-left: 2px; padding-right: 2px; display:none" src="/images/question.png">   ) restent à annoter. <br>
+                (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="{{ asset('images/check.png') }}">)
+                ou la corriger (<img tyle="padding-left: 2px; padding-right: 2px; display:none" src="{{ asset('images/no.png') }}">).
+                Les mots sans catégorie ( <img tyle="padding-left: 2px; padding-right: 2px; display:none" src="{{ asset('images/question.png') }}">   ) restent à annoter. <br>
                 En cas de doute, consultez le rappel sur les catégories à droite ou 
                 <a style="color:#1e1eac;" href="mailto:g.feler@hotmail.com?Subject=[Krik]Contact" style="color:black" target="_top">contactez-moi</a> !
             </h4>
@@ -64,10 +64,10 @@
                 @endif
 
                 <div class="labels" style="text-align: center ; display:block" name="category-label[{{ $word->id }}]">
-                    <img class="leftlabel" id="left_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="/images/no.png">
-                    <img class="question-label" id="question_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="/images/question.png">
+                    <img class="leftlabel" id="left_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="{{ asset('images/no.png') }}">
+                    <img class="question-label" id="question_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px; display:none" src="{{ asset('images/question.png') }}">
                     <span class="category-label" > </span>
-                    <img class="rightlabel" id="right_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px;display: none" src="/images/check.png">
+                    <img class="rightlabel" id="right_{{ $word->id }}" style="padding-left: 2px; padding-right: 2px;display: none" src="{{ asset('images/check.png') }}">
                 </div>
             </div>
             @endforeach
