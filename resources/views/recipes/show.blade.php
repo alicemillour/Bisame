@@ -157,7 +157,9 @@
 
   <div id="annotation" class="bg-white p-3 d-none">
     <h4>Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
-    <h5 id="message" class="mb-2">Voici les annotations produites par notre outil :</h5>
+    <div class="row">
+      <h5 id="message" class="mb-2 col-9">Voici les annotations produites par notre outil :</h5>
+    </div>
     <div class="row">
       <div class="col-9" id="annotations">
       @if($corpus_recipe)
@@ -291,6 +293,7 @@ foreach($recipe->ingredients as $ingredient){
       $('.pos[data-postag-id='+current_postag_id+']').removeClass('invisible').addClass('visible');
       $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
       $('#btn-annotation').hide();
+      $(window).scrollTop(0);
     }
 
     function getPostag(postag_id) {
