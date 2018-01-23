@@ -229,6 +229,7 @@ foreach($recipe->ingredients as $ingredient){
       initPlusTab();
       autosize($('.message'));
       autosize($('.anecdote'));
+      $("#{{ $tab }}-tab").trigger("click");
     };
 
     $('.postag').click(function(){

@@ -196,7 +196,7 @@ class RecipeController extends Controller
 //        Préannotation avec treetagger à corriger 
 //        $seeder = new AnnotationSeeder($corpus_path."/preannotation/TreeTagger/recipes/".$filename.'.treetag_pre-annotation_seed');
 //        $seeder->run();
-        return redirect('recipes/'.$recipe->id)->withSuccess(__('recipes.created'));
+        return redirect('recipes/'.$recipe->id.'?tab=pos')->withSuccess(__('recipes.created'));
 
     }
 
@@ -332,11 +332,14 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show(Recipe $recipe, Request $request)
     {
         $corpus_recipe = Corpus::where('name','like',$recipe->id.'_%')->first();
         $postags = Postag::get();
-        return view('recipes.show',compact('recipe','corpus_recipe','postags'));
+        $tab = 'recipe';
+        if($request->has('tab'))
+            $tab = $request->input('tab');
+        return view('recipes.show',compact('recipe','corpus_recipe','postags','tab'));
     }
 
     /**
