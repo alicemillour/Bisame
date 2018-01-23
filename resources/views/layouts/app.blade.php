@@ -43,7 +43,7 @@
 
             .info-message-trans {
                 padding: 1.25rem;
-                background-color:transparent;
+                /*background-color:transparent;*/
             }
 
             .info-message {

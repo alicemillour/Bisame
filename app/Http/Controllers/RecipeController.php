@@ -8,6 +8,7 @@ use App\User;
 use App\Media;
 use App\Anecdote;
 use App\Corpus;
+use App\Postag;
 use App;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRecipe;
@@ -333,7 +334,9 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        return view('recipes.show',compact('recipe'));
+        $corpus_recipe = Corpus::where('name','like',$recipe->id.'_%')->first();
+        $postags = Postag::get();
+        return view('recipes.show',compact('recipe','corpus_recipe','postags'));
     }
 
     /**

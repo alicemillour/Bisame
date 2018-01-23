@@ -22,4 +22,9 @@ class Word extends Model
 	{
 		return $this->belongsTo('App\Sentence');
 	}
+
+	public function annotation_melt()
+	{
+		return $this->hasOne('App\Annotation')->where('tagger','MElt');
+	}
 }

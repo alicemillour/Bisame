@@ -148,8 +148,45 @@
 
   </div>
   
+  @php
+  $pos = [];
+  foreach($postags as $postag){
+    $pos[$postag->id] = $postag->name;
+  }  
+  @endphp
+
   <div id="annotation" class="bg-white p-3 d-none">
-    TEST ANNOTATION
+    <h4>Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
+    <h5 id="message" class="mb-2">Voici les annotations produites par notre outil :</h5>
+    <div class="row">
+      <div class="col-9" id="annotations">
+        @foreach($corpus_recipe->sentences as $sentence)
+          @foreach($sentence->words as $word)
+          <div class="word_container" style="display:inline-block;text-align:center;vertical-align: top;">
+            <span class="word" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $word->value }}</span>
+            <br/>
+            @if($pos[$word->annotation_melt->postag_id]!="PUNCT")
+              <span class="pos" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $pos[$word->annotation_melt->postag_id] }}</span>
+            @endif
+          </div>
+          @endforeach
+          <br/>
+        @endforeach
+      </div>
+      <div class="col-3">
+        @foreach($postags as $postag)
+          @if($pos[$postag->id]!='PUNCT')
+            <div class="postag" data-postag-id="{{ $postag->id }}">{{ $postag->full_name }} <em>({{ $postag->name }})</em></div>
+          @endif
+        @endforeach
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-4 col-6">
+        <button id="btn-next-postag" class="btn btn-primary d-none">Postag suivant</button>
+        <button id="btn-validate" class="btn btn-primary d-none">Enregistrer mes annotations</button>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -173,9 +210,12 @@ foreach($recipe->ingredients as $ingredient){
 @endphp
 
     var alternative_texts = {!! json_encode($alternative_texts) !!};
-
+    var postags = {!! json_encode($postags) !!};
+    console.log(postags);
     var selected_text;
     var keep_open = false;
+    var current_postag_id = 0;
+    var current_postag = null;
     window.onload = function() {
       $('.translatable').each(function(){
         var text = $(this).html();
@@ -186,6 +226,81 @@ foreach($recipe->ingredients as $ingredient){
       autosize($('.message'));
       autosize($('.anecdote'));
     };
+
+    $('.postag').click(function(){
+      current_postag_id = $(this).attr('data-postag-id');
+      current_postag = getPostag(current_postag_id);
+      // $('.word').removeClass('highlight');
+      $('.postag').removeClass('highlight');
+      $(this).addClass('highlight');
+      initAnnotationPostag();
+      // $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
+      // $('.pos').addClass('invisible');
+      // $('.pos[data-postag-id='+current_postag_id+']').removeClass('invisible').addClass('visible');
+    })
+
+    $('.word').click(function(){
+      if(!current_postag) return false;
+
+      var word_id = $(this).attr('data-word-id');
+      var postag_html = $('.pos[data-word-id='+word_id+']');
+
+      if($(this).hasClass('highlight')){
+        $(this).removeClass('highlight');
+        $(this).attr('data-postag-id',0);
+        postag_html.removeClass('visible').addClass('invisible').html('').attr('data-postag-id',0);
+      } else {
+        $(this).addClass('highlight');
+        $(this).attr('data-postag-id',current_postag.id);
+        postag_html.removeClass('invisible').addClass('visible').html(current_postag.name).attr('data-postag-id',current_postag.id);
+      }
+
+
+    })
+  
+    $('#btn-annotation').click(function(){
+      var fisrt_postag = $('.postag').first();
+      current_postag_id = fisrt_postag.attr('data-postag-id');
+      current_postag = getPostag(current_postag_id);
+      $('.postag').removeClass('highlight');
+      fisrt_postag.addClass('highlight');      
+      initAnnotationPostag();
+    });
+
+    $('#btn-next-postag').click(function(){
+      var next_postag = $('.postag.highlight').next('.postag');
+      if(next_postag.length==0) return false;
+      current_postag_id = next_postag.attr('data-postag-id');
+      current_postag = getPostag(current_postag_id);
+      $('.postag').removeClass('highlight');
+      next_postag.addClass('highlight');      
+      initAnnotationPostag();
+    });
+
+    function initAnnotationPostag(postag) {
+      $('#btn-validate').removeClass('d-none');
+      $('#btn-next-postag').removeClass('d-none');
+      $('.word').removeClass('highlight');
+      $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
+      $('.pos').addClass('invisible');
+      $('.pos[data-postag-id='+current_postag_id+']').removeClass('invisible').addClass('visible');
+      $('#message').html("Séctionnez ou désélectionnez les mots du texte qui appartiennent à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
+      $('#btn-annotation').hide();
+    }
+
+    function getPostag(postag_id) {
+      var postag = null;
+      for(key in postags)
+      {
+        var pos = postags[key];
+        if(pos.id == postag_id){
+          postag=pos;
+        }
+        continue;
+      }
+      console.log(postag);
+      return postag;
+    }
 
     function getSelectionHtml() {
       var html = "";
@@ -709,8 +824,18 @@ foreach($recipe->ingredients as $ingredient){
 @endsection
 
 @section('style')
-{{-- <link href="{{ asset('css/jquery.highlight-within-textarea.css') }}" rel="stylesheet"> --}}
+
 <style>
+.word_container{
+  line-height: 1.1em;
+  margin-bottom: 1em;
+}
+#annotation {
+  font-size: 1.2em;
+}
+.pos {
+  font-size: 0.8em;
+}
 .popper {
     position: absolute;
     background: white;
