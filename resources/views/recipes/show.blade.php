@@ -160,6 +160,7 @@
     <h5 id="message" class="mb-2">Voici les annotations produites par notre outil :</h5>
     <div class="row">
       <div class="col-9" id="annotations">
+      @if($corpus_recipe)
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)
           <div class="word_container" style="display:inline-block;text-align:center;vertical-align: top;">
@@ -172,6 +173,9 @@
           @endforeach
           <br/>
         @endforeach
+      @else
+      <alert>Aucune annotation pour cette recette.</alert>
+      @endif
       </div>
       <div class="col-3">
         @foreach($postags as $postag)
