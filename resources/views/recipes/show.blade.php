@@ -289,7 +289,7 @@ foreach($recipe->ingredients as $ingredient){
       $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
       $('.pos').addClass('invisible');
       $('.pos[data-postag-id='+current_postag_id+']').removeClass('invisible').addClass('visible');
-      $('#message').html("Séctionnez ou désélectionnez les mots du texte qui appartiennent à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
+      $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
       $('#btn-annotation').hide();
     }
 
