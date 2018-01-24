@@ -316,7 +316,7 @@ $(document).ready(function () {
     function get_words_postags(word_id) {
         $.ajax({
             method: 'GET',
-            url: base_url+"/postags",
+            url: base_url+"/postags/by-word",
             dataType: 'json',
             data: {
                 word_id: word_id

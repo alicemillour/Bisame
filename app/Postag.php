@@ -12,7 +12,7 @@ class Postag extends Model
      * @var array
      */
     protected $fillable = [
-        'name','category'
+        'name','category','full_name','difficulty','order','description'
     ];
 
     public function posts()

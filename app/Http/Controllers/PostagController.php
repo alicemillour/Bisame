@@ -14,14 +14,17 @@ class PostagController extends Controller
 
     public function __construct(PostagRepository $postagRepository)
     {
+        $this->middleware('auth');
+        $this->middleware('admin')->except(['getByWord']);
         $this->postagRepository = $postagRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getByWord()
     {
         $word_id = $_GET['word_id'];
         debug($word_id);
@@ -29,6 +32,18 @@ class PostagController extends Controller
         /* -1 because of punct tag not displayed */
         return ['postags' => $postags,
                 'all_categories' => $this->postagRepository->count()-1 == count($postags)];
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('postags.index', [
+            'postags' => Postag::orderBy('order')->get(),
+        ]);
     }
 
     /**
@@ -58,9 +73,9 @@ class PostagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Postag $postag)
     {
-        //
+        return view('postags.show', compact('postag'));
     }
 
     /**
@@ -69,9 +84,9 @@ class PostagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Postag $postag)
     {
-        //
+        return view('postags.edit', compact('postag'));
     }
 
     /**
@@ -81,9 +96,10 @@ class PostagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Postag $postag)
     {
-        //
+        $postag->update($request->all());
+        return redirect('postag')->withSuccess("Le postag a été mis à jour");
     }
 
     /**

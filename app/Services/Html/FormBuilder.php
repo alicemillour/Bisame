@@ -85,10 +85,21 @@ class FormBuilder extends \Collective\Html\FormBuilder {
 		);		
 	}
 
-	public function selection($nom, $list = [], $attributes = null)
+	public function selection($name, $label, $list = [], $attributes = [])
 	{
 		$selected = isset($attributes['selected'])?$attributes['selected']:null;
-		return parent::select($nom, $list, $selected, $attributes);
+		$attributes['class']='form-control';
+		return sprintf('
+			<div class="form-group col-12">
+				<label>
+					%s
+				</label>
+				%s
+			</div>',
+			$label,
+			parent::select($name, $list, $selected, $attributes)
+			
+		);
 	}
 
 }

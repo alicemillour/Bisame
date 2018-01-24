@@ -27,6 +27,16 @@ class AdminController
             }
         }
     }
+
+    /**
+     * Display the index of the back office.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('admin.index');
+    }
     
     public function download_csv( $filename = '' )
     {
