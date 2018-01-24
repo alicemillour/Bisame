@@ -6,6 +6,12 @@ use App\Http\Controllers\Controller;
 
 class AdminController
 {
+    
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Handle an incoming request.
      *
