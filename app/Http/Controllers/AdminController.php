@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class AdminController
+class AdminController extends Controller
 {
     
     public function __construct()
     {
-        // $this->middleware('admin');
+        $this->middleware('admin');
     }
 
     /**
