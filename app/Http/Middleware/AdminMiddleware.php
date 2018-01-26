@@ -15,6 +15,12 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $user = $request->user();
+
+        if ($user && $user->isAdmin())
+        {
+            return $next($request);
+        }
+        return new RedirectResponse(url('/'));
     }
 }
