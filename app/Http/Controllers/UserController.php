@@ -35,8 +35,7 @@ class UserController extends Controller
     /**
     * Display the specified resource.
     */
-    public function home(UserRepository $userR
-)
+    public function home(UserRepository $userR)
     {
         $user = auth()->user();
         return view('users.home', [
@@ -89,8 +88,8 @@ class UserController extends Controller
     public function updatePosition(UpdateUserPosition $request)
     {
         $user = auth()->user();
-        print_r($user);
-        // $this->authorize('update', $user);
+        
+        $this->authorize('update', $user);
 
         $user->posX = $request->input('posX');
         $user->posY = $request->input('posY');
