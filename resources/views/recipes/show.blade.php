@@ -252,6 +252,10 @@ foreach($recipe->ingredients as $ingredient){
     };
 
     $('.postag').click(function(){
+      if($(this).hasClass('warning')){
+        alert("Cette catégorie est difficile, faire la formation ?");
+        return false;
+      }
       if($(this).hasClass('disabled')){
         alert("Vous devez d'abord valider/invalider tous les mots de la catégorie "+current_postag.full_name);
         return false;
