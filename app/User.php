@@ -100,6 +100,16 @@ class User  extends Authenticatable
         return $this->belongsToMany('App\Badge');
     }
 
+    public function tutorials()
+    {
+        return $this->belongsToMany('App\Postag', 'tutorials', 'user_id', 'postag_id');
+    }
+
+    public function hasDoneTutorial($postag_id)
+    {
+        return $this->tutorials->where('id', $postag_id)->isNotEmpty();
+    }
+
     /**
      * Many to Many relation
      *
