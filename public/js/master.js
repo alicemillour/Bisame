@@ -26,3 +26,7 @@ function trans_choice(key,attributes){
     }
     return translation;
 }
+
+function isLoggedIn(){
+    return logged_in;
+}

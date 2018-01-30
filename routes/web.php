@@ -61,6 +61,8 @@ Route::get('recipes/favorite', 'RecipeController@favorite')->name('recipes.favor
 Route::get('recipes/search', 'RecipeController@search')->name('recipes.search');
 Route::post('recipes/add-anecdote', 'RecipeController@addAnecdote');
 Route::post('recipes/{recipe}/add-media', 'RecipeController@addMedia')->name('recipes.add-media');
+Route::get('recipes/{recipe}/alternative-versions', 'RecipeController@alternativeVersions')->name('recipes.alternative-versions');
+Route::get('recipes/{recipe}/annotations', 'RecipeController@alternativeVersions')->name('recipes.annotations');
 Route::resource('recipes', 'RecipeController');
 Route::get('recipes/user/{user}', 'RecipeController@user')->name('recipes.user');
 
