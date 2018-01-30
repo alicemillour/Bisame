@@ -1,0 +1,19 @@
+<div class="list-group">
+  @foreach($postags as $key=>$postag)
+    @if($pos[$postag->id]!='PUNCT')
+      @if($postag->difficulty=='easy' || Auth::user()->hasDoneTutorial($postag->id))
+        <div class="postag list-group-item list-group-item-action {{ $key==0?'':'disabled' }}" data-postag-id="{{ $postag->id }}" 
+          @if($key!=0)
+          data-toggle="tooltip" title="Catégorie désactivée" data-placement="left"
+          @endif
+          >
+          {{ $postag->full_name }} <em>({{ $postag->name }})</em>
+        </div>
+      @else
+        <div class="postag list-group-item list-group-item-action disabled warning" data-postag-id="{{ $postag->id }}" data-toggle="tooltip" title="Catégorie difficile, faire la formation ?" data-placement="left">
+          {{ $postag->full_name }} <em>({{ $postag->name }})</em><i class="float-right fa fa-exclamation-triangle" aria-hidden="true"></i>
+        </div>
+      @endif
+    @endif
+  @endforeach
+</div>

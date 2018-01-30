@@ -9,6 +9,8 @@ use App\Repositories\SentenceRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Postag;
+use App\Corpus;
 use Auth;
 use DB; 
 
@@ -26,6 +28,19 @@ class TrainingController extends GameController {
       $this->sentenceRepository = $sentenceRepository;
       $this->userRepository = $userRepository;
       $this->middleware('auth');
+  }
+
+  /**
+   * Display the training for a given pos
+   *
+   * @param  \App\Postag  $postag
+   * @return \Illuminate\Http\Response
+   */
+  public function training(Postag $postag)
+  {
+      $corpus_training = Corpus::where('name','like','training_'.$postag->name)->firstOrFail();
+      $postags = Postag::orderBy('order')->get();
+      return view('training.show',compact('postags','corpus_training'));
   }
 
   /**

@@ -341,6 +341,8 @@ class RecipeController extends Controller
             $tab = $request->input('tab');
             if(!in_array($tab,['plus','pos']))
                 $tab = 'recipe';
+            if(in_array($tab,['plus','pos']) && !auth()->check())
+                return redirect()->route('login')->withErrors("Veuillez vous connecter pour accéder à cette partie du site.");
         }
         return view('recipes.show',compact('recipe','corpus_recipe','postags','tab'));
     }

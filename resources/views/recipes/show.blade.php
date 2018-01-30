@@ -152,7 +152,7 @@
     @endcomponent
 
   </div>
-  
+@auth
   @php
   $pos = [];
   foreach($postags as $postag){
@@ -182,39 +182,20 @@
           @endforeach
           <br/>
         @endforeach
+        <div class="text-center">
+          <button id="btn-next-postag" class="btn btn-warning d-none disabled btn-lg" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="bottom">Postag suivant</button>
+        </div>
       @else
-      <alert>Aucune annotation pour cette recette.</alert>
+        <alert>Aucune annotation pour cette recette.</alert>
       @endif
       </div>
       <div class="col-3">
-        <div class="list-group">
-          @foreach($postags as $key=>$postag)
-            @if($pos[$postag->id]!='PUNCT')
-              @if($postag->difficulty=='easy')
-                <div class="postag list-group-item list-group-item-action {{ $key==0?'':'disabled' }}" data-postag-id="{{ $postag->id }}">
-                  {{ $postag->full_name }} <em>({{ $postag->name }})</em>
-                </div>
-              @elseif(Auth::check() && Auth::user()->hasDoneTutorial($postag->id))
-                <div class="postag list-group-item list-group-item-action {{ $key==0?'':'disabled' }}" data-postag-id="{{ $postag->id }}">
-                    {{ $postag->full_name }} <em>({{ $postag->name }})</em>
-                </div>
-              @else
-                <div class="postag list-group-item list-group-item-action disabled warning" data-postag-id="{{ $postag->id }}">
-                  {{ $postag->full_name }} <em>({{ $postag->name }})</em><i class="float-right fa fa-exclamation-triangle" aria-hidden="true"></i>
-                </div>
-              @endif
-            @endif
-          @endforeach
-        </div>
+        @include ('postags/_list')
       </div>
     </div>
-    <div class="row">
-      <div class="offset-4 col-6">
-        <button id="btn-next-postag" class="btn btn-warning d-none disabled btn-lg">Postag suivant</button>
-      </div>
-    </div>
-  </div>
 
+  </div>
+@endauth
 </div>
 @endsection
 
@@ -258,18 +239,19 @@ foreach($recipe->ingredients as $ingredient){
 
     $('.postag').click(function(){
       if($(this).hasClass('warning')){
-        alert("Cette catégorie est difficile, faire la formation ?");
+        if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
+          window.location.href = base_url+'training/'+$(this).attr('data-postag-id');
         return false;
       }
       if($(this).hasClass('disabled')){
-        alert("Vous devez d'abord valider/invalider tous les mots de la catégorie "+current_postag.full_name);
+        alert("Validez ou invalidez tous les mots en surbrillance avant de continuer");
         return false;
-      } 
+      }
       current_postag_id = $(this).attr('data-postag-id');
       current_postag = getPostag(current_postag_id);
       // $('.word').removeClass('highlight');
       $('.postag').removeClass('highlight');
-      $(this).addClass('highlight');
+      $(this).addClass('highlight').tooltip('disable');
 
       initAnnotationPostag();
       // $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
@@ -312,10 +294,10 @@ foreach($recipe->ingredients as $ingredient){
 
     function checkPosFinished(){
       if($('img.visible').length==0){
-        $('#btn-next-postag').removeClass('btn-warning disabled').addClass('btn-success');
+        $('#btn-next-postag').removeClass('btn-warning disabled').addClass('btn-success').tooltip('disable');
         var next_postag = $('.postag.highlight').next('.postag');
         if(!next_postag.hasClass('warning'))
-          next_postag.removeClass('disabled');
+          next_postag.removeClass('disabled').tooltip('disable');
       }
     }
 
@@ -338,25 +320,26 @@ foreach($recipe->ingredients as $ingredient){
 
     $('#btn-next-postag').click(function(){
       if($('img.visible').length>0){
-        alert("Vous devez d'abord valider/invalider tous les mots de la catégorie "+current_postag.full_name);
+        alert("Validez ou invalidez tous les mots en surbrillance avant de continuer.");
         return false;        
       }
       var next_postag = $('.postag.highlight').next('.postag');
       if(next_postag.hasClass('warning')){
-        alert("le prochain pos est difficile, faire la formation ?");
+        if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
+          window.location.href = base_url+'training/'+next_postag.attr('data-postag-id');
         return false;
       }
       if(next_postag.length==0) return false;
       current_postag_id = next_postag.attr('data-postag-id');
       current_postag = getPostag(current_postag_id);
       $('.postag').removeClass('highlight');
-      next_postag.addClass('highlight');      
+      next_postag.addClass('highlight').tooltip('disable');
       initAnnotationPostag();
     });
 
     function initAnnotationPostag(postag) {
       $('#btn-validate').removeClass('d-none');
-      $('#btn-next-postag').removeClass('d-none btn-success').addClass('btn-warning disabled');
+      $('#btn-next-postag').removeClass('d-none btn-success').addClass('btn-warning disabled').tooltip('enable');
       $('.word').removeClass('highlight');
       $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
       $('.pos.not-validated').addClass('invisible');
