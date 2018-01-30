@@ -31,7 +31,7 @@
             <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
                 <div class="d-inline float-right">
                     <i class="fa fa-heart like"></i>
-                    <span class="likes-count">{{ $recipe->likes->count() }}</span>
+                    <span class="likes-count">{{ $recipe->likes_count }}</span>
                 </div>
             </h6>
             <span class="text-muted">
@@ -39,7 +39,11 @@
 
               @endcomponent
               {{ __('recipes.recipe-by') }}
-              {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+              @if($recipe->author->trashed())
+                {{ $recipe->author->name }}
+              @else
+                {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+              @endif
             </span>
             <br/>
             <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>

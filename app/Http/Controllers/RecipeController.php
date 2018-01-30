@@ -30,7 +30,7 @@ class RecipeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store','addAnecdote','addMedia','favorite']);
+        $this->middleware('auth')->only(['create','store','addAnecdote','addMedia','favorite','alternativeVersions','annotations']);
     }
     /**
      * Display a listing of the resource.
@@ -337,9 +337,34 @@ class RecipeController extends Controller
         $corpus_recipe = Corpus::where('name','like',$recipe->id.'_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'recipe';
-        if($request->has('tab'))
+        if($request->has('tab')){
             $tab = $request->input('tab');
+            if(!in_array($tab,['plus','pos']))
+                $tab = 'recipe';
+        }
         return view('recipes.show',compact('recipe','corpus_recipe','postags','tab'));
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Recipe  $recipe
+     * @return \Illuminate\Http\Response
+     */
+    public function alternativeVersions(Recipe $recipe, Request $request)
+    {
+        return self::show($recipe, $request);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Recipe  $recipe
+     * @return \Illuminate\Http\Response
+     */
+    public function annotations(Recipe $recipe, Request $request)
+    {
+        return self::show($recipe, $request);
     }
 
     /**

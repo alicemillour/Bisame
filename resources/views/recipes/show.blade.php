@@ -8,13 +8,13 @@
   
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link page-title" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
+      <a class="nav-link page-title active" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link page-title active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
+      <a class="nav-link page-title" id="plus-tab" data-toggle="tab" href="{{ route('recipes.alternative-versions',['recipe'=>$recipe]) }}?tab=plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="#pos" role="tab" aria-controls="pos" aria-selected="false">Annotation</a>
+      <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="{{ route('recipes.annotations',['recipe'=>$recipe]) }}?tab=pos" role="tab" aria-controls="pos" aria-selected="false">Annotation</a>
     </li>
   </ul>
 
@@ -59,7 +59,12 @@
         <span class="text-muted">
           @component('users._avatar', ['user' => $recipe->author])
           @endcomponent
-          {{ __('recipes.recipe-by') }}{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+          {{ __('recipes.recipe-by') }}
+          @if($recipe->author->trashed())
+            {{ $recipe->author->name }}
+          @else
+            {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+          @endif  
         </span>
         @if($recipe->has_time)
           <div class="mb-1">
@@ -733,12 +738,20 @@ foreach($recipe->ingredients as $ingredient){
     }
 
     $("#plus-tab").click(function(event) {
+        if(!isLoggedIn()){
+          window.location.href = $(this).attr('href');
+          return false;
+        }
         $('#annotation').addClass('d-none');
         $('#content-recipe').removeClass('d-none');
         initPlusTab();
     })
 
     $("#pos-tab").click(function(event) {
+        if(!isLoggedIn()){
+          window.location.href = $(this).attr('href');
+          return false;
+        }      
         $('#content-recipe').addClass('d-none');
         $('#annotation').removeClass('d-none');
     })

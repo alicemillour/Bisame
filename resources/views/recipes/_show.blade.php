@@ -31,7 +31,11 @@
 
 			@endcomponent
 			{{ __('recipes.recipe-by') }}
-			{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+			@if($recipe->author->trashed())
+				{{ $recipe->author->name }}
+			@else
+				{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+			@endif			
 		</span>
 	</p>
 	

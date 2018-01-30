@@ -22,7 +22,7 @@ class WelcomeController extends Controller {
 
     public function welcome() {
         return view('welcome', [
-            'recipes' => Recipe::latest()->limit(3)->get(),
+            'recipes' => Recipe::latest()->with('author')->withCount('likes')->limit(3)->get(),
         ]);
     }
 
