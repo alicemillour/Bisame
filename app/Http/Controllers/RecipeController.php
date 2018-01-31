@@ -17,7 +17,9 @@ use App\Traits\Badgeable;
 use App\Services\WordSeeder;
 use App\Services\AnnotationSeeder;
 use DB;
-
+use App\Mail\NewRecipe;
+use App\Notification;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Process;
@@ -30,7 +32,7 @@ class RecipeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store','addAnecdote','addMedia','favorite']);
+        $this->middleware('auth')->only(['create','store','addAnecdote','addMedia','favorite','alternativeVersions','annotations']);
     }
     /**
      * Display a listing of the resource.
@@ -146,7 +148,8 @@ class RecipeController extends Controller
         }
 
         $this->checkBadge($request, 'recipe', auth()->user()->recipes()->count());
-        
+
+        self::sendMailNewRecipe($recipe);
         
         /* lancer les prétraitements */
         $script_path = base_path().'/scripts/';
@@ -198,6 +201,15 @@ class RecipeController extends Controller
 //        $seeder->run();
         return redirect('recipes/'.$recipe->id.'?tab=pos')->withSuccess(__('recipes.created'));
 
+    }
+
+    public function sendMailNewRecipe(Recipe $recipe){
+        
+        $notification = Notification::where('slug','all-recipes')->first();
+
+        foreach($notification->users as $user){
+            Mail::to($user)->queue(new NewRecipe($recipe));
+        }
     }
 
     public function tokenize(String $filename, String $script_path, String $corpus_path){
@@ -337,9 +349,36 @@ class RecipeController extends Controller
         $corpus_recipe = Corpus::where('name','like',$recipe->id.'_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'recipe';
-        if($request->has('tab'))
+        if($request->has('tab')){
             $tab = $request->input('tab');
+            if(!in_array($tab,['plus','pos']))
+                $tab = 'recipe';
+            if(in_array($tab,['plus','pos']) && !auth()->check())
+                return redirect()->route('login')->withErrors("Veuillez vous connecter pour accéder à cette partie du site.");
+        }
         return view('recipes.show',compact('recipe','corpus_recipe','postags','tab'));
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Recipe  $recipe
+     * @return \Illuminate\Http\Response
+     */
+    public function alternativeVersions(Recipe $recipe, Request $request)
+    {
+        return self::show($recipe, $request);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Recipe  $recipe
+     * @return \Illuminate\Http\Response
+     */
+    public function annotations(Recipe $recipe, Request $request)
+    {
+        return self::show($recipe, $request);
     }
 
     /**

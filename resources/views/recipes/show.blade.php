@@ -8,13 +8,13 @@
   
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link page-title" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
+      <a class="nav-link page-title active" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link page-title active" id="plus-tab" data-toggle="tab" href="#plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
+      <a class="nav-link page-title" id="plus-tab" data-toggle="tab" href="{{ route('recipes.alternative-versions',['recipe'=>$recipe]) }}?tab=plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="#pos" role="tab" aria-controls="pos" aria-selected="false">Annotation</a>
+      <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="{{ route('recipes.annotations',['recipe'=>$recipe]) }}?tab=pos" role="tab" aria-controls="pos" aria-selected="false">Annotation</a>
     </li>
   </ul>
 
@@ -59,7 +59,12 @@
         <span class="text-muted">
           @component('users._avatar', ['user' => $recipe->author])
           @endcomponent
-          {{ __('recipes.recipe-by') }}{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+          {{ __('recipes.recipe-by') }}
+          @if($recipe->author->trashed())
+            {{ $recipe->author->name }}
+          @else
+            {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+          @endif  
         </span>
         @if($recipe->has_time)
           <div class="mb-1">
@@ -147,7 +152,7 @@
     @endcomponent
 
   </div>
-  
+@auth
   @php
   $pos = [];
   foreach($postags as $postag){
@@ -158,14 +163,14 @@
   <div id="annotation" class="bg-white p-3 d-none noselect">
     <h4>Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
     <div class="row">
-      <h5 id="message" class="mb-2 col-9">Voici les annotations produites par notre outil :</h5>
+      <h5 id="message" class="mb-2 col-8">Voici les annotations produites par notre outil :</h5>
     </div>
     <div class="row">
-      <div class="col-9" id="annotations">
+      <div class="col-8" id="annotations">
       @if($corpus_recipe)
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)
-          <div class="word_container" style="display:inline-block;text-align:center;vertical-align: top;">
+          <div class="word-container" style="display:inline-block;text-align:center;vertical-align: top;">
             <span class="word" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $word->value }}</span>
             <br/>
             @if($pos[$word->annotation_melt->postag_id]!="PUNCT")
@@ -177,39 +182,20 @@
           @endforeach
           <br/>
         @endforeach
+        <div class="text-center">
+          <button id="btn-next-postag" class="btn btn-warning d-none disabled btn-lg" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="bottom">Postag suivant</button>
+        </div>
       @else
-      <alert>Aucune annotation pour cette recette.</alert>
+        <alert>Aucune annotation pour cette recette.</alert>
       @endif
       </div>
-      <div class="col-3">
-        <div class="list-group">
-          @foreach($postags as $key=>$postag)
-            @if($pos[$postag->id]!='PUNCT')
-              @if($postag->difficulty=='easy')
-                <div class="postag list-group-item list-group-item-action {{ $key==0?'':'disabled' }}" data-postag-id="{{ $postag->id }}">
-                  {{ $postag->full_name }} <em>({{ $postag->name }})</em>
-                </div>
-              @elseif(Auth::check() && Auth::user()->hasDoneTutorial($postag->id))
-                <div class="postag list-group-item list-group-item-action {{ $key==0?'':'disabled' }}" data-postag-id="{{ $postag->id }}">
-                    {{ $postag->full_name }} <em>({{ $postag->name }})</em>
-                </div>
-              @else
-                <div class="postag list-group-item list-group-item-action disabled warning" data-postag-id="{{ $postag->id }}">
-                  {{ $postag->full_name }} <em>({{ $postag->name }})</em><i class="float-right fa fa-exclamation-triangle" aria-hidden="true"></i>
-                </div>
-              @endif
-            @endif
-          @endforeach
-        </div>
+      <div class="col-4">
+        @include ('postags/_list')
       </div>
     </div>
-    <div class="row">
-      <div class="offset-4 col-6">
-        <button id="btn-next-postag" class="btn btn-warning d-none disabled btn-lg">Postag suivant</button>
-      </div>
-    </div>
-  </div>
 
+  </div>
+@endauth
 </div>
 @endsection
 
@@ -251,20 +237,33 @@ foreach($recipe->ingredients as $ingredient){
       $("#{{ $tab }}-tab").trigger("click");
     };
 
+    $('.help').click(function(event){
+      event.preventDefault();
+    });
+
     $('.postag').click(function(){
+      // if($(this).hasClass('help'))
+      //   return false;
+      if(help){
+        help=false;
+        return false;
+      }
+      console.log($(this).attr('class'));
+      console.log($(this).prop("tagName"));
       if($(this).hasClass('warning')){
-        alert("Cette catégorie est difficile, faire la formation ?");
+        if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
+          window.location.href = base_url+'training/'+$(this).attr('data-postag-id');
         return false;
       }
       if($(this).hasClass('disabled')){
-        alert("Vous devez d'abord valider/invalider tous les mots de la catégorie "+current_postag.full_name);
+        alert("Validez ou invalidez tous les mots en surbrillance avant de continuer");
         return false;
-      } 
+      }
       current_postag_id = $(this).attr('data-postag-id');
       current_postag = getPostag(current_postag_id);
       // $('.word').removeClass('highlight');
       $('.postag').removeClass('highlight');
-      $(this).addClass('highlight');
+      $(this).addClass('highlight').tooltip('disable');
 
       initAnnotationPostag();
       // $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
@@ -307,10 +306,10 @@ foreach($recipe->ingredients as $ingredient){
 
     function checkPosFinished(){
       if($('img.visible').length==0){
-        $('#btn-next-postag').removeClass('btn-warning disabled').addClass('btn-success');
+        $('#btn-next-postag').removeClass('btn-warning disabled').addClass('btn-success').tooltip('disable');
         var next_postag = $('.postag.highlight').next('.postag');
         if(!next_postag.hasClass('warning'))
-          next_postag.removeClass('disabled');
+          next_postag.removeClass('disabled').tooltip('disable');
       }
     }
 
@@ -333,25 +332,26 @@ foreach($recipe->ingredients as $ingredient){
 
     $('#btn-next-postag').click(function(){
       if($('img.visible').length>0){
-        alert("Vous devez d'abord valider/invalider tous les mots de la catégorie "+current_postag.full_name);
+        alert("Validez ou invalidez tous les mots en surbrillance avant de continuer.");
         return false;        
       }
       var next_postag = $('.postag.highlight').next('.postag');
       if(next_postag.hasClass('warning')){
-        alert("le prochain pos est difficile, faire la formation ?");
+        if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
+          window.location.href = base_url+'training/'+next_postag.attr('data-postag-id');
         return false;
       }
       if(next_postag.length==0) return false;
       current_postag_id = next_postag.attr('data-postag-id');
       current_postag = getPostag(current_postag_id);
       $('.postag').removeClass('highlight');
-      next_postag.addClass('highlight');      
+      next_postag.addClass('highlight').tooltip('disable');
       initAnnotationPostag();
     });
 
     function initAnnotationPostag(postag) {
       $('#btn-validate').removeClass('d-none');
-      $('#btn-next-postag').removeClass('d-none btn-success').addClass('btn-warning disabled');
+      $('#btn-next-postag').removeClass('d-none btn-success').addClass('btn-warning disabled').tooltip('enable');
       $('.word').removeClass('highlight');
       $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
       $('.pos.not-validated').addClass('invisible');
@@ -733,12 +733,20 @@ foreach($recipe->ingredients as $ingredient){
     }
 
     $("#plus-tab").click(function(event) {
+        if(!isLoggedIn()){
+          window.location.href = $(this).attr('href');
+          return false;
+        }
         $('#annotation').addClass('d-none');
         $('#content-recipe').removeClass('d-none');
         initPlusTab();
     })
 
     $("#pos-tab").click(function(event) {
+        if(!isLoggedIn()){
+          window.location.href = $(this).attr('href');
+          return false;
+        }      
         $('#content-recipe').addClass('d-none');
         $('#annotation').removeClass('d-none');
     })
@@ -891,7 +899,7 @@ foreach($recipe->ingredients as $ingredient){
 @section('style')
 
 <style>
-.word_container{
+.word-container{
   line-height: 1.1em;
   margin-bottom: 0.8em;
   font-size: 25px;

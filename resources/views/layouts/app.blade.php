@@ -189,17 +189,16 @@
             @yield('content')
             
         </div>
-
         @include('partials.footer-'.App::getLocale())
         <!-- JavaScripts -->
-        <script>
+        <script type="text/javascript">
             var base_url = '{{ asset('') }}';
+            var logged_in = {{ Auth::check()? 1 : 0 }};
         </script>    
         <script src="{{ asset('/js/all.js') }}"></script>
 
         <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
-
 
         @yield('scripts')
 
