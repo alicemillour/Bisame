@@ -38,11 +38,12 @@
     <div class="custom-controls-stacked">
 
       @foreach($age_groups as $age_group)
-        <label class="custom-control custom-radio radio-age">
-          <input id="radio1" name="age_group_id" type="radio" value="{{ $age_group->id }}" class="custom-control-input" {{ ($age_group->id==$user->age_group_id)?'checked':'' }}>
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">{{ __('users.age-group.'.$age_group->slug) }}</span>
+      <div class="form-check">
+                <input id="radio1" name="age_group_id" type="radio" id="age_group{{ $age_group->id }}" value="{{ $age_group->id }}" class="form-check-input" {{ ($age_group->id==$user->age_group_id)?'checked':'' }}>
+        <label class="form-check-label" for="age_group{{ $age_group->id }}">
+          {{ __('users.age-group.'.$age_group->slug) }}
         </label>
+      </div>       
       @endforeach
 
     </div>
@@ -50,17 +51,17 @@
 
   <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
     {!! Form::label('position', __('Où avez-vous appris l\'alsacien ?'), ['class' => '']) !!}
-    <div class="custom-controls-stacked">  
-    <label class="custom-control custom-radio radio-position">
-      <input id="radio-position-1" name="radio" type="radio" class="custom-control-input">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">{{ __('users.dk') }}</span>
-    </label>
-    <label class="custom-control custom-radio radio-position" data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
-      <input id="radio-position-2" name="radio" type="radio" class="custom-control-input">
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">{{ __('users.place-on-a-map') }}</span>
-    </label>
+    <div class="form-check">
+      <input  id="radio-position-1" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        {{ __('users.dk') }}
+      </label>
+    </div>  
+    <div class="form-check">
+      <input id="radio-position-2" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+      <label class="form-check-label" for="exampleRadios1">
+        {{ __('users.place-on-a-map') }}
+      </label>
     </div>
     <div class="collapse" id="collapseMap">
       <div>

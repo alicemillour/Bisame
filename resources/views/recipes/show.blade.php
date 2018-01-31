@@ -170,7 +170,7 @@
       @if($corpus_recipe)
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)
-          <div class="word_container" style="display:inline-block;text-align:center;vertical-align: top;">
+          <div class="word-container" style="display:inline-block;text-align:center;vertical-align: top;">
             <span class="word" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $word->value }}</span>
             <br/>
             @if($pos[$word->annotation_melt->postag_id]!="PUNCT")
@@ -237,7 +237,14 @@ foreach($recipe->ingredients as $ingredient){
       $("#{{ $tab }}-tab").trigger("click");
     };
 
+    $('.help').click(function(event){
+      event.preventDefault();
+    });
+
     $('.postag').click(function(){
+      // if($(this).hasClass('help'))
+      //   return false;
+      console.log($(this).attr('class'));
       if($(this).hasClass('warning')){
         if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
           window.location.href = base_url+'training/'+$(this).attr('data-postag-id');
@@ -887,7 +894,7 @@ foreach($recipe->ingredients as $ingredient){
 @section('style')
 
 <style>
-.word_container{
+.word-container{
   line-height: 1.1em;
   margin-bottom: 0.8em;
   font-size: 25px;
