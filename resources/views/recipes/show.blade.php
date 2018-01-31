@@ -163,10 +163,10 @@
   <div id="annotation" class="bg-white p-3 d-none noselect">
     <h4>Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
     <div class="row">
-      <h5 id="message" class="mb-2 col-9">Voici les annotations produites par notre outil :</h5>
+      <h5 id="message" class="mb-2 col-8">Voici les annotations produites par notre outil :</h5>
     </div>
     <div class="row">
-      <div class="col-9" id="annotations">
+      <div class="col-8" id="annotations">
       @if($corpus_recipe)
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)
@@ -189,7 +189,7 @@
         <alert>Aucune annotation pour cette recette.</alert>
       @endif
       </div>
-      <div class="col-3">
+      <div class="col-4">
         @include ('postags/_list')
       </div>
     </div>
@@ -244,7 +244,12 @@ foreach($recipe->ingredients as $ingredient){
     $('.postag').click(function(){
       // if($(this).hasClass('help'))
       //   return false;
+      if(help){
+        help=false;
+        return false;
+      }
       console.log($(this).attr('class'));
+      console.log($(this).prop("tagName"));
       if($(this).hasClass('warning')){
         if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
           window.location.href = base_url+'training/'+$(this).attr('data-postag-id');
