@@ -11,15 +11,16 @@
 {{--           <button class="btn btn-light float-right help">
           <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="collapse" data-target="#help{{ $postag->id }}" aria-expanded="false"></i>
           </button> --}}
-          <div class="list-group-item-action collapse" id="help{{ $postag->id }}">
-            {!! $postag->description !!}
-          </div>          
         </div>
       @else
         <div class="postag list-group-item list-group-item-action disabled warning" data-postag-id="{{ $postag->id }}" data-toggle="tooltip" title="Catégorie difficile, faire la formation ?" data-placement="left">
           {{ $postag->full_name }} <em>({{ $postag->name }})</em><i class="float-right fa fa-exclamation-triangle" aria-hidden="true"></i>
         </div>
       @endif
+{{-- 
+      <div class="list-group-item-action collapse" id="help{{ $postag->id }}">
+        {!! $postag->description !!}
+      </div> --}}
 
     @endif
   @endforeach
