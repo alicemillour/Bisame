@@ -100,6 +100,16 @@ class User  extends Authenticatable
     {
         return $this->belongsToMany('App\Badge');
     }
+    
+    public function notifications()
+    {
+        return $this->belongsToMany('App\Notification');
+    }
+
+    public function isSuscribedTo($notification_id)
+    {
+        return $this->notifications->where('id', $notification_id)->isNotEmpty();
+    }
 
     public function tutorials()
     {

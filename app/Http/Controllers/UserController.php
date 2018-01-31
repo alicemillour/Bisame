@@ -14,6 +14,7 @@ use App\Role;
 use App\AgeGroup;
 use App\Badge;
 use App\Avatar;
+use App\Notification;
 
 class UserController extends Controller
 {
@@ -44,6 +45,7 @@ class UserController extends Controller
             'age_groups' => AgeGroup::get(),
             'badges' => Badge::get(),
             'avatars' => Avatar::get(),
+            'notifications' => Notification::get(),
             'around_users' => $userR->get_around_users_by_real_score($user),
             'rank' => $userR->get_rank_by_real_score($user)
 
@@ -96,6 +98,22 @@ class UserController extends Controller
         $user->save();
 
         return __('users.updated');
+    }
+    /**
+    * Update the specified resource in storage.
+    */
+    public function updateNotifications(Request $request)
+    {
+        $user = auth()->user();
+        
+        $this->authorize('update', $user);
+        
+        $user->notifications()->detach();
+        if($request->has('notifications'))
+            foreach($request->input('notifications') as $notification_id){
+                $user->notifications()->attach($notification_id);
+            }
+        return redirect()->route('users.home')->withSuccess(__('users.updated'));
     }
 
     /**

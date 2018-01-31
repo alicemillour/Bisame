@@ -71,6 +71,7 @@ Route::resource('users', 'UserController');
 Route::post('users/update-position', 'UserController@updatePosition')->name('users.update-position');
 Route::post('users/update-age', 'UserController@updateAge')->name('users.update-age');
 Route::post('users/update-avatar', 'UserController@updateAvatar')->name('users.update-avatar');
+Route::post('users/update-notifications', 'UserController@updateNotifications')->name('users.update-notifications');
 Route::resource('translations', 'AlternativeTextController')->middleware('auth');
 Route::resource('likes', 'LikeController');
 

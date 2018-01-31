@@ -21,6 +21,33 @@
                         @include('users/_profil')
                     </p>
                     <hr/>
+                    <h4 class="card-title mt-3" id="notifications">Notifications par email </h4>
+                    <h5 class="card-title mt-3">M'avertir quand :</h5>
+                    {!! Form::open(['url' => route('users.update-notifications')]) !!}
+                    @foreach($notifications as $notification)
+                        @if(!$notification->is_admin)
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notification{{ $notification->id }}" name="notifications[]" value="{{ $notification->id }}" {{ $user->isSuscribedTo($notification->id)?'checked':'' }}>
+                                <label class="form-check-label" for="notification{{ $notification->id }}">{{ __('notifications.'.$notification->slug) }}</label>
+                            </div>
+                        @endif
+                    @endforeach
+                    @if($user->isAdmin())
+                        <h5 class="card-title mt-3">Notifications pour les admins</h5>
+                        @foreach($notifications as $notification)
+                            @if($notification->is_admin)
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="notification{{ $notification->id }}" name="notifications[]" value="{{ $notification->id }}" {{ $user->isSuscribedTo($notification->id)?'checked':'' }}>
+                                    <label class="form-check-label" for="notification{{ $notification->id }}">{{ __('notifications.'.$notification->slug) }}</label>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
+                    </div>
+                    {!! Form::close() !!}
+                    <hr/>
                     <h4 class="card-title mt-3">Suppression de votre compte</h4>
                     <div class="text-right">
                         <button type="button" class="btn btn-danger"onclick="$('#modalDeleteAccount').modal();">Supprimer mon compte</button>

@@ -17,7 +17,9 @@ use App\Traits\Badgeable;
 use App\Services\WordSeeder;
 use App\Services\AnnotationSeeder;
 use DB;
-
+use App\Mail\NewRecipe;
+use App\Notification;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Process;
@@ -146,7 +148,8 @@ class RecipeController extends Controller
         }
 
         $this->checkBadge($request, 'recipe', auth()->user()->recipes()->count());
-        
+
+        self::sendMailNewRecipe($recipe);
         
         /* lancer les prétraitements */
         $script_path = base_path().'/scripts/';
@@ -198,6 +201,15 @@ class RecipeController extends Controller
 //        $seeder->run();
         return redirect('recipes/'.$recipe->id.'?tab=pos')->withSuccess(__('recipes.created'));
 
+    }
+
+    public function sendMailNewRecipe(Recipe $recipe){
+        
+        $notification = Notification::where('slug','all-recipes')->first();
+
+        foreach($notification->users as $user){
+            Mail::to($user)->queue(new NewRecipe($recipe));
+        }
     }
 
     public function tokenize(String $filename, String $script_path, String $corpus_path){
