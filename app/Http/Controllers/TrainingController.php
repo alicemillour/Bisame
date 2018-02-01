@@ -38,7 +38,7 @@ class TrainingController extends GameController {
    */
   public function training(Postag $postag)
   {
-      $corpus_training = Corpus::where('name','like','training_'.$postag->name)->firstOrFail();
+      $corpus_training = Corpus::where('name','like','corpus_'.$postag->name)->firstOrFail();
       $postags = Postag::orderBy('order')->get();
       return view('training.show',compact('postags','corpus_training'));
   }

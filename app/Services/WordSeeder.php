@@ -35,8 +35,10 @@ class WordSeeder extends CsvSeeder {
     public function seedFromCSV($filename, $deliminator = ",") {
         $handle = $this->openCSV($filename);
         // CSV doesn't exist or couldn't be read from.
-        if ($handle === FALSE)
+        if ($handle === FALSE){
+            // echo "File not found : $filename\r\n";
             return [];
+        }
         $header = NULL;
         $row_count = 0;
         $my_row_count = 0;
