@@ -215,7 +215,7 @@ foreach($recipe->ingredients as $ingredient){
   $alternative_texts = array_merge($alternative_texts,$ingredient->alternative_texts()->with('user')->get()->toArray());
 }
 @endphp
-
+    var help = false;
     var alternative_texts = {!! json_encode($alternative_texts) !!};
     var postags = {!! json_encode($postags) !!};
     var selected_text;
@@ -242,16 +242,12 @@ foreach($recipe->ingredients as $ingredient){
     });
 
     $('.postag').click(function(){
-      // if($(this).hasClass('help'))
-      //   return false;
       if(help){
         help=false;
         return false;
       }
-      console.log($(this).attr('class'));
-      console.log($(this).prop("tagName"));
       if($(this).hasClass('warning')){
-        if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
+        if(confirm("Cette catégorie est difficile, faire la formation ?"))
           window.location.href = base_url+'training/'+$(this).attr('data-postag-id');
         return false;
       }

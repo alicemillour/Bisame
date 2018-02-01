@@ -27,4 +27,14 @@ class Word extends Model
 	{
 		return $this->hasOne('App\Annotation')->where('tagger','MElt');
 	}
+
+	public function annotation_training()
+	{
+		return $this->hasOne('App\Annotation')->where('tagger','training');
+	}
+
+	public function annotation_solution()
+	{
+		return $this->hasOne('App\Annotation')->where('tagger','solution');
+	}
 }

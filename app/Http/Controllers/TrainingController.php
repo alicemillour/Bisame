@@ -40,7 +40,7 @@ class TrainingController extends GameController {
   {
       $corpus_training = Corpus::where('name','like','corpus_'.$postag->name)->firstOrFail();
       $postags = Postag::orderBy('order')->get();
-      return view('training.show',compact('postags','corpus_training'));
+      return view('training.show',compact('postag','postags','corpus_training'));
   }
 
   /**
