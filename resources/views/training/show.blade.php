@@ -168,7 +168,9 @@ $solutions = [];
     }
 
     $('#btn-check-solution').click(function(){
-      checkSolution();
+    	if($(this).hasClass('disabled'))
+    		return false;
+		checkSolution();
     });
 
 
