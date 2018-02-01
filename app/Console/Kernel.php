@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\GenerateBadges::class,
         Commands\ImportAvatars::class,
+        Commands\ImportTrainingCorpus::class,
         // Commands\Inspire::class,
     ];
 
