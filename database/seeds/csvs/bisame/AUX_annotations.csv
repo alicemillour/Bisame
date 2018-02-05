@@ -26,7 +26,7 @@ corpus_AUX;2;7;schnall;ADV;100;training
 corpus_AUX;2;8;Erfolg;NOUN;100;training
 corpus_AUX;2;9;ar;PRON;100;training
 corpus_AUX;2;10;ìsch;AUX;100;training
-corpus_AUX;2;11;a;a;100;training
+corpus_AUX;2;11;a;DET;100;training
 corpus_AUX;2;12;riicher;ADJ;100;training
 corpus_AUX;2;13;Mànn;NOUN;100;training
 corpus_AUX;2;14;worra;VERB;100;training
@@ -36,7 +36,7 @@ corpus_AUX;3;2;ältschta;ADJ;100;training
 corpus_AUX;3;3;bekànnta;ADJ;100;training
 corpus_AUX;3;4;Druckwark;NOUN;100;training
 corpus_AUX;3;5;ìsch;AUX;100;training
-corpus_AUX;3;6;a;a;100;training
+corpus_AUX;3;6;a;DET;100;training
 corpus_AUX;3;7;làtiinischa;ADJ;100;training
 corpus_AUX;3;8;Bibel;NOUN;100;training
 corpus_AUX;3;9;ìn;ADP;100;training
@@ -157,7 +157,7 @@ corpus_AUX;2;7;schnall;ADV;100;solution
 corpus_AUX;2;8;Erfolg;NOUN;100;solution
 corpus_AUX;2;9;ar;PRON;100;solution
 corpus_AUX;2;10;ìsch;AUX;100;solution
-corpus_AUX;2;11;a;a;100;solution
+corpus_AUX;2;11;a;DET;100;solution
 corpus_AUX;2;12;riicher;ADJ;100;solution
 corpus_AUX;2;13;Mànn;NOUN;100;solution
 corpus_AUX;2;14;worra;VERB;100;solution
@@ -167,7 +167,7 @@ corpus_AUX;3;2;ältschta;ADJ;100;solution
 corpus_AUX;3;3;bekànnta;ADJ;100;solution
 corpus_AUX;3;4;Druckwark;NOUN;100;solution
 corpus_AUX;3;5;ìsch;VERB;100;solution
-corpus_AUX;3;6;a;a;100;solution
+corpus_AUX;3;6;a;DET;100;solution
 corpus_AUX;3;7;làtiinischa;ADJ;100;solution
 corpus_AUX;3;8;Bibel;NOUN;100;solution
 corpus_AUX;3;9;ìn;ADP;100;solution

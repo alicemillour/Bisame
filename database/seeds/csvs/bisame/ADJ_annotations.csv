@@ -53,7 +53,7 @@ corpus_ADJ;7;2;ältschta;ADJ;100;training
 corpus_ADJ;7;3;bekànnta;ADJ;100;training
 corpus_ADJ;7;4;Druckwark;NOUN;100;training
 corpus_ADJ;7;5;ìsch;VERB;100;training
-corpus_ADJ;7;6;a;a;100;training
+corpus_ADJ;7;6;a;DET;100;training
 corpus_ADJ;7;7;làtiinischa;ADJ;100;training
 corpus_ADJ;7;8;Bibel;NOUN;100;training
 corpus_ADJ;7;9;ìn;ADP;100;training
@@ -78,7 +78,7 @@ corpus_ADJ;8;3;hàt;AUX;100;training
 corpus_ADJ;8;4;'r;PRON;100;training
 corpus_ADJ;8;5;sìch;PRON;100;training
 corpus_ADJ;8;6;sogàr;ADJ;100;training
-corpus_ADJ;8;7;a;a;100;training
+corpus_ADJ;8;7;a;DET;100;training
 corpus_ADJ;8;8;Wàppa;NOUN;100;training
 corpus_ADJ;8;9;loo;VERB;100;training
 corpus_ADJ;8;10;màcha;VERB;100;training
@@ -137,7 +137,7 @@ corpus_ADJ;7;2;ältschta;ADJ;100;solution
 corpus_ADJ;7;3;bekànnta;ADJ;100;solution
 corpus_ADJ;7;4;Druckwark;NOUN;100;solution
 corpus_ADJ;7;5;ìsch;VERB;100;solution
-corpus_ADJ;7;6;a;a;100;solution
+corpus_ADJ;7;6;a;DET;100;solution
 corpus_ADJ;7;7;làtiinischa;ADJ;100;solution
 corpus_ADJ;7;8;Bibel;NOUN;100;solution
 corpus_ADJ;7;9;ìn;ADP;100;solution
@@ -162,7 +162,7 @@ corpus_ADJ;8;3;hàt;AUX;100;solution
 corpus_ADJ;8;4;'r;PRON;100;solution
 corpus_ADJ;8;5;sìch;PRON;100;solution
 corpus_ADJ;8;6;sogàr;ADV;100;solution
-corpus_ADJ;8;7;a;a;100;solution
+corpus_ADJ;8;7;a;DET;100;solution
 corpus_ADJ;8;8;Wàppa;NOUN;100;solution
 corpus_ADJ;8;9;loo;VERB;100;solution
 corpus_ADJ;8;10;màcha;VERB;100;solution
