@@ -55,7 +55,7 @@ class TrainingController extends GameController {
   public function validateTraining(Request $request)
   {
       $postag = Postag::find($request->input('postag_id'));
-      $this->checkBadge($request, 'postag', $postag);
+      $this->checkBadge($request, 'postag', $postag->name);
       Auth::user()->tutorials()->attach($postag);
   }
 
