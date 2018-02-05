@@ -9,12 +9,15 @@ use App\Repositories\SentenceRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Traits\Badgeable;
 use App\Postag;
 use App\Corpus;
 use Auth;
 use DB; 
 
 class TrainingController extends GameController {
+
+  use Badgeable;
 
   protected $trainingRepository;
 
