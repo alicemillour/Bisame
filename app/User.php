@@ -158,20 +158,36 @@ class User  extends Authenticatable
     }
 
 
-    public function checkBadge($type_badge, $number){
+    public function checkBadge($type_badge, $required_value){
         $user_id = $this->id;
-        if($badge = Badge::where('key','=',$type_badge)
-            ->where('required_value','<=',$number)->whereNotExists(
-                function($query) use($user_id) {
-                    $query->select(DB::raw(1))
-                      ->from('badge_user')
-                      ->whereRaw('badges.id = badge_user.badge_id')
-                      ->where('badge_user.user_id','=',$user_id);
-                })
-            ->first()){
+        if(is_numeric($required_value)){
+            if($badge = Badge::where('key','=',$type_badge)
+                ->where('required_value','<=',$required_value)->whereNotExists(
+                    function($query) use($user_id) {
+                        $query->select(DB::raw(1))
+                          ->from('badge_user')
+                          ->whereRaw('badges.id = badge_user.badge_id')
+                          ->where('badge_user.user_id','=',$user_id);
+                    })
+                ->first()){
 
-            $this->badges()->save($badge);
-            return $badge;
+                $this->badges()->save($badge);
+                return $badge;
+            }
+        } else {
+            if($badge = Badge::where('key','=',$type_badge)
+                ->where('required_value_string','=',$required_value)->whereNotExists(
+                    function($query) use($user_id) {
+                        $query->select(DB::raw(1))
+                          ->from('badge_user')
+                          ->whereRaw('badges.id = badge_user.badge_id')
+                          ->where('badge_user.user_id','=',$user_id);
+                    })
+                ->first()){
+
+                $this->badges()->save($badge);
+                return $badge;
+            }
         }
         return null;
 
