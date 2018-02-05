@@ -11,7 +11,7 @@ class CorpusSeeder extends CsvSeeder {
     public function __construct($filename = 'corpora.csv') {
         $this->table = 'corpora';
         Log::debug(App::getLocale());
-        $this->filename = base_path() . '/database/seeds/csvs/'. App::getLocale() . '/'.$filename;
+        $this->filename = $filename;
         $this->csv_delimiter = ";";
     }
 

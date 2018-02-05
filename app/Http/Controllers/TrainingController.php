@@ -44,6 +44,19 @@ class TrainingController extends GameController {
   }
 
   /**
+   * Display the training for a given pos
+   *
+   * @param  \App\Postag  $postag
+   * @return \Illuminate\Http\Response
+   */
+  public function validateTraining(Request $request)
+  {
+      $postag = Postag::find($request->input('postag_id'));
+      $this->checkBadge($request, 'postag', $postag);
+      Auth::user()->tutorials()->attach($postag);
+  }
+
+  /**
    * Store a newly created resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request

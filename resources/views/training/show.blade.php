@@ -13,6 +13,7 @@ $solutions = [];
 <div id="annotation" class="container bg-white p-3 noselect">
     <div class="row">
     <div class="col-12">
+		<h4>{{ url()->previous() }}</h4>
 		<h4>Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight">{{ $postag->full_name }} <em>({{ $postag->name }})</em></span> !</h4>
     </div>
     <div class="col-9">
@@ -36,9 +37,9 @@ $solutions = [];
             @if($pos[$word->annotation_training->postag_id]==$postag->name)
               <span class="word highlight" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}">{{ $word->value }}</span>
               <br/>            
-              <img class="no" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}" />
+              <img class="no visible" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}" />
               <span class="pos not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}">{{ $pos[$word->annotation_training->postag_id] }}</span>
-              <img class="check" src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}"/>
+              <img class="check visible" src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}"/>
             @elseif($pos[$word->annotation_training->postag_id]!="PUNCT")
               <span class="word" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}">{{ $word->value }}</span>
               <br/>            
@@ -57,7 +58,7 @@ $solutions = [];
           <br/>
         @endforeach
         <div class="text-center">
-          <button id="btn-check-solution" class="btn btn-warning disabled btn-lg" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="top">Vérifier mes réponses</button>
+          <button id="btn-check-solution" class="btn btn-warning disabled btn-lg m-5" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="top">Vérifier mes réponses</button>
         </div>        
        </div>
       <div class="col-3">
@@ -72,10 +73,11 @@ $solutions = [];
 @section('scripts')
 
 <script type="text/javascript">
+	var previous_url = "{!! url()->previous() !!}";
 	var postags = {!! json_encode($postags) !!};
 	var current_postag = {!! json_encode($postag) !!};
 	var solutions = {!! json_encode($solutions) !!};
-	console.log(solutions);
+
     $('.word').click(function(){
 
       var word_id = $(this).attr('data-word-id');
@@ -115,21 +117,22 @@ $solutions = [];
 
     function invalidatePos(elm){
       var word_id = elm.attr('data-word-id');
-      $('.pos[data-word-id='+word_id+']').removeClass('visible').removeClass('not-validated').addClass('invisible').attr('data-postag-id',0);
-      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);      
-      $('.word[data-word-id='+word_id+']').removeClass('highlight').removeClass('validated').attr('data-postag-id',0);
+      $('.pos[data-word-id='+word_id+']').removeClass('visible').removeClass('not-validated').addClass('invisible');
+      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible');
+      $('.word[data-word-id='+word_id+']').removeClass('highlight').removeClass('validated');
       checkPosFinished();
     }
 
     function validatePos(elm){
       var word_id = elm.attr('data-word-id');
       $('.pos[data-word-id='+word_id+']').removeClass('not-validated');
-      $('.word[data-word-id='+word_id+']').removeClass('highlight').addClass('validated');
-      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);
+      $('.word[data-word-id='+word_id+']').removeClass('highlight').addClass('validated').attr('data-postag-id',current_postag.id);
+      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible');
       checkPosFinished();
     }
 
     function checkPosFinished(){
+    	console.log($('img.visible').length);
       if($('img.visible').length==0){
         $('#btn-check-solution').removeClass('btn-warning disabled').addClass('btn-success').tooltip('disable');
       }
@@ -141,28 +144,47 @@ $solutions = [];
       for(key in solutions)
       {
       	var word = $('.word[data-word-id='+key+']');
+      	var word_id = word.attr('data-word-id');
       	var postag_html = $('.pos[data-word-id='+key+']');
       	// var pos_solution 
         var solution = solutions[key];
         if(solution.postag_id == current_postag.id && !word.hasClass('validated')) {
-        	word.addClass('highlight-error');
-        	postag_html.html(current_postag.name).removeClass('invisible').addClass('highlight-error');
+        	word.addClass('highlight');
+        	postag_html.html(current_postag.name).removeClass('invisible').addClass('visible');
+        	$('img[data-word-id='+word_id+']').removeClass('invisible').addClass('visible');
         	count_errors++;
         } else if(solution.postag_id != current_postag.id && word.hasClass('validated')){
         	var postag = getPostag(solution.postag_id);
-        	postag_html.html(postag.name).addClass('highlight-error');
-        	word.removeClass('validated').addClass('highlight-error');
+        	postag_html.html(current_postag.name);
+        	word.removeClass('validated').addClass('highlight');
+        	$('img[data-word-id='+word_id+']').removeClass('invisible').addClass('visible');
         	count_errors++;
         }
       }
-      if(count_errors==0)
-      	var message = "Félicitations ! C'est un sans-faute !";
-      else if(count_errors == 1 )
-      	var message = "Bien, c'est presque un sans-faute ! Vous avez fait "+count_errors+" erreur.";
-      else if(count_errors>0 && count_errors<3 )
-      	var message = "Bien, c'est presque un sans-faute ! Vous avez fait "+count_errors+" erreurs.";
+      
+      if(count_errors==0){
+		var re = /\?tab=pos/i;
+		var re2 = /pos=/i;
+		var url_redirection = previous_url;
+		if(!previous_url.match(re)){
+			url_redirection = previous_url+"?tab=pos&pos="+current_postag.id;
+		} else if(!previous_url.match(re2)) {
+			url_redirection = previous_url+"&pos="+current_postag.id;		
+		}	
+		var message = "Félicitations ! C'est un sans-faute !";
+		$.post( "{{ route('validate-training') }}", { postag_id: current_postag.id }, function(){
+			window.location.href = url_redirection;
+		} );
+		// window.location.href = url_redirection;
+      } else if(count_errors == 1 )
+      	var message = "Vous avez "+count_errors+" erreur à corriger.";
       else
-      	var message = "Vous pouvez mieux faire ! Vous avez fait "+count_errors+" erreurs.";
+      	var message = "Vous avez "+count_errors+" erreurs à corriger.";
+
+      $('#btn-check-solution').removeClass('btn-success').addClass('btn-warning disabled').tooltip('enable');
+      // $('img[data-postag-id='+current_postag.id+']').removeClass('invisible').addClass('visible');
+      // $('.pos[data-postag-id='+current_postag.id+']').removeClass('invisible').addClass('visible');
+      // $('.word[data-postag-id='+current_postag.id+']').removeClass('invisible').addClass('visible');
       $('#result').removeClass('d-none').html(message);
       $(window).scrollTop(0);
     }

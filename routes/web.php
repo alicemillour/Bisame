@@ -33,6 +33,7 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
 //    Route::get('user/{id}', 'UserController@showProfile');
     Route::get('user/delete', 'UserController@getDelete');
     Route::resource('games', 'GameController', ['only' => ['update', 'show']]);
+    Route::post('validate-training', 'TrainingController@validateTraining')->name('validate-training');
     Route::get('training/{postag}', 'TrainingController@training');
     Route::resource('training', 'TrainingController', ['only' => ['update', 'show']]);
     Route::get('/home/start', 'GameController@store');
@@ -44,6 +45,7 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
     Route::get('/stats', 'StatsController@index');
     Route::get('contact', 'ContactController@showForm')->name('contact');
     Route::post('contact', 'ContactController@sendContactInfo');
+    Route::post('create-annotation', 'AnnotationController@create')->name('create-annotation');
 // });
 
 Route::get('/asset', [

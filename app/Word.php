@@ -37,4 +37,8 @@ class Word extends Model
 	{
 		return $this->hasOne('App\Annotation')->where('tagger','solution');
 	}
+	public function annotation_user($user_id)
+	{
+		return $this->hasOne('App\Annotation')->where('user_id',$user_id)->first();
+	}
 }

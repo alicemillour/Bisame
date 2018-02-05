@@ -349,6 +349,21 @@ class RecipeController extends Controller
         $corpus_recipe = Corpus::where('name','like',$recipe->id.'_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'recipe';
+        
+        // $words = $corpus_recipe->sentences->words;
+
+        if(auth()->check()){
+            $annotations_user = [];
+        } else {
+            $annotations_user = [];
+        }
+
+        $message = '';
+        if($request->has('pos')){
+            $postag = Postag::find($request->input('pos'));
+            $message = "Vous êtes bien entraîné, les ".$postag->name." n'ont plus de secret pour vous ! Passons aux choses sérieuses :";
+        }
+
         if($request->has('tab')){
             $tab = $request->input('tab');
             if(!in_array($tab,['plus','pos']))
@@ -356,7 +371,7 @@ class RecipeController extends Controller
             if(in_array($tab,['plus','pos']) && !auth()->check())
                 return redirect()->route('login')->withErrors("Veuillez vous connecter pour accéder à cette partie du site.");
         }
-        return view('recipes.show',compact('recipe','corpus_recipe','postags','tab'));
+        return view('recipes.show',compact('recipe','corpus_recipe','postags','tab','message'));
     }
     
     /**
