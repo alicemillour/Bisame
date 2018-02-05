@@ -6,6 +6,7 @@ return [
 	'next' => 'Prochain badge',
 	'recipe' => 'Vous avez saisi 1 recette',
 	'recipes' => 'Vous avez saisi :number recettes',
+	'postag' => "Les :value n'ont plus de secret pour vous !",
     'tooltip' => [
 	    'recipes' => ':number recettes saisies',
 	    'recipe' => '1 recette saisie',

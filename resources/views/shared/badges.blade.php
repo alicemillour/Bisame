@@ -4,7 +4,11 @@
             {{ __('badges.new') }}
         @endslot
         <div class="text-center">
-        <h4>{{ (Session::get('badge.required_value')>1)? __('badges.'.Session::get('badge.key').'s',['number'=>Session::get('badge.required_value')]) : __('badges.'.Session::get('badge.key')) }}</h4>
+        @if(Session::get('badge.required_value'))
+            <h4>{{ (Session::get('badge.required_value')>1)? __('badges.'.Session::get('badge.key').'s',['number'=>Session::get('badge.required_value')]) : __('badges.'.Session::get('badge.key')) }}</h4>
+        @else
+            <h4>{{ __('badges.'.Session::get('badge.key'),['value'=>Session::get('badge.required_value_string')]) }}</h4>
+        @endif
         <img style="width:50%;" src="{{ asset('img/badges/'.Session::get('badge.image')) }}" /><br/>
         @if(Session::has('next_badge'))
             @php
