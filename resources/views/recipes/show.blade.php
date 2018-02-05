@@ -161,6 +161,9 @@
   @endphp
 
   <div id="annotation" class="bg-white p-3 d-none noselect">
+    @if($message)
+      <h4 class="alert">{{ $message }}</h4>
+    @endif
     <h4>Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
     <div class="row">
       <h5 id="message" class="mb-2 col-8">Voici les annotations produites par notre outil :</h5>
@@ -171,12 +174,21 @@
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)
           <div class="word-container" style="display:inline-block;text-align:center;vertical-align: top;">
-            <span class="word" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $word->value }}</span>
-            <br/>
-            @if($pos[$word->annotation_melt->postag_id]!="PUNCT")
+
+            @if($word->annotation_user(auth()->id()) && $word->annotation_user(auth()->id())->postag_id && $pos[$word->annotation_user(auth()->id())->postag_id]!="PUNCT")
+              <span class="word validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $word->value }}</span>
+              <br/>
               <img class="no invisible" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}" />
-              <span class="pos not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $pos[$word->annotation_melt->postag_id] }}</span>
+              <span class="pos" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $pos[$word->annotation_melt->postag_id] }}</span>
               <img class="check invisible" src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}"/>
+            @else
+              <span class="word not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $word->value }}</span>
+              <br/>
+              @if($pos[$word->annotation_melt->postag_id]!="PUNCT")
+                <img class="no invisible" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}" />
+                <span class="pos not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}">{{ $pos[$word->annotation_melt->postag_id] }}</span>
+                <img class="check invisible" src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_melt->postag_id }}"/>
+              @endif
             @endif
           </div>
           @endforeach
@@ -289,14 +301,18 @@ foreach($recipe->ingredients as $ingredient){
       $('.pos[data-word-id='+word_id+']').removeClass('visible').removeClass('not-validated').addClass('invisible').attr('data-postag-id',0);
       $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);      
       $('.word[data-word-id='+word_id+']').removeClass('highlight').removeClass('validated').attr('data-postag-id',0);
+      saveAnnotation(word_id, 0);
       checkPosFinished();
     }
 
     function validatePos(elm){
       var word_id = elm.attr('data-word-id');
+      var postag_id = elm.attr('data-postag-id');
+      console.log(postag_id);
       $('.pos[data-word-id='+word_id+']').removeClass('not-validated');
       $('.word[data-word-id='+word_id+']').removeClass('highlight').addClass('validated');
       $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);
+      saveAnnotation(word_id, postag_id);
       checkPosFinished();
     }
 
@@ -349,12 +365,16 @@ foreach($recipe->ingredients as $ingredient){
       $('#btn-validate').removeClass('d-none');
       $('#btn-next-postag').removeClass('d-none btn-success').addClass('btn-warning disabled').tooltip('enable');
       $('.word').removeClass('highlight');
-      $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
-      $('.pos.not-validated').addClass('invisible');
       $('img.no').removeClass('visible').addClass('invisible');
-      $('img.check').removeClass('visible').addClass('invisible');      
-      $('.pos[data-postag-id='+current_postag_id+']').removeClass('invisible').addClass('visible');
-      $('img[data-postag-id='+current_postag_id+']').removeClass('invisible').addClass('visible');
+      $('img.check').removeClass('visible').addClass('invisible');
+      $('.pos.not-validated').addClass('invisible');
+      $('.word.not-validated[data-postag-id='+current_postag_id+']').each(function(){
+        var word_id = $(this).attr('data-word-id');
+        $(this).addClass('highlight');
+        $('.pos[data-word-id='+word_id+']').removeClass('invisible').addClass('visible');
+        $('img[data-word-id='+word_id+']').removeClass('invisible').addClass('visible');        
+      });
+      
       $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
       $('#btn-annotation').hide();
       checkPosFinished();
@@ -372,6 +392,11 @@ foreach($recipe->ingredients as $ingredient){
         continue;
       }
       return postag;
+    }
+    function saveAnnotation(word_id, postag_id) {
+      $.post( "{{ route('create-annotation') }}", { word_id: word_id, postag_id: postag_id }, function(){
+        // window.location.href = url_redirection;
+      } );
     }
 
     function getSelectionHtml() {
