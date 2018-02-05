@@ -13,7 +13,6 @@ $solutions = [];
 <div id="annotation" class="container bg-white p-3 noselect">
     <div class="row">
     <div class="col-12">
-		<h4>{{ url()->previous() }}</h4>
 		<h4>Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight">{{ $postag->full_name }} <em>({{ $postag->name }})</em></span> !</h4>
     </div>
     <div class="col-9">
@@ -77,7 +76,9 @@ $solutions = [];
 	var postags = {!! json_encode($postags) !!};
 	var current_postag = {!! json_encode($postag) !!};
 	var solutions = {!! json_encode($solutions) !!};
-
+  var parser = document.createElement('a');
+  parser.href = previous_url; 
+  previous_url = parser.protocol+'//'+parser.hostname+parser.pathname;
     $('.word').click(function(){
 
       var word_id = $(this).attr('data-word-id');
@@ -163,18 +164,11 @@ $solutions = [];
       }
       
       if(count_errors==0){
-		var re = /\?tab=pos/i;
-		var re2 = /pos=/i;
-		var url_redirection = previous_url;
-		if(!previous_url.match(re)){
-			url_redirection = previous_url+"?tab=pos&pos="+current_postag.id;
-		} else if(!previous_url.match(re2)) {
-			url_redirection = previous_url+"&pos="+current_postag.id;		
-		}	
-		var message = "Félicitations ! C'est un sans-faute !";
-		$.post( "{{ route('validate-training') }}", { postag_id: current_postag.id }, function(){
-			window.location.href = url_redirection;
-		} );
+        var url_redirection = previous_url+'?tab=pos&pos='+current_postag.id;
+    		var message = "Félicitations ! C'est un sans-faute !";
+    		$.post( "{{ route('validate-training') }}", { postag_id: current_postag.id }, function(){
+    			window.location.href = url_redirection;
+    		} );
 		// window.location.href = url_redirection;
       } else if(count_errors == 1 )
       	var message = "Vous avez "+count_errors+" erreur à corriger.";
