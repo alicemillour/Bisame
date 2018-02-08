@@ -10,6 +10,7 @@
 		<th scope="col">Category</th>
 		<th scope="col">Order</th>
 		<th scope="col">Difficulty</th>
+		<th scope="col">Points</th>
 	</tr>
 </thead>
 @foreach($postags as $postag)
@@ -19,6 +20,7 @@
 		<td>{{ $postag->category }}</td>
 		<td>{{ $postag->order }}</td>
 		<td>{{ $postag->difficulty }}</td>
+		<td>{{ $postag->points }}</td>
 	</tr>
 @endforeach
 </table>

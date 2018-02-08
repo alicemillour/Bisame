@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'recipes.search', 'method' => 'get']) !!}
+{!! Form::open(['route' => 'recipes.search', 'method' => 'get', 'class' => 'mb-2']) !!}
   <div class="d-flex flex-row justify-content-md-center">
     <div class="mr-3">
       <input type="text" name="search" class="form-control" placeholder="Trouver une recette...">

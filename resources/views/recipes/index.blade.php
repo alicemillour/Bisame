@@ -9,7 +9,14 @@
 
     <div id="recipes-index">
         @include ('recipes/_search')
-        @include ('recipes/_list')
+        <div class="row">
+        	<div class="col-9">
+        		@include ('recipes/_list')
+        	</div>
+        	<div class="col-3">
+        		@include ('recipes/_menu')
+        	</div>
+    	</div>
     </div>
 @endsection
 

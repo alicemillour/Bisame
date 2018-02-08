@@ -57,7 +57,7 @@ $solutions = [];
           <br/>
         @endforeach
         <div class="text-center">
-          <button id="btn-check-solution" class="btn btn-warning disabled btn-lg m-5" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="top">Vérifier mes réponses</button>
+          <button id="btn-check-solution" class="btn btn-warning disabled btn-lg mb-5" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="top">Vérifier mes réponses</button>
         </div>        
        </div>
       <div class="col-3">

@@ -264,7 +264,7 @@ foreach($recipe->ingredients as $ingredient){
         return false;
       }
       if($(this).hasClass('disabled')){
-        alert("Validez ou invalidez tous les mots en surbrillance avant de continuer");
+        // alert("Validez ou invalidez tous les mots en surbrillance avant de continuer");
         return false;
       }
       current_postag_id = $(this).attr('data-postag-id');
@@ -302,6 +302,7 @@ foreach($recipe->ingredients as $ingredient){
       $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);      
       $('.word[data-word-id='+word_id+']').removeClass('highlight').removeClass('validated').attr('data-postag-id',0);
       saveAnnotation(word_id, 0);
+      updateCountNotValidated();
       checkPosFinished();
     }
 
@@ -313,6 +314,7 @@ foreach($recipe->ingredients as $ingredient){
       $('.word[data-word-id='+word_id+']').removeClass('highlight').addClass('validated');
       $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);
       saveAnnotation(word_id, postag_id);
+      updateCountNotValidated();
       checkPosFinished();
     }
 
@@ -338,7 +340,19 @@ foreach($recipe->ingredients as $ingredient){
       current_postag_id = fisrt_postag.attr('data-postag-id');
       current_postag = getPostag(current_postag_id);
       $('.postag').removeClass('highlight');
-      fisrt_postag.addClass('highlight');      
+      updateCountNotValidated();
+      if(fisrt_postag.hasClass('validated')){
+        fisrt_postag.nextAll('.postag').each(function(){
+          if($(this).attr('data-count-todo')>0){
+            current_postag_id = $(this).attr('data-postag-id');
+            current_postag = getPostag(current_postag_id);
+            $(this).addClass('highlight');
+            return false; 
+          }
+        });
+      } else {
+        fisrt_postag.addClass('highlight');
+      }
       initAnnotationPostag();
     });
 
@@ -347,7 +361,15 @@ foreach($recipe->ingredients as $ingredient){
         alert("Validez ou invalidez tous les mots en surbrillance avant de continuer.");
         return false;        
       }
-      var next_postag = $('.postag.highlight').next('.postag');
+      var next_postag = $('.postag[data-postag-id='+current_postag.id+']').next('.postag');
+      if(next_postag.hasClass('validated')){
+        next_postag.nextAll('.postag').each(function(){
+          if($(this).attr('data-count-todo')>0){
+            next_postag = $(this);
+            return false; 
+          }
+        });
+      }
       if(next_postag.hasClass('warning')){
         if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
           window.location.href = base_url+'training/'+next_postag.attr('data-postag-id');
@@ -362,6 +384,7 @@ foreach($recipe->ingredients as $ingredient){
     });
 
     function initAnnotationPostag(postag) {
+      updateCountNotValidated();
       $('#btn-validate').removeClass('d-none');
       $('#btn-next-postag').removeClass('d-none btn-success').addClass('btn-warning disabled').tooltip('enable');
       $('.word').removeClass('highlight');
@@ -377,8 +400,28 @@ foreach($recipe->ingredients as $ingredient){
       
       $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
       $('#btn-annotation').hide();
+      
       checkPosFinished();
       $(window).scrollTop(0);
+    }
+
+    function updateCountNotValidated() {
+      for(key in postags)
+      {
+        var pos = postags[key];
+        var count_not_validated = $('span.pos.not-validated[data-postag-id='+pos.id+']').length;
+        if($('.pos[data-postag-id='+pos.id+']').length>0 && count_not_validated==0){
+          $('.postag[data-postag-id='+pos.id+']').addClass('validated');
+        }else if($('.pos[data-postag-id='+pos.id+']').length==0 && count_not_validated==0){
+          $('.postag[data-postag-id='+pos.id+']').addClass('disabled');
+        }
+        $('.postag[data-postag-id='+pos.id+']').attr('data-count-todo',count_not_validated);
+        $('.count-not-validated[data-postag-id='+pos.id+']').html(count_not_validated);
+      }
+
+      if($('.postag[data-difficulty="very-easy"]').length==$('.postag[data-difficulty=very-easy][data-count-todo=0]').length){
+        $('.postag').removeClass('d-none');
+      }      
     }
 
     function getPostag(postag_id) {
@@ -393,9 +436,10 @@ foreach($recipe->ingredients as $ingredient){
       }
       return postag;
     }
+
     function saveAnnotation(word_id, postag_id) {
       $.post( "{{ route('create-annotation') }}", { word_id: word_id, postag_id: postag_id }, function(){
-        // window.location.href = url_redirection;
+
       } );
     }
 
@@ -920,6 +964,9 @@ foreach($recipe->ingredients as $ingredient){
 @section('style')
 
 <style>
+.list-group-item.disabled,.list-group-item.disabled:hover, .list-group-item:disabled {
+  background-color: #e9ecef;
+}
 .word-container{
   line-height: 1.1em;
   margin-bottom: 0.8em;

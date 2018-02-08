@@ -43,6 +43,9 @@ class RecipeController extends Controller
     {
         return view('recipes.index', [
             'recipes' => Recipe::with('author')->withCount('likes')->latest()->paginate(20),
+            'recipes_to_annotate' => Recipe::where('annotated','=',0)->with('author')->withCount('likes')->latest()->paginate(3),
+            'annotated_recipes' => Recipe::where('annotated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),
+            'validated_recipes' => Recipe::where('validated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),
             'title' => __('recipes.last-recipes')
         ]);
     }    
@@ -382,6 +385,7 @@ class RecipeController extends Controller
      */
     public function alternativeVersions(Recipe $recipe, Request $request)
     {
+        $request->merge(['tab' => 'plus']);
         return self::show($recipe, $request);
     }
 
@@ -393,6 +397,7 @@ class RecipeController extends Controller
      */
     public function annotations(Recipe $recipe, Request $request)
     {
+        $request->merge(['tab' => 'pos']);
         return self::show($recipe, $request);
     }
 
