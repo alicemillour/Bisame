@@ -367,7 +367,7 @@ foreach($recipe->ingredients as $ingredient){
         alert("Validez ou invalidez tous les mots en surbrillance avant de continuer.");
         return false;        
       }
-      var next_postag = $('.postag[data-postag-id='+current_postag.id+']').next('.postag');
+      var next_postag = $('.postag[data-postag-id='+current_postag.id+']').nextAll('.postag');
       if(next_postag.hasClass('disabled') || next_postag.hasClass('validated')){
         next_postag.nextAll('.postag').each(function(){
           if($(this).attr('data-count-todo')>0){
