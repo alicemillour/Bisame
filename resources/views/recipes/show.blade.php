@@ -167,7 +167,13 @@
     <h4>Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
     <div class="row">
       <h5 id="message" class="mb-2 col-8">Voici les annotations produites par notre outil :</h5>
+      <h4 id="explanation" class="mb-2 col-8 d-none">Lorsqu'une catégorie est suggérée
+          (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
+          (<img src="{{ asset('images/check.png') }}">)
+          ou l'invalider (<img src="{{ asset('images/no.png') }}">).
+      </h4>
     </div>
+
     <div class="row">
       <div class="col-8" id="annotations">
       @if($corpus_recipe)
@@ -398,7 +404,10 @@ foreach($recipe->ingredients as $ingredient){
         $('img[data-word-id='+word_id+']').removeClass('invisible').addClass('visible');        
       });
       
-      $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
+      // $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
+      $('#message').hide();
+      $('#explanation').removeClass('d-none');
+
       $('#btn-annotation').hide();
       
       checkPosFinished();
