@@ -368,7 +368,7 @@ foreach($recipe->ingredients as $ingredient){
         return false;        
       }
       var next_postag = $('.postag[data-postag-id='+current_postag.id+']').next('.postag');
-      if(next_postag.hasClass('validated')){
+      if(next_postag.hasClass('disabled') || next_postag.hasClass('validated')){
         next_postag.nextAll('.postag').each(function(){
           if($(this).attr('data-count-todo')>0){
             next_postag = $(this);
