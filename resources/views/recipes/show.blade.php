@@ -455,7 +455,7 @@ foreach($recipe->ingredients as $ingredient){
       initTooltips();
       initAnnotationPostag();
       if(postag!='') {
-        $('#postag_'+postag.id+']').trigger("click");
+        $('#postag_'+postag.id).trigger("click");
       }      
     });
 
