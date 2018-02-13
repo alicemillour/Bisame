@@ -14,7 +14,7 @@
       </div>
       @if(!isset($footer) || $footer)
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('site.close') }}</button>
         </div>
       @endif
     </div>
