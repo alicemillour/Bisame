@@ -1,5 +1,5 @@
 @if(Session::has('badge'))
-    @component('components.modals.default', ['id' => 'badgeModal'])
+    @component('components.modals.default', ['id' => 'badgeModal', 'footer'=>false])
         @slot('title')
             {{ __('badges.new') }}
         @endslot
