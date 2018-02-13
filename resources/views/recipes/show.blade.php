@@ -172,8 +172,8 @@
       @endcomponent    
     @endif
     <h4 id="title-tab-pos">Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
-    <div class="row">
-      <h4 id="message" class="mb-2 col-8">Voici les annotations produites par notre outil :</h4>
+    <div class="row mb-3">
+      <h4 id="message" class="mb-2 col-8 explanation">Voici les annotations produites par notre outil :</h4>
       <h4 id="explanation" class="mb-2 col-8 d-none explanation">Lorsqu'une catégorie est suggérée
           (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
           (<img src="{{ asset('images/check.png') }}">)
@@ -291,9 +291,10 @@ foreach($recipe->ingredients as $ingredient){
               $('#message-popup').modal('hide');
           });
         })        
-
-        console.log('test');
       }
+      if($('span.validated').length>0){
+        $('#btn-annotation').trigger("click");
+      }      
     };
 
     $('.help').click(function(event){
@@ -323,6 +324,7 @@ foreach($recipe->ingredients as $ingredient){
       // $(this).addClass('highlight').tooltip('disable');
 
       initAnnotationPostag();
+      updateCountNotValidated();
       // $('.word[data-postag-id='+current_postag_id+']').addClass('highlight');
       // $('.pos').addClass('invisible');
       // $('.pos[data-postag-id='+current_postag_id+']').removeClass('invisible').addClass('visible');
@@ -352,9 +354,12 @@ foreach($recipe->ingredients as $ingredient){
     })
     
     function displayPostagsList(word){
+      $('*').popover('hide');
       var word_id = word.attr('data-word-id');
       var content = $('<div/>');
-      $('*').popover('hide');
+      var btn_close = $('<div style="text-align:right;cursor:pointer;">[ x ]</div>').click(function(){$('*').popover('hide');});
+      content.append(btn_close);
+      
       for(key in postags)
       {
         var pos = postags[key];
@@ -370,7 +375,8 @@ foreach($recipe->ingredients as $ingredient){
         placement:'auto',
         html:true,
         animation:true,
-        trigger:'click',
+        trigger:'focus',
+        container: 'body'
       }).popover('show');
     }
 
@@ -407,15 +413,15 @@ foreach($recipe->ingredients as $ingredient){
       $('.word[data-word-id='+word_id+']').removeClass('highlight').removeClass('undefined').addClass('validated');
       $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);
       saveAnnotation(word_id, postag_id);
-      checkPosFinished();
+      updateCountNotValidated();
     }
 
     function checkPosFinished(){
       if($('img.visible').length==0){
         $('#btn-next-postag').removeClass('btn-warning disabled').addClass('btn-success').tooltip('disable');
-        var next_postag = $('.postag.highlight').next('.postag');
-        if(!next_postag.hasClass('warning'))
-          next_postag.removeClass('disabled');
+        // var next_postag = $('.postag.highlight').next('.postag');
+        // if(!next_postag.hasClass('warning'))
+        //   next_postag.removeClass('disabled');
       }
     }
 
@@ -434,7 +440,8 @@ foreach($recipe->ingredients as $ingredient){
       current_postag = getPostag(current_postag_id);
       $('.postag').removeClass('highlight');
       updateCountNotValidated();
-      if(fisrt_postag.hasClass('validated')){
+      if(fisrt_postag.hasClass('validated') || fisrt_postag.hasClass('disabled') ){
+        console.log(fisrt_postag);
         fisrt_postag.nextAll('.postag').each(function(){
           if($(this).attr('data-count-todo')>0){
             current_postag_id = $(this).attr('data-postag-id');
@@ -456,8 +463,13 @@ foreach($recipe->ingredients as $ingredient){
         return false;        
       }
       var next_postag = $('.postag[data-postag-id='+current_postag.id+']').next('.postag');
+      console.log($(next_postag));
+      if(next_postag.hasClass('disabled')){
+        console.log("disabled");
+      }
       if($(next_postag).hasClass('disabled') || $(next_postag).hasClass('validated')){
-        next_postag.nextAll('.postag').each(function(){
+        $(next_postag).nextAll('.postag').each(function(){
+          console.log($(this));
           if($(this).attr('data-count-todo')>0){
             next_postag = $(this);
             return false; 
@@ -496,8 +508,10 @@ foreach($recipe->ingredients as $ingredient){
     function initAnnotationPostag(postag) {
       updateCountNotValidated();
       initTooltips();
+
       if(total_count_not_validated==0)
         return false;
+
       $('#btn-validate').removeClass('d-none');
       $('#btn-next-postag').removeClass('d-none btn-success').addClass('btn-warning disabled').tooltip('enable');
       $('.word').removeClass('highlight');
@@ -512,7 +526,7 @@ foreach($recipe->ingredients as $ingredient){
       });
       
       // $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
-      $('#message').html('Vous annotez la catégorie '+current_postag.full_name+' <em>('+current_postag.name+')</em>)');
+      $('#message').html('Vous annotez la catégorie '+current_postag.full_name+' <em>('+current_postag.name+')</em>');
       $('#explanation').removeClass('d-none');
 
       $('#btn-annotation').hide();
@@ -541,6 +555,7 @@ foreach($recipe->ingredients as $ingredient){
         $('#free-annotation').removeClass('d-none').addClass('highlight');
         $('#message').hide();
         $('#explanation').hide();
+        $('#btn-next-postag').hide();
         $('#explanation-free-annotation').removeClass('d-none');
         $('.validated').addClass('validated-invisible').removeClass('validated');
         $('.undefined').addClass('highlight');
@@ -1100,7 +1115,8 @@ foreach($recipe->ingredients as $ingredient){
 <style>
 .explanation {
   font-family: Trebuchet MS, Helvetica, arial, sans-serif;
-  color: steelblue;
+  color: #337ab7;
+  background-color: white;
 }
 .list-group-item.disabled,.list-group-item.disabled:hover, .list-group-item:disabled {
   background-color: #e9ecef;

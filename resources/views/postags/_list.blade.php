@@ -11,7 +11,7 @@
           <button class="btn btn-light float-right help d-inline-block" style="z-index:1000" onclick="help=true;$('#help{{ $postag->id }}').collapse('toggle');" aria-hidden="true" data-toggle="collapse" data-target="#help{{ $postag->id }}" aria-expanded="false">
             <i class="fa fa-question-circle-o"></i>
           </button>
-          <div class="collapse clearfix mt-2" id="help{{ $postag->id }}">
+          <div class="collapse clearfix mt-2 explanation" id="help{{ $postag->id }}">
             <h6>Quelques exemples :</h6>
             {!! $postag->description !!}
           </div>

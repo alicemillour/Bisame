@@ -13,20 +13,21 @@ $solutions = [];
 <div id="annotation" class="container bg-white p-3 noselect">
     <div class="row">
     <div class="col-12">
-		<h4>Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight">{{ $postag->full_name }} <em>({{ $postag->name }})</em></span> !</h4>
+		<h4 class="explanation">Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight">{{ $postag->full_name }} <em>({{ $postag->name }})</em></span> !</h4>
     </div>
     <div class="col-9">
-		<h4>Lorsqu'une catégorie est suggérée
+		<h4 class="explanation">Lorsqu'une catégorie est suggérée
 		    (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
 		    (<img src="{{ asset('images/check.png') }}">)
-		    ou l'invalider (<img src="{{ asset('images/no.png') }}">).<br/>
-		    En cas de doute, consultez les exemples à droite ou 
-		    <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a>
+		    ou l'invalider (<img src="{{ asset('images/no.png') }}">).
+    </h4>
+		<h4 class="explanation">En cas de doute, consultez les exemples à droite ou 
+      <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a>
 		</h4>
 		<h4 id="result" class="d-none"></h4>
     </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
 
       <div class="col-9" id="annotations">
         @foreach($corpus_training->sentences as $sentence)
@@ -60,7 +61,7 @@ $solutions = [];
           <button id="btn-check-solution" class="btn btn-warning disabled btn-lg mb-5" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="top">Vérifier mes réponses</button>
         </div>        
        </div>
-      <div class="col-3">
+      <div class="col-3 explanation">
         <h5>Quelques exemples :</h5>
         {!! $postag->description !!}
       </div>
@@ -270,6 +271,11 @@ img.check {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+.explanation {
+  font-family: Helvetica, arial, sans-serif;
+  color: #337ab7;
+  background-color: white;
 }
 </style>
 @endsection
