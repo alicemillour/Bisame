@@ -282,7 +282,7 @@ foreach($recipe->ingredients as $ingredient){
       $("#{{ $tab }}-tab").trigger("click");
       if(postag!='') {
         $('#btn-annotation').trigger("click");
-        $('.postag[data-postag-id='+postag.id+']').trigger("click");
+        $('#postag_'+postag.id+']').trigger("click");
       }
       if($('#message-popup').length==1){
         $('#message-popup').modal('show');
