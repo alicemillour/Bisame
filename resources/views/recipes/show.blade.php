@@ -213,7 +213,7 @@
               @endphp
               <span class="word not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $annotation->postag_id }}">{{ $word->value }}</span>
               <br/>
-              @if($pos[$word->annotation_melt->postag_id]!="PUNCT")
+              @if($annotation && $pos[$annotation->postag_id]!="PUNCT")
                 <img class="no invisible" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $annotation->postag_id }}" />
                 <span class="pos not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $annotation->postag_id }}">{{ $pos[$annotation->postag_id] }}</span>
                 <img class="check invisible" src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $annotation->postag_id }}"/>
