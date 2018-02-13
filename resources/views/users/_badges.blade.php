@@ -11,9 +11,9 @@
 		  $key =$badge->key;
 		@endphp		
 	@endif
-	@if($badges_user->has($badge->id))
-	  <img data-toggle="tooltip" title="{{ ($badge->required_value>1) ? __('badges.tooltip.'.$badge->key.'s', ['number'=>$badge->required_value]) : __('badges.tooltip.'.$badge->key.'') }}" class="badge-user" src="{{ asset('img/badges/'.$badge->image) }}" />
+	@if($badge->required_value_string)
+	  <img data-toggle="tooltip" title="{{ __('badges.tooltip.'.$badge->key, ['value'=>$badge->required_value_string]) }}" class="badge-user {{ $badges_user->has($badge->id)? '':'disabled-badge' }}" src="{{ asset('img/badges/'.$badge->image) }}" />
 	@else
-	  <img data-toggle="tooltip" title="{{ ($badge->required_value>1) ? __('badges.tooltip.'.$badge->key.'s', ['number'=>$badge->required_value]) : __('badges.tooltip.'.$badge->key.'') }}" class="badge-user disabled-badge" src="{{ asset('img/badges/'.$badge->image) }}" />
+	  <img data-toggle="tooltip" title="{{ ($badge->required_value>1) ? __('badges.tooltip.'.$badge->key.'s', ['number'=>$badge->required_value]) : __('badges.tooltip.'.$badge->key.'') }}" class="badge-user {{ $badges_user->has($badge->id)? '':'disabled-badge' }}" src="{{ asset('img/badges/'.$badge->image) }}" />
 	@endif
 @endforeach
