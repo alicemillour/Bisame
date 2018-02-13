@@ -24,6 +24,7 @@ return [
 	    'storie' => '1 histoire racontée',
 	    'annotations' => ':number annotations',
 	    'annotation' => '1 annotation',
+	    'postag' => "Les :value n'ont plus de secret pour vous !",
     ],
     'next_badge' => [
 	    'recipes' => 'dans :number recettes',
