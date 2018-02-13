@@ -211,7 +211,7 @@
               @php
                 $annotation = $word->annotation_melt;
               @endphp
-              <span class="word not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $annotation->postag_id }}">{{ $word->value }}</span>
+              <span class="word not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ ($annotation)? $annotation->postag_id : '' }}">{{ $word->value }}</span>
               <br/>
               @if($annotation && $pos[$annotation->postag_id]!="PUNCT")
                 <img class="no invisible" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $annotation->postag_id }}" />
