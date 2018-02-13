@@ -282,7 +282,6 @@ foreach($recipe->ingredients as $ingredient){
       $("#{{ $tab }}-tab").trigger("click");
       if(postag!='') {
         $('#btn-annotation').trigger("click");
-        $('#postag_'+postag.id+']').trigger("click");
       }
       if($('#message-popup').length==1){
         $('#message-popup').modal('show');
@@ -455,6 +454,9 @@ foreach($recipe->ingredients as $ingredient){
       }
       initTooltips();
       initAnnotationPostag();
+      if(postag!='') {
+        $('#postag_'+postag.id+']').trigger("click");
+      }      
     });
 
     $('#btn-next-postag').click(function(){
