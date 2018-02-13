@@ -28,6 +28,8 @@
     @if(Auth::check())
     <div class="dropdown">
         <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            @component('users._avatar', ['user' => Auth::user()])
+            @endcomponent
             {{$name}}<span class="caret"></span>
         </a>
         
