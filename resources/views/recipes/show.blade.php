@@ -162,14 +162,9 @@
 
   <div id="annotation" class="bg-white p-3 d-none noselect">
     @if($message)
-      @component('components.modals.default', ['id' => 'message-popup', 'footer' => false])
-          @slot('title')
-              À vous de jouer !
-          @endslot
-          <div class="">
+          <h4 id="message-popup" class="mb-3">
             {{ $message }}
-          </div>
-      @endcomponent    
+          </h4>
     @endif
     <h4 id="title-tab-pos">Aidez-nous à améliorer nos outils ! <button class="btn btn-primary" id="btn-annotation">Annoter la recette</button></h4>
     <div class="row mb-3">
@@ -284,12 +279,11 @@ foreach($recipe->ingredients as $ingredient){
         $('#btn-annotation').trigger("click");
       }
       if($('#message-popup').length==1){
-        $('#message-popup').modal('show');
-        $('#message-popup').on('shown.bs.modal', function (e) {
-          $('#message-popup').delay(1000).fadeOut(3000, function(){
-              $('#message-popup').modal('hide');
+
+          $('#message-popup').delay(10000).fadeOut(3000, function(){
+              $('#message-popup').remove();
           });
-        })        
+       
       }
       if($('span.validated').length>0){
         $('#btn-annotation').trigger("click");
@@ -1118,6 +1112,11 @@ foreach($recipe->ingredients as $ingredient){
 .explanation {
   font-family: Trebuchet MS, Helvetica, arial, sans-serif;
   color: #337ab7;
+  background-color: white;
+}
+#message-popup {
+  font-family: Trebuchet MS, Helvetica, arial, sans-serif;
+  color: chocolate;
   background-color: white;
 }
 .list-group-item.disabled,.list-group-item.disabled:hover, .list-group-item:disabled {
