@@ -9,6 +9,8 @@ use App\Media;
 use App\Anecdote;
 use App\Corpus;
 use App\Postag;
+use App\AnnotatedRecipe;
+use App\ValidatedRecipe;
 use App;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRecipe;
@@ -32,7 +34,7 @@ class RecipeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store','addAnecdote','addMedia','favorite','alternativeVersions','annotations']);
+        $this->middleware('auth')->only(['create','store','addAnecdote','addMedia','favorite','alternativeVersions','annotations','flagAsAnnotated','flagAsValidated']);
     }
     /**
      * Display a listing of the resource.
@@ -455,6 +457,36 @@ class RecipeController extends Controller
         }
 
         return redirect('recipes')->withSuccess(__('recipes.updated'));
+    }
+
+    /**
+     * Flag a recipe as annotated
+     *
+     * @param  \App\Recipe  $recipe
+     * @return \Illuminate\Http\Response
+     */
+    public function flagAsAnnotated(Recipe $recipe)
+    {
+        $user = auth()->user();
+        if( !AnnotatedRecipe::where('recipe_id',$recipe->id)->where('user_id',$user->id)->exists()){
+            AnnotatedRecipe::create(['recipe_id'=>$recipe->id, 'user_id'=>$user->id]);
+            $recipe->increment('annotated');
+        }
+    }
+
+    /**
+     * Flag a recipe as verified
+     *
+     * @param  \App\Recipe  $recipe
+     * @return \Illuminate\Http\Response
+     */
+    public function flagAsValidated(Recipe $recipe)
+    {
+        $user = auth()->user();
+        if( !ValidatedRecipe::where('recipe_id',$recipe->id)->where('user_id',$user->id)->exists()){
+            ValidatedRecipe::create(['recipe_id'=>$recipe->id, 'user_id'=>$user->id]);
+            $recipe->increment('validated');
+        }
     }
 
     /**

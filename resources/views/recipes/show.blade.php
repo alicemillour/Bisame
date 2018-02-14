@@ -558,10 +558,12 @@ foreach($recipe->ingredients as $ingredient){
         mode="free-annotation";
         $(window).scrollTop(0);
       }
+      
       if($('span.undefined').length==0 && mode=="free-annotation"){
         $('#explanation-free-annotation').addClass('d-none');
         $('#explanation-all-annotated').removeClass('d-none');
         $(window).scrollTop(0);
+        flagRecipeAsAnnotated();
       }
 
       if($('.postag[data-difficulty="very-easy"]').length==$('.postag[data-difficulty=very-easy][data-count-todo=0]').length){
@@ -584,6 +586,12 @@ foreach($recipe->ingredients as $ingredient){
 
     function saveAnnotation(word_id, postag_id) {
       $.post( "{{ route('create-annotation') }}", { word_id: word_id, postag_id: postag_id }, function(){
+
+      } );
+    }
+
+    function flagRecipeAsAnnotated() {
+      $.post( "{{ route('recipes.flag-as-annotated',$recipe) }}", function(){
 
       } );
     }
