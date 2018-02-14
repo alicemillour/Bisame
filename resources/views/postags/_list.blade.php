@@ -19,7 +19,7 @@
       @else
         <div id="postag_{{ $postag->id }}" class="postag list-group-item list-group-item-action disabled warning d-none" data-postag-id="{{ $postag->id }}" data-toggle="tooltip" title="Catégorie difficile, faire la formation ?" data-placement="left" data-difficulty="{{ $postag->difficulty }}" data-count-todo="">
           {{ $postag->full_name }} <em>({{ $postag->name }})</em>
-          <i class="float-right fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <i class="float-right fa fa-exclamation-triangle mr-2" aria-hidden="true"></i>
           <span class="count-not-validated float-right pr-2" data-postag-id="{{ $postag->id }}"></span>
         </div>
       @endif
