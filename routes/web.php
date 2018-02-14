@@ -69,11 +69,13 @@ Route::get('recipes/{recipe}/annotations', 'RecipeController@annotations')->name
 Route::resource('recipes', 'RecipeController');
 Route::get('recipes/user/{user}', 'RecipeController@user')->name('recipes.user');
 
+Route::post('users/update-password', 'UserController@updatePassword')->name('users.update-password');
 Route::resource('users', 'UserController');
 Route::post('users/update-position', 'UserController@updatePosition')->name('users.update-position');
 Route::post('users/update-age', 'UserController@updateAge')->name('users.update-age');
 Route::post('users/update-avatar', 'UserController@updateAvatar')->name('users.update-avatar');
 Route::post('users/update-notifications', 'UserController@updateNotifications')->name('users.update-notifications');
+
 Route::resource('translations', 'AlternativeTextController')->middleware('auth');
 Route::resource('likes', 'LikeController');
 
