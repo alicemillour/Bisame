@@ -28,6 +28,7 @@
     {{-- <a id="cancel_edit" href="{{ route('users.show', $user) }}" class="btn btn-secondary">{{ __('forms.actions.cancel') }}</a> --}}
     {!! Form::submit("Enregistrer mon profil", ['class' => 'btn btn-success']) !!}
   </div>
+{!! Form::close() !!}
 <hr/>
 
 <h4 class="card-title mt-3" id="title-infos">Informations facultatives</h4>
@@ -79,6 +80,7 @@
 </div>
 <hr/>
 <h4 class="card-title" id="title-avatar">Modifier votre mot de passe</h4>
+{!! Form::open(['route' => 'users.update-password']) !!}
   <div class="form-group row">
     {!! Form::label('password', __('users.attributes.password'), ['class' => 'col-sm-3 col-form-label']) !!}
 
@@ -106,10 +108,8 @@
   <div class="form-group text-right">
     <button class="btn btn-success">Modifier mon mot de passe</button>
   </div>
-
-
-
 {!! Form::close() !!}
+
 @component('components.modals.default', ['id' => 'avatarsModal'])
     @slot('title')
         Choisir son avatar

@@ -25,8 +25,7 @@ class UpdateUser extends FormRequest
     {
         return [
             'name' => 'required|unique:users,name,' . $this->user->id,
-            'email' => 'nullable|string|email|unique:users,email,' . $this->user->id,
-            'password' => 'nullable|confirmed',
+            'email' => 'nullable|string|email|unique:users,email,' . $this->user->id
         ];
     }
 }

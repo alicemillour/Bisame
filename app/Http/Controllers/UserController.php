@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUser;
 use App\Http\Requests\UpdateUserPosition;
 use App\Http\Requests\UpdateUserAge;
 use App\Http\Requests\UpdateUserAvatar;
+use App\Http\Requests\UpdatePassword;
 use App\Repositories\UserRepository;
 use App\User;
 use App\Role;
@@ -99,6 +100,21 @@ class UserController extends Controller
 
         return __('users.updated');
     }
+
+    /**
+    * Update the password.
+    */
+    public function updatePassword(UpdatePassword $request)
+    {
+        $user = auth()->user();
+        
+        $this->authorize('update', $user);
+
+        $user->update(array_filter($request->only(['password'])));
+
+        return redirect()->route('users.home')->withSuccess(__('users.updated'));
+    }
+    
     /**
     * Update the specified resource in storage.
     */
