@@ -213,7 +213,9 @@ class RecipeController extends Controller
         $notification = Notification::where('slug','all-recipes')->first();
 
         foreach($notification->users as $user){
-            Mail::to($user)->queue(new NewRecipe($recipe));
+            if($user->email!=''){
+                Mail::to($user)->queue(new NewRecipe($recipe));
+            }
         }
     }
 
