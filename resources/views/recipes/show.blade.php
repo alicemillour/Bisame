@@ -895,6 +895,12 @@ foreach($recipe->ingredients as $ingredient){
       keep_open = false;
       
       var new_text = $('#alternative-text-value-'+start+'_'+end).val();
+      var original_text = getText(container,start,end);
+
+      if(new_text==original_text){
+        $('.popper').remove();
+        return false;
+      }
 
       $.post( "{{ route('translations.store') }}", {
         translatable_id: id, 
@@ -912,8 +918,6 @@ foreach($recipe->ingredients as $ingredient){
       $('.popper').remove();
       var elm_min = null;
       var offset_min = -1;
-      
-      var original_text = getText(container,start,end);
 
       $('.token', container).each(function(index,token){
         var offset_start = parseInt($(token).attr('data-offset-start'));
