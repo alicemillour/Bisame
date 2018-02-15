@@ -146,10 +146,7 @@ foreach(old('ingredient') as $ingredient){
 		    <i class="fa fa-picture-o"></i> Ajouter une photo
 		</label>
 	</span>
-	<input id="thumbnail" readonly="true" class="form-control {{ ($errors->has('filepath') ? ' is-invalid' : '') }}" type="text" name="filepath" value="{{ old('filepath') }}">
-	@if($errors->has('filepath'))
-		<span class="invalid-feedback">{{ $errors->first('filepath') }}</span>
-	@endif
+
 </div>
 
 <div id="thumbnails">
