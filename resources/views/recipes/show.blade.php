@@ -174,7 +174,7 @@
           (<img src="{{ asset('images/check.png') }}">)
           ou l'invalider (<img src="{{ asset('images/no.png') }}">).
       </h4>
-      <h4 id="explanation-free-annotation" class="mb-2 col-8 d-none explanation">Vous avez validé / invalidé tous les mots, mais il reste des mots sans étiquette. Cliquez sur les mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span> pour leur ajouter une.
+      <h4 id="explanation-free-annotation" class="mb-2 col-8 d-none explanation">Vous avez validé / invalidé tous les mots, mais il reste des mots sans étiquette. Cliquez sur les mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span> pour leur en ajouter une.
       </h4>
       <h4 id="explanation-all-annotated" class="mb-2 col-8 d-none explanation">Vous avez annoté tous les mots. Vous pouvez changer l'étiquette d'un mot en cliquant dessus.
       </h4>
@@ -558,7 +558,7 @@ foreach($recipe->ingredients as $ingredient){
         mode="free-annotation";
         $(window).scrollTop(0);
       }
-      
+
       if($('span.undefined').length==0 && mode=="free-annotation"){
         $('#explanation-free-annotation').addClass('d-none');
         $('#explanation-all-annotated').removeClass('d-none');
