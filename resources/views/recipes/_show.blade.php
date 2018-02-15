@@ -47,7 +47,11 @@
 	
     <div class="card-text text-truncate">{{ $recipe->content }}</div>
     <div class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe) }}</div>
-
+    <div class="card-text text-right">
+    @if(!$recipe->annotated)
+    	<a class="float-right" href="{{ route('recipes.annotations', $recipe) }}">annoter la recette</a>
+    @endif
+	</div>
 
   </div>
 </div>

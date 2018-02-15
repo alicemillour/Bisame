@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
+@include ('recipes/_search')
 <div class="row">
   <div class="col-12 mb-4">
       <div class="card">
@@ -12,66 +13,40 @@
       </div>    
   </div>
 </div>
+
 <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.app-name') }}</a></h4>
+        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.last-recipes') }}</a></h4>
         <div class="card-body">
-          <div class="text-center">
-            <p class="card-text">{{ __('recipes.text-intro') }}</p>
-          </div>
-          <div class="text-center btn-wrapper">
-            <a href="{{ route('recipes.create') }}" class="btn btn-primary">{{ __('recipes.new-recipe') }}</a>
-            <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
-          </div>
-          <hr/>
-          <h4 class="card-text">{{ __('recipes.last-recipes') }}</h4>
-
-          @forelse ($recipes as $recipe)
-            <h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
-                <div class="d-inline float-right">
-                    <i class="fa fa-heart like"></i>
-                    <span class="likes-count">{{ $recipe->likes_count }}</span>
-                </div>
-            </h6>
-            <span class="text-muted">
-              @component('users._avatar', ['user' => $recipe->author])
-
-              @endcomponent
-              {{ __('recipes.recipe-by') }}
-              @if($recipe->author->trashed())
-                {{ $recipe->author->name }}
-              @else
-                {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
-              @endif
-            </span>
-            <br/>
-            <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
-            <p class="text-right"><a class="" href="{{ route('recipes.show',$recipe) }}">lire la suite...</a></p>
-            <hr/>
-          @empty
-              <p class="card-text">Aucune recette</p>
-          @endforelse 
-          
+          @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
         </div>
+        <div class="card-footer text-center">
+          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+        </div>        
       </div>
     </div>
     <div class="col-sm-4">
       <div class="card">
-        <h4 class="card-header text-center"><a href="#">{{ __('improvisation-game.app-name') }}</a></h4>
-        <div class="card-body text-center">
-          <p class="card-text">{{ __('improvisation-game.text-intro') }}</p>
+        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Recettes à annoter</a></h4>
+        <div class="card-body">
+          @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
         </div>
+{{--         <div class="card-foote text-centerr">
+          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+        </div>  --}}       
       </div>
     </div>
     <div class="col-sm-4">
-    <div class="card">
-      <h4 class="card-header text-center"><a href="{{ route('home-game') }}">{{ __('game.app-name') }}</a></h4>
-      <div class="card-body text-center">
-        <div class="card-text">{{ __('game.text-intro') }}</div>
-        <a href="{{ route('home-game') }}" class="card-link btn btn-primary mt-3">Participer</a>  
+      <div class="card">
+        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Recettes à valider</a></h4>
+        <div class="card-body">
+          @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
+        </div>
+{{--         <div class="card-footer text-center">
+          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+        </div>  --}}       
       </div>
-    </div>
     </div>
 </div>
 </div>

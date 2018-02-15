@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\AnnotationRepository;
 use App\Jobs\ChangeLocale;
 use App\Recipe;
-use Auth;
+use Auth, DB;
 
 class WelcomeController extends Controller {
 
@@ -22,7 +22,10 @@ class WelcomeController extends Controller {
 
     public function welcome() {
         return view('welcome', [
-            'recipes' => Recipe::latest()->with('author')->withCount('likes')->limit(3)->get(),
+            'recipes' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(3)->get(),
+            'recipes_to_annotate' => Recipe::where('annotated','=',0)->with('author')->withCount('likes')->latest()->paginate(3),
+            'annotated_recipes' => Recipe::where('annotated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),
+            'validated_recipes' => Recipe::where('validated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),            
         ]);
     }
 
