@@ -25,8 +25,8 @@
 <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
 <p class="text-right"><a class="" href="{{ route('recipes.show',$recipe) }}">lire la suite...</a>
 <br/>
-@if(!$recipe->annotated)
+{{-- @if(!$recipe->annotated) --}}
   <a href="{{ route('recipes.annotations', $recipe) }}">annoter la recette</a>  
-@endif
+{{-- @endif --}}
 </p>
 <hr/>
