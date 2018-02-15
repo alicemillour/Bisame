@@ -251,6 +251,11 @@ foreach($recipe->ingredients as $ingredient){
   $alternative_texts = array_merge($alternative_texts,$ingredient->alternative_texts()->with('user')->get()->toArray());
 }
 @endphp
+    $.valHooks.textarea = {
+      get: function( elem ) {
+        return elem.value.replace( /\r?\n/g, "\r\n" );
+      }
+    };
     var help = false;
     var alternative_texts = {!! json_encode($alternative_texts) !!};
     var postags = {!! json_encode($postags) !!};
@@ -387,7 +392,6 @@ foreach($recipe->ingredients as $ingredient){
     function validatePos(elm){
       var word_id = elm.attr('data-word-id');
       var postag_id = elm.attr('data-postag-id');
-      console.log(postag_id);
       $('.pos[data-word-id='+word_id+']').removeClass('not-validated');
       $('.word[data-word-id='+word_id+']').removeClass('highlight').addClass('validated');
       $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);
@@ -401,7 +405,6 @@ foreach($recipe->ingredients as $ingredient){
       var word_id = elm.attr('data-word-id');
       var postag_id = elm.attr('data-postag-id');
       var postag = getPostag(postag_id);
-      console.log(postag);
       $('.pos[data-word-id='+word_id+']').removeClass('invisible').html(postag.name);
       $('.word[data-word-id='+word_id+']').removeClass('highlight').removeClass('undefined').addClass('validated');
       $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);
@@ -434,7 +437,6 @@ foreach($recipe->ingredients as $ingredient){
       $('.postag').removeClass('highlight');
       updateCountNotValidated();
       if(fisrt_postag.hasClass('validated') || fisrt_postag.hasClass('disabled') ){
-        console.log(fisrt_postag);
         fisrt_postag.nextAll('.postag').each(function(){
           if($(this).attr('data-count-todo')>0){
             current_postag_id = $(this).attr('data-postag-id');
@@ -459,13 +461,9 @@ foreach($recipe->ingredients as $ingredient){
         return false;        
       }
       var next_postag = $('.postag[data-postag-id='+current_postag.id+']').next('.postag');
-      console.log($(next_postag));
-      if(next_postag.hasClass('disabled')){
-        console.log("disabled");
-      }
+
       if($(next_postag).hasClass('disabled') || $(next_postag).hasClass('validated')){
         $(next_postag).nextAll('.postag').each(function(){
-          console.log($(this));
           if($(this).attr('data-count-todo')>0){
             next_postag = $(this);
             return false; 
@@ -626,7 +624,8 @@ foreach($recipe->ingredients as $ingredient){
             return (offsets_a[1] - offsets_a[0]) - (offsets_b[1] - offsets_b[0]);
           });
           $('.popper').remove();
-          var content_popper ='';
+          var text_popper ='';
+          var content_popper = $('<div/>');
           var offset_start, offset_end;
 
           $(arr).each(function(key,elm){
@@ -637,12 +636,15 @@ foreach($recipe->ingredients as $ingredient){
               $(alt_text).each(function(key3,alternative_text){
                 offset_start = alternative_text.offset_start;
                 offset_end = alternative_text.offset_end;
-                content_popper+=alternative_text.text+' - <small>'+alternative_text.name+'</small><br/>';
+                text_popper+=alternative_text.text+' - <small>'+alternative_text.name+'</small><br/>';
               });
             });
+            content_popper.html(text_popper);
             if(show_input){
-              content_popper+="Votre version :<br/>";
-              content_popper+=getInputTranslation(container, offset_start, offset_end);
+              content_popper.append($('<span>Votre version :</span><br/>'));
+              content_popper.append(getInputTranslation(container,offset_start, offset_end));              
+              // content_popper+="Votre version :<br/>";
+              // content_popper+=getInputTranslation(container, offset_start, offset_end);
             }
           });
         }
@@ -673,14 +675,22 @@ foreach($recipe->ingredients as $ingredient){
     function getInputTranslation(container, offset_start, offset_end){
       var original_text = getText(container, offset_start, offset_end);
       var id = offset_start+'_'+offset_end;
-      return '<div class="alternative-text"><textarea class="alternative-text-value" id="alternative-text-value-'+id+'" style="width:100%" spellcheck="false">'+original_text+'</textarea><input type="button" class="alternative-text-submit" value="Valider" data-offset-start="'+offset_start+'"  data-offset-end="'+offset_end+'" data-attribute="'+container.attr('data-attribute')+'"  data-type="'+container.attr('data-type')+'" data-id="'+container.attr('data-id')+'" /><input type="button" class="alternative-text-cancel" value="Annuler" /></div>';
+      var div = $('<form class="alternative-text"/>');
+      var textarea = $('<textarea class="alternative-text-value" id="alternative-text-value-'+id+'" style="width:100%" spellcheck="false"/>');
+      textarea.val(original_text);
+      var btn_submit = $('<input type="button" class="alternative-text-submit" value="Valider" data-offset-start="'+offset_start+'"  data-offset-end="'+offset_end+'" data-attribute="'+container.attr('data-attribute')+'"  data-type="'+container.attr('data-type')+'" data-id="'+container.attr('data-id')+'" />');
+      var btn_cancel = $('<input type="button" class="alternative-text-cancel" value="Annuler" />');
+      div.append(textarea).append(btn_submit).append(btn_cancel);
+      return div;
     }
 
     function showPopperTranslation(reference_element, content){
+        if($('.popper').length>0)
+          $('.popper').remove();
         var popper_translation = document.createElement("div");
         popper_translation.setAttribute('id','popper_translation');
         popper_translation.setAttribute('class','popper');
-        popper_translation.innerHTML = content;
+        $(popper_translation).append(content);
         document.body.appendChild(popper_translation);
         // var popper_translation = $('<div class="popper" id="popper_translation">'+content+'</div>');
         // popper_translation.hide();
@@ -856,11 +866,13 @@ foreach($recipe->ingredients as $ingredient){
             });
             selected_text = text;
 
-            text = 'Votre version :<br/>';
-            text+=getInputTranslation(container,offset_min, offset_max);
+            var content_popper = $('<div/>');
+            content_popper.append($('<span>Votre version :</span><br/>'));
+            content_popper.append(getInputTranslation(container,offset_min, offset_max));
+            // text+=getInputTranslation(container,offset_min, offset_max);
             var reference_element = $('.token[data-offset-start='+offset_min+']', container);
 
-            showPopperTranslation(reference_element, text);
+            showPopperTranslation(reference_element, content_popper);
             start = offset_min;
             end = offset_max;
 
@@ -881,19 +893,21 @@ foreach($recipe->ingredients as $ingredient){
       var id = $(event.target).attr('data-id');
       var container = $(".translatable[data-attribute='"+attribute+"'][data-id='"+id+"'][data-type='"+type.replace("\\","\\\\")+"']");
       keep_open = false;
+      
       var new_text = $('#alternative-text-value-'+start+'_'+end).val();
-        $.post( "{{ route('translations.store') }}", {
-          translatable_id: id, 
-          translatable_attribute: attribute,
-          translatable_type: type,
-          value: new_text,
-          offset_start: start,
-          offset_end: end
-        }).done(function( data ) {
 
-        }).fail(function( data ) {
-          alert( "Veuillez vous connecter pour enregistrer une traduction." );
-        });
+      $.post( "{{ route('translations.store') }}", {
+        translatable_id: id, 
+        translatable_attribute: attribute,
+        translatable_type: type,
+        value: new_text,
+        offset_start: start,
+        offset_end: end
+      }).done(function( data ) {
+
+      }).fail(function( data ) {
+        alert( "Veuillez vous connecter pour enregistrer une traduction." );
+      });
 
       $('.popper').remove();
       var elm_min = null;
