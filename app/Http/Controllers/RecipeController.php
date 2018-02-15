@@ -44,7 +44,7 @@ class RecipeController extends Controller
     public function index()
     {
         return view('recipes.index', [
-            'recipes' => Recipe::with('author')->withCount('likes')->latest()->paginate(20),
+            'recipes' => Recipe::with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->latest()->paginate(20),
             'recipes_to_annotate' => Recipe::where('annotated','=',0)->with('author')->withCount('likes')->latest()->paginate(3),
             'annotated_recipes' => Recipe::where('annotated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),
             'validated_recipes' => Recipe::where('validated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),
