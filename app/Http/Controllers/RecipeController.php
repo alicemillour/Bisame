@@ -41,14 +41,20 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($recipes=null, $title=null)
     {
+        if(!$recipes)
+            $recipes = Recipe::with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->latest()->paginate(20);
+        
+        if(!$title)
+            $title = __('recipes.last-recipes');
+
         return view('recipes.index', [
-            'recipes' => Recipe::with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->latest()->paginate(20),
-            'recipes_to_annotate' => Recipe::where('annotated','=',0)->with('author')->withCount('likes')->latest()->paginate(3),
-            'annotated_recipes' => Recipe::where('annotated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),
+            'recipes' => $recipes,
+            'recipes_to_annotate' => Recipe::with('author')->withCount('likes')->latest()->toAnnotate()->paginate(3),
+            'annotated_recipes' => Recipe::with('author')->withCount('likes')->toValidate()->latest()->paginate(3),
             'validated_recipes' => Recipe::where('validated','>',0)->with('author')->withCount('likes')->latest()->paginate(3),
-            'title' => __('recipes.last-recipes')
+            'title' => $title
         ]);
     }    
     /**
@@ -58,11 +64,11 @@ class RecipeController extends Controller
      */
     public function user(User $user)
     {
-        return view('recipes.index', [
-            'recipes' => Recipe::with('author')->withCount('likes')->where('user_id',$user->id)->latest()->paginate(20),
-            'user' => $user,
-            'title' => __('recipes.recipes-by', ['name' => $user->name])
-        ]);
+        $recipes = Recipe::with('author')->withCount('likes')->where('user_id',$user->id)->latest()->paginate(20);
+        
+        $title = __('recipes.recipes-by', ['name' => $user->name]);
+        
+        return $this->index($recipes, $title);        
     }
 
     /**
@@ -72,10 +78,11 @@ class RecipeController extends Controller
      */
     public function search(Request $request)
     {
-        return view('recipes.index', [
-            'recipes' => Recipe::with('author')->withCount('likes')->where('title','LIKE','%'.$request->input('search').'%')->latest()->paginate(20),
-            'title' => __('recipes.search-result', ['search' => $request->input('search')])
-        ]);
+        $recipes = Recipe::with('author')->withCount('likes')->where('title','LIKE','%'.$request->input('search').'%')->latest()->paginate(20);
+        
+        $title = __('recipes.search-result', ['search' => $request->input('search')]);
+        
+        return $this->index($recipes, $title);
     }
 
     /**
@@ -85,16 +92,41 @@ class RecipeController extends Controller
      */
     public function favorite(Request $request)
     {
-        return view('recipes.index', [
-            'recipes' => Recipe::with('author')->withCount('likes')->whereExists(function ($query) {
+        $recipes = Recipe::with('author')->withCount('likes')->whereExists(function ($query) {
                 $query->select(DB::raw(1))
                       ->from('likes')
                       ->where('likes.user_id', auth()->user()->id)
                       ->where('likes.likeable_type', 'App\Recipe')
                       ->whereRaw('likes.likeable_id = recipes.id');
-            })->paginate(20),
-            'title' => __('recipes.favorite', ['search' => $request->input('search')])
-        ]);
+            })->paginate(20);
+
+        $title = __('recipes.favorite', ['search' => $request->input('search')]);
+
+        return $this->index($recipes, $title);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function toAnnotate(Request $request)
+    {
+        $recipes = Recipe::with('author')->withCount('likes')->toAnnotate()->paginate(20);
+        $title = __('recipes.to-annotate');
+        return $this->index($recipes, $title);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function toValidate(Request $request)
+    {
+        $recipes = Recipe::with('author')->withCount('likes')->toValidate()->paginate(20);
+        $title = __('recipes.to-validate');
+        return $this->index($recipes, $title);
     }
 
     /**

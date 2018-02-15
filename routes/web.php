@@ -62,6 +62,8 @@ Route::get('/language', 'WelcomeController@language');
 
 Route::get('recipes/favorite', 'RecipeController@favorite')->name('recipes.favorite');
 Route::get('recipes/search', 'RecipeController@search')->name('recipes.search');
+Route::get('recipes/to-annotate', 'RecipeController@toAnnotate')->name('recipes.to-annotate');
+Route::get('recipes/to-validate', 'RecipeController@toValidate')->name('recipes.to-validate');
 Route::post('recipes/add-anecdote', 'RecipeController@addAnecdote');
 Route::post('recipes/{recipe}/add-media', 'RecipeController@addMedia')->name('recipes.add-media');
 Route::post('recipes/{recipe}/annotated', 'RecipeController@flagAsAnnotated')->name('recipes.flag-as-annotated');

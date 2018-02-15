@@ -43,4 +43,6 @@ return array (
   'add-anecdote' => 'Ajouter une anecdote',
   'placeholder-add-anecdote' => 'Ajouter une anecdote ! (texte libre)',
   'app-name' => 'Corpus en sauce',
+  'to-annotate' => 'Recettes à annoter',
+  'to-validate' => 'Recettes à valider',
 );

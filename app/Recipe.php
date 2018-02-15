@@ -110,4 +110,26 @@ class Recipe extends Model
 	{
 	    return $this->cooking_time_hour || $this->cooking_time_minute || $this->preparation_time_hour || $this->preparation_time_minute;
 	}
+
+    /**
+     * Scope a query to only include recipes to annotate.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeToAnnotate($query)
+    {
+        return $query->where('annotated', '=', 0);
+    }
+
+    /**
+     * Scope a query to only include recipes to annotate.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeToValidate($query)
+    {
+        return $query->where('annotated', '>', 0);
+    }
 }

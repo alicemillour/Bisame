@@ -7,13 +7,20 @@
                     <i class="fa fa-home fa-fw" aria-hidden="true"></i><b> {{ trans('home.app-name') }} </b> 
                 </a>
             </li>
-            <li class="nav-item">
+{{--             <li class="nav-item">
                 <a class="p-0 pl-4 nav-link navbar-nav nav navbar-button-text" href="{{ url('/textes') }}">
                     <b>Les textes originaux</b>&nbsp;!
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
+    <ul class="navbar-nav mt-2 mt-lg-0">
+        <li class="nav-item">
+            <a class="nav-link btn btn-link" href="{{ route('home') }}">
+                <i class="fa fa-home" aria-hidden="true"></i> Accueil
+            </a>
+        </li>
+    </ul>
     <div class="dropdown">
         <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Recettes
@@ -25,6 +32,7 @@
             <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
         </div>
     </div>
+
     @if(Auth::check())
     <div class="dropdown">
         <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -65,7 +73,6 @@
         </li>
     @endif
     <li class="nav-item">
-        <i class="icon-search icon-white"></i>
         <a class="nav-link btn btn-link" href="{{ route('contact') }}">
             <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact 
         </a>

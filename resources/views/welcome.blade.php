@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-@include ('recipes/_search')
+{{-- @include ('recipes/_search') --}}
 <div class="row">
   <div class="col-12 mb-4">
       <div class="card">
@@ -28,24 +28,24 @@
     </div>
     <div class="col-sm-4">
       <div class="card">
-        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Recettes à annoter</a></h4>
+        <h4 class="card-header text-center"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
         <div class="card-body">
           @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
         </div>
-{{--         <div class="card-foote text-centerr">
-          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
-        </div>  --}}       
+        <div class="card-footer text-center">
+          <a href="{{ route('recipes.to-annotate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+        </div>        
       </div>
     </div>
     <div class="col-sm-4">
       <div class="card">
-        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Recettes à valider</a></h4>
+        <h4 class="card-header text-center"><a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
         <div class="card-body">
           @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
         </div>
-{{--         <div class="card-footer text-center">
-          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
-        </div>  --}}       
+        <div class="card-footer text-center">
+          <a href="{{ route('recipes.to-validate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+        </div>        
       </div>
     </div>
 </div>
