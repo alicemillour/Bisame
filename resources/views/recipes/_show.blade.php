@@ -20,10 +20,11 @@
 		        " data-type="App\Recipe" data-id="{{ $recipe->id }}">
 		        </i>
 				<span class="likes-count" data-id="{{ $recipe->id }}">{{ $recipe->likes_count }}</span>
+				<br/>
 				@if($recipe->validated)
-					<img class="" style="width:32px;" src="{{ asset('img/badges/colored-laurel.svg') }}" />
+					<img class="" style="width:20px;" src="{{ asset('img/badges/colored-laurel.svg') }}" />
 				@elseif($recipe->annotated)
-					<img class="" style="width:32px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
+					<img class="" style="width:20px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
 				@endif
 			</div>
 
