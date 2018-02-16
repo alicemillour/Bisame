@@ -98,7 +98,7 @@ class UserController extends Controller
         $user->posY = $request->input('posY');
         $user->save();
 
-        return response()->json(['message' => __('Votre position a bien été enregistrée.')]);
+        return response()->json(['message' => __('users.updated')]);
     }
 
     /**
@@ -143,7 +143,7 @@ class UserController extends Controller
 
         $user->update(array_filter($request->only(['age_group_id'])));
 
-        return response()->json(['message' => __('Votre âge a bien été enregistré.')]);
+        return response()->json(['message' => __('users.updated')]);
     }
     /**
     * Update the specified resource in storage.
