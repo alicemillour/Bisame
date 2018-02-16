@@ -1158,7 +1158,7 @@ foreach($recipe->ingredients as $ingredient){
   cursor:pointer;
 }
 #annotation {
-  font-size: 1.2em;
+  font-size: 1rem;
 }
 .list-group-item {
     padding: 0.5rem 1.25rem;

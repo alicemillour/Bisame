@@ -17,9 +17,7 @@
             @font-face {font-family: "Ostrich-Rounded"; src: url({{asset('/images/ostrich-rounded.ttf')}}) ;}
             @font-face {font-family: "Cicle-Fina"; src: url({{asset('/images/cicle/Cicle_Semi.ttf')}}) ;}
             .custom-fonts {font-family: "Cicle-Fina" }
-            body {
-                font-size:14px;
-            }
+
             .fill {
                 margin:0;
                 padding:0;
