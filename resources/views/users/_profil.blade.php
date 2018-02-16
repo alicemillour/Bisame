@@ -33,14 +33,14 @@
 
 <h4 class="card-title mt-3" id="title-infos">Informations facultatives</h4>
 <div class="row">
-
   <div class="form-group col-6">
+    <div id="message-age" class="text-danger"></div>
     {!! Form::label('age_group_id', __('Quel est votre âge ?'), ['class' => '']) !!}
     <div class="custom-controls-stacked">
 
       @foreach($age_groups as $age_group)
       <div class="form-check">
-                <input id="radio1" name="age_group_id" type="radio" id="age_group{{ $age_group->id }}" value="{{ $age_group->id }}" class="form-check-input" {{ ($age_group->id==$user->age_group_id)?'checked':'' }}>
+                <input id="radio1" name="age_group_id" type="radio" id="age_group{{ $age_group->id }}" value="{{ $age_group->id }}" class="form-check-input radio-age" {{ ($age_group->id==$user->age_group_id)?'checked':'' }}>
         <label class="form-check-label" for="age_group{{ $age_group->id }}">
           {{ __('users.age-group.'.$age_group->slug) }}
         </label>
@@ -52,12 +52,14 @@
 
   <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
     {!! Form::label('position', __('Où avez-vous appris l\'alsacien ?'), ['class' => '']) !!}
+    <div id="message-map-dk" class="text-danger"></div>
     <div class="form-check">
       <input  id="radio-position-1" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
       <label class="form-check-label" for="exampleRadios1">
         {{ __('users.dk') }}
       </label>
-    </div>  
+    </div>
+    <div id="message-map" class="text-danger"></div>
     <div class="form-check">
       <input id="radio-position-2" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
       <label class="form-check-label" for="exampleRadios1">
@@ -144,6 +146,11 @@ var can_modify_position = false;
         $('#anchor').addClass('d-none');
       }
     }
+    
+    function displayMessage(id,message){
+      $('#'+id).show().html(message).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).delay(2000).slideUp();
+    }
+
     $('.radio-position').click(function(e){
       if($('#radio-position-2').prop("checked")){
         $('#collapseMap').collapse('show');
@@ -160,18 +167,19 @@ var can_modify_position = false;
           posX: 0, 
           posY: 0
         }).done(function( data ) {
-
+          displayMessage('message-map-dk',data.message);
         }).fail(function( data ) {
           alert( "Erreur lors de la mise à jour du profil" );
-        });        
+        });
       }
     });
 
     $('.radio-age').change(function(e){
+      console.log("fldisjlsj");
         $.post( "{{ route('users.update-age') }}", {
           age_group_id: $('input[name=age_group_id]:checked').val()
         }).done(function( data ) {
-
+          displayMessage('message-age',data.message);
         }).fail(function( data ) {
           alert( "Erreur lors de la mise à jour du profil" );
         });
@@ -202,6 +210,7 @@ var can_modify_position = false;
           $('#map').css({'width':'50%'});
           can_modify_position = false;
           placeAnchor();
+          displayMessage('message-map',data.message);
         }).fail(function( data ) {
           alert( "Erreur lors de la mise à jour du profil" );
         });        

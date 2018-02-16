@@ -6,7 +6,7 @@ return [
   'nb_of_comments' => "Nombre de commentaires",
   'edit' => 'Éditer le profil',
   'show' => 'Voir le profil',
-  'updated' => 'Le profil a bien été mis à jour',
+  'updated' => 'Votre profil a bien été mis à jour',
   'new_users' => 'nouvel utilisateur|nouveaux utilisateurs',
   'count' => ':count utilisateur|:count utilisateurs',
   'empty_api_token' => "Aucune clé d'API disponible.",
