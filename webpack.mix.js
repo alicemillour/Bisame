@@ -19,6 +19,7 @@ mix.scripts([
     'public/js/app.js',
     'public/js/discussion.js',
     'public/js/likes.js',
-    'public/js/badges.js'
+    'public/js/badges.js',
+    'public/js/alerts.js'
 ], 'public/js/all.js').version();
 
