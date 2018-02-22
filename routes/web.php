@@ -12,6 +12,7 @@
  */
 
 Route::get('/', 'WelcomeController@welcome')->name('home');
+Route::get('/test-welcome', 'TestWelcomeController@welcome');
 
 
 /*
