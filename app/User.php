@@ -115,10 +115,20 @@ class User  extends Authenticatable
     {
         return $this->belongsToMany('App\Postag', 'tutorials', 'user_id', 'postag_id');
     }
-
+    
     public function hasDoneTutorial($postag_id)
     {
         return $this->tutorials->where('id', $postag_id)->isNotEmpty();
+    }
+
+    public function languages()
+    {
+        return $this->belongsToMany('App\Language');
+    }
+
+    public function hasLanguage($language_id)
+    {
+        return $this->languages->where('id', $language_id)->isNotEmpty();
     }
 
     /**

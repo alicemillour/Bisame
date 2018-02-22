@@ -16,6 +16,7 @@ use App\AgeGroup;
 use App\Badge;
 use App\Avatar;
 use App\Notification;
+use App\Language;
 
 class UserController extends Controller
 {
@@ -46,6 +47,7 @@ class UserController extends Controller
             'age_groups' => AgeGroup::get(),
             'badges' => Badge::get(),
             'avatars' => Avatar::get(),
+            'languages' => Language::get(),
             'notifications' => Notification::get(),
             'around_users' => $userR->get_around_users_by_real_score($user),
             'rank' => $userR->get_rank_by_real_score($user)
@@ -116,6 +118,44 @@ class UserController extends Controller
     }
 
     /**
+    * Update the languages of the user.
+    */
+    public function updateLanguages(Request $request)
+    {
+        $user = auth()->user();
+        
+        $this->authorize('update', $user);
+
+        $user->languages()->detach();
+        
+        if($request->has('languages'))
+            foreach($request->input('languages') as $language_id){
+                if (Language::where('id', $language_id)->exists()) {
+                    $user->languages()->attach($language_id);
+                }
+            }
+        return response()->json(['message' => __('users.updated')]);
+
+    }
+
+    /**
+    * Update the city of the user.
+    */
+    public function updateCity(Request $request)
+    {
+        $user = auth()->user();
+        
+        $this->authorize('update', $user);
+        
+        if($request->has('city')){
+            $user->city = $request->input('city');
+            $user->save();
+        }
+        return response()->json(['message' => __('users.updated')]);
+
+    }
+
+    /**
     * Update the specified resource in storage.
     */
     public function updateNotifications(Request $request)
@@ -125,10 +165,13 @@ class UserController extends Controller
         $this->authorize('update', $user);
         
         $user->notifications()->detach();
-        if($request->has('notifications'))
+        if($request->has('notifications')){
             foreach($request->input('notifications') as $notification_id){
-                $user->notifications()->attach($notification_id);
+                if (Notification::where('id', $notification_id)->exists()) {
+                    $user->notifications()->attach($notification_id);
+                }
             }
+        }
         return redirect()->route('users.home')->withSuccess(__('users.updated'));
     }
 
