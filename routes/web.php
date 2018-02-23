@@ -76,6 +76,8 @@ Route::resource('recipes', 'RecipeController');
 Route::get('recipes/user/{user}', 'RecipeController@user')->name('recipes.user');
 
 Route::post('users/update-password', 'UserController@updatePassword')->name('users.update-password');
+Route::post('users/update-languages', 'UserController@updateLanguages')->name('users.update-languages');
+Route::post('users/update-city', 'UserController@updateCity')->name('users.update-city');
 Route::resource('users', 'UserController');
 Route::post('users/update-position', 'UserController@updatePosition')->name('users.update-position');
 Route::post('users/update-age', 'UserController@updateAge')->name('users.update-age');

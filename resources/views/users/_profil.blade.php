@@ -48,6 +48,26 @@
       @endforeach
 
     </div>
+    <hr/>
+    <div id="message-languages" class="text-danger"></div>
+    <form id="form-languages">
+    {!! Form::label('age_group_id', __('Quelle(s) langue(s) parlez-vous ?'), ['class' => '']) !!}
+    <div class="custom-controls-stacked">
+
+      @foreach($languages as $language)
+      <div class="form-check">
+          <input id="radio1" name="languages[]" type="checkbox" id="language{{ $language->id }}" value="{{ $language->id }}" class="form-check-input radio-language" {{ ($user->hasLanguage($language->id))?'checked':'' }}>
+        <label class="form-check-label" for="language{{ $language->id }}">
+          {{ __('users.language.'.$language->slug) }}
+        </label>
+      </div>       
+      @endforeach
+
+    </div>
+    <div class="form-group text-right">
+      {!! Form::submit("Enregistrer mes langues", ['id' => 'save-languages','class' => 'btn btn-success']) !!}
+    </div>
+    </form>   
   </div>
 
   <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
@@ -78,6 +98,20 @@
         <i id="anchor" style="position:absolute;" class="fa fa-child fa-2x d-none" aria-hidden="true"></i>
       </div>
     </div>
+
+    <hr/>
+
+    <div id="message-city" class="text-danger"></div>
+    <form id="form-city">
+      {!! Form::label('city', __("Vous pouvez également préciser la ville ou le village où vous avez appris l'alsacien :"), ['class' => '']) !!}
+
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="city" id="city" />
+      </div>
+      <div class="form-group text-right">
+        {!! Form::submit("Enregistrer", ['id' => 'save-city','class' => 'btn btn-success']) !!}
+      </div>      
+    </form>
   </div>
 </div>
 <hr/>
@@ -172,6 +206,32 @@ var can_modify_position = false;
           alert( "Erreur lors de la mise à jour du profil" );
         });
       }
+    });
+
+    $("#form-languages").on( "submit", function( event ) {
+      event.preventDefault();
+        $.ajax({
+          url: "{{ route('users.update-languages') }}",
+          data: $( this ).serialize(),
+          type: 'post',
+          dataType: 'json',
+          success: function(data) {
+            displayMessage('message-languages',data.message);
+          }
+        });  
+    });
+
+    $("#form-city").on( "submit", function( event ) {
+      event.preventDefault();
+        $.ajax({
+          url: "{{ route('users.update-city') }}",
+          data : {city: $('#city').val()},
+          type: 'post',
+          dataType: 'json',
+          success: function(data) {
+            displayMessage('message-city',data.message);
+          }
+        });  
     });
 
     $('.radio-age').change(function(e){

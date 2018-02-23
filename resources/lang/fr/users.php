@@ -38,5 +38,10 @@ return [
     '20-40' => 'entre 20 et 40 ans',
     '40-60' => 'entre 40 et 60 ans',
     '60-100' => 'plus de 60 ans'
+  ],
+  'language' => [
+    'english' => 'Anglais',
+    'french' => 'Français',
+    'german' => 'Allemand'
   ]
 ];
