@@ -1,6 +1,6 @@
 
 <div class="masthead">
-    <img src='/images/mes-recettes.png'/>
+    <img src="{{ asset('images/mes-recettes.png') }}" />
 </div>
 <!-- /container -->
 <div class="navbar affix-top dark-background-colored py-0" style="width: 80%;margin:0 auto" data-spy="affix" data-offset-top="150" >
@@ -11,8 +11,6 @@
                     <i class="fa fa-home" aria-hidden="true"></i> Accueil
                 </a>
             </li>
-            
-            
         </ul>
         <div class="dropdown">
             <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,17 +67,17 @@
         
         <ul>
             <li class="nav-item">
-                <i class="fa fa-home" aria-hidden="true"></i> {!! Form::open(['route' => 'recipes.search', 'method' => 'get', 'class' => 'mb-2']) !!}
+                <i class="fa fa-home" aria-hidden="true"></i> 
+                {!! Form::open(['route' => 'recipes.search', 'method' => 'get', 'class' => 'mb-2']) !!}
                 <div class="d-flex flex-row justify-content-md-center">
                     <div class="mr-3">
-                        <input type="text" name="search" class="form-control" placeholder="Trouver une recette...">
+                        <input type="text" name="search" class="form-control" placeholder="Trouver une recette..." />
                     </div>
                     <div class="mr-2">
                         <button type="submit" class=" btn btn primary">R</button>
                     </div>
                 </div>
                 {!! Form::close() !!}
-                </a>
             </li>
         </ul>
         <a class="nav-link btn btn-link" href="{{ route('contact') }}">
@@ -142,8 +140,8 @@
                     </li>
                 </ul>
             </li>
-            
-            @endif
+        </ul>    
+        @endif
             
     </div>
 </div>
