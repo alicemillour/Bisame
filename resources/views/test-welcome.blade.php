@@ -13,8 +13,14 @@
             <div class="card">
                 
                 <div class="row ">
-                    <div class="col-md-3">
-                        <img src="/images/recette-du-jour.png" class="w-100">
+                    <div class="col-md-3" style="text-align:center">
+                        <!--<img src="/images/recette-du-jour.png" class="w-100">-->
+                        <div><b>Statistiques</b></div>
+                        15 recettes enregistrées <br>
+                        1234 annotations produites <br>
+                        7 recettes validées <br>
+                        
+                        etc...
                     </div>
                     <div class="col-md-6 px-3">
                         <div class="card-block px-3">
@@ -46,7 +52,12 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <img src="/images/lead-du-jour.png" class="w-100">
+                        <div><b>Leaderbord (2 onglets recettes/annotations)</b></div>
+                        X a ajouté 5 recettes <br>
+                        Y a ajouté 3 recettes <br>
+                        Z a ajouté 1 recette <br>
+                        
+                        etc...
                     </div>
                 </div>
             </div>
