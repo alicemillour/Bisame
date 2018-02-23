@@ -174,6 +174,8 @@
     
     <body class="fill" id="app">
 
+        @include('partials.test-nav')
+        
         @include('shared/badges')
 
         @include('discussion/report')

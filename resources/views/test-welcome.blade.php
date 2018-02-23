@@ -1,9 +1,5 @@
 @extends('layouts.test-app')
     
-    
-@include('partials.test-nav')
-    
-    
 @section('content')
 <div class="container-fluid">
     {{-- @include ('recipes/_search') --}}
