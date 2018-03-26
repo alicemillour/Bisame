@@ -87,46 +87,14 @@
     margin:0 auto;
     text-align:center;
 }
-.play-button {
-    /*width: 33vw;*/
-    white-space: normal;
-    font-size: 25px;
-    border: 1px;	
-    border-style: solid;
-    border-color: #AC1E44;
-    border-radius: 3px;
-    padding: 2px 30px 1px 30px;
-    text-align: center;
-    /*    margin-left: 60px;
-        margin-right: 60px;
-        margin-bottom: 40px;
-        margin-top: 40px;*/
-    min-width: 200px;
-    /*max-width: 300px;*/
-    background-color: rgba(249, 242, 236, 0.4);
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    -o-hyphens: auto;
-    hyphens: auto;
-    margin: 0.5% 2%;
-    display:inline-block;
-
-} 
-#play-button-1 {
-    /*width:140px;*/
-} 
-#play-button-2 {
-    overflow:hidden;
-} 
 
 #validate:hover:after{
     pointer-events: auto;
 }
+
 .active-button:hover {
     color: black;
-    
-        font-weight: bold;
+    font-weight: bold;
     border-color: #285e8e; /*set the color you want here*/
 }
 
@@ -208,64 +176,64 @@
 }
 
 .module {
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg);
-  background-attachment: fixed;
-  width: 400px;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
-  margin: 20px;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skyscrapers.jpg);
+    background-attachment: fixed;
+    width: 400px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
 }
 .fill > header {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 10px;
-  background: inherit;
-  background-attachment: fixed;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: inherit;
+    background-attachment: fixed;
 }
 .fill > header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
-  background: inherit;
-  background-attachment: fixed;
-  -webkit-filter: blur(12px);
-  filter: blur(12px);
-  transform: scale(2) translateY(20px);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
 }
 
 .info-message > header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
-  background: inherit;
-  background-attachment: fixed;
-  -webkit-filter: blur(12px);
-  filter: blur(12px);
-  transform: scale(2) translateY(20px);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: inherit;
+    background-attachment: fixed;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    transform: scale(2) translateY(20px);
 }
 
 .fill > header > h1 {
-  margin: 1;
-  color: white;
-  position: relative;
-  z-index: 1;
+    margin: 1;
+    color: white;
+    position: relative;
+    z-index: 1;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 #percent {
- position: absolute;   
- left: 50%;
+    position: absolute;   
+    left: 50%;
 }
 
 .question {

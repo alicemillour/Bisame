@@ -9,7 +9,7 @@ use App\Jobs\ChangeLocale;
 use App\Recipe;
 use Auth, DB;
 
-class TestWelcomeController extends Controller {
+class WelcomeController extends Controller {
 
     /**
      * Create a new controller instance.
@@ -21,7 +21,7 @@ class TestWelcomeController extends Controller {
     }
 
     public function welcome() {
-        return view('test-welcome', [
+        return view('welcome', [
             'recipes' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(3)->get(),
             'recipes_to_annotate' => Recipe::toAnnotate()->with('author')->withCount('likes')->latest()->paginate(3),
             'annotated_recipes' => Recipe::toValidate()->with('author')->withCount('likes')->latest()->paginate(3),

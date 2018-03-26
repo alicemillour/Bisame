@@ -16,7 +16,6 @@ class AppServiceProvider extends ServiceProvider {    //put your code here
 
     public function boot() {
         view()->composer('partials.nav', 'App\Http\ViewComposers\NavigationComposer');
-        view()->composer('partials.test-nav', 'App\Http\ViewComposers\NavigationComposer');
         view()->composer('partials.scoreboard', 'App\Http\ViewComposers\ScoreboardComposer');
         view()->composer('test-welcome', 'App\Http\ViewComposers\ScoreboardComposer');
         view()->composer('contact', 'App\Http\ViewComposers\ContactComposer');

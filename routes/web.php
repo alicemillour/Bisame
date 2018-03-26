@@ -29,6 +29,7 @@ Route::get('/test-welcome', 'TestWelcomeController@welcome');
 // Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/home-game', 'HomeController@index')->name('home-game');
+    Route::get('/info', 'InfoController@index')->name('info');
     // Route::get('/', 'HomeController@index');
     Route::get('/chat', 'chatpageController@index');
 //    Route::get('user/{id}', 'UserController@showProfile');

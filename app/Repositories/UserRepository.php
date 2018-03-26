@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\User;
 use DB;
+use App\Recipe;
+use App\AlternativeText;
 use Illuminate\Support\Facades\Log;
 
 class UserRepository extends ResourceRepository {
@@ -46,7 +48,7 @@ class UserRepository extends ResourceRepository {
         debug("updating confidence score");
         User::where('id');
         User::where('id', $user_id)
-        ->update(['score' => $new_confidence_score]);
+                ->update(['score' => $new_confidence_score]);
     }
 
     public function get_best_users_by_real_score() {
@@ -58,23 +60,35 @@ class UserRepository extends ResourceRepository {
                         ->orderBy('real_score', 'asc')
                         ->where('is_admin', '=', '0')->take(5)->get();
     }
-    
+
     public function get_around_users_by_real_score($user) {
         $userRank = $this->get_rank_by_real_score($user);
-        if ( $userRank != null ) {
+        if ($userRank != null) {
             return User::join("annotations", function($join) {
                                 $join->on("annotations.user_id", "=", "users.id");
                             })
                             ->select(DB::raw('count(*)*score as real_score, users.*'))
                             ->groupBy('users.id')
                             ->orderBy('real_score', 'desc')
-                            ->where('score','>','0')
-                            ->skip($userRank-3)->take(5)->get();
+                            ->where('score', '>', '0')
+                            ->skip($userRank - 3)->take(5)->get();
         } else {
             return null;
         }
     }
+
+    public function get_recipe_number_by_user($user_id) {
+        return Recipe::select(DB::raw('count(*) as count'))
+                        ->where('user_id', '=', $user_id)
+                        ->first();
+    }
     
+    public function get_variant_number_by_user($user_id) {
+        return AlternativeText::select(DB::raw('count(*) as count'))
+                        ->where('user_id', '=', $user_id)
+                        ->first();
+    }
+
     public function get_best_users_by_real_score_month() {
         return User::join("annotations", function($join) {
                             $join->on("annotations.user_id", "=", "users.id");
@@ -82,6 +96,16 @@ class UserRepository extends ResourceRepository {
                         ->select(DB::raw('count(*)*score as real_score, users.*'))
                         ->groupBy('users.id')
                         ->orderBy('real_score', 'desc')
+                        ->where('is_admin', '=', '0')->take(5)->get();
+    }
+
+    public function get_top_5_recipe_writers() {
+        return User::join("recipes", function($join) {
+                            $join->on("recipes.user_id", "=", "users.id");
+                        })
+                        ->select(DB::raw('count(*) as recipe_count, users.id'))
+                        ->groupBy('users.id')
+                        ->orderBy('recipe_count', 'desc')
                         ->where('is_admin', '=', '0')->take(5)->get();
     }
 
@@ -96,53 +120,68 @@ class UserRepository extends ResourceRepository {
                         ->take(5)->get();
     }
 
+    public function get_best_users_by_alternative() {
+        return User::join("alternative_texts", function($join) {
+                            $join->on("alternative_texts.user_id", "=", "users.id");
+                        })
+                        ->select(DB::raw('count(*) as quantity, users.*'))
+                        ->groupBy('users.id')
+                        ->orderBy('quantity', 'desc')
+                        ->where('is_admin', '=', '0')
+                        ->take(5)->get();
+    }
+
     public function get_level_by_id($user_id) {
         return User::select('level')->where('id', $user_id)->first()->level;
     }
+
     public function get_score_by_id($user_id) {
         return User::select('score')->where('id', $user_id)->first()->score;
     }
+
     public function get_users_count() {
         return User::select(DB::raw('count(*) as count'))->first();
     }
+
     public function get_not_training_count() {
         debug("get not training users");
         return User::select(DB::raw('count(*) as count'))->where('is_in_training', '=', '0')->first();
     }
+
     public function get_participant_count() {
         return User::select(DB::raw('count(*) as count'))->where('score', '!=', '0')->first();
     }
 
-    public function get_rank_by_real_score($user)
-    {
-        $user_real_score=User::join("annotations", function($join) {
-                            $join->on("annotations.user_id", "=", "users.id");
-                        })
-                        ->select(DB::raw('count(*)*score as real_score, users.*'))
-                        ->orderBy('real_score', 'desc')
-                        ->groupBy('users.id')                                
-                        ->where('users.id', '=', $user->id)
-                        ->first();        
-        if ($user_real_score == null){
+    public function get_rank_by_real_score($user) {
+        $user_real_score = User::join("annotations", function($join) {
+                    $join->on("annotations.user_id", "=", "users.id");
+                })
+                ->select(DB::raw('count(*)*score as real_score, users.*'))
+                ->orderBy('real_score', 'desc')
+                ->groupBy('users.id')
+                ->where('users.id', '=', $user->id)
+                ->first();
+        if ($user_real_score == null) {
             /* le participant n'a pas encore produit d'annotation */
             return null;
         } else {
             $cur_score = $user_real_score->real_score;
-            $best_users=User::join("annotations", function($join) {
-                                $join->on("annotations.user_id", "=", "users.id");
-                            })
-                            ->select(DB::raw('count(*)*score as real_score, users.*'))
-                            ->orderBy('real_score', 'desc')
-                            ->groupBy('users.id')
-                            ->get();
-            $rank = $best_users->filter(function($item,$key) use ($cur_score) {
-                return $item->real_score >= $cur_score;
-            })->count();
+            $best_users = User::join("annotations", function($join) {
+                        $join->on("annotations.user_id", "=", "users.id");
+                    })
+                    ->select(DB::raw('count(*)*score as real_score, users.*'))
+                    ->orderBy('real_score', 'desc')
+                    ->groupBy('users.id')
+                    ->get();
+            $rank = $best_users->filter(function($item, $key) use ($cur_score) {
+                        return $item->real_score >= $cur_score;
+                    })->count();
             return $rank;
-        }                              
+        }
     }
-    
+
     public function destroy($id) {
         $this->getById($id)->softDeletes();
     }
+
 }

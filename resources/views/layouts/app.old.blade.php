@@ -27,7 +27,6 @@
                                         background-size: cover;  /* version standardisée */
                                         background-position: left top;  
                                         position: relative;
-                                        min-height: 100%;
                                         }            
                                         /*            .card-header {
                                                         color: #333;
@@ -37,7 +36,7 @@
                                         .background-colored{
                                             /*background-color: #86b8b9;*/
                                             background-color: white;
-                                            opacity: 0.95;   
+                                            opacity: 0.9;   
 
                                         }
 
@@ -72,7 +71,7 @@
                                         .fina-old{
                                             font-family: 'Cicle-Fina';
                                         }
-
+                                        
                                         .title { 
                                             /*margin-top: 10vh;*/
                                             color: white;
@@ -81,25 +80,11 @@
                                             text-align: center;
                                             line-height: 3.2;
                                         }
-                                        .subtitle { 
-                                            /*margin-top: 10vh;*/
-                                            color: white;
-                                            font-weight: 400;
-                                            text-align: center;
-                                            line-height: 2.8;
-                                        }
-
-                                        .sidehead { 
-                                            /*margin-top: 10vh;*/
-                                            color: white;
-                                            text-align: center;
-                                            display: flex;
-                                            align-items: center;
-                                        }
 
                                         .belle-allure{
                                             font-family: 'Belle-Allure';
                                         }
+
 
                                         .foreground {
                                             z-index:1 !important;
@@ -126,143 +111,12 @@
                                             color: black !important;
                                         }
 
-                                        .welcome-card-header {
-                                            background-color: transparent; 
-                                            border-bottom-color: transparent;
-                                            font-family: 'Belle-Allure';
-                                            text-align: center;
-                                        }
-                                        .play-button {
-                                            /*width: 33vw;*/
-                                            white-space: normal;
-                                            font-size: 15px;
-                                            border: 1px;	
-                                            border-style: solid;
-                                            border-color: #285e8e !important; /*set the color you want here*/
-                                            border-radius: 3px;
-                                            /*padding: 2px 30px 1px 30px;*/
-                                            text-align: center;
-                                            /*    margin-left: 60px;
-                                                margin-right: 60px;
-                                                margin-bottom: 40px;
-                                                margin-top: 40px;*/
-                                            /*min-width: 200px;*/
-                                            /*max-width: 300px;*/
-                                            background-color: #b7e0ee;
-                                            -webkit-hyphens: auto;
-                                            -moz-hyphens: auto;
-                                            -ms-hyphens: auto;
-                                            -o-hyphens: auto;
-                                            hyphens: auto;
-                                            margin: 0.5% 2%;
-                                            display:inline-block;
-                                            color: black;
-                                        } 
-
-                                        .annotate-button {
-                                            /*width: 33vw;*/
-                                            white-space: normal;
-                                            font-size: 13px;
-                                            /*border: 1px;*/	
-                                            /*border-style: solid;*/
-                                            /*border-color: #285e8e !important; set the color you want here*/
-                                            border-radius: 3px;
-                                            /*padding: 2px 30px 1px 30px;*/
-                                            text-align: center;
-                                            /*    margin-left: 60px;
-                                                margin-right: 60px;
-                                                margin-bottom: 40px;
-                                                margin-top: 40px;*/
-                                            /*min-width: 200px;*/
-                                            /*max-width: 300px;*/
-                                            background-color: #c7e4ee;
-                                            -webkit-hyphens: auto;
-                                            -moz-hyphens: auto;
-                                            -ms-hyphens: auto;
-                                            -o-hyphens: auto;
-                                            hyphens: auto;
-                                            margin: 0.5% 2%;
-                                            display:inline-block;
-                                            color: black;
-                                        } 
-
-                                        .button-wrapper { 
-                                            overflow:hidden;
-                                            margin:0 auto;
-                                            text-align:center;
-                                        }
-
-                                        #play-button-1 {
-                                            /*width:140px;*/
-                                        } 
-                                        #play-button-2 {
-                                            overflow:hidden;
-                                        } 
-
-                                        .nav-link:hover{
-                                            background-color:white;
-                                            color:black !important;
-
-                                            opacity:1;
-                                        }
-                                        .nav-link{
-                                            background-color:white;
-                                            color:black !important;
-                                            opacity:0.8;
-                                        }
-                                        .nav-link.active{
-                                            background-color:white;
-                                            color:black !important;
-
-                                            opacity:1;
-                                        }
-
-                                        .tooltip{
-                                            font-size: 20px !important;
-                                            color: white !important;
-                                        }
-
-                                        .active-button:hover {
-                                            color: black;
-                                            font-weight: bold;
-                                            opacity: 100% !important;
-                                            border: 1px;	
-                                            border-style: solid;
-                                            border-color: #285e8e !important; set the color you want here
-                                        }
-
-
-                                        .infobulle {
-                                            position: relative;  /* les .infobulle deviennent référents */
-
-                                            max-width: 30px;
-                                            /*cursor: help;*/
-                                        }
-
-                                        /* on génère un élément :after lors du survol et du focus :*/
-
-                                        .infobulle:hover::after,
-                                        .infobulle:focus::after {
-                                            content: attr(aria-label);  /* on affiche aria-label */
-                                            position: absolute;
-                                            /*top: -2.4em;*/
-                                            left: 100%;
-                                            border-radius:3px;
-                                            padding:5px;
-                                            background-color:white;
-                                            transform: translateX(-0%); /* on centre horizontalement  */
-                                            transform: translateY(-100%); /* on centre horizontalement  */
-                                            z-index: 1; /* pour s'afficher au dessus des éléments en position relative */
-                                            white-space: nowrap;  /* on interdit le retour à la ligne */
-                                        }
-
                                         li.nav-item > a.no-hover:focus, li.nav-item > a.no-hover:hover{
                                             color: #CECECE !important;
                                         }
 
                                         .dropdown-menu {
-                                            background-color: black !important;
-                                            border-color: whitesmoke !important;
+                                            background-color: #545454 !important;
                                             color: white !important;
                                         }
                                         .navbar-default .navbar-nav .open .dropdown-menu {
@@ -288,7 +142,6 @@
                                             color: #CECECE;
                                         }
                                         .fancy-border{
-                                            border-radius: 15px;
                                             border: 1px solid white;
                                         }
                                         .footer-container {
@@ -323,11 +176,6 @@
                                         a.btn-link:hover, div.show a.btn-link {
                                             color: #f69a47;
                                             text-decoration: none;
-                                        }
-
-                                        ol, ul, dl {
-                                            margin-top: 1rem;
-                                            margin-bottom: 1rem;
                                         }
                                     </style>
                                     <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">

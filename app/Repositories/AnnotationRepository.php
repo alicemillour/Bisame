@@ -72,21 +72,27 @@ class AnnotationRepository extends ResourceRepository {
         /* returns number of annotations on all sentences */
         debug($this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->where('user_id', $user_id)->first());
-       
+
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->where('user_id', $user_id)->first();
+    }
+
+    public function get_user_annotation_count_on_recipe($user_id) {
+        /* returns number of annotations on all sentences */
+               return(DB::select(DB::raw('SELECT count(words.id) as annotation_count from words, sentences, corpora, annotated_recipes where corpora.name like concat(annotated_recipes.recipe_id, "_%") and 
+words.sentence_id=sentences.id and sentences.corpus_id=corpora.id;')));
     }
 
     public function get_users_scores_and_annotation_counts() {
         /* returns number of annotations on all sentences */
         return $this->annotation->select(DB::raw('name, score, count(*) as annotation_count'))->get();
     }
-    
+
     public function get_days_of_annotation() {
         /* returns number of annotations days */
         return $this->annotation->select(DB::raw('count(distinct(DATE(created_at))) as count'))->first();
     }
-    
+
     public function get_total_non_admin_annotations() {
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->join('users', 'user_id', '=', 'users.id')
@@ -98,22 +104,22 @@ class AnnotationRepository extends ResourceRepository {
         return $this->annotation->select(DB::raw('count(*) as annotation_count'))
                         ->where('user_id', $user_id)->first();
     }
-    
+
     public function get_pretaggers() {
         return $this->annotation->select(DB::raw('distinct tagger'))
-                ->where('tagger','not like', '')
-                ->where('tagger','not like','ref')->get();
+                        ->where('tagger', 'not like', '')
+                        ->where('tagger', 'not like', 'ref')->get();
     }
-    
+
     public function get_pretag_by_sentence_id($sentence_id) {
         /* get the names of the two pretaggers */
         $first_tagger = $this->get_pretaggers()[0]['tagger'];
         $second_tagger = $this->get_pretaggers()[1]['tagger'];
-    
+
         $first_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, $first_tagger);
         $second_tags_array = $this->get_pretag_by_sentence_and_tagger($sentence_id, $second_tagger);
 
-            
+
         $collection_first = collect();
         foreach ($first_tags_array as $result) {
             $collection_first->put($result->word_id, ['postag_name' => $result->postag_name, 'postag_id' => $result->postag_id]);
@@ -130,17 +136,17 @@ class AnnotationRepository extends ResourceRepository {
 
         $collection_pretag = collect();
         foreach ($first_tags as $key => $first_tag) {
-                if ( array_key_exists($key,$second_tags) && $first_tag == $second_tags[$key]) {
+            if (array_key_exists($key, $second_tags) && $first_tag == $second_tags[$key]) {
                 $collection_pretag->put($key, $first_tag);
-                } else {
+            } else {
                 debug("no pretag");
                 $collection_pretag->put($key, null);
-                }
+            }
         }
         debug($collection_pretag);
         return $collection_pretag;
     }
-    
+
     public function get_pretag_by_sentence_and_tagger($sentence_id, $tagger_name) {
         return $this->annotation->select(DB::raw('words.id as word_id, postags.id as postag_id, postags.name as postag_name'))
                         ->join('words', 'words.id', '=', 'annotations.word_id')
@@ -178,7 +184,7 @@ class AnnotationRepository extends ResourceRepository {
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('annotations.confidence_score', '<', '10')
                         ->where('corpus_id', '=', $corpus_id)
-               # ->where('user_id', '>', '192')
+                        # ->where('user_id', '>', '192')
                         ->get());
     }
 
@@ -192,41 +198,39 @@ class AnnotationRepository extends ResourceRepository {
 
     public function get_total_annotations() {
         return($this->annotation->select(DB::raw('count(annotations.id) as count'))
-                           ->join('words', 'words.id', '=', 'annotations.word_id')
+                        ->join('words', 'words.id', '=', 'annotations.word_id')
                         ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
-                
                         ->where('user_id', '>', 102)
-                        ->where('corpora.id', '!=',324)
-                        ->where('corpora.id', '!=',322)
+                        ->where('corpora.id', '!=', 324)
+                        ->where('corpora.id', '!=', 322)
                         ->first());
     }
 
-        public function get_total_words_annotated_not_ref() {
+    public function get_total_words_annotated_not_ref() {
         return($this->annotation->select(DB::raw('count(distinct(annotations.word_id)) as count'))
-                                                ->join('words', 'words.id', '=', 'annotations.word_id')
-
+                        ->join('words', 'words.id', '=', 'annotations.word_id')
                         ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('user_id', '>', 102)
-                        ->where('corpora.id', '!=',324)
-                        ->where('corpora.id', '!=',322)
+                        ->where('corpora.id', '!=', 324)
+                        ->where('corpora.id', '!=', 322)
                         ->where('corpora.is_training', '=', false)
                         ->first());
     }
-        public function get_total_words_annotated_ref() {
-        return($this->annotation->select(DB::raw('count(distinct(annotations.word_id)) as count'))
-                                        ->join('words', 'words.id', '=', 'annotations.word_id')
 
+    public function get_total_words_annotated_ref() {
+        return($this->annotation->select(DB::raw('count(distinct(annotations.word_id)) as count'))
+                        ->join('words', 'words.id', '=', 'annotations.word_id')
                         ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('user_id', '>', 102)
-                        ->where('corpora.id', '!=',324)
-                        ->where('corpora.id', '!=',322)
+                        ->where('corpora.id', '!=', 324)
+                        ->where('corpora.id', '!=', 322)
                         ->where('corpora.is_training', '=', true)
                         ->first());
     }
-    
+
     public function get_total_annotations_not_reference() {
         return($this->annotation->select(DB::raw('count(annotations.id) as count'))
                         ->join('words', 'words.id', '=', 'annotations.word_id')
@@ -234,19 +238,20 @@ class AnnotationRepository extends ResourceRepository {
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('user_id', '>', 102)
                         ->where('corpora.is_training', '=', false)
-                        ->where('corpora.id', '!=',324)
-                        ->where('corpora.id', '!=',322)
+                        ->where('corpora.id', '!=', 324)
+                        ->where('corpora.id', '!=', 322)
                         ->first());
     }
-        public function get_total_annotations_reference() {
+
+    public function get_total_annotations_reference() {
         return($this->annotation->select(DB::raw('count(annotations.id) as count'))
                         ->join('words', 'words.id', '=', 'annotations.word_id')
                         ->join('sentences', 'sentences.id', '=', 'words.sentence_id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('user_id', '>', 102)
                         ->where('corpora.is_training', '=', true)
-                        ->where('corpora.id', '!=',324)
-                        ->where('corpora.id', '!=',322)
+                        ->where('corpora.id', '!=', 324)
+                        ->where('corpora.id', '!=', 322)
                         ->first());
     }
 
@@ -259,6 +264,7 @@ class AnnotationRepository extends ResourceRepository {
                         ->where('corpora.is_training', '=', false)
                         ->first());
     }
+
     public function get_total_sentences_annotated_reference() {
         return($this->sentence->select(DB::raw('count(distinct(sentences.id)) as count'))
                         ->join('words', 'words.sentence_id', '=', 'sentences.id')
@@ -268,8 +274,5 @@ class AnnotationRepository extends ResourceRepository {
                         ->where('corpora.is_training', '=', true)
                         ->first());
     }
-
-
-
 
 }
