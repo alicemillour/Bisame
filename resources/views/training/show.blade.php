@@ -12,20 +12,24 @@ $solutions = [];
 
 <div id="annotation" class="container bg-white p-3 noselect">
     <div class="row">
-    <div class="col-12">
-		<h4 class="explanation">Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight">{{ $postag->full_name }} <em>({{ $postag->name }})</em></span> !</h4>
-    </div>
-    <div class="col-9">
-		<h4 class="explanation">Lorsqu'une catégorie est suggérée
-		    (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
-		    (<img src="{{ asset('images/check.png') }}">)
-		    ou l'invalider (<img src="{{ asset('images/no.png') }}">).
-    </h4>
-		<h4 class="explanation">En cas de doute, consultez les exemples à droite ou 
-      <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a>
-		</h4>
-		<h4 id="result" class="d-none"></h4>
-    </div>
+      <div class="col-12">
+  		<h4 class="explanation">Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight">{{ $postag->full_name }} <em>({{ $postag->name }})</em></span> !</h4>
+      </div>
+      <div class="col-9">
+  		<h4 class="explanation">Lorsqu'une catégorie est suggérée
+  		    (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
+  		    (<img src="{{ asset('images/check.png') }}">)
+  		    ou l'invalider (<img src="{{ asset('images/no.png') }}">).
+      </h4>
+  		<h4 class="explanation">En cas de doute, consultez les exemples à droite ou 
+        <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a>
+  		</h4>
+      <div class="explanation">
+        <h5>Quelques exemples :</h5>
+        {!! $postag->description !!}
+      </div>      
+  		<h4 id="result" class="d-none"></h4>
+      </div>
     </div>
     <div class="row mt-3">
 
@@ -61,10 +65,7 @@ $solutions = [];
           <button id="btn-check-solution" class="btn btn-warning disabled btn-lg mb-5" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="top">Vérifier mes réponses</button>
         </div>        
        </div>
-      <div class="col-3 explanation">
-        <h5>Quelques exemples :</h5>
-        {!! $postag->description !!}
-      </div>
+
     </div>
 
 </div>

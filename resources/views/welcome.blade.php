@@ -22,7 +22,7 @@
           @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
         </div>
         <div class="card-footer text-center">
-          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
         </div>        
       </div>
     </div>
@@ -33,7 +33,7 @@
           @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
         </div>
         <div class="card-footer text-center">
-          <a href="{{ route('recipes.to-annotate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+          <a href="{{ route('recipes.to-annotate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
         </div>        
       </div>
     </div>
@@ -44,7 +44,7 @@
           @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
         </div>
         <div class="card-footer text-center">
-          <a href="{{ route('recipes.to-validate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Consulter les recettes</a>
+          <a href="{{ route('recipes.to-validate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
         </div>        
       </div>
     </div>

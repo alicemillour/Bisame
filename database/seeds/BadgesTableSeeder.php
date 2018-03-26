@@ -51,19 +51,6 @@ class BadgesTableSeeder extends Seeder
         Badge::updateOrCreate(['key' => 'alternativ-text','order'=>'11'],['required_value' => '50','image' => 'pretzel-11.svg']);
         Badge::updateOrCreate(['key' => 'alternativ-text','order'=>'12'],['required_value' => '75','image' => 'pretzel-12.svg']);
 
-        Badge::updateOrCreate(['key' => 'storie','order'=>'1'],['required_value' => '1','image' => 'book-1.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'2'],['required_value' => '2','image' => 'book-2.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'3'],['required_value' => '3','image' => 'book-3.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'4'],['required_value' => '5','image' => 'book-4.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'5'],['required_value' => '8','image' => 'book-5.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'6'],['required_value' => '12','image' => 'book-6.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'7'],['required_value' => '17','image' => 'book-7.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'8'],['required_value' => '23','image' => 'book-8.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'9'],['required_value' => '30','image' => 'book-9.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'10'],['required_value' => '40','image' => 'book-10.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'11'],['required_value' => '50','image' => 'book-11.svg']);
-        Badge::updateOrCreate(['key' => 'storie','order'=>'12'],['required_value' => '75','image' => 'book-12.svg']);
-
         Badge::updateOrCreate(['key' => 'annotation','order'=>'1'],['required_value' => '1','image' => 'graduate-1.svg']);
         Badge::updateOrCreate(['key' => 'annotation','order'=>'2'],['required_value' => '2','image' => 'graduate-2.svg']);
         Badge::updateOrCreate(['key' => 'annotation','order'=>'3'],['required_value' => '3','image' => 'graduate-3.svg']);
@@ -84,8 +71,8 @@ class BadgesTableSeeder extends Seeder
         Badge::updateOrCreate(['key' => 'postag','order'=>'5'],['required_value_string' => 'CONJ','image' => 'laurel-5.svg']);
         Badge::updateOrCreate(['key' => 'postag','order'=>'6'],['required_value_string' => 'DET','image' => 'laurel-6.svg']);
         Badge::updateOrCreate(['key' => 'postag','order'=>'7'],['required_value_string' => 'PART','image' => 'laurel-7.svg']);
-        Badge::updateOrCreate(['key' => 'postag','order'=>'8'],['required_value_string' => 'PRON','image' => 'laurel-8.svg']);
-        Badge::updateOrCreate(['key' => 'postag','order'=>'9'],['required_value_string' => 'SCONJ','image' => 'laurel-9.svg']);
+        Badge::updateOrCreate(['key' => 'postag','order'=>'8'],['required_value_string' => 'PRON','image' => 'laurel-3.svg']);
+        Badge::updateOrCreate(['key' => 'postag','order'=>'9'],['required_value_string' => 'SCONJ','image' => 'laurel-4.svg']);
 
     }
 }

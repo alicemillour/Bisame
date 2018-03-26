@@ -107,8 +107,8 @@ class AnnotationSeeder extends CsvSeeder {
                         ->pluck('id')[0];
                 
                 Log::debug($word_id);
-                if ( $postag_name != null ) {   
-                $postag_id=DB::table('postags')
+                if ( $postag_name != null ) {
+                    $postag_id=DB::table('postags')
                         ->where('name', $postag_name)
                         ->pluck('id')[0];
                 } else {

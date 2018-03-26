@@ -6,8 +6,8 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Report;
-use App\User;
-use App\Role;
+use App\Notification;
+use App\Recipe;
 use Response, Mail;
 
 class ReportController extends Controller
@@ -22,6 +22,7 @@ class ReportController extends Controller
      */
     public function postSend(Request $request)
     {
+
         if(Auth::check()){
             $data['user_id'] = Auth::user()->id;
             $data['message'] = "Utilisateur : ".Auth::user()->username.'\r\n';              
@@ -29,19 +30,26 @@ class ReportController extends Controller
             $data['message'] = "Utilisateur : Non connecté". '\r\n'; 
         }
 
+        if($request->has('recipe_id')){
+            $recipe = Recipe::findOrFail($request->input('recipe_id'));
+            $url = route('recipes.show', ['recipe' => $recipe]);
+            $data['message'] .= 'Adresse de la recette :<br/>';
+            $data['message'] .= '<a href="'.$url.'">'.$url.'</a><br/>';
+            $recipe->delete();
+        }
+
         $data['message'] .= strip_tags(join('\r\n',$request->input('message')));
 
         $report = Report::create($data);
 
-         $administrators = User::where('is_admin',1)
-            ->where('email','!=','')->get();
+        $notification = Notification::where('slug','report')->first();
 
-        foreach($administrators as $recipient){
-            Mail::send('emails.report', ['report' => $report], function ($m) use ($recipient) {
-                $m->from('contact@zombilingo.org', 'Admin Plural');
-
-                $m->to($recipient->email, $recipient->username)->subject('Signalement de contenu non approprié');
-            });
+        foreach($notification->users as $user){
+            if($user->email!=''){
+                Mail::send('emails.report', ['report' => $report], function ($m) use ($user) {
+                    $m->to($user->email, $user->username)->subject('Signalement de contenu inapproprié');
+                });
+            }
         }
 
         return back()->withSuccess('Merci pour ta participation');
