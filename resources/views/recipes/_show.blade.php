@@ -35,23 +35,25 @@
             <span class="text-muted">
                 @component('users._avatar', ['user' => $recipe->author])
 
-                @endcomponent
-                {{ __('recipes.recipe-by') }}
-                @if($recipe->author->trashed())
-                {{ $recipe->author->name }}
-                @else
-                {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
-                @endif			
-            </span>
-        </p>
-
-        <div class="card-text text-truncate">{{ $recipe->content }}</div>
-        <div class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe) }}</div>
-        <div class="card-text text-right">
-            @if(!$recipe->annotated)
-            <a class="float-right" href="{{ route('recipes.annotations', $recipe) }}">annoter la recette</a>
-            @endif
-        </div>
+			@endcomponent
+			{{ __('recipes.recipe-by') }}
+			@if($recipe->author->trashed())
+				{{ $recipe->author->name }}
+			@else
+				{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+			@endif			
+		</span>
+	</p>
+	
+    <div class="card-text text-truncate">{{ $recipe->content }}</div>
+    <div class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe) }}</div>
+    <div class="card-text text-right">
+    @if(!$recipe->annotated)
+    	<a class="float-right" href="{{ route('recipes.annotations', $recipe) }}">Annoter la recette</a>
+    @elseif(!$recipe->validated)
+    	<a class="float-right" href="{{ route('recipes.annotations', $recipe) }}">Valider la recette</a>
+    @endif
+	</div>
 
     </div>
 </div>

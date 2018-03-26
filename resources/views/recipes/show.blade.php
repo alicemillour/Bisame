@@ -19,6 +19,7 @@
   </ul>
 
   <div class="bg-white p-3" id="content-recipe">
+    <a class="float-right report link" href="#">Signaler du contenu inapproprié</a>
     <div class="plus-tab d-none alert alert-info">
       Pour proposer une version dans une autre variété d'alsacien, sélectionnez du texte dans les zones grisées ou cliquez sur du texte en surbrillance.
     </div>
@@ -169,7 +170,11 @@
     <h4 id="title-tab-pos center-t"> </h4>
     <button class="btn play-button active-button" id="btn-annotation">Améliorer ce résultat</button>
     <div class="row mb-3">
-      <h4 id="message" class="mb-2 col-8 explanation center-t">Voici les catégories grammaticales proposées par notre outil :</h4>
+      @if($annotator_to_validate)
+        <h4 id="message" class="mb-2 col-8 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
+      @else
+        <h4 id="message" class="mb-2 col-8 explanation">Voici les catégories grammaticales proposées par notre outil :</h4>
+      @endif
       <h4 id="explanation" class="mb-2 col-8 d-none explanation">Lorsqu'une catégorie est suggérée
           (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
           (<img src="{{ asset('images/check.png') }}">)
@@ -205,7 +210,10 @@
                 <img class="check no-display"  src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id=""/>
             @else
               @php
-                $annotation = $word->annotation_melt;
+                if($annotator_to_validate)
+                  $annotation = $word->annotation_user($annotator_to_validate->id);
+                else
+                  $annotation = $word->annotation_melt;
               @endphp
               <span class="word not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ ($annotation)? $annotation->postag_id : '' }}">{{ $word->value }}</span>
               <br/>
@@ -252,12 +260,9 @@ foreach($recipe->ingredients as $ingredient){
   $alternative_texts = array_merge($alternative_texts,$ingredient->alternative_texts()->with('user')->get()->toArray());
 }
 @endphp
-    $.valHooks.textarea = {
-      get: function( elem ) {
-        return elem.value.replace( /\r?\n/g, "\r\n" );
-      }
-    };
+
     var help = false;
+    var recipe_id = {{ $recipe->id }};
     var alternative_texts = {!! json_encode($alternative_texts) !!};
     var postags = {!! json_encode($postags) !!};
     var postag = {!! json_encode($postag) !!};
@@ -592,7 +597,7 @@ foreach($recipe->ingredients as $ingredient){
     function flagRecipeAsAnnotated() {
       $.post( "{{ route('recipes.flag-as-annotated',$recipe) }}", function(){
 
-      } );
+      });
     }
 
     function getSelectionHtml() {

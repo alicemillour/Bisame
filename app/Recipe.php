@@ -7,11 +7,14 @@ use App\Traits\Translatable;
 use App\Traits\Commentable;
 use App\Traits\Mediable;
 use App\Traits\Likeable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Recipe extends Model
 {
-	use Translatable, Commentable, Mediable, Likeable;
+	use Translatable, Commentable, Mediable, Likeable, SoftDeletes;
 
+    protected $dates = ['deleted_at'];
+    
 	protected $fillable = [
 		'title',
 		'content',

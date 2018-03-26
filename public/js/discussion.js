@@ -112,5 +112,9 @@ $(document).on('click', ".delete-message" ,function( event ) {
 });
 $(document).on('click', ".report" ,function( event ) {
     event.preventDefault();
+    if(typeof recipe_id !== 'undefined'){
+        $('#form-report').append($('<input type="hidden" name="recipe_id" value="'+recipe_id+'" />'));
+    }
+    $('#form-report').append($('<input type="hidden" name="url" value="'+window.location.href+'" />'));
     $('#reportModal').modal('show');
 });

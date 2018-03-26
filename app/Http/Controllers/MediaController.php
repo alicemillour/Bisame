@@ -26,26 +26,30 @@ class MediaController extends Controller
         // print_r($request->all());
 
         if($request->hasFile('photo')){
-            $photo = $request->photo;
-            $extension = $photo->getClientOriginalExtension();
-            $path = public_path().DIRECTORY_SEPARATOR.'photos'.DIRECTORY_SEPARATOR.Auth::user()->id;
-            $path_thumbnail = public_path().DIRECTORY_SEPARATOR.'photos'.DIRECTORY_SEPARATOR.Auth::user()->id.DIRECTORY_SEPARATOR.'thumbnail';
-            if (!file_exists($path_thumbnail)) {
-                mkdir($path_thumbnail, 0777, true);
-            }            
-            Storage::makeDirectory($path_thumbnail);
-            do {
+            try {
+                $photo = $request->photo;
+                $extension = $photo->getClientOriginalExtension();
+                $path = public_path().DIRECTORY_SEPARATOR.'photos'.DIRECTORY_SEPARATOR.Auth::user()->id;
+                $path_thumbnail = public_path().DIRECTORY_SEPARATOR.'photos'.DIRECTORY_SEPARATOR.Auth::user()->id.DIRECTORY_SEPARATOR.'thumbnail';
+                if (!file_exists($path_thumbnail)) {
+                    mkdir($path_thumbnail, 0777, true);
+                }            
+                Storage::makeDirectory($path_thumbnail);
+                do {
 
-                $nom = str_random(10) . '.' . $extension;
+                    $nom = str_random(10) . '.' . $extension;
 
-            } while(file_exists($path . '/' . $nom));
+                } while(file_exists($path . '/' . $nom));
 
-            $photo->move($path, $nom);
-            Image::make($path . '/' . $nom)->widen(200)->save($path_thumbnail.'/'.$nom);
-            $relative_path = 'photos'.DIRECTORY_SEPARATOR.Auth::user()->id.DIRECTORY_SEPARATOR.'thumbnail'.DIRECTORY_SEPARATOR.$nom;
-            return response()->json(['url'=>$relative_path]);
-        }
-        else
+                $photo->move($path, $nom);
+                Image::make($path . '/' . $nom)->widen(200)->save($path_thumbnail.'/'.$nom);
+                $relative_path = 'photos'.DIRECTORY_SEPARATOR.Auth::user()->id.DIRECTORY_SEPARATOR.'thumbnail'.DIRECTORY_SEPARATOR.$nom;
+                return response()->json(['url'=>$relative_path]);
+            } catch(\Exception $ex){
+                
+            }
+        } else {
             echo 'no-photo';
+        }
     }
 }

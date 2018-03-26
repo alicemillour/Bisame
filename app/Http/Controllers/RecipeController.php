@@ -385,23 +385,23 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe, Request $request)
     {
+        // $recipe = Recipe::findOrFail($id);
         $corpus_recipe = Corpus::where('name','like',$recipe->id.'_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'recipe';
-        
-        // $words = $corpus_recipe->sentences->words;
-
-        if(auth()->check()){
-            $annotations_user = [];
-        } else {
-            $annotations_user = [];
-        }
 
         $message = '';
         $postag = '';
         if($request->has('pos')){
             $postag = Postag::find($request->input('pos'));
             $message = "Vous êtes bien entraîné, les ".$postag->name." n'ont plus de secret pour vous ! Passons aux choses sérieuses :";
+        }
+
+        if($recipe->annotated){
+            $annotated_recipe = AnnotatedRecipe::where('recipe_id',$recipe->id)->first();
+            $annotator_to_validate = $annotated_recipe->annotator;
+        } else {
+            $annotator_to_validate = null;
         }
 
         if($request->has('tab')){
@@ -411,7 +411,7 @@ class RecipeController extends Controller
             if(in_array($tab,['plus','pos']) && !auth()->check())
                 return redirect()->route('login')->withErrors("Veuillez vous connecter pour accéder à cette partie du site.");
         }
-        return view('recipes.show',compact('recipe','corpus_recipe','postags','tab','message','postag'));
+        return view('recipes.show',compact('recipe','annotator_to_validate','corpus_recipe','postags','tab','message','postag'));
     }
     
     /**

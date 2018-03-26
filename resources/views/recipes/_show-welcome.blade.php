@@ -25,8 +25,11 @@
 <p class="card-text text-truncate mb-0">{{ $recipe->content }}</p>
 <p class="text-right"><a class="" href="{{ route('recipes.show',$recipe) }}">lire la suite...</a>
 <br/>
-{{-- @if(!$recipe->annotated) --}}
-  <a href="{{ route('recipes.annotations', $recipe) }}" class="btn annotate-button active-button">annoter la recette</a>  
-{{-- @endif --}}
+
+@if(!$recipe->annotated)
+  <a href="{{ route('recipes.annotations', $recipe) }}"  class="btn annotate-button active-button">Annoter la recette</a>
+@elseif(!$recipe->validated)
+  <a href="{{ route('recipes.annotations', $recipe) }}">Valider la recette</a>
+@endif
 </p>
 <hr/>
