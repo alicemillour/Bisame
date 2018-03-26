@@ -124,7 +124,7 @@ class RecipeController extends Controller
      */
     public function toValidate(Request $request)
     {
-        $recipes = Recipe::with('author')->withCount('likes')->toValidate()->paginate(20);
+        $recipes = Recipe::with('author')->withCount('likes')->toValidate()->paginate(1);
         $title = __('recipes.to-validate');
         return $this->index($recipes, $title);
     }

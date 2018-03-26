@@ -26,7 +26,7 @@
 <p class="text-right"><a class="" href="{{ route('recipes.show',$recipe) }}">lire la suite...</a>
 <br/>
 {{-- @if(!$recipe->annotated) --}}
-  <a href="{{ route('recipes.annotations', $recipe) }}">annoter la recette</a>  
+  <a href="{{ route('recipes.annotations', $recipe) }}" class="btn annotate-button active-button">annoter la recette</a>  
 {{-- @endif --}}
 </p>
 <hr/>
