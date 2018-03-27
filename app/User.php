@@ -63,6 +63,11 @@ class User  extends Authenticatable
         return $this->hasMany('App\Like');
     }
 
+    public function annotations()
+    {
+        return $this->hasMany('App\Annotation');
+    }
+
 
     /**
     * Check if the user has a role
@@ -203,7 +208,9 @@ class User  extends Authenticatable
 
     }
     
-
+    public function getScore(){
+        return $this->annotations()->sum('points');
+    }
 
     
 }
