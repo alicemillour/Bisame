@@ -1,13 +1,10 @@
-<?php namespace App\Services\Html;
+<?php 
+
+namespace App\Services\Html;
 
 use View, Auth;
-use App\Repositories\DuelRepository;
 
 class ModalBuilder extends \Collective\Html\HtmlBuilder {
-
-	public function __construct(DuelRepository $duels){
-		$this->duels = $duels;
-	}
 
 	/**
 	 * 

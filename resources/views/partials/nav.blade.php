@@ -1,4 +1,3 @@
-
 <div class="masthead">
     <div class="row">
         <!--        <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
@@ -45,6 +44,7 @@
                 {{ $nb_recipes_user }}  recettes <br>
                 {{ $nb_annotations }}  mots annotés <br>
                 {{ $nb_variantes_user }}  mots alternatifs proposés<br>
+                <span class="score">{{ Auth::user()->getScore() }}</span> Points<br/>
             </span>
             @endif
 
