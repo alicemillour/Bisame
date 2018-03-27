@@ -73,13 +73,13 @@
                                 </div>
                                 <div class="row" style="text-align:center">
                                     <div class="col-md-4"  >
-                                        <img src="/images/recette-black.png" class="w-25"> <br>
+                                        <img src="{{ asset('images/recette-black.png') }}" class="w-25"> <br>
                                     </div>                                    
                                     <div class="col-md-4"  >
-                                        <img src="/images/recette-black-ann.png" class="w-25">
+                                        <img src="{{ asset('images/recette-black-ann.png') }}" class="w-25">
                                     </div>
                                     <div class="col-md-4"  >
-                                        <img src="/images/recette-var.png" class="w-25">
+                                        <img src="{{ asset('images/recette-var.png') }}" class="w-25">
                                     </div>
                                 </div>
                             </div>
