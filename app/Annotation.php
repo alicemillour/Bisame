@@ -8,7 +8,7 @@ class Annotation extends Model
 {
     protected $table = 'annotations';
 
-    protected $fillable = ['word_id','postag_id','user_id','confidence_score'];
+    protected $fillable = ['word_id','postag_id','user_id','confidence_score','points','points_not_seen'];
 
     public function postag()
     {
