@@ -240,7 +240,7 @@
 
 
 @section('scripts')
-<script type="text/javascript">
+<!--<script type="text/javascript">
     @include('js.welcome')
-</script>
+</script>-->
 @endsection

@@ -40,11 +40,11 @@
                     @endcomponent </span>
                 Mes statistiques
                 <hr style="height:1px;color: white; background-color: whitesmoke; width: 50%;">
-                x points <br>  
+                <span class="score">{{ Auth::user()->getScore() }}</span> points<br/>
                 {{ $nb_recipes_user }}  recettes <br>
                 {{ $nb_annotations }}  mots annotés <br>
                 {{ $nb_variantes_user }}  mots alternatifs proposés<br>
-                <span class="score">{{ Auth::user()->getScore() }}</span> Points<br/>
+                
             </span>
             @endif
 
