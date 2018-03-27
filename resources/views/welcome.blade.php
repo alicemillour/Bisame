@@ -69,17 +69,17 @@
                                         <div class="belle-allure"> J'aurais dit ça autrement&nbsp;!</div> <br>
                                     </div>
                                 </div>
-    <!--                                <div class="row" style="text-align:center">
-                                        <div class="col-md-4"  >
-                                            <img src="/images/recette-black.png" class="w-50"> <br>
-                                        </div>                                    
-                                        <div class="col-md-4"  >
-                                            <img src="/images/recette-black-ann.png" class="w-50">
-                                        </div>
-                                        <div class="col-md-4"  >
-                                            <img src="/images/recette-var.png" class="w-50">
-                                        </div>
-                                    </div>-->
+                                <div class="row" style="text-align:center">
+                                    <div class="col-md-4"  >
+                                        <img src="/images/recette-black.png" class="w-25"> <br>
+                                    </div>                                    
+                                    <div class="col-md-4"  >
+                                        <img src="/images/recette-black-ann.png" class="w-25">
+                                    </div>
+                                    <div class="col-md-4"  >
+                                        <img src="/images/recette-var.png" class="w-25">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <br>
@@ -89,7 +89,7 @@
                                 @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
                             </div>
                             <div class="card-footer text-center">
-                                <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Consulter les recettes</a>
+                                <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
                             </div>        
                         </div>
                     </div>
@@ -169,60 +169,60 @@
                             </div>
                             <br>
                             <div class="card-footer text-center">
-                                <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Consulter les recettes</a>
+                                <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
                             </div>        
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<!--=======
-{{-- @include ('recipes/_search') --}}
-<div class="row">
-  <div class="col-12 mb-4">
-      <div class="card">
-        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Bienvenue sur Plural !</a></h4>
-        <div class="card-body">
-          <alert>TODO : description de la plate forme PLURAL (qui sommes-nous, raison d'être et objectif de la plate-forme)</alert>
+        <!--=======
+        {{-- @include ('recipes/_search') --}}
+        <div class="row">
+          <div class="col-12 mb-4">
+              <div class="card">
+                <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Bienvenue sur Plural !</a></h4>
+                <div class="card-body">
+                  <alert>TODO : description de la plate forme PLURAL (qui sommes-nous, raison d'être et objectif de la plate-forme)</alert>
+                </div>
+              </div>    
+          </div>
         </div>
-      </div>    
-  </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-4">
-      <div class="card">
-        <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.last-recipes') }}</a></h4>
-        <div class="card-body">
-          @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
-        </div>
-        <div class="card-footer text-center">
-          <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
-        </div>        
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card">
-        <h4 class="card-header text-center"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
-        <div class="card-body">
-          @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
-        </div>
-        <div class="card-footer text-center">
-          <a href="{{ route('recipes.to-annotate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
-        </div>        
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card">
-        <h4 class="card-header text-center"><a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
-        <div class="card-body">
-          @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
-        </div>
-        <div class="card-footer text-center">
-          <a href="{{ route('recipes.to-validate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
-        </div>        
-      </div>
->>>>>>> 08d800b80129ce3aa3cad72d3241c7191be4a8d3-->
+        
+        <div class="row">
+            <div class="col-sm-4">
+              <div class="card">
+                <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.last-recipes') }}</a></h4>
+                <div class="card-body">
+                  @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
+                </div>
+                <div class="card-footer text-center">
+                  <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
+                </div>        
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <h4 class="card-header text-center"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
+                <div class="card-body">
+                  @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
+                </div>
+                <div class="card-footer text-center">
+                  <a href="{{ route('recipes.to-annotate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
+                </div>        
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <h4 class="card-header text-center"><a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
+                <div class="card-body">
+                  @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
+                </div>
+                <div class="card-footer text-center">
+                  <a href="{{ route('recipes.to-validate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
+                </div>        
+              </div>
+        >>>>>>> 08d800b80129ce3aa3cad72d3241c7191be4a8d3-->
     </div>
 </div>   
 
