@@ -37,10 +37,14 @@ class AnnotationController extends Controller
                 // The user is the third to produce this annotation
                 $points = 2;
                 $points_not_seen = 1;
-            } elseif($count>=3) {
-                // The user is at least the fourth to produce this annotation
+            } elseif($count==3) {
+                // The user is the fourth to produce this annotation
                 $points = 3;
                 $points_not_seen = 1;
+            } else {
+                // at least four users has produced this annotation
+                $points = 3;
+                $points_not_seen = 0;
             }
 
             Annotation::where('word_id', $request->input('word_id'))
