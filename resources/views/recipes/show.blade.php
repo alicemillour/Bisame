@@ -21,7 +21,7 @@
   <div class="bg-white p-3" id="content-recipe">
     <a class="float-right report link" href="#">Signaler du contenu inapproprié</a>
     <div class="plus-tab d-none alert alert-info">
-      Pour proposer une version dans une autre variété d'alsacien, sélectionnez du texte dans les zones grisées ou cliquez sur du texte en surbrillance.
+      Pour proposer une version dans une variante orthographique ou réigionale, sélectionnez du texte dans les zones grisées ou cliquez sur du texte en surbrillance.
     </div>
     <div class="row">
       <div class="col-sm-7">

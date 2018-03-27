@@ -17,7 +17,7 @@ $solutions = [];
       </div>
       <div class="col-9">
   		<h4 class="explanation">Lorsqu'une catégorie est suggérée
-  		    (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
+  		    (mots <span class="highlight" style="font-size: 0.8em">surlignés</span>) , il faut la valider
   		    (<img src="{{ asset('images/check.png') }}">)
   		    ou l'invalider (<img src="{{ asset('images/no.png') }}">).
       </h4>
@@ -47,9 +47,9 @@ $solutions = [];
             @elseif($pos[$word->annotation_training->postag_id]!="PUNCT")
               <span class="word" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}">{{ $word->value }}</span>
               <br/>            
-              <img class="no invisible" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}" />
+              <img class="no no-display" src="{{ asset('images/no.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}" />
               <span class="pos invisible not-validated" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}">{{ $pos[$word->annotation_training->postag_id] }}</span>
-              <img class="check invisible" src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}"/>
+              <img class="check no-display" src="{{ asset('images/check.png') }}" data-word-id="{{ $word->id }}" data-postag-id="{{ $word->annotation_training->postag_id }}"/>
             @endif
           </div>
           @endif
@@ -92,7 +92,7 @@ $solutions = [];
         invalidatePos($(this));
       } else {
         $(this).attr('data-postag-id',current_postag.id);
-        postag_html.removeClass('invisible').addClass('visible').html(current_postag.name).attr('data-postag-id',current_postag.id);
+        postag_html.removeClass('no-display').addClass('visible').html(current_postag.name).attr('data-postag-id',current_postag.id);
         validatePos($(this));
       }
     })
@@ -247,7 +247,7 @@ td.highlight-translatable {
   background: whitesmoke;
 }
 .highlight, .highlight:hover {
-    background-color: yellow;
+    background-color: #ffd47b;
 }
 .validated {
     background-color: #E3F6CE;
@@ -274,9 +274,15 @@ img.check {
                                   supported by Chrome and Opera */
 }
 .explanation {
-  font-family: Helvetica, arial, sans-serif;
-  color: #337ab7;
+  /*color: #337ab7;*/
   background-color: white;
+  text-align: center;
 }
+
+
+.no-display {
+    display: none;
+}
+
 </style>
 @endsection

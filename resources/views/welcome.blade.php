@@ -22,7 +22,7 @@
                         <div class="card background-colored fancy-border">
                             <h4 class="card-header text-center welcome-card-header"><a href="{{ route('recipes.index') }}">{{ __('recipes.last-recipes') }}</a></h4>
                             <div class="card-body">
-                                @each('recipes/_show', $recipes, 'recipe', 'recipes/_empty')
+                                @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
                             </div>
                             <div class="card-footer text-center">
                                 <a href="{{ route('recipes.create') }}" class="btn play-button active-button">Ajouter une recette</a>
@@ -65,7 +65,7 @@
                                         <!--<a  href="{{ route('recipes.to-validate') }}" class="btn play-button active-button" >Valider des recettes</a> <br>  <br>-->
                                         <div class="belle-allure"> J'aide la science grâce à mes connaissances</div> <br>
                                     </div>
-                                    
+
                                     <div class="col-md-4"  >
                                         <a href="{{ route('recipes.add-variant') }}" class="btn play-button active-button" >J'ajoute des variantes</a> <br> <br>
                                         <div class="belle-allure"> J'aurais dit ça autrement&nbsp;!</div> <br>
@@ -181,8 +181,20 @@
                         </div>
                         <br>
 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card background-colored fancy-border">
+                                    <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Contributeur à l'honneur</a></h4>
+                                    <div class="card-body">
+                                        Eventuellement ici : le profil de la personne ayant le plus de points
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!--=======
@@ -233,7 +245,7 @@
               </div>
         >>>>>>> 08d800b80129ce3aa3cad72d3241c7191be4a8d3-->
     </div>
-</div>   
+</div>
 
 
 @endsection

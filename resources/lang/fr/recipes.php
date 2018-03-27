@@ -46,7 +46,8 @@ return array(
     'to-annotate' => 'Recettes à annoter',
     'to-annotate-exp' => 'Pour voir les catégories proposées par notre outil et les corriger, cliquer sur "Annoter la recette".',
     'to-validate' => 'Recettes à valider',
-    'to-validate-exp' => 'Ces recettes ont été annotées un autre participant participant, cliquez sur "Valider la recette" pour vérifier ses annotations !',
+    'to-validate-exp' => 'Ces recettes ont été annotées un autre participant, cliquez sur "Valider la recette" pour vérifier ses annotations !',
     'add-variant' => 'Ajouter une variante',
-    'add-variant-exp' => 'Ces recettes ont été annotées un autre participant participant, cliquez sur "Valider la recette" pour vérifier ses annotations !',
+    'add-variant-exp' => 'Pour ajouter une variante à un mot, cliquez sur celui-ci et renseignez la variante orthographique ou dialectale de votre choix.'
+    . ' Celle-ci s\' affichera désormais, et nous intégrerons cette information à notre système.',
 );

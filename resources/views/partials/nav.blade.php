@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-6 "> 
             <div class="title belle-allure"> Corpus en sauce</div>
-            <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des resources linguistiques pour l'alsacien&nbsp;!</i> &raquo;</div>
+            <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des resources linguistiques pour l'alsacien&nbsp;!</i>&raquo;</div>
         </div>
         <div class="col-md-3 sidehead right belle-allure" >
             @if (Auth::check())
