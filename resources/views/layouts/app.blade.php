@@ -41,6 +41,13 @@
 
                                         }
 
+                                        .background-colored-light{
+                                            /*background-color: #86b8b9;*/
+                                            background-color: white;
+                                            opacity: 0.85;   
+
+                                        }
+
                                         .info-message-trans {
                                             padding: 1.25rem;
                                             /*background-color:transparent;*/
@@ -73,6 +80,16 @@
                                             font-family: 'Cicle-Fina';
                                         }
 
+
+                                        h1,
+                                        h2,
+                                        h3,
+                                        h4,
+                                        h5,
+                                        h6 {
+                                            margin-top: 0.5rem;
+                                            margin-bottom: 0.5rem;
+                                        }
                                         .title { 
                                             /*margin-top: 10vh;*/
                                             color: white;
@@ -328,6 +345,21 @@
                                         ol, ul, dl {
                                             margin-top: 1rem;
                                             margin-bottom: 1rem;
+                                        }
+
+                                        .col-centered{
+                                            float: none;
+                                            margin: 0 auto;
+                                        }
+
+                                        .explanation-card {
+                                            margin-bottom: 1rem;
+                                            tran
+                                        }
+
+                                        .center-button {
+                                            margin: 0 auto; 
+                                            display:block;
                                         }
                                     </style>
                                     <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">

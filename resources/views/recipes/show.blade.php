@@ -162,30 +162,33 @@
   @endphp
 
   <div id="annotation" class="bg-white p-3 d-none noselect">
-    @if($message)
-          <h4 id="message-popup" class="mb-3">
-            {{ $message }}
-          </h4>
-    @endif
-    <h4 id="title-tab-pos center-t"> </h4>
-    <button class="btn play-button active-button" id="btn-annotation">Améliorer ce résultat</button>
-    <div class="row mb-3">
-      @if($annotator_to_validate)
-        <h4 id="message" class="mb-2 col-8 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
-      @else
-        <h4 id="message" class="mb-2 col-8 explanation">Voici les catégories grammaticales proposées par notre outil :</h4>
+    <div class="annotation-header">
+      @if($message)
+            <h4 id="message-popup" class="mb-3">
+              {{ $message }}
+            </h4>
       @endif
-      <h4 id="explanation" class="mb-2 col-8 d-none explanation">Lorsqu'une catégorie est suggérée
-          (mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span>), il faut la valider
-          (<img src="{{ asset('images/check.png') }}">)
-          ou l'invalider (<img src="{{ asset('images/no.png') }}">).
-      </h4>
-      <h4 id="explanation-free-annotation" class="mb-2 col-8 d-none explanation">Vous avez validé / invalidé tous les mots, mais il reste des mots sans étiquette. Cliquez sur les mots en <span class="highlight" style="font-size: 0.8em">JAUNE</span> pour leur en ajouter une.
-      </h4>
-      <h4 id="explanation-all-annotated" class="mb-2 col-8 d-none explanation">Vous avez annoté tous les mots. Vous pouvez changer l'étiquette d'un mot en cliquant dessus.
-      </h4>
-    </div>
+      <!--<h4 id="title-tab-pos center-t"> </h4>-->
+      <!--<div class="belle-allure text-center" style="margin-bottom:10px"><i> J'aide la science grâce à mes connaissances</i></div>--> 
 
+        @if($annotator_to_validate)
+        <h4 id="message" class="mb-2 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
+        @else
+        <h4 id="message" class="mb-2 explanation"> Voici les catégories trouvées par notre outil pour les mots de <br> votre recette : </h4>
+        <h5 id="submessage" class="mb-2 explanation"> Ce n'est pas mal, mais pas encore parfait... Contribuez à améliorer ses performances en corrigeant ses erreurs !<br>  </h5>
+        @endif
+
+        <button class="btn play-button active-button center-button" id="btn-annotation">Améliorer ce résultat</button>
+
+        <h4 id="explanation" class="mb-2 d-none explanation">validez (<img src="{{ asset('images/check.png') }}">)
+            ou invalidez (<img src="{{ asset('images/no.png') }}">) ce choix.
+        </h4>
+        <h4 id="explanation-free-annotation" class="mb-2 d-none explanation">Vous avez validé / invalidé tous les mots, mais il reste des mots sans étiquette. Cliquez sur les mots <span class="highlight" style="font-size: 0.8em">surlignés</span> pour leur en ajouter une.
+        </h4>
+        <h4 id="explanation-all-annotated" class="mb-2 d-none explanation">Vous avez annoté tous les mots. Vous pouvez changer l'étiquette d'un mot en cliquant dessus.
+        </h4>
+    </div>
+      
     <div class="row">
       <div class="col-8" id="annotations">
       @if($corpus_recipe)
@@ -526,7 +529,8 @@ foreach($recipe->ingredients as $ingredient){
       });
       
       // $('#message').html("Séctionnez/désélectionnez les mots du texte qui appartiennent/n'appartiennent pas à la catégorie <span style='color:red;'>"+current_postag.full_name+' <em>('+current_postag.name+')</em></span>');
-      $('#message').html('Vous annotez la catégorie '+current_postag.full_name+' <em>('+current_postag.name+')</em>');
+      $('#message').html('Notre outil a attribué la catégorie <span class="belle-allure">'+current_postag.full_name+' </span> <em>('+current_postag.name+')</em> aux mots <span class="highlight" style="font-size: 0.8em">surlignés</span>');
+      $('#submessage').html(''); //TODO ajouter message submessage par catégorie 
       $('#explanation').removeClass('d-none');
 
       $('#btn-annotation').hide();
@@ -1142,10 +1146,15 @@ foreach($recipe->ingredients as $ingredient){
 
 <style>
 .explanation {
-  font-family: Trebuchet MS, Helvetica, arial, sans-serif;
-  color: #337ab7;
+  /*color: #337ab7;*/
   background-color: white;
+  text-align: center;
 }
+.annotation-header{
+        margin-bottom: 3em;
+}
+      
+
 
 .center-t {
     text-align:center;
@@ -1213,7 +1222,7 @@ td.highlight-translatable {
   background: whitesmoke;
 }
 .highlight, .highlight:hover {
-    background-color: yellow;
+    background-color: #ffd47b;
 }
 .validated {
     background-color: #E3F6CE;
