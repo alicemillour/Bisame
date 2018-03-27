@@ -125,20 +125,7 @@ class RecipeController extends Controller {
         return $this->index($recipes, $title, $subtitle);
     }
     
-        /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function addVariant(Request $request) {
-        $recipes = Recipe::inRandomOrder()->take[1][id];
-        debug("recipe ID");
-        debug($recipes);
-        $recipes = Recipe::with('author')->withCount('likes')->toAnnotate()->paginate(1);
-        $title = __('recipes.add-variant');
-        $subtitle = __('recipes.add-variant-exp');
-        return $this->index($recipes, $title, $subtitle);
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -418,6 +405,18 @@ class RecipeController extends Controller {
         return view('recipes.show', compact('recipe', 'annotator_to_validate', 'corpus_recipe', 'postags', 'tab', 'message', 'postag'));
     }
 
+            /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addVariant(Request $request) {
+        $recipe = Recipe::inRandomOrder()->withCount('likes')->paginate(20); //->get()->first(); //->paginate(20);//->get()->first()['id'];
+        $title = __('recipes.add-variant');
+        $subtitle = __('recipes.add-variant-exp');
+        $this->index($recipe, $title, $subtitle);
+    }
+    
     /**
      * Display the specified resource.
      *

@@ -13,21 +13,22 @@ $solutions = [];
 <div id="annotation" class="container bg-white p-3 noselect">
     <div class="row">
       <div class="col-12">
-  		<h4 class="explanation">Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight">{{ $postag->full_name }} <em>({{ $postag->name }})</em></span> !</h4>
+          <h4 class="explanation">Bienvenue dans le mode <b>Entraînement </b> de la catégorie <span class="highlight"><span class="belle-allure">{{ $postag->full_name }} </span> <em>({{ $postag->name }})</em></span> !</h4>
       </div>
-      <div class="col-9">
   		<h4 class="explanation">Lorsqu'une catégorie est suggérée
-  		    (mots <span class="highlight" style="font-size: 0.8em">surlignés</span>) , il faut la valider
+  		    (mots <span class="highlight" style="font-size: 0.8em">surlignés</span>), il faut la valider
   		    (<img src="{{ asset('images/check.png') }}">)
   		    ou l'invalider (<img src="{{ asset('images/no.png') }}">).
       </h4>
-  		<h4 class="explanation">En cas de doute, consultez les exemples à droite ou 
+  		<h4 class="explanation">En cas de doute, consultez les exemples ci-dessous ou 
         <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a>
   		</h4>
-      <div class="explanation">
+      <div class="">
         <h5>Quelques exemples :</h5>
         {!! $postag->description !!}
       </div>      
+      <div class="col-9">
+
   		<h4 id="result" class="d-none"></h4>
       </div>
     </div>
