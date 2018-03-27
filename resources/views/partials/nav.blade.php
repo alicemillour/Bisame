@@ -22,7 +22,7 @@
                 @else
                 Statistiques
                 @endif
-                <hr style="height: 1px; color: white; background-color: whitesmoke; width: 50%; border: 1px; ">
+                <hr style="height: 1px; color: white; background-color: whitesmoke; width: 50%; ">
                 {{ $nb_total_users }}  participants <br>
                 {{ $nb_recipes }}  recettes <br>
                 {{ $nb_recipe_annotations }}  mots annotés <br>
@@ -31,19 +31,20 @@
         </div>
         <div class="col-md-6 "> 
             <div class="title belle-allure"> Corpus en sauce</div>
-            <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des resources linguistiques pour l'alsacien !</i> &raquo;</div>
+            <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des resources linguistiques pour l'alsacien&nbsp;!</i>&raquo;</div>
         </div>
         <div class="col-md-3 sidehead right belle-allure" >
             @if (Auth::check())
             <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em;float: right !important; ">
-                @component('users._avatar', ['user' => Auth::user()])
-                @endcomponent 
-                Mes statistiques <br>
-                <hr style="height:1px;color: white; color:whitesmoke;background-color: whitesmoke; width: 50%;">
+                <span style="transform: translate(-120%, -3%);"> @component('users._avatar', ['user' => Auth::user()])
+                    @endcomponent </span>
+                Mes statistiques
+                <hr style="height:1px;color: white; background-color: whitesmoke; width: 50%;">
+                <span class="score">{{ Auth::user()->getScore() }}</span> points<br/>
                 {{ $nb_recipes_user }}  recettes <br>
                 {{ $nb_annotations }}  mots annotés <br>
                 {{ $nb_variantes_user }}  mots alternatifs proposés<br>
-                <span class="score">{{ Auth::user()->getScore() }}</span> Points<br/>
+                
             </span>
             @endif
 
@@ -100,20 +101,20 @@
         </div>
 
         
-        <ul class="navbar-nav mt-2 mt-lg-0">
+        <!--<ul class="navbar-nav mt-2 mt-lg-0">-->
             @if (!Auth::check())
             <li class="nav-item">
-                <a class="nav-link btn btn-link" href="{{ url('/login') }}">
+                <a class="btn btn-link" href="{{ url('/login') }}">
                     Connexion
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-link" href="{{ url('/register') }}">
+                <a class="btn btn-link" href="{{ url('/register') }}">
                     Inscription
                 </a>
             </li>
             @endif
-        </ul>
+        <!--</ul>-->
 
         <ul>
             <li class="nav-item">

@@ -7,7 +7,7 @@
     <!--{{-- @include ('recipes/_search') --}}-->
     <div class="row mt-4 mb-4"  style="background-color:transparent">
         <div class="col-12">
-            <div class="card"  style="background-color:transparent">
+            <div class="card"  style="background-color:transparent; border-style: none">
 
                 <div class="row">
                     <div class="col-md-3">
@@ -22,7 +22,7 @@
                         <div class="card background-colored fancy-border">
                             <h4 class="card-header text-center welcome-card-header"><a href="{{ route('recipes.index') }}">{{ __('recipes.last-recipes') }}</a></h4>
                             <div class="card-body">
-                                @each('recipes/_show', $recipes, 'recipe', 'recipes/_empty')
+                                @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
                             </div>
                             <div class="card-footer text-center">
                                 <a href="{{ route('recipes.create') }}" class="btn play-button active-button">Ajouter une recette</a>
@@ -61,36 +61,55 @@
                                         <div class="belle-allure"> Je partage une recette </div> 
                                     </div>                                    
                                     <div class="col-md-4"  >
-                                        <a  href="{{ route('recipes.create') }}" class="btn play-button active-button" >Annoter des recettes</a> <br>  <br>
+                                        <a  href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button" >Annoter des recettes</a> <br>  <br>
+                                        <!--<a  href="{{ route('recipes.to-validate') }}" class="btn play-button active-button" >Valider des recettes</a> <br>  <br>-->
                                         <div class="belle-allure"> J'aide la science grâce à mes connaissances</div> <br>
                                     </div>
+
                                     <div class="col-md-4"  >
-                                        <a href="{{ route('recipes.create') }}" class="btn play-button active-button" >J'ajoute des variantes</a> <br> <br>
+                                        <a href="{{ route('recipes.add-variant') }}" class="btn play-button active-button" >J'ajoute des variantes</a> <br> <br>
                                         <div class="belle-allure"> J'aurais dit ça autrement&nbsp;!</div> <br>
                                     </div>
                                 </div>
                                 <div class="row" style="text-align:center">
                                     <div class="col-md-4"  >
-                                        <img src="/images/recette-black.png" class="w-25"> <br>
+                                        <img src="{{ asset('images/recette-black.png') }}" class="w-25"> <br>
                                     </div>                                    
                                     <div class="col-md-4"  >
-                                        <img src="/images/recette-black-ann.png" class="w-25">
+                                        <img src="{{ asset('images/recette-black-ann.png') }}" class="w-25">
                                     </div>
                                     <div class="col-md-4"  >
-                                        <img src="/images/recette-var.png" class="w-25">
+                                        <img src="{{ asset('images/recette-var.png') }}" class="w-25">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br>
-                        <div class="card background-colored fancy-border">
-                            <h4 class="card-header welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
-                            <div class="card-body">
-                                @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
+                        <div class="row">
+                            <div class="col-md-6"  >
+                                <div class="card background-colored fancy-border">
+                                    <h4 class="card-header welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
+                                    <div class="card-body">
+                                        @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
+                                    </div>        
+                                </div>
                             </div>
-                            <div class="card-footer text-center">
-                                <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
-                            </div>        
+                            <div class="col-md-6"  >
+                                <div class="card background-colored fancy-border">
+                                    <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">
+                                        <a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
+                                    <div class="card-body">
+                                        @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
+                                    </div>
+                                    <br>
+                                    <div class="card-footer text-center">
+                                        <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
+                                    </div>        
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -98,8 +117,8 @@
                         <!--<img src="/images/recette-du-jour.png" class="w-100">-->
                         <div class="card background-colored fancy-border">
                             <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Classements</a></h4>
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item" style="font-size: 1em;" ><a class="nav-link active" data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
+                            <ul class="nav nav-tabs" id="scoreboards">
+                                <li class="nav-item" style="font-size: 1em;" ><a class="nav-link active"  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
                                 <li class="nav-item" style="font-size: 1em;" ><a class="nav-link" data-toggle="pill" style="color:black" href="#annotations"> Annotations </a></li>
                                 <li class="nav-item"><a class="nav-link" data-toggle="pill" style="color:black; font-size: 1em" href="#variantes" > Variantes </a></li>
                             </ul>
@@ -123,7 +142,7 @@
                                     </div>
                                 </div>
 
-                                <div id="annotations" class="tab-pane fade" >
+                                <div id="annotations" class="tab-pane" >
                                     <div style="text-align: center; margin-top: 5px; ">
                                         <div class="score" style="color:black;text-align: center;">
                                             @foreach($top5_annotations as $key=>$user)
@@ -141,7 +160,7 @@
                                     </div>
                                 </div>
 
-                                <div id="variantes" class="tab-pane fade">
+                                <div id="variantes" class="tab-pane">
                                     <div style="text-align: center; margin-top: 5px;">
                                         <div class="score" style="color:black; text-align: center;">
                                             @foreach($top5_variantes as $key=>$user)
@@ -161,19 +180,21 @@
                             </div>
                         </div>
                         <br>
-                        <div class="card background-colored fancy-border">
-                            <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">
-                                <a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
-                            <div class="card-body">
-                                @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card background-colored fancy-border">
+                                    <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Contributeur à l'honneur</a></h4>
+                                    <div class="card-body">
+                                        Eventuellement ici : le profil de la personne ayant le plus de points
+                                    </div>
+
+                                </div>
                             </div>
-                            <br>
-                            <div class="card-footer text-center">
-                                <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
-                            </div>        
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!--=======
@@ -224,7 +245,14 @@
               </div>
         >>>>>>> 08d800b80129ce3aa3cad72d3241c7191be4a8d3-->
     </div>
-</div>   
+</div>
 
 
+@endsection
+
+
+@section('scripts')
+<!--<script type="text/javascript">
+    @include('js.welcome')
+</script>-->
 @endsection

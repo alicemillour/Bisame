@@ -41,6 +41,13 @@
 
                                         }
 
+                                        .background-colored-light{
+                                            /*background-color: #86b8b9;*/
+                                            background-color: white;
+                                            opacity: 0.85;   
+
+                                        }
+
                                         .info-message-trans {
                                             padding: 1.25rem;
                                             /*background-color:transparent;*/
@@ -73,6 +80,16 @@
                                             font-family: 'Cicle-Fina';
                                         }
 
+
+                                        h1,
+                                        h2,
+                                        h3,
+                                        h4,
+                                        h5,
+                                        h6 {
+                                            margin-top: 0.5rem;
+                                            margin-bottom: 0.5rem;
+                                        }
                                         .title { 
                                             /*margin-top: 10vh;*/
                                             color: white;
@@ -175,7 +192,34 @@
                                                 margin-top: 40px;*/
                                             /*min-width: 200px;*/
                                             /*max-width: 300px;*/
-                                            background-color: #c7e4ee;
+                                            background-color: #e1ca52e0;
+                                            -webkit-hyphens: auto;
+                                            -moz-hyphens: auto;
+                                            -ms-hyphens: auto;
+                                            -o-hyphens: auto;
+                                            hyphens: auto;
+                                            margin: 0.5% 2%;
+                                            display:inline-block;
+                                            color: black;
+                                        } 
+                                        
+                                        .validate-button {
+                                            /*width: 33vw;*/
+                                            white-space: normal;
+                                            font-size: 13px;
+                                            /*border: 1px;*/	
+                                            /*border-style: solid;*/
+                                            /*border-color: #285e8e !important; set the color you want here*/
+                                            border-radius: 3px;
+                                            /*padding: 2px 30px 1px 30px;*/
+                                            text-align: center;
+                                            /*    margin-left: 60px;
+                                                margin-right: 60px;
+                                                margin-bottom: 40px;
+                                                margin-top: 40px;*/
+                                            /*min-width: 200px;*/
+                                            /*max-width: 300px;*/
+                                            background-color: #b1ebccc4;
                                             -webkit-hyphens: auto;
                                             -moz-hyphens: auto;
                                             -ms-hyphens: auto;
@@ -328,6 +372,21 @@
                                         ol, ul, dl {
                                             margin-top: 1rem;
                                             margin-bottom: 1rem;
+                                        }
+
+                                        .col-centered{
+                                            float: none;
+                                            margin: 0 auto;
+                                        }
+
+                                        .explanation-card {
+                                            margin-bottom: 1rem;
+                                            tran
+                                        }
+
+                                        .center-button {
+                                            margin: 0 auto; 
+                                            display:block;
                                         }
                                     </style>
                                     <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
