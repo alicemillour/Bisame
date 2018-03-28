@@ -1,6 +1,7 @@
-<div class="masthead">
+
+<div class="masthead container-fluid">
     <div class="row" style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.15);">
-        <!--        <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
+        {{--         <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
                     @if (Auth::check())
                     <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em;float: right !important; ">
         
@@ -14,7 +15,7 @@
         
                     </span>
                     @endif
-                </div>-->
+                </div> --}}
         <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
             <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em ;font-size:140% ">
                 @if (Auth::check())
@@ -123,15 +124,16 @@
         @endif
 
         
-<!--            @if (!Auth::check())
-                <a class="btn btn-link" href="{{ url('/login') }}">
-                    Connexion
-                </a>
-                <a class="btn btn-link" href="{{ url('/register') }}">
-                    Inscription
-                </a>
-            @endif-->
 
+        @if (!Auth::check())
+            <a class="btn btn-link" href="{{ url('/login') }}">
+                Connexion
+            </a>
+            <a class="btn btn-link" href="{{ url('/register') }}">
+                Inscription
+            </a>
+        @endif
+        
 
         <ul>
             <li class="nav-item">
@@ -152,7 +154,7 @@
 
         <a class="btn btn-link" href="{{ route('info') }}">
             <i class="fa fa-question" aria-hidden="true"></i>  </a>
-        <ul class="navbar-nav mt-2 mt-lg-0 d-none">
+{{--         <ul class="navbar-nav mt-2 mt-lg-0 d-none">
             <li class="nav-item">
                 <a class="nav-link no-hover" style="float: none;display: inline-block;text-align: center;">
                     <b>Déjà {{$non_admin_annotations}} annotations produites par {{$nb_total_users}} participants </b> !
@@ -207,9 +209,9 @@
                     </li>
                 </ul>
             </li>
-        </ul>    
+        </ul>     
         @endif
-
+    --}}
     </div>
 </div>
 
