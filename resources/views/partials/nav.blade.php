@@ -101,20 +101,15 @@
         </div>
 
         
-        <!--<ul class="navbar-nav mt-2 mt-lg-0">-->
             @if (!Auth::check())
-            <li class="nav-item">
                 <a class="btn btn-link" href="{{ url('/login') }}">
                     Connexion
                 </a>
-            </li>
-            <li class="nav-item">
                 <a class="btn btn-link" href="{{ url('/register') }}">
                     Inscription
                 </a>
-            </li>
             @endif
-        <!--</ul>-->
+
 
         <ul>
             <li class="nav-item">
