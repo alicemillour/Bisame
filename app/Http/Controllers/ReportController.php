@@ -31,6 +31,7 @@ class ReportController extends Controller
         }
 
         if($request->has('recipe_id')){
+            //soft delete of the recipe
             $recipe = Recipe::findOrFail($request->input('recipe_id'));
             $url = route('recipes.show', ['recipe' => $recipe]);
             $data['message'] .= 'Adresse de la recette :<br/>';
@@ -52,7 +53,7 @@ class ReportController extends Controller
             }
         }
 
-        return back()->withSuccess('Merci pour ta participation');
+        return redirect()->route('recipes.index')->withSuccess("Merci pour ta participation. Le contenu va être examiné par nos modérateurs.");
     }  
 
 }
