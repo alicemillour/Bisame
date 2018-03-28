@@ -390,8 +390,8 @@ foreach($recipe->ingredients as $ingredient){
 
     function invalidatePos(elm){
       var word_id = elm.attr('data-word-id');
-      $('.pos[data-word-id='+word_id+']').removeClass('visible').removeClass('not-validated').addClass('no-display').attr('data-postag-id',0);
-      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('no-display').attr('data-postag-id',0);      
+      $('.pos[data-word-id='+word_id+']').removeClass('visible').removeClass('not-validated').addClass('invisible').attr('data-postag-id',0);
+      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);      
       $('.word[data-word-id='+word_id+']').removeClass('highlight').removeClass('validated').addClass('undefined').attr('data-postag-id',0);
       saveAnnotation(word_id, 0);
       updateCountNotValidated();
@@ -404,7 +404,7 @@ foreach($recipe->ingredients as $ingredient){
       var postag_id = elm.attr('data-postag-id');
       $('.pos[data-word-id='+word_id+']').removeClass('not-validated');
       $('.word[data-word-id='+word_id+']').removeClass('highlight').addClass('validated');
-      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('no-display').attr('data-postag-id',0);
+      $('img[data-word-id='+word_id+']').removeClass('visible').addClass('invisible').attr('data-postag-id',0);
       saveAnnotation(word_id, postag_id);
       updateCountNotValidated();
       initTooltips();
