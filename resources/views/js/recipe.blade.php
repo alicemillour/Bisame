@@ -7,7 +7,10 @@ function trashPhoto(element){
 	if($("input.cover_picture:checked").length==0 && $("input.cover_picture").length>0)
 		$("input.cover_picture").prop('checked','checked');
 }
-
+$( "#form-recipe" ).submit(function( event ) {
+	$(window).scrollTop(0);
+  	$('#container-loader').removeClass('d-none');
+});
 $('#photo').change(function(){
 	var formData = new FormData($('#form-recipe')[0]);
 	jQuery.ajax
