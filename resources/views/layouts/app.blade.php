@@ -22,7 +22,23 @@
                                     .fill {
                                         margin:0;
                                         padding:0;
-                                        background: url({{ asset('/images/back-'.App::getLocale().'.jpg') }}) no-repeat center fixed;
+                                        /*background: url({{ asset('/images/back-'.App::getLocale().'.jpg') }}) no-repeat center fixed;*/
+                                        /*background: url({{ asset('/images/kitchen.jpg') }}) no-repeat center fixed;*/
+                                        /*background: url({{ asset('/images/eat.jpg') }}) no-repeat center fixed;*/
+                                        /*background: url({{ asset('/images/bnappe.jpg') }}) no-repeat center fixed;*/ /*ccool */
+/*                                        background: url({{ asset('/images/wood.jpg') }}) no-repeat center fixed;
+                                        background: url({{ asset('/images/wood2.png') }}) no-repeat center fixed;
+                                        background: url({{ asset('/images/nappe1.jpg') }}) no-repeat center fixed;*/
+/*                                        background: url({{ asset('/images/table2.jpg') }}) no-repeat center fixed;
+                                        background: url({{ asset('/images/black-legumes.jpg') }}) no-repeat center fixed;
+                                        background: url({{ asset('/images/koug.jpg') }}) no-repeat center fixed;
+                                        background: url({{ asset('/images/fraises2.jpg') }}) no-repeat center fixed;*/
+                                        /*background: url({{ asset('/images/tomatoe.jpg') }}) no-repeat center fixed;*/
+                                        /*background: url({{ asset('/images/asperge.jpg') }}) no-repeat center fixed;*/
+                                        /*background: url({{ asset('/images/vege1.jpg') }}) no-repeat center fixed; cool */
+                                        background: url({{ asset('/images/vege3d.png') }}) no-repeat center fixed;  cool 
+                                        /*background: url({{ asset('/images/carreaux.jpg') }}) no-repeat center fixed;*/ 
+                                        /*background: url({{ asset('/images/tea.jpg') }}) no-repeat center fixed;*/ 
                                         -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                                         background-size: cover;  /* version standardisée */
                                         background-position: left top;  
@@ -93,15 +109,16 @@
                                         .title { 
                                             /*margin-top: 10vh;*/
                                             color: white;
-                                            font-size: 300%;
-                                            font-weight: 400;
+                                            font-size: 220%;
+                                            font-weight: 300;
                                             text-align: center;
                                             line-height: 3.2;
                                         }
                                         .subtitle { 
                                             /*margin-top: 10vh;*/
                                             color: white;
-                                            font-weight: 400;
+                                            font-weight: 600;
+                                            font-size: 100%;
                                             text-align: center;
                                             line-height: 2.8;
                                         }
@@ -109,7 +126,11 @@
                                         .sidehead { 
                                             /*margin-top: 10vh;*/
                                             color: white;
+                                            font-weight: 1000 !important;
                                             text-align: center;
+                                            /*margin-top:1%;*/
+                                            /*margin-right:1%;*/
+                                            /*margin-left:1%;*/
                                             display: flex;
                                             align-items: center;
                                         }
@@ -398,7 +419,7 @@
                                         @stop
                                         </head>
 
-                                        <body class="fill" id="app">
+                                        <body class="fill" id="app" style="max-width:95%; margin:0 auto;">
 
                                             @include('partials.nav')
 

@@ -1,5 +1,5 @@
 <div class="masthead">
-    <div class="row">
+    <div class="row" style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.15);">
         <!--        <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
                     @if (Auth::check())
                     <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em;float: right !important; ">
@@ -16,7 +16,7 @@
                     @endif
                 </div>-->
         <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
-            <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em">
+            <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em ;font-size:140% ">
                 @if (Auth::check())
                 Statistiques globales
                 @else
@@ -29,13 +29,20 @@
                 {{ $nb_recipe_versions }}  mots alternatifs proposés <br> 
             </span>
         </div>
-        <div class="col-md-6 "> 
-            <div class="title belle-allure"> Corpus en sauce</div>
-            <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des resources linguistiques pour l'alsacien&nbsp;!</i>&raquo;</div>
+        <div class="col-md-6" style="position:relative; text-align:center"> 
+            <div style="position: absolute;
+                 top: 50%;
+                 left: 50%;
+                 transform: translate(-50%,-50%);
+                 width:100%
+                 ">
+                <div class="title belle-allure"> Recettes de grammaire </div>
+                <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des resources linguistiques pour l'alsacien&nbsp;!&nbsp;</i>&raquo;</div>
+            </div>
         </div>
-        <div class="col-md-3 sidehead right belle-allure" >
+        <div class="col-md-3 sidehead belle-allure right" >
             @if (Auth::check())
-            <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em;float: right !important; ">
+            <span style="text-align:center; border-width:1px; border-style:double; border-color:white; padding: 1em;float: right !important; font-size:140% ">
                 <span style="transform: translate(-120%, -3%);"> @component('users._avatar', ['user' => Auth::user()])
                     @endcomponent </span>
                 Mes statistiques
@@ -44,7 +51,7 @@
                 {{ $nb_recipes_user }}  recettes <br>
                 {{ $nb_annotations }}  mots annotés <br>
                 {{ $nb_variantes_user }}  mots alternatifs proposés<br>
-                
+
             </span>
             @endif
 
@@ -53,7 +60,7 @@
     </div>
 </div>
 <!-- /container -->
-<div class="navbar affix-top dark-background-colored py-0" style="width: 95%;margin:0 auto; margin-bottom: 1%" data-spy="affix" data-offset-top="150" >
+<div class="navbar affix-top dark-background-colored py-0" style="margin:0 auto; margin-bottom: 1%" data-spy="affix" data-offset-top="150" >
     <div class="container">
         <ul class="navbar-nav mt-2 mt-lg-0">
             <li class="nav-item">
@@ -100,20 +107,20 @@
             </div>
         </div>
 
-        
+
         <!--<ul class="navbar-nav mt-2 mt-lg-0">-->
-            @if (!Auth::check())
-            <li class="nav-item">
-                <a class="btn btn-link" href="{{ url('/login') }}">
-                    Connexion
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-link" href="{{ url('/register') }}">
-                    Inscription
-                </a>
-            </li>
-            @endif
+        @if (!Auth::check())
+        <li class="nav-item">
+            <a class="btn btn-link" href="{{ url('/login') }}">
+                Connexion
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-link" href="{{ url('/register') }}">
+                Inscription
+            </a>
+        </li>
+        @endif
         <!--</ul>-->
 
         <ul>
