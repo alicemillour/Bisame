@@ -232,7 +232,7 @@
         @endforeach
         <div class="text-center">
           <button id="btn-next-postag" class="btn btn-warning d-none disabled btn-lg" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="bottom">Catégorie suivante</button>
-          <button id="btn-finish" class="btn btn-primary d-none btn-lg" data-toggle="tooltip" title="Retour à l'accueil" data-placement="bottom">Terminer</button>
+          <a href="{{ route('home') }}" id="btn-finish" class="btn btn-primary d-none btn-lg" data-toggle="tooltip" title="Retour à l'accueil" data-placement="bottom">Terminer</a>
         </div>
       @else
         <alert>Aucune annotation pour cette recette.</alert>
