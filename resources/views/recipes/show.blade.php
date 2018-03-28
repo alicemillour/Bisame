@@ -232,6 +232,7 @@
         @endforeach
         <div class="text-center">
           <button id="btn-next-postag" class="btn btn-warning d-none disabled btn-lg" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="bottom">Catégorie suivante</button>
+          <a href="{{ route('home') }}" id="btn-finish" class="btn btn-primary d-none btn-lg" data-toggle="tooltip" title="Retour à l'accueil" data-placement="bottom">Terminer</a>
         </div>
       @else
         <alert>Aucune annotation pour cette recette.</alert>
@@ -561,6 +562,7 @@ foreach($recipe->ingredients as $ingredient){
         $('#explanation').hide();
         $('#btn-next-postag').hide();
         $('#explanation-free-annotation').removeClass('d-none');
+        $('#btn-finish').removeClass('d-none');
         $('.validated').addClass('validated-no-display').removeClass('validated');
         $('.undefined').addClass('highlight');
         mode="free-annotation";

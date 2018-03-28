@@ -121,7 +121,17 @@
             </a>
         </li>
         @endif
-        <!--</ul>-->
+
+        
+<!--            @if (!Auth::check())
+                <a class="btn btn-link" href="{{ url('/login') }}">
+                    Connexion
+                </a>
+                <a class="btn btn-link" href="{{ url('/register') }}">
+                    Inscription
+                </a>
+            @endif-->
+
 
         <ul>
             <li class="nav-item">

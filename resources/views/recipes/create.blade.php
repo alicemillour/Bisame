@@ -178,10 +178,35 @@
         </div>
     </div>
 </div>
+<div id="container-loader" class="d-none">
+    <h1 id="text-loader" class="mx-auto text-center" style="">Traitement en cours. Veuillez patienter...</h1>
+    <div class="text-center"><i id="loader" class="fa fa-spinner fa-spin fa-3x fa-fw mt-3"></i></div>
+</div>
 @endsection
 
 @section('scripts')
 <script type="text/javascript">
     @include('js.recipe')
 </script>
+@endsection
+@section('style')
+<style type="text/css">
+#container-loader {
+    position:absolute;
+    top:0;
+    left:0;
+    background-color:black;
+    opacity:0.8;
+    height:100%;
+    width:100%;
+    z-index:200;
+}
+#text-loader {
+    color:white;
+    margin-top:5%;
+}
+#loader {
+    color:white;
+}
+</style>
 @endsection
