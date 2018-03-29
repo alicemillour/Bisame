@@ -7,7 +7,7 @@
         <div class="col-lg-7 clearfix">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-center">Hopla {{ $user->name }} !
+                    <h4 class="card-title text-center "> <span class="belle-allure"> Hopla {{ $user->name }} !</span>
                         <span class="float-right">                    	
                             @if($user->avatar)
                             <img id="avatar"  style="width:50px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />
@@ -58,7 +58,7 @@
         <div class="col-lg-5 pt-3 pt-lg-0">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">{{ __('recipes.my-badges') }}</h3>
+                    <h3 class="welcome-card-header belle-allure">{{ __('recipes.my-badges') }}</h3>
                     <p class="card-text">
                         @include('users/_badges')
                     </p>
@@ -88,7 +88,7 @@
             </div>
             <div class="card mt-3">
                 <div class="card-body">
-                    <h3 class="card-title">{{ __('recipes.my-stats') }}</h3>
+                    <h3 class="welcome-card-header">{{ __('recipes.my-stats') }}</h3>
                     @include('users/_leaderboard')
                 </div>
             </div>            

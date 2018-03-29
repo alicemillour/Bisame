@@ -9,7 +9,7 @@
         <meta property="og:description" content="Bisame est un projet de recherche collaboratif visant à favoriser la diffusion de l'alsacien. Venez participer !" />
                         <!-- TODO DIFF <title>Krik !</title> -->
         <title> {{ trans('home.app-name') }} </title>   
-
+        {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
@@ -21,7 +21,23 @@
             .fill {
                 margin:0;
                 padding:0;
-                background: url({{ asset('/images/back-'.App::getLocale().'.jpg') }}) no-repeat center fixed;
+                /*background: url({{ asset('/images/back-'.App::getLocale().'.jpg') }}) no-repeat center fixed;*/
+                /*background: url({{ asset('/images/kitchen.jpg') }}) no-repeat center fixed;*/
+                /*background: url({{ asset('/images/eat.jpg') }}) no-repeat center fixed;*/
+                /*background: url({{ asset('/images/bnappe.jpg') }}) no-repeat center fixed;*/ /*ccool */
+                /*                                        background: url({{ asset('/images/wood.jpg') }}) no-repeat center fixed;
+                                                        background: url({{ asset('/images/wood2.png') }}) no-repeat center fixed;
+                                                        background: url({{ asset('/images/nappe1.jpg') }}) no-repeat center fixed;*/
+                /*                                        background: url({{ asset('/images/table2.jpg') }}) no-repeat center fixed;
+                                                        background: url({{ asset('/images/black-legumes.jpg') }}) no-repeat center fixed;
+                                                        background: url({{ asset('/images/koug.jpg') }}) no-repeat center fixed;
+                                                        background: url({{ asset('/images/fraises2.jpg') }}) no-repeat center fixed;*/
+                /*background: url({{ asset('/images/tomatoe.jpg') }}) no-repeat center fixed;*/
+                /*background: url({{ asset('/images/asperge.jpg') }}) no-repeat center fixed;*/
+                /*background: url({{ asset('/images/vege1.jpg') }}) no-repeat center fixed; cool */
+                background: url({{ asset('/images/vege3d.png') }}) no-repeat center fixed;  cool 
+                /*background: url({{ asset('/images/carreaux.jpg') }}) no-repeat center fixed;*/ 
+                /*background: url({{ asset('/images/tea.jpg') }}) no-repeat center fixed;*/ 
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                 background-size: cover;  /* version standardisée */
                 background-position: left top;  
@@ -92,15 +108,16 @@
                 .title { 
                     /*margin-top: 10vh;*/
                     color: white;
-                    font-size: 300%;
-                    font-weight: 400;
+                    font-size: 250%;
+                    font-weight: 300;
                     text-align: center;
                     line-height: 3.2;
                 }
                 .subtitle { 
                     /*margin-top: 10vh;*/
                     color: white;
-                    font-weight: 400;
+                    font-weight: 600;
+                    font-size: 100%;
                     text-align: center;
                     line-height: 2.8;
                 }
@@ -108,7 +125,11 @@
                 .sidehead { 
                     /*margin-top: 10vh;*/
                     color: white;
+                    font-weight: 1000 !important;
                     text-align: center;
+                    /*margin-top:1%;*/
+                    /*margin-right:1%;*/
+                    /*margin-left:1%;*/
                     display: flex;
                     align-items: center;
                 }
@@ -201,7 +222,7 @@
                     display:inline-block;
                     color: black;
                 } 
-                
+
                 .validate-button {
                     /*width: 33vw;*/
                     white-space: normal;
@@ -387,47 +408,46 @@
                     margin: 0 auto; 
                     display:block;
                 }
-    </style>
-    
-    <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
+            </style>
+            <link href="{{ asset('css/'.App::getLocale().'.css') }}" rel="stylesheet">
 
-    @yield('style')
+            @yield('style')
 
-    @section('page-header')
+            @section('page-header')
 
-    @stop
-</head>
+            @stop
+        </head>
 
-<body class="fill" id="app">
+        <body class="fill" id="app" style="max-width:95%; margin:0 auto;">
 
-    @include('partials.nav')
+            @include('partials.nav')
 
-    @include('shared/badges')
+            @include('shared/badges')
 
-    @include('discussion/report')
+            @include('discussion/report')
 
-    <div class="container-fluid">
+            <div class="container-fluid">
 
-        @include('shared/alerts')
+                @include('shared/alerts')
 
-        @yield('content')
+                @yield('content')
 
-    </div>
-    @include('partials.footer-'.App::getLocale())
-    <!-- JavaScripts -->
-    <script type="text/javascript">
-        var base_url = '{{ asset('') }}';
-        var logged_in = {{ Auth::check()? 1 : 0 }};
-    </script>    
-    <script src="{{ asset('/js/all.js') }}"></script>
+            </div>
+            @include('partials.footer-'.App::getLocale())
+            <!-- JavaScripts -->
+            <script type="text/javascript">
+                var base_url = '{{ asset('') }}';
+                var logged_in = {{ Auth::check()? 1 : 0 }};
+            </script>    
+            <script src="{{ asset('/js/all.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
 
-    @yield('scripts')
+            @yield('scripts')
 
-    @include('partials.modal-login')
+            @include('partials.modal-login')
 
-</body>
+        </body>
 
-</html>
+    </html>

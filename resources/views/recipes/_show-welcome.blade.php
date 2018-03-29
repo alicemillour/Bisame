@@ -1,4 +1,4 @@
-<h6 class="card-subtitle mb-1 text-muted">{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
+<h4 class="card-subtitle mb-1 text-muted" >{{ link_to_route('recipes.show', $recipe->title, $recipe, ['class' => 'card-link' ]) }}
     <div class="d-inline float-right">
         <i class="fa fa-heart like"></i>
         <span class="likes-count">{{ $recipe->likes_count }}</span>
@@ -9,7 +9,7 @@
         <img class="" style="width:20px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
         @endif        
     </div>
-</h6>
+</h4>
 <span class="text-muted">
     @component('users._avatar', ['user' => $recipe->author])
 

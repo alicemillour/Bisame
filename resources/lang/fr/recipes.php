@@ -48,6 +48,7 @@ return array(
     'to-validate' => 'Recettes à valider',
     'to-validate-exp' => 'Ces recettes ont été annotées un autre participant, cliquez sur "Valider la recette" pour vérifier ses annotations !',
     'add-variant' => 'Ajouter une variante',
-    'add-variant-exp' => 'Pour ajouter une variante à un mot, cliquez sur celui-ci et renseignez la variante orthographique ou dialectale de votre choix.'
-    . ' Celle-ci s\' affichera désormais, et nous intégrerons cette information à notre système.',
+    'add-variant-exp' => 'Vous n\'auriez pas dit/écrit comme ça un mot d\'une recette ? Pour chaque recette, l\'onglet "Moi je l\'aurais dit comme ça" est là pour vous
+        permettre d\'ajouter des variantes régionales ou orthographiques aux mots que vous souhaitez. Ces variantes seront intégrées à notre système, nous permettant 
+        d\'avoir une meilleure connaissance des pratiques de l\'écrit.',
 );
