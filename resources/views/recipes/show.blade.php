@@ -591,7 +591,7 @@ foreach($recipe->ingredients as $ingredient){
       if($('span.undefined').length==0 && mode=="free-annotation"){
         $('#explanation-free-annotation').addClass('d-none');
         $('#explanation-all-annotated').removeClass('d-none');
-        $(window).scrollTop(0);
+        // $(window).scrollTop(0);
         flagRecipeAsAnnotated();
       }
 
