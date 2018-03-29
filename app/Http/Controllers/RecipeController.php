@@ -405,18 +405,20 @@ class RecipeController extends Controller {
         return view('recipes.show', compact('recipe', 'annotator_to_validate', 'corpus_recipe', 'postags', 'tab', 'message', 'postag'));
     }
 
-            /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function addVariant(Request $request) {
-        $recipe = Recipe::inRandomOrder()->withCount('likes')->paginate(20); //->get()->first(); //->paginate(20);//->get()->first()['id'];
+    public function addAltVersion(Request $request) {
+        $recipe = Recipe::inRandomOrder()->first();
         $title = __('recipes.add-variant');
         $subtitle = __('recipes.add-variant-exp');
-        $this->index($recipe, $title, $subtitle);
+        $request->session()->flash('title', $title);
+        $request->session()->flash('subtitle', $subtitle);
+        return redirect('recipes/' . $recipe->id . '?tab=plus');
     }
-    
+
     /**
      * Display the specified resource.
      *

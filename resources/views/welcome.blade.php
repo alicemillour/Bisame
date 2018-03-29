@@ -67,7 +67,7 @@
                                     </div>
 
                                     <div class="col-md-4"  >
-                                        <a href="{{ route('recipes.add-variant') }}" class="btn play-button active-button" >J'ajoute des variantes</a> <br> <br>
+                                        <a href="{{ route('recipes.add-alt-version') }}" class="btn play-button active-button" >J'ajoute des variantes</a> <br> <br>
                                         <div class="belle-allure"> J'aurais dit ça autrement&nbsp;!</div> <br>
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@
                         </div>
                         <br>
 
-                        <div class="row">
+<!--                        <div class="row">
                             <div class="col-md-12">
                                 <div class="card background-colored fancy-border">
                                     <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Contributeur à l'honneur</a></h4>
@@ -191,7 +191,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
 
@@ -250,9 +250,3 @@
 
 @endsection
 
-
-@section('scripts')
-<!--<script type="text/javascript">
-    @include('js.welcome')
-</script>-->
-@endsection

@@ -1,5 +1,5 @@
 
-<div class="masthead container-fluid">
+<div class="masthead container-fluid" style="padding-bottom:0px">
     <div class="row" style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.15);">
         {{--         <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
                     @if (Auth::check())
@@ -38,7 +38,7 @@
                  width:100%
                  ">
                 <div class="title belle-allure"> Recettes de grammaire </div>
-                <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des resources linguistiques pour l'alsacien&nbsp;!&nbsp;</i>&raquo;</div>
+                <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des ressources linguistiques pour l'alsacien&nbsp;!&nbsp;</i>&raquo;</div>
             </div>
         </div>
         <div class="col-md-3 sidehead belle-allure right" >
@@ -122,18 +122,6 @@
             </a>
         </li>
         @endif
-
-        
-
-        @if (!Auth::check())
-            <a class="btn btn-link" href="{{ url('/login') }}">
-                Connexion
-            </a>
-            <a class="btn btn-link" href="{{ url('/register') }}">
-                Inscription
-            </a>
-        @endif
-        
 
         <ul>
             <li class="nav-item">

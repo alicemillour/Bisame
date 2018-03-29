@@ -1,10 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-  
+
+
   <!--@include ('recipes/_search')--> 
   
 <div id="recipe" class="container">
+@if (session()->has('title'))
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 col-centered">
+            <div class="card explanation-card background-colored-light fancy-border">
+                <div class="p-2">
+                    <h2 class="text-center belle-allure">{{ session()->get('title') }}</h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-center">{{ session()->get('subtitle') }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endif
+
   
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -21,7 +40,7 @@
   <div class="bg-white p-3" id="content-recipe">
     <a class="float-right report link" href="#">Signaler du contenu inapproprié</a>
     <div class="plus-tab d-none alert alert-info">
-      Pour proposer une version dans une variante orthographique ou réigionale, sélectionnez du texte dans les zones grisées ou cliquez sur du texte en surbrillance.
+      Pour proposer une version dans une variante orthographique ou régionale, double cliquez sur un mot de la recette ou sélectionnez du texte dans les zones grisées, renseignez votre variante et cliquez sur Valider !
     </div>
     <div class="row">
       <div class="col-sm-7">

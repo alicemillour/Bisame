@@ -108,7 +108,7 @@
                 .title { 
                     /*margin-top: 10vh;*/
                     color: white;
-                    font-size: 220%;
+                    font-size: 250%;
                     font-weight: 300;
                     text-align: center;
                     line-height: 3.2;
