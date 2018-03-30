@@ -6,7 +6,7 @@
     
     <div class="col-md-10 col-centered"  >
         
-        <div class="card explanation-card background-colored-light fancy-border">
+        <div class="card explanation-card background-colored fancy-border">
         <div class="p-2">
             <h2 class="text-center belle-allure">{{ $title }}</h2>
         </div>
