@@ -113,6 +113,8 @@ class RecipeController extends Controller {
         return $this->index($recipes, $title, $subtitle);
     }
 
+
+
     /**
      * Display a listing of the resource.
      *
@@ -124,8 +126,6 @@ class RecipeController extends Controller {
         $subtitle = __('recipes.to-validate-exp');
         return $this->index($recipes, $title, $subtitle);
     }
-    
-
 
     /**
      * Show the form for creating a new resource.
