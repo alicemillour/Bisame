@@ -1,7 +1,7 @@
 @extends('layouts.app', ['meta_description' => 'Contact Form'])
+
 @section('content')
 
-@include('partials.nav')
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">

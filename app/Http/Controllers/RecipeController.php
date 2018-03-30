@@ -20,6 +20,7 @@ use App\Services\WordSeeder;
 use App\Services\AnnotationSeeder;
 use DB;
 use App\Mail\NewRecipe;
+use App\Mail\NewAnecdote;
 use App\Notification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
@@ -246,6 +247,19 @@ class RecipeController extends Controller {
         }
     }
 
+    public function sendMailNewAnecdote(Recipe $recipe, Anecdote $anecdote) {
+
+        $notification = Notification::where('slug', 'anecdotes')->first();
+
+        $users = $notification->users()->where('user_id', $recipe->user_id)->get();
+
+        foreach ($users as $user) {
+            if ($user->email != '') {
+                Mail::to($user)->queue(new NewAnecdote($recipe, $anecdote));
+            }
+        }
+    }
+
     public function tokenize(String $filename, String $script_path, String $corpus_path) {
         $raw_file_url = storage_path() . '/app/corpus/raw/recipes/' . $filename . '.txt';
 
@@ -337,13 +351,18 @@ class RecipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function addAnecdote(StoreAnecdote $request) {
-        Anecdote::create([
+
+        $recipe = Recipe::findOrFail($request->input('recipe_id'));
+
+        $anecdote = Anecdote::create([
             'user_id' => auth()->user()->id,
             'recipe_id' => $request->input('recipe_id'),
             'content' => $request->input('anecdote'),
         ]);
 
         $this->checkBadge($request, 'anecdote', auth()->user()->anecdotes()->count());
+
+        self::sendMailNewAnecdote($recipe, $anecdote);
 
         return redirect('recipes/' . $request->input('recipe_id'))->withSuccess(__('recipes.anecdote-created'));
     }
