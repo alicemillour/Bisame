@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="row">
     <div id="create-recipe" class="col-12 col-md-6 offset-md-3 background-recipe fancy-border background-colored">
 
 
         <h3 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">{{ __('recipes.new-recipe') }} 
             <i class="fa fa-question-circle" 
-               data-toggle="tooltip" data-placement="bottom" data-original-title="
+               data-toggle="tooltip" data-placement="top" data-original-title="
                Les nouvelles recettes ainsi que les anecdotes sont intégrées au corpus collaboratif."
                style="font-size:20px; position:absolute; margin-right:5px;"></i></span> 
 

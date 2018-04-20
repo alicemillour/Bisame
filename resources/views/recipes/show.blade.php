@@ -209,7 +209,7 @@
     </div>
       
     <div class="row">
-      <div class="col-8" id="annotations">
+      <div class="col-8" id="annotations" style="position: -webkit-sticky; position: sticky; top: 10%; align-self: flex-start;">
       @if($corpus_recipe)
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)

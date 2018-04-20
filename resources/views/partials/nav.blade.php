@@ -51,7 +51,7 @@
             <hr style="height:1px;color: white; background-color: whitesmoke; width: 50%;">
             <span class="score">{{ Auth::user()->getScore() }}</span> points<br/>
             {{ $nb_recipes_user }}  recettes <br>
-            {{ $nb_annotations }}  mots annotés <br>
+            {{ $nb_annotations_user }}  mots annotés <br>
             {{ $nb_variantes_user }}  mots alternatifs proposés<br>
 
         </span>
@@ -104,7 +104,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="{{ route('recipes.index') }}">Toutes les recettes</a>
                 <a class="dropdown-item" href="{{ route('recipes.favorite') }}">Mes recettes favorites</a>
-                <!--<a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>-->
+                <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
             </div>
         </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="home">
+<div id="home" style="max-width: 95%; margin: 0 auto;">
     <div class="row">
         <div class="col-lg-7 clearfix">
             <div class="card">
@@ -86,12 +86,12 @@
                     <br> <a href="{{ route('recipes.index') }}" class="card-link">{{ __('recipes.all') }}</a>
                 </div>
             </div>
-            <div class="card mt-3">
+<!--            <div class="card mt-3">
                 <div class="card-body">
                     <h3 class="welcome-card-header">{{ __('recipes.my-stats') }}</h3>
                     @include('users/_leaderboard')
                 </div>
-            </div>            
+            </div>            -->
         </div>
     </div>
 </div>

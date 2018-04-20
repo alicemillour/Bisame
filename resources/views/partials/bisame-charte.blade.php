@@ -6,11 +6,14 @@ par
 <a href="https://alicemillour.github.io/" target="_blank">Alice Millour</a>,
 <a href="http://www.schplaf.org/kf/" target="_blank">Karën Fort</a>
 dans le cadre de la thèse d'Alice Millour réalisée à l' 
-<a href="http://www.paris-sorbonne.fr/" target="_blank">Université Paris-Sorbonne</a>
+<a href="http://www.paris-sorbonne.fr/" target="_blank">Sorbonne Universités</a>
 et conjointement avec 
 <a href="http://www.loria.fr/~guillaum" target="_blank">Bruno Guillaume</a>
-(<a href="http://www.loria.fr" target="_blank">LORIA</a>),
-<alert> TODO : mettre tous les autres ? </alert>
+(<a href="http://www.loria.fr" target="_blank">LORIA</a>), 
+<a href="http://www.loria.fr/~guillaum" target="_blank">Delphine Berhnard</a>
+(<a href="http://www.loria.fr" target="_blank">LiLPa</a>), et 
+<a href="http://www.loria.fr/~guillaum" target="_blank">André Thibault</a>
+(<a href="http://www.paris-sorbonne.fr/" target="_blank">Sorbonne Universités</a>).
 dans le cadre du projet PLURAL (Production LUdique de Ressources Annotées pour les Langues de France), 
 financé par la <a href="http://www.culturecommunication.gouv.fr/Thematiques/Langue-francaise-et-langues-de-France" target="_blank">DGLFLF</a>.
 Une partie des développements a été réalisée par Nicolas Lefebvre au LORIA.
@@ -27,7 +30,7 @@ La présente charte a pour but de permettre aux participants de participer dans 
 </p>
 <p>
 Tout manquement ou tout abus fera l'objet de sanctions pouvant aller jusqu'au banissement définitif du joueur.
-<alert> De manière générale, il est attendu de la part des participants un comportement fair-play visant à respecter l'amusement de tous.</alert>
+ De manière générale, il est attendu de la part des participants un comportement fair-play visant à respecter l'amusement de tous.
 </p>
 <h2>
 (1) Inscription
@@ -35,7 +38,7 @@ Tout manquement ou tout abus fera l'objet de sanctions pouvant aller jusqu'au ba
 <p>
 La participation à la plateforme <b class="ostrich">BISAME</b> est entièrement gratuite et l'inscription est ouverte à tous les internautes disposant d'un accès à Internet régulier et éventuellement d'une adresse mail personnelle et active (ce dernier point n'étant pas obligatoire).
 Des mails pourront être envoyés au participant en fonctions des évolutions de la plate-forme.
-<alert> Les corpus proposés dans <b class="ostrich">BISAME</b> peuvent contenir des textes ne convenant pas à des personnes de moins de 16 ans. </alert>
+Les corpus proposés dans <b class="ostrich">BISAME</b> peuvent contenir des textes ne convenant pas à des personnes de moins de 16 ans. 
 </p>
 <h2>
 (2) Données Personnelles

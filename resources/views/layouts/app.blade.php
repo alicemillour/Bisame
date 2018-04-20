@@ -280,29 +280,9 @@
                     border-color: #285e8e !important; set the color you want here
                 }
 
-
-                .infobulle {
-                    position: relative;  /* les .infobulle deviennent référents */
-
-                    max-width: 30px;
-                    /*cursor: help;*/
-                }
-
-                /* on génère un élément :after lors du survol et du focus :*/
-
-                .infobulle:hover::after,
-                .infobulle:focus::after {
-                    content: attr(aria-label);  /* on affiche aria-label */
-                    position: absolute;
-                    /*top: -2.4em;*/
-                    left: 100%;
-                    border-radius:3px;
-                    padding:5px;
-                    background-color:white;
-                    transform: translateX(-0%); /* on centre horizontalement  */
-                    transform: translateY(-100%); /* on centre horizontalement  */
-                    z-index: 1; /* pour s'afficher au dessus des éléments en position relative */
-                    white-space: nowrap;  /* on interdit le retour à la ligne */
+                .tooltip.show{
+                    translate3d(-669px, -394px, 0px);
+                    transform: translate(-50%,-50%);
                 }
 
                 li.nav-item > a.no-hover:focus, li.nav-item > a.no-hover:hover{

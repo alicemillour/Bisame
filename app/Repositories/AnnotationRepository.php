@@ -78,10 +78,13 @@ class AnnotationRepository extends ResourceRepository {
     }
 
     public function get_user_annotation_count_on_recipe($user_id) {
+        debug(Array($user_id)[0]);
         /* returns number of annotations on all sentences */
-               return(DB::select(DB::raw('SELECT count(words.id) as annotation_count from words, sentences, corpora, annotated_recipes where corpora.name like concat(annotated_recipes.recipe_id, "_%") and 
-words.sentence_id=sentences.id and sentences.corpus_id=corpora.id;')));
+    return(DB::select('SELECT count(words.id) as annotation_count from annotations,words, sentences, corpora, annotated_recipes where corpora.name like concat(annotated_recipes.recipe_id, "_%") and 
+words.sentence_id=sentences.id and sentences.corpus_id=corpora.id and annotations.word_id=words.id and annotations.user_id=:uid', ['uid' => $user_id]));
     }
+    
+    
 
     public function get_users_scores_and_annotation_counts() {
         /* returns number of annotations on all sentences */

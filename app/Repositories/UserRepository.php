@@ -106,7 +106,7 @@ class UserRepository extends ResourceRepository {
                         ->select(DB::raw('count(*) as recipe_count, users.id'))
                         ->groupBy('users.id')
                         ->orderBy('recipe_count', 'desc')
-                        ->where('is_admin', '=', '0')->take(5)->get();
+                        ->where('is_admin', '=', '0')->take(10)->get();
     }
 
     public function get_best_users_by_quantity() {
@@ -117,7 +117,7 @@ class UserRepository extends ResourceRepository {
                         ->groupBy('users.id')
                         ->orderBy('quantity', 'desc')
                         ->where('is_admin', '=', '0')
-                        ->take(5)->get();
+                        ->take(10)->get();
     }
 
     public function get_best_users_by_alternative() {
@@ -128,7 +128,7 @@ class UserRepository extends ResourceRepository {
                         ->groupBy('users.id')
                         ->orderBy('quantity', 'desc')
                         ->where('is_admin', '=', '0')
-                        ->take(5)->get();
+                        ->take(10)->get();
     }
 
     public function get_level_by_id($user_id) {

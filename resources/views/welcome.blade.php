@@ -3,7 +3,7 @@
 
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="max-width: 95%; margin: 0 auto;">
     <!--{{-- @include ('recipes/_search') --}}-->
     <div class="row mt-4 mb-4"  style="background-color:transparent">
         <div class="col-12">
@@ -41,7 +41,7 @@
                             </h3>
                             <!--<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">-->
                             <div class="card-body">
-                                <span class="belle-allure"> Corpus en sauce </span> est une plateforme collaborative qui recueille :
+                                <span class="belle-allure"> Recettes de Grammaire </span> est une plateforme collaborative qui recueille :
                                 <br>
                                 <ol>
                                     <li>Des <span class="belle-allure"> recettes de cuisine  </span> (<b> ùf elsassisch&nbsp;! </b>) </li>
@@ -85,36 +85,23 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row">
-                            <div class="col-md-6"  >
-                                <div class="card background-colored fancy-border">
-                                    <h4 class="card-header welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
-                                    <div class="card-body">
-                                        @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
-                                    </div>
-                                    <div class="card-footer text-center">
-                                        <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
-                                    </div>        
+                        <!--<div class="row">-->
+                        <div class="col-md-12"  >
+                            <div class="card background-colored fancy-border">
+                                <h4 class="card-header welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
+                                <div class="card-body">
+                                    @each('recipes/_show-welcome_1', $recipes_to_annotate, 'recipe', 'recipes/_empty')
                                 </div>
-                            </div>
-                            <div class="col-md-6"  >
-                                <div class="card background-colored fancy-border">
-                                    <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">
-                                        <a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
-                                    <div class="card-body">
-                                        @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
-                                    </div>
-                                    <br>
-                                    <div class="card-footer text-center">
-                                        <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
-                                    </div>        
-                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
+                                </div>        
                             </div>
                         </div>
+
+                        <!--</div>-->
                     </div>
 
                     <div class="col-md-3">
-                        <!--<img src="/images/recette-du-jour.png" class="w-100">-->
                         <div class="card background-colored fancy-border">
                             <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Classements</a></h4>
                             <ul class="nav nav-tabs" id="scoreboards">
@@ -180,70 +167,37 @@
                             </div>
                         </div>
                         <br>
-
-<!--                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card background-colored fancy-border">
-                                    <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Contributeur à l'honneur</a></h4>
-                                    <div class="card-body">
-                                        Eventuellement ici : le profil de la personne ayant le plus de points
-                                    </div>
-
-                                </div>
+                        <!--<div class="col-md-6"  >-->
+                        <div class="card background-colored fancy-border">
+                            <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">
+                                <a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
+                            <div class="card-body">
+                                @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
                             </div>
-                        </div>-->
+                            <br>
+                            <div class="card-footer text-center">
+                                <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
+                            </div>        
+                        </div>
+                        <!--</div>-->
+
+
+                        <!--                        <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="card background-colored fancy-border">
+                                                            <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Contributeur à l'honneur</a></h4>
+                                                            <div class="card-body">
+                                                                Eventuellement ici : le profil de la personne ayant le plus de points
+                                                            </div>
+                        
+                                                        </div>
+                                                    </div>
+                                                </div>-->
                     </div>
                 </div>
 
             </div>
         </div>
-        <!--=======
-        {{-- @include ('recipes/_search') --}}
-        <div class="row">
-          <div class="col-12 mb-4">
-              <div class="card">
-                <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">Bienvenue sur Plural !</a></h4>
-                <div class="card-body">
-                  <alert>TODO : description de la plate forme PLURAL (qui sommes-nous, raison d'être et objectif de la plate-forme)</alert>
-                </div>
-              </div>    
-          </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-sm-4">
-              <div class="card">
-                <h4 class="card-header text-center"><a href="{{ route('recipes.index') }}">{{ __('recipes.last-recipes') }}</a></h4>
-                <div class="card-body">
-                  @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
-                </div>
-                <div class="card-footer text-center">
-                  <a href="{{ route('recipes.index') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
-                </div>        
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="card">
-                <h4 class="card-header text-center"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
-                <div class="card-body">
-                  @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
-                </div>
-                <div class="card-footer text-center">
-                  <a href="{{ route('recipes.to-annotate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
-                </div>        
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="card">
-                <h4 class="card-header text-center"><a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
-                <div class="card-body">
-                  @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
-                </div>
-                <div class="card-footer text-center">
-                  <a href="{{ route('recipes.to-validate') }}" class="btn btn-primary mt-lg-3 mt-xl-0">Voir toutes les recettes</a>
-                </div>        
-              </div>
-        >>>>>>> 08d800b80129ce3aa3cad72d3241c7191be4a8d3-->
     </div>
 </div>
 

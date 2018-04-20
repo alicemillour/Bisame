@@ -42,7 +42,6 @@ class ImportTrainingCorpus extends Command
     public function handle()
     {
         $postag = $this->argument('postag');
-
         $path_csv = base_path() . '/database/seeds/csvs/'. App::getLocale() . '/';
         $corpus_seeder = new CorpusSeeder($path_csv.$postag.'_corpus.csv');
         $corpus_seeder->run();

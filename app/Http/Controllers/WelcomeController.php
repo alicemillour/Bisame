@@ -8,6 +8,7 @@ use App\Repositories\AnnotationRepository;
 use App\Repositories\UserRepository;
 use App\Jobs\ChangeLocale;
 use App\Recipe;
+use App\Traits\Badgeable;
 use App\User;
 use Auth,
     DB;
@@ -34,7 +35,7 @@ class WelcomeController extends Controller {
                     ->select(DB::raw('count(*) as recipe_count, users.name'))
                     ->groupBy('users.id')
                     ->orderBy('recipe_count', 'desc')
-                    ->where('is_admin', '=', '0')->take(5)->get(),
+                    ->where('is_admin', '=', '0')->take(10)->get(),
             'top5_annotations' => $this->userRepository->get_best_users_by_quantity(),
             'top5_variantes' => $this->userRepository->get_best_users_by_alternative(),
             'recipes' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(3)->get(),

@@ -42,13 +42,14 @@ return array(
     'empty' => 'Aucune recette',
     'add-anecdote' => 'Ajouter une anecdote',
     'placeholder-add-anecdote' => 'Ajouter une anecdote ! (texte libre)',
-    'app-name' => 'Corpus en sauce',
+    'app-name' => 'Recettes de Grammaire',
     'to-annotate' => 'Recettes à annoter',
     'to-annotate-exp' => 'Pour voir les catégories proposées par notre outil et les corriger, cliquer sur "Annoter la recette".',
     'to-validate' => 'Recettes à valider',
     'to-validate-exp' => 'Ces recettes ont été annotées un autre participant, cliquez sur "Valider la recette" pour vérifier ses annotations !',
     'add-variant' => 'Ajouter une variante',
     'add-variant-exp' => 'Vous n\'auriez pas dit/écrit comme ça un mot d\'une recette ? Pour chaque recette, l\'onglet "Moi je l\'aurais dit comme ça" est là pour vous
-        permettre d\'ajouter des variantes régionales ou orthographiques aux mots que vous souhaitez. Ces variantes seront intégrées à notre système, nous permettant 
-        d\'avoir une meilleure connaissance des pratiques de l\'écrit.',
+        permettre d\'ajouter des variantes régionales ou orthographiques aux mots que vous souhaitez. 
+        Ces variantes seront intégrées à notre système, nous permettant 
+        d\'avoir une meilleure connaissance des pratiques de l\'écrit et de vous proposer des variantes adaptées à votre pratique !',
 );

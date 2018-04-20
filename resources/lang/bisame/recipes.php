@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'app-name' => 'Corpus en sauce',
+  'app-name' => 'Recettes de Grammaire',
   'all' => 'Toutes les recettes',
   'text-intro' => 'Proposez ou consultez des recettes en alsacien.',
   'new-recipe' => 'Ajouter une recette',

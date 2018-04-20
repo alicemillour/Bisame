@@ -59,7 +59,7 @@ corpus_ADP;4;14;gstorwa;VERB;100;training
 corpus_ADP;4;15;.;PUNCT;100;training
 corpus_ADP;5;1;Bsundersch;ADV;100;training
 corpus_ADP;5;2;ìntressànt;ADJ;100;training
-corpus_ADP;5;3;ànna;DET;100;training
+corpus_ADP;5;3;ànna;ADP;100;training
 corpus_ADP;5;4;si;DET;100;training
 corpus_ADP;5;5;Druck;NOUN;100;training
 corpus_ADP;5;6;vu;ADP;100;training
@@ -131,7 +131,7 @@ corpus_ADP;4;14;gstorwa;VERB;100;solution
 corpus_ADP;4;15;.;PUNCT;100;solution
 corpus_ADP;5;1;Bsundersch;ADV;100;solution
 corpus_ADP;5;2;ìntressànt;ADJ;100;solution
-corpus_ADP;5;3;ànna;ADP;100;solution
+corpus_ADP;5;3;ànna;DET;100;solution
 corpus_ADP;5;4;si;DET;100;solution
 corpus_ADP;5;5;Druck;NOUN;100;solution
 corpus_ADP;5;6;vu;ADP;100;solution

@@ -52,17 +52,17 @@ class BadgesTableSeeder extends Seeder
         Badge::updateOrCreate(['key' => 'alternativ-text','order'=>'12'],['required_value' => '75','image' => 'pretzel-12.svg']);
 
         Badge::updateOrCreate(['key' => 'annotation','order'=>'1'],['required_value' => '1','image' => 'graduate-1.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'2'],['required_value' => '2','image' => 'graduate-2.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'3'],['required_value' => '3','image' => 'graduate-3.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'4'],['required_value' => '5','image' => 'graduate-4.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'5'],['required_value' => '8','image' => 'graduate-5.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'6'],['required_value' => '12','image' => 'graduate-6.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'7'],['required_value' => '17','image' => 'graduate-7.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'8'],['required_value' => '23','image' => 'graduate-8.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'9'],['required_value' => '30','image' => 'graduate-9.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'10'],['required_value' => '40','image' => 'graduate-10.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'11'],['required_value' => '50','image' => 'graduate-11.svg']);
-        Badge::updateOrCreate(['key' => 'annotation','order'=>'12'],['required_value' => '75','image' => 'graduate-12.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'2'],['required_value' => '10','image' => 'graduate-2.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'3'],['required_value' => '25','image' => 'graduate-3.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'4'],['required_value' => '50','image' => 'graduate-4.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'5'],['required_value' => '75','image' => 'graduate-5.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'6'],['required_value' => '100','image' => 'graduate-6.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'7'],['required_value' => '150','image' => 'graduate-7.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'8'],['required_value' => '200','image' => 'graduate-8.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'9'],['required_value' => '300','image' => 'graduate-9.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'10'],['required_value' => '500','image' => 'graduate-10.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'11'],['required_value' => '750','image' => 'graduate-11.svg']);
+        Badge::updateOrCreate(['key' => 'annotation','order'=>'12'],['required_value' => '1000','image' => 'graduate-12.svg']);
 
         Badge::updateOrCreate(['key' => 'postag','order'=>'1'],['required_value_string' => 'ADJ','image' => 'laurel-1.svg']);
         Badge::updateOrCreate(['key' => 'postag','order'=>'2'],['required_value_string' => 'ADP','image' => 'laurel-2.svg']);
