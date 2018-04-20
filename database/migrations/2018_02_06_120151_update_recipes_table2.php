@@ -13,7 +13,8 @@ class UpdateRecipesTable2 extends Migration
     public function up()
     {
         Schema::table('recipes', function ($table) {
-            $table->softDeletes();
+            $table->unsignedSmallInteger('annotated')->after('user_id')->default(0);
+            $table->unsignedSmallInteger('validated')->after('user_id')->default(0);
         });
     }
 
