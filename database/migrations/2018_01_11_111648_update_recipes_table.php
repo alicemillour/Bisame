@@ -12,9 +12,9 @@ class UpdateRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::table('recipes', function ($table) {
-            $table->integer('thumbnail_id')->after('servings')->nullable();
-        });
+//        Schema::table('recipes', function ($table) {
+//            $table->integer('thumbnail_id')->after('servings')->nullable();
+//        });
     }
 
     /**
