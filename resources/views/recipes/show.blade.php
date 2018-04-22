@@ -111,7 +111,9 @@
       @endif
     </div>
     @if($recipe->ingredients->count())
-      <h4>{{ __('recipes.ingredients') }}
+        <hr style="height: 1px; color: grey; background-color: black; width: 50%; margin-left: 0px " />
+<!--<hr style="height: 0.5px; color: white; background-color: black; width: 50%; margin-left: 0px " />-->
+    <h4>{{ __('recipes.ingredients') }}</h4>
     @endif
     @if($recipe->servings)
      ({{ $recipe->servings>1 ?__('recipes.for-n-persons',['number'=>$recipe->servings]):__('recipes.for-n-person',['number'=>$recipe->servings]) }})</h4>
