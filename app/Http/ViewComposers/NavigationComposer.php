@@ -52,7 +52,7 @@ class NavigationComposer {
         } else {
 //            debug($this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
             $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
-            $view->with('nb_total_users', $this->userRepository->get_participant_count()['count']);
+            $view->with('nb_total_users', $this->userRepository->get_users_count()['count']);
         }
         $view->with('nb_recipes', Recipe::count());
         $view->with('nb_recipe_annotations', DB::select(DB::raw('SELECT count(words.id) as count from words, sentences, corpora, annotated_recipes where corpora.name like concat(annotated_recipes.recipe_id, "_%") and 
