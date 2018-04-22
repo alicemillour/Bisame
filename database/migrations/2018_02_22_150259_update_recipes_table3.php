@@ -12,9 +12,9 @@ class UpdateRecipesTable3 extends Migration
      */
     public function up()
     {
-        Schema::table('recipes', function ($table) {
-            $table->softDeletes();
-        });
+//        Schema::table('recipes', function ($table) {
+//            $table->softDeletes();
+//        });
     }
 
     /**

@@ -124,8 +124,10 @@
       </tr>
       @endforeach
     </table>
-    
-    <h4 class="mt-2">{{ __('recipes.recipe') }}</h4>
+        <hr style="height: 1px; color: grey; background-color: black; width: 75%; margin-left: 0px " />
+<!--<hr style="height: 0.5px; color: white; background-color: black; width: 50%; margin-left: 0px " />-->
+    <h4>{{ __('recipes.recipe') }}</h4>
+
     <div id="recipe" class="translatable" data-id="{{ $recipe->id }}" data-type="App\Recipe" data-attribute="content">{!! e($recipe->content) !!}</div>
     
     <h4 class="mt-2">{{ __('recipes.anecdotes') }}</h4>
