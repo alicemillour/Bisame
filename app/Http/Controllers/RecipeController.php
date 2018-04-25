@@ -509,7 +509,6 @@ class RecipeController extends Controller {
                 }
             }
         }
-
         return redirect('recipes')->withSuccess(__('recipes.updated'));
     }
 

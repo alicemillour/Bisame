@@ -22,7 +22,7 @@ class DevDatabaseSeeder extends Seeder
         factory(User::class, 10)
             ->create()
             ->each(function ($user) use ($faker) {
-                $attributes = ['recipe','anecdote','alternativ-text','storie','annotation'];
+                $attributes = ['recipe','anecdote','alternativ-text','annotation'];
                 foreach($attributes as $attribute){
                     $number = $faker->numberBetween(0, 12);
                     if($number==0) continue;

@@ -24,15 +24,14 @@ $solutions = [];
                 <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a>
             </h4>
         </div>
-        <hr style="height: 1px; color: white; background-color: black; width: 50%; ">  
-
-        <div style="margin: 0 auto">
+        <div style="width:100%;"><hr style="height: 1px; color: white; background-color: black; width: 50%; "> </div>
+        <div style="display:inline-block;margin: 0 auto">
 
             <h5>Quelques exemples :</h5>
             {!! $postag->description !!}
-        </div>      
+        </div>
         <br>
-        <hr style="height: 1px; color: white; background-color: black; width: 50%; ">  
+        <div style="width:100%;"><hr style="height: 1px; color: white; background-color: black; width: 50%; "> </div>
         <br>
         <div class="col-12">
 

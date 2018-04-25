@@ -22,7 +22,7 @@
                     @endif
                 </div>
                 @if($recipe->medias->count()>0)
-                <img src="{{ asset($recipe->medias->first()->filename) }}" style="width:100%;" />
+                <img src="{{ asset($recipe->medias->first()->filename) }}" style="max-height:100%; max-width:100%;" />
                 @endif
 
             </div>

@@ -90,7 +90,7 @@
 .play-button {
     /*width: 33vw;*/
     white-space: normal;
-    font-size: 25px;
+    font-size: 1.5em;
     border: 1px;	
     border-style: solid;
     border-color: #AC1E44;
@@ -111,7 +111,6 @@
     hyphens: auto;
     margin: 0.5% 2%;
     display:inline-block;
-
 } 
 #play-button-1 {
     /*width:140px;*/

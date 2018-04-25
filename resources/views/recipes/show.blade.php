@@ -197,23 +197,22 @@
         @if($annotator_to_validate)
         <h4 id="message" class="mb-2 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
         @else
-        <h4 id="message" class="mb-2 explanation"> Voici les catégories trouvées par notre outil pour les mots de <br> votre recette : </h4>
-        <h5 id="submessage" class="mb-2 explanation"> Ce n'est pas mal, mais pas encore parfait... Contribuez à améliorer ses performances en corrigeant ses erreurs !<br>  </h5>
+        <h4 id="message" class="mb-2 explanation">  Cette recette fait désormais partie de notre base de textes en alsacien !  <br> 
+            Notre outil a tenté de deviner les catégories grammaticales des mots de cette recette... Voici le résultat :</h4>
         @endif
 
-        <button class="btn play-button active-button center-button" id="btn-annotation">Améliorer ce résultat</button>
 
         <h4 id="explanation" class="mb-2 d-none explanation">validez (<img src="{{ asset('images/check.png') }}">)
             ou invalidez (<img src="{{ asset('images/no.png') }}">) ce choix.
         </h4>
         <h4 id="explanation-free-annotation" class="mb-2 d-none explanation">Vous avez validé / invalidé tous les mots, mais il reste des mots sans étiquette. Cliquez sur les mots <span class="highlight" style="font-size: 0.8em">surlignés</span> pour leur en ajouter une.
         </h4>
-        <h4 id="explanation-all-annotated" class="mb-2 d-none explanation">Vous avez annoté tous les mots. Vous pouvez changer l'étiquette d'un mot en cliquant dessus.
+        <h4 id="explanation-all-annotated" class="mb-2 d-none explanation"> Vos annotations ont bien été enregistrées ! Vous pouvez encore modifier l'étiquette d'un mot en cliquant dessus. Pour revenir à l'accueil, cliquer sur terminer.
         </h4>
     </div>
       
     <div class="row">
-      <div class="col-8" id="annotations" style="position: -webkit-sticky; position: sticky; top: 10%; align-self: flex-start;">
+      <div class="col-12" id="annotations" style="position: -webkit-sticky; position: sticky; top: 10%; align-self: flex-start;">
       @if($corpus_recipe)
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)
@@ -260,8 +259,16 @@
       @else
         <alert>Aucune annotation pour cette recette.</alert>
       @endif
+      <div class="annotation-header">
+
+        @if(!$annotator_to_validate)
+        <h5 id="submessage" class="mb-2 explanation"> Ce n'est pas mal, mais pas encore parfait... Contribuez à améliorer ses performances en corrigeant ses erreurs !<br> <br>  </h5>
+        @endif
+        <button class="btn play-button active-button center-button" id="btn-annotation">Améliorer ce résultat</button>
+
       </div>
-      <div class="col-4">
+      </div>
+      <div class="col-4" id="tag-list" style="display :none">
         @include ('postags/_list')
       </div>
     </div>
@@ -464,7 +471,12 @@ foreach($recipe->ingredients as $ingredient){
 
     $('#btn-annotation').click(function(){
       $('#title-tab-pos').hide();
+      
+        $('#annotations').addClass('col-8');
+        $('#annotations').removeClass('col-12');
+      $('#tag-list').show();
       var fisrt_postag = $('.postag').first();
+      fisrt_postag.show();
       current_postag_id = fisrt_postag.attr('data-postag-id');
       current_postag = getPostag(current_postag_id);
       $('.postag').removeClass('highlight');
@@ -594,6 +606,8 @@ foreach($recipe->ingredients as $ingredient){
 
       if($('span.undefined').length==0 && mode=="free-annotation"){
         $('#explanation-free-annotation').addClass('d-none');
+        
+        $('#btn-annotation').hide();
         $('#explanation-all-annotated').removeClass('d-none');
         // $(window).scrollTop(0);
         flagRecipeAsAnnotated();
