@@ -209,7 +209,13 @@ class User  extends Authenticatable
     }
     
     public function getScore(){
+        debug(array($this->annotations()->sum('points')));
         return $this->annotations()->sum('points');
+    }
+    
+    public function getNbAnnotations(){
+        debug(array($this->annotations()->count()));
+        return $this->annotations()->count();
     }
 
     
