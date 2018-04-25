@@ -621,6 +621,7 @@ foreach($recipe->ingredients as $ingredient){
       $.post( "{{ route('create-annotation') }}", { word_id: word_id, postag_id: postag_id }, function(data){
         console.log(data);
         $('.score').html(data.score);
+        $('.NbAnnotations').html(data.NbAnnotations);
       } );
     }
 

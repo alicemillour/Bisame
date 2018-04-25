@@ -56,8 +56,10 @@ class AnnotationController extends Controller
 		    ['user_id' => auth()->id(), 'word_id' => $request->input('word_id')],
 		    ['postag_id' => $postag_id, 'points' => $points, 'points_not_seen' => 0]
 		);
+                debug("check badge");
+                        
 
-		return response()->json(array_merge($annotation->toArray(),array('score'=>auth()->user()->getScore())));
+		return response()->json(array_merge($annotation->toArray(),array('score'=>auth()->user()->getScore()),array('NbAnnotations'=>auth()->user()->getNbAnnotations())));
     }
 
 }

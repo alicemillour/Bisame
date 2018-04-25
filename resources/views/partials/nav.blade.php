@@ -37,7 +37,7 @@
              transform: translate(-50%,-50%);
              width:100%
              ">
-            <div class="title belle-allure"> Recettes de grammaire </div>
+            <div class="title belle-allure"> Recettes de Grammaire </div>
             <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des ressources linguistiques pour l'alsacien&nbsp;!&nbsp;</i>&raquo;</div>
         </div>
     </div>
@@ -51,7 +51,7 @@
             <hr style="height:1px;color: white; background-color: whitesmoke; width: 50%;">
             <span class="score">{{ Auth::user()->getScore() }}</span> points<br/>
             {{ $nb_recipes_user }}  recettes <br>
-            {{ $nb_annotations_user }}  mots annotés <br>
+             <span class="NbAnnotations">{{ Auth::user()->getNbAnnotations() }} </span>  mots annotés<br/>
             {{ $nb_variantes_user }}  mots alternatifs proposés<br>
 
         </span>
