@@ -60,17 +60,7 @@
                 </div>
                 @endforelse
             </div>
-
-            <div class="form-group col-12 mt-3">
-                {!! Form::textarea('content', null, array('class' => 'form-control', 'id' => 'content', 'placeholder'=>__('Préparation de la recette (texte libre)')) ) !!}
-            </div>
-
-            @if($errors->has('content'))
-            <span class="invalid-feedback">{{ $errors->first('content') }}</span>
-            @endif
-
-            {!! Form::control('textarea', 'col-12', 'anecdote', $errors, null, old('anecdote')??'', null, __('recipes.add-anecdote') ) !!}
-            <div class="ml-3 mb-3">
+<div class="ml-3 mb-3">
                 <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTimes" aria-expanded="false" aria-controls="collapseTimes">
                     Ajouter les temps de préparation et cuisson
                 </button>
@@ -146,6 +136,16 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="form-group col-12 mt-3">
+                {!! Form::textarea('content', null, array('class' => 'form-control', 'id' => 'content', 'placeholder'=>__('Préparation de la recette (texte libre)')) ) !!}
+            </div>
+
+            @if($errors->has('content'))
+            <span class="invalid-feedback">{{ $errors->first('content') }}</span>
+            @endif
+
+            {!! Form::control('textarea', 'col-12', 'anecdote', $errors, null, old('anecdote')??'', null, __('recipes.add-anecdote') ) !!}
             <div class="d-flex flex-row" style="padding-right: 15px;padding-left: 15px;">
 
                 <span class="input-group-btn">
@@ -154,6 +154,7 @@
                         <i class="fa fa-picture-o"></i> Ajouter une photo
                     </label>
                 </span>
+                <!--{{ Form::checkbox('open_source_picture') }} Je confirme que j'ai le droit d'utiliser cette photo (photo prise par vous-même ou libre de droit.-->
 
             </div>
 
@@ -208,6 +209,10 @@
 }
 #loader {
     color:white;
+}
+
+.ingredient-name{
+    margin-bottom: 1em;
 }
 </style>
 @endsection

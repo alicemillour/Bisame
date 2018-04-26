@@ -213,7 +213,8 @@
       
     <div class="row">
       <div class="col-12" id="annotations" style="position: -webkit-sticky; position: sticky; top: 10%; align-self: flex-start;">
-      @if($corpus_recipe)
+      <div style="padding:1em; border-radius: 1em; background-color: #edf4f7; margin-bottom: 1em">
+        @if($corpus_recipe)
         @foreach($corpus_recipe->sentences as $sentence)
           @foreach($sentence->words as $word)
           <div class="word-container" style="display:inline-block;text-align:center;vertical-align: top;">
@@ -252,27 +253,27 @@
           @endforeach
           <!--<br/>-->
         @endforeach
+        
+      </div>
         <div class="text-center">
           <button id="btn-next-postag" class="btn btn-warning d-none disabled btn-lg" data-toggle="tooltip" title="Validez ou invalidez tous les mots en surbrillance avant de continuer" data-placement="bottom">Catégorie suivante</button>
           <a href="{{ route('home') }}" id="btn-finish" class="btn btn-primary d-none btn-lg" data-toggle="tooltip" title="Retour à l'accueil" data-placement="bottom">Terminer</a>
         </div>
+        @if(!$annotator_to_validate)
+        <h5 id="submessage" class="mb-2 explanation"> Ce n'est pas mal, mais pas encore parfait... Améliorez les performaces de cet outil en corrigeant ses erreurs !<br> <br>  </h5>
+        @endif
+        <button class="btn play-button active-button center-button" id="btn-annotation">Améliorer ce résultat</button>
       @else
         <alert>Aucune annotation pour cette recette.</alert>
       @endif
-      <div class="annotation-header">
 
-        @if(!$annotator_to_validate)
-        <h5 id="submessage" class="mb-2 explanation"> Ce n'est pas mal, mais pas encore parfait... Contribuez à améliorer ses performances en corrigeant ses erreurs !<br> <br>  </h5>
-        @endif
-        <button class="btn play-button active-button center-button" id="btn-annotation">Améliorer ce résultat</button>
-
-      </div>
       </div>
       <div class="col-4" id="tag-list" style="display :none">
         @include ('postags/_list')
       </div>
     </div>
 
+  </div>
   </div>
 @endauth
 </div>
@@ -1263,10 +1264,10 @@ td.highlight-translatable {
   background: whitesmoke;
 }
 .highlight, .highlight:hover {
-    background-color: #ffd47b;
+    background-color: #fffaac;
 }
 .validated {
-    background-color: #E3F6CE;
+    background-color: #9dddb2;
 }
 .recipe-ingredients {
   position: relative;

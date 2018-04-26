@@ -157,7 +157,7 @@
                 .play-button {
                     /*width: 33vw;*/
                     white-space: normal;
-                    font-size: 1.5em;
+                    font-size: 1.2em;
                     border: 1px;	
                     border-style: solid;
                     border-color: #285e8e !important; /*set the color you want here*/

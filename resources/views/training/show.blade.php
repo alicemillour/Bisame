@@ -250,10 +250,10 @@ $solutions = [];
         background: whitesmoke;
     }
     .highlight, .highlight:hover {
-        background-color: #ffd47b;
+        background-color: #fffaac;
     }
     .validated {
-        background-color: #E3F6CE;
+        background-color: #9dddb2;
     }
     .recipe-ingredients {
         position: relative;
