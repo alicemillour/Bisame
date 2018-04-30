@@ -8,6 +8,8 @@ return [
 	'recipes' => 'Vous avez saisi :number recettes',
 	'anecdote' => 'Vous avez raconté 1 anecdote',
 	'anecdotes' => 'Vous avez raconté :number anecdotes',
+	'annotation' => 'Vous avez ajouté 1 annotation',
+	'annotations' => 'Vous avez ajouté :number annotations',
 	'label-recipe' => 'Recettes',
 	'label-anecdote' => 'Anecdotes',
 	'label-alternativ-text' => 'Variantes de recette',
