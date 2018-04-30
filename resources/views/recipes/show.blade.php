@@ -419,12 +419,11 @@ foreach($recipe->ingredients as $ingredient){
                     'class' : 'gray',
                     'action': function(){ 
                         window.location.href = base_url+'training/'+elem;
-                        return false;
                     }
                 },
                 'Non'    : {
                     'class' : 'blue',
-                    'action': function(){}  // Nothing to do in this case. You can as well omit the action property.
+                    'action': function(){return false;}  // Nothing to do in this case. You can as well omit the action property.
                 }
             }
         });   
@@ -599,7 +598,7 @@ foreach($recipe->ingredients as $ingredient){
         });
       }
       if(next_postag.hasClass('warning')){
-                    var elem=$(this).attr('data-postag-id');
+          var elem=next_postag.attr('data-postag-id');
           console.log(elem);
 //          return;
         $.confirm({
@@ -609,13 +608,13 @@ foreach($recipe->ingredients as $ingredient){
                 
                 'Non'    : {
                     'class' : 'gray',
-                    'action': function(){}  // Nothing to do in this case. You can as well omit the action property.
+                    'action': function(){                         
+                        return false;}  
                 },
                 'Oui'   : {
                     'class' : 'blue',
                     'action': function(){
                          window.location.href = base_url+'training/'+elem;
-                         return false;
                     }
                 }
             }
