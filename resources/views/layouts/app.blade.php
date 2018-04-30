@@ -10,8 +10,12 @@
                         <!-- TODO DIFF <title>Krik !</title> -->
         <title> {{ trans('home.app-name') }} </title>   
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+        <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css'>
+
         <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery_confirm.css') }}" />
+
         <style>
             @font-face {font-family: "Ostrich-Rounded"; src: url({{asset('/images/ostrich-rounded.ttf')}}) ;}
             @font-face {font-family: "Cicle-Fina"; src: url({{asset('/images/cicle/Cicle_Semi.ttf')}}) ;}

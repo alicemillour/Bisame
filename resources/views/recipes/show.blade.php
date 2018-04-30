@@ -275,7 +275,9 @@
 
   </div>
   </div>
-@endauth
+
+  @endauth
+
 </div>
 @endsection
 
@@ -311,6 +313,65 @@ foreach($recipe->ingredients as $ingredient){
     var img_question = $('<img class="question" src="{{ asset('images/no.png') }}" />');
     var total_count_not_validated = 0;
     var mode='';
+    
+   (function($){
+
+    $.confirm = function(params){
+
+        if($('#confirmOverlay').length){
+            // A confirm is already shown on the page:
+            return false;
+        }
+
+        var buttonHTML = '';
+        $.each(params.buttons,function(name,obj){
+
+            // Generating the markup for the buttons:
+
+            buttonHTML += '<a href="#" class="button '+obj['class']+'">'+name+'<span></span></a>';
+
+            if(!obj.action){
+                obj.action = function(){};
+            }
+        });
+
+        var markup = [
+            '<div id="confirmOverlay">',
+            '<div id="confirmBox">',
+            '<h1>',params.title,'</h1>',
+            '<p>',params.message,'</p>',
+            '<div id="confirmButtons">',
+            buttonHTML,
+            '</div></div></div>'
+        ].join('');
+
+        $(markup).hide().appendTo('body').fadeIn();
+
+        var buttons = $('#confirmBox .button'),
+            i = 0;
+
+        $.each(params.buttons,function(name,obj){
+            buttons.eq(i++).click(function(){
+
+                // Calling the action attribute when a
+                // click occurs, and hiding the confirm.
+
+                obj.action();
+                $.confirm.hide();
+                return false;
+            });
+        });
+    }
+
+    $.confirm.hide = function(){
+        $('#confirmOverlay').fadeOut(function(){
+            $(this).remove();
+        });
+    }
+
+})(jQuery);
+
+    
     window.onload = function() {
       $('.translatable').each(function(){
         var text = $(this).html();
@@ -341,15 +402,36 @@ foreach($recipe->ingredients as $ingredient){
     });
 
     $('.postag').click(function(){
+
+        
       if(help){
         help=false;
         return false;
       }
       $('#title-tab-pos').hide();
       if($(this).hasClass('warning')){
-        if(confirm("Cette catégorie est difficile, faire la formation ?"))
-          window.location.href = base_url+'training/'+$(this).attr('data-postag-id');
-        return false;
+          var elem=$(this).attr('data-postag-id');
+      $.confirm({
+            'title'     : 'Formation requise !',
+            'message'   : 'Cette catégorie est difficile, souhaitez-vous faire la formation ?',
+            'buttons'   : {
+                'Oui'   : {
+                    'class' : 'gray',
+                    'action': function(){ 
+                        window.location.href = base_url+'training/'+elem;
+                        return false;
+                    }
+                },
+                'Non'    : {
+                    'class' : 'blue',
+                    'action': function(){}  // Nothing to do in this case. You can as well omit the action property.
+                }
+            }
+        });   
+       
+//        if(confirm("Cette catégorie est difficile, faire la formation ?"))
+//          window.location.href = base_url+'training/'+$(this).attr('data-postag-id');
+//        return false;
       }
       if($(this).hasClass('disabled')){
         // alert("Validez ou invalidez tous les mots en surbrillance avant de continuer");
@@ -517,9 +599,30 @@ foreach($recipe->ingredients as $ingredient){
         });
       }
       if(next_postag.hasClass('warning')){
-        if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
-          window.location.href = base_url+'training/'+next_postag.attr('data-postag-id');
-        return false;
+                    var elem=$(this).attr('data-postag-id');
+          console.log(elem);
+//          return;
+        $.confirm({
+            'title'     : 'Formation requise !',
+            'message'   : 'Cette catégorie est difficile, souhaitez-vous faire la formation ?',
+            'buttons'   : {
+                
+                'Non'    : {
+                    'class' : 'gray',
+                    'action': function(){}  // Nothing to do in this case. You can as well omit the action property.
+                },
+                'Oui'   : {
+                    'class' : 'blue',
+                    'action': function(){
+                         window.location.href = base_url+'training/'+elem;
+                         return false;
+                    }
+                }
+            }
+        });
+//        if(confirm("la prochaine catégorie est difficile, faire la formation ?"))
+//          window.location.href = base_url+'training/'+next_postag.attr('data-postag-id');
+//        return false;
       }
       if(next_postag.length==0) return false;
       current_postag_id = next_postag.attr('data-postag-id');
@@ -1297,6 +1400,7 @@ img.check {
 .no-display {
     display: none;
 }
+
 
 </style>
 @endsection
