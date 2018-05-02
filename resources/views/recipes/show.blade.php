@@ -950,9 +950,11 @@ foreach($recipe->ingredients as $ingredient){
         token_index++;
         var new_span = $('<span id="'+token_index+'" class="token alternative-token highlight-done" data-offset-start="'+offset_start+'" data-offset-end="'+offset_end+'" data-type="word">'+new_text+'</span>');
         var elm_min = null;
-          $('.token', $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']')).filter(function(){
-            return (parseInt($(this).attr('data-offset-start'))>=parseInt(offset_start) && parseInt($(this).attr('data-offset-end'))<=parseInt(offset_end));
-          }).hide(); /* C'est ici que les tokens sont hidden */
+        console.log(new_text);
+        $('.token', $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']')).filter(function(){
+          console.log(parseInt($(this).attr('data-offset-start'))>=parseInt(offset_start) && parseInt($(this).attr('data-offset-end'))<=parseInt(offset_end));
+          return (parseInt($(this).attr('data-offset-start'))>=parseInt(offset_start) && parseInt($(this).attr('data-offset-end'))<=parseInt(offset_end));
+        }).hide(); /* C'est ici que les tokens sont hidden */
 
 //          if(offset_start==0){
 //            $('.translatable[data-attribute='+attribute+']').prepend(new_span);
@@ -972,9 +974,10 @@ foreach($recipe->ingredients as $ingredient){
 //               console.log('#### OFFSET START != 0')
 //               console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
                     
-               $('span.token[data-offset-end='+offset_end+'][data-attribute='+attribute+'][data-id='+translatable_id+']').after(new_span); 
+               $('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']').after(new_span); 
             }
             } else {
+                /* on est dans la recette ou dans le titre */
 //                console.log(">>>>>>>>RECETTE")
 
                 if(offset_start==0){
@@ -1250,6 +1253,7 @@ foreach($recipe->ingredients as $ingredient){
       current_span.attr('id',token_index++);
       current_span.attr('data-offset-start',0);
       current_span.attr('data-id',container.attr('data-id'));
+      current_span.attr('data-attribute',container.attr('data-attribute'));
       var result = $('<div/>');
       $(arr).each(function(index,character){
         
@@ -1285,7 +1289,7 @@ foreach($recipe->ingredients as $ingredient){
               current_span.attr('data-offset-start',index);
               current_span.attr('data-type',"white_space");
               current_span.attr('data-id',container.attr('data-id'));
-
+              current_span.attr('data-attribute',container.attr('data-attribute'));
             }
           break;
           case PUNCT :
@@ -1298,6 +1302,7 @@ foreach($recipe->ingredients as $ingredient){
               current_span.attr('data-offset-start',index);
               current_span.attr('data-type',"punct");
               current_span.attr('data-id',container.attr('data-id'));
+              current_span.attr('data-attribute',container.attr('data-attribute'));
               
           break;
           case ALPHANUM :
@@ -1311,6 +1316,7 @@ foreach($recipe->ingredients as $ingredient){
               current_span.attr('data-offset-start',index);
               current_span.attr('data-type',"word");   
               current_span.attr('data-id',container.attr('data-id'));
+              current_span.attr('data-attribute',container.attr('data-attribute'));
 
             }
           break;
@@ -1326,6 +1332,7 @@ foreach($recipe->ingredients as $ingredient){
                 current_span.attr('data-offset-start',index);
                 current_span.attr('data-type',"crlf");  
                 current_span.attr('data-id',container.attr('data-id'));
+                current_span.attr('data-attribute',container.attr('data-attribute'));
 
               }
           break;
@@ -1335,7 +1342,7 @@ foreach($recipe->ingredients as $ingredient){
       })
       current_span.attr('data-offset-end',arr.length);
       current_span.attr('data-id',container.attr('data-id'));
-
+      current_span.attr('data-attribute',container.attr('data-attribute'));
       current_span.addClass('token');
       current_span.html(current_word);
       container.append(current_span);
