@@ -942,7 +942,6 @@ foreach($recipe->ingredients as $ingredient){
       $('.alternative-token').remove();
       $('.token').show();
       $(texts).each(function(){
-
         var offset_start = this.offset_start;
         var offset_end = this.offset_end;
         var new_text = this.value;
@@ -973,7 +972,7 @@ foreach($recipe->ingredients as $ingredient){
 //               console.log('#### OFFSET START != 0')
 //               console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
                     
-               $('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']').after(new_span); 
+               $('span.token[data-offset-end='+offset_end+'][data-attribute='+attribute+'][data-id='+translatable_id+']').after(new_span); 
             }
             } else {
 //                console.log(">>>>>>>>RECETTE")
@@ -994,7 +993,7 @@ foreach($recipe->ingredients as $ingredient){
 //
 //
 //                    console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
-                  $('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']').after(new_span);
+                  $('span.token[data-offset-end='+offset_end+'][data-attribute='+attribute+'][data-id='+translatable_id+']').after(new_span);
                 }
             }
 

@@ -1,161 +1,161 @@
 id,name,order,points,difficulty,created_at,updated_at,category,description,full_name
-172,ADJ,9,3,hard,NULL,"2018-04-20 12:23:45",open,"<ul>
-<li>Im <span style=""color: #008000;""><strong>fréje</strong></span> Land</li>
-<li>Uff em <span style=""color: #008000;""><strong>truckene</strong></span> Bodde.</li>
-<li>Ich mëcht e Kilo <span style=""color: #008000;""><strong>zittigi</strong></span> Äpfel</li>
-<li>D’Äpfel sín <span style=""color: #008000;""><strong>zitti(g)</strong></span>.</li>
-<li>Si ältschta <span style=""color: #008000;""><strong>bekànnta</strong></span> Druckwark</li>
-<li>Er hét <span style=""color: #008000;""><strong>grossi</strong></span> ; er hétt e <span style=""color: #008000;""><strong>schéni</strong></span></li>
+172,ADJ,9,3,hard,NULL,""2018-04-20 12:23:45"",open,"<ul>
+<li>Im <span style=""""color: #008000;""""><strong>fréje</strong></span> Land</li>
+<li>Uff em <span style=""""color: #008000;""""><strong>truckene</strong></span> Bodde.</li>
+<li>Ich mëcht e Kilo <span style=""""color: #008000;""""><strong>zittigi</strong></span> Äpfel</li>
+<li>D’Äpfel sín <span style=""""color: #008000;""""><strong>zitti(g)</strong></span>.</li>
+<li>Si ältschta <span style=""""color: #008000;""""><strong>bekànnta</strong></span> Druckwark</li>
+<li>Er hét <span style=""""color: #008000;""""><strong>grossi</strong></span> ; er hétt e <span style=""""color: #008000;""""><strong>schéni</strong></span></li>
 </ul>
-<hr style=""width: 50%;"" />
-<p><u>ATTENTION</u> : Ne pas confondre avec des <span style=""color: #ff6600;""><span class="""">ADV </span></span> (Adverbes) tels que </p>
+<hr style=""""width: 50%;"""" />
+<p><u>ATTENTION</u> : Ne pas confondre avec des <span style=""""color: #ff6600;""""><span class="""""""">ADV </span></span> (Adverbes) tels que </p>
 <ul>
-<li>S Gschaft vum Johannes Mentelin hàt <span style=""color: #ff6600;""><strong>schnall</strong></span> Erfolg bikumma</li>
-<li>Èr hétt <span style=""color: #ff6600;""><strong>schén</strong></span> gspìelt.</li>",Adjectif
-182,ADV,4,3,hard,NULL,"2018-04-20 11:55:11",open,"<p> </p>
+<li>S Gschaft vum Johannes Mentelin hàt <span style=""""color: #ff6600;""""><strong>schnall</strong></span> Erfolg bikumma</li>
+<li>Èr hétt <span style=""""color: #ff6600;""""><strong>schén</strong></span> gspìelt.</li>"",Adjectif
+182,ADV,4,3,hard,NULL,""2018-04-20 11:55:11"",open,"<p> </p>
 </li>
-<li>Ìm Gsàmta hàt\'r <span style=""color: #008000;""><strong>ungfahr</strong></span> 40 Biacher unter Duck gmàcht.</li>
-<li><span style=""color: #008000;""><strong>Wann</strong></span> kommscht du ?</li>
-<li>Bi deana Musika isch o Ibrahim Ferrer <span style=""color: #008000;""><strong>dabei</strong></span> gsi.</li>
-<li>Èr hétt <span style=""color: #008000;""><strong>schén</strong></span> gspìelt.</li>
+<li>Ìm Gsàmta hàt\'r <span style=""""color: #008000;""""><strong>ungfahr</strong></span> 40 Biacher unter Duck gmàcht.</li>
+<li><span style=""""color: #008000;""""><strong>Wann</strong></span> kommscht du ?</li>
+<li>Bi deana Musika isch o Ibrahim Ferrer <span style=""""color: #008000;""""><strong>dabei</strong></span> gsi.</li>
+<li>Èr hétt <span style=""""color: #008000;""""><strong>schén</strong></span> gspìelt.</li>
 </ul>
-<hr style=""width: 50%;"" />
+<hr style=""""width: 50%;"""" />
 <p>Cas particuliers :</p>
 <ul>
-<li><strong>Nìmm</strong> : Ar ìsch uffem Kirchhof vu dr St. Michaels Kapelle ( wo\'s <span style=""color: #008000;""><strong>nìmm</strong></span> gìtt ) vergràwa.</li>
-<li>Cas <strong>Wo / wenn</strong> : Ma weiß nìt gnàui , <span style=""color: #008000;""><strong>wo</strong></span> un <span style=""color: #008000;""><strong>wenn</strong></span> àss er d Technik vum Büechdrucka glehrt hàt.</li>
+<li><strong>Nìmm</strong> : Ar ìsch uffem Kirchhof vu dr St. Michaels Kapelle ( wo\'s <span style=""""color: #008000;""""><strong>nìmm</strong></span> gìtt ) vergràwa.</li>
+<li>Cas <strong>Wo / wenn</strong> : Ma weiß nìt gnàui , <span style=""""color: #008000;""""><strong>wo</strong></span> un <span style=""""color: #008000;""""><strong>wenn</strong></span> àss er d Technik vum Büechdrucka glehrt hàt.</li>
 <li><strong>Equivalents alsaciens des adverbes pronominaux allemands</strong> : dafür, dabei, deswegen, trotzdem, hierauf, hierzu, hiermit :    
 <ul>
-<li>wo bim Notàr nìt <span style=""color: #008000;""><strong>derbi</strong></span> gsìì ìsch    </li>
-<li>un hàt <span style=""color: #008000;""><strong>derfer</strong></span> a Gschaftsààteil vum Museum bikumma</li>
+<li>wo bim Notàr nìt <span style=""""color: #008000;""""><strong>derbi</strong></span> gsìì ìsch    </li>
+<li>un hàt <span style=""""color: #008000;""""><strong>derfer</strong></span> a Gschaftsààteil vum Museum bikumma</li>
 </ul>
 </li>
 </ul>
-<hr style=""width: 50%;"" />
+<hr style=""""width: 50%;"""" />
 
-<p><u>ATTENTION</u> : <br /> 1. <strong><span style=""color: #ff6600;"">Wenn</span></strong> : conjonction de subordination (<span class="""" style=""color: #ff6600;"">SCONJ</span>) dans le sens de ""si"" : <br /> <span style=""color: #ff6600;""><strong>Wenn</strong></span> dàs stìmmt, war àlso dr Johannes Mentelin, noch vor em Heinrich Eggestein, dr erscht Büechdrucker vu Stroßburri gsìì. <br /> 2. <strong><span style=""color: #ff6600;"">Wo</span></strong> : pronom (<span class="""" style=""color: #ff6600;"">PRON</span>) lorsqu’il est utilisé comme pronom relatif (qui/que):<br /> Dr erscht Druck <span style=""color: #ff6600;""><strong>wo</strong></span> ma vum Nàma Mentelin erfàhrt ìsch „ Augustinus “ Tractatus de arte praedicandi, ìm Johr 1465</p>",Adverbe
-192,INTJ,8,3,easy,NULL,"2018-04-20 11:59:22",open,"<ul>
-<li><span style=""color: #008000;""><strong>Ohü</strong></span> ! Diss klingt m'r zue gelehrt!</li>
-<li><span style=""color: #008000;""><strong>Bravo</strong></span> !</li>
-<li><span style=""color: #008000;""><strong>O</strong></span>, wie bin ich unglüecklich</li>
-<li><span style=""color: #008000;""><strong>au</strong></span></li>
-</ul>",Interjection
-202,NOUN,1,2,very-easy,NULL,"2018-04-20 12:23:37",open,"<ul>
-<li>das <span style=""color: #008000;""><strong>Gewünschte</strong></span></li>
-<li>das <span style=""color: #008000;""><strong>Reisen </strong></span></li>
-<li><span style=""color: #008000;""><strong>Sìcherheitsnorma </strong></span></li>
-<li><span style=""color: #008000;""><strong>Volkstum-Museum</strong></span></li>
-<li>da <span style=""color: #008000;""><strong>Israelita </strong></span> vum Elsàss</li>
-<li><span style=""color: #008000;""><strong>Novamber</strong></span>, <span style=""color: #008000;""><strong>Sundaa </strong></span></li>
-<li>Uf <span style=""color: #008000;""><strong>Hochditsch </strong></span></li>
-</ul>","Nom commun"
-212,PROPN,13,2,easy,NULL,"2018-04-20 10:55:23",open,"<p>&nbsp;</p>
+<p><u>ATTENTION</u> : <br /> 1. <strong><span style=""""color: #ff6600;"""">Wenn</span></strong> : conjonction de subordination (<span class="""""""" style=""""color: #ff6600;"""">SCONJ</span>) dans le sens de """"si"""" : <br /> <span style=""""color: #ff6600;""""><strong>Wenn</strong></span> dàs stìmmt, war àlso dr Johannes Mentelin, noch vor em Heinrich Eggestein, dr erscht Büechdrucker vu Stroßburri gsìì. <br /> 2. <strong><span style=""""color: #ff6600;"""">Wo</span></strong> : pronom (<span class="""""""" style=""""color: #ff6600;"""">PRON</span>) lorsqu’il est utilisé comme pronom relatif (qui/que):<br /> Dr erscht Druck <span style=""""color: #ff6600;""""><strong>wo</strong></span> ma vum Nàma Mentelin erfàhrt ìsch „ Augustinus “ Tractatus de arte praedicandi, ìm Johr 1465</p>"",Adverbe
+192,INTJ,8,3,easy,NULL,""2018-04-20 11:59:22"",open,"<ul>
+<li><span style=""""color: #008000;""""><strong>Ohü</strong></span> ! Diss klingt m'r zue gelehrt!</li>
+<li><span style=""""color: #008000;""""><strong>Bravo</strong></span> !</li>
+<li><span style=""""color: #008000;""""><strong>O</strong></span>, wie bin ich unglüecklich</li>
+<li><span style=""""color: #008000;""""><strong>au</strong></span></li>
+</ul>"",Interjection
+202,NOUN,1,2,very-easy,NULL,""2018-04-20 12:23:37"",open,"<ul>
+<li>das <span style=""""color: #008000;""""><strong>Gewünschte</strong></span></li>
+<li>das <span style=""""color: #008000;""""><strong>Reisen </strong></span></li>
+<li><span style=""""color: #008000;""""><strong>Sìcherheitsnorma </strong></span></li>
+<li><span style=""""color: #008000;""""><strong>Volkstum-Museum</strong></span></li>
+<li>da <span style=""""color: #008000;""""><strong>Israelita </strong></span> vum Elsàss</li>
+<li><span style=""""color: #008000;""""><strong>Novamber</strong></span>, <span style=""""color: #008000;""""><strong>Sundaa </strong></span></li>
+<li>Uf <span style=""""color: #008000;""""><strong>Hochditsch </strong></span></li>
+</ul>"",""Nom commun""
+212,PROPN,13,2,easy,NULL,""2018-04-20 10:55:23"",open,"<p>&nbsp;</p>
 <ul>
-<li><span style=""color: #008000;""><strong>Auguste</strong></span>,<span style=""color: #008000;""><strong> Oberlin </strong></span>,<span style=""color: #008000;""><strong>Fifi </strong></span></li>
-<li><span style=""color: #008000;""><strong>Peugeot</strong></span>,<span style=""color: #008000;""><strong> Kronenbourg </strong></span></li>
-<li><span style=""color: #008000;""><strong>Contades </strong></span>, <span style=""color: #008000;""><strong>Stra&szlig;burg</strong></span></li>
-<li><span style=""color: #008000;""><strong>Schwiz</strong></span>, <span style=""color: #008000;""><strong> Rhy</strong></span>, <span style=""color: #008000;""><strong> Alpe</strong></span></li>
+<li><span style=""""color: #008000;""""><strong>Auguste</strong></span>,<span style=""""color: #008000;""""><strong> Oberlin </strong></span>,<span style=""""color: #008000;""""><strong>Fifi </strong></span></li>
+<li><span style=""""color: #008000;""""><strong>Peugeot</strong></span>,<span style=""""color: #008000;""""><strong> Kronenbourg </strong></span></li>
+<li><span style=""""color: #008000;""""><strong>Contades </strong></span>, <span style=""""color: #008000;""""><strong>Stra&szlig;burg</strong></span></li>
+<li><span style=""""color: #008000;""""><strong>Schwiz</strong></span>, <span style=""""color: #008000;""""><strong> Rhy</strong></span>, <span style=""""color: #008000;""""><strong> Alpe</strong></span></li>
 </ul>
-<p>&nbsp;</p>","Nom propre"
-222,VERB,16,2,easy,NULL,"2018-04-20 10:54:57",open,"</ul>
+<p>&nbsp;</p>"",""Nom propre""
+222,VERB,16,2,easy,NULL,""2018-04-20 10:54:57"",open,"</ul>
 <p>&nbsp;</p>
-<p>Pan <span style=""color: #008000;""><strong>spilt</strong></span> uf de Syrinx (Panfl&ouml;te) und <span style=""color: #008000;""><strong>tanzt</strong></span> mit de Nymphe.</p>
-<hr style=""width: 50%;"" />
+<p>Pan <span style=""""color: #008000;""""><strong>spilt</strong></span> uf de Syrinx (Panfl&ouml;te) und <span style=""""color: #008000;""""><strong>tanzt</strong></span> mit de Nymphe.</p>
+<hr style=""""width: 50%;"""" />
 <p><u>ATTENTION</u> :</p>
 <p>Verbes &agrave; particules : exemple &uuml;ssn&ugrave;tze (exploiter)</p>
 <ul>
-<li>Her <span style=""color: #008000;""><strong>n&ugrave;tzt</strong></span> mich <strong><span style=""color: #ff6600;"">&uuml;ss</span> </strong>(<span class="""" style=""color: #ff6600;"">PART</span>). (Il m&rsquo;exploite)</li>
-<li>Er het mich <span style=""color: #008000;""><strong>&uuml;ssgen&ugrave;tzt</strong></span> ! (Il m&rsquo;a exploit&eacute; )</li>
+<li>Her <span style=""""color: #008000;""""><strong>n&ugrave;tzt</strong></span> mich <strong><span style=""""color: #ff6600;"""">&uuml;ss</span> </strong>(<span class="""""""" style=""""color: #ff6600;"""">PART</span>). (Il m&rsquo;exploite)</li>
+<li>Er het mich <span style=""""color: #008000;""""><strong>&uuml;ssgen&ugrave;tzt</strong></span> ! (Il m&rsquo;a exploit&eacute; )</li>
 </ul>
-<p>&nbsp;</p>",Verbe
-232,ADP,2,3,hard,NULL,"2018-04-20 11:57:08",closed,"<ul>
-<li>Vu Glodderdal bis Denzlinge verlauft au die Badisch Wistross an dr Glodder <span style=""color: #008000;""><strong>entlang</strong></span>.</li>
-<li><span style=""color: #008000;""><strong>Noh</strong></span> ebbena 20 Johr B&uuml;echdruckar&egrave;i &igrave;sch Mentelin &agrave;m 12. Dezamber 1478 z'Stro&szlig;burri gstorwa.</li>
-</ul>",Préposition
-242,AUX,5,3,hard,NULL,"2018-04-20 11:53:48",closed,"<p>La catégorie regroupe les verbes hànn / hàn (avoir), sìnn / sín / sìì / sii (être), wère / waere / werre / war(d)e / wùrre / wurra (devenir), tüen / duen / düe :</p>
+<p>&nbsp;</p>"",Verbe
+232,ADP,2,3,hard,NULL,""2018-04-20 11:57:08"",closed,"<ul>
+<li>Vu Glodderdal bis Denzlinge verlauft au die Badisch Wistross an dr Glodder <span style=""""color: #008000;""""><strong>entlang</strong></span>.</li>
+<li><span style=""""color: #008000;""""><strong>Noh</strong></span> ebbena 20 Johr B&uuml;echdruckar&egrave;i &igrave;sch Mentelin &agrave;m 12. Dezamber 1478 z'Stro&szlig;burri gstorwa.</li>
+</ul>"",Préposition
+242,AUX,5,3,hard,NULL,""2018-04-20 11:53:48"",closed,"<p>La catégorie regroupe les verbes hànn / hàn (avoir), sìnn / sín / sìì / sii (être), wère / waere / werre / war(d)e / wùrre / wurra (devenir), tüen / duen / düe :</p>
 <ul>
-<li>Sallamols <span style=""color: #008000;""><strong>ìsch</strong></span> nur z' Mainz druckt <span style=""color: #008000;""><strong>worra</strong></span>.</li>
-<li>ìch <span style=""color: #008000;""><strong>tüa</strong></span> a Kugelhupf assa</li>
+<li>Sallamols <span style=""""color: #008000;""""><strong>ìsch</strong></span> nur z' Mainz druckt <span style=""""color: #008000;""""><strong>worra</strong></span>.</li>
+<li>ìch <span style=""""color: #008000;""""><strong>tüa</strong></span> a Kugelhupf assa</li>
 </ul>
-<hr style=""width: 50%;"" />
-<p><u>ATTENTION</u> : ils peuvent prendre l’étiquette <strong><span class="""" style=""color: #ff6600;"">VERB </span></strong> lorsqu’ils ont un sens lexical plein :</p>
+<hr style=""""width: 50%;"""" />
+<p><u>ATTENTION</u> : ils peuvent prendre l’étiquette <strong><span class="""""""" style=""""color: #ff6600;"""">VERB </span></strong> lorsqu’ils ont un sens lexical plein :</p>
 <ul>
-<li>S Gschaft vum Johannes Mentelin <span style=""color: #008000;""><strong>hàt</strong></span> schnall Erfolg <span style=""color: #ff6600;""><strong>bikumma</strong></span>, ar <strong><span style=""color: #008000;"">ìsch</span> </strong>a riicher Mànn <strong><span style=""color: #ff6600;"">worra</span></strong>.</li>
-<li>Charles , wenn du wüescht , wie ich dich gern <strong><span style=""color: #ff6600;"">hab</span></strong> !</li>
-<li>'s <strong><span style=""color: #ff6600;"">tüat</span></strong> m'r leid, ar <strong><span style=""color: #ff6600;"">tüat</span> </strong>nix!
-<p> </p>",Auxiliaire
-252,CONJ,6,3,hard,NULL,"2018-04-20 11:56:21",closed,"<p>Les conjonctions de coordination (<span style=""color: #008000;""><strong>Awer</strong></span>, <span style=""color: #008000;""><strong>denn</strong></span>, <span style=""color: #008000;""><strong>oder</strong></span>, <span style=""color: #008000;""><strong>un</strong></span>&hellip;) :</p>
+<li>S Gschaft vum Johannes Mentelin <span style=""""color: #008000;""""><strong>hàt</strong></span> schnall Erfolg <span style=""""color: #ff6600;""""><strong>bikumma</strong></span>, ar <strong><span style=""""color: #008000;"""">ìsch</span> </strong>a riicher Mànn <strong><span style=""""color: #ff6600;"""">worra</span></strong>.</li>
+<li>Charles , wenn du wüescht , wie ich dich gern <strong><span style=""""color: #ff6600;"""">hab</span></strong> !</li>
+<li>'s <strong><span style=""""color: #ff6600;"""">tüat</span></strong> m'r leid, ar <strong><span style=""""color: #ff6600;"""">tüat</span> </strong>nix!
+<p> </p>"",Auxiliaire
+252,CONJ,6,3,hard,NULL,""2018-04-20 11:56:21"",closed,"<p>Les conjonctions de coordination (<span style=""""color: #008000;""""><strong>Awer</strong></span>, <span style=""""color: #008000;""""><strong>denn</strong></span>, <span style=""""color: #008000;""""><strong>oder</strong></span>, <span style=""""color: #008000;""""><strong>un</strong></span>&hellip;) :</p>
 <ul>
-<li><span style=""color: #008000;""><strong>&Agrave;wer</strong></span> Johannes Mentelin h&agrave;t wohrschins scho z&igrave;mlig friajher f&agrave;nga-n-&agrave; drucka, sog&agrave;r scho &agrave;nna 1458.</li>
-<li>Si wird i verschidene Kant&ouml;n <span style=""color: #008000;""><strong>als</strong></span> Iiwohnergmeind bezeichnet.</li>
+<li><span style=""""color: #008000;""""><strong>&Agrave;wer</strong></span> Johannes Mentelin h&agrave;t wohrschins scho z&igrave;mlig friajher f&agrave;nga-n-&agrave; drucka, sog&agrave;r scho &agrave;nna 1458.</li>
+<li>Si wird i verschidene Kant&ouml;n <span style=""""color: #008000;""""><strong>als</strong></span> Iiwohnergmeind bezeichnet.</li>
 </ul>
 <p>Cas <u> Als</u> : &nbsp; &nbsp;&nbsp;</p>
 <ul>
-<li><span style=""color: #008000;""><strong>&Agrave;ls</strong></span> Ber&uuml;ef &igrave;sch 'r zeerscht &bdquo; Guldschriiwer &ldquo; ( Kalligraph un B&uuml;echschriiwer ) gs&igrave;&igrave; un h&agrave;t noochhar <span style=""color: #008000;""><strong>&agrave;ls</strong></span> b&igrave;sch&auml;fliger Not&agrave;r gsch&agrave;ft.</li>
+<li><span style=""""color: #008000;""""><strong>&Agrave;ls</strong></span> Ber&uuml;ef &igrave;sch 'r zeerscht &bdquo; Guldschriiwer &ldquo; ( Kalligraph un B&uuml;echschriiwer ) gs&igrave;&igrave; un h&agrave;t noochhar <span style=""""color: #008000;""""><strong>&agrave;ls</strong></span> b&igrave;sch&auml;fliger Not&agrave;r gsch&agrave;ft.</li>
 </ul>
-<p>&nbsp;</p>",Conjonction
-262,DET,7,3,hard,NULL,"2018-04-20 11:56:49",closed,"<ul>
-<li>Du, Auguste, hierotsch <span style=""color: #008000;""><strong>d'</strong></span> mademoiselle Riemer.</li>
-<li>Si &auml;ltschta bek&agrave;nnta Druckwark &igrave;sch <span style=""color: #008000;""><strong>a</strong></span> l&agrave;tiinischa Bibel &igrave;n 49 Ziila (&bdquo;B49&ldquo;), <span style=""color: #008000;""><strong>dr</strong></span> erscht B&agrave;nd &igrave;sch vum Johr 1460.</li>
-<li><span style=""color: #008000;""><strong>z&egrave;ll</strong></span> K&igrave;nd &igrave;sch kr&agrave;nk</li>
-<li>ich h&agrave;bb <span style=""color: #008000;""><strong>z&egrave;ller</strong></span> Mann gs&egrave;hn</li>
-<li>er h&eacute;t <span style=""color: #008000;""><strong>k&eacute;nn</strong></span> K&igrave;nder</li>
-<li>sie h&agrave;nn <span style=""color: #008000;""><strong>v&igrave;el</strong></span> K&igrave;nder</li>
-<li>Es &igrave;sch <span style=""color: #008000;""><strong>miner</strong></span> Huet</li>
-<li>Es &igrave;sch <span style=""color: #008000;""><strong>din</strong></span> Buech</li>
-<li>Der Kr&auml;mer, <span style=""color: #008000;""><strong>dessen</strong></span> Ware gepf&auml;ndet wurde, ist ...</li>
-<li><span style=""color: #008000;""><strong>Welschin</strong></span> isch d&auml; Hu&auml;t?</li>
-</ul>",Déterminant
-272,NUM,10,2,easy,NULL,"2018-04-20 10:56:07",closed,"<ul>
-<li><span style=""color: #008000;""><strong>dr&eacute;j</strong></span> Uehr</li>
-<li>&agrave;m <span style=""color: #008000;""><strong>zehne</strong></span></li>
-<li>e V&igrave;ertel &igrave;wer <span style=""color: #008000;""><strong>zwei</strong></span></li>
-<li>&Igrave;m Gs&agrave;mta h&agrave;t'r ungfahr <span style=""color: #008000;""><strong>40</strong></span> Biacher unter Duck gm&agrave;cht.</li>
-</ul>",Nombre
-282,PRON,12,3,hard,NULL,"2018-04-20 11:54:14",closed,"<ul>
-<li><span style=""color: #008000;""><strong>Das</strong></span> isch nit nume f&uuml;r d Bostauti eso gsi, sondern au f&uuml;r anderi<br />konzessionierti Buslinie und au f&uuml;r d Iisebahn <span style=""color: #008000;""><strong>Das</strong></span> isch d Andromeda</li>
+<p>&nbsp;</p>"",Conjonction
+262,DET,7,3,hard,NULL,""2018-04-20 11:56:49"",closed,"<ul>
+<li>Du, Auguste, hierotsch <span style=""""color: #008000;""""><strong>d'</strong></span> mademoiselle Riemer.</li>
+<li>Si &auml;ltschta bek&agrave;nnta Druckwark &igrave;sch <span style=""""color: #008000;""""><strong>a</strong></span> l&agrave;tiinischa Bibel &igrave;n 49 Ziila (&bdquo;B49&ldquo;), <span style=""""color: #008000;""""><strong>dr</strong></span> erscht B&agrave;nd &igrave;sch vum Johr 1460.</li>
+<li><span style=""""color: #008000;""""><strong>z&egrave;ll</strong></span> K&igrave;nd &igrave;sch kr&agrave;nk</li>
+<li>ich h&agrave;bb <span style=""""color: #008000;""""><strong>z&egrave;ller</strong></span> Mann gs&egrave;hn</li>
+<li>er h&eacute;t <span style=""""color: #008000;""""><strong>k&eacute;nn</strong></span> K&igrave;nder</li>
+<li>sie h&agrave;nn <span style=""""color: #008000;""""><strong>v&igrave;el</strong></span> K&igrave;nder</li>
+<li>Es &igrave;sch <span style=""""color: #008000;""""><strong>miner</strong></span> Huet</li>
+<li>Es &igrave;sch <span style=""""color: #008000;""""><strong>din</strong></span> Buech</li>
+<li>Der Kr&auml;mer, <span style=""""color: #008000;""""><strong>dessen</strong></span> Ware gepf&auml;ndet wurde, ist ...</li>
+<li><span style=""""color: #008000;""""><strong>Welschin</strong></span> isch d&auml; Hu&auml;t?</li>
+</ul>"",Déterminant
+272,NUM,10,2,easy,NULL,""2018-04-20 10:56:07"",closed,"<ul>
+<li><span style=""""color: #008000;""""><strong>dr&eacute;j</strong></span> Uehr</li>
+<li>&agrave;m <span style=""""color: #008000;""""><strong>zehne</strong></span></li>
+<li>e V&igrave;ertel &igrave;wer <span style=""""color: #008000;""""><strong>zwei</strong></span></li>
+<li>&Igrave;m Gs&agrave;mta h&agrave;t'r ungfahr <span style=""""color: #008000;""""><strong>40</strong></span> Biacher unter Duck gm&agrave;cht.</li>
+</ul>"",Nombre
+282,PRON,12,3,hard,NULL,""2018-04-20 11:54:14"",closed,"<ul>
+<li><span style=""""color: #008000;""""><strong>Das</strong></span> isch nit nume f&uuml;r d Bostauti eso gsi, sondern au f&uuml;r anderi<br />konzessionierti Buslinie und au f&uuml;r d Iisebahn <span style=""""color: #008000;""""><strong>Das</strong></span> isch d Andromeda</li>
 <li>Galaxie</li>
-<li>er h&eacute;t <span style=""color: #008000;""><strong>k&eacute;nni</strong></span></li>
-<li>sie h&agrave;nn <span style=""color: #008000;""><strong>v&igrave;el</strong></span></li>
-<li><span style=""color: #008000;""><strong>Ma</strong></span> wei&szlig; n&igrave;t gn&agrave;ui, wo un wenn &agrave;ss er d Technik vum B&uuml;echdrucka glehrt h&agrave;t.</li>
-<li>Es &igrave;sch miner Huet (c&rsquo;est mon chapeau) Es &igrave;sch <span style=""color: #008000;""><strong>miner</strong></span> (c&rsquo;est le mien)</li>
-<li>Es &igrave;sch din Buech (C&rsquo;est ton livre) Es &igrave;sch <span style=""color: #008000;""><strong>dins</strong></span> (c&rsquo;est le tien)</li>
-<li>D&rsquo;r M&agrave;nn, <span style=""color: #008000;""><strong>wo</strong></span> gross &igrave;sch &hellip;</li>
-<li>Republik isch &auml; Staatsform, <span style=""color: #008000;""><strong>wo</strong></span> sech aus G&auml;gemod&auml;u zur Monarchii und zur Despotii gseht.</li>
-<li>Er w&auml;scht <span style=""color: #008000;""><strong>sich</strong></span> d&rsquo;H&auml;nd</li>
-<li>Sie kaufe <span style=""color: #008000;""><strong>sich</strong></span> e nejs Auto</li>
-<li>Ar fragt <span style=""color: #008000;""><strong>wer</strong></span> kommt</li>
-<li>Ja, <span style=""color: #008000;""><strong>was</strong></span> isch do ze mache, n&uuml;sstelle kann.</li>
-<li>Sina Kenntnissa h&agrave;t'r &agrave;lso k&auml;nna lehra, antwader direkt z'Mainz oder dur <span style=""color: #008000;""><strong>ebber</strong></span> wo-n-&igrave;hm d&agrave;s zeigt h&agrave;t, v&igrave;ll&igrave;cht dr Heinrich Eggestein.</li>
-</ul>",Pronom
-292,PART,11,3,hard,NULL,"2018-04-20 11:54:36",closed,"</ul>
+<li>er h&eacute;t <span style=""""color: #008000;""""><strong>k&eacute;nni</strong></span></li>
+<li>sie h&agrave;nn <span style=""""color: #008000;""""><strong>v&igrave;el</strong></span></li>
+<li><span style=""""color: #008000;""""><strong>Ma</strong></span> wei&szlig; n&igrave;t gn&agrave;ui, wo un wenn &agrave;ss er d Technik vum B&uuml;echdrucka glehrt h&agrave;t.</li>
+<li>Es &igrave;sch miner Huet (c&rsquo;est mon chapeau) Es &igrave;sch <span style=""""color: #008000;""""><strong>miner</strong></span> (c&rsquo;est le mien)</li>
+<li>Es &igrave;sch din Buech (C&rsquo;est ton livre) Es &igrave;sch <span style=""""color: #008000;""""><strong>dins</strong></span> (c&rsquo;est le tien)</li>
+<li>D&rsquo;r M&agrave;nn, <span style=""""color: #008000;""""><strong>wo</strong></span> gross &igrave;sch &hellip;</li>
+<li>Republik isch &auml; Staatsform, <span style=""""color: #008000;""""><strong>wo</strong></span> sech aus G&auml;gemod&auml;u zur Monarchii und zur Despotii gseht.</li>
+<li>Er w&auml;scht <span style=""""color: #008000;""""><strong>sich</strong></span> d&rsquo;H&auml;nd</li>
+<li>Sie kaufe <span style=""""color: #008000;""""><strong>sich</strong></span> e nejs Auto</li>
+<li>Ar fragt <span style=""""color: #008000;""""><strong>wer</strong></span> kommt</li>
+<li>Ja, <span style=""""color: #008000;""""><strong>was</strong></span> isch do ze mache, n&uuml;sstelle kann.</li>
+<li>Sina Kenntnissa h&agrave;t'r &agrave;lso k&auml;nna lehra, antwader direkt z'Mainz oder dur <span style=""""color: #008000;""""><strong>ebber</strong></span> wo-n-&igrave;hm d&agrave;s zeigt h&agrave;t, v&igrave;ll&igrave;cht dr Heinrich Eggestein.</li>
+</ul>"",Pronom
+292,PART,11,3,hard,NULL,""2018-04-20 11:54:36"",closed,"</ul>
 <p>1. Les particules s&eacute;parables des verbes</p>
 <ul>
-<li>&Igrave;ch m&agrave;ch a Obst<span style=""color: #008000;""><strong> &agrave;b</strong></span></li>
-<li>Her n&ugrave;tzt mich <span style=""color: #008000;""><strong>&uuml;ss</strong></span></li>
-<li>&igrave;ch schlof<strong><span style=""color: #008000;""> i</span> <br /></strong></li>
-<li>Im Winter fliege d trockne Bletter durch d&rsquo; Luft <span style=""color: #008000;""><strong>herum</strong></span></li>
+<li>&Igrave;ch m&agrave;ch a Obst<span style=""""color: #008000;""""><strong> &agrave;b</strong></span></li>
+<li>Her n&ugrave;tzt mich <span style=""""color: #008000;""""><strong>&uuml;ss</strong></span></li>
+<li>&igrave;ch schlof<strong><span style=""""color: #008000;""""> i</span> <br /></strong></li>
+<li>Im Winter fliege d trockne Bletter durch d&rsquo; Luft <span style=""""color: #008000;""""><strong>herum</strong></span></li>
 </ul>
 <p>2. Autres</p>
 <ul>
-<li><span style=""color: #008000;""><strong>Ja</strong></span> papa, er isch noch do</li>
-<li>Ma wei&szlig; <span style=""color: #008000;""><strong>n&igrave;t</strong></span> gn&agrave;ui, wo un wenn &agrave;ss er d Technik vum B&uuml;echdrucka glehrt h&agrave;t</li>
-<li><span style=""color: #008000;""><strong>och</strong></span>, <span style=""color: #008000;""><strong>blo&szlig;</strong></span>, <span style=""color: #008000;""><strong>halt</strong></span>, <span style=""color: #008000;""><strong>mal</strong></span>, <span style=""color: #008000;""><strong>nicht</strong></span>, <span style=""color: #008000;""><strong>sehr</strong></span>, <span style=""color: #008000;""><strong>&uuml;beraus</strong></span>, <span style=""color: #008000;""><strong>sogar</strong></span>, <span style=""color: #008000;""><strong>selbst</strong></span>, <span style=""color: #008000;""><strong>auch</strong></span>, <span style=""color: #008000;""><strong>erst</strong></span>, <span style=""color: #008000;""><strong>schon</strong></span>, <span style=""color: #008000;""><strong>&uuml;berhaupt</strong></span>&nbsp;usw...
-<p>&nbsp;</p>",Particule
-302,SCONJ,14,3,hard,NULL,"2018-04-20 11:55:39",closed,"<p>&nbsp;</p>
+<li><span style=""""color: #008000;""""><strong>Ja</strong></span> papa, er isch noch do</li>
+<li>Ma wei&szlig; <span style=""""color: #008000;""""><strong>n&igrave;t</strong></span> gn&agrave;ui, wo un wenn &agrave;ss er d Technik vum B&uuml;echdrucka glehrt h&agrave;t</li>
+<li><span style=""""color: #008000;""""><strong>och</strong></span>, <span style=""""color: #008000;""""><strong>blo&szlig;</strong></span>, <span style=""""color: #008000;""""><strong>halt</strong></span>, <span style=""""color: #008000;""""><strong>mal</strong></span>, <span style=""""color: #008000;""""><strong>nicht</strong></span>, <span style=""""color: #008000;""""><strong>sehr</strong></span>, <span style=""""color: #008000;""""><strong>&uuml;beraus</strong></span>, <span style=""""color: #008000;""""><strong>sogar</strong></span>, <span style=""""color: #008000;""""><strong>selbst</strong></span>, <span style=""""color: #008000;""""><strong>auch</strong></span>, <span style=""""color: #008000;""""><strong>erst</strong></span>, <span style=""""color: #008000;""""><strong>schon</strong></span>, <span style=""""color: #008000;""""><strong>&uuml;berhaupt</strong></span>&nbsp;usw...
+<p>&nbsp;</p>"",Particule
+302,SCONJ,14,3,hard,NULL,""2018-04-20 11:55:39"",closed,"<p>&nbsp;</p>
 <ul>
-<li>Ma wei&szlig; n&igrave;t gn&agrave;ui, wo un wenn <span style=""color: #008000;""><strong>&agrave;ss</strong></span> er d Technik vum B&uuml;echdrucka glehrt h&agrave;t.</li>
-<li><span style=""color: #008000;""><strong>Wenn</strong></span> d&agrave;s st&igrave;mmt, war &agrave;lso dr Johannes Mentelin, noch vor em Heinrich Eggestein, dr erscht B&uuml;echdrucker vu Stro&szlig;burri gs&igrave;&igrave;.</li>
+<li>Ma wei&szlig; n&igrave;t gn&agrave;ui, wo un wenn <span style=""""color: #008000;""""><strong>&agrave;ss</strong></span> er d Technik vum B&uuml;echdrucka glehrt h&agrave;t.</li>
+<li><span style=""""color: #008000;""""><strong>Wenn</strong></span> d&agrave;s st&igrave;mmt, war &agrave;lso dr Johannes Mentelin, noch vor em Heinrich Eggestein, dr erscht B&uuml;echdrucker vu Stro&szlig;burri gs&igrave;&igrave;.</li>
 </ul>
-<p>&nbsp;</p>","Conjonction de subordination"
-312,PUNCT,200,2,easy,NULL,"2018-02-14 16:27:03",other,,Ponctuation
-322,SYM,15,2,easy,NULL,"2018-04-20 11:53:10",other,"<ul>
-<li><span style=""color: #008000;""><strong>*</strong></span> um 1410 z'Schlettstàdt; <span style=""color: #008000;""><strong>†</strong></span> 12. Dezamber 1478 z'Stroßburri</li>
-</ul>",Symbole
-332,X,17,2,easy,NULL,"2018-04-20 11:10:23",other,"<ul>
-<li>Eh <span style=""color: #008000;""><strong>bien</strong></span> , ich will sehn , wer Herr im H&uuml;s isch , ich odder Ihr !</li></ul>","Mot étranger"
-333,ADP+DET,3,2,easy,NULL,"2018-04-20 11:58:48",other,"<p>-Ere Tielekt werd as Walsertütsch bizaichnet, wo <strong>zum</strong> grösste Tail zum Höchstalemannische und <strong>zum</strong> chliinere Tail <strong>zum</strong> Hochalemannische ghö<p> </p>
+<p>&nbsp;</p>"",""Conjonction de subordination""
+312,PUNCT,200,2,easy,NULL,""2018-02-14 16:27:03"",other,,Ponctuation
+322,SYM,15,2,easy,NULL,""2018-04-20 11:53:10"",other,""<ul>
+<li><span style=""""color: #008000;""""><strong>*</strong></span> um 1410 z'Schlettstàdt; <span style=""""color: #008000;""""><strong>†</strong></span> 12. Dezamber 1478 z'Stroßburri</li>
+</ul>"",Symbole
+332,X,17,2,easy,NULL,""2018-04-20 11:10:23"",other,""<ul>
+<li>Eh <span style=""""color: #008000;""""><strong>bien</strong></span> , ich will sehn , wer Herr im H&uuml;s isch , ich odder Ihr !</li></ul>"",""Mot étranger""
+333,ADP+DET,3,2,easy,NULL,""2018-04-20 11:58:48"",other,""<p>-Ere Tielekt werd as Walsertütsch bizaichnet, wo <strong>zum</strong> grösste Tail zum Höchstalemannische und <strong>zum</strong> chliinere Tail <strong>zum</strong> Hochalemannische ghö<p> </p>
 <ul>
-<li>Ere Tielekt werd as Walsertütsch bizaichnet, wo <span style=""color: #008000;""><strong>zum</strong></span> grösste Tail zum Höchstalemannische und <span style=""color: #008000;""><strong>zum</strong></span> chliinere Tail <span style=""color: #008000;""><strong>zum</strong></span> Hochalemannische ghört. (contraction <em>zu</em> + <em>dem</em>)</li>
-<li><span style=""color: #008000;""><strong>am</strong></span> besten (contraction <em>am </em>+ <em>dem</em>)</li>
-</ul>","Préposition + Déterminant"
+<li>Ere Tielekt werd as Walsertütsch bizaichnet, wo <span style=""""color: #008000;""""><strong>zum</strong></span> grösste Tail zum Höchstalemannische und <span style=""""color: #008000;""""><strong>zum</strong></span> chliinere Tail <span style=""""color: #008000;""""><strong>zum</strong></span> Hochalemannische ghört. (contraction <em>zu</em> + <em>dem</em>)</li>
+<li><span style=""""color: #008000;""""><strong>am</strong></span> besten (contraction <em>am </em>+ <em>dem</em>)</li>
+</ul>"",""Préposition + Déterminant""
