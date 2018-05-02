@@ -949,11 +949,8 @@ foreach($recipe->ingredients as $ingredient){
         var translatable_id = this.translatable_id;
         var attribute = this.translatable_attribute;
         token_index++;
-        console.log(new_text);
         var new_span = $('<span id="'+token_index+'" class="token alternative-token highlight-done" data-offset-start="'+offset_start+'" data-offset-end="'+offset_end+'" data-type="word">'+new_text+'</span>');
-        console.log(new_span);
         var elm_min = null;
-
           $('.token', $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']')).filter(function(){
             return (parseInt($(this).attr('data-offset-start'))>=parseInt(offset_start) && parseInt($(this).attr('data-offset-end'))<=parseInt(offset_end));
           }).hide(); /* C'est ici que les tokens sont hidden */
@@ -1127,9 +1124,10 @@ foreach($recipe->ingredients as $ingredient){
           elm_min = token;
           offset_min = offset_start;
         }
-
-        if(parseInt($(token).attr('data-offset-start'))>=parseInt(start) && parseInt($(token).attr('data-offset-end'))<=parseInt(end))
+        console.log(token);
+        if(parseInt($(token).attr('data-offset-start'))>=parseInt(start) && parseInt($(token).attr('data-offset-end'))<=parseInt(end)){
           $(token).hide();
+      }
       });
 
       token_index++;
@@ -1469,6 +1467,9 @@ img.check {
 }
 
 .contributor {
+        cursor: pointer;
+}
+.author {
         cursor: pointer;
 }
 

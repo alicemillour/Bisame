@@ -36,7 +36,7 @@ return array (
   'minutes' => 'minute(s)',
   'recipe-by' => 'Recette de : ',
   'recipes-by' => 'Recettes de :name',
-  'contributors' => 'Contributeurs',
+  'contributors' => 'Voir les versions proposées par :',
   'discuss-recipe' => 'Discute de la recette avec les autres utilisateurs.',
   'search-result' => 'Résultat de la recherche pour ":search"',
   'empty' => 'Aucune recette',
