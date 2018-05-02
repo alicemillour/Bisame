@@ -12,6 +12,7 @@ echo "$2\n";
     echo "corpus_name;sentence_position;word_position;value;postag_name;confidence_score;tagger" > "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed 
     # escape slash
     sed -i 's/\/\/PUNCT/_SLASH_\/PUNCT/g' "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
+    sed -i 's/\([0-9]\)\/\([0-9]\)/\1_SLASH_\2/g' "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
     line_nb=1;
     word_nb=1;    
     while read -r line;

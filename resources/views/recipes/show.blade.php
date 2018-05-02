@@ -24,8 +24,11 @@
 
 @endif
 
-  
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  @if(Auth::check())
+    <ul class="nav nav-tabs" id="myTab" data-user-id="{{ Auth::user()->id }}" role="tablist">
+  @else 
+      <ul class="nav nav-tabs" id="myTab" data-user-id="" role="tablist">
+  @endif
     <li class="nav-item">
       <a class="nav-link page-title active" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
@@ -104,7 +107,7 @@
           </div> 
           @foreach($recipe->contributors as $user)
           <div>
-            <span class="text-muted contributor" data-user-id="{{ $user->id }}">{{ $user->name }}</span>
+            <span class="contributor text-muted contributor" data-user-id="{{ $user->id }}">{{ $user->name }}</span>
           </div> 
           @endforeach
         </div>
@@ -931,9 +934,11 @@ foreach($recipe->ingredients as $ingredient){
     }
 
     function showVersionContributor(user_id) {
+      console.log('show version contributor');
       var texts = alternative_texts.filter(function( element ) {
         return user_id == element.user_id;
       });
+      console.log(texts);
       $('.alternative-token').remove();
       $('.token').show();
       $(texts).each(function(){
@@ -941,25 +946,68 @@ foreach($recipe->ingredients as $ingredient){
         var offset_start = this.offset_start;
         var offset_end = this.offset_end;
         var new_text = this.value;
+        var translatable_id = this.translatable_id;
         var attribute = this.translatable_attribute;
         token_index++;
+        console.log(new_text);
         var new_span = $('<span id="'+token_index+'" class="token alternative-token highlight-done" data-offset-start="'+offset_start+'" data-offset-end="'+offset_end+'" data-type="word">'+new_text+'</span>');
+        console.log(new_span);
         var elm_min = null;
 
-          $('.token', $('.translatable[data-attribute='+attribute+']')).filter(function(){
+          $('.token', $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']')).filter(function(){
             return (parseInt($(this).attr('data-offset-start'))>=parseInt(offset_start) && parseInt($(this).attr('data-offset-end'))<=parseInt(offset_end));
-          }).hide();
+          }).hide(); /* C'est ici que les tokens sont hidden */
 
-          if(offset_start==0){
-            $('.translatable[data-attribute='+attribute+']').prepend(new_span);
-          } else {
-            $('span.token[data-offset-end='+offset_end+']').after(new_span);
-          }
+//          if(offset_start==0){
+//            $('.translatable[data-attribute='+attribute+']').prepend(new_span);
+//          } else {
+//            $('span.token[data-offset-end='+offset_end+']').after(new_span);
+//          }
+
+            if (attribute == 'name') {
+            /* on est dans les ingrédients */
+            console.log(">>>>>>>>INGREDIENTS")
+            if(offset_start==0){
+            console.log('#### OFFSET START = 0')
+
+            console.log('nouvelle version avec translatable_id='+translatable_id);
+            console.log($('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']'));
+            $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']').prepend(new_span);
+            } else {
+               console.log('#### OFFSET START != 0')
+               console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
+                    
+               $('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']').after(new_span); 
+            }
+            } else {
+                console.log(">>>>>>>>RECETTE")
+
+                if(offset_start==0){
+                console.log('#### OFFSET START = 0')
+    //            console.log('ancienne version');
+    //            console.log($('.translatable[data-attribute='+attribute+']'));
+    //            
+                console.log('nouvelle version avec translatable_id='+translatable_id);
+                console.log($('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']'));
+                $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']').prepend(new_span);
+                } else {
+                  console.log('#### OFFSET START != 0')
+
+                    console.log(translatable_id);
+                                  console.log('nouvelle version');
+
+
+                    console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
+                  $('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']').after(new_span);
+                }
+            }
+
       });
 
     }
     
     function showOriginalVersion() {
+        console.log('show original');
       $('.alternative-token').remove();
       $('.token').show();
     }
@@ -1147,12 +1195,16 @@ foreach($recipe->ingredients as $ingredient){
         $('.translated').removeClass('highlight-translated');
         $('.plus-tab').addClass('d-none');
         $('.translatable').removeClass('highlight-translatable');
+//        $('#recipe').removeClass('translatable'); /* TODO Ajout Alice */
+        showVersionContributor($('#myTab').attr('data-user-id'));
+
     })
 
     $("#cancel").click(function() {
         cancelSelection();
     })
     $(".contributor").click(function() {
+        console.log('click on contributor');
         var user_id = $(this).attr('data-user-id');
         showVersionContributor(user_id);
     })
@@ -1202,6 +1254,7 @@ foreach($recipe->ingredients as $ingredient){
       var current_span=$('<span/>');
       current_span.attr('id',token_index++);
       current_span.attr('data-offset-start',0);
+      current_span.attr('data-id',container.attr('data-id'));
       var result = $('<div/>');
       $(arr).each(function(index,character){
         
@@ -1236,6 +1289,8 @@ foreach($recipe->ingredients as $ingredient){
               current_span.attr('id',token_index++);
               current_span.attr('data-offset-start',index);
               current_span.attr('data-type',"white_space");
+              current_span.attr('data-id',container.attr('data-id'));
+
             }
           break;
           case PUNCT :
@@ -1247,6 +1302,8 @@ foreach($recipe->ingredients as $ingredient){
               current_span.attr('id',token_index++);
               current_span.attr('data-offset-start',index);
               current_span.attr('data-type',"punct");
+              current_span.attr('data-id',container.attr('data-id'));
+              
           break;
           case ALPHANUM :
             if(type_previous_char!=ALPHANUM){
@@ -1257,7 +1314,9 @@ foreach($recipe->ingredients as $ingredient){
               current_span = $('<span/>');
               current_span.attr('id',token_index++);
               current_span.attr('data-offset-start',index);
-              current_span.attr('data-type',"word");    
+              current_span.attr('data-type',"word");   
+              current_span.attr('data-id',container.attr('data-id'));
+
             }
           break;
           case CRLF :
@@ -1270,7 +1329,9 @@ foreach($recipe->ingredients as $ingredient){
                 current_span = $('<span/>');
                 current_span.attr('id',token_index++);
                 current_span.attr('data-offset-start',index);
-                current_span.attr('data-type',"crlf");    
+                current_span.attr('data-type',"crlf");  
+                current_span.attr('data-id',container.attr('data-id'));
+
               }
           break;
         }
@@ -1278,6 +1339,8 @@ foreach($recipe->ingredients as $ingredient){
         type_previous_char = type_current_char;
       })
       current_span.attr('data-offset-end',arr.length);
+      current_span.attr('data-id',container.attr('data-id'));
+
       current_span.addClass('token');
       current_span.html(current_word);
       container.append(current_span);
@@ -1398,6 +1461,15 @@ img.check {
 
 .no-display {
     display: none;
+}
+
+.popper {
+        font-size: 1em !important;
+        background-color: #fcfaef;
+}
+
+.contributor {
+        cursor: pointer;
 }
 
 
