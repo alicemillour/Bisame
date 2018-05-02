@@ -9,13 +9,10 @@
 @endsection
 @section('content')
 
-@include('partials.nav')
 <div class="main">    
 
     <div class="main-container semi-transparent fancy-border">     
         <div>
-                <alert> TODO : retrouver la version BISAME </alert>
-
             <h2>Liens de téléchargement pour les corpus</h2>
             
             <h3> Corpus de référence annoté par André Thibault, Karën Fort, Gwladys Feler et Alice Millour (format BROWN) : </h3>

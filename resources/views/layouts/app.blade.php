@@ -418,7 +418,7 @@
             @yield('scripts')
 
             @include('partials.modal-login')
-
+            
         </body>
 
     </html>

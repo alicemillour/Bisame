@@ -10,9 +10,9 @@ dans le cadre de la thèse d'Alice Millour réalisée à l'
 et conjointement avec 
 <a href="http://www.loria.fr/~guillaum" target="_blank">Bruno Guillaume</a>
 (<a href="http://www.loria.fr" target="_blank">LORIA</a>), 
-<a href="http://www.loria.fr/~guillaum" target="_blank">Delphine Berhnard</a>
-(<a href="http://www.loria.fr" target="_blank">LiLPa</a>), et 
-<a href="http://www.loria.fr/~guillaum" target="_blank">André Thibault</a>
+<a href="http://lilpa.unistra.fr/fdt/membres/chercheurs/bernhard-delphine/" target="_blank">Delphine Berhnard</a>
+(<a href="http://lilpa.unistra.fr/" target="_blank">LiLPa</a>), et 
+<a href="http://andre.thibault.pagesperso-orange.fr/" target="_blank">André Thibault</a>
 (<a href="http://www.paris-sorbonne.fr/" target="_blank">Sorbonne Universités</a>).
 dans le cadre du projet PLURAL (Production LUdique de Ressources Annotées pour les Langues de France), 
 financé par la <a href="http://www.culturecommunication.gouv.fr/Thematiques/Langue-francaise-et-langues-de-France" target="_blank">DGLFLF</a>.
@@ -23,7 +23,7 @@ Ces données sont le produit de l'activité des participants de <b class="ostric
 </p>
 <p>
 Les données sont {!! link_to('corpora','accessibles',['target'=>'_blank']) !!} sous des licences libres variées (fonction de la licence de la ressource d'origine), qui sont précisées dans chaque ressource.
-Le code source de <b class="ostrich">BISAME</b> est librement accessible sur <a href="https://github.com/alicemillour/Bisame" target="_blank">github</a> sous licence <a href="http://www.cecill.info/" target="_blank">CeCILL v2.1</a>.
+Le code source de <b class="ostrich">BISAME</b> est librement accessible sur <a href="https://github.com/alicemillour/Bisame/tree/recipes" target="_blank">github</a> sous licence <a href="http://www.cecill.info/" target="_blank">CeCILL v2.1</a>.
 </p>
 <p>
 La présente charte a pour but de permettre aux participants de participer dans l'environnement le plus agréable possible, s'ils respectent les quelques règles établies ci-dessous.
