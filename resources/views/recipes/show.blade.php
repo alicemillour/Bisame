@@ -963,38 +963,37 @@ foreach($recipe->ingredients as $ingredient){
 
             if (attribute == 'name') {
             /* on est dans les ingrédients */
-            console.log(">>>>>>>>INGREDIENTS")
+          
             if(offset_start==0){
-            console.log('#### OFFSET START = 0')
 
-            console.log('nouvelle version avec translatable_id='+translatable_id);
-            console.log($('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']'));
+//            console.log('nouvelle version avec translatable_id='+translatable_id);
+//            console.log($('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']'));
             $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']').prepend(new_span);
             } else {
-               console.log('#### OFFSET START != 0')
-               console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
+//               console.log('#### OFFSET START != 0')
+//               console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
                     
                $('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']').after(new_span); 
             }
             } else {
-                console.log(">>>>>>>>RECETTE")
+//                console.log(">>>>>>>>RECETTE")
 
                 if(offset_start==0){
-                console.log('#### OFFSET START = 0')
+//                console.log('#### OFFSET START = 0')
     //            console.log('ancienne version');
     //            console.log($('.translatable[data-attribute='+attribute+']'));
     //            
-                console.log('nouvelle version avec translatable_id='+translatable_id);
-                console.log($('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']'));
+//                console.log('nouvelle version avec translatable_id='+translatable_id);
+//                console.log($('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']'));
                 $('.translatable[data-attribute='+attribute+'][data-id='+translatable_id+']').prepend(new_span);
                 } else {
-                  console.log('#### OFFSET START != 0')
-
-                    console.log(translatable_id);
-                                  console.log('nouvelle version');
-
-
-                    console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
+//                  console.log('#### OFFSET START != 0')
+//
+//                    console.log(translatable_id);
+//                                  console.log('nouvelle version');
+//
+//
+//                    console.log($('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']'));
                   $('span.token[data-offset-end='+offset_end+'][data-id='+translatable_id+']').after(new_span);
                 }
             }
@@ -1202,7 +1201,6 @@ foreach($recipe->ingredients as $ingredient){
         cancelSelection();
     })
     $(".contributor").click(function() {
-        console.log('click on contributor');
         var user_id = $(this).attr('data-user-id');
         showVersionContributor(user_id);
     })

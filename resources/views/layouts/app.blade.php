@@ -21,6 +21,7 @@
             @font-face {font-family: "Cicle-Fina"; src: url({{asset('/images/cicle/Cicle_Semi.ttf')}}) ;}
             @font-face {font-family: "Belle-Allure"; src: url({{asset('/fonts/belleAllure/BelleAllure-CMMoyenDemo.otf')}}) ;}
             .custom-fonts {font-family: "Cicle-Fina" }
+            body { -webkit-text-size-adjust: none; }
 
             .fill {
                 margin:0;

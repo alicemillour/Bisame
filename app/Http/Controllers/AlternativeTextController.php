@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AlternativeText;
+use App\Traits\Badgeable;
 
 class AlternativeTextController extends Controller
 {
 
+    use Badgeable;
     /**
      * Store a newly created resource in storage.
      *
@@ -34,6 +36,8 @@ class AlternativeTextController extends Controller
                 'user_id'=>auth()->user()->id,
             )));
     	}
+        $this->checkBadge($request, 'alternativ-text', auth()->user()->getNbAlternative());
+
         return '';
     }
 }

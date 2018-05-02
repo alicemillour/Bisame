@@ -67,6 +67,12 @@ class User  extends Authenticatable
     {
         return $this->hasMany('App\Annotation');
     }
+    
+    public function alternatives()
+    {
+        debug("has many");
+        return $this->hasMany('App\AlternativeText');
+    }
 
 
     /**
@@ -212,10 +218,18 @@ class User  extends Authenticatable
         debug(array($this->annotations()->sum('points')));
         return $this->annotations()->sum('points');
     }
+//    public function getId(){
+//        return $this->annotations()->sum('points');
+//    }
     
     public function getNbAnnotations(){
         debug(array($this->annotations()->count()));
         return $this->annotations()->count();
+    }
+    
+        public function getNbAlternative(){
+        debug(array($this->annotations()->count()));
+        return $this->alternatives()->count();
     }
 
     
