@@ -11,6 +11,8 @@ filename=$(basename "$2" .txt.tok)
 rm -f $3/germanized/recipes/$filename.german
 
 cp "$3"/word_seed/recipes/$filename.word_seed "$3"/preannotation/TreeTagger/recipes/$filename.word_seed.german
+sed -i   "s/;;/;POINT_VIRGULE/g" "$3"/preannotation/TreeTagger/recipes/$filename.word_seed.german
+
 cut -d';' -f4 "$3"/preannotation/TreeTagger/recipes/$filename.word_seed.german > "$3"/preannotation/TreeTagger/recipes/$filename.words.german
 while read -r line; do  
     cmd="$line $3/preannotation/TreeTagger/recipes/$filename.words.german"

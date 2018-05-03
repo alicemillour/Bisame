@@ -11,6 +11,7 @@ echo "$2\n";
     filename=$(basename "$2" .txt.tok)
     echo "corpus_name;sentence_position;word_position;value;postag_name;confidence_score;tagger" > "$3"/preannotation/MElt/recipes/$filename.melt_pre-annotation_seed 
     # escape slash
+cp "$3"/preannotation/MElt/recipes/"$filename".melt_tagged "$3"/preannotation/MElt/recipes/"$filename".melt_tagged2
     sed -i 's/\/\/PUNCT/_SLASH_\/PUNCT/g' "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
     sed -i 's/\([0-9]\)\/\([0-9]\)/\1_SLASH_\2/g' "$3"/preannotation/MElt/recipes/"$filename".melt_tagged
     line_nb=1;
