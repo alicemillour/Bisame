@@ -111,7 +111,7 @@
                             </ul>
 
                             <div class="tab-content">
-                                <div id="recipes" class="tab-pane in active">
+                                <div id="recipes" class="tab-pane ">
                                     <div style="text-align: center; margin-top: 5px;">
                                         <div class="score" style="color:black;text-align: center;">
                                             @foreach($top5_nb_recipes as $key=>$user)
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
 
-                                <div id="annotations" class="tab-pane" >
+                                <div id="annotations" class="tab-pane in active" >
                                     <div style="text-align: center; margin-top: 5px; ">
                                         <div class="score" style="color:black;text-align: center;">
                                             @foreach($top5_annotations as $key=>$user)
