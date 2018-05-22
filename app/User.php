@@ -193,6 +193,7 @@ class User  extends Authenticatable
                 ->first()){
 
                 $this->badges()->save($badge);
+                debug("user returns badge");
                 return $badge;
             }
         } else {

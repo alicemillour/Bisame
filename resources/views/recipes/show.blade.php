@@ -638,8 +638,10 @@ foreach($recipe->ingredients as $ingredient){
     function initTooltips() {
       $('.postag').each(function(){
         var count_todo = $(this).attr('data-count-todo');
-        if(count_todo==0)
+        if(count_todo==0){
           var title = "Aucun mot à valider / invalider dans cette catégorie.";
+          $(this).addClass('no-tag');
+        } 
         else if(count_todo==1)
           var title = "Un mot à valider / invalider dans cette catégorie.";
         else
@@ -1376,15 +1378,30 @@ foreach($recipe->ingredients as $ingredient){
 }
 .list-group-item.disabled,.list-group-item.disabled:hover, .list-group-item:disabled {
   /*background-color: #e9ecef;*/
+  color: #495057;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 250, 172, 0.1),
+    rgba(255, 250, 172, 0.1) 10px,
+    rgba(0, 0, 0, 0.2) 10px,
+    rgba(0, 0, 0, 0.2) 20px
+  );
+    
+}
+
+.list-group-item.disabled.no-tag,.list-group-item.disabled.no-tag:hover, .list-group-item.no-tag:disabled {
+/*background-color: #e9ecef;*/
+    color: #7a858e;
   background: repeating-linear-gradient(
     -45deg,
     rgba(0, 0, 0, 0.1),
     rgba(0, 0, 0, 0.1) 10px,
-    rgba(0, 0, 0, 0.2) 10px,
-    rgba(0, 0, 0, 0.2) 20px
+    rgba(0, 0, 0, 0.15) 10px,
+    rgba(0, 0, 0, 0.15) 20px
   );
   
 }
+
 .word-container{
   line-height: 1.1em;
   margin-bottom: 0.8em;
