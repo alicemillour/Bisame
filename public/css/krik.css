@@ -2,7 +2,7 @@
     margin:0;
     padding:0;
     /*TODO DIFF  background: url('/images/PAN_2017_75084.jpg') no-repeat center fixed; */
-    background: url('/images/back-krik.jpg') no-repeat center fixed;
+    background: url('/images/ka.jpg') no-repeat center fixed;
     -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
     background-size: cover;  /* version standardisée */
     /*background-size: contain;*/
