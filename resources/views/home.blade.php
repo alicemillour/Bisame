@@ -29,13 +29,13 @@
                         <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
                     </span>  
                     @include('partials.why-'.App::getLocale())
-                    <span>
+<!--                    <span>
                         <a class='btn btn-default play-button active-button ostrich' href="/login">Connexion</a>
                     </span>
                     
                     <span>
                         <a class='btn btn-default play-button active-button ostrich' href="/register">Inscription</a>
-                    </span>
+                    </span>-->
                 </div>
                 
                 @else
