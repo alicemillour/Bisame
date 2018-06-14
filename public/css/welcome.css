@@ -59,16 +59,16 @@
     margin: 0;
     line-height: 50px;
     text-align: center;
-    /* Starting position */
+     Starting position 
     -moz-transform:translateX(-50%);
     -webkit-transform:translateX(-50%);	
     transform:translateX(-50%);
-    /* Apply animation to this element */	
+     Apply animation to this element 	
     -moz-animation: scroll-left linear 0s infinite;
     -webkit-animation: scroll-left 0s linear infinite;
     animation: scroll-left 25s linear infinite;
 }
-/* Move it (define the animation) */
+ Move it (define the animation) 
 @-moz-keyframes scroll-left {
     0%   { -moz-transform: translateX(100%); }
     100% { -moz-transform: translateX(-100%); }
@@ -79,13 +79,13 @@
 }
 @keyframes scroll-left {
     0%   { 
-        -moz-transform: translateX(100%); /* Browser bug fix */
-        -webkit-transform: translateX(100%); /* Browser bug fix */
+        -moz-transform: translateX(100%);  Browser bug fix 
+        -webkit-transform: translateX(100%);  Browser bug fix 
         transform: translateX(100%); 		
     }
     100% { 
-        -moz-transform: translateX(-100%); /* Browser bug fix */
-        -webkit-transform: translateX(-100%); /* Browser bug fix */
+        -moz-transform: translateX(-100%);  Browser bug fix 
+        -webkit-transform: translateX(-100%);  Browser bug fix 
         transform: translateX(-100%); 
     }
 }
@@ -103,7 +103,7 @@
 .active-button:hover {
     color: black;
     font-weight: bold;
-    border-color: #285e8e; /*set the color you want here*/
+    border-color: #285e8e; set the color you want here
 }
 
 .b-disabled{
@@ -112,7 +112,7 @@
     opacity: .35 !important;
 }
 
-/*.title { 
+.title { 
     margin-top: 10vh;
     font-size: 1000%;
     color: white;
@@ -122,14 +122,14 @@
     line-height: 300px;
    text-shadow: -3px 0 red, 0 1px red, 1px 0 red, 0 -3px red;  
      text-shadow: -4px 0 black, 0 1px black, 1px 0 black, 0 -4px black;  
-}*/
+}
 
 .info-message-trans {
     font-size: 140%;
     max-width: 80%;
     margin: 0 auto;
     padding: 1.25rem;
-    /* background-color:rgba(249, 242, 236, 0.9); */
+     background-color:rgba(249, 242, 236, 0.9); 
 }
 
 .alert-message {
@@ -161,7 +161,7 @@
 }
 
 .nav-tabs li a{
-    /*max-width: 100px;*/
+    max-width: 100px;
 }
 
 .nav-tabs>li>a, .nav-tabs>li>a>div {
@@ -248,4 +248,4 @@
     background-color: #fbc764;
 }
 
-li{ text-align: left}
+li{ text-align: left}*/
