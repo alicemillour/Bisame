@@ -122,7 +122,7 @@ class UserRepository extends ResourceRepository {
     
     public function get_best_users_by_recipes_nb() {
         return User::join("recipes", function($join) {
-                                $join->on("recipes.user_id", "=", "users.id")->where('recipes.deleted_at','!=','NULL');
+                                $join->on("recipes.user_id", "=", "users.id")->whereNull('recipes.deleted_at');
                             })
                     ->select(DB::raw('count(*) as recipe_count, users.name'))
                     ->groupBy('users.id')
