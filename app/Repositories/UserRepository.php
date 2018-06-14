@@ -100,13 +100,34 @@ class UserRepository extends ResourceRepository {
     }
 
     public function get_top_5_recipe_writers() {
+        Log::debug(User::join("recipes", function($join) {
+                            $join->on("recipes.user_id", "=", "users.id")
+                        ->where('recipes.deleted_at','=','NULL');
+                        })
+                        ->select(DB::raw('count(*) as recipe_count, users.id'))
+                        ->groupBy('users.id')
+                        ->orderBy('recipe_count', 'desc')
+                        ->where('is_admin', '=', '0')->take(10)->get());
+                        return false;
+        
         return User::join("recipes", function($join) {
-                            $join->on("recipes.user_id", "=", "users.id");
+                            $join->on("recipes.user_id", "=", "users.id")
+                        ->where('recipes.deleted_at','=','NULL');
                         })
                         ->select(DB::raw('count(*) as recipe_count, users.id'))
                         ->groupBy('users.id')
                         ->orderBy('recipe_count', 'desc')
                         ->where('is_admin', '=', '0')->take(10)->get();
+    }
+    
+    public function get_best_users_by_recipes_nb() {
+        return User::join("recipes", function($join) {
+                                $join->on("recipes.user_id", "=", "users.id")->where('recipes.deleted_at','!=','NULL');
+                            })
+                    ->select(DB::raw('count(*) as recipe_count, users.name'))
+                    ->groupBy('users.id')
+                    ->orderBy('recipe_count', 'desc')
+                    ->where('is_admin', '=', '0')->take(10)->get();
     }
 
     public function get_best_users_by_quantity() {

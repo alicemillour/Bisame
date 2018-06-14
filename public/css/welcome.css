@@ -1,4 +1,12 @@
-.main{
+.scoreboard_pannel {
+    margin-left: 5%;
+    margin-top: 5px;    
+}
+
+
+
+
+/*.main{
     position: relative; }
 @media screen and (min-width: 1280px) {
     .main {

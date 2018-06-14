@@ -12,14 +12,14 @@
         
         <div class="tab-content">
             <div id="week" class="tab-pane fade in active">
-                <div style="text-align: center; margin-top: 5px; display: inline-block;">
-                    <span class="score" style="color:black;text-align: center; display: inline-block;">
+                <div style="margin-top: 5px; display: inline-block;">
+                    <span class="score" style="color:black;display: inline-block;">
                         @foreach($users_month as $key=>$user)
                         @if($key == 0)
-                        <span  style="text-align: center; display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
+                        <span  style=" display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
                         <!--</span> <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span>--> 
                             @else
-                            <span  style="text-align: center; display: inline-block; font-size: 0.7em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
+                            <span  style="display: inline-block; font-size: 0.7em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
                             <!--<span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span>--> 
                             </span>
                             @endif
@@ -30,14 +30,14 @@
             </div>
             
             <div id="home" class="tab-pane fade">
-                <div style="text-align: center; margin-top: 5px; display: inline-block;">
+                <div style=" margin-top: 5px; display: inline-block;">
                     <span class="score" style="color:black;text-align: center; display: inline-block;">
                         @foreach($users_score as $key=>$user)
                         @if($key == 0)
-                        <span  style="text-align: center; display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
+                        <span  style=" display: inline-block; font-size: 1.3em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
                         <!--</span> <span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span>--> 
                             @else
-                            <span  style="text-align: center; display: inline-block; font-size: 0.7em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
+                            <span  style="display: inline-block; font-size: 0.7em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->real_score)}}&nbsp;points)
                             <!--<span style="font-size: 0.7em; line-height: 10%">({{intval($user->score * $user->quantity)}}&nbsp; points) </span>--> 
                             </span>
                             @endif

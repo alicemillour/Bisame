@@ -1,4 +1,4 @@
-<!--<link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">--> 
+<link href="{{ asset('/css/welcome.css') }}" rel="stylesheet">
 @extends('layouts.app')
 
 
@@ -112,15 +112,15 @@
 
                             <div class="tab-content">
                                 <div id="recipes" class="tab-pane ">
-                                    <div style="text-align: center; margin-top: 5px;">
-                                        <div class="score" style="color:black;text-align: center;">
+                                    <div class="scoreboard_pannel">
+                                        <div class="score" style="color:black;">
                                             @foreach($top5_nb_recipes as $key=>$user)
                                             @if($key == 0)
-                                            <div  style="text-align: center; font-size: 1.5em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->recipe_count)}}&nbsp;recettes)
+                                            <div  style="font-size: 2em;"> {{$key + 1}}.  @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->recipe_count)}}&nbsp;recettes)
                                             </div>
 
                                             @else
-                                            <div  style="text-align: center; font-size: 1em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->recipe_count)}}&nbsp;recettes)
+                                            <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->recipe_count)}}&nbsp;recettes)
                                             </div>
 
                                             @endif
@@ -130,15 +130,15 @@
                                 </div>
 
                                 <div id="annotations" class="tab-pane in active" >
-                                    <div style="text-align: center; margin-top: 5px; ">
-                                        <div class="score" style="color:black;text-align: center;">
+                                    <div class="scoreboard_pannel">
+                                        <div class="score" style="color:black;">
                                             @foreach($top5_annotations as $key=>$user)
                                             @if($key == 0)
-                                            <div  style="text-align: center; font-size: 1.5em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->quantity)}}&nbsp;annotations)
+                                            <div  style="font-size: 2em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->quantity)}}&nbsp;annotations)
                                             </div>
 
                                             @else
-                                            <div  style="text-align: center; font-size: 1em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->quantity)}}&nbsp;annotations)
+                                            <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->quantity)}}&nbsp;annotations)
                                             </div>
 
                                             @endif
@@ -148,15 +148,15 @@
                                 </div>
 
                                 <div id="variantes" class="tab-pane">
-                                    <div style="text-align: center; margin-top: 5px;">
-                                        <div class="score" style="color:black; text-align: center;">
+                                    <div class="scoreboard_pannel">
+                                        <div class="score" style="color:black;">
                                             @foreach($top5_variantes as $key=>$user)
                                             @if($key == 0)
-                                            <div  style="text-align: center; font-size: 1.5em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->quantity)}}&nbsp;variante(s))
+                                            <div  style="font-size: 2em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->quantity)}}&nbsp;variante(s))
                                             </div>
 
                                             @else
-                                            <div  style="text-align: center; font-size: 1em;"> {{$key + 1}}. {{$user->name}} ({{intval($user->quantity)}}&nbsp;variante(s)
+                                            <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->quantity)}}&nbsp;variante(s)
                                             </div>
 
                                             @endif

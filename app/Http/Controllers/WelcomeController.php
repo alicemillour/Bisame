@@ -29,13 +29,7 @@ class WelcomeController extends Controller {
 
     public function welcome() {
         return view('welcome', [
-            'top5_nb_recipes' => User::join("recipes", function($join) {
-                                $join->on("recipes.user_id", "=", "users.id");
-                            })
-                    ->select(DB::raw('count(*) as recipe_count, users.name'))
-                    ->groupBy('users.id')
-                    ->orderBy('recipe_count', 'desc')
-                    ->where('is_admin', '=', '0')->take(10)->get(),
+            'top5_nb_recipes' => $this->userRepository->get_best_users_by_recipes_nb(),
             'top5_annotations' => $this->userRepository->get_best_users_by_quantity(),
             'top5_variantes' => $this->userRepository->get_best_users_by_alternative(),
             'recipes' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(3)->get(),
