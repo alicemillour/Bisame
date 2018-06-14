@@ -849,6 +849,7 @@ foreach($recipe->ingredients as $ingredient){
         var popper_translation = document.createElement("div");
         popper_translation.setAttribute('id','popper_translation');
         popper_translation.setAttribute('class','popper');
+//        popper_translation.setAttribute('class','my-popper_translation');
         $(popper_translation).append(content);
         document.body.appendChild(popper_translation);
         // var popper_translation = $('<div class="popper" id="popper_translation">'+content+'</div>');
@@ -1481,6 +1482,8 @@ img.check {
 .no-display {
     display: none;
 }
+
+
 
 .popper {
         font-size: 1em !important;

@@ -21,11 +21,14 @@
                     <img class="" style="width:20px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
                     @endif
                 </div>
-                @if($recipe->medias->count()>0)
-                <img src="{{ asset($recipe->medias->first()->filename) }}" style="max-height:100%; max-width:100%;" />
-                @endif
+
 
             </div>
+                    @if($recipe->medias->count()>0)
+                <img src="{{ asset($recipe->medias->first()->filename) }}" style="margin-left: auto; 
+	margin-right: auto;
+	display: block;max-height:100%; max-width:100%;" />
+                @endif
             <h4>{{ link_to_route('recipes.show', $recipe->title, $recipe) }}</h4>
         </div>
         <p class="card-text">
@@ -86,5 +89,4 @@
     @elseif(!$recipe->validated)
     <a href="{{ route('recipes.annotations', $recipe) }}"  class="btn validate-button active-button">Valider la recette</a>
     @endif
-</p>
--->
+</p>-->
