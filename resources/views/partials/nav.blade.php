@@ -29,7 +29,7 @@
                 <hr style="height: 1px; color: white; background-color: whitesmoke; width: 50%; ">
                 {{ $nb_total_users }}  participants <br>
                 {{ $nb_recipes }}  recettes <br>
-                {{ $nb_recipe_annotations }}  mots annotés <br>
+                {{ $nb_recipe_annotations }} annotations ({{ $nb_recipe_words_annotated }}  mots) <br>
                 {{ $nb_recipe_versions }}  mots alternatifs proposés <br> 
             </span>
         </div>
