@@ -90,7 +90,7 @@
                             <div class="card background-colored fancy-border">
                                 <h4 class="card-header welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
                                 <div class="card-body">
-                                    @each('recipes/_show-welcome', $recipes_to_annotate, 'recipe', 'recipes/_empty')
+                                    @each('recipes/_show-welcome_1', $recipes_to_annotate, 'recipe', 'recipes/_empty')
                                 </div>
                                 <div class="card-footer text-center">
                                     <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
