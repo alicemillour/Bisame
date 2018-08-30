@@ -107,5 +107,6 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+    'from' => ['address' => 'alice.millour@paris-sorbonne.fr', 'name' => 'Alice'],
 
 ];

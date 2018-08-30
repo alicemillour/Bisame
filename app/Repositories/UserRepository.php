@@ -163,6 +163,20 @@ class UserRepository extends ResourceRepository {
     public function get_users_count() {
         return User::select(DB::raw('count(*) as count'))->first();
     }
+    public function get_active_users_count() {
+        return AlternativeText::select(DB::raw('count(distinct(alternative_texts.user_id)) as count'))
+                ->leftjoin("alternative_texts", function($join) {
+                            $join->on("alternative_texts.user_id", "=", "users.id");
+                        })
+                
+                ->leftjoin("recipes", function($join) {
+                            $join->on("recipes.user_id", "=", "users.id");
+                        })
+                
+                ->leftjoin("annotations", function($join) {
+                            $join->on("annotations.user_id", "=", "users.id");
+                        })->first();
+    }
 
     public function get_not_training_count() {
         debug("get not training users");
