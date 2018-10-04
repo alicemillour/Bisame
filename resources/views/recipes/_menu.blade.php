@@ -1,4 +1,4 @@
-@if(Route::currentRouteName()=='recipes.favorite')
+{{--@if(Route::currentRouteName()=='recipes.favorite')
 	<div class="card mb-2">
 	<h5 class="card-header text-center welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h5>
 		<div class="card-body">
@@ -27,4 +27,4 @@
 	<div class="card-body">
 		@each('recipes/_show-welcome', $validated_recipes, 'recipe', 'recipes/_empty')
 	</div>
-</div>
+</div> --}}

@@ -1,7 +1,7 @@
 <link href="{{ asset('css/nav.css') }}" rel="stylesheet" type="text/css" >
 
 <div class="masthead container-fluid" style="padding-bottom:0px;max-width: 95%">
-    <div class="wrapper row"  style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.15);">
+    <div class="wrapper row"  style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.40);">
 
         <!--<div class="row"  style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.15);">-->
         <!--            {{--         <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
@@ -129,7 +129,7 @@
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
-                    <a class="dropdown-item" href="{{ route('recipes.to-annotate') }}">Annoter une recette</a>
+                    {{-- <a class="dropdown-item" href="{{ route('recipes.to-annotate') }}">Annoter une recette</a> --}}
                     <a class="dropdown-item" href="{{ route('recipes.add-alt-version') }}">Ajouter des variantes</a>
                 </div>
             </div>

@@ -185,6 +185,9 @@ class RecipeController extends Controller {
 
         self::sendMailNewRecipe($recipe);
 
+        /* TODO : ici pour la version créole qui n'annote pas */
+        return redirect('/')->withSuccess(__('recipes.created'));
+
         /* lancer les prétraitements */
         $script_path = base_path() . '/scripts/';
         $corpus_path = storage_path() . '/app/corpus/';
