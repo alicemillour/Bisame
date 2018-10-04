@@ -44,7 +44,7 @@
                                 <span class="belle-allure"> Recettes de Grammaire </span> est une plateforme collaborative qui recueille :
                                 <br>
                                 <ol>
-                                    <li>Des <span class="belle-allure"> recettes de cuisine  </span> (<b> {{ trans('home.precision_langue') }} </b>) </li>
+                                    <li>Des <span class="belle-allure"> recettes de cuisine  </span> (<b> {{ trans('home.precision_langue') }} </b> &nbsp; !) </li>
                                     <li>Des <span class="belle-allure"> annotations grammaticales </span>  servant à développer de nouveaux outils pour le traitement automatique de l'alsacien</li>
                                     <li>Des <span class="belle-allure"> variantes orthographiques ou dialectales </span> permettant un meilleur traitement de la variation en alsacien </li>
                                 </ol>
