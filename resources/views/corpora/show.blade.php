@@ -13,7 +13,7 @@
 <div class="main">    
     <div class="main-container semi-transparent fancy-border">     
         <div>
-            <h2>Liens de téléchargement pour les corpus</h2>
+            <h2>Liens de téléchargement pour les corpus bruts et annotés</h2>
             
             <h3> Corpus de référence annoté par André Thibault, Karën Fort, Gwladys Feler et Alice Millour (format BROWN) : </h3>
             <h4>Sous-corpus issu d'articles de la 
