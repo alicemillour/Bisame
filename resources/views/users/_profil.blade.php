@@ -70,7 +70,7 @@
     </form>   
   </div>
 
-  <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
+{{--  <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
     {!! Form::label('position', __('Où avez-vous appris l\'alsacien ?'), ['class' => '']) !!}
     <div id="message-map-dk" class="text-danger"></div>
     <div class="form-check">
@@ -112,7 +112,7 @@
         {!! Form::submit("Enregistrer", ['id' => 'save-city','class' => 'btn btn-success']) !!}
       </div>      
     </form>
-  </div>
+  </div> --}}
 </div>
 <hr/>
 <h4 class="card-title" id="title-avatar">Modifier votre mot de passe</h4>
