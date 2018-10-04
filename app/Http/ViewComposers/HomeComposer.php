@@ -43,7 +43,7 @@ class HomeComposer {
         debug($this->corpusRepository->get_current_unnanotated_corpus()['id']);       
         
         
-        $progression = $this->annotationRepository->get_distinct_annotated_words($current_corpus)->count() * 100 / $this->annotationRepository->count_annotable_words($current_corpus)->count;
+        $progression = $this->annotationRepository->get_distinct_annotated_words($current_corpus)->count() * 100 / 10;//$this->annotationRepository->count_annotable_words($current_corpus)->count;
           $view
                 ->with('total_sentences', $this->wordRepository->get_sentences_number($current_corpus))
                 ->with('total_words', $this->wordRepository->get_words_number($current_corpus))
