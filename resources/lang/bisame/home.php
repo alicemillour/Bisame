@@ -5,6 +5,6 @@ return [
 	'message-button-part1' => "",
 	'message-button-part2' => "Produire des annotations",
     	'langue' => "l'alsacien",
-        'precision_langue' => '( ùf Elsàssisch !)'
+        'precision_langue' => ' ùf Elsàssisch'
 
 ];
