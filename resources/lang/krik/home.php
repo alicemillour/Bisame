@@ -8,4 +8,6 @@ return [
         'langue-sans-art' => 'créole guadeloupéen',
         'precision_langue' => 'en créole guadeloupéen',
         'langue-de' => "du créole guadeloupéen",
+        'variantes-types' => "régionales ou orthographiques",
+
 ];

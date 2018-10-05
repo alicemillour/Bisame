@@ -21,7 +21,7 @@ $solutions = [];
                 ou l'invalider (<img src="{{ asset('images/no.png') }}">).
             </h4>
             <h4 class="explanation">En cas de doute, consultez les exemples ci-dessous ou 
-                <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[Bisame]Contact" style="color:black" target="_top">contactez-moi</a>
+                <a style="color:#1e1eac;" href="mailto:{{ config('mail.from.adress') }}?Subject=[{{ trans('home.app-name') }}]Contact" style="color:black" target="_top">contactez-moi</a>
             </h4>
         </div>
         <div style="width:100%;"><hr style="height: 1px; color: white; background-color: black; width: 50%; "> </div>
