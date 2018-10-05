@@ -200,7 +200,7 @@
         @if($annotator_to_validate)
         <h4 id="message" class="mb-2 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
         @else
-        <h4 id="message" class="mb-2 explanation">  Cette recette fait désormais partie de notre base de textes en alsacien !  <br> 
+        <h4 id="message" class="mb-2 explanation">  Cette recette fait désormais partie de notre base de textes en {{ trans('home.langue') }} !  <br> 
             Notre outil a tenté de deviner les catégories grammaticales des mots de cette recette... Voici le résultat :</h4>
         @endif
 

@@ -11,7 +11,7 @@
 <div class="main">    
     <div class="main-container semi-transparent fancy-border">     
         <div>
-            <h2>Données courantes Bisame</h2>
+            <h2>Données courantes {{ trans('home.app-name') }}</h2>
             <h3>Total</h3>
             Word tokens : {{$total_tokens}}
             Word types : {{$total_types}}
@@ -23,10 +23,6 @@
             Sentences : {{$not_ref_sentences}}
             Word tokens : {{$non_ref_tokens}}
             Word types : {{$non_ref_types}}
-            <h3>Corpus Altweiger</h3>
-            Word tokens : {{$words_323}}
-            Word types : {{$types_323}}
-            Sentences : {{$sentences_323}}
         </div>
         <div>
             <h2> {{$days_of_annotation}} jours d'annotation </h2>
@@ -39,12 +35,13 @@
             <h2> {{$participant}} participants ont produit des annotations </h2>
 
         </div>
-        <div>
+        
+        {{--<div>
             <h2>Wikipédia alémanique en alsacien (lieux exclus)</h2>
             Word tokens : 53826
             Word types : 12644
             Hapax : 14086 = 26%
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection
