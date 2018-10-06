@@ -51,7 +51,7 @@ $('#photo').change(function(){
 	        },
 	        error: function(data)
 	        {
-	            alert( 'Sorry.' );
+	            alert( 'Désolée, la photo que vous avez choisie est trop grande. Choisissez une image de taille inférieure à 1.5Mo' );
 	        },
 			cache: false,
 	        contentType: false,
