@@ -153,6 +153,7 @@
                         <input type="file" id="photo" name="photo" style="display:none;"/>
                         <i class="fa fa-picture-o"></i> Ajouter une photo
                     </label>
+                   (Choisissez une photo de taille inférieure à 1,5Mo. Le chargement de l'image peut prendre un peu de temps.)
                 </span>
                 <!--{{ Form::checkbox('open_source_picture') }} Je confirme que j'ai le droit d'utiliser cette photo (photo prise par vous-même ou libre de droit.-->
 
