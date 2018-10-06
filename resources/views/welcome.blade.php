@@ -46,7 +46,7 @@
                                 <ol>
                                     <li>Des <span class="belle-allure"> recettes de cuisine  </span> (<b> {{ trans('home.precision_langue') }}</b> &nbsp;!) </li>
                                     <li>Des <span class="belle-allure"> annotations grammaticales </span>  servant à développer de nouveaux outils pour le traitement automatique {{ trans('home.langue-de') }}</li>
-                                    <li>Des <span class="belle-allure"> variantes {{ trans('home.variantes_types') }} </span> permettant un meilleur traitement de la variation en {{ trans('home.langue-sans-art') }} </li>
+                                    <li>Des <span class="belle-allure"> variantes {{ trans('home.variantes-types') }} </span> permettant un meilleur traitement de la variation en {{ trans('home.langue-sans-art') }} </li>
                                 </ol>
                             </div>
                             <!--</div>-->
