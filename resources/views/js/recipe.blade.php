@@ -23,7 +23,7 @@ $('#photo').change(function(){
 	        success: function(data)
 	        {
 	        	var div_thumbnail = $('<div class="thumbnail ml-3 d-inline-block"/>');
-	        	div_thumbnail.append($('<img/>').attr('src',base_url+'/'+data.url));
+	        	div_thumbnail.append($('<img/>').attr('src',base_url+data.url));
 	        	div_thumbnail.append($('<input/>').attr('type','hidden').attr('name','photos[]').attr('value',data.url));
 	        	div_thumbnail.append($('<br/>'));
 	        	var radio_button = $('<input/>').attr('type','radio')
