@@ -26,8 +26,7 @@
             .fill {
                 margin:0;
                 padding:0;
-                background: url({{ asset('/images/back-'.App::getLocale().'.jpg') }}) no-repeat center fixed;
-                background: url({{ asset('/images/ladarse.jpg') }}) no-repeat center fixed; 
+                background: url({{ asset('/images/back-recipes-'.App::getLocale().'.jpg') }}) no-repeat center fixed;
                 -webkit-background-size: cover;  /* pour anciens Chrome et Safari  */
                 background-size: cover;  /* version standardisée */
                 background-position: left top;  
@@ -405,7 +404,7 @@
                 @yield('content')
 
             </div>
-            @include('partials.footer-'.App::getLocale())
+            @include('partials.footer')
             <!-- JavaScripts -->
             <script type="text/javascript">
                 var base_url = '{{ asset('') }}';

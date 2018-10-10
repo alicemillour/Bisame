@@ -136,7 +136,7 @@
                     </div>
                 </div>
             </div>
-            
+            {{ trans('recipes.titre-texte-recette') }}
             <div class="form-group col-12 mt-3">
                 {!! Form::textarea('content', null, array('class' => 'form-control', 'id' => 'content', 'placeholder'=>__('Préparation de la recette (texte libre)')) ) !!}
             </div>
