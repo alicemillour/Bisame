@@ -35,9 +35,12 @@
     <li class="nav-item">
       <a class="nav-link page-title" id="plus-tab" data-toggle="tab" href="{{ route('recipes.alternative-versions',['recipe'=>$recipe]) }}?tab=plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
     </li>
+    <!-- Fonctionnalité annotation : décommenter ci-dessous -->
     <li class="nav-item">
       <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="{{ route('recipes.annotations',['recipe'=>$recipe]) }}?tab=pos" role="tab" aria-controls="pos" aria-selected="false">Aidez-nous à améliorer nos outils</a>
     </li>
+    <!-- Fonctionnalité annotation -->
+
   </ul>
 
   <div class="bg-white p-3" id="content-recipe">
