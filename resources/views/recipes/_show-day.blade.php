@@ -46,6 +46,9 @@
 
 <div class="card-text text-truncate">{{ $recipe->content }}</div>
 <div class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe) }}</div>
+
+<!-- Fonctionnalité annotation : décommenter ci-dessous -->
+
 <div class="card-text text-right">
     @if(!$recipe->annotated)
     <a href="{{ route('recipes.annotations', $recipe) }}"  class="btn annotate-button active-button">Annoter la recette</a>
@@ -53,3 +56,5 @@
     <a href="{{ route('recipes.annotations', $recipe) }}"  class="btn validate-button active-button">Valider la recette</a>
     @endif
 </div>
+
+<!-- Fonctionnalité annotation -->

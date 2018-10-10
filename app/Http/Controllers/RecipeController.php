@@ -184,6 +184,11 @@ class RecipeController extends Controller {
         $this->checkBadge($request, 'recipe', auth()->user()->recipes()->count());
 
         self::sendMailNewRecipe($recipe);
+        
+        
+        /* Fonctionnalité d'annotation : commenter ci-dessous (pour lancer les prétraitements et rediriger vers l'annotation) */
+        // return redirect('/')->withSuccess(__('recipes.created'));
+        /* Fonctionnalité d'annotation */
 
         /* lancer les prétraitements */
         $script_path = base_path() . '/scripts/';

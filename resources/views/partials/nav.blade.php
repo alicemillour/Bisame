@@ -1,7 +1,7 @@
 <link href="{{ asset('css/nav.css') }}" rel="stylesheet" type="text/css" >
 
 <div class="masthead container-fluid" style="padding-bottom:0px;max-width: 95%">
-    <div class="wrapper row"  style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.15);">
+    <div class="wrapper row"  style="padding:1%;margin: 0 auto ;">
 
         <!--<div class="row"  style="padding:1%;margin: 0 auto ;  background-color: rgba(0, 0, 0, 0.15);">-->
         <!--            {{--         <div class="col-md-3 belle-allure sidehead justify-content-end" style=""> 
