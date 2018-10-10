@@ -145,7 +145,9 @@
 
     <div class="col-sm-5">
       @if($recipe->medias->count()>0)
-        <img src="{{ asset($recipe->medias->first()->filename) }}" style="width:100%;" />
+        @foreach($recipe->medias as $medium)
+            <img src="{{ asset($medium->filename) }}" style="width:100%;" />
+        @endforeach
       @endif
       <form id="form-recipe" action="{{ route('recipes.add-media',$recipe) }}" method="POST">
         {{ csrf_field() }}
