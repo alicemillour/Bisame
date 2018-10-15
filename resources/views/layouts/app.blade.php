@@ -140,9 +140,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
-<script>
-    {!! Html::script(route('asset',['asset'=>'js/master.js'])) !!}
-</script>
+
+<script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
+<!--<script>-->
+    <!--{!! Html::script(route('asset',['asset'=>'js/master.js'])) !!}-->
+<!--</script>-->
 
 
 @yield('script')
