@@ -57,7 +57,8 @@ return [
       | to any of the locales which will be supported by the application.
       |
      */
-    'locale' => 'krik',
+    /* value of locale : bisame or krik */
+    'locale' => 'bisame',
     /*
       |--------------------------------------------------------------------------
       | Application Fallback Locale
