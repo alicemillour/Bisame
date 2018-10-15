@@ -7,6 +7,10 @@
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ asset('js/home.js') }}"></script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9fd843829189326bf6dcd04a266efde6786ced58
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 @endsection
@@ -19,25 +23,24 @@
             <div class="title ostrich"> {{ trans('home.app-name') }} </div>
         </div>
         
-<!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>-->
 
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
+        <!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>-->
 
-    <div class="container">
-        <h3> Un nouveau site est disponible ! Rendez-vous sur <a href="http://bisame.paris-sorbonne.fr/recettes">Recettes de Grammaire</a> pour en savoir plus !
-</h3>
-    </div>
+        <div id="id01" class="modal">
 
-   
-  </form>
-</div>
+          <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
 
-        
+            <div class="container">
+                <h3> Un nouveau site est disponible ! Rendez-vous sur <a href="http://bisame.paris-sorbonne.fr/recettes">Recettes de Grammaire</a> pour en savoir plus !
+                </h3>
+            </div>
+
+
+          </form>
+        </div>
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
                 
