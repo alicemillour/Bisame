@@ -27,7 +27,7 @@
             </div>
 
             <div class="container">
-                <h3> Un nouveau site est disponible ! Rendez-vous sur <a href="http://bisame.paris-sorbonne.fr/recettes">Recettes de Grammaire</a> pour en savoir plus !
+                <h3> Un nouveau site est disponible ! Rendez-vous sur <a href="http://krik.paris-sorbonne.fr/recettes">Recettes de Grammaire</a> pour en savoir plus !
                 </h3>
             </div>
 

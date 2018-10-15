@@ -24,10 +24,17 @@ class EventServiceProvider extends ServiceProvider
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
-    public function boot()
+    
+        public function boot(DispatcherContract $events)
     {
-        parent::boot();
+        parent::boot($events);
 
         //
     }
+//    public function boot()
+//    {
+//        parent::boot();
+//
+//        //
+//    }
 }
