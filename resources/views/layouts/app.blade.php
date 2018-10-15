@@ -292,6 +292,13 @@
                 li.nav-item > a.no-hover:focus, li.nav-item > a.no-hover:hover{
                     color: #CECECE !important;
                 }
+                
+                a {
+                    color: black ;
+                }               
+                a:hover {
+                    color: #484444 ;
+                }
 
                 .dropdown-menu {
                     background-color: black !important;

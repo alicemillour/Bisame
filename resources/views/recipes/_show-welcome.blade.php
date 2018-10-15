@@ -23,11 +23,7 @@
         </div>
     </div>
     <div>
-        @if($recipe->medias->count()>0)
-        <img src="{{ asset($recipe->medias->first()->filename) }}" style="max-height:100%;max-width:100%;margin-left: auto; 
-             margin-right: auto;
-             display: block;" />
-        @endif
+       
         <h4>{{ link_to_route('recipes.show', $recipe->title, $recipe) }}</h4>
         
         <p class="card-text">
@@ -55,6 +51,12 @@
             @endif
         </div>
         <!-- Fonctionnalité annotation -->
+        
+         @if($recipe->medias->count()>0)
+        <img src="{{ asset($recipe->medias->first()->filename) }}" style="max-height:100%;max-width:100%;margin-left: auto; 
+             margin-right: auto;
+             display: block;" />
+        @endif
     </div>
 </div>
 <hr/>
