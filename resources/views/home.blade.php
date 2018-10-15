@@ -3,7 +3,8 @@
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('script')
-<!--<script type="text/javascript" src="{{ asset('js/game.js') }}"></script>-->
+<script type="text/javascript" src="{{ asset('js/home.js') }}"></script>
+
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 @endsection
@@ -14,6 +15,24 @@
         <div  style="max-width:100%;margin:0 auto;">
             <!-- TODO DIFF <div class="title ostrich">&nbsp;Krik !</div> -->
             <div class="title ostrich"> {{ trans('home.app-name') }} </div>
+        </div>
+        
+        <!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>-->
+
+        <div id="id01" class="modal">
+
+          <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+                <h3> Un nouveau site est disponible ! Rendez-vous sur <a href="http://bisame.paris-sorbonne.fr/recettes">Recettes de Grammaire</a> pour en savoir plus !
+                </h3>
+            </div>
+
+
+          </form>
         </div>
         <div class="fill">
             <div class="info-message-trans background-colored fancy-border">
