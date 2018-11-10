@@ -119,7 +119,7 @@
             </h4>
             
             <hr>
-            <h3> Modèle MElt entraîné (corpus d'entraînement de 1500 tokens, exactitude moyenne de 82%) : </h3>
+            <h3> Modèle MElt entraîné (corpus d'entraînement de 1500 tokens, exactitude moyenne de 82 %) : </h3>
             <h4><a href="{{ url('/download_zip/MElt_creole-guadeloupe_1500-tokens.tar.gz')  }}" target="_blank"><b>Télécharger</b></a></h4>
             
         </div>
