@@ -1,12 +1,18 @@
 @extends('layouts.app')
 @section('style')
+
+
+
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ asset('js/home.js') }}"></script>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9fd843829189326bf6dcd04a266efde6786ced58
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 @endsection
 @section('content')
 @include('partials.nav')
@@ -17,6 +23,7 @@
             <div class="title ostrich"> {{ trans('home.app-name') }} </div>
         </div>
         
+
         <!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>-->
 
         <div id="id01" class="modal">
@@ -114,5 +121,9 @@
         @include('partials.scoreboard')
     </div> 
 </div>   
+
+
+
+
 
 @endsection
