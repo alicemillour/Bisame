@@ -28,7 +28,6 @@
     <div>
 
         
-        
         <p class="card-text">
             <span class="text-muted">
                 @component('users._avatar', ['user' => $recipe->author])
@@ -59,6 +58,12 @@
             @endif
         </div>--}}
         <!-- Fonctionnalité annotation -->
+        
+         @if($recipe->medias->count()>0)
+        <img src="{{ asset($recipe->medias->first()->filename) }}" style="max-height:100%;max-width:100%;margin-left: auto; 
+             margin-right: auto;
+             display: block;" />
+        @endif
     </div>
 </div>
 <hr style="margin-left: 1%; color:black;background-color: black; width: 98%;"/>

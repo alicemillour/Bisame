@@ -33,18 +33,24 @@
                     <div class="col-md-6 px-3">
                         <div class="card background-colored fancy-border">
                             <h3 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">
-                                <a>Aujourd'hui, je contribue !
+                                <a>Aujourd'hui, je contribue ! 
                                     <!--<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <i class="fa fa-question" aria-hidden="true"></i> 
                                     </button>-->
+                                    
                                 </a>
                             </h3>
+                            <a class="btn" style="text-align: center;"onclick="document.getElementById('slider').classList.toggle('open');">Plus d'informations <i class="fa fa-question" aria-hidden="true"></i></a>
                             <!--<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">-->
-                            <div class="card-body">
+                            
+                            <div class="card-body"  >
+                                
+                            <div id="slider" class="slider">
                                 <span class="belle-allure"> Recettes de Grammaire </span> est une plateforme collaborative qui recueille :
                                 <br>
                                 
                                 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
+                                
                                 <ol>
                                     <li>Des <span class="belle-allure"> recettes de cuisine  </span> (<b> {{ trans('home.precision_langue') }}</b> &nbsp;!) </li>
                                     <li>Des <span class="belle-allure"> variantes {{ trans('home.variantes-types') }} </span> permettant un meilleur traitement de la variation en {{ trans('home.langue-sans-art') }} </li>
@@ -61,17 +67,16 @@
                                 </ol>-->
                                 <!-- Fonctionnalité annotation -->
                                 
-                            </div>
                             <!--</div>-->
                             <hr style="margin-left: 25%;height:1px;color: white; color:black;background-color: black; width: 50%;">
-                            
-                            <div class="card-body">
-                                
+
+                            </div>
+
                                 <div class="row" style="text-align:center">
                                     
                                     <div class="col-md-4"  >
                                         <a href="{{ route('recipes.create') }}" class="btn play-button active-button" > Nouvelle recette</a> <br> <br>
-                                        <div class="belle-allure"> Je partage une recette </div> 
+                                        <div class="belle-allure"> Je partage une recette {{ trans('home.precision_langue') }}</div> 
                                     </div>                                    
                                     
                                     <!-- Fonctionnalité annotation : décommenter ci-dessous -->
@@ -117,7 +122,7 @@
                         <!-- Fonctionnalité annotation : décommenter ci-dessous -->
                         {{-- <div class="col-md-12"  >
                             <div class="card background-colored fancy-border">
-                                <h4 class="card-header welcome-card-header"><a href="{{ route('1-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
+                                <h4 class="card-header welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
                                 <div class="card-body">
                                     @each('recipes/_show-welcome_1', $recipes_to_annotate, 'recipe', 'recipes/_empty')
                                 </div>
