@@ -46,6 +46,7 @@
              margin-right: auto;
              display: block;" />
         <hr style="margin-left: 16.5%;width: 66%;">
+
         @endif
         <div class="card-text text-truncate">{{ $recipe->content }}</div>
         <div class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe) }}</div>
@@ -59,11 +60,7 @@
         </div>--}}
         <!-- Fonctionnalité annotation -->
         
-         @if($recipe->medias->count()>0)
-        <img src="{{ asset($recipe->medias->first()->filename) }}" style="max-height:100%;max-width:100%;margin-left: auto; 
-             margin-right: auto;
-             display: block;" />
-        @endif
+
     </div>
 </div>
 <hr style="margin-left: 1%; color:black;background-color: black; width: 98%;"/>
