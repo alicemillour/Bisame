@@ -8,6 +8,7 @@
         <meta property="og:image" content="{{ asset('images/ppic_'.App::getLocale().'.jpg') }}" />
         <meta property="og:description" content="{{ trans('home.app-name') }} est un projet de recherche collaboratif visant à favoriser la diffusion {{ trans('home.langue-de') }}. Venez participer !" />
         <title> {{ trans('home.app-name') }} </title>   
+
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css'>
 
@@ -428,3 +429,4 @@
         </body>
 
     </html>
+
