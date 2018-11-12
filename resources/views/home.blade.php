@@ -2,16 +2,13 @@
 @section('style')
 <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css" >
 @endsection
-<<<<<<< HEAD
 
-=======
 @section('script')
 <script type="text/javascript" src="{{ asset('js/home.js') }}"></script>
 
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-@endsection
->>>>>>> 34700cef9612cc359c2d84772b77ac3d4f5617d3
+
 @section('content')
 <div class="main">
     <div class="main-container">
