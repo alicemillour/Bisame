@@ -22,7 +22,7 @@
                         <div class="card background-colored fancy-border">
                             <h4 class="card-header text-center welcome-card-header"><a href="{{ route('recipes.index') }}">{{ __('recipes.last-recipes') }}</a></h4>
                             <div class="card-body">
-                                @each('recipes/_show-welcome', $recipes, 'recipe', 'recipes/_empty')
+                                @each('recipes/_show-welcome', $recipes->slice(1, 5), 'recipe', 'recipes/_empty')
                             </div>
                             <div class="card-footer text-center">
                                 <a href="{{ route('recipes.create') }}" class="btn play-button active-button">Ajouter une recette</a>

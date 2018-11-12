@@ -32,7 +32,7 @@ class WelcomeController extends Controller {
             'top5_nb_recipes' => $this->userRepository->get_best_users_by_recipes_nb(),
             'top5_annotations' => $this->userRepository->get_best_users_by_quantity(),
             'top5_variantes' => $this->userRepository->get_best_users_by_alternative(),
-            'recipes' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(3)->get(),
+            'recipes' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(5)->get(),
             'recipe_of_the_day' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(1)->get(),
             'recipes_to_annotate' => Recipe::toAnnotate()->with('author')->withCount('likes')->latest()->paginate(3),
             'annotated_recipes' => Recipe::toValidate()->with('author')->withCount('likes')->latest()->paginate(3),

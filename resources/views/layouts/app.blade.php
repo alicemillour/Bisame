@@ -9,6 +9,7 @@
         <meta property="og:description" content="{{ trans('home.app-name') }} est un projet de recherche collaboratif visant à favoriser la diffusion {{ trans('home.langue-de') }}. Venez participer !" />
                         <!-- TODO DIFF <title>Krik !</title> -->
         <title> {{ trans('home.app-name') }} </title>   
+        
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -363,6 +364,14 @@
                     margin-bottom: 1rem;
                 }
 
+                a {
+                    color: black ;
+                }               
+                a:hover {
+                    color: #484444 ;
+                }
+
+                
                 .col-centered{
                     float: none;
                     margin: 0 auto;

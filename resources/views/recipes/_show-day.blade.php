@@ -1,5 +1,6 @@
 <div>
-    <div class="float-right">
+    <h4>
+        <div class="float-right">
         <i class="fa fa-heart likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
            @auth
            @if(Auth::user()->likesEntity($recipe))
@@ -20,7 +21,8 @@
         <img class="" style="width:20px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
         @endif
     </div>
-    <h4>{{ link_to_route('recipes.show', $recipe->title, $recipe) }}</h4>
+        <span style="font-size: 1.8em; text-align: center;">
+            {{ link_to_route('recipes.show', $recipe->title, $recipe) }} </span></h4>
 </div>
 <p class="card-text">
     <span class="text-muted">
