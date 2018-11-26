@@ -143,7 +143,7 @@
                                 <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
                                 <li class="nav-item" style="font-size: 1em;" ><a class="nav-link active" data-toggle="pill" style="color:black" href="#annotations"> Annotations </a></li>
                                 <!-- Fonctionnalité annotation : commenter ci-dessous -->
-                                <li class="nav-item" style="font-size: 1em;" ><a class="nav-link active"  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
+                                <!--<li class="nav-item" style="font-size: 1em;" ><a class="nav-link active"  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>-->
                                 <!-- Fonctionnalité annotation -->
                                 <li class="nav-item"><a class="nav-link" data-toggle="pill" style="color:black; font-size: 1em" href="#variantes" > Variantes </a></li>
                                 
