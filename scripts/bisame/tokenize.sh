@@ -34,5 +34,5 @@ sed -i   's/\"/\"\"/g' $2.tok
 
 ## déplacement des fichiers dans le répertoire /tokenized
 
-mkdir -p $tokenized/$corpus
+mkdir -p "$3"/tokenized/recipes/
 cp "$2".tok "$3"/tokenized/recipes/

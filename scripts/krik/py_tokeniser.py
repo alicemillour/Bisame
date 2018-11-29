@@ -46,37 +46,40 @@ available_languages = ['fr', 'en', 'gsw', 'any', 'gcf']
 # Corpora List Message dated Fri, 16 Oct 1998 
 #(http://torvald.aksis.uib.no/corpora/1998-4/0035.html)
 # and also inspired from TreeTaggerWrapper
-always_sep = ur'(\?|¿|!|;|\*|¤|°|\||¦|\(|\)|\\|\[|\]|\{|_|"|“|”|«|»|„|&|#|~|=|—|\+|–|©|―|®|–)'
+always_sep = r'(\?|¿|!|;|\*|¤|°|\||¦|\(|\)|\\|\[|\]|\{|_|"|“|”|«|»|„|&|#|~|=|—|\+|–|©|―|®|–)'
 #Language-dependent regular expressions
-begin_sep = {'fr' : ur"(``|`|‘|[cdjlmnst]'|[cdjlmnst]`|[cdjlmnst]’|[cdjlmnst]´|[cdjlmnst]‘|lorsqu'|jusqu'|qu'|lorsqu`|jusqu`|qu`|lorsqu´|jusqu´|qu´|lorsqu’|jusqu’|qu’|lorsqu‘|jusqu‘|qu‘)", \
-            'en' : ur"(``|`|‘)", \
-            'gsw' : ur"(``|[ds]'(?!r )|[ds]`(?!r )|[ds]’(?!r )|[ds]´(?!r )|[ds]‘(?!r )|z'|z`|z’|z´|z‘)", \
-	    'gcf' : ur"(``|`|‘)", \
-            'any' : ur"(``|`|‘)"}
-end_sep = {'fr' : ur"(-|'|’|:|‚|-ce|-ci|-elle|-elles|-en|-il|-ils|-je|-la|-là|-les|-leur|-lui|-même|-mêmes|-moi|-nous|-on|-toi|-tu|-vous|-y){1}", \
-            'en' : ur"(-|'|’|,|:|‚|'[dms]|’[dms]|‘[dms]|`[dms]|´[dms]|'em|'ll|'re|'ve|’em|’ll|’re|’ve|‘em|‘ll|‘re|‘ve|`em|`ll|`re|`ve|´em|´ll|´re|´ve|n't|n’t|n‘t|n`t)", \
-            'gsw' : ur"(?<!d)(-|,|:|'[mrs]|’[mrs]|‘[mrs]|`[mrs]|´[mrs])", \
-            'gcf' : ur"(-la|'w|-lasa|-y|'y|:)", \
-            'any' : ur"(-|'|’|,|:)"}
-numbers = {'fr' : ur'(<|>)?([0-9]+[ |.]?)+[0-9]?([,][0-9]+)?', \
-            'en' : ur'(\$|£|<|>|¥)?([0-9]+[,]?)+((\.)?([0-9])+)*([-](\w|-|\.)*)*', \
-            'gsw' : ur'^(<|>)?([0-9IVXLCDM]+[ |.]?)+[0-9]?([,][0-9]+)?$',\
-            'gcf' : ur'(<|>)?([0-9]+[ |.]?)+[0-9]?([,][0-9]+)?',\
-            'any' : ur'([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?'}
+begin_sep = {'fr' : r"(``|`|‘|[cdjlmnst]'|[cdjlmnst]`|[cdjlmnst]’|[cdjlmnst]´|[cdjlmnst]‘|lorsqu'|jusqu'|qu'|lorsqu`|jusqu`|qu`|lorsqu´|jusqu´|qu´|lorsqu’|jusqu’|qu’|lorsqu‘|jusqu‘|qu‘)", \
+            'en' : r"(``|`|‘)", \
+            'gsw' : r"(``|[ds]'(?!r )|[ds]`(?!r )|[ds]’(?!r )|[ds]´(?!r )|[ds]‘(?!r )|z'|z`|z’|z´|z‘)", \
+	    'gcf' : r"(``|`|‘)", \
+            'any' : r"(``|`|‘)"}
+end_sep = {'fr' : r"(-|'|’|:|‚|-ce|-ci|-elle|-elles|-en|-il|-ils|-je|-la|-là|-les|-leur|-lui|-même|-mêmes|-moi|-nous|-on|-toi|-tu|-vous|-y){1}", \
+            'en' : r"(-|'|’|,|:|‚|'[dms]|’[dms]|‘[dms]|`[dms]|´[dms]|'em|'ll|'re|'ve|’em|’ll|’re|’ve|‘em|‘ll|‘re|‘ve|`em|`ll|`re|`ve|´em|´ll|´re|´ve|n't|n’t|n‘t|n`t)", \
+            'gsw' : r"(?<!d)(-|,|:|'[mrs]|’[mrs]|‘[mrs]|`[mrs]|´[mrs])", \
+            'gcf' : r"(-la|'w|-lasa|-y|'y|:)", \
+            'any' : r"(-|'|’|,|:)"}
+numbers = {'fr' : r'(<|>)?([0-9]+[ |.]?)+[0-9]?([,][0-9]+)?', \
+            'en' : r'(\$|£|<|>|¥)?([0-9]+[,]?)+((\.)?([0-9])+)*([-](\w|-|\.)*)*', \
+            'gsw' : r'^(<|>)?([0-9IVXLCDM]+[ |.]?)+[0-9]?([,][0-9]+)?$',\
+            'gcf' : r'(<|>)?([0-9]+[ |.]?)+[0-9]?([,][0-9]+)?',\
+            'any' : r'([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?'}
 # pour gcw : même tokéniseur qu'en français pour les nombres
-abbrev1 = {'fr' : ur'(st\.|co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|fig\.|no\.|jan\.|fev\.|juil\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|sen\.|gen\.|rev\.|gov\.|al\.|ap\.|apr\.|av\.|ave\.|bd\.|boul\.|mar\.|mer\.|me\.|messrs\.|mlle\.|mme\.|no\.)', \
-            'en' : ur'(st\.|co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|fig\.|no\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|sen\.|gen\.|rev\.|gov\.|al\.|mt\.)', \
-            'gsw' : ur'(co\.|ca\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|frz\.|bask\.|pl\.|off\.|dt\.|bzw\.|Bd\.|Allg\.)', \
-	    'gcf' : ur'(co\.|ca\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|frz\.|bask\.|pl\.|off\.|dt\.|bzw\.|Bd\.|Allg\.)', \
-            'any' : ur'(co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.)'}
+abbrev1 = {'fr' : r'(st\.|co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|fig\.|no\.|jan\.|fev\.|juil\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|sen\.|gen\.|rev\.|gov\.|al\.|ap\.|apr\.|av\.|ave\.|bd\.|boul\.|mar\.|mer\.|me\.|messrs\.|mlle\.|mme\.|no\.)', \
+            'en' : r'(st\.|co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|fig\.|no\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|sen\.|gen\.|rev\.|gov\.|al\.|mt\.)', \
+            'gsw' : r'(co\.|ca\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|frz\.|bask\.|pl\.|off\.|dt\.|bzw\.|Bd\.|Allg\.)', \
+	    'gcf' : r'(co\.|ca\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|frz\.|bask\.|pl\.|off\.|dt\.|bzw\.|Bd\.|Allg\.)', \
+            'any' : r'(co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.)'}
 # pour gcw : même tokéniseur qu'en français pour les abbréviations
-abbrev2 = ur'(\w\.(\w\.)*)'
-abbrev3 = ur'([A-Z]\.[A-Z][bcdfghi-np-tvxz]+\.)'
-url = ur'([http://]?([^ .]+\.){2,}([^ ])+)'
-email = ur'[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}'
+abbrev2 = r'(\w\.(\w\.)*)'
+abbrev3 = r'([A-Z]\.[A-Z][bcdfghi-np-tvxz]+\.)'
+url = r'([http://]?([^ .]+\.){2,}([^ ])+)'
+email = r'[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}'
 #Token types with their string representation
 types = {'word' : 0, 'separator' : 1, 'number' : 2, \
               'abbreviation' : 3, 'url' : 4, 'email' : 5}
+
+def cmp(a, b):
+    return (a > b) - (a < b) 
 
 #==============================================================================
 class TokeniserIOError(Exception):
@@ -124,11 +127,11 @@ class Paragraph:
         self.sentences.pop()
         
     def get_contents(self):
-        s = u'\n'
+        s = '\n'
         strs = [tok.get_contents() for tok in self.sentences]
         return s.join(strs)
    
-    def __str__(self, encoding="utf-8"):
+    def str(self, encoding="utf-8"):
         return self.__unicode__().encode(encoding)
     
     def __unicode__(self):
@@ -162,7 +165,11 @@ class Sentence:
         @rtype:  integer
         """
         return len(self.words)
-    
+    def str(self, encoding="utf-8"):
+        return self.__unicode__().encode(encoding)
+        
+    def __unicode__(self):
+        return self.get_contents()
     def add_word(self, word):
         """
         Adds a Word to the list of words
@@ -175,15 +182,11 @@ class Sentence:
             self.words.append(word)
             
     def get_contents(self):
-        s = u' '
+        s = ' '
         strs = [tok.get_contents() for tok in self.words]
         return s.join(strs)
-    
-    def __str__(self, encoding="utf-8"):
-        return self.__unicode__().encode(encoding)
-    
-    def __unicode__(self):
-        return self.get_contents()
+
+
 
 #==============================================================================
 class Word:
@@ -199,11 +202,12 @@ class Word:
         self.word = contents
         self.t_type = _type
     
-    def __str__(self, encoding="utf-8"):
-        return self.__unicode__().encode(encoding)
-    
     def __unicode__(self):
         return self.word
+
+    def str(self, encoding="utf-8"):
+        return self.__unicode__().encode(encoding)
+    
     
     def get_contents(self):
         return self.word
@@ -363,7 +367,7 @@ class SimpleTokeniser(Tokeniser) :
     """
     
     def __init__(self):
-        self.sentence_re = re.compile(ur'([.!?…]+)\s+', re.IGNORECASE | re.UNICODE)
+        self.sentence_re = re.compile(r'([.!?…]+)\s+', re.IGNORECASE | re.UNICODE)
         self.delim_re = re.compile(r'[.!?…]+')
         self.word_re1 = re.compile(r'(\w+)', re.IGNORECASE | re.UNICODE)
         self.word_re2 = re.compile(r'([^\w\s]+)', re.IGNORECASE | re.UNICODE)
@@ -544,7 +548,7 @@ class RegExpTokeniser(Tokeniser) :
                     s = self.add_word(token, s, self._get_type(token))
                 else:
                     s = self.add_word(t1, s, self._get_type(t1))
-		    print ("adding slash")
+		    
                     s = self.add_word('/', s, types['separator'])
                     s = self.add_word(t2, s, self._get_type(t2))
             else : 
@@ -639,7 +643,8 @@ class FileTokeniser:
             text = text.join(lines)
             self.t = self.tokeniser.tokenise(text)
             f.close()
-        except IOError, (ErrorMessage):
+        except IOError as xxx_todo_changeme:
+            (ErrorMessage) = xxx_todo_changeme
             raise TokeniserIOError(ErrorMessage)
         return self.t
 
@@ -648,7 +653,8 @@ class FileTokeniser:
             f = codecs.open(self.input_file +'.tok', 'w', self.encoding)
             f.write(self._get_output(output_format))
             f.close()
-        except IOError, (ErrorMessage):
+        except IOError as xxx_todo_changeme1:
+            (ErrorMessage) = xxx_todo_changeme1
             raise TokeniserIOError(ErrorMessage)
 
     def _get_output(self, output_format) :
@@ -661,14 +667,14 @@ class FileTokeniser:
         return self.t.get_contents()
         
 def print_usage():
-    print ("py_tokeniser.py [-f format]    <language> <encoding> "
-                +"<filename>");
+    print(("py_tokeniser.py [-f format]    <language> <encoding> "
+                +"<filename>"));
     print(" + format is the output format:");
     print("    space - token1 token2 (default)");
     print("    xml   - <w>token</w>");
     print("    lines - token1 [NEWLINE] token2");
-    print(" + language is the language in which the file"
-                        +" is written [fr or en]");
+    print((" + language is the language in which the file"
+                        +" is written [fr or en]"));
     print(" + encoding is the file encoding");
     print(" + filename is the name of the file to tokenise");
 
@@ -680,7 +686,7 @@ if __name__ == '__main__':
         sys.exit(0)
     else:
         k = 1
-        print sys.argv
+        print(sys.argv)
         if sys.argv[1] == '-f':
             output_format = sys.argv[2]
             k = 3
@@ -688,5 +694,5 @@ if __name__ == '__main__':
         try:
             ft.tokenise()
             ft.write_result(output_format)
-        except TokeniserIOError, error:
-            print "Tokeniser I/O error : %s" % (str(error))
+        except TokeniserIOError as error:
+            print("Tokeniser I/O error : %s" % (str(error)))
