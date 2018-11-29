@@ -1,8 +1,8 @@
 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
-{{--<div>
+<div>
 	<a class="btn btn-primary float-right" href="{{ route('recipes.annotations', $recipe) }}">Annoter</a>
     <h4>{{ link_to_route('recipes.show', $recipe->title, $recipe) }}</h4>
-</div>--}}
+</div>
 <!-- Fonctionnalité annotation -->
 
 <p class="card-text">

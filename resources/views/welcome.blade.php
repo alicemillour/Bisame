@@ -81,20 +81,20 @@
                                     
                                     <!-- Fonctionnalité annotation : décommenter ci-dessous -->
                                     
-                                    {{-- <div class="col-md-4"  >
+                                    <div class="col-md-4"  >
                                         <a  href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button" >Annoter des recettes</a> <br>  <br>
                                         <!--<a  href="{{ route('recipes.to-validate') }}" class="btn play-button active-button" >Valider des recettes</a> <br>  <br>-->
                                         <div class="belle-allure"> J'aide la science grâce à mes connaissances</div> <br>
-                                    </div> --}}
+                                    </div> 
                                     
                                     <!-- Fonctionnalité annotation : commenter ci-dessous -->
                                 
-                                    <div class="col-md-4"  >
+<!--                                    <div class="col-md-4"  >
                                         <a  href="{{ route('recipes.to-annotate') }}" class="btn play-button inactive-button disabled" >Annoter des recettes</a> <br>  <br>
-                                        <!--<a  href="{{ route('recipes.to-validate') }}" class="btn play-button active-button" >Valider des recettes</a> <br>  <br>-->
+                                        <a  href="{{ route('recipes.to-validate') }}" class="btn play-button active-button" >Valider des recettes</a> <br>  <br>
                                          (inactif pour l'instant)
                                         <div class="belle-allure"> J'aide la science grâce à mes connaissances</div> <br>
-                                    </div> 
+                                    </div> -->
                                     
                                     <!-- Fonctionnalité annotation -->
                                     
@@ -120,7 +120,7 @@
                         <br>
 
                         <!-- Fonctionnalité annotation : décommenter ci-dessous -->
-                        {{-- <div class="col-md-12"  >
+                        <div class="col-md-12"  >
                             <div class="card background-colored fancy-border">
                                 <h4 class="card-header welcome-card-header"><a href="{{ route('recipes.to-annotate') }}">{{ __('recipes.to-annotate') }}</a></h4>
                                 <div class="card-body">
@@ -130,7 +130,7 @@
                                     <a href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
                                 </div>        
                             </div>
-                        </div>--}}
+                        </div>
                         <!-- Fonctionnalité annotation -->
                     </div>
                     
@@ -139,9 +139,9 @@
                             <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"><a>Classements</a></h4>
                             <ul class="nav nav-tabs" id="scoreboards">
                                 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
-                                {{-- <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
+                                 <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
                                 <li class="nav-item" style="font-size: 1em;" ><a class="nav-link active" data-toggle="pill" style="color:black" href="#annotations"> Annotations </a></li>
-                                --}}
+                                
                                 <!-- Fonctionnalité annotation : commenter ci-dessous -->
                                 <!--<li class="nav-item" style="font-size: 1em;" ><a class="nav-link active"  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>-->
                                 <!-- Fonctionnalité annotation -->
@@ -169,7 +169,7 @@
                                 </div>
 
                                 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
-                                {{-- <div id="annotations" class="tab-pane" >
+                                <div id="annotations" class="tab-pane" >
                                     <div class="scoreboard_pannel">
                                         <div class="score" style="color:black;">
                                             @foreach($top5_annotations as $key=>$user)
@@ -185,7 +185,7 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div> 
                                 <!-- Fonctionnalité annotation -->
 
                                 <div id="variantes" class="tab-pane">
@@ -210,7 +210,7 @@
                         <br>
                         <!-- Fonctionnalité annotation : décommenter ci-dessous -->
 
-                        {{-- <div class="card background-colored fancy-border">
+                        <div class="card background-colored fancy-border">
                             <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">
                                 <a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
                             <div class="card-body">
@@ -220,7 +220,7 @@
                             <div class="card-footer text-center">
                                 <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
                             </div>        
-                        </div>--}}
+                        </div>
                         
                         
                         <!--                        <div class="row">

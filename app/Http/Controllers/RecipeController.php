@@ -190,9 +190,6 @@ class RecipeController extends Controller {
         // return redirect('/')->withSuccess(__('recipes.created'));
         /* Fonctionnalité d'annotation */
 
-        /* TODO : ici pour la version créole qui n'annote pas */
-        return redirect('/')->withSuccess(__('recipes.created'));
-
         /* lancer les prétraitements */
         $script_path = base_path() . '/scripts/'.App::getLocale().'/';
         $corpus_path = storage_path() . '/app/'.App::getLocale().'/corpus/';
