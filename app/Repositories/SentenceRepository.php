@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Sentence;
 use App\Word;
 use DB;
+use Log;
 
 class SentenceRepository extends ResourceRepository
 {
@@ -33,5 +34,21 @@ class SentenceRepository extends ResourceRepository
         return Sentence::select('words.id')
                 ->join('words','words.sentence_id','=','sentences.id')
                 ->where('sentence_id',$sentence_id)->toArray();
+    }
+    
+    public function getSentencesFromWordValue($word)
+    {
+        Log::debug(Sentence::select('sentences.*')
+                ->join('words','words.sentence_id','=','sentences.id')
+                ->where('words.value', 'like', $word->value)
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->where('corpora.name','rlike','[0-9].*')->get());
+        
+        return Sentence::select('sentences.*')
+                ->join('words','words.sentence_id','=','sentences.id')
+                ->where('words.value','like',$word->value)
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->where('corpora.name','rlike','[0-9].*')
+                ->get();
     }
 }

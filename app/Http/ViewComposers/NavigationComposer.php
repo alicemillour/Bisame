@@ -10,6 +10,7 @@ namespace App\Http\ViewComposers;
 
 use App\Repositories\AnnotationRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\WordRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use DB;
@@ -28,10 +29,12 @@ class NavigationComposer {
     //put your code here
     protected $annotationRepository;
     protected $userRepository;
+    protected $wordRepository;
 
-    public function __construct(AnnotationRepository $annotationRepository, UserRepository $userRepository, Word $words) {
+    public function __construct(AnnotationRepository $annotationRepository, UserRepository $userRepository, Word $words, WordRepository $wordRepository) {
         $this->annotationRepository = $annotationRepository;
         $this->userRepository = $userRepository;
+        $this->wordRepository = $wordRepository;
         $this->words = $words;
     }
 
@@ -55,6 +58,7 @@ class NavigationComposer {
             $view->with('nb_total_users', $this->userRepository->get_users_count()['count']);
         }
         $view->with('nb_recipes', Recipe::count());
+        $view->with('nb_words', $this->wordRepository->get_distinct_word_in_recipes());
         $view->with('nb_recipe_words_annotated', DB::select(DB::raw('SELECT count(words.id) as count from words, sentences, corpora, annotated_recipes where corpora.name like concat(annotated_recipes.recipe_id, "_%") and 
 words.sentence_id=sentences.id and sentences.corpus_id=corpora.id;'))['0']->count);
         $view->with('nb_recipe_annotations', DB::select(DB::raw('SELECT count(annotations.id) as count from annotations where annotations.tagger like ""'))['0']->count);

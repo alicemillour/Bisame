@@ -25,6 +25,15 @@
     max-height: 200px;
 }
 
+.alert-button {
+    /*width: 33vw;*/
+    background-color: rgba(246, 89, 134, 0.75) !important;
+    max-width: 80%;
+    padding: 1.25rem;
+}   
+
+
+
 /*.main{
     position: relative; }
 @media screen and (min-width: 1280px) {

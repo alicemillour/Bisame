@@ -231,7 +231,7 @@ Remarques :
 >     corpus_CCONJ;1;6;partis;10;VERB;solution
 >     corpus_CCONJ;1;7;.;10;PUNCT;solution
 
-Une fois ces fichiers créés et placés dans le dossier  exécuter :
+Une fois ces fichiers créés et placés dans le dossier `database/seed/csvs/new_language` exécuter :
  `$ php artisan corpus:import CCONJ`
   (voir au besoin : `app/Console/Commands/ImportTrainingCorpus.php`).
 

@@ -74,6 +74,12 @@ class User  extends Authenticatable
         return $this->hasMany('App\AlternativeText');
     }
 
+    public function word_alternatives()
+    {
+        debug("has many");
+        return $this->hasMany('App\AlternativeWord');
+    }
+
 
     /**
     * Check if the user has a role
@@ -228,9 +234,9 @@ class User  extends Authenticatable
         return $this->annotations()->count();
     }
     
-        public function getNbAlternative(){
-        debug(array($this->annotations()->count()));
-        return $this->alternatives()->count();
+    public function getNbAlternative(){
+        debug($this->alternatives()->count()+$this->word_alternatives()->count());
+        return ($this->alternatives()->count()+$this->word_alternatives()->count());
     }
 
     

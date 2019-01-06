@@ -421,7 +421,7 @@
 
             <script type="text/javascript" src="{{ asset('js/navbar.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/master.js') }}"></script>
-
+            <script type="text/javascript" src="{{ asset('js/wordcloud.js') }}"></script>
             @yield('scripts')
 
             @include('partials.modal-login')

@@ -29,6 +29,7 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
     Route::auth();
     Route::get('/home-game', 'HomeController@index')->name('home-game');
     Route::get('/info', 'InfoController@index')->name('info');
+    Route::get('/alternative-participation', 'InfoController@index')->name('alternative-participation');
     // Route::get('/', 'HomeController@index');
     Route::get('/chat', 'chatpageController@index');
 //    Route::get('user/{id}', 'UserController@showProfile');
@@ -84,8 +85,10 @@ Route::post('users/update-position', 'UserController@updatePosition')->name('use
 Route::post('users/update-age', 'UserController@updateAge')->name('users.update-age');
 Route::post('users/update-avatar', 'UserController@updateAvatar')->name('users.update-avatar');
 Route::post('users/update-notifications', 'UserController@updateNotifications')->name('users.update-notifications');
-
+Route::get('words/{word}', 'WordController@index')->name('words.show');
+        
 Route::resource('translations', 'AlternativeTextController')->middleware('auth');
+Route::resource('translations-words', 'AlternativeWordController')->middleware('auth');
 Route::resource('likes', 'LikeController');
 
 Route::group(['middleware' => 'auth'], function () {

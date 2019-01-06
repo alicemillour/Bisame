@@ -18,3 +18,4 @@ var tabs = $('#scoreboards a');
          counter = 0;
     }
 });
+
