@@ -2,6 +2,8 @@
 <div style="text-align: center">
  Vos mots 
 <hr>
+
+@if(Auth::check())
 <div class="tegcloud" id="tegcloud_perso">
 
             @foreach($personal_words as $key=>$word)
@@ -9,6 +11,7 @@
             @endforeach
 
 </div>
+@endif
 </div>
 
 
