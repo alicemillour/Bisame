@@ -95,12 +95,21 @@ class WordRepository extends ResourceRepository {
         ->take(150);
 
         Log::debug($data->first());
-
-        $list=$data->first()->shuffle();
-        Log::debug($list);     
-        $words=Word::whereIn('id', $list)->orderBy(DB::raw('RAND()'))->get();
-        Log::debug(get_class($words));
-        return($words);
+        
+        Log::debug("words");     
+        
+        
+        if ($data->first() != null) {
+            Log::debug("data is not null");
+            $list=$data->first()->shuffle();
+            Log::debug($list);     
+            $words=Word::whereIn('id', $list)->orderBy(DB::raw('RAND()'))->get();
+            Log::debug(get_class($words));
+            return($words);
+        } else {
+            $words=null;
+            return(null);
+        } 
        
 
     }
