@@ -44,10 +44,12 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
     Route::resource('postag', 'PostagController');
     Route::get('/textes', 'TexteController@index');
     Route::resource('corpora', 'CorporaController');
+    Route::resource('downloads', 'DownloadController');
     Route::get('/stats', 'StatsController@index');
     Route::get('contact', 'ContactController@showForm')->name('contact');
     Route::post('contact', 'ContactController@sendContactInfo');
     Route::post('create-annotation', 'AnnotationController@create')->name('create-annotation');
+    Route::get('bike', 'BikeController@show');
 // });
 
 Route::get('/asset', [

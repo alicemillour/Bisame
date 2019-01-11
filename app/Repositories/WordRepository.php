@@ -26,8 +26,6 @@ class WordRepository extends ResourceRepository {
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
                         ->where('corpora.is_training','=',$corpus_is_training)
-                        ->where('corpora.id', '!=',324)
-                        ->where('corpora.id', '!=',322)
                 ->first());
     }
     
@@ -41,8 +39,6 @@ class WordRepository extends ResourceRepository {
         return($this->word->select(DB::raw('count(distinct(sentences.id)) as count'))
                         ->join('sentences', 'sentence_id', '=', 'sentences.id')
                         ->join('corpora', 'corpus_id', '=', 'corpora.id')
-                        ->where('corpora.id', '!=',324)
-                        ->where('corpora.id', '!=',322)
                         ->where('corpora.is_training','=',$corpus_is_training)->first());
     }
     public function get_total_number_tokens() {
@@ -89,6 +85,7 @@ class WordRepository extends ResourceRepository {
         ->join("users", 'recipes.user_id', '=', 'users.id')
         ->join("words", 'sentences.id', '=', 'sentence_id')
         ->where("user_id", '=', $user_id)
+        ->where("recipes.deleted_at", 'is not', null)
         ->select(DB::raw('words.id as ids'))
         ->pluck('ids')  
         ->groupBy('value')    
@@ -172,13 +169,16 @@ class WordRepository extends ResourceRepository {
         $content_recipe = DB::table(DB::raw("({$sub_recipe->toSql()}) as data"))
         ->mergeBindings($sub_recipe->getQuery()) // you need to get underlying Query Builder
         ->leftJoin(DB::raw("recipes AS rcps"), 'rcps.id', '=', 'data.translatable_id')
+        ->whereNotNull('deleted_at')
         ->select(DB::raw("user_name, TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring("
                 . "TRIM(REPLACE(REPLACE(REPLACE(content, '\n', ''), '\r', ' '), '\t', ' '))"
                 . ", off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
                 . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))->orhaving('variant','like',$value)->orhaving('original','like',$value)->get();  
+        Log::debug($content_recipe);
         $content_title = DB::table(DB::raw("({$sub_title->toSql()}) as data"))
         ->mergeBindings($sub_title->getQuery()) // you need to get underlying Query Builder
         ->leftJoin(DB::raw("recipes AS rcps"), 'rcps.id', '=', 'data.translatable_id')
+        ->where("rcps.deleted_at", 'is not', null)
         ->select(DB::raw("user_name, TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring(title, off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
                 . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))->orhaving('variant','like',$value)->orhaving('original','like',$value)->get(); 
         $content_ingredient = DB::table(DB::raw("({$sub_ingredient->toSql()}) as data"))
