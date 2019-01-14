@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Sentence;
 use App\Word;
+use App\Corpus;
 use DB;
 use Log;
 
@@ -38,17 +39,27 @@ class SentenceRepository extends ResourceRepository
     
     public function getSentencesFromWordValue($word)
     {
+        //getting de list of corpora ids of non deleted recipes
+        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 1) as recipe_id"))
+                ->where('corpora.name','rlike','[0-9]_.*');
+                Log::debug("getting recipe corpora");
+        Log::debug($sub->get());
+        $list = DB::table(DB::raw("({$sub->toSql()}) as data"))
+        ->mergeBindings($sub->getQuery())
+        ->join('recipes', 'recipes.id', '=', 'recipe_id')
+        ->whereNull('recipes.deleted_at')
+        ->select('real_corpus_id')->pluck('real_corpus_id');
         
         Log::debug(Sentence::select('sentences.*')
                 ->join('words','words.sentence_id','=','sentences.id')
                 ->where('words.value', 'like', $word->value)
-                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')->whereIn('corpora.id',$list)
                 ->where('corpora.name','rlike','[0-9].*')->get());
         
         return Sentence::select('sentences.*')
                 ->join('words','words.sentence_id','=','sentences.id')
                 ->where('words.value','like',$word->value)
-                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')->whereIn('corpora.id',$list)
                 ->where('corpora.name','rlike','[0-9].*')
                 ->get();
     }

@@ -77,8 +77,7 @@ class WordRepository extends ResourceRepository {
         ->mergeBindings($sub->getQuery())
         ->join('recipes', 'recipes.id', '=', 'recipe_id')
         ->whereNull('recipes.deleted_at')
-        ->select('real_corpus_id')->pluck('real_corpus_id')
-        ->take(150);
+        ->select('real_corpus_id')->pluck('real_corpus_id');
         
         Log::debug($this->word->select('words.*')
                 ->join('sentences', 'sentence_id', '=', 'sentences.id')
@@ -133,9 +132,20 @@ class WordRepository extends ResourceRepository {
     }
     
     public function get_word_count_by_value($value){
+        //getting de list of corpora ids of non deleted recipes
+        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 1) as recipe_id"))
+                ->where('corpora.name','rlike','[0-9]_.*');
+                Log::debug("getting recipe corpora");
+        Log::debug($sub->get());
+        $list = DB::table(DB::raw("({$sub->toSql()}) as data"))
+        ->mergeBindings($sub->getQuery())
+        ->join('recipes', 'recipes.id', '=', 'recipe_id')
+        ->whereNull('recipes.deleted_at')
+        ->select('real_corpus_id')->pluck('real_corpus_id');
+        
         return($this->word->select('words.*')
                 ->join('sentences', 'words.sentence_id', '=', 'sentences.id')
-                ->join('corpora', 'corpus_id', '=', 'corpora.id')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')->whereIn('corpora.id', $list)
                 ->where('words.value', 'like', $value)
                 ->where('corpora.name','rlike','[0-9].*')->get()->count());
     }
