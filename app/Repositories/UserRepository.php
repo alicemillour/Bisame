@@ -6,6 +6,7 @@ use App\User;
 use DB;
 use App\Recipe;
 use App\AlternativeText;
+use App\AlternativeWord;
 use Illuminate\Support\Facades\Log;
 
 class UserRepository extends ResourceRepository {
@@ -85,6 +86,12 @@ class UserRepository extends ResourceRepository {
     
     public function get_variant_number_by_user($user_id) {
         return AlternativeText::select(DB::raw('count(*) as count'))
+                        ->where('user_id', '=', $user_id)
+                        ->first();
+    }
+    
+    public function get_word_variant_number_by_user($user_id) {
+        return AlternativeWord::select(DB::raw('count(*) as count'))
                         ->where('user_id', '=', $user_id)
                         ->first();
     }

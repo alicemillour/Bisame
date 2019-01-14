@@ -38,6 +38,7 @@ class SentenceRepository extends ResourceRepository
     
     public function getSentencesFromWordValue($word)
     {
+        
         Log::debug(Sentence::select('sentences.*')
                 ->join('words','words.sentence_id','=','sentences.id')
                 ->where('words.value', 'like', $word->value)

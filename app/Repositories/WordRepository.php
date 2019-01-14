@@ -78,6 +78,9 @@ class WordRepository extends ResourceRepository {
     public function get_words_in_recipes_by_user($user_id){
         $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 1) as custom_corpus_id"))
                 ->where('corpora.name','rlike','[0-9]_.*');
+        Log::debug("getting recipe corpora");
+        Log::debug($sub->get());
+        
         $data = DB::table(DB::raw("({$sub->toSql()}) as data"))
         ->mergeBindings($sub->getQuery())
         ->join('recipes', 'recipes.id', '=', 'custom_corpus_id')
@@ -85,30 +88,28 @@ class WordRepository extends ResourceRepository {
         ->join("users", 'recipes.user_id', '=', 'users.id')
         ->join("words", 'sentences.id', '=', 'sentence_id')
         ->where("user_id", '=', $user_id)
-        ->where("recipes.deleted_at", 'is not', null)
+        ->whereNull('recipes.deleted_at')
         ->select(DB::raw('words.id as ids'))
         ->pluck('ids')  
         ->groupBy('value')    
         ->take(150);
-
-        Log::debug($data->first());
         
-        Log::debug("words");     
-        
+        Log::debug("getting words for user");     
+        Log::debug($data);
         
         if ($data->first() != null) {
             Log::debug("data is not null");
             $list=$data->first()->shuffle();
             Log::debug($list);     
             $words=Word::whereIn('id', $list)->orderBy(DB::raw('RAND()'))->get();
+            Log::debug("words to appear in personal cloud");
             Log::debug(get_class($words));
+            Log::debug($words);
             return($words);
         } else {
-            $words=null;
+            Log::debug("No words for current user");
             return(null);
         } 
-       
-
     }
     
     public function get_word_count_by_value($value){

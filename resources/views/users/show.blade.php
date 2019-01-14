@@ -45,13 +45,14 @@
                     @include('users/_badges')
                 </p>					
             </div>
-        </div>
+            </div>
+    </div> 
+</div>
 <!--        <div class="card mt-3">
             <div class="card-body">
                 <h3 class="card-title">Statistiques</h3>
             </div>
         </div>			-->
-    </div>
-</div>
+
 
 @endsection

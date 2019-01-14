@@ -63,7 +63,13 @@
                         @include('users/_badges')
                     </p>
                 </div>
-            </div>        	
+            </div> 
+            <div class="card mt-3">
+            
+            <div id="wordcloud" class="card-body">
+                    @include('info.personal_wordcloud')
+            </div>
+            </div> 
             <div class="card mt-3">
                 <div class="card-body">
                     <h3 class="card-title">{{ __('recipes.my-last-recipes') }}</h3>

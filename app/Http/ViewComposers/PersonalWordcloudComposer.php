@@ -51,11 +51,9 @@ class PersonalWordcloudComposer {
             $user_id = $cur_user->id;
             $random50words=$this->wordRepository->get_50words_in_recipes();
             $personal_words=$this->wordRepository->get_words_in_recipes_by_user($user_id);
-
-              Log::debug(get_class($personal_words));
-
+            Log::debug("personal words");
+            Log::debug($personal_words);
             $view->with('personal_words', $personal_words);
-
         } else {
             $view->with('personal_words', null);
         }

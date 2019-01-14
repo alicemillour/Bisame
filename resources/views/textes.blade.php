@@ -9,15 +9,16 @@
 @endsection
 
 @section('content')
+
+
+
 <div class="main">
     <div class="main-container">
         <h3 style="color:white"> Vous trouverez sur cette page les liens vers les différents textes utilisés </h3>
         <br>
         @include('partials.textes-'.App::getLocale())
     </div>
-    
     <div class="main-footer">
-        
     </div>
 </div>
 @endsection

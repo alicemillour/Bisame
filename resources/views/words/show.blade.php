@@ -24,7 +24,7 @@
                                 <!--<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <i class="fa fa-question" aria-hidden="true"></i> 
                                 </button>-->
-                                    
+                                
                             </div>
                         </h3>
                         <h3>
@@ -56,7 +56,7 @@
                             @else 
                             <h3>Plusieurs variantes orthographiques ou dialectales: 
                                 @endif
-                                    
+                                
                                 @foreach($word_variants_unique as $key => $variant)
                                 @if($variant['original'] != $word->value)
                                 <span style="font-style: italic; color: red; size:1.5em">{{$variant['original']}}  </span>(par {{$variant['user_name']}})
@@ -69,10 +69,10 @@
                                 <h3 style='color:blue'>Et vous, vous l'auriez écrit comment ?</h3>
                                 <form action="welcome.php" method="post">
                                     <textarea class="alternative-text-value" id="alternative-text-value" style="width:25%" spellcheck="false"/></textarea>
-                                <input type="button" class="alternative-text-submit" value="Valider" ><br>
-
-                                </form>
+                                    <input type="button" class="alternative-text-submit" value="Valider" ><br>
                                     
+                                </form>
+                                
                             </h3>
                     </div>
                 </div>
@@ -141,9 +141,9 @@
             </div>            
         </div>
     </div>
-        
-        
-        
+    
+    
+    
 </div>               
 </div>               
 
@@ -155,39 +155,45 @@
 
 @section('scripts')
 <script type="text/javascript">
-//    var original_word = {{ $cur_word['value'] }};
-function AddVariant(event){      
-      console.log( $('#alternative-text-value').val());
-      var new_text = $('#alternative-text-value').val();
-      var original_text = $('#original_word').data("value");
-      var word_id = $('#original_word').data("id");
-//      var original_text = {!! json_encode($cur_word['value']) !!};
+    
+    var user = {!! json_encode((array)auth()->user()) !!};
+    //    var original_word = {{ $cur_word['value'] }};
+    function AddVariant(event){      
+        console.log( $('#alternative-text-value').val());
+        var new_text = $('#alternative-text-value').val();
+        var original_text = $('#original_word').data("value");
+        var word_id = $('#original_word').data("id");
+        //      var original_text = {!! json_encode($cur_word['value']) !!};
 
   
-      console.log(original_text);
-      console.log(new_text);
+        console.log(original_text);
+        console.log(new_text);
 
-      if(new_text===original_text){
-        alert( "Cette variante correspond au mot original." );
-      } else {
-        $.post( "{{ route('translations-words.store') }}", {
-          word_id: word_id,
-          alternative: new_text,
-          original: original_text,
-        }).done(function( data ) {
-            alert( "Votre variante a bien été joutée, merci !" );
-//            location.reload();
-        }).fail(function( data ) {
-          alert( "Quelque chose s'est mal passé... Nous allons tenter de résoude ce problème." );
-        });
-    }
+        if(new_text===original_text){
+            alert( "Cette variante correspond au mot original." );
+        } else {
+            $.post( "{{ route('translations-words.store') }}", {
+                word_id: word_id,
+                alternative: new_text,
+                original: original_text,
+            }).done(function( data ) {
+                alert( "Votre variante a bien été joutée, merci !" );
+                location.reload();
+            }).fail(function( data ) {
+                if (user.length === 0) {
+                    alert("Identifiez-vous ou créez un compte pour pouvoir ajouter une variante.");
+                } else {
+                    alert("Quelque chose s'est mal passé... Nous allons tenter de résoude ce problème." );
+                }
+            });
+        }
 
       
      
     }
  
- window.onload = function() {
-            $(".alternative-text-submit").click(function(event) {
+    window.onload = function() {
+        $(".alternative-text-submit").click(function(event) {
             AddVariant(event);
         })
     }

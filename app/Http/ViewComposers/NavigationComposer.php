@@ -51,7 +51,7 @@ class NavigationComposer {
             $view->with('nb_total_users', $this->userRepository->get_users_count()['count']);
             $view->with('real_score', intval($this->annotationRepository->get_user_annotation_count($user_id)['annotation_count'] * $cur_user->score));
             $view->with('nb_recipes_user', $this->userRepository->get_recipe_number_by_user($user_id)['count']);
-            $view->with('nb_variantes_user', $this->userRepository->get_variant_number_by_user($user_id)['count']);
+            $view->with('nb_variantes_user', $this->userRepository->get_variant_number_by_user($user_id)['count']+$this->userRepository->get_word_variant_number_by_user($user_id)['count']);
         } else {
 //            debug($this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);
             $view->with('non_admin_annotations', $this->annotationRepository->get_total_non_admin_annotations()['annotation_count']);

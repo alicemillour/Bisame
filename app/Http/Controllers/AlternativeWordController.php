@@ -39,7 +39,7 @@ class AlternativeWordController extends Controller
             )));
     	}
         Log::debug($translation);
-        $this->checkBadge($request, 'alternativ-word', auth()->user()->getNbAlternative());
+        $this->checkBadge($request, 'alternativ-text', auth()->user()->getNbAlternative());
         Log::debug("on va rediriger");
 //        return($toto);
 //         return redirect('')->with('success','Write here your messege');

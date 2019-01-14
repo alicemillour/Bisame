@@ -186,6 +186,10 @@ class User  extends Authenticatable
 
 
     public function checkBadge($type_badge, $required_value){
+        Log::debug("checking badge");
+        Log::debug($type_badge);
+        Log::debug($required_value);
+//        return $aa;
         $user_id = $this->id;
         if(is_numeric($required_value)){
             if($badge = Badge::where('key','=',$type_badge)
@@ -235,7 +239,6 @@ class User  extends Authenticatable
     }
     
     public function getNbAlternative(){
-        debug($this->alternatives()->count()+$this->word_alternatives()->count());
         return ($this->alternatives()->count()+$this->word_alternatives()->count());
     }
 

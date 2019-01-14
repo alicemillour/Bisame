@@ -10,6 +10,7 @@ return array (
   'created' => 'Votre recette a bien été enregistrée',
   'anecdote-created' => 'Votre anecdote a bien été enregistrée',
   'my-badges' => 'Mes badges',
+  'my-words' => 'Mes mots',
   'my-last-recipes' => 'Mes dernières recettes',
   'my-recipes' => 'Mon livre de recettes',
   'my-stats' => 'Mes statistiques',
