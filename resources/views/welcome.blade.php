@@ -129,10 +129,10 @@
                                 <div class="col-md-4"  >
                                     <img src="{{ asset('images/recette-var.png') }}" class="w-25">
                                 </div>
-                                <div class="col-md-12" style="padding: 1.25rem" >
+<!--                                <div class="col-md-12" style="padding: 1.25rem" >
                                     <span style="font-weight: bold; color:red ; font-size: 1.5rem">NOUVEAU <i class="fa fa-arrow-right"></i> </span> <a href="{{ route('alternative-participation') }}" class="btn play-button active-button alert-button" >Je n'ai pas de recette en {{ trans('home.langue-sans-art') }} mais je souhaite contribuer !</a> 
                                     <span style="font-weight: bold; color:red ; font-size: 1.5rem"> <i class="fa fa-arrow-left"></i> NOUVEAU </span>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <!--</div>-->  
