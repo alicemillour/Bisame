@@ -49,7 +49,7 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
     Route::get('contact', 'ContactController@showForm')->name('contact');
     Route::post('contact', 'ContactController@sendContactInfo');
     Route::post('create-annotation', 'AnnotationController@create')->name('create-annotation');
-    Route::get('bike', 'BikeController@show');
+    Route::get('teaser', 'TeaserController@show');
 // });
 
 Route::get('/asset', [
