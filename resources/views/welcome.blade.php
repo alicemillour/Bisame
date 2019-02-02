@@ -33,6 +33,14 @@
                         <!--</div>-->
                     </div>
                     <div class="col-md-6"  >
+                        
+                        
+                    <div class="card background-colored fancy-border">
+                            
+                            <div id="survey" class="card-body" style="font-size: 1.5em">
+                                Participez au sondage sur les pratiques de l'alsacien sur Internet : <a style="color:red" href="https://framaforms.org/lalsacien-internet-et-vous-1546808704"> Cliquez ici !</a></div>
+                        </div> 
+                    <br>
                         <div class="card background-colored fancy-border">
                             <div id="wordcloud" class="card-body">
                                 @include('info.wordcloud')
@@ -145,7 +153,9 @@
                 
                 
                 <div class="col-md-3">
-                                            <div class="card background-colored fancy-border">
+                               
+                    
+                    <div class="card background-colored fancy-border">
                             
                             <div id="wordcloud" class="card-body">
                                 @include('info.personal_wordcloud')</div>
