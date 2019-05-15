@@ -15,7 +15,7 @@ class DownloadController extends Controller
      */
     public function index()
     {    
-        return view('download.show');
+        return view('downloads.show');
     }
     
 }

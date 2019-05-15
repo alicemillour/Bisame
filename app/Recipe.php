@@ -24,6 +24,7 @@ class Recipe extends Model
 		'preparation_time_minute',
 		'servings',
 		'corpus_language_id',
+		'category_id',
 		'commentary',
 		'user_id'
 	];

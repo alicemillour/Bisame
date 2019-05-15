@@ -6,17 +6,26 @@
     <div id="create-recipe" class="col-12 col-md-6 offset-md-3 background-recipe fancy-border background-colored">
 
 
-        <h3 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">{{ __('recipes.new-recipe') }} 
+        <h3 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">{{ __($type.'.new') }} 
             <i class="fa fa-question-circle" 
                data-toggle="tooltip" data-placement="top" data-original-title="
-               Les nouvelles recettes ainsi que les anecdotes sont intégrées au corpus collaboratif."
+               Les nouvelles {{__($type.'.type_pl')}} ainsi que les anecdotes sont intégrées au corpus collaboratif."
                style="font-size:20px; position:absolute; margin-right:5px;"></i></span> 
 
         </h3>
         <div class="card-body">
             {!! Form::open(['route' => 'recipes.store', 'method' => 'post', 'id' => 'form-recipe']) !!}
+            <!--category is 1 for recipes-->
 
-            {!! Form::control('text', 'col-12', 'title', $errors, null, null, null, __('recipes.title')) !!}
+            @if ($type == "recipes")
+            <input type = "hidden" name = "category_id" value = "1" />
+            @elseif ($type == "misc")
+            <input type = "hidden" name = "category_id" value = "2" />
+            @endif
+            
+
+            {!! Form::control('text', 'col-12', 'title', $errors, null, null, null, __($type.'.title')) !!}
+            @if ($type == "recipes")
 
             <div class="align-content-start" id="container-ingredients">
                 <div class="d-flex">
@@ -60,7 +69,7 @@
                 </div>
                 @endforelse
             </div>
-<div class="ml-3 mb-3">
+            <div class="ml-3 mb-3">
                 <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTimes" aria-expanded="false" aria-controls="collapseTimes">
                     Ajouter les temps de préparation et cuisson
                 </button>
@@ -136,16 +145,17 @@
                     </div>
                 </div>
             </div>
-            {{ trans('recipes.titre-texte-recette') }}
+            @endif
+            {{ trans($type.'.titre-texte') }}
             <div class="form-group col-12 mt-3">
-                {!! Form::textarea('content', null, array('class' => 'form-control', 'id' => 'content', 'placeholder'=>__('Préparation de la recette (texte libre)')) ) !!}
+                {!! Form::textarea('content', null, array('class' => 'form-control', 'id' => 'content', 'placeholder'=>__($type.'.placeholder-description')) ) !!}
             </div>
 
             @if($errors->has('content'))
             <span class="invalid-feedback">{{ $errors->first('content') }}</span>
             @endif
 
-            {!! Form::control('textarea', 'col-12', 'anecdote', $errors, null, old('anecdote')??'', null, __('recipes.add-anecdote') ) !!}
+            {!! Form::control('textarea', 'col-12', 'anecdote', $errors, null, old('anecdote')??'', null, __($type.'.add-anecdote') ) !!}
             <div class="d-flex flex-row" style="padding-right: 15px;padding-left: 15px;">
 
                 <span class="input-group-btn">
@@ -174,11 +184,12 @@
             </div>
 
             <div class="form-group col-12 mt-3">
-                {!! Form::submit('Enregistrer la recette', ['id'=>'btn-create','class'=>'btn btn-success']) !!}
+                {!! Form::submit('Enregistrer la '.__($type.'.type'), ['id'=>'btn-create','class'=>'btn btn-success']) !!}
             </div>
-
             {!! Form::close() !!}
+            
         </div>
+
     </div>
 </div>
 <div id="container-loader" class="d-none">

@@ -77,7 +77,7 @@
     </div>
     <!-- /container -->
     <div class="navbar affix-top dark-background-colored py-0" style="margin:0 auto; margin-bottom: 1%" data-spy="affix" data-offset-top="150" >
-        <div class="container">
+        <div class="container" style="max-width: 2000px">
             <ul class="navbar-nav mt-2 mt-lg-0">
                 <li class="nav-item">
                     <a class="btn btn-navbar btn-link" href="{{ route('home') }}">
@@ -164,8 +164,10 @@
                 </li>
             </ul>
             <a class="btn btn-navbar btn-link" href="{{ route('contact') }}">
-                <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact  </a>
-
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> Contactez </a>
+            <a class="btn btn-navbar btn-link" href="{{ route('downloads') }}">
+                Ressources
+            </a>
             <a class="btn btn-navbar btn-link" href="{{ route('info') }}">
                 <i class="fa fa-question" aria-hidden="true"></i>  </a>
             {{--         <ul class="navbar-nav mt-2 mt-lg-0 d-none">
@@ -173,6 +175,8 @@
                 <a class="nav-link no-hover" style="float: none;display: inline-block;text-align: center;">
                     <b>Déjà {{$non_admin_annotations}} annotations produites par {{$nb_total_users}} participants </b> !
             </a>
+              
+            
             </li>
             <!-- Authentication Links -->
             @if (!Auth::check())

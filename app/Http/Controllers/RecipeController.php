@@ -53,7 +53,7 @@ class RecipeController extends Controller {
             'annotated_recipes' => Recipe::with('author')->withCount('likes')->toValidate()->latest()->paginate(3),
             'validated_recipes' => Recipe::where('validated', '>', 0)->with('author')->withCount('likes')->latest()->paginate(3),
             'title' => $title,
-            'subtitle' => $subtitle
+            'subtitle' => $subtitle,
         ]);
     }
 
@@ -134,7 +134,7 @@ class RecipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('recipes.create');
+        return view('recipes.create')->with('type', "recipes");
     }
 
     /**
@@ -146,7 +146,8 @@ class RecipeController extends Controller {
     public function store(StoreRecipe $request) {
         $recipe = Recipe::create(array_merge($request->all(), array(
                     'user_id' => auth()->user()->id,
-                    'corpus_language_id' => 1
+                    'corpus_language_id' => 1,
+                    'category_id' => $request->input('category_id')
         )));
 
         if ($request->input('anecdote')) {

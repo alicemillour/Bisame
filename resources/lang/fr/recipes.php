@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'new-recipe' => 'Ajouter une recette',
+    'new' => 'Ajouter une recette',
     'edit-recipe' => 'Éditer une recette',
     'last-recipes' => 'Dernières recettes',
     'last-recipes-by' => 'Dernières recettes de :name',
