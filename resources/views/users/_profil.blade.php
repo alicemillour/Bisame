@@ -71,7 +71,7 @@
   </div>
 
   <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
-    {!! Form::label('position', __('Où avez-vous appris l\'alsacien ?'), ['class' => '']) !!}
+    {!! Form::label('position', __('Où avez-vous appris le créole mauricien ?'), ['class' => '']) !!}
     <div id="message-map-dk" class="text-danger"></div>
     <div class="form-check">
       <input  id="radio-position-1" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -91,7 +91,7 @@
         <button class="btn btn-success btn-sm" id="modify-position">Modifier ma position</button>
       </div>
       <div class="alert alert-info explanation-map d-none">
-        <em>Cliquez sur la carte à l'endroit où vous avez appris l'alsacien :</em>
+        <em>Cliquez sur la carte à l'endroit où vous avez appris  :</em>
       </div>
       <div style="position:relative;">
         <img style="position:relative;left:0;top:0;width:50%;" id="map" src="{{ asset('img/Carte_Alsace.svg') }}" />
@@ -103,7 +103,7 @@
 
     <div id="message-city" class="text-danger"></div>
     <form id="form-city">
-      {!! Form::label('city', __("Vous pouvez également préciser la ville ou le village où vous avez appris l'alsacien :"), ['class' => '']) !!}
+      {!! Form::label('city', __("Vous pouvez également préciser la ville ou le village où vous avez appris {{ __('home.langues') }} :"), ['class' => '']) !!}
 
       <div class="col-sm-9">
         <input type="text" class="form-control" name="city" id="city" />

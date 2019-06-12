@@ -33,14 +33,23 @@
                         <!--</div>-->
                     </div>
                     <div class="col-md-6"  >
-                        
-                        
+                    @if(App::getLocale()==='bisame')
                     <div class="card background-colored fancy-border">
                             
                             <div id="survey" class="card-body" style="font-size: 1.5em">
                                 Participez au sondage sur les pratiques de l'alsacien sur Internet : <a style="color:red" href="https://framaforms.org/lalsacien-internet-et-vous-1546808704"> Cliquez ici !</a></div>
                         </div> 
                     <br>
+                    
+                    @elseif(App::getLocale()==='cm')
+)                    <div class="card background-colored fancy-border">
+                            
+                            <div id="survey" class="card-body" style="font-size: 1.5em">
+                                Participez au sondage sur les pratiques du créole mauricien sur Internet : <a style="color:red" href="https://framaforms.org/sondage-le-creole-mauricien-et-sa-presence-en-ligne-1555054850"> Cliquez ici !</a></div>
+                        </div> 
+                    <br>
+                    @endif
+                   
                         <div class="card background-colored fancy-border">
                             <div id="wordcloud" class="card-body">
                                 @include('info.wordcloud')
