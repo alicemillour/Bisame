@@ -49,7 +49,7 @@
    -ms-hyphens:auto;
    -webkit-hyphens:auto;
    hyphens:auto;" id="two" >
-            <div class="title belle-allure"> Recettes de Grammaire </div>
+            <div class="title belle-allure"> {{ __('recipes.app-name') }} </div>
             <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des ressources linguistiques pour {{ trans('home.langue') }} &nbsp;!&nbsp;</i>&raquo;</div>
 
 

@@ -399,7 +399,6 @@
         <body class="fill" id="app" style="max-width:100%; margin:0 auto;">
 
             @include('partials.nav')
-
             @include('shared/badges')
 
             @include('discussion/report')
