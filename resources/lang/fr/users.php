@@ -30,7 +30,8 @@ return [
   ],
   
   'dk' => 'Je ne souhaite pas fournir cette information',
-  'place-on-a-map' => 'Placer l\'endroit sur une carte',
+  'place-on-a-map' => 'Placer l\'endroit sur la carte de l\'île Maurice',
+  'elsewhere' => 'Je n\'ai pas appris le créole mauricien sur l\'île Maurice',
 
   'age-group' => [
     'dk' => 'Je ne souhaite pas fournir cette information',

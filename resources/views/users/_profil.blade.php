@@ -79,6 +79,13 @@
         {{ __('users.dk') }}
       </label>
     </div>
+    <div id="message-map-elsewhere" class="text-danger"></div>
+    <div class="form-check">
+      <input id="radio-position-2" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+      <label class="form-check-label" for="exampleRadios1">
+        {{ __('users.elsewhere') }}
+      </label>
+    </div>
     <div id="message-map" class="text-danger"></div>
     <div class="form-check">
       <input id="radio-position-2" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
@@ -94,7 +101,8 @@
         <em>Cliquez sur la carte à l'endroit où vous avez appris  :</em>
       </div>
       <div style="position:relative;">
-        <img style="position:relative;left:0;top:0;width:50%;" id="map" src="{{ asset('img/Carte_Alsace.svg') }}" />
+        <img style="position:relative;left:0;top:0;width:50%;" id="map" src="{{ asset('img/Carte_'.App::getLocale().'.svg') }}" />
+        Source : https://fr.wikipedia.org/wiki/Fichier:Mauritius_Island_map-fr.svg (Eric Gaba – Wikimedia Commons user: Sting)
         <i id="anchor" style="position:absolute;" class="fa fa-child fa-2x d-none" aria-hidden="true"></i>
       </div>
     </div>
