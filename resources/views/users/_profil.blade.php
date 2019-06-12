@@ -81,16 +81,16 @@
     </div>
     <div id="message-map-elsewhere" class="text-danger"></div>
     <div class="form-check">
-      <input id="radio-position-2" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+      <input id="radio-position-2" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
       <label class="form-check-label" for="exampleRadios1">
-        {{ __('users.elsewhere') }}
+        {{ __('users.place-on-a-map') }}
       </label>
     </div>
     <div id="message-map" class="text-danger"></div>
     <div class="form-check">
-      <input id="radio-position-2" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+      <input id="radio-position-3" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
       <label class="form-check-label" for="exampleRadios1">
-        {{ __('users.place-on-a-map') }}
+        {{ __('users.elsewhere') }}
       </label>
     </div>
     <div class="collapse" id="collapseMap">
