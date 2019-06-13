@@ -100,18 +100,18 @@ class BadgesTableSeeder extends Seeder
         Badge::updateOrCreate(['key' => 'poem','order'=>'11'],['required_value' => '50','image' => 'poem-'.App::getLocale().'-11.svg']);
         Badge::updateOrCreate(['key' => 'poem','order'=>'12'],['required_value' => '75','image' => 'poem-'.App::getLocale().'-12.svg']);
 
-        Badge::updateOrCreate(['key' => 'proverb','order'=>'1'],['required_value' => '1','image' => 'recipe-'.App::getLocale().'-1.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'2'],['required_value' => '2','image' => 'recipe-'.App::getLocale().'-2.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'3'],['required_value' => '3','image' => 'recipe-'.App::getLocale().'-3.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'4'],['required_value' => '5','image' => 'recipe-'.App::getLocale().'-4.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'5'],['required_value' => '8','image' => 'recipe-'.App::getLocale().'-5.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'6'],['required_value' => '12','image' => 'recipe-'.App::getLocale().'-6.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'7'],['required_value' => '17','image' => 'recipe-'.App::getLocale().'-7.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'8'],['required_value' => '23','image' => 'recipe-'.App::getLocale().'-8.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'9'],['required_value' => '30','image' => 'recipe-'.App::getLocale().'-9.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'10'],['required_value' => '40','image' => 'recipe-'.App::getLocale().'-10.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'11'],['required_value' => '50','image' => 'recipe-'.App::getLocale().'-11.svg']);
-        Badge::updateOrCreate(['key' => 'recipe','order'=>'12'],['required_value' => '75','image' => 'recipe-'.App::getLocale().'-12.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'1'],['required_value' => '1','image' => 'proverb-'.App::getLocale().'-1.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'2'],['required_value' => '2','image' => 'proverb-'.App::getLocale().'-2.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'3'],['required_value' => '3','image' => 'proverb-'.App::getLocale().'-3.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'4'],['required_value' => '5','image' => 'proverb-'.App::getLocale().'-4.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'5'],['required_value' => '8','image' => 'proverb-'.App::getLocale().'-5.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'6'],['required_value' => '12','image' => 'proverb-'.App::getLocale().'-6.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'7'],['required_value' => '17','image' => 'proverb-'.App::getLocale().'-7.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'8'],['required_value' => '23','image' => 'proverb-'.App::getLocale().'-8.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'9'],['required_value' => '30','image' => 'proverb-'.App::getLocale().'-9.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'10'],['required_value' => '40','image' => 'proverb-'.App::getLocale().'-10.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'11'],['required_value' => '50','image' => 'proverb-'.App::getLocale().'-11.svg']);
+        Badge::updateOrCreate(['key' => 'proverb','order'=>'12'],['required_value' => '75','image' => 'proverb-'.App::getLocale().'-12.svg']);
 
     }
 }
