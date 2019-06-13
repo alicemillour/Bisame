@@ -9,5 +9,6 @@ return [
         'precision_langue' => "en créole mauricien (TODO: à traduire)",
         'langue' => "le créole mauricien",
         'variantes-types' => "régionales ou orthographiques",
+        'what' => 'Ayo ? Qu\'est ce que c\'est que ça ?'
 
 ];
