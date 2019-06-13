@@ -98,7 +98,7 @@
         <button class="btn btn-success btn-sm" id="modify-position">Modifier ma position</button>
       </div>
       <div class="alert alert-info explanation-map d-none">
-        <em>Cliquez sur la carte à l'endroit où vous avez appris  :</em>
+        <em>Cliquez sur la carte à l'endroit où vous avez appris {{__('home.langue') }} :</em>
       </div>
       <div style="position:relative;">
         <img style="position:relative;left:0;top:0;width:50%;" id="map" src="{{ asset('img/Carte_'.App::getLocale().'.svg') }}" />
@@ -111,7 +111,7 @@
 
     <div id="message-city" class="text-danger"></div>
     <form id="form-city">
-      {!! Form::label('city', __("Vous pouvez également préciser la ville ou le village où vous avez appris {{ __('home.langues') }} :"), ['class' => '']) !!}
+      {!! Form::label('city', __("Vous pouvez également préciser la ville ou le village où vous avez appris ".__('home.langue')." :"), ['class' => '']) !!}
 
       <div class="col-sm-9">
         <input type="text" class="form-control" name="city" id="city" />
