@@ -16,9 +16,13 @@
 <pre class="moz-quote-pre"><span style="font-family: verdana, geneva;">
 &Eacute;tudiante en Master Linguistique et Informatique, j&rsquo;habite actuellement en France et je suis celle qui esp&egrave;re vous convaincre de donner un peu de votre temps pour une bonne cause (si si, je vous l&rsquo;assure !).
 
-J&rsquo;ai grandi &agrave; Maurice, et j&rsquo;ai eu la chance de pouvoir aller faire mes &eacute;tudes &agrave; La Sorbonne. 4 ans plus tard, dans le cadre de mon m&eacute;moire de Master, j&rsquo;ai d&eacute;cid&eacute; de travailler sur le cr&eacute;ole mauricien d&rsquo;une part parce que les enjeux li&eacute;s aux langues peu dot&eacute;es et le traitement automatique du langage sont &eacute;troitement li&eacute;s mais aussi parce que travailler sur ma langue maternelle me permet de me rapprocher un peu plus de ce pays, de ces gens qui me manquent et de rester au contact de cette langue qui &eacute;volue constamment et que j&rsquo;ai un jour peur de ne plus comprendre.
+J&rsquo;ai grandi &agrave; Maurice, et j&rsquo;ai eu la chance de pouvoir aller faire mes &eacute;tudes &agrave; La Sorbonne. 
+4 ans plus tard, dans le cadre de mon m&eacute;moire de Master, j&rsquo;ai d&eacute;cid&eacute; de travailler sur le cr&eacute;ole mauricien d&rsquo;une part parce que les enjeux li&eacute;s aux langues peu dot&eacute;es et le traitement automatique du langage 
+sont &eacute;troitement li&eacute;s mais aussi parce que travailler sur ma langue maternelle me permet de me rapprocher un peu plus de ce pays, de ces gens qui me manquent et de rester au contact de cette langue qui &eacute;volue constamment et que j&rsquo;ai un jour
+ peur de ne plus comprendre.
 
-Un peu avant mon d&eacute;part de Maurice, le cr&eacute;ole mauricien est devenu une langue &agrave; part enti&egrave;re au sens qu&rsquo;il &eacute;tait d&eacute;sormais possible d&rsquo;apprendre &agrave; l&rsquo;&eacute;cole. Je n&rsquo;ai donc jamais eu l&rsquo;occasion d&rsquo;apprendre &agrave; l&rsquo;&eacute;crire avant de me lancer dans ce projet et si vous &ecirc;tes dans le m&ecirc;me cas, j&rsquo;esp&egrave;re qu&rsquo;en contribuant &agrave; cette plateforme, vous aurez envie d&rsquo;am&eacute;liorer votre morisien !
+Un peu avant mon d&eacute;part de Maurice, le cr&eacute;ole mauricien est devenu une langue &agrave; part enti&egrave;re au sens qu&rsquo;il &eacute;tait d&eacute;sormais possible d&rsquo;apprendre &agrave; l&rsquo;&eacute;cole. 
+Je n&rsquo;ai donc jamais eu l&rsquo;occasion d&rsquo;apprendre &agrave; l&rsquo;&eacute;crire avant de me lancer dans ce projet et si vous &ecirc;tes dans le m&ecirc;me cas, j&rsquo;esp&egrave;re qu&rsquo;en contribuant &agrave; cette plateforme, vous aurez envie d&rsquo;am&eacute;liorer votre morisien !
 
 &Agrave; vos claviers !
 
