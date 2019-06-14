@@ -1,10 +1,6 @@
 <link href="{{ asset('/css/wordcloud.css') }}" rel="stylesheet">
-<div class="card-body">
 <h3 class="welcome-card-header belle-allure">{{ __('recipes.my-words') }}</h3>
 
-<hr>
-
-                    <p class="card-text">
 
 <div class="tegcloud" id="tegcloud_perso">
 @if(Auth::check())
@@ -19,6 +15,5 @@ Ajoutez une recette pour créer votre nuage de mots !
 Authentifiez-vous pour découvrir votre nuage de mots !
 @endif
 
-</div>
 
 </div>

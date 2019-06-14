@@ -15,8 +15,9 @@
                     <div class="col-md-3">
                         <!--<img src="/images/recette-du-jour.png" class="w-100">-->
                         <div class="card background-colored fancy-border">
-                            <h4 class="card-header text-center welcome-card-header"><a>Recette du jour</a></h4>
                             <div class="card-body">
+                                <h3 class=" welcome-card-header">Recette du jour</h3>
+
                                 @each('recipes/_show-day', $recipe_of_the_day, 'recipe', 'recipes/_empty')
                             </div>
                         </div>
@@ -78,7 +79,7 @@
                             <div class="card-body"  >
                                 
                                 <div id="slider" class="slider">
-                                    <span class="belle-allure"> Recettes de Grammaire </span> est une plateforme collaborative qui recueille :
+                                    <span class="belle-allure"> {{ __('home.app-name')  }} </span> est une plateforme collaborative qui recueille :
                                     <br>
                                     
                                     <!-- Fonctionnalité annotation : décommenter ci-dessous -->

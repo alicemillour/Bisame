@@ -34,17 +34,6 @@
                 {{ $nb_recipe_versions }}  mots alternatifs proposés <br> 
             </span>
         </div>
-        <!--        <div class="col-sm-6 right" id="two"  style="position:relative; text-align:center"> 
-                    <div style="position: absolute;
-                         top: 50%;
-                         left: 50%;
-                         transform: translate(-50%,-50%);
-                         width:100%
-                         ">
-                        <div class="title belle-allure"> Recettes de Grammaire </div>
-                        <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des ressources linguistiques pour l'alsacien&nbsp;!&nbsp;</i>&raquo;</div>
-                    </div>
-                </div>-->
         <div class="col-sm-6 belle-allure" style="text-align:center; line-height: 15px !important;  -moz-hyphens:auto;
    -ms-hyphens:auto;
    -webkit-hyphens:auto;

@@ -49,7 +49,7 @@
 
     </div>
     <hr/>
-    <div id="message-languages" class="text-danger"></div>
+<!--  <div id="message-languages" class="text-danger"></div>
     <form id="form-languages">
     {!! Form::label('age_group_id', __('Quelle(s) langue(s) parlez-vous ?'), ['class' => '']) !!}
     <div class="custom-controls-stacked">
@@ -67,7 +67,7 @@
     <div class="form-group text-right">
       {!! Form::submit("Enregistrer mes langues", ['id' => 'save-languages','class' => 'btn btn-success']) !!}
     </div>
-    </form>   
+    </form>   -->
   </div>
 
   <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">

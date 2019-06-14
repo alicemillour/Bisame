@@ -42,7 +42,7 @@ return array(
     'empty' => 'Aucune recette',
     'add-anecdote' => 'Ajouter une anecdote',
     'placeholder-add-anecdote' => 'Ajouter une anecdote ! (texte libre)',
-    'app-name' => 'Recettes de Grammaire',
+    'app-name' => 'Ayo !',
     'to-annotate' => 'Recettes à annoter',
     'to-annotate-exp' => 'Pour voir les catégories proposées par notre outil et les corriger, cliquer sur "Annoter la recette".',
     'to-validate' => 'Recettes à valider',
