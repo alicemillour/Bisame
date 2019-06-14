@@ -71,12 +71,18 @@
   </div>
 
   <div class="form-group col-6 border border-right-0 border-top-0 border-bottom-0">
-    {!! Form::label('position', __('Où avez-vous appris le créole mauricien ?'), ['class' => '']) !!}
+    {!! Form::label('position', __('Où avez-vous appris '.__('home.langue').' ?'), ['class' => '']) !!}
     <div id="message-map-dk" class="text-danger"></div>
     <div class="form-check">
       <input  id="radio-position-1" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
       <label class="form-check-label" for="exampleRadios1">
         {{ __('users.dk') }}
+      </label>
+    </div>
+    <div class="form-check">
+      <input id="radio-position-3" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+      <label class="form-check-label" for="exampleRadios1">
+        {{ __('users.elsewhere') }}
       </label>
     </div>
     <div id="message-map-elsewhere" class="text-danger"></div>
@@ -87,18 +93,13 @@
       </label>
     </div>
     <div id="message-map" class="text-danger"></div>
-    <div class="form-check">
-      <input id="radio-position-3" class="form-check-input radio-position" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"  data-toggle="" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
-      <label class="form-check-label" for="exampleRadios1">
-        {{ __('users.elsewhere') }}
-      </label>
-    </div>
+
     <div class="collapse" id="collapseMap">
       <div>
         <button class="btn btn-success btn-sm" id="modify-position">Modifier ma position</button>
       </div>
       <div class="alert alert-info explanation-map d-none">
-        <em>Cliquez sur la carte à l'endroit où vous avez appris {{__('home.langue') }} :</em>
+        <em>Cliquez sur la carte à l'endroit où vous avez appris {{__('home.langue') }} et  :</em>
       </div>
       <div style="position:relative;">
         <img style="position:relative;left:0;top:0;width:50%;" id="map" src="{{ asset('img/Carte_'.App::getLocale().'.svg') }}" />
@@ -111,7 +112,7 @@
 
     <div id="message-city" class="text-danger"></div>
     <form id="form-city">
-      {!! Form::label('city', __("Vous pouvez également préciser la ville ou le village où vous avez appris ".__('home.langue')." :"), ['class' => '']) !!}
+      {!! Form::label('city', __("Précisez la ville ou le village où vous avez appris ".__('home.langue')." :"), ['class' => '']) !!}
 
       <div class="col-sm-9">
         <input type="text" class="form-control" name="city" id="city" />

@@ -11,7 +11,7 @@
 
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css'>
-
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery_confirm.css') }}" />

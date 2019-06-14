@@ -5,9 +5,9 @@ return [
 	'hello' => "Bonjour",
 	'message-button-part1' => "Maké sé fraz-la !",
 	'message-button-part2' => "(Produire des annotations)",
-        'langue-de' => "du créole mauricien",
-        'precision_langue' => "en créole mauricien (TODO: à traduire)",
-        'langue' => "le créole mauricien",
+        'langue-de' => "du morisien",
+        'precision_langue' => "en morisien",
+        'langue' => "le morisien",
         'variantes-types' => "régionales ou orthographiques",
         'what' => 'Ayo ? Qu\'est ce que c\'est que ça ?'
 
