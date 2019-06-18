@@ -12,7 +12,7 @@ class SetLocale extends Job
      *
      * @array $languages
      */
-    protected $languages = ['en','fr'];
+    protected $languages = ['en','fr','krik','cm'];
 
     /**
      * Execute the command.

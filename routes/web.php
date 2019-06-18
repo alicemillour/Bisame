@@ -80,6 +80,23 @@ Route::get('recipes/{recipe}/annotations', 'RecipeController@annotations')->name
 Route::resource('recipes', 'RecipeController');
 Route::get('recipes/user/{user}', 'RecipeController@user')->name('recipes.user');
 
+Route::get('poems/favorite', 'PoemController@favorite')->name('poems.favorite');
+Route::get('poems/search', 'PoemController@search')->name('poems.search');
+Route::get('poems/to-annotate', 'PoemController@toAnnotate')->name('poems.to-annotate');
+Route::get('poems/add-alt-version', 'PoemController@addAltVersion')->name('poems.add-alt-version');
+Route::get('poems/to-validate', 'PoemController@toValidate')->name('poems.to-validate');
+Route::post('poems/add-anecdote', 'PoemController@addAnecdote');
+Route::post('poems/{recipe}/add-media', 'PoemController@addMedia')->name('poems.add-media');
+Route::post('poems/{recipe}/annotated', 'PoemController@flagAsAnnotated')->name('poems.flag-as-annotated');
+Route::post('poems/{recipe}/validated', 'PoemController@flagAsValidated')->name('poems.flag-as-validated');
+
+Route::get('poems/{recipe}/alternative-versions', 'PoemController@alternativeVersions')->name('poems.alternative-versions');
+Route::get('poems/{recipe}/annotations', 'PoemController@annotations')->name('poems.annotations');
+Route::resource('poems', 'PoemController');
+Route::get('poems/user/{user}', 'PoemController@user')->name('poems.user');
+
+
+
 Route::post('users/update-password', 'UserController@updatePassword')->name('users.update-password');
 Route::post('users/update-languages', 'UserController@updateLanguages')->name('users.update-languages');
 Route::post('users/update-city', 'UserController@updateCity')->name('users.update-city');

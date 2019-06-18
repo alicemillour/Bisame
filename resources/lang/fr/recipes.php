@@ -52,4 +52,5 @@ return array(
         permettre d\'ajouter des variantes régionales ou orthographiques aux mots que vous souhaitez. 
         Ces variantes seront intégrées à notre système, nous permettant 
         d\'avoir une meilleure connaissance des pratiques de l\'écrit et de vous proposer des variantes adaptées à votre pratique !',
+    'type_pl' => 'recettes (fr)',
 );

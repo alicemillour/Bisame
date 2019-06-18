@@ -15,7 +15,7 @@ class TexteController extends Controller
      */
     public function index()
     {
-                    return view('textes');
+        return view('textes');
 
     }
 

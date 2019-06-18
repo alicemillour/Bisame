@@ -6,7 +6,7 @@
     <div id="create-recipe" class="col-12 col-md-6 offset-md-3 background-recipe fancy-border background-colored">
 
 
-        <h3 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">{{ __($type.'.new') }} 
+        <h3 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"> {{ __($type.'.new') }} 
             <i class="fa fa-question-circle" 
                data-toggle="tooltip" data-placement="top" data-original-title="
                Les nouvelles {{__($type.'.type_pl')}} ainsi que les anecdotes sont intégrées au corpus collaboratif."
@@ -19,13 +19,12 @@
 
             @if ($type == "recipes")
             <input type = "hidden" name = "category_id" value = "1" />
-            @elseif ($type == "misc")
+            @elseif ($type == "poem")
             <input type = "hidden" name = "category_id" value = "2" />
             @endif
             
 
             {!! Form::control('text', 'col-12', 'title', $errors, null, null, null, __($type.'.title')) !!}
-            @if ($type == "recipes")
 
             <div class="align-content-start" id="container-ingredients">
                 <div class="d-flex">
@@ -145,7 +144,8 @@
                     </div>
                 </div>
             </div>
-            @endif
+            
+            
             {{ trans($type.'.titre-texte') }}
             <div class="form-group col-12 mt-3">
                 {!! Form::textarea('content', null, array('class' => 'form-control', 'id' => 'content', 'placeholder'=>__($type.'.placeholder-description')) ) !!}
