@@ -20,17 +20,19 @@
 
                                 @each('recipes/_show-day', $recipe_of_the_day, 'recipe', 'recipes/_empty')
                             </div>
+                            
                         </div>
+                        
                         <br>
                         <div class="card background-colored fancy-border">
-                            <h4 class="card-header text-center welcome-card-header"><a href="{{ route('recipes.index') }}">{{ __('recipes.to-annotate') }}</a></h4>
                             <div class="card-body">
-                                @each('recipes/_show-welcome_1', $recipes_to_annotate, 'recipe', 'recipes/_empty')
+                                <h3 class=" welcome-card-header">Poésie du jour</h3>
+
+                                @each('poems/_show-day', $poem_of_the_day, 'poem', 'poems/_empty')
                             </div>
-                            <div class="card-footer text-center">
-                                <a href="{{ route('recipes.create') }}" class="btn play-button active-button">Ajouter une recette</a>
-                            </div>        
                         </div>
+                        <br>
+                        
                         <!--</div>-->
                     </div>
                     <div class="col-md-6"  >
@@ -248,15 +250,13 @@
                     <!-- Fonctionnalité annotation : décommenter ci-dessous -->
                     
                     <div class="card background-colored fancy-border">
-                        <h4 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent">
-                            <a href="{{ route('recipes.to-validate') }}">{{ __('recipes.to-validate') }}</a></h4>
-                        <div class="card-body">
-                            @each('recipes/_show-welcome', $annotated_recipes, 'recipe', 'recipes/_empty')
-                        </div>
-                        <br>
-                        <div class="card-footer text-center">
-                            <a href="{{ route('recipes.to-validate') }}" class="btn play-button active-button">Voir toutes les recettes</a>
-                        </div>        
+                            <h4 class="card-header text-center welcome-card-header"><a href="{{ route('recipes.index') }}">{{ __('recipes.to-annotate') }}</a></h4>
+                            <div class="card-body">
+                                @each('recipes/_show-welcome_1', $recipes_to_annotate, 'recipe', 'recipes/_empty')
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="{{ route('recipes.create') }}" class="btn play-button active-button">Ajouter une recette</a>
+                            </div>        
                     </div>
                     <!-- Fonctionnalité annotation -->
                 </div>

@@ -8,6 +8,7 @@ use App\Repositories\AnnotationRepository;
 use App\Repositories\UserRepository;
 use App\Jobs\ChangeLocale;
 use App\Recipe;
+use App\Poem;
 use App\Traits\Badgeable;
 use App\User;
 use Auth,
@@ -34,6 +35,7 @@ class WelcomeController extends Controller {
             'top5_variantes' => $this->userRepository->get_best_users_by_alternative(),
             'recipes' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(3)->get(),
             'recipe_of_the_day' => Recipe::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(1)->get(),
+            'poem_of_the_day' => Poem::latest()->with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->limit(1)->get(),
             'recipes_to_annotate' => Recipe::toAnnotate()->with('author')->withCount('likes')->latest()->paginate(3),
             'annotated_recipes' => Recipe::toValidate()->with('author')->withCount('likes')->latest()->paginate(3),
             'validated_recipes' => Recipe::where('validated', '>', 0)->with('author')->withCount('likes')->latest()->paginate(3),
