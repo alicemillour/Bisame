@@ -1,0 +1,3 @@
+corpus_name;sentence_position;word_position;value;postag_name;confidence_score;tagger
+24_Melchior_est_un_abruti_;1;1;C'est;VERB;10;MElt
+24_Melchior_est_un_abruti_;1;2;tout;VERB;10;MElt
