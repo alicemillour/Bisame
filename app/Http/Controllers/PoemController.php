@@ -133,7 +133,7 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('poems.create')->with('type', "poem");
+        return view('poems.create')->with('type', "poems");
     }
 
     /**
