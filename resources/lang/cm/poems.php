@@ -23,7 +23,7 @@ return array (
   'ingredient' => 'Inrédient (quantité et intitulé)',
   'ingredients' => 'Ingrédients',
   'titre-texte' => "Étapes :",
-  'placeholder-description' => 'Préparation de la poésie (texte libre)',
+  'placeholder-description' => 'Texte de la poésie (texte libre)',
   'placeholder-commentary' => 'Ajouter une anecdote ! (texte libre)',
   'preparation-time' => 'Temps de préparation',
   'cooking-time' => 'Temps de cuisson',
