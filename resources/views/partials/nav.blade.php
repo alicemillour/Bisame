@@ -102,7 +102,7 @@
             @endif
             <div class="dropdown">
                 <a class="btn btn-navbar btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Recettes
+                    Actions
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
