@@ -168,7 +168,7 @@ class PoemController extends Controller {
             }
         }
 
-       $this->checkBadge($request, 'poem', auth()->user()->poems()->count());
+       //$this->checkBadge($request, 'poem', auth()->user()->poems()->count());
 
         //self::sendMailNewPoem($poem);
         
