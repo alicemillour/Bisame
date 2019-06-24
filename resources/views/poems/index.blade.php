@@ -17,14 +17,14 @@
             @endif
         </div>
 
-        <div id="recipes-index">
-            <!--@include ('recipes/_search')-->
+        <div id="poems-index">
+            <!--@include ('poems/_search')-->
             <div class="row">
                 <div class="col-9">
-                    @include ('recipes/_list')
+                    @include ('poems/_list')
                 </div>
                 <div class="col-3">
-                    @include ('recipes/_menu')
+                    @include ('poems/_menu')
                 </div>
             </div>
         </div>

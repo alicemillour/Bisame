@@ -5,7 +5,7 @@
 
   <!--@include ('poems/_search')--> 
   
-<div id="recipe" class="container">
+<div id="poem" class="container">
 @if (session()->has('title'))
 <div class="container-fluid">
     <div class="row">
@@ -30,7 +30,7 @@
       <ul class="nav nav-tabs" id="myTab" data-user-id="" role="tablist">
   @endif
     <li class="nav-item">
-      <a class="nav-link page-title active" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
+      <a class="nav-link page-title active" id="poem-tab" data-toggle="tab" href="#poem" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
     <li class="nav-item">
       <a class="nav-link page-title" id="plus-tab" data-toggle="tab" href="{{ route('poems.alternative-versions',['poems'=>$poem]) }}?tab=plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
@@ -43,7 +43,7 @@
 
   </ul>
 
-  <div class="bg-white p-3" id="content-recipe">
+  <div class="bg-white p-3" id="content-poem">
     <a class="float-right report link" href="#">Signaler du contenu inapproprié</a>
     <div class="plus-tab d-none alert alert-info">
       Pour proposer une version dans une variante orthographique ou régionale, double cliquez sur un mot de la recette ou sélectionnez du texte dans les zones grisées, renseignez votre variante et cliquez sur Valider !
@@ -122,7 +122,7 @@
 <!--<hr style="height: 0.5px; color: white; background-color: black; width: 50%; margin-left: 0px " />-->
     <h4>{{ __('poems.poem') }}</h4>
 
-    <div id="recipe" class="translatable" data-id="{{ $poem->id }}" data-type="App\Poem" data-attribute="content">{!! e($poem->content) !!}</div>
+    <div id="poem" class="translatable" data-id="{{ $poem->id }}" data-type="App\Poem" data-attribute="content">{!! e($poem->content) !!}</div>
     
     <h4 class="mt-2">{{ __('poems.anecdotes') }}</h4>
     
@@ -136,7 +136,7 @@
             <img src="{{ asset($medium->filename) }}" style="width:100%;" />
         @endforeach
       @endif
-      <form id="form-recipe" action="{{ route('poems.add-media',$poem) }}" method="POST">
+      <form id="form-poem" action="{{ route('poems.add-media',$poem) }}" method="POST">
         {{ csrf_field() }}
         <span class="input-group-btn">
           <label class="btn btn-primary btn-sm">
@@ -1163,7 +1163,7 @@ $alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
           return false;
         }
         $('#annotation').addClass('d-none');
-        $('#content-recipe').removeClass('d-none');
+        $('#content-poem').removeClass('d-none');
         initPlusTab();
     })
 
@@ -1172,17 +1172,17 @@ $alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
           window.location.href = $(this).attr('href');
           return false;
         }      
-        $('#content-recipe').addClass('d-none');
+        $('#content-poem').addClass('d-none');
         $('#annotation').removeClass('d-none');
     })
 
-    $("#recipe-tab").click(function(event) {
+    $("#poem-tab").click(function(event) {
         $('#annotation').addClass('d-none');
-        $('#content-recipe').removeClass('d-none');
+        $('#content-poem').removeClass('d-none');
         $('.translated').removeClass('highlight-translated');
         $('.plus-tab').addClass('d-none');
         $('.translatable').removeClass('highlight-translatable');
-//        $('#recipe').removeClass('translatable'); /* TODO Ajout Alice */
+//        $('#poem').removeClass('translatable'); /* TODO Ajout Alice */
         showVersionContributor($('#myTab').attr('data-user-id'));
 
     })
@@ -1439,7 +1439,7 @@ td.highlight-translatable {
 .validated {
     background-color: #9dddb2;
 }
-.recipe-ingredients {
+.poem-ingredients {
   position: relative;
 }
 img.no, img.check {

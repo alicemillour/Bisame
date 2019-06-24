@@ -1,1 +1,1 @@
-{{ __('recipes.empty') }}
+{{ __('poems.empty') }}

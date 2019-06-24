@@ -3,7 +3,7 @@
         <div class="float-right">
             <i class="fa fa-heart likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
                @auth
-               @if(Auth::user()->likesEntity($recipe))
+               @if(Auth::user()->likesEntity($poem))
                Vous aimez cette recette
                @else
                Aimer cette recette  
@@ -11,47 +11,47 @@
                @else
                Veuillez vous connecter pour aimer une recette
                @endauth
-               " data-type="App\Recipe" data-id="{{ $recipe->id }}">
+               " data-type="App\Recipe" data-id="{{ $poem->id }}">
             </i>
-            <span class="likes-count" data-id="{{ $recipe->id }}">{{ $recipe->likes_count }}</span>
+            <span class="likes-count" data-id="{{ $poem->id }}">{{ $poem->likes_count }}</span>
             <br/>
-            @if($recipe->validated)
+            @if($poem->validated)
             <img class="" style="width:20px;" src="{{ asset('img/badges/colored-laurel.svg') }}" />
-            if($recipe->annotated)
+            if($poem->annotated)
             <img class="" style="width:20px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
             @endif
         </div>
     </div>
     <div>
        
-        <h4>{{ link_to_route('recipes.show', $recipe->title, $recipe) }}</h4>
+        <h4>{{ link_to_route('poems.show', $poem->title, $poem) }}</h4>
         
         <p class="card-text">
             <span class="text-muted">
-                @component('users._avatar', ['user' => $recipe->author])
+                @component('users._avatar', ['user' => $poem->author])
                 
                 @endcomponent
-                {{ __('recipes.recipe-by') }}
-                @if($recipe->author->trashed())
-                {{ $recipe->author->name }}
+                {{ __('poems.poem-by') }}
+                @if($poem->author->trashed())
+                {{ $poem->author->name }}
                 @else
-                {{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+                {{ link_to_route('users.show', $poem->author->name, $poem->author) }}
                 @endif			
             </span>
         </p>
-        @if($recipe->medias->count()>0)
-        <img src="{{ asset($recipe->medias->first()->filename) }}" style="max-height:100%;max-width:100%;margin-left: auto; 
+        @if($poem->medias->count()>0)
+        <img src="{{ asset($poem->medias->first()->filename) }}" style="max-height:100%;max-width:100%;margin-left: auto; 
              margin-right: auto;
              display: block;" />
         @endif
-        <div class="card-text text-truncate">{{ $recipe->content }}</div>
-        <div class="card-text text-right">{{ link_to_route('recipes.show', "lire la suite...", $recipe) }}</div>
+        <div class="card-text text-truncate">{{ $poem->content }}</div>
+        <div class="card-text text-right">{{ link_to_route('poems.show', "lire la suite...", $poem) }}</div>
         <!-- Fonctionnalité annotation : décommenter ci-dessous -->
         <div class="card-text text-right">
-            @if(!$recipe->annotated)
-            <a href="{{ route('recipes.annotations', $recipe) }}"  class="btn annotate-button active-button">Annoter la recette</a>
-            @elseif(!$recipe->validated)
-            <a href="{{ route('recipes.annotations', $recipe) }}"  class="btn validate-button active-button">Valider la recette</a>
+            @if(!$poem->annotated)
+            <a href="{{ route('poems.annotations', $poem) }}"  class="btn annotate-button active-button">Annoter la recette</a>
+            @elseif(!$poem->validated)
+            <a href="{{ route('poems.annotations', $poem) }}"  class="btn validate-button active-button">Valider la recette</a>
             @endif
         </div>
         <!-- Fonctionnalité annotation -->

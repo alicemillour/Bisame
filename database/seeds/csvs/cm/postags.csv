@@ -1,0 +1,113 @@
+name;full_name;description
+ADJ;Adjectif;"""<p>Un adjectif accompagne un nom. Il peut &ecirc;tre plac&eacute; apr&egrave;s ou avant le nom qu'il qualifie:</p>
+<p style=""text-align: center;"">enn <strong>bon</strong> manze</p>
+<p style=""text-align: center;"">enn manzer <strong>fad</strong></p>"""
+ADP;Préposition;"""<p>Les ADP recouvrent les pr&eacute;positions et les postpositions. Ils peuvent indiquer une notion de temps, d'espace, de moyen :</p>
+<p style=""text-align: center;"">li <strong>avek</strong> so fami</p>
+<p style=""text-align: center;""><strong>dan</strong> mo sak</p>
+<p style=""text-align: center;""><strong>kont</strong> latab, <strong>lor</strong> latab, <strong>amba</strong> latab</p>
+<p style=""text-align: center;"">sa bol-la <strong>pou</strong> mwa</p>
+<p style=""text-align: center;"">&nbsp;</p>"""
+ADP+PRON;contraction;
+ADV;Adverbe;"""<p><span style=""font-family: verdana, geneva;"">Un adverbe apporte une information suppl&eacute;mentaire sur un verbe ou un adjectif : </span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;"">pima-la ti <strong>extra</strong> for, so rob <strong>mari</strong> zoli</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;""><strong>zordi</strong>, <strong>yer</strong>, <strong>demin,</strong> etc</span></p>
+<div class=""page"" title=""Page 64"">
+<div class=""layoutArea"">
+<div class=""column"">
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;""><span style=""font-size: 11pt;"">vinn <strong>isi,</strong> al <strong>laba,</strong> res <strong>lwin</strong>, koste <strong>pre</strong></span><span style=""font-size: 10pt;""><span style=""font-size: 11pt;"">, etc</span><br /></span></span></p>
+<div class=""page"" title=""Page 65"">
+<div class=""layoutArea"">
+<div class=""column"">
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva; font-size: 11pt;""><strong>souvan</strong>, <strong>rarman</strong>, <strong>parfwa</strong>, <strong>touletan</strong>, etc.</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva; font-size: 11pt;""><strong>wi</strong>, <strong>non, personelman,</strong> <strong>sirman</strong>, etc</span><span style=""font-size: 10.000000pt; font-family: 'Candara';""><span style=""font-family: verdana, geneva; font-size: 11pt;"">.</span><br /></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p style=""text-align: center;""><span style=""text-decoration: underline; font-family: verdana, geneva;"">ATTENTION</span></p>
+<p style=""text-align: left;""><span style=""font-family: verdana, geneva;"">Un adverbe peut aussi &ecirc;tre un adjectif :</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;"">mett pou mwa <strong>apar </strong>(ADV)</span><br /><span style=""font-family: verdana, geneva;"">enn dimounn <strong>apar</strong> (ADJ)</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;"">li'nn met so pavion <strong>anler</strong> (ADV)</span><br /><span style=""font-family: verdana, geneva;"">bann parol <strong>anler</strong> (ADJ)</span></p>"""
+AUX;Auxiliaire;
+CCONJ;Conjonction de coordination;"« <p>Les conjonctions de coordination relient deux &eacute;l&eacute;ments &eacute;quivalents :</p>
+<p style=""text-align: center;"">Azout diber <strong>ek</strong> disik, vinn <strong>ar</strong> mwa</p>
+<p style=""text-align: center;""><strong>Swa</strong> nou al lamer, <strong>swa</strong> nou ress lakaz</p>
+<p style=""text-align: center;"">To le dipin <strong>oubien</strong> diri ?</p>
+<p style=""text-align: center;"">Mo ti krwar li'nn vini <strong>me</strong> li enkor bloke lor larout</p>
+<p style=""text-align: center;""><strong>Ni</strong> enn <strong>ni</strong> lot</p>
+<p>&nbsp;</p> »"
+DET;Déterminant;"""<p>Un determinant accompagne un nom. Il peut &ecirc;tre plac&eacute; apr&egrave;s ou avant le nom qu'il qualifie:</p>
+<p style=""text-align: center;"">tifi-<strong>la</strong>, dokter-<strong>la</strong>, laport-<strong>la</strong></p>
+<p style=""text-align: center;""><strong>bann </strong>zenfan, <strong>bann</strong> zwazo</p>
+<p style=""text-align: center;""><strong>enn</strong> sak, <strong>enn </strong>liv</p>
+<p style=""text-align: center;""><strong>sa</strong> latab-<strong>la</strong>, <strong>sa </strong>ver-<strong>la</strong></p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p><span style=""color: #ff0000;""><strong>Enn </strong></span>peut aussi indiquer le <span style=""color: #ff0000;"">nombre</span> <span style=""color: #ff0000;"">""un""</span> :</p>
+<p style=""text-align: center;""><strong>enn </strong>(NUM), de, trwa</p>
+<p style=""text-align: left;""><span style=""color: #ff0000;""><strong>Bann </strong></span>dans <em>bann-la </em>est un <span style=""color: #ff0000;"">pronom</span> !</p>"""
+INTJ;Interjection;
+NOUN;Nom commun;"""<p>Un nom peut &ecirc;tre accompagn&eacute; ou pr&eacute;c&eacute;d&eacute; d'un d&eacute;terminant et occupe la plupart du temps une fonction sujet, objet ou compl&eacute;ment:</p>
+<p style=""text-align: center;"">sa <strong>konser</strong>-la mari ti top</p>
+<p style=""text-align: center;"">mo'nn atan li kot <strong>laboutik</strong> Zan</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;"">Un nom peut aussi &ecirc;tre un <em>adjectif</em> ! Aidez vous du contexte pour trouver la bonne cat&eacute;gorie :</p>
+<p style=""text-align: center;"">enn <strong>kabri</strong> (NOUN) <br />enn lavwa <strong>kabri</strong> (ADJ)</p>"""
+PART_TMA;Particule Verbale Temps-Mode-Aspect;"""<p>Les particules verbales temps, mode, aspect (TMA) sont des marqueurs verbaux. En morisien, ils marquent le temps (pass&eacute;, futur proche ou incertain, la possibilit&eacute;) et modifient le verbe :</p>
+<p style=""text-align: center;"">mo'<strong>nn</strong> vini, mo <strong>finn</strong> vini</p>
+<p style=""text-align: center;"">mo <strong>pe</strong> vini</p>
+<p style=""text-align: center;"">mo <strong>ti</strong> pou vini,</p>
+<p style=""text-align: center;"">mo <strong>ava</strong> vini, li'<strong>a</strong> vini, nou <strong>ti</strong>'<strong>ava</strong> vini, zot <strong>va</strong> vini</p>
+<p style=""text-align: left;""><span style=""text-decoration: underline;"">Remarque</span> :</p>
+<p style=""text-align: left;"">Dans <em>ti'ava</em>, il y a 2 particules distinctes : <strong>ti</strong> et <strong>ava</strong><em><br /></em></p>
+<p style=""text-align: center;"">&nbsp;</p>"""
+NUM;Nombre;
+PART;Particule;
+PART+VERB;contraction;
+PRON;Pronom;"""<p style=""text-align: left;"">Un pronom peut remplacer un nom :</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronoms personnels</span></p>
+<p style=""text-align: center;""><strong>mo</strong> pe kwi, <strong>to</strong> pe kwi, <strong>li</strong>'nn kwi, <strong>nou</strong> pe kwi, <strong>ou</strong> pe kwi, <strong>zot</strong> pe kwi, <br /><strong>bann</strong>-la pe kwi</p>
+<p style=""text-align: center;""><strong>momem</strong> sa, <strong>tomem</strong> sa, <strong>limem </strong>sa, <strong>noumem</strong> sa, <strong>oumem</strong> sa, <strong>zotmem</strong> sa</p>
+<p style=""text-align: center;"">pou <strong>mwa</strong>, pou <strong>twa</strong>, pou <strong>li</strong>, pou <strong>zot<br /></strong></p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronom d&eacute;monstratif</span></p>
+<p style=""text-align: center;""><strong>sann</strong>-la<br /><br /></p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronoms ind&eacute;finis</span></p>
+<p style=""text-align: center;""><strong>intel</strong>, <strong>samem</strong>, <strong>kikenn</strong>, <strong>kiksoz<br /><br /></strong></p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronoms interrogatifs</span></p>
+<p style=""text-align: center;""><strong>kisann</strong>-la, <strong>kifer</strong>, <strong>lekel</strong></p>
+<p style=""text-align: center;"">&nbsp;</p>"""
+PRON+PRON;contraction;
+PROPN;Nom propre;"""<p>Les noms propres d&eacute;signent un endroit, une personne, une marque, etc :</p>
+<p style=""text-align: center;""><strong>Zan</strong> inn al laboutik</p>
+<p style=""text-align: center;"">Dan <strong>Moris</strong></p>
+<p style=""text-align: center;"">&nbsp;</p>"""
+PUNCT;Ponctuation;
+SCONJ;Conjonction de subordination;"""<p>Les conjonctions de subordination relient deux phrases simples :</p>
+<p style=""text-align: center;"">Mo pa pou manze <strong>exsepte</strong> si twa ki'nn kwi</p>
+<p style=""text-align: center;"">Pou bizin plis sez <strong>si</strong> ena enn ta dimounn</p>
+<p style=""text-align: center;""><strong>Kouma</strong> to'nn arive li'nn tas ar twa</p>
+<p style=""text-align: center;""><strong>Kot</strong> to ale mo pou swiv twa</p>
+<p style=""text-align: center;"">Mo pe fer vit <strong>pou</strong> ki mo pa rat mo bis</p>
+<p style=""text-align: center;""><strong>Akoz</strong> mo'nn ale, li nepli koz ar mwa </p>
+<p style=""text-align: center;"">Pa blier amen liv-la <strong>kan</strong> to vi'nn kot li</p>
+<p style=""text-align: center;"">&nbsp;</p>"""
+SYM;Symbole;
+VERB;Verbe;"""<p>Un verbe exprime une action, un &eacute;tat ou un &eacute;v&egrave;nement : </p>
+<p style=""text-align: center;"">li pa'nn <strong>manze</strong> nanye zordi </p>
+<p style=""text-align: center;""><strong>azut</strong> enn ti kuyer disel</p>
+<p style=""text-align: center;"">ki ler to pou <strong>arive</strong>?</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;"">Un verbe peut aussi &ecirc;tre un <em>nom</em> ! Aidez vous du contexte pour trouver la bonne cat&eacute;gorie :</p>
+<p style=""text-align: center;"">mo kontan <strong>manze</strong> (VERB)<br /><strong>manze</strong>-la ti bon (NOUN)</p>"""
+X;Mot étranger;
+NUM+NOUN;Contraction;
+PRON+PART_TMA;Contraction;
+ADV+PART_TMA;Contraction;
+PRON+ADV;Contraction;
+PART_TMA+PART_TMA;Contraction;
+NOUN+DET;Contraction;

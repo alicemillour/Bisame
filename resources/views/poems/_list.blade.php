@@ -1,7 +1,7 @@
 <div class="card-columns">
-    @each('recipes/_show', $recipes, 'recipe', 'recipes/_empty')
+    @each('poems/_show', $poems, 'poem', 'poems/_empty')
 </div>
 
 <div class="d-flex justify-content-center">
-    {{ $recipes->links() }}
+    {{ $poems->links() }}
 </div>

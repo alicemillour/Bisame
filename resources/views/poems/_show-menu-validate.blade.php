@@ -1,14 +1,14 @@
 <div>
-	<a class="btn btn-primary float-right" href="{{ route('recipes.annotations', $recipe) }}">Valider</a>
-    <h4>{{ link_to_route('recipes.show', $recipe->title, $recipe) }}</h4>
+	<a class="btn btn-primary float-right" href="{{ route('poems.annotations', $poem) }}">Valider</a>
+    <h4>{{ link_to_route('poems.show', $poem->title, $poem) }}</h4>
 </div>
 <p class="card-text">
 	<span class="text-muted">
-		{{ __('recipes.recipe-by') }}
-		@if($recipe->author->trashed())
-			{{ $recipe->author->name }}
+		{{ __('poems.poem-by') }}
+		@if($poem->author->trashed())
+			{{ $poem->author->name }}
 		@else
-			{{ link_to_route('users.show', $recipe->author->name, $recipe->author) }}
+			{{ link_to_route('users.show', $poem->author->name, $poem->author) }}
 		@endif			
 	</span>
 </p>
