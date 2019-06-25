@@ -1,1 +1,1 @@
-{{ __('poems.empty') }}
+{{ __('freetexts.empty') }}

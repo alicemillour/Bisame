@@ -9,7 +9,7 @@ use App\Traits\Mediable;
 use App\Traits\Likeable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Poem extends Model
+class Freetext extends Model
 {
     use Translatable, Commentable, Mediable, Likeable, SoftDeletes;
 
@@ -25,7 +25,7 @@ class Poem extends Model
 	];
 
     /**
-    * Return the poems's author
+    * Return the freetexts's author
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
@@ -35,7 +35,7 @@ class Poem extends Model
     }
 
     /**
-    * Return the poems's ingredients
+    * Return the freetexts's ingredients
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
@@ -45,7 +45,7 @@ class Poem extends Model
     }
 
     /**
-    * Return the poems's anecdotes
+    * Return the freetexts's anecdotes
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasMany
     */
@@ -55,19 +55,19 @@ class Poem extends Model
     }
 
     /**
-    * Return the poems's contributors
+    * Return the freetexts's contributors
     *
     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
     */
     public function contributors()
     {
     	return $this->belongsToMany('App\User', 'alternative_texts', 'translatable_id', 'user_id')
-    				->where('translatable_type','App\Poem')->distinct();
+    				->where('translatable_type','App\Freetext')->distinct();
     }
 
 
     /**
-     * Scope a query to only include poems to annotate.
+     * Scope a query to only include freetexts to annotate.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
@@ -78,7 +78,7 @@ class Poem extends Model
     }
 
     /**
-     * Scope a query to only include poems to annotate.
+     * Scope a query to only include freetexts to annotate.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder

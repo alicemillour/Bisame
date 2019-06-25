@@ -1,25 +1,25 @@
 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
 
-@if(Route::currentRouteName()=='poems.favorite')
+@if(Route::currentRouteName()=='proverbs.favorite')
 	<div class="card mb-2">
-	<h5 class="card-header text-center welcome-card-header"><a href="{{ route('poems.to-annotate') }}">{{ __('poems.to-annotate') }}</a></h5>
+	<h5 class="card-header text-center welcome-card-header"><a href="{{ route('proverbs.to-annotate') }}">{{ __('proverbs.to-annotate') }}</a></h5>
 		<div class="card-body">
-			@each('poems/_show-welcome', $poems_to_annotate, 'poem', 'poems/_empty')
+			@each('proverbs/_show-welcome', $proverbs_to_annotate, 'proverb', 'proverbs/_empty')
 		</div>
 	    <div class="card-footer text-right">
-	      <a href="{{ route('poems.to-annotate') }}" class="">Voir toutes les recettes à annoter</a>
+	      <a href="{{ route('proverbs.to-annotate') }}" class="">Voir toutes les recettes à annoter</a>
 	    </div>
 	</div>
 @endif
 
-@if(Route::currentRouteName()=='poems.favorite')
+@if(Route::currentRouteName()=='proverbs.favorite')
 <div class="card mb-2">
-<h5 class="card-header text-center welcome-card-header"><a href="{{ route('poems.to-validate') }}">{{ __('poems.to-validate') }}</a></h5>
+<h5 class="card-header text-center welcome-card-header"><a href="{{ route('proverbs.to-validate') }}">{{ __('proverbs.to-validate') }}</a></h5>
 	<div class="card-body">
-		@each('poems/_show-welcome', $annotated_poems, 'poem', 'poems/_empty')
+		@each('proverbs/_show-welcome', $annotated_proverbs, 'proverb', 'proverbs/_empty')
 	</div>
     <div class="card-footer text-right">
-      <a href="{{ route('poems.to-validate') }}" class="">Voir toutes les recettes à valider</a>
+      <a href="{{ route('proverbs.to-validate') }}" class="">Voir toutes les recettes à valider</a>
     </div>
 </div>
 @endif
@@ -27,7 +27,7 @@
 <div class="card mb-2">
 <h5 class="card-header text-center welcome-card-header">Recettes annotées</h5>
 	<div class="card-body">
-		@each('poems/_show-welcome', $validated_poems, 'poem', 'poems/_empty')
+		@each('proverbs/_show-welcome', $validated_proverbs, 'proverb', 'proverbs/_empty')
 	</div>
 </div>
 <!-- Fonctionnalité annotation -->

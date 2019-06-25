@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Poem;
+use App\Freetext;
 use App\User;
 use App\Media;
 use App\Anecdote;
 use App\Corpus;
 use App\Postag;
-use App\AnnotatedPoem;
-use App\ValidatedPoem;
+use App\AnnotatedFreetext;
+use App\ValidatedFreetext;
 use App;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePoem;
+use App\Http\Requests\StoreFreetext;
 use App\Http\Requests\StoreAnecdote;
 use App\Traits\Badgeable;
 use App\Services\WordSeeder;
 use App\Services\AnnotationSeeder;
 use DB;
-use App\Mail\NewPoem;
+use App\Mail\NewFreetext;
 use App\Mail\NewAnecdote;
 use App\Notification;
 use Illuminate\Support\Facades\Mail;
@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-class PoemController extends Controller {
+class FreetextController extends Controller {
 
     use Badgeable;
 
@@ -40,17 +40,17 @@ class PoemController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($poems = null, $title = null, $subtitle = null) {
-        if (!$poems)
-            $poems = Poem::with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->latest()->paginate(20);
+    public function index($freetexts = null, $title = null, $subtitle = null) {
+        if (!$freetexts)
+            $freetexts = Freetext::with('author')->withCount('likes')->orderBy(DB::Raw('annotated+validated'), 'desc')->latest()->paginate(20);
         if (!$title)
-            $title = __('poems.last-poems');
+            $title = __('freetexts.last-freetexts');
 
-        return view('poems.index', [
-            'poems' => $poems,
-            'poems_to_annotate' => Poem::with('author')->withCount('likes')->latest()->toAnnotate()->paginate(3),
-            'annotated_poems' => Poem::with('author')->withCount('likes')->toValidate()->latest()->paginate(3),
-            'validated_poems' => Poem::where('validated', '>', 0)->with('author')->withCount('likes')->latest()->paginate(3),
+        return view('freetexts.index', [
+            'freetexts' => $freetexts,
+            'freetexts_to_annotate' => Freetext::with('author')->withCount('likes')->latest()->toAnnotate()->paginate(3),
+            'annotated_freetexts' => Freetext::with('author')->withCount('likes')->toValidate()->latest()->paginate(3),
+            'validated_freetexts' => Freetext::where('validated', '>', 0)->with('author')->withCount('likes')->latest()->paginate(3),
             'title' => $title,
             'subtitle' => $subtitle,
         ]);
@@ -62,11 +62,11 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function user(User $user) {
-        $poems = Poem::with('author')->withCount('likes')->where('user_id', $user->id)->latest()->paginate(20);
+        $freetexts = Freetext::with('author')->withCount('likes')->where('user_id', $user->id)->latest()->paginate(20);
 
-        $title = __('poems.poems-by', ['name' => $user->name]);
+        $title = __('freetexts.freetexts-by', ['name' => $user->name]);
 
-        return $this->index($poems, $title);
+        return $this->index($freetexts, $title);
     }
 
     /**
@@ -75,11 +75,11 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function search(Request $request) {
-        $poems = Poem::with('author')->withCount('likes')->where('title', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(20);
+        $freetexts = Freetext::with('author')->withCount('likes')->where('title', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(20);
 
-        $title = __('poems.search-result', ['search' => $request->input('search')]);
+        $title = __('freetexts.search-result', ['search' => $request->input('search')]);
 
-        return $this->index($poems, $title);
+        return $this->index($freetexts, $title);
     }
 
     /**
@@ -88,17 +88,17 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function favorite(Request $request) {
-        $poems = Poem::with('author')->withCount('likes')->whereExists(function ($query) {
+        $freetexts = Freetext::with('author')->withCount('likes')->whereExists(function ($query) {
                     $query->select(DB::raw(1))
                             ->from('likes')
                             ->where('likes.user_id', auth()->user()->id)
-                            ->where('likes.likeable_type', 'App\Poem')
-                            ->whereRaw('likes.likeable_id = poems.id');
+                            ->where('likes.likeable_type', 'App\Freetext')
+                            ->whereRaw('likes.likeable_id = freetexts.id');
                 })->paginate(20);
 
-        $title = __('poems.favorite', ['search' => $request->input('search')]);
+        $title = __('freetexts.favorite', ['search' => $request->input('search')]);
 
-        return $this->index($poems, $title);
+        return $this->index($freetexts, $title);
     }
 
     /**
@@ -107,10 +107,10 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function toAnnotate(Request $request) {
-        $poems = Poem::with('author')->withCount('likes')->toAnnotate()->paginate(20);
-        $title = __('poems.to-annotate');
-        $subtitle = __('poems.to-annotate-exp');
-        return $this->index($poems, $title, $subtitle);
+        $freetexts = Freetext::with('author')->withCount('likes')->toAnnotate()->paginate(20);
+        $title = __('freetexts.to-annotate');
+        $subtitle = __('freetexts.to-annotate-exp');
+        return $this->index($freetexts, $title, $subtitle);
     }
 
 
@@ -121,10 +121,10 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function toValidate(Request $request) {
-        $poems = Poem::with('author')->withCount('likes')->toValidate()->paginate(20);
-        $title = __('poems.to-validate');
-        $subtitle = __('poems.to-validate-exp');
-        return $this->index($poems, $title, $subtitle);
+        $freetexts = Freetext::with('author')->withCount('likes')->toValidate()->paginate(20);
+        $title = __('freetexts.to-validate');
+        $subtitle = __('freetexts.to-validate-exp');
+        return $this->index($freetexts, $title, $subtitle);
     }
 
     /**
@@ -133,7 +133,7 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('poems.create')->with('type', "poems");
+        return view('freetexts.create')->with('type', "freetexts");
     }
 
     /**
@@ -142,8 +142,8 @@ class PoemController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePoem $request) {
-        $poem = Poem::create(array_merge($request->all(), array(
+    public function store(StoreFreetext $request) {
+        $freetext = Freetext::create(array_merge($request->all(), array(
                     'user_id' => auth()->user()->id,
                     'corpus_language_id' => 1,
                     'category_id' => $request->input('category_id')
@@ -152,7 +152,7 @@ class PoemController extends Controller {
         if ($request->input('anecdote')) {
             Anecdote::create([
                 'user_id' => auth()->user()->id,
-                'recipe_id' => $poem->id,
+                'recipe_id' => $freetext->id,
                 'content' => $request->input('anecdote'),
             ]);
         }
@@ -162,19 +162,19 @@ class PoemController extends Controller {
                 Media::create([
                     'filename' => $photo,
                     'user_id' => auth()->user()->id,
-                    'mediable_id' => $poem->id,
-                    'mediable_type' => "App\Poem",
+                    'mediable_id' => $freetext->id,
+                    'mediable_type' => "App\Freetext",
                 ]);
             }
         }
 
-       //$this->checkBadge($request, 'poem', auth()->user()->poems()->count());
+       $this->checkBadge($request, 'freetext', auth()->user()->freetexts()->count());
 
-        //self::sendMailNewPoem($poem);
+        //self::sendMailNewFreetext($freetext);
         
         
         /* Fonctionnalité d'annotation : commenter la ligne ci-dessous pour poursuivre l'exécution i.e. prétraitements et redirection vers l'annotation) */
-        // return redirect('/')->withSuccess(__('poems.created'));
+        // return redirect('/')->withSuccess(__('freetexts.created'));
         /* Fonctionnalité d'annotation */
 
         /* lancer les prétraitements */
@@ -183,9 +183,9 @@ class PoemController extends Controller {
 
 
         /* tokénisation */
-        /* stage 1 : create a raw file with poem content */
+        /* stage 1 : create a raw file with freetext content */
         $filename = preg_replace('/\W+/', '_', $request->input('title'));
-        $corpus_name = $poem->id . "_" . $filename;
+        $corpus_name = $freetext->id . "_" . $filename;
         Storage::put(App::getLocale().'/corpus/raw/recipes/' . $filename . ".txt", $request->input('content'));
         /* stage 2 : create the tokenized file from raw */
         
@@ -216,29 +216,29 @@ class PoemController extends Controller {
         $seeder = new AnnotationSeeder($corpus_path . "/preannotation/preannotation-1/recipes/" . $filename . '.preannotation_seed');
         $seeder->run();
 
-        return redirect('poems/' . $poem->id . '?tab=pos')->withSuccess(__('poems.created'));
+        return redirect('freetexts/' . $freetext->id . '?tab=pos')->withSuccess(__('freetexts.created'));
     }
 
-    public function sendMailNewPoem(Poem $poem) {
+    public function sendMailNewFreetext(Freetext $freetext) {
 
-        $notification = Notification::where('slug', 'all-poems')->first();
+        $notification = Notification::where('slug', 'all-freetexts')->first();
 
         foreach ($notification->users as $user) {
             if ($user->email != '') {
-                Mail::to($user)->queue(new NewPoem($poem));
+                Mail::to($user)->queue(new NewFreetext($freetext));
             }
         }
     }
 
-    public function sendMailNewAnecdote(Poem $poem, Anecdote $anecdote) {
+    public function sendMailNewAnecdote(Freetext $freetext, Anecdote $anecdote) {
 
         $notification = Notification::where('slug', 'anecdotes')->first();
 
-        $users = $notification->users()->where('user_id', $poem->user_id)->get();
+        $users = $notification->users()->where('user_id', $freetext->user_id)->get();
 
         foreach ($users as $user) {
             if ($user->email != '') {
-                Mail::to($user)->queue(new NewAnecdote($poem, $anecdote));
+                Mail::to($user)->queue(new NewAnecdote($freetext, $anecdote));
             }
         }
     }
@@ -335,19 +335,19 @@ class PoemController extends Controller {
      */
     public function addAnecdote(StoreAnecdote $request) {
 
-        $poem = Poem::findOrFail($request->input('poem_id'));
+        $freetext = Freetext::findOrFail($request->input('freetext_id'));
 
         $anecdote = Anecdote::create([
             'user_id' => auth()->user()->id,
-            'recipe_id' => $request->input('poem_id'),
+            'recipe_id' => $request->input('freetext_id'),
             'content' => $request->input('anecdote'),
         ]);
 
         $this->checkBadge($request, 'anecdote', auth()->user()->anecdotes()->count());
 
-        self::sendMailNewAnecdote($poem, $anecdote);
+        self::sendMailNewAnecdote($freetext, $anecdote);
 
-        return redirect('poems/' . $request->input('poem_id'))->withSuccess(__('poems.anecdote-created'));
+        return redirect('freetexts/' . $request->input('freetext_id'))->withSuccess(__('freetexts.anecdote-created'));
     }
 
     /**
@@ -356,32 +356,32 @@ class PoemController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function addMedia(Request $request, Poem $poem) {
+    public function addMedia(Request $request, Freetext $freetext) {
         if ($request->input('photos')) {
             foreach ($request->input('photos') as $photo) {
                 Media::create([
                     'filename' => $photo,
                     'user_id' => auth()->user()->id,
-                    'mediable_id' => $poem->id,
-                    'mediable_type' => "App\Poem",
+                    'mediable_id' => $freetext->id,
+                    'mediable_type' => "App\Freetext",
                 ]);
             }
         }
 
-        return redirect('poems/' . $request->input('poem_id'))->withSuccess(__('poems.photo-added'));
+        return redirect('freetexts/' . $request->input('freetext_id'))->withSuccess(__('freetexts.photo-added'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function show(Poem $poem, Request $request) {
-        // $poem = Poem::findOrFail($id);
-        $corpus_poem = Corpus::where('name', 'like', $poem->id . '_%')->first();
+    public function show(Freetext $freetext, Request $request) {
+        // $freetext = Freetext::findOrFail($id);
+        $corpus_freetext = Corpus::where('name', 'like', $freetext->id . '_%')->first();
         $postags = Postag::orderBy('order')->get();
-        $tab = 'poem';
+        $tab = 'freetext';
 
         $message = '';
         $postag = '';
@@ -390,9 +390,9 @@ class PoemController extends Controller {
             $message = "Vous êtes bien entraîné, les " . $postag->name . " n'ont plus de secret pour vous ! Passons aux choses sérieuses :";
         }
 
-        if ($poem->annotated) {
-            $annotated_poem = AnnotatedPoem::where('recipe_id', $poem->id)->first();
-            $annotator_to_validate = $annotated_poem->annotator;
+        if ($freetext->annotated) {
+            $annotated_freetext = AnnotatedFreetext::where('recipe_id', $freetext->id)->first();
+            $annotator_to_validate = $annotated_freetext->annotator;
         } else {
             $annotator_to_validate = null;
         }
@@ -400,11 +400,11 @@ class PoemController extends Controller {
         if ($request->has('tab')) {
             $tab = $request->input('tab');
             if (!in_array($tab, ['plus', 'pos']))
-                $tab = 'poem';
+                $tab = 'freetext';
             if (in_array($tab, ['plus', 'pos']) && !auth()->check())
                 return redirect()->route('login')->withErrors("Veuillez vous connecter pour accéder à cette partie du site.");
         }
-        return view('poems.show', compact('poem', 'annotator_to_validate', 'corpus_poem', 'postags', 'tab', 'message', 'postag'));
+        return view('freetexts.show', compact('freetext', 'annotator_to_validate', 'corpus_freetext', 'postags', 'tab', 'message', 'postag'));
     }
 
     /**
@@ -413,111 +413,111 @@ class PoemController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function addAltVersion(Request $request) {
-        $poem = Poem::inRandomOrder()->first();
-        $title = __('poems.add-variant');
-        $subtitle = __('poems.add-variant-exp');
+        $freetext = Freetext::inRandomOrder()->first();
+        $title = __('freetexts.add-variant');
+        $subtitle = __('freetexts.add-variant-exp');
         $request->session()->flash('title', $title);
         $request->session()->flash('subtitle', $subtitle);
-        return redirect('poems/' . $poem->id . '?tab=plus');
+        return redirect('freetexts/' . $freetext->id . '?tab=plus');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function alternativeVersions(Poem $poem, Request $request) {
+    public function alternativeVersions(Freetext $freetext, Request $request) {
         $request->merge(['tab' => 'plus']);
-        return self::show($poem, $request);
+        return self::show($freetext, $request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function annotations(Poem $poem, Request $request) {
+    public function annotations(Freetext $freetext, Request $request) {
         $request->merge(['tab' => 'pos']);
-        return self::show($poem, $request);
+        return self::show($freetext, $request);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function edit(Poem $poem) {
-        $this->authorize('update', $poem);
+    public function edit(Freetext $freetext) {
+        $this->authorize('update', $freetext);
 
-        return view('poems.edit', compact('poem'));
+        return view('freetexts.edit', compact('freetext'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePoem $request, Poem $poem) {
-        $this->authorize('update', $poem);
+    public function update(StoreFreetext $request, Freetext $freetext) {
+        $this->authorize('update', $freetext);
 
-        $poem->update($request->all());
+        $freetext->update($request->all());
 
-        Media::where('user_id', auth()->user()->id)->where('mediable_id', $poem->id)->where('mediable_type', 'App\Poem')->delete();
+        Media::where('user_id', auth()->user()->id)->where('mediable_id', $freetext->id)->where('mediable_type', 'App\Freetext')->delete();
 
         if ($request->input('photos')) {
             foreach ($request->input('photos') as $photo) {
                 Media::create([
                     'filename' => $photo,
                     'user_id' => auth()->user()->id,
-                    'mediable_id' => $poem->id,
-                    'mediable_type' => "App\Poem",
+                    'mediable_id' => $freetext->id,
+                    'mediable_type' => "App\Freetext",
                 ]);
             }
         }
 
-        return redirect('poems')->withSuccess(__('poems.updated'));
+        return redirect('freetexts')->withSuccess(__('freetexts.updated'));
     }
 
     /**
-     * Flag a poem as annotated
+     * Flag a freetext as annotated
      *
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function flagAsAnnotated(Poem $poem) {
+    public function flagAsAnnotated(Freetext $freetext) {
         $user = auth()->user();
-        if (!AnnotatedPoem::where('poem_id', $poem->id)->where('user_id', $user->id)->exists()) {
-            AnnotatedPoem::create(['poem_id' => $poem->id, 'user_id' => $user->id]);
-            $poem->increment('annotated');
+        if (!AnnotatedFreetext::where('freetext_id', $freetext->id)->where('user_id', $user->id)->exists()) {
+            AnnotatedFreetext::create(['freetext_id' => $freetext->id, 'user_id' => $user->id]);
+            $freetext->increment('annotated');
         }
     }
 
     /**
-     * Flag a poem as verified
+     * Flag a freetext as verified
      *
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function flagAsValidated(Poem $poem) {
+    public function flagAsValidated(Freetext $freetext) {
         $user = auth()->user();
-        if (!ValidatedPoem::where('poem_id', $poem->id)->where('user_id', $user->id)->exists()) {
-            ValidatedPoem::create(['poem_id' => $poem->id, 'user_id' => $user->id]);
-            $poem->increment('validated');
+        if (!ValidatedFreetext::where('freetext_id', $freetext->id)->where('user_id', $user->id)->exists()) {
+            ValidatedFreetext::create(['freetext_id' => $freetext->id, 'user_id' => $user->id]);
+            $freetext->increment('validated');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Poem  $poem
+     * @param  \App\Freetext  $freetext
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Poem $poem) {
+    public function destroy(Freetext $freetext) {
         //
     }
 

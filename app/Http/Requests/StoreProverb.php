@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request as FormRequest;
 use File;
 
-class StorePoem extends FormRequest
+class StoreProverb extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

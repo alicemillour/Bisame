@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-    <div id="create-poem" class="col-12 col-md-6 offset-md-3 background-poem fancy-border background-colored">
+    <div id="create-proverb" class="col-12 col-md-6 offset-md-3 background-proverb fancy-border background-colored">
 
 
         <h3 class="card-header text-center belle-allure" style="background-color: transparent; border-bottom-color: transparent"> {{ __($type.'.new') }} 
@@ -14,10 +14,10 @@
 
         </h3>
         <div class="card-body">
-            {!! Form::open(['route' => 'poems.store', 'method' => 'post', 'id' => 'form-poem']) !!}
-            <!--category is 1 for poems-->
+            {!! Form::open(['route' => 'proverbs.store', 'method' => 'post', 'id' => 'form-proverb']) !!}
+            <!--category is 1 for proverbs-->
 
-            @if ($type == "poem")
+            @if ($type == "proverb")
             <input type = "hidden" name = "category_id" value = "2" />
             @endif
             
@@ -63,7 +63,7 @@
             </div>
 
             <div class="form-group col-12 mt-3">
-                {!! Form::submit('Enregistrer la '.__($type.'.type'), ['id'=>'btn-create','class'=>'btn btn-success']) !!}
+                {!! Form::submit('Enregistrer le '.__($type.'.type'), ['id'=>'btn-create','class'=>'btn btn-success']) !!}
             </div>
             {!! Form::close() !!}
             

@@ -3,9 +3,9 @@
 @section('content')
 
 
-  <!--@include ('poems/_search')--> 
+  <!--@include ('freetexts/_search')--> 
   
-<div id="poem" class="container">
+<div id="freetext" class="container">
 @if (session()->has('title'))
 <div class="container-fluid">
     <div class="row">
@@ -30,20 +30,20 @@
       <ul class="nav nav-tabs" id="myTab" data-user-id="" role="tablist">
   @endif
     <li class="nav-item">
-      <a class="nav-link page-title active" id="poem-tab" data-toggle="tab" href="#poem" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
+      <a class="nav-link page-title active" id="freetext-tab" data-toggle="tab" href="#freetext" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link page-title" id="plus-tab" data-toggle="tab" href="{{ route('poems.alternative-versions',['poems'=>$poem]) }}?tab=plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
+      <a class="nav-link page-title" id="plus-tab" data-toggle="tab" href="{{ route('freetexts.alternative-versions',['freetexts'=>$freetext]) }}?tab=plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
     </li>
     <!-- Fonctionnalité annotation : décommenter ci-dessous -->
     <li class="nav-item">
-      <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="{{ route('poems.annotations',['poems'=>$poem]) }}?tab=pos" role="tab" aria-controls="pos" aria-selected="false">Aidez-nous à améliorer nos outils</a>
+      <a class="nav-link page-title" id="pos-tab" data-toggle="tab" href="{{ route('freetexts.annotations',['freetexts'=>$freetext]) }}?tab=pos" role="tab" aria-controls="pos" aria-selected="false">Aidez-nous à améliorer nos outils</a>
     </li>
     <!-- Fonctionnalité annotation -->
 
   </ul>
 
-  <div class="bg-white p-3" id="content-poem">
+  <div class="bg-white p-3" id="content-freetext">
     <a class="float-right report link" href="#">Signaler du contenu inapproprié</a>
     <div class="plus-tab d-none alert alert-info">
       Pour proposer une version dans une variante orthographique ou régionale, double cliquez sur un mot de la recette ou sélectionnez du texte dans les zones grisées, renseignez votre variante et cliquez sur Valider !
@@ -52,13 +52,13 @@
       <div class="col-sm-7">
       <div class="row">
         <div class="col-lg-7">
-          <h1 class="translatable" data-type="App\Poem" data-id="{{ $poem->id }}" data-attribute="title">{{ $poem->title }}</h1>
+          <h1 class="translatable" data-type="App\Freetext" data-id="{{ $freetext->id }}" data-attribute="title">{{ $freetext->title }}</h1>
         </div>
         <div class="col-lg-5 d-flex flex-row text-right justify-content-end">
           <div class="p-2 text-nowrap">
             <i class="fa fa-heart fa-2x likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
             @auth
-                @if(Auth::user()->likesEntity($poem))
+                @if(Auth::user()->likesEntity($freetext))
                   Vous aimez cette recette
                 @else
                   Aimer cette recette  
@@ -66,49 +66,49 @@
             @else
               Veuillez vous connecter pour aimer cette recette
             @endauth
-            " data-type="App\Poem" data-id="{{ $poem->id }}">
+            " data-type="App\Freetext" data-id="{{ $freetext->id }}">
             </i>
-            <span class="likes-count" data-id="{{ $poem->id }}">{{ $poem->likes->count() }}</span>
+            <span class="likes-count" data-id="{{ $freetext->id }}">{{ $freetext->likes->count() }}</span>
           </div>
         </div>
         <div class="col-lg-12 d-flex flex-row justify-content-start">
-          @if($poem->has_time)
-            <div class="pl-0 py-2 pr-2 text-nowrap"><small>{{ $poem->total_time }}</small> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
+          @if($freetext->has_time)
+            <div class="pl-0 py-2 pr-2 text-nowrap"><small>{{ $freetext->total_time }}</small> <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i></div>
           @endif
-          @if($poem->servings)
-            <div class="p-2 text-nowrap"><small>{{ $poem->servings }} {{ trans_choice('poems.servings',$poem->servings) }}</small> <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i></div>
+          @if($freetext->servings)
+            <div class="p-2 text-nowrap"><small>{{ $freetext->servings }} {{ trans_choice('freetexts.servings',$freetext->servings) }}</small> <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i></div>
           @endif
         </div>
       </div>
     <div class="mb-1 row">
       <div class="col-sm-8">
         <span class="text-muted">
-          @component('users._avatar', ['user' => $poem->author])
+          @component('users._avatar', ['user' => $freetext->author])
           @endcomponent
-          {{ __('poems.poem-by') }}
-          @if($poem->author->trashed())
-            {{ $poem->author->name }}
+          {{ __('freetexts.freetext-by') }}
+          @if($freetext->author->trashed())
+            {{ $freetext->author->name }}
           @else
-            {{ link_to_route('users.show', $poem->author->name, $poem->author) }}
+            {{ link_to_route('users.show', $freetext->author->name, $freetext->author) }}
           @endif  
         </span>
-        @if($poem->has_time)
+        @if($freetext->has_time)
           <div class="mb-1">
-            <small class="text-muted">{{ __('poems.preparation-time') }} : {{ $poem->preparation_time }}</small>
+            <small class="text-muted">{{ __('freetexts.preparation-time') }} : {{ $freetext->preparation_time }}</small>
           </div>
           <div class="mb-1">
-            <small class="text-muted">{{ __('poems.cooking-time') }} : {{ $poem->cooking_time }}</small>
+            <small class="text-muted">{{ __('freetexts.cooking-time') }} : {{ $freetext->cooking_time }}</small>
           </div>
         @endif        
       </div>
 
-      @if($poem->contributors)
+      @if($freetext->contributors)
         <div class="col-sm-4 flex-column text-right plus-tab d-none">
-          <div>{{ __('poems.contributors') }}</div>
+          <div>{{ __('freetexts.contributors') }}</div>
           <div>
-            <span class="text-muted author" data-user-id="{{ $poem->author->id }}">{{ $poem->author->name }}</span>
+            <span class="text-muted author" data-user-id="{{ $freetext->author->id }}">{{ $freetext->author->name }}</span>
           </div> 
-          @foreach($poem->contributors as $user)
+          @foreach($freetext->contributors as $user)
           <div>
             <span class="contributor text-muted contributor" data-user-id="{{ $user->id }}">{{ $user->name }}</span>
           </div> 
@@ -120,23 +120,23 @@
     </table>
         <hr style="height: 1px; color: grey; background-color: black; width: 75%; margin-left: 0px " />
 <!--<hr style="height: 0.5px; color: white; background-color: black; width: 50%; margin-left: 0px " />-->
-    <h4>{{ __('poems.poem') }}</h4>
+    <h4>{{ __('freetexts.freetext') }}</h4>
 
-    <div id="poem" class="translatable" data-id="{{ $poem->id }}" data-type="App\Poem" data-attribute="content">{!! e($poem->content) !!}</div>
+    <div id="freetext" class="translatable" data-id="{{ $freetext->id }}" data-type="App\Freetext" data-attribute="content">{!! e($freetext->content) !!}</div>
     
-    <h4 class="mt-2">{{ __('poems.anecdotes') }}</h4>
+    <h4 class="mt-2">{{ __('freetexts.anecdotes') }}</h4>
     
 
 
     </div>
 
     <div class="col-sm-5">
-      @if($poem->medias->count()>0)
-        @foreach($poem->medias as $medium)
+      @if($freetext->medias->count()>0)
+        @foreach($freetext->medias as $medium)
             <img src="{{ asset($medium->filename) }}" style="width:100%;" />
         @endforeach
       @endif
-      <form id="form-poem" action="{{ route('poems.add-media',$poem) }}" method="POST">
+      <form id="form-freetext" action="{{ route('freetexts.add-media',$freetext) }}" method="POST">
         {{ csrf_field() }}
         <span class="input-group-btn">
           <label class="btn btn-primary btn-sm">
@@ -163,7 +163,7 @@
     </div>
 
     <h5 class="mt-2">Laisser un commentaire</h5>
-    @component('discussion.thread', ['entity' => $poem])
+    @component('discussion.thread', ['entity' => $freetext])
         
     @endcomponent
 
@@ -206,8 +206,8 @@
     <div class="row">
       <div class="col-12" id="annotations" style="position: -webkit-sticky; position: sticky; top: 10%; align-self: flex-start;">
       <div style="padding:1em; border-radius: 1em; background-color: #edf4f7; margin-bottom: 1em">
-        @if($corpus_poem)
-        @foreach($corpus_poem->sentences as $sentence)
+        @if($corpus_freetext)
+        @foreach($corpus_freetext->sentences as $sentence)
           @foreach($sentence->words as $word)
           <div class="word-container" style="display:inline-block;text-align:center;vertical-align: top;">
 
@@ -281,13 +281,13 @@
 
 <script type="text/javascript">
 @php
-$alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
+$alternative_texts = $freetext->alternative_texts()->with('user')->get()->toArray();
 
 
 @endphp
 
     var help = false;
-    var poem_id = {{ $poem->id }};
+    var freetext_id = {{ $freetext->id }};
     var alternative_texts = {!! json_encode($alternative_texts) !!};
     var postags = {!! json_encode($postags) !!};
     var postag = {!! json_encode($postag) !!};
@@ -703,7 +703,7 @@ $alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
         $('#btn-annotation').hide();
         $('#explanation-all-annotated').removeClass('d-none');
         // $(window).scrollTop(0);
-        flagPoemAsAnnotated();
+        flagFreetextAsAnnotated();
       }
 
       if($('.postag[data-difficulty="very-easy"]').length==$('.postag[data-difficulty=very-easy][data-count-todo=0]').length){
@@ -732,8 +732,8 @@ $alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
       } );
     }
 
-    function flagPoemAsAnnotated() {
-      $.post( "{{ route('poems.flag-as-annotated',$poem) }}", function(){
+    function flagFreetextAsAnnotated() {
+      $.post( "{{ route('freetexts.flag-as-annotated',$freetext) }}", function(){
 
       });
     }
@@ -1163,7 +1163,7 @@ $alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
           return false;
         }
         $('#annotation').addClass('d-none');
-        $('#content-poem').removeClass('d-none');
+        $('#content-freetext').removeClass('d-none');
         initPlusTab();
     })
 
@@ -1172,17 +1172,17 @@ $alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
           window.location.href = $(this).attr('href');
           return false;
         }      
-        $('#content-poem').addClass('d-none');
+        $('#content-freetext').addClass('d-none');
         $('#annotation').removeClass('d-none');
     })
 
-    $("#poem-tab").click(function(event) {
+    $("#freetext-tab").click(function(event) {
         $('#annotation').addClass('d-none');
-        $('#content-poem').removeClass('d-none');
+        $('#content-freetext').removeClass('d-none');
         $('.translated').removeClass('highlight-translated');
         $('.plus-tab').addClass('d-none');
         $('.translatable').removeClass('highlight-translatable');
-//        $('#poem').removeClass('translatable'); /* TODO Ajout Alice */
+//        $('#freetext').removeClass('translatable'); /* TODO Ajout Alice */
         showVersionContributor($('#myTab').attr('data-user-id'));
 
     })
@@ -1439,7 +1439,7 @@ td.highlight-translatable {
 .validated {
     background-color: #9dddb2;
 }
-.poem-ingredients {
+.freetext-ingredients {
   position: relative;
 }
 img.no, img.check {

@@ -26,7 +26,7 @@ class AddDeletedAtRecipesTable extends Migration
     public function down()
     {
         Schema::table('recipes', function (Blueprint $table) {
-            //
+            $table->dropColumn('deleted_at')->nullable();
         });
     }
 }

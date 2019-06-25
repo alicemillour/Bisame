@@ -110,6 +110,8 @@
                     <a class="dropdown-item" href="{{ route('recipes.favorite') }}">Mes recettes favorites</a>
                     <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
                     <a class="dropdown-item" href="{{ route('poems.create') }}">Ajouter un poème</a>
+                    <a class="dropdown-item" href="{{ route('proverbs.create') }}">Ajouter un proverbe</a>
+                    <a class="dropdown-item" href="{{ route('freetexts.create') }}">Ajouter un texte libre</a>
 
                 </div>
             </div>

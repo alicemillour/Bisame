@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AnnotatedRecipe extends Model
+class AnnotatedPoem extends Model
 {
-    protected $fillable = ['recipe_id','user_id'];
+    protected $fillable = ['poem_id','user_id'];
 
     public function annotator()
     {

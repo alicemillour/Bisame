@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ValidatedRecipe extends Model
+class ValidatedFreetext extends Model
 {
-    protected $fillable = ['recipe_id','user_id'];
+    protected $fillable = ['freetext_id','user_id'];
 
 }

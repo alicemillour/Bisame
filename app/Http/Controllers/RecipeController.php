@@ -184,7 +184,7 @@ class RecipeController extends Controller {
 
         $this->checkBadge($request, 'recipe', auth()->user()->recipes()->count());
 
-        self::sendMailNewRecipe($recipe);
+//        self::sendMailNewRecipe($recipe);
         
         
         /* Fonctionnalité d'annotation : commenter la ligne ci-dessous pour poursuivre l'exécution i.e. prétraitements et redirection vers l'annotation) */

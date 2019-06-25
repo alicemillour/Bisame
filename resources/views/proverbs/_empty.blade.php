@@ -1,1 +1,1 @@
-{{ __('poems.empty') }}
+{{ __('proverbs.empty') }}

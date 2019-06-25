@@ -18,7 +18,7 @@ class UpdatePoemsTable extends Migration
             $table->date('deleted_at')->nullable();
             $table->unsignedSmallInteger('annotated')->after('user_id')->default(0);
             $table->unsignedSmallInteger('validated')->after('user_id')->default(0);
-            DB::statement('ALTER TABLE recipes MODIFY COLUMN title varchar(400)');
+            DB::statement('ALTER TABLE poems MODIFY COLUMN title varchar(400)');
         });    
         
     }
@@ -29,7 +29,11 @@ class UpdatePoemsTable extends Migration
      * @return void
      */
     public function down()
-    {
-        //
+    {        
+        Schema::table('poems', function (Blueprint $table) {
+
+            $table->dropColumn('annotated')->nullable();
+            $table->dropColumn('validated')->nullable();
+        });
     }
 }

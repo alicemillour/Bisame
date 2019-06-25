@@ -32,6 +32,24 @@
                             </div>
                         </div>
                         <br>
+                        <br>
+                        <div class="card background-colored fancy-border">
+                            <div class="card-body">
+                                <h3 class=" welcome-card-header">Proverbe du jour</h3>
+
+                                @each('proverbs/_show-day', $proverb_of_the_day, 'proverb', 'proverbs/_empty')
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="card background-colored fancy-border">
+                            <div class="card-body">
+                                <h3 class=" welcome-card-header">Texte libre du jour</h3>
+
+                                @each('freetexts/_show-day', $freetext_of_the_day, 'freetext', 'freetexts/_empty')
+                            </div>
+                        </div>
+                        <br>
                         
                         <!--</div>-->
                     </div>

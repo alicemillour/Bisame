@@ -6,7 +6,7 @@
                 <div class="float-right">
                     <i class="fa fa-heart likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
                        @auth
-                       @if(Auth::user()->likesEntity($poem))
+                       @if(Auth::user()->likesEntity($proverb))
                        Vous aimez cette recette
                        @else
                        Aimer cette recette  
@@ -14,46 +14,46 @@
                        @else
                        Veuillez vous connecter pour aimer une recette
                        @endauth
-                       " data-type="App\Recipe" data-id="{{ $poem->id }}">
+                       " data-type="App\Recipe" data-id="{{ $proverb->id }}">
                     </i>
-                    <span class="likes-count" data-id="{{ $poem->id }}">{{ $poem->likes_count }}</span>
+                    <span class="likes-count" data-id="{{ $proverb->id }}">{{ $proverb->likes_count }}</span>
                     <br/>
-                    @if($poem->validated)
+                    @if($proverb->validated)
                     <img class="" style="width:20px;" src="{{ asset('img/badges/colored-laurel.svg') }}" />
-                    if($poem->annotated)
+                    if($proverb->annotated)
                     <img class="" style="width:20px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
                     @endif
                 </div>
-                @if($poem->medias->count()>0)
-                <img src="{{ asset($poem->medias->first()->filename) }}" style="width:100%;" />
+                @if($proverb->medias->count()>0)
+                <img src="{{ asset($proverb->medias->first()->filename) }}" style="width:100%;" />
                 @endif
 
             </div>
-            <h4>{{ link_to_route('poems.show', $poem->title, $poem) }}</h4>
+            <h4>{{ link_to_route('proverbs.show', $proverb->title, $proverb) }}</h4>
         </div>
         <p class="card-text">
             <span class="text-muted">
-                @component('users._avatar', ['user' => $poem->author])
+                @component('users._avatar', ['user' => $proverb->author])
 
                 @endcomponent
-                {{ __('poems.poem-by') }}
-                @if($poem->author->trashed())
-                {{ $poem->author->name }}
+                {{ __('proverbs.proverb-by') }}
+                @if($proverb->author->trashed())
+                {{ $proverb->author->name }}
                 @else
-                {{ link_to_route('users.show', $poem->author->name, $poem->author) }}
+                {{ link_to_route('users.show', $proverb->author->name, $proverb->author) }}
                 @endif			
             </span>
         </p>
 
-        <div class="card-text text-truncate">{{ $poem->content }}</div>
-        <div class="card-text text-right">{{ link_to_route('poems.show', "lire la suite...", $poem) }}</div>
+        <div class="card-text text-truncate">{{ $proverb->content }}</div>
+        <div class="card-text text-right">{{ link_to_route('proverbs.show', "lire la suite...", $proverb) }}</div>
         
         <!-- Fonctionnalité annotation : décommenter ci-dessous -->
         <div class="card-text text-right">
-            @if(!$poem->annotated)
-            <a href="{{ route('poems.annotations', $poem) }}"  class="btn annotate-button active-button">Annoter la recette</a>
-            @elseif(!$poem->validated)
-            <a href="{{ route('poems.annotations', $poem) }}"  class="btn validate-button active-button">Valider la recette</a>
+            @if(!$proverb->annotated)
+            <a href="{{ route('proverbs.annotations', $proverb) }}"  class="btn annotate-button active-button">Annoter la recette</a>
+            @elseif(!$proverb->validated)
+            <a href="{{ route('proverbs.annotations', $proverb) }}"  class="btn validate-button active-button">Valider la recette</a>
             @endif
         </div>
         <!-- Fonctionnalité annotation -->
