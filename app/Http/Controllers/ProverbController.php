@@ -204,7 +204,7 @@ class ProverbController extends Controller {
 
         /* Création corpus */
         Corpus::create([
-            'name' => $corpus_name,
+            'name' => 'proverb_' . $corpus_name,
         ]);
 
         /* Seed words */
@@ -379,7 +379,7 @@ class ProverbController extends Controller {
      */
     public function show(Proverb $proverb, Request $request) {
         // $proverb = Proverb::findOrFail($id);
-        $corpus_proverb = Corpus::where('name', 'like', $proverb->id . '_%')->first();
+        $corpus_proverb = Corpus::where('name', 'like', 'proverb_' . $proverb->id . '_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'proverb';
 

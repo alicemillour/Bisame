@@ -204,7 +204,7 @@ class PoemController extends Controller {
 
         /* Création corpus */
         Corpus::create([
-            'name' => $corpus_name,
+            'name' => 'poem_' . $corpus_name,
         ]);
 
         /* Seed words */
@@ -379,7 +379,7 @@ class PoemController extends Controller {
      */
     public function show(Poem $poem, Request $request) {
         // $poem = Poem::findOrFail($id);
-        $corpus_poem = Corpus::where('name', 'like', $poem->id . '_%')->first();
+        $corpus_poem = Corpus::where('name', 'like', 'poem_' . $poem->id . '_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'poem';
 

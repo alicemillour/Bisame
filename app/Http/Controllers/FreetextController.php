@@ -204,7 +204,7 @@ class FreetextController extends Controller {
 
         /* Création corpus */
         Corpus::create([
-            'name' => $corpus_name,
+            'name' => 'freetext_' . $corpus_name,
         ]);
 
         /* Seed words */
@@ -379,7 +379,9 @@ class FreetextController extends Controller {
      */
     public function show(Freetext $freetext, Request $request) {
         // $freetext = Freetext::findOrFail($id);
-        $corpus_freetext = Corpus::where('name', 'like', $freetext->id . '_%')->first();
+        $corpus_freetext = Corpus::where('name', 'like', 'freetext_' . $freetext->id . '_%')->first();
+        Log::debug('corpus freetext id' . $freetext->id);
+        Log::debug($corpus_freetext);
         $postags = Postag::orderBy('order')->get();
         $tab = 'freetext';
 

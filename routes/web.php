@@ -86,12 +86,12 @@ Route::get('poems/to-annotate', 'PoemController@toAnnotate')->name('poems.to-ann
 Route::get('poems/add-alt-version', 'PoemController@addAltVersion')->name('poems.add-alt-version');
 Route::get('poems/to-validate', 'PoemController@toValidate')->name('poems.to-validate');
 Route::post('poems/add-anecdote', 'PoemController@addAnecdote');
-Route::post('poems/{recipe}/add-media', 'PoemController@addMedia')->name('poems.add-media');
-Route::post('poems/{recipe}/annotated', 'PoemController@flagAsAnnotated')->name('poems.flag-as-annotated');
-Route::post('poems/{recipe}/validated', 'PoemController@flagAsValidated')->name('poems.flag-as-validated');
+Route::post('poems/{poem}/add-media', 'PoemController@addMedia')->name('poems.add-media');
+Route::post('poems/{poem}/annotated', 'PoemController@flagAsAnnotated')->name('poems.flag-as-annotated');
+Route::post('poems/{poem}/validated', 'PoemController@flagAsValidated')->name('poems.flag-as-validated');
 
-Route::get('poems/{recipe}/alternative-versions', 'PoemController@alternativeVersions')->name('poems.alternative-versions');
-Route::get('poems/{recipe}/annotations', 'PoemController@annotations')->name('poems.annotations');
+Route::get('poems/{poem}/alternative-versions', 'PoemController@alternativeVersions')->name('poems.alternative-versions');
+Route::get('poems/{poem}/annotations', 'PoemController@annotations')->name('poems.annotations');
 Route::resource('poems', 'PoemController');
 Route::get('poems/user/{user}', 'PoemController@user')->name('poems.user');
 
@@ -102,12 +102,12 @@ Route::get('freetexts/to-annotate', 'FreetextController@toAnnotate')->name('free
 Route::get('freetexts/add-alt-version', 'FreetextController@addAltVersion')->name('freetexts.add-alt-version');
 Route::get('freetexts/to-validate', 'FreetextController@toValidate')->name('freetexts.to-validate');
 Route::post('freetexts/add-anecdote', 'FreetextController@addAnecdote');
-Route::post('freetexts/{recipe}/add-media', 'FreetextController@addMedia')->name('freetexts.add-media');
-Route::post('freetexts/{recipe}/annotated', 'FreetextController@flagAsAnnotated')->name('freetexts.flag-as-annotated');
-Route::post('freetexts/{recipe}/validated', 'FreetextController@flagAsValidated')->name('freetexts.flag-as-validated');
+Route::post('freetexts/{freetext}/add-media', 'FreetextController@addMedia')->name('freetexts.add-media');
+Route::post('freetexts/{freetext}/annotated', 'FreetextController@flagAsAnnotated')->name('freetexts.flag-as-annotated');
+Route::post('freetexts/{freetext}/validated', 'FreetextController@flagAsValidated')->name('freetexts.flag-as-validated');
 
-Route::get('freetexts/{recipe}/alternative-versions', 'FreetextController@alternativeVersions')->name('freetexts.alternative-versions');
-Route::get('freetexts/{recipe}/annotations', 'FreetextController@annotations')->name('freetexts.annotations');
+Route::get('freetexts/{freetext}/alternative-versions', 'FreetextController@alternativeVersions')->name('freetexts.alternative-versions');
+Route::get('freetexts/{freetext}/annotations', 'FreetextController@annotations')->name('freetexts.annotations');
 Route::resource('freetexts', 'FreetextController');
 Route::get('freetexts/user/{user}', 'FreetextController@user')->name('freetexts.user');
 
@@ -118,12 +118,12 @@ Route::get('proverbs/to-annotate', 'ProverbController@toAnnotate')->name('prover
 Route::get('proverbs/add-alt-version', 'ProverbController@addAltVersion')->name('proverbs.add-alt-version');
 Route::get('proverbs/to-validate', 'ProverbController@toValidate')->name('proverbs.to-validate');
 Route::post('proverbs/add-anecdote', 'ProverbController@addAnecdote');
-Route::post('proverbs/{recipe}/add-media', 'ProverbController@addMedia')->name('proverbs.add-media');
-Route::post('proverbs/{recipe}/annotated', 'ProverbController@flagAsAnnotated')->name('proverbs.flag-as-annotated');
-Route::post('proverbs/{recipe}/validated', 'ProverbController@flagAsValidated')->name('proverbs.flag-as-validated');
+Route::post('proverbs/{proverb}/add-media', 'ProverbController@addMedia')->name('proverbs.add-media');
+Route::post('proverbs/{proverb}/annotated', 'ProverbController@flagAsAnnotated')->name('proverbs.flag-as-annotated');
+Route::post('proverbs/{proverb}/validated', 'ProverbController@flagAsValidated')->name('proverbs.flag-as-validated');
 
-Route::get('proverbs/{recipe}/alternative-versions', 'ProverbController@alternativeVersions')->name('proverbs.alternative-versions');
-Route::get('proverbs/{recipe}/annotations', 'ProverbController@annotations')->name('proverbs.annotations');
+Route::get('proverbs/{proverb}/alternative-versions', 'ProverbController@alternativeVersions')->name('proverbs.alternative-versions');
+Route::get('proverbs/{proverb}/annotations', 'ProverbController@annotations')->name('proverbs.annotations');
 Route::resource('proverbs', 'ProverbController');
 Route::get('proverbs/user/{user}', 'ProverbController@user')->name('proverbs.user');
 
