@@ -9,6 +9,8 @@ use App\Repositories\UserRepository;
 use App\Jobs\ChangeLocale;
 use App\Recipe;
 use App\Poem;
+use App\Freetext;
+use App\Proverb;
 use App\Traits\Badgeable;
 use App\User;
 use Auth,
