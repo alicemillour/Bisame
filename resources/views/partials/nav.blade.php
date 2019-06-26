@@ -100,33 +100,40 @@
                 </ul>
             </div>
             @endif
+
             <div class="dropdown">
                 <a class="btn btn-navbar btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Actions
+                    Ajouter un texte
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('recipes.index') }}">Toutes les recettes</a>
-                    <a class="dropdown-item" href="{{ route('recipes.favorite') }}">Mes recettes favorites</a>
                     <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
                     <a class="dropdown-item" href="{{ route('poems.create') }}">Ajouter un poème</a>
                     <a class="dropdown-item" href="{{ route('proverbs.create') }}">Ajouter un proverbe</a>
                     <a class="dropdown-item" href="{{ route('freetexts.create') }}">Ajouter un texte libre</a>
-
                 </div>
             </div>
+            
+            
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-navbar btn-link" href="{{ route('recipes.to-annotate') }}"
+                        <i class="fa fa-home" aria-hidden="true"></i> Annoter un texte
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-navbar btn-link" href="{{ route('recipes.add-alt-version') }}"
+                        <i class="fa fa-home" aria-hidden="true"></i> Ajouter des variantes
+                    </a>
+                </li>
+            </ul>
 
-            <div class="dropdown">
-                <a class="btn btn-navbar btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Contribuer
-                </a>
+            
+         
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
-                    <a class="dropdown-item" href="{{ route('recipes.to-annotate') }}">Annoter une recette</a>
-                    <a class="dropdown-item" href="{{ route('recipes.add-alt-version') }}">Ajouter des variantes</a>
-                </div>
-            </div>
 
             <!--<ul class="navbar-nav mt-2 mt-lg-0">-->
             @if (!Auth::check())
