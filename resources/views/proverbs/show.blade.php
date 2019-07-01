@@ -30,7 +30,7 @@
       <ul class="nav nav-tabs" id="myTab" data-user-id="" role="tablist">
   @endif
     <li class="nav-item">
-      <a class="nav-link page-title active" id="proverb-tab" data-toggle="tab" href="#proverb" role="tab" aria-controls="home" aria-selected="true">Voir la recette</a>
+      <a class="nav-link page-title active" id="proverb-tab" data-toggle="tab" href="#proverb" role="tab" aria-controls="home" aria-selected="true">Voir le proverbe</a>
     </li>
     <li class="nav-item">
       <a class="nav-link page-title" id="plus-tab" data-toggle="tab" href="{{ route('proverbs.alternative-versions',['proverbs'=>$proverb]) }}?tab=plus" role="tab" aria-controls="plus" aria-selected="false">Moi je l'aurais dit comme ça !</a>
@@ -189,7 +189,7 @@
         @if($annotator_to_validate)
         <h4 id="message" class="mb-2 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
         @else
-        <h4 id="message" class="mb-2 explanation">  Cette recette fait désormais partie de notre base de textes en {{ trans('home.langue') }} !  <br> 
+        <h4 id="message" class="mb-2 explanation">  Cette recette fait désormais partie de notre base de textes  {{ trans('home.precision_langue') }} !  <br> 
             Notre outil a tenté de deviner les catégories grammaticales des mots de cette recette... Voici le résultat :</h4>
         @endif
 

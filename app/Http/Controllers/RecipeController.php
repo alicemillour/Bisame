@@ -397,7 +397,7 @@ class RecipeController extends Controller {
      */
     public function show(Recipe $recipe, Request $request) {
         // $recipe = Recipe::findOrFail($id);
-        $corpus_recipe = Corpus::where('name', 'like', $recipe->id . '_%')->first();
+        $corpus_recipe = Corpus::where('name', 'like', 'recipe_' . $recipe->id . '_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'recipe';
 

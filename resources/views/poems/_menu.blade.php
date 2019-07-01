@@ -7,7 +7,7 @@
 			@each('poems/_show-welcome', $poems_to_annotate, 'poem', 'poems/_empty')
 		</div>
 	    <div class="card-footer text-right">
-	      <a href="{{ route('poems.to-annotate') }}" class="">Voir toutes les recettes à annoter</a>
+	      <a href="{{ route('poems.to-annotate') }}" class="">Voir tous les poèmes à annoter</a>
 	    </div>
 	</div>
 @endif
@@ -19,7 +19,7 @@
 		@each('poems/_show-welcome', $annotated_poems, 'poem', 'poems/_empty')
 	</div>
     <div class="card-footer text-right">
-      <a href="{{ route('poems.to-validate') }}" class="">Voir toutes les recettes à valider</a>
+      <a href="{{ route('poems.to-validate') }}" class="">Voir tous les poèmes à valider</a>
     </div>
 </div>
 @endif
