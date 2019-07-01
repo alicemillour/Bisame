@@ -49,7 +49,7 @@ available_languages = ['fr', 'en', 'gsw', 'any', 'gcf','mfe']
 always_sep = r'(\?|¿|!|;|\*|¤|°|\||¦|\(|\)|\\|\[|\]|\{|_|"|“|”|«|»|„|&|#|~|=|—|\+|–|©|―|®|–)'
 #Language-dependent regular expressions
 begin_sep = {'fr' : r"(``|`|‘|[cdjlmnst]'|[cdjlmnst]`|[cdjlmnst]’|[cdjlmnst]´|[cdjlmnst]‘|lorsqu'|jusqu'|qu'|lorsqu`|jusqu`|qu`|lorsqu´|jusqu´|qu´|lorsqu’|jusqu’|qu’|lorsqu‘|jusqu‘|qu‘)", \
-            'en' : r"(``|`|‘)", \ 
+            'en' : r"(``|`|‘)", \
             'mfe' : r"(``|`|‘)", \
             'gsw' : r"(``|[ds]'(?!r )|[ds]`(?!r )|[ds]’(?!r )|[ds]´(?!r )|[ds]‘(?!r )|z'|z`|z’|z´|z‘)", \
             'any' : r"(``|`|‘)", \
