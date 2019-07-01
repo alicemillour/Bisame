@@ -10,19 +10,9 @@ echo "$2\n";
 
 filename=$(basename "$2" .txt)
 
-python3 "$1/py_tokeniser.py" -f csv gsw utf-8 $2
+python3 "$1/py_tokeniser.py" -f csv mfe utf-8 $2
 
 
-# recoller les M’r et m’r (guillemet particulier)
-sed -i   's/\(^[M|m]\| [m|M]\) ’r/\1’r /g' $2.tok
-sed -i   "s/\(^[M|m]\| [m|M]\) 'r/\1'r /g" $2.tok
-# recoller les  ’s et  ‘s  (guillemets particuliers)    
-sed -i   's/ ’ s / ’s /g' $2.tok
-sed -i   's/^’ s /’s /g' $2.tok
-sed -i   's/ ‘ s / ‘s /g' $2.tok
-sed -i   's/^‘ s /‘s /g' $2.tok
-# suppression des balises
-sed -i   's/<\([a-zA-Z /]*\)>//g' $2.tok
 # Points virgule (temporaire)
 # sed -i   's/;/POINT_VIRGULE/g' $2.tok
 # suppression lignes vides

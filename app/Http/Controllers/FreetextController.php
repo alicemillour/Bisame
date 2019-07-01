@@ -185,7 +185,7 @@ class FreetextController extends Controller {
         /* tokénisation */
         /* stage 1 : create a raw file with freetext content */
         $filename = preg_replace('/\W+/', '_', $request->input('title'));
-        $corpus_name = $freetext->id . "_" . $filename;
+        $corpus_name = "freetext_" . $freetext->id . "_" . $filename;
         Storage::put(App::getLocale().'/corpus/raw/recipes/' . $filename . ".txt", $request->input('content'));
         /* stage 2 : create the tokenized file from raw */
         
@@ -204,7 +204,7 @@ class FreetextController extends Controller {
 
         /* Création corpus */
         Corpus::create([
-            'name' => 'freetext_' . $corpus_name,
+            'name' => $corpus_name,
         ]);
 
         /* Seed words */
@@ -278,7 +278,7 @@ class FreetextController extends Controller {
         Log::debug("commande : " . $command);
         $process = new Process($command);
         $process->run();
-        // executes after the command finishes
+        // executes after the command finishes1
         if (!$process->isSuccessful()) {
             Log::debug("process failed !!!");
             throw new ProcessFailedException($process);

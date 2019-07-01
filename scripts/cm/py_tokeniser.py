@@ -40,7 +40,7 @@ __author__ = "Delphine Bernhard <Delphine.Bernhard@unistra.fr>"
 __date__ = "2005"
 __revision__ = "$Id$"
 
-available_languages = ['fr', 'en', 'gsw', 'any', 'gcf']
+available_languages = ['fr', 'en', 'gsw', 'any', 'gcf','mfe']
 
 #The regular expressions here have been inspired from Gregory Grefenstette's 
 # Corpora List Message dated Fri, 16 Oct 1998 
@@ -49,7 +49,8 @@ available_languages = ['fr', 'en', 'gsw', 'any', 'gcf']
 always_sep = r'(\?|¿|!|;|\*|¤|°|\||¦|\(|\)|\\|\[|\]|\{|_|"|“|”|«|»|„|&|#|~|=|—|\+|–|©|―|®|–)'
 #Language-dependent regular expressions
 begin_sep = {'fr' : r"(``|`|‘|[cdjlmnst]'|[cdjlmnst]`|[cdjlmnst]’|[cdjlmnst]´|[cdjlmnst]‘|lorsqu'|jusqu'|qu'|lorsqu`|jusqu`|qu`|lorsqu´|jusqu´|qu´|lorsqu’|jusqu’|qu’|lorsqu‘|jusqu‘|qu‘)", \
-            'en' : r"(``|`|‘)", \
+            'en' : r"(``|`|‘)", \ 
+            'mfe' : r"(``|`|‘)", \
             'gsw' : r"(``|[ds]'(?!r )|[ds]`(?!r )|[ds]’(?!r )|[ds]´(?!r )|[ds]‘(?!r )|z'|z`|z’|z´|z‘)", \
             'any' : r"(``|`|‘)", \
 	    'gcf' : r"(si'|.{5}')"}
@@ -57,14 +58,17 @@ end_sep = {'fr' : r"(-|'|’|:|‚|-ce|-ci|-elle|-elles|-en|-il|-ils|-je|-la|-l�
             'en' : r"(-|'|’|,|:|‚|'[dms]|’[dms]|‘[dms]|`[dms]|´[dms]|'em|'ll|'re|'ve|’em|’ll|’re|’ve|‘em|‘ll|‘re|‘ve|`em|`ll|`re|`ve|´em|´ll|´re|´ve|n't|n’t|n‘t|n`t)", \
             'gcf' : r"(-lasa|-la)", \
             'gsw' : r"(?<!d)(-|,|:|'[mrs]|’[mrs]|‘[mrs]|`[mrs]|´[mrs])", \
+            'mfe' : r"(-|'|’|,|:)", \
             'any' : r"(-|'|’|,|:)"}
 numbers = {'fr' : r'(<|>)?([0-9]+[ |.]?)+[0-9]?([,][0-9]+)?', \
             'en' : r'(\$|£|<|>|¥)?([0-9]+[,]?)+((\.)?([0-9])+)*([-](\w|-|\.)*)*', \
             'gsw' : r'^(<|>)?([0-9IVXLCDM]+[ |.]?)+[0-9]?([,][0-9]+)?$',\
+            'mfe' : r'([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?',\
             'any' : r'([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?'}
 abbrev1 = {'fr' : r'(st\.|co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|fig\.|no\.|jan\.|fev\.|juil\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|sen\.|gen\.|rev\.|gov\.|al\.|ap\.|apr\.|av\.|ave\.|bd\.|boul\.|mar\.|mer\.|me\.|messrs\.|mlle\.|mme\.|no\.)', \
             'en' : r'(st\.|co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|fig\.|no\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|sen\.|gen\.|rev\.|gov\.|al\.|mt\.)', \
             'gsw' : r'(co\.|ca\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.|frz\.|bask\.|pl\.|off\.|dt\.|bzw\.|Bd\.|Allg\.)', \
+            'mfe' : r'(co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.)', \
             'any' : r'(co\.|corp\.|vs\.|e\.g\.|etc\.|ex\.|cf\.|eg\.|jan\.|feb\.|mar\.|apr\.|jun\.|jul\.|aug\.|sep\.|sept\.|oct\.|nov\.|dec\.|ed\.|eds\.|repr\.|trans\.|vol\.|vols\.|rev\.|est\.|b\.|m\.|bur\.|d\.|r\.|dept\.|mm\.|u\.|mr\.|jr\.|ms\.|mme\.|mrs\.|dr\.)'}
 #End of language-dependent regular expressions
 abbrev2 = r'(\w\.(\w\.)*)'

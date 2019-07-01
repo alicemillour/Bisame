@@ -185,7 +185,7 @@ class PoemController extends Controller {
         /* tokénisation */
         /* stage 1 : create a raw file with poem content */
         $filename = preg_replace('/\W+/', '_', $request->input('title'));
-        $corpus_name = $poem->id . "_" . $filename;
+        $corpus_name = "poem_" . $poem->id . "_" . $filename;
         Storage::put(App::getLocale().'/corpus/raw/recipes/' . $filename . ".txt", $request->input('content'));
         /* stage 2 : create the tokenized file from raw */
         
@@ -204,7 +204,7 @@ class PoemController extends Controller {
 
         /* Création corpus */
         Corpus::create([
-            'name' => 'poem_' . $corpus_name,
+            'name' => $corpus_name,
         ]);
 
         /* Seed words */

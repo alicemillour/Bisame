@@ -154,7 +154,7 @@
                     {!! Form::open(['route' => 'recipes.search', 'method' => 'get']) !!}
                     <div class="d-flex flex-row justify-content-md-center">
                         <div class="mr-3">
-                            <input type="text" name="search" class="form-control" placeholder="Trouver une recette..." />
+                            <input type="text" name="search" class="form-control" placeholder="Trouver un texte..." />
                         </div>
                         <div class="mr-3">
                             <button type="submit" class=" btn btn link" style="color:white; background-color: black; border-color:white; border-width: 1px  "><i class="fa fa-search"></i></button>

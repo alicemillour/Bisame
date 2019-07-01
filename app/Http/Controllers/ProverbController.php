@@ -185,7 +185,7 @@ class ProverbController extends Controller {
         /* tokénisation */
         /* stage 1 : create a raw file with proverb content */
         $filename = preg_replace('/\W+/', '_', $request->input('title'));
-        $corpus_name = $proverb->id . "_" . $filename;
+        $corpus_name = "proverb_" . $proverb->id . "_" . $filename;
         Storage::put(App::getLocale().'/corpus/raw/recipes/' . $filename . ".txt", $request->input('content'));
         /* stage 2 : create the tokenized file from raw */
         
@@ -204,7 +204,7 @@ class ProverbController extends Controller {
 
         /* Création corpus */
         Corpus::create([
-            'name' => 'proverb_' . $corpus_name,
+            'name' => $corpus_name,
         ]);
 
         /* Seed words */
