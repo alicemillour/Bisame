@@ -135,6 +135,36 @@ class UserRepository extends ResourceRepository {
                     ->groupBy('users.id')
                     ->orderBy('recipe_count', 'desc')
                     ->where('is_admin', '=', '0')->take(10)->get();
+    }    
+    
+    public function get_best_users_by_poems_nb() {
+        return User::join("poems", function($join) {
+                                $join->on("poems.user_id", "=", "users.id")->whereNull('poems.deleted_at');
+                            })
+                    ->select(DB::raw('count(*) as poem_count, users.name'))
+                    ->groupBy('users.id')
+                    ->orderBy('poem_count', 'desc')
+                    ->where('is_admin', '=', '0')->take(10)->get();
+    }   
+    
+    public function get_best_users_by_freetexts_nb() {
+        return User::join("freetexts", function($join) {
+                                $join->on("freetexts.user_id", "=", "users.id")->whereNull('freetexts.deleted_at');
+                            })
+                    ->select(DB::raw('count(*) as freetext_count, users.name'))
+                    ->groupBy('users.id')
+                    ->orderBy('freetext_count', 'desc')
+                    ->where('is_admin', '=', '0')->take(10)->get();
+    }   
+    
+    public function get_best_users_by_proverbs_nb() {
+        return User::join("proverbs", function($join) {
+                                $join->on("proverbs.user_id", "=", "users.id")->whereNull('proverbs.deleted_at');
+                            })
+                    ->select(DB::raw('count(*) as proverb_count, users.name'))
+                    ->groupBy('users.id')
+                    ->orderBy('proverb_count', 'desc')
+                    ->where('is_admin', '=', '0')->take(10)->get();
     }
 
     public function get_best_users_by_quantity() {

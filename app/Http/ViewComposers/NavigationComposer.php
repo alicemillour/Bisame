@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use DB;
 use App\Recipe;
+use App\Poem;
+use App\Freetext;
+use App\Proverb;
 use App\Word;
 use App\AnnotatedRecipe;
 use App\AlternativeText;
@@ -58,6 +61,9 @@ class NavigationComposer {
             $view->with('nb_total_users', $this->userRepository->get_users_count()['count']);
         }
         $view->with('nb_recipes', Recipe::count());
+        $view->with('nb_proverbs', Proverb::count());
+        $view->with('nb_freetexts', Freetext::count());
+        $view->with('nb_poems', Poem::count());
         $view->with('nb_words', $this->wordRepository->get_distinct_word_in_recipes());
         $view->with('nb_recipe_words_annotated', DB::select(DB::raw('SELECT count(words.id) as count from words, sentences, corpora, annotated_recipes where corpora.name like concat(annotated_recipes.recipe_id, "_%") and 
 words.sentence_id=sentences.id and sentences.corpus_id=corpora.id;'))['0']->count);

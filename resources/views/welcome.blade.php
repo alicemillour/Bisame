@@ -198,6 +198,9 @@
                         <ul class="nav nav-tabs" id="scoreboards">
                             <!-- Fonctionnalité annotation : décommenter ci-dessous -->
                             <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
+                            <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#poems"> Poèmes </a></li>
+                            <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#proverbs"> Proverbes </a></li>
+                            <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#freetexts"> Textes libres </a></li>
                             <li class="nav-item" style="font-size: 1em;" ><a class="nav-link active" data-toggle="pill" style="color:black" href="#annotations"> Annotations </a></li>
                             <!-- Fonctionnalité annotation : commenter ci-dessous -->
                             <!--<li class="nav-item" style="font-size: 1em;" ><a class="nav-link active"  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>-->
@@ -217,6 +220,60 @@
                                         
                                         @else
                                         <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->recipe_count)}}&nbsp;recettes)
+                                        </div>
+                                        
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="poems" class="tab-pane in active">
+                                <div class="scoreboard_pannel">
+                                    <div class="score" style="color:black;">
+                                        @foreach($top5_nb_poems as $key=>$user)
+                                        @if($key == 0)
+                                        <div  style="font-size: 2em;"> {{$key + 1}}.  @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->poem_count)}}&nbsp;poèmes)
+                                        </div>
+                                        
+                                        @else
+                                        <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->poem_count)}}&nbsp;poèmes)
+                                        </div>
+                                        
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="proverbs" class="tab-pane in active">
+                                <div class="scoreboard_pannel">
+                                    <div class="score" style="color:black;">
+                                        @foreach($top5_nb_proverbs as $key=>$user)
+                                        @if($key == 0)
+                                        <div  style="font-size: 2em;"> {{$key + 1}}.  @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->proverb_count)}}&nbsp;proverbes)
+                                        </div>
+                                        
+                                        @else
+                                        <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->proverb_count)}}&nbsp;proverbes)
+                                        </div>
+                                        
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="freetexts" class="tab-pane in active">
+                                <div class="scoreboard_pannel">
+                                    <div class="score" style="color:black;">
+                                        @foreach($top5_nb_freetexts as $key=>$user)
+                                        @if($key == 0)
+                                        <div  style="font-size: 2em;"> {{$key + 1}}.  @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->freetext_count)}}&nbsp;textes libres)
+                                        </div>
+                                        
+                                        @else
+                                        <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->freetext_count)}}&nbsp;textes libres)
                                         </div>
                                         
                                         @endif
