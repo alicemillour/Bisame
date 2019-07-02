@@ -9,7 +9,7 @@
                         <a href="{{ route('words.show', $word) }}" style="display:none"> {{$word->value}}</a>
             @endforeach
 @else 
-Ajoutez une recette pour créer votre nuage de mots !
+Ajoutez un texte pour créer votre nuage de mots !
 @endif
 @else
 Authentifiez-vous pour découvrir votre nuage de mots !

@@ -69,14 +69,16 @@ class WordRepository extends ResourceRepository {
    
     public function get_50words_in_recipes(){
         //getting de list of corpora ids of non deleted recipes
-        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 1) as recipe_id"))
-                ->where('corpora.name','rlike','[0-9]_.*');
-                Log::debug("getting recipe corpora");
+        $sub= Corpus::select(DB::raw(""
+                . "id as real_corpus_id,"
+                . "SUBSTRING_INDEX(SUBSTRING(name,LOCATE('_', name)+1,LENGTH(name)), '_', 1) as recipe_id"))
+                ;
+        Log::debug("getting corpora");
         Log::debug($sub->get());
         $list = DB::table(DB::raw("({$sub->toSql()}) as data"))
         ->mergeBindings($sub->getQuery())
-        ->join('recipes', 'recipes.id', '=', 'recipe_id')
-        ->whereNull('recipes.deleted_at')
+//        ->join('recipes', 'recipes.id', '=', 'recipe_id')
+//        ->whereNull('recipes.deleted_at')
         ->select('real_corpus_id')->pluck('real_corpus_id');
         
         Log::debug($this->word->select('words.*')
@@ -84,21 +86,25 @@ class WordRepository extends ResourceRepository {
                 ->join('corpora', 'corpus_id', '=', 'corpora.id')->whereIn('corpora.id', $list)
                 ->whereRaw("value NOT REGEXP '^([[:punct:]]|„|“|\\\*)$'")
                 ->orderBy(DB::raw('RAND()'))
-                ->where('corpora.name','rlike','[0-9].*')->get()->count());
+                ->get()->count());
 
         return($this->word->select('words.*')
                 ->join('sentences', 'sentence_id', '=', 'sentences.id')
                 ->join('corpora', 'corpus_id', '=', 'corpora.id')->whereIn('corpora.id', $list)
                 ->whereRaw("value NOT REGEXP '^([[:punct:]]|„|“|\\\*)$'")
                 ->orderBy(DB::raw('RAND()'))
-                ->where('corpora.name','rlike','[0-9].*')->take(150)->get());
+                ->take(150)->get());
     }
     
     public function get_words_in_recipes_by_user($user_id){
-        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 1) as custom_corpus_id"))
-                ->where('corpora.name','rlike','[0-9]_.*');
-        Log::debug("getting recipe corpora");
-        Log::debug($sub->get());
+        $sub= Corpus::select(DB::raw(""
+                . "id as real_corpus_id,"
+                . "SUBSTRING_INDEX(SUBSTRING(name,LOCATE('_', name)+1,LENGTH(name)), '_', 1) as custom_corpus_id"))
+                ;
+//        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 2) as custom_corpus_id"))
+//                ->where('corpora.name','rlike','[0-9]_.*');
+//        Log::debug("words in recipes by users recipe corpora");
+//        Log::debug($sub->get());
         
         $data = DB::table(DB::raw("({$sub->toSql()}) as data"))
         ->mergeBindings($sub->getQuery())
