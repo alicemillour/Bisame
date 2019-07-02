@@ -3,7 +3,7 @@
 return array (
   'app-name' => 'AYO !',
   'all' => 'Toutes les recettes',
-  'text-intro' => 'Proposez ou consultez des recettes en créole guadeloupéen.',
+  'text-intro' => 'Proposez ou consultez des recettes en morisien.',
   'new-recipe' => 'Ajouter une recette',
   'last-recipes' => 'Livre de recettes',
   'recipe' => 'Recette',

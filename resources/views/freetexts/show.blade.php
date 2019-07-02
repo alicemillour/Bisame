@@ -59,12 +59,12 @@
             <i class="fa fa-heart fa-2x likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
             @auth
                 @if(Auth::user()->likesEntity($freetext))
-                  Vous aimez cette recette
+                  Vous aimez ce texte libre
                 @else
-                  Aimer cette recette  
+                  Aimer ce texte libre  
                 @endif
             @else
-              Veuillez vous connecter pour aimer cette recette
+              Veuillez vous connecter pour aimer ce texte libre
             @endauth
             " data-type="App\Freetext" data-id="{{ $freetext->id }}">
             </i>
@@ -189,8 +189,8 @@
         @if($annotator_to_validate)
         <h4 id="message" class="mb-2 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
         @else
-        <h4 id="message" class="mb-2 explanation">  Cette recette fait désormais partie de notre base de textes  {{ trans('home.precision_langue') }} !  <br> 
-            Notre outil a tenté de deviner les catégories grammaticales des mots de cette recette... Voici le résultat :</h4>
+        <h4 id="message" class="mb-2 explanation">  Ce texte libre fait désormais partie de notre base de textes  {{ trans('home.precision_langue') }} !  <br> 
+            Notre outil a tenté de deviner les catégories grammaticales des mots de ce texte libre... Voici le résultat :</h4>
         @endif
 
 
@@ -256,7 +256,7 @@
         @endif
         <button class="btn play-button active-button center-button" id="btn-annotation">Améliorer ce résultat</button>
       @else
-        <alert>Aucune annotation pour cette recette.</alert>
+        <alert>Aucune annotation pour ce texte libre.</alert>
       @endif
 
       </div>

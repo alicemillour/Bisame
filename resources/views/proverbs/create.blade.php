@@ -22,13 +22,14 @@
             @endif
             
 
-            {!! Form::control('text', 'col-12', 'title', $errors, null, null, null, __($type.'.title')) !!}
+            <!--{!! Form::control('text', 'col-12', 'title', $errors, null, null, null, __($type.'.title')) !!}-->
             
             
             {{ trans($type.'.titre-texte') }}
+            
             <div class="form-group col-12 mt-3">
-                {!! Form::textarea('content', null, array('class' => 'form-control', 'id' => 'content', 'placeholder'=>__($type.'.placeholder-description')) ) !!}
-            </div>
+                {!! Form::textarea('content', null, array('class' => 'form-control', 'rows' => 3, 'id' => 'content', 'placeholder'=>__($type.'.placeholder-description')) ) !!}
+            </div>  
 
             @if($errors->has('content'))
             <span class="invalid-feedback">{{ $errors->first('content') }}</span>

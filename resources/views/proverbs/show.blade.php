@@ -51,20 +51,20 @@
     <div class="row">
       <div class="col-sm-7">
       <div class="row">
-        <div class="col-lg-7">
-          <h1 class="translatable" data-type="App\Proverb" data-id="{{ $proverb->id }}" data-attribute="title">{{ $proverb->title }}</h1>
-        </div>
+        <!--<div class="col-lg-7">-->
+          <!--<h1 class="translatable" data-type="App\Proverb" data-id="{{ $proverb->id }}" data-attribute="title">{{ $proverb->title }}</h1>-->
+        <!--</div>-->
         <div class="col-lg-5 d-flex flex-row text-right justify-content-end">
           <div class="p-2 text-nowrap">
             <i class="fa fa-heart fa-2x likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
             @auth
                 @if(Auth::user()->likesEntity($proverb))
-                  Vous aimez cette recette
+                  Vous aimez ce proverbe
                 @else
-                  Aimer cette recette  
+                  Aimer ce proverbe  
                 @endif
             @else
-              Veuillez vous connecter pour aimer cette recette
+              Veuillez vous connecter pour aimer ce proverbe
             @endauth
             " data-type="App\Proverb" data-id="{{ $proverb->id }}">
             </i>
@@ -189,8 +189,8 @@
         @if($annotator_to_validate)
         <h4 id="message" class="mb-2 explanation">Voici les catégories grammaticales proposées par un autre utilisateur :</h4>
         @else
-        <h4 id="message" class="mb-2 explanation">  Cette recette fait désormais partie de notre base de textes  {{ trans('home.precision_langue') }} !  <br> 
-            Notre outil a tenté de deviner les catégories grammaticales des mots de cette recette... Voici le résultat :</h4>
+        <h4 id="message" class="mb-2 explanation">  Ce proverbe fait désormais partie de notre base de textes  {{ trans('home.precision_langue') }} !  <br> 
+            Notre outil a tenté de deviner les catégories grammaticales des mots de ce proverbe... Voici le résultat :</h4>
         @endif
 
 
@@ -256,7 +256,7 @@
         @endif
         <button class="btn play-button active-button center-button" id="btn-annotation">Améliorer ce résultat</button>
       @else
-        <alert>Aucune annotation pour cette recette.</alert>
+        <alert>Aucune annotation pour ce proverbe.</alert>
       @endif
 
       </div>

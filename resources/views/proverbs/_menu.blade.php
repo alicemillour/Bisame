@@ -7,7 +7,7 @@
 			@each('proverbs/_show-welcome', $proverbs_to_annotate, 'proverb', 'proverbs/_empty')
 		</div>
 	    <div class="card-footer text-right">
-	      <a href="{{ route('proverbs.to-annotate') }}" class="">Voir toutes les recettes à annoter</a>
+	      <a href="{{ route('proverbs.to-annotate') }}" class="">Voir tous les proverbes à annoter</a>
 	    </div>
 	</div>
 @endif
@@ -19,7 +19,7 @@
 		@each('proverbs/_show-welcome', $annotated_proverbs, 'proverb', 'proverbs/_empty')
 	</div>
     <div class="card-footer text-right">
-      <a href="{{ route('proverbs.to-validate') }}" class="">Voir toutes les recettes à valider</a>
+      <a href="{{ route('proverbs.to-validate') }}" class="">Voir tous les proverbes à valider</a>
     </div>
 </div>
 @endif
