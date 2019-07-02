@@ -19,8 +19,10 @@
 
             @if ($type == "proverb")
             <input type = "hidden" name = "category_id" value = "2" />
+            
             @endif
             
+            <input type = "hidden" name = "title" value = "proverbe" />
 
             <!--{!! Form::control('text', 'col-12', 'title', $errors, null, null, null, __($type.'.title')) !!}-->
             

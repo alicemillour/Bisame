@@ -39,10 +39,10 @@ class StoreProverb extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'Le nom de la recette est requis',
-            'title.max' => 'Le nom de la recette ne doit pas dépasser :max caractères',
-            'content.required' => 'La description de la recette est requise',
-            'content.max' => 'La description de la recette ne doit pas dépasser :max caractères',
+            'title.required' => 'Le nom du proverbe est requis',
+            'title.max' => 'Le nom du proverbe ne doit pas dépasser :max caractères',
+            'content.required' => 'La description du proverbe est requise',
+            'content.max' => 'La description du proverbe ne doit pas dépasser :max caractères',
             'anecdote.max' => 'L\'anecdote ne doit pas dépasser :max caractères'
         ];
     }
