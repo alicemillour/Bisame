@@ -139,7 +139,8 @@ class WordRepository extends ResourceRepository {
     
     public function get_word_count_by_value($value){
         //getting de list of corpora ids of non deleted recipes
-        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 1) as recipe_id"))
+        $sub= Corpus::select(DB::raw("id as real_corpus_id,"
+                . "SUBSTRING_INDEX(SUBSTRING(name,LOCATE('_', name)+1,LENGTH(name)), '_', 1) as recipe_id"))
                 ->where('corpora.name','rlike','[0-9]_.*');
                 Log::debug("getting recipe corpora");
         Log::debug($sub->get());
@@ -151,7 +152,7 @@ class WordRepository extends ResourceRepository {
         
         return($this->word->select('words.*')
                 ->join('sentences', 'words.sentence_id', '=', 'sentences.id')
-                ->join('corpora', 'corpus_id', '=', 'corpora.id')->whereIn('corpora.id', $list)
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
                 ->where('words.value', 'like', $value)
                 ->where('corpora.name','rlike','[0-9].*')->get()->count());
     }
@@ -187,10 +188,25 @@ class WordRepository extends ResourceRepository {
     }
 
     public function get_word_variants_by_value($value){
+        Log::debug("GET WORD VARIANT BY VALUE");
         $sub_recipe=AlternativeText::select(DB::raw("users.name as user_name, value as value,translatable_id, offset_start as off_start,offset_end as off_end"))
                 ->join("users", 'user_id', '=', 'users.id')
                 ->where("translatable_type", 'rlike', '.*Recipe')
                 ->where('translatable_attribute', 'like', 'content');
+        $sub_proverb=AlternativeText::select(DB::raw("users.name as user_name, value as value,translatable_id, offset_start as off_start,offset_end as off_end"))
+                ->join("users", 'user_id', '=', 'users.id')
+                ->where("translatable_type", 'rlike', '.*Proverb')
+                ->where('translatable_attribute', 'like', 'content');
+        $sub_poem=AlternativeText::select(DB::raw("users.name as user_name, value as value,translatable_id, offset_start as off_start,offset_end as off_end"))
+                ->join("users", 'user_id', '=', 'users.id')
+                ->where("translatable_type", 'rlike', '.*Poem')
+                ->where('translatable_attribute', 'like', 'content');
+        $sub_freetext=AlternativeText::select(DB::raw("users.name as user_name, value as value,translatable_id, offset_start as off_start,offset_end as off_end"))
+                ->join("users", 'user_id', '=', 'users.id')
+                ->where("translatable_type", 'rlike', '.*Freetext')
+                ->where('translatable_attribute', 'like', 'content');
+        
+        Log::debug($sub_recipe->get());
         $sub_title=AlternativeText::select(DB::raw("users.name as user_name, value as value,translatable_id, offset_start as off_start,offset_end as off_end"))
                 ->join("users", 'user_id', '=', 'users.id')
                 ->where("translatable_type", 'rlike', '.*Recipe')
@@ -201,23 +217,60 @@ class WordRepository extends ResourceRepository {
         $sub_word_variant=AlternativeWord::select(DB::raw("users.name as user_name, original as original, alternative as variant"))
                 ->join("users", 'user_id', '=', 'users.id')
                 ->where("original", 'like', $value)->get();
-        Log::debug("word variant");
-        Log::debug($sub_word_variant);
+        
+        
         $content_recipe = DB::table(DB::raw("({$sub_recipe->toSql()}) as data"))
         ->mergeBindings($sub_recipe->getQuery()) // you need to get underlying Query Builder
         ->leftJoin(DB::raw("recipes AS rcps"), 'rcps.id', '=', 'data.translatable_id')
-        ->whereNotNull('deleted_at')
         ->select(DB::raw("user_name, TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring("
-                . "TRIM(REPLACE(REPLACE(REPLACE(content, '\n', ''), '\r', ' '), '\t', ' '))"
+               . "TRIM(REPLACE(REPLACE(REPLACE(content, '\n', ''), '\r', ' '), '\t', ' '))"
                 . ", off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
-                . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))->orhaving('variant','like',$value)->orhaving('original','like',$value)->get();  
+               . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))
+                ->orhaving('variant','like',$value)->orhaving('original','like',$value)->get();  
+         Log::debug("content_recipe");
         Log::debug($content_recipe);
+        
+        $content_poem = DB::table(DB::raw("({$sub_poem->toSql()}) as data"))
+        ->mergeBindings($sub_poem->getQuery()) // you need to get underlying Query Builder
+        ->leftJoin(DB::raw("poems AS rcps"), 'rcps.id', '=', 'data.translatable_id')
+        ->select(DB::raw("user_name, TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring("
+               . "TRIM(REPLACE(REPLACE(REPLACE(content, '\n', ''), '\r', ' '), '\t', ' '))"
+                . ", off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
+               . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))
+                ->orhaving('variant','like',$value)->orhaving('original','like',$value)->get();  
+         Log::debug("content_poem");
+        Log::debug($content_poem);  
+        
+        $content_proverb = DB::table(DB::raw("({$sub_proverb->toSql()}) as data"))
+        ->mergeBindings($sub_proverb->getQuery()) // you need to get underlying Query Builder
+        ->leftJoin(DB::raw("proverbs AS rcps"), 'rcps.id', '=', 'data.translatable_id')
+        ->select(DB::raw("user_name, TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring("
+               . "TRIM(REPLACE(REPLACE(REPLACE(content, '\n', ''), '\r', ' '), '\t', ' '))"
+                . ", off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
+               . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))
+                ->orhaving('variant','like',$value)->orhaving('original','like',$value)->get();  
+         Log::debug("content_proverb");
+        Log::debug($content_proverb);
+        
+        $content_freetext = DB::table(DB::raw("({$sub_freetext->toSql()}) as data"))
+        ->mergeBindings($sub_freetext->getQuery()) // you need to get underlying Query Builder
+        ->leftJoin(DB::raw("freetexts AS rcps"), 'rcps.id', '=', 'data.translatable_id')
+        ->select(DB::raw("user_name, TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring("
+               . "TRIM(REPLACE(REPLACE(REPLACE(content, '\n', ''), '\r', ' '), '\t', ' '))"
+                . ", off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
+               . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))
+                ->orhaving('variant','like',$value)->orhaving('original','like',$value)->get();  
+         Log::debug("content_freetext");
+        Log::debug($content_freetext);
+        
         $content_title = DB::table(DB::raw("({$sub_title->toSql()}) as data"))
         ->mergeBindings($sub_title->getQuery()) // you need to get underlying Query Builder
         ->leftJoin(DB::raw("recipes AS rcps"), 'rcps.id', '=', 'data.translatable_id')
         ->where("rcps.deleted_at", 'is not', null)
         ->select(DB::raw("user_name, TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring(title, off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
                 . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant"))->orhaving('variant','like',$value)->orhaving('original','like',$value)->get(); 
+        
+        
         $content_ingredient = DB::table(DB::raw("({$sub_ingredient->toSql()}) as data"))
         ->mergeBindings($sub_ingredient->getQuery()) // you need to get underlying Query Builder
         ->leftJoin(DB::raw("ingredients AS ingdts"), 'ingdts.id', '=', 'data.translatable_id')
@@ -243,9 +296,12 @@ class WordRepository extends ResourceRepository {
                 ->orhaving('original', 'like', $value)
                 ->orhaving('alternative', 'like', $value)->get();
 
+        Log::debug($content_ingredient);
+        Log::debug($content_title);
+        Log::debug($content_recipe);
         Log::debug($manual_variants);
         
-        $all_variants = $content_recipe->merge($content_title)->merge($content_ingredient)->merge($manual_variants);
+        $all_variants = $content_recipe->merge($content_poem)->merge($content_proverb)->merge($content_freetext)->merge($content_title)->merge($content_ingredient)->merge($manual_variants);
         
 //        $data::select(DB::raw("TRIM(TRAILING '.' FROM TRIM(TRAILING ',' FROM TRIM(TRAILING ' ' FROM substring(content, off_start+1, off_end-off_start+1)))) as original, TRIM(TRAILING '.' "
 //                . "FROM TRIM(TRAILING ',' from TRIM(TRAILING ' ' FROM value))) as variant,"

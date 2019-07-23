@@ -40,7 +40,7 @@ class SentenceRepository extends ResourceRepository
     public function getSentencesFromWordValue($word)
     {
         //getting de list of corpora ids of non deleted recipes
-        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(name, '_', 1) as recipe_id"))
+        $sub= Corpus::select(DB::raw("id as real_corpus_id,SUBSTRING_INDEX(SUBSTRING(name,LOCATE('_', name)+1,LENGTH(name)), '_', 1) as recipe_id"))
                 ->where('corpora.name','rlike','[0-9]_.*');
                 Log::debug("getting recipe corpora");
         Log::debug($sub->get());
@@ -59,8 +59,7 @@ class SentenceRepository extends ResourceRepository
         return Sentence::select('sentences.*')
                 ->join('words','words.sentence_id','=','sentences.id')
                 ->where('words.value','like',$word->value)
-                ->join('corpora', 'corpus_id', '=', 'corpora.id')->whereIn('corpora.id',$list)
-                ->where('corpora.name','rlike','[0-9].*')
+                ->join('corpora', 'corpus_id', '=', 'corpora.id')
                 ->get();
     }
 }

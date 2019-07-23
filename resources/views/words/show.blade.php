@@ -157,13 +157,11 @@
 <script type="text/javascript">
     
     var user = {!! json_encode((array)auth()->user()) !!};
-    //    var original_word = {{ $cur_word['value'] }};
     function AddVariant(event){      
         console.log( $('#alternative-text-value').val());
         var new_text = $('#alternative-text-value').val();
         var original_text = $('#original_word').data("value");
         var word_id = $('#original_word').data("id");
-        //      var original_text = {!! json_encode($cur_word['value']) !!};
 
   
         console.log(original_text);
