@@ -17,6 +17,7 @@ return [
 	'label-alternativ-text' => 'Variantes de recette',
 	'label-storie' => 'Histoires',
 	'label-annotation' => 'Annotation',
+        'proverbs' => ':number proverbes saisis',
     'tooltip' => [
 	    'recipes' => ':number recettes saisies',
 	    'recipe' => '1 recette saisie',

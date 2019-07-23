@@ -578,6 +578,7 @@ $alternative_texts = $poem->alternative_texts()->with('user')->get()->toArray();
       var next_postag = $('.postag[data-postag-id='+current_postag.id+']').next('.postag');
 
       if($(next_postag).hasClass('disabled') || $(next_postag).hasClass('validated')){
+          console.log("la classe suivante est disabled")
         $(next_postag).nextAll('.postag').each(function(){
           if($(this).attr('data-count-todo')>0){
             next_postag = $(this);

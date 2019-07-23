@@ -22,7 +22,7 @@ $('.likeable').click(function(event){
     likeable_type: type
   }).done(function( data ) {
     $('.likes-count[data-id='+id+']').html(data.likes_count);
-    $('.likeable[data-id='+id+']').attr('data-original-title',"Vous aimez cette recette");
+    $('.likeable[data-id='+id+']').attr('data-original-title',"Vous aimez ce texte");
   }).fail(function( data ) {
     alert( "Veuillez vous connecter pour aimer une recette." );
   });      

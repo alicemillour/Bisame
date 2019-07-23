@@ -7,9 +7,9 @@
                     <i class="fa fa-heart likeable" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="
                        @auth
                        @if(Auth::user()->likesEntity($freetext))
-                       Vous aimez cette recette
+                       Vous aimez ce texte
                        @else
-                       Aimer cette recette  
+                       Aimer ce texte  
                        @endif
                        @else
                        Veuillez vous connecter pour aimer une recette
