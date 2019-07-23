@@ -152,7 +152,7 @@ class ProverbController extends Controller {
         if ($request->input('anecdote')) {
             Anecdote::create([
                 'user_id' => auth()->user()->id,
-                'recipe_id' => $proverb->id,
+                'proverb_id' => $proverb->id,
                 'content' => $request->input('anecdote'),
             ]);
         }
@@ -339,7 +339,7 @@ class ProverbController extends Controller {
 
         $anecdote = Anecdote::create([
             'user_id' => auth()->user()->id,
-            'recipe_id' => $request->input('proverb_id'),
+            'proverb_id' => $request->input('proverb_id'),
             'content' => $request->input('anecdote'),
         ]);
 
@@ -391,7 +391,7 @@ class ProverbController extends Controller {
         }
 
         if ($proverb->annotated) {
-            $annotated_proverb = AnnotatedProverb::where('recipe_id', $proverb->id)->first();
+            $annotated_proverb = AnnotatedProverb::where('proverb_id', $proverb->id)->first();
             $annotator_to_validate = $annotated_proverb->annotator;
         } else {
             $annotator_to_validate = null;

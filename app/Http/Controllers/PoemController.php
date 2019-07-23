@@ -152,7 +152,7 @@ class PoemController extends Controller {
         if ($request->input('anecdote')) {
             Anecdote::create([
                 'user_id' => auth()->user()->id,
-                'recipe_id' => $poem->id,
+                'poem_id' => $poem->id,
                 'content' => $request->input('anecdote'),
             ]);
         }
@@ -339,7 +339,7 @@ class PoemController extends Controller {
 
         $anecdote = Anecdote::create([
             'user_id' => auth()->user()->id,
-            'recipe_id' => $request->input('poem_id'),
+            'poem_id' => $request->input('poem_id'),
             'content' => $request->input('anecdote'),
         ]);
 
@@ -391,7 +391,7 @@ class PoemController extends Controller {
         }
 
         if ($poem->annotated) {
-            $annotated_poem = AnnotatedPoem::where('recipe_id', $poem->id)->first();
+            $annotated_poem = AnnotatedPoem::where('poem_id', $poem->id)->first();
             $annotator_to_validate = $annotated_poem->annotator;
         } else {
             $annotator_to_validate = null;

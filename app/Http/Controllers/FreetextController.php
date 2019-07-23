@@ -152,7 +152,7 @@ class FreetextController extends Controller {
         if ($request->input('anecdote')) {
             Anecdote::create([
                 'user_id' => auth()->user()->id,
-                'recipe_id' => $freetext->id,
+                'freetext_id' => $freetext->id,
                 'content' => $request->input('anecdote'),
             ]);
         }
@@ -339,7 +339,7 @@ class FreetextController extends Controller {
 
         $anecdote = Anecdote::create([
             'user_id' => auth()->user()->id,
-            'recipe_id' => $request->input('freetext_id'),
+            'freetext_id' => $request->input('freetext_id'),
             'content' => $request->input('anecdote'),
         ]);
 
@@ -393,7 +393,7 @@ class FreetextController extends Controller {
         }
 
         if ($freetext->annotated) {
-            $annotated_freetext = AnnotatedFreetext::where('recipe_id', $freetext->id)->first();
+            $annotated_freetext = AnnotatedFreetext::where('freetext_id', $freetext->id)->first();
             $annotator_to_validate = $annotated_freetext->annotator;
         } else {
             $annotator_to_validate = null;
