@@ -128,13 +128,14 @@
                                 <div class="row" style="text-align:center">
                                     
                                     <div class="col-md-4"  >
-                                        <a href="{{ route('recipes.create') }}" class="btn play-button active-button" > Nouvelle recette</a> <br> <br>
-                                        <div class="belle-allure"> Je partage une recette {{ trans('home.precision_langue') }}</div> 
+                                        <a href="{{ route('recipes.create') }}" class="btn play-button active-button" > Nouvelle recette</a> <a href="{{ route('poems.create') }}" class="btn play-button active-button" > Nouveau poème</a> <a href="{{ route('proverbs.create') }}" class="btn play-button active-button" > Nouveau proverbe</a> <a href="{{ route('freetexts.create') }}" class="btn play-button active-button" > Nouveau texte libre</a> <br> <br>
+                                        <div class="belle-allure"> Je partage un texte {{ trans('home.precision_langue') }}</div> 
                                     </div>                                    
                                     
                                     <!-- Fonctionnalité annotation : décommenter ci-dessous -->
                                     
                                     <div class="col-md-4"  >
+                                        <br><br><br>
                                         <a  href="{{ route('recipes.to-annotate') }}" class="btn play-button active-button" >Annoter des recettes</a> <br>  <br>
                                         <!--<a  href="{{ route('recipes.to-validate') }}" class="btn play-button active-button" >Valider des recettes</a> <br>  <br>-->
                                         <div class="belle-allure"> J'aide la science grâce à mes connaissances</div> <br>
@@ -152,6 +153,7 @@
                                 <!-- Fonctionnalité annotation -->
                                 
                                 <div class="col-md-4"  >
+                                        <br><br><br>
                                     <a href="{{ route('recipes.add-alt-version') }}" class="btn play-button active-button" >J'ajoute des variantes</a> <br> <br>
                                     <div class="belle-allure"> J'aurais dit ça autrement&nbsp;!</div> <br>
                                 </div>
