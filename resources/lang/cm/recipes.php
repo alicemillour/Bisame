@@ -46,4 +46,10 @@ return array (
   'empty' => 'Aucune recette',
   'add-anecdote' => 'Ajouter une anecdote',
   'placeholder-add-anecdote' => 'Ajouter une anecdote ! (texte libre)',
+  'add-variant-exp' => 'Vous n\'auriez pas dit/écrit comme ça un mot d\'un texte ? Pour chaque texte, l\'onglet "Moi je l\'aurais dit comme ça" est là pour vous
+        permettre d\'ajouter des variantes régionales ou orthographiques aux mots que vous souhaitez. 
+        Ces variantes seront intégrées à notre système, nous permettant 
+        d\'avoir une meilleure connaissance des pratiques de l\'écrit et de vous proposer des variantes adaptées à votre pratique !
+         Ajoutez une première variante sur la recette ci-dessous en double cliquant sur un mot :',
+    
 );
