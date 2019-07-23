@@ -5,6 +5,7 @@ return array (
   'all' => 'Toutes les poésies',
   'text-intro' => 'Proposez ou consultez des poésies en morisien.',
   'new-poem' => 'Ajouter une poésie',
+  'new' => 'Ajouter une poésie',
   'last-poems' => 'Livre de poésies',
   'poem' => 'Poésie',
   'created' => 'Votre poésie a bien été enregistrée',
