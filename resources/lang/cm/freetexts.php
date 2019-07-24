@@ -6,6 +6,7 @@ return array (
   'text-intro' => 'Proposez ou consultez des textes libres en morisien.',
   'new' => 'Ajouter un texte libre',
   'lasts' => 'Livre de textes libres',
+  'last-freetexts' => 'Livre de textes libres',
   'poem' => 'Texte libre',
   'created' => 'Votre texte libre a bien été enregistrée',
   'anecdote-created' => 'Votre anecdote a bien été enregistrée',

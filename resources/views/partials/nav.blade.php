@@ -115,6 +115,19 @@
                 </div>
             </div>
             
+            <div class="dropdown">
+                <a class="btn btn-navbar btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Voir les textes
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('recipes.index') }}">Voir les recettes</a>
+                    <a class="dropdown-item" href="{{ route('poems.index') }}">Voir les poèmes</a>
+                    <a class="dropdown-item" href="{{ route('proverbs.index') }}">Voir les proverbes</a>
+                    <a class="dropdown-item" href="{{ route('freetexts.index') }}">Voir les textes libres</a>
+                </div>
+            </div>
+            
             
             <ul class="navbar-nav mt-2 mt-lg-0">
                 <li class="nav-item">
