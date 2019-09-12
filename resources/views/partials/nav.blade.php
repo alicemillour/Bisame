@@ -179,9 +179,9 @@
             </ul>
             <a class="btn btn-navbar btn-link" href="{{ route('contact') }}">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i> Contactez </a>
-<!--            <a class="btn btn-navbar btn-link" href="{{ route('downloads') }}">
+            <a class="btn btn-navbar btn-link" href="{{ route('downloads') }}">
                 Ressources
-            </a>-->
+            </a>
             <a class="btn btn-navbar btn-link" href="{{ route('info') }}">
                 <i class="fa fa-question" aria-hidden="true"></i>  </a>
             {{--         <ul class="navbar-nav mt-2 mt-lg-0 d-none">
