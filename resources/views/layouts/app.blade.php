@@ -328,7 +328,7 @@
                     color: #CECECE;
                 }
                 .fancy-border{
-                    border-radius: 15px;
+                    border-radius: 1px;
                     border: 1px solid white;
                 }
                 .footer-container {

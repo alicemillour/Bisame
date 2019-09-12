@@ -94,7 +94,7 @@
     border: 1px;	
     border-style: solid;
     border-color: #AC1E44;
-    border-radius: 3px;
+    border-radius: 1px;
     padding: 2px 30px 1px 30px;
     text-align: center;
     /*    margin-left: 60px;
@@ -167,8 +167,8 @@
     -ms-hyphens: auto;
     -o-hyphens: auto;
     hyphens: auto;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
     overflow: hidden;
 }
 

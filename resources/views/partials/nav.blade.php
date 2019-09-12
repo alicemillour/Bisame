@@ -77,7 +77,7 @@
     </div>
     <!-- /container -->
     <div class="navbar affix-top dark-background-colored py-0" style="margin:0 auto; margin-bottom: 1%" data-spy="affix" data-offset-top="150" >
-        <div class="container" style="max-width: 2000px">
+        <div class="container" style="max-width: 1800px">
             <ul class="navbar-nav mt-2 mt-lg-0">
                 <li class="nav-item">
                     <a class="btn btn-navbar btn-link" href="{{ route('home') }}">
