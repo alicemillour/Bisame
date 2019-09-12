@@ -3,7 +3,7 @@
 return array (
   'app-name' => 'Recettes de Grammaire',
   'all' => 'Toutes les recettes',
-  'text-intro' => 'Proposez ou consultez des recettes en alsacien.',
+  'text-intro' => 'Proposez ou consultez des recettes en créole guadeloupéen.',
   'new-recipe' => 'Ajouter une recette',
   'last-recipes' => 'Livre de recettes',
   'recipe' => 'Recette',

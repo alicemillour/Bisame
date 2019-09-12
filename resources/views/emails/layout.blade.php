@@ -64,7 +64,7 @@
                                 <!-- Body content -->
                                 <tr>
                                     <td class="content-cell">
-                                        <h1><a href="{{ url('/') }}">Recettes de Grammaire</a></h1>
+                                        <h1><a href="{{ url('/') }}">{{ __('home.app-name')  }}</a></h1>
 
                                         @yield('content')
 

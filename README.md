@@ -65,7 +65,14 @@ $ php artisan avatars:import
 $ php artisan corpus:import 
 $ php artisan translations:import                  
 ```
-
+Génération des badges :
+Les badges N&B se trouvent dans le dossier `public/img/badges/src`
+Les badges des différentes couleurs sont générés par la commande `php artisan badges:generate` 
+```
+$ php artisan avatars:import    
+$ php artisan corpus:import 
+$ php artisan translations:import                  
+```
 -------------------------------------------------------------------------------------------------
 # Adaptation de Recettes de Grammaire à une nouvelle langue 
 

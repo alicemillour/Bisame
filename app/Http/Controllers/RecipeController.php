@@ -77,10 +77,14 @@ class RecipeController extends Controller {
      */
     public function search(Request $request) {
         $recipes = Recipe::with('author')->withCount('likes')->where('title', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(20);
-
+        $poems = Poem::with('author')->withCount('likes')->where('title', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(20);
+        $freetexts = Freetext::with('author')->withCount('likes')->where('title', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(20);
+        $proverbs = Proverb::with('author')->withCount('likes')->where('title', 'LIKE', '%' . $request->input('search') . '%')->latest()->paginate(20);
+        
+        
         $title = __('recipes.search-result', ['search' => $request->input('search')]);
 
-        return $this->index($recipes, $title);
+        return $this->index($recipes,$poems,$freetexts,$proverbs, $title);
     }
 
     /**
@@ -184,7 +188,7 @@ class RecipeController extends Controller {
 
         $this->checkBadge($request, 'recipe', auth()->user()->recipes()->count());
 
-        self::sendMailNewRecipe($recipe);
+//        self::sendMailNewRecipe($recipe);
         
         
         /* Fonctionnalité d'annotation : commenter la ligne ci-dessous pour poursuivre l'exécution i.e. prétraitements et redirection vers l'annotation) */
@@ -199,7 +203,7 @@ class RecipeController extends Controller {
         /* tokénisation */
         /* stage 1 : create a raw file with recipe content */
         $filename = preg_replace('/\W+/', '_', $request->input('title'));
-        $corpus_name = $recipe->id . "_" . $filename;
+        $corpus_name = "recipe_" . $recipe->id . "_" . $filename;
         Storage::put(App::getLocale().'/corpus/raw/recipes/' . $filename . ".txt", $request->input('content'));
         /* stage 2 : create the tokenized file from raw */
         
@@ -393,7 +397,7 @@ class RecipeController extends Controller {
      */
     public function show(Recipe $recipe, Request $request) {
         // $recipe = Recipe::findOrFail($id);
-        $corpus_recipe = Corpus::where('name', 'like', $recipe->id . '_%')->first();
+        $corpus_recipe = Corpus::where('name', 'like', 'recipe_' . $recipe->id . '_%')->first();
         $postags = Postag::orderBy('order')->get();
         $tab = 'recipe';
 

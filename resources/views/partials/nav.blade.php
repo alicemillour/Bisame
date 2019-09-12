@@ -28,28 +28,18 @@
                 @endif
                 <hr style="height: 1px; color: white; background-color: whitesmoke; width: 50%; ">
                 {{ $nb_total_users }}  participants <br>
-                {{ $nb_recipes }}  recettes <br>
-                {{ $nb_words }}  mots alsaciens <br>
-                {{ $nb_recipe_annotations }} annotations ({{ $nb_recipe_words_annotated }}  mots) <br>
+                {{ $nb_recipes }}&nbsp;recettes / {{ $nb_poems }}&nbsp;poèmes / {{ $nb_proverbs }}&nbsp;proverbes / {{ $nb_freetexts }}&nbsp;textes libres <br>
+                déjà {{ $nb_words }}  mots {{ trans('home.precision_langue') }} ! <br>
+                {{ $nb_recipe_annotations }} annotations <br> 
+                <!--({{ $nb_recipe_words_annotated }}  mots) <br>-->
                 {{ $nb_recipe_versions }}  mots alternatifs proposés <br> 
             </span>
         </div>
-        <!--        <div class="col-sm-6 right" id="two"  style="position:relative; text-align:center"> 
-                    <div style="position: absolute;
-                         top: 50%;
-                         left: 50%;
-                         transform: translate(-50%,-50%);
-                         width:100%
-                         ">
-                        <div class="title belle-allure"> Recettes de Grammaire </div>
-                        <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des ressources linguistiques pour l'alsacien&nbsp;!&nbsp;</i>&raquo;</div>
-                    </div>
-                </div>-->
         <div class="col-sm-6 belle-allure" style="text-align:center; line-height: 15px !important;  -moz-hyphens:auto;
    -ms-hyphens:auto;
    -webkit-hyphens:auto;
    hyphens:auto;" id="two" >
-            <div class="title belle-allure"> Recettes de Grammaire </div>
+            <div class="title belle-allure"> {{ __('recipes.app-name') }} </div>
             <div class="subtitle belle-allure">&laquo; <i>  Construisons ensemble des ressources linguistiques pour {{ trans('home.langue') }} &nbsp;!&nbsp;</i>&raquo;</div>
 
 
@@ -111,29 +101,53 @@
                 </ul>
             </div>
             @endif
-            <div class="dropdown">
-                <a class="btn btn-navbar btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Recettes
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('recipes.index') }}">Toutes les recettes</a>
-                    <a class="dropdown-item" href="{{ route('recipes.favorite') }}">Mes recettes favorites</a>
-                    <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
-                </div>
-            </div>
 
             <div class="dropdown">
                 <a class="btn btn-navbar btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Contribuer
+                    Ajouter un texte
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
-                    <a class="dropdown-item" href="{{ route('recipes.to-annotate') }}">Annoter une recette</a>
-                    <a class="dropdown-item" href="{{ route('recipes.add-alt-version') }}">Ajouter des variantes</a>
+                    <a class="dropdown-item" href="{{ route('poems.create') }}">Ajouter un poème</a>
+                    <a class="dropdown-item" href="{{ route('proverbs.create') }}">Ajouter un proverbe</a>
+                    <a class="dropdown-item" href="{{ route('freetexts.create') }}">Ajouter un texte libre</a>
                 </div>
             </div>
+            
+            <div class="dropdown">
+                <a class="btn btn-navbar btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Voir les textes
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('recipes.index') }}">Voir les recettes</a>
+                    <a class="dropdown-item" href="{{ route('poems.index') }}">Voir les poèmes</a>
+                    <a class="dropdown-item" href="{{ route('proverbs.index') }}">Voir les proverbes</a>
+                    <a class="dropdown-item" href="{{ route('freetexts.index') }}">Voir les textes libres</a>
+                </div>
+            </div>
+            
+            
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-navbar btn-link" href="{{ route('recipes.to-annotate') }}"
+                        <i class="fa fa-home" aria-hidden="true"></i> Annoter un texte
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-navbar btn-link" href="{{ route('recipes.add-alt-version') }}"
+                        <i class="fa fa-home" aria-hidden="true"></i> Ajouter des variantes
+                    </a>
+                </li>
+            </ul>
+
+            
+         
+
 
             <!--<ul class="navbar-nav mt-2 mt-lg-0">-->
             @if (!Auth::check())
@@ -154,7 +168,7 @@
                     {!! Form::open(['route' => 'recipes.search', 'method' => 'get']) !!}
                     <div class="d-flex flex-row justify-content-md-center">
                         <div class="mr-3">
-                            <input type="text" name="search" class="form-control" placeholder="Trouver une recette..." />
+                            <input type="text" name="search" class="form-control" placeholder="Trouver un texte..." />
                         </div>
                         <div class="mr-3">
                             <button type="submit" class=" btn btn link" style="color:white; background-color: black; border-color:white; border-width: 1px  "><i class="fa fa-search"></i></button>

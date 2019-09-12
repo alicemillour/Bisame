@@ -7,7 +7,7 @@
         <div class="col-lg-7 clearfix">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-center "> <span class="belle-allure"> Hopla {{ $user->name }} !</span>
+                    <h4 class="card-title text-center "> <span class="belle-allure"> {{ __('home.hello')}} {{ $user->name }} !</span>
                         <span class="float-right">                    	
                             @if($user->avatar)
                             <img id="avatar"  style="width:50px" src="{{ asset('img/avatars/'.$user->avatar->image) }}" />

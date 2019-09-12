@@ -1,6 +1,7 @@
 <?php
 
 return array (
+  'new' => 'Ajouter une recette',
   'app-name' => 'Recettes de Grammaire',
   'all' => 'Toutes les recettes',
   'text-intro' => 'Proposez ou consultez des recettes en alsacien.',

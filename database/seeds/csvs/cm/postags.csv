@@ -1,0 +1,191 @@
+name,full_name,description
+ADJ,Adjectif,"« <p>Un adjectif accompagne un nom. Il peut &ecirc;tre plac&eacute; apr&egrave;s ou avant le nom qu'il qualifie:</p>
+<p style=""text-align: center;"">enn <strong>bon</strong> manze</p>
+<p style=""text-align: center;"">enn manzer <strong>fad</strong></p> »"
+ADP,Préposition,"""<p>Les ADP recouvrent les pr&eacute;positions et les postpositions. Ils peuvent indiquer une notion de temps, d'espace, de moyen :</p>
+<p style=""text-align: center;"">li <strong>avek</strong> so fami</p>
+<p style=""text-align: center;""><strong>dan</strong> mo sak</p>
+<p style=""text-align: center;""><strong>kont</strong> latab, <strong>lor</strong> latab, <strong>amba</strong> latab</p>
+<p style=""text-align: center;"">sa bol-la <strong>pou</strong> mwa</p>
+<p style=""text-align: center;"">&nbsp;</p>"""
+ADV,Adverbe,"« <p><span style=""font-family: verdana, geneva;"">Un adverbe apporte une information suppl&eacute;mentaire sur un verbe ou un adjectif : </span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;"">pima-la ti <strong>extra</strong> for, so rob <strong>mari</strong> zoli</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;""><strong>zordi</strong>, <strong>yer</strong>, <strong>demin,</strong> etc</span></p>
+<div class=""page"" title=""Page 64"">
+<div class=""layoutArea"">
+<div class=""column"">
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;""><span style=""font-size: 11pt;"">vinn <strong>isi,</strong> al <strong>laba,</strong> res <strong>lwin</strong>, koste <strong>pre</strong></span><span style=""font-size: 10pt;""><span style=""font-size: 11pt;"">, etc</span><br /></span></span></p>
+<div class=""page"" title=""Page 65"">
+<div class=""layoutArea"">
+<div class=""column"">
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva; font-size: 11pt;""><strong>souvan</strong>, <strong>rarman</strong>, <strong>parfwa</strong>, <strong>touletan</strong>, etc.</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva; font-size: 11pt;""><strong>wi</strong>, <strong>non, personelman,</strong> <strong>sirman</strong>, etc</span><span style=""font-size: 10.000000pt; font-family: 'Candara';""><span style=""font-family: verdana, geneva; font-size: 11pt;"">.</span><br /></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p style=""text-align: center;""><span style=""text-decoration: underline; font-family: verdana, geneva;"">ATTENTION</span></p>
+<p style=""text-align: left;""><span style=""font-family: verdana, geneva;"">Un adverbe peut aussi &ecirc;tre un adjectif :</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;"">mett pou mwa <strong>apar </strong>(ADV)</span><br /><span style=""font-family: verdana, geneva;"">enn dimounn <strong>apar</strong> (ADJ)</span></p>
+<p style=""text-align: center;""><span style=""font-family: verdana, geneva;"">li'nn met so pavion <strong>anler</strong> (ADV)</span><br /><span style=""font-family: verdana, geneva;"">bann parol <strong>anler</strong> (ADJ)</span></p> »7"
+ADV+PART_TMA,contraction,"« <p>Utilisez l'&eacute;tiquette&nbsp;<strong>ADV+PART_TMA </strong>quand un <span style=""text-decoration: underline;"">adverbe</span> (souvent l'adverbe de n&eacute;gation <em>pa</em>) est agglutin&eacute; avec une <span style=""text-decoration: underline;"">particule qui modifie le verbe</span> (souvent la particule <em>finn</em>):</p>
+<p style=""text-align: center;"">Li <strong>pa'nn</strong> fini manze</p>
+<p style=""text-align: center;"">Zan <strong>pa'nn</strong> vini</p>
+<p style=""text-align: center;"">&nbsp;</p> »"
+CCONJ,Conjonction de coordination,"« <p>Les conjonctions de coordination relient des &eacute;l&eacute;ments de m&ecirc;me fonction et souvent de m&ecirc;me nature (cat&eacute;gorie grammaticale) :</p>
+<p style=""text-align: center;"">Azout diber <strong>ek</strong> disik, Zak <strong>ar</strong> Zan</p>
+<p style=""text-align: center;""><strong>Swa</strong> nou al lamer, <strong>swa</strong> nou ress lakaz</p>
+<p style=""text-align: center;"">To le dipin <strong>oubien</strong> diri ?</p>
+<p style=""text-align: center;"">Mo ti krwar li'nn vini <strong>me</strong> li enkor bloke lor larout</p>
+<p style=""text-align: center;""><strong>Ni</strong> enn <strong>ni</strong> lot</p>
+<p>&nbsp;</p> »"
+DET,Déterminant,"« <p>Un determinant accompagne un nom. Il peut &ecirc;tre plac&eacute; apr&egrave;s ou avant le nom qu'il qualifie:</p>
+<p style=""text-align: center;""><strong>bann </strong>zenfan, <strong>bann</strong> zwazo</p>
+<p style=""text-align: center;""><strong>enn</strong> sak, <strong>enn </strong>liv</p>
+<p style=""text-align: center;""><strong>sa</strong> liv-la, <strong>sa</strong> loto-la</p>
+<p style=""text-align: center;""><strong>mo</strong> liv, <strong>to</strong> liv, <strong>so</strong> liv, <strong>ou</strong> liv, <strong>zot</strong> liv, <strong>nou</strong> liv</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p><span style=""color: #ff0000;""><strong>Enn </strong></span>peut aussi indiquer le <span style=""color: #ff0000;"">nombre</span> <span style=""color: #ff0000;"">""un""</span> :</p>
+<p style=""text-align: center;""><strong>enn </strong>(NUM), de, trwa</p>
+<p style=""text-align: left;""><span style=""color: #ff0000;""><strong>Bann </strong></span>est aussi un <span style=""color: #ff0000;"">pronom</span> ! Aidez-vous du contexte pour d&eacute;terminer la bonne cat&eacute;gorie :</p>
+<p style=""text-align: center;""><strong>Bann</strong> liv-la (DET)<br /><strong>Bann</strong> seki pa la (PRON)</p>
+<p>Il est possible que vous trouvririez ""<span style=""color: #ff0000;""><strong>la</strong></span>"" en tant que d&eacute;terminant post-pos&eacute; sous cette forme :</p>
+<p style=""text-align: center;"">Lakaz <strong>la</strong> gran<br />Tifi ki mo ti pe dir twa <strong>la</strong></p> »"
+INTJ,Interjection,"« <p>Une interjection est souvent une expression exclamative :</p>
+<p style=""text-align: center;""><strong>Ayo</strong>!</p>
+<p style=""text-align: center;""><strong>Kiete</strong>! Pa dir moi li'nn blier.</p>
+<p style=""text-align: center;""><strong>Alala</strong>! Ti baba-la inn tombe.</p> »"
+NOUN,Nom commun,"« <p>Un nom peut &ecirc;tre accompagn&eacute; ou pr&eacute;c&eacute;d&eacute; d'un d&eacute;terminant et occupe la plupart du temps une fonction sujet, objet ou compl&eacute;ment:</p>
+<p style=""text-align: center;"">sa <strong>konser </strong>yer la mari ti top</p>
+<p style=""text-align: center;"">mo'nn atan li kot <strong>laboutik</strong> Zan</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;"">Un nom peut aussi &ecirc;tre un <em>adjectif</em> ! Aidez vous du contexte pour trouver la bonne cat&eacute;gorie :</p>
+<p style=""text-align: center;"">enn <strong>kabri</strong> (NOUN) <br />enn lavwa <strong>kabri</strong> (ADJ)</p> »"
+NOUN+DET,Contraction,"« <p>Utilisez l'&eacute;tiquette <strong>NOUN+DET </strong>quand le <span style=""text-decoration: underline;"">nom</span> est agglutin&eacute; avec un <span style=""text-decoration: underline;"">d&eacute;terminant</span> :</p>
+<p style=""text-align: center;""><strong>Zanfan-la</strong> pa pe ekout so mama</p>
+<p style=""text-align: center;"">Mo'nn aste sa <strong>rob-la</strong></p>
+<p style=""text-align: center;"">Pena ase plas pou tou sa <strong>dimounn-la</strong></p> »"
+NOUN+DET,Contraction,
+NUM,Nombre,"« <p style=""text-align: center;"">&nbsp;Mo ena <strong>sink</strong> cour sa trimes-la.</p>
+<p style=""text-align: center;"">Azout <strong>200</strong> gram diber.</p>
+<p style=""text-align: center;"">Lindepandans ti deklare an <strong>1968</strong>.</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;""><strong>Enn </strong>peut &ecirc;tre le chiffre un <span style=""text-decoration: underline;"">ou</span> le d&eacute;terminant :</p>
+<p style=""text-align: center;""><strong>Enn</strong> kilo zanana (NUM)<br />Li <strong>enn</strong> zanfan (DET)</p> »"
+NUM+NOUN,Contraction,"<p>Utilisez l'&eacute;tiquette <strong>NUM+NOUN </strong>quand le nom est suivi par une indication de temps : <em>-an, -z-an, -r-an, -er, -z-er</em></p>
+<p style=""text-align: center;"">Mo cour fini <strong>trwa-z-er</strong>.</p>
+<p style=""text-align: center;"">Li ena<strong> si-z-an</strong>.</p>
+<p style=""text-align: center;""><strong>Kat-r-er </strong>la.</p>
+<p style=""text-align: center;"">So tifi inn gagn <strong>kat-r-an</strong> zordi.</p>
+<p style=""text-align: center;"">Sa fer <strong>sink-an</strong> mo ress isi.</p>
+<p style=""text-align: center;""><strong>Set-er</strong> tanto.</p>
+<p style=""text-align: center;"">Mo nana pou gagn <strong>katrovin-sink-an</strong>.</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;"">Il est possible de trouver des NUM+NOUN sous cette forme (sans trait d'union) :</p>
+<p style=""text-align: center;""><strong>trwazer</strong>, <strong>sizan</strong></p>
+<p style=""text-align: left;"">Les occurences sous cette forme :</p>
+<p style=""text-align: center;""><strong>trant an, karant an, sinkant an</strong></p>
+<p style=""text-align: left;"">sont &agrave; <span style=""text-decoration: underline;"">&eacute;tiqueter s&eacute;paremment</span> ainsi : </p>
+<p style=""text-align: center;""><strong>trant</strong>(NUM)<strong> an</strong>(NOUN)<strong><br />karant</strong>(NUM)<strong> an</strong>(NOUN) <strong><br />sinkant</strong>(NUM)<strong> an</strong>(NOUN) <strong><br /></strong></p>"
+PART_TMA,Particule Verbale Temps-Mode-Aspect,"« <p>Les particules clitiques temps, mode, aspect (TMA) sont des marqueurs verbaux. En morisien, ils marquent le temps (pass&eacute;, futur proche ou incertain, la possibilit&eacute;) et <span style=""text-decoration: underline;"">modifient le verbe</span> :</p>
+<p style=""text-align: center;"">mo <strong>finn</strong> vini</p>
+<p style=""text-align: center;"">mo <strong>pe</strong> vini</p>
+<p style=""text-align: center;"">mo <strong>ti</strong> pou vini,</p>
+<p style=""text-align: center;"">mo <strong>ava</strong> vini, zot <strong>va</strong> vini</p> »"
+PART_TMA+PART_TMA,Contraction,"« <p>Utilisez l'&eacute;tiquette <strong>PART_TMA+PART_TMA </strong>quand <span style=""text-decoration: underline;"">deux particules</span> sont agglutin&eacute;es :</p>
+<p style=""text-align: center;"">Nou <strong>ti'a</strong> kontan zwenn li</p>
+<p style=""text-align: center;"">Li<strong> ti'ava</strong> sonn twa</p>
+<p style=""text-align: center;"">Zan <strong>ti'nn </strong>fini ale</p> »"
+PRON,Pronom,"« <p style=""text-align: left;"">Un pronom peut remplacer un nom :</p>
+<p style=""text-align: left;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronoms personnels</span></p>
+<p style=""text-align: center;""><strong>mo</strong> pe kwi, <strong>to</strong> pe kwi, <strong>li </strong>finn kwi, <strong>nou</strong> pe kwi, <strong>ou</strong> pe kwi, <strong>zot</strong> pe kwi</p>
+<p style=""text-align: center;""><strong>momem</strong> sa, <strong>tomem</strong> sa, <strong>limem </strong>sa, <strong>noumem</strong> sa, <strong>oumem</strong> sa, <strong>zotmem</strong> sa, <strong>bann-la</strong> sa</p>
+<p style=""text-align: center;"">pou <strong>mwa</strong>, pou <strong>twa</strong>, pou <strong>li</strong>, pou <strong>zot</strong><br /><br /></p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronoms ind&eacute;finis</span></p>
+<p style=""text-align: center;""><strong>intel</strong>, <strong>samem</strong>, <strong>kikenn</strong>, <strong>kiksoz</strong></p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronoms ind&eacute;finis</span></p>
+<p style=""text-align: center;""><strong>Sann-la, sana-la<br /><br /></strong></p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">Pronoms interrogatifs</span></p>
+<p style=""text-align: center;""><strong>kifer</strong>, <strong>lekel, kisann-la</strong></p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;"">Il est possible de trouver des occurences agglutin&eacute;es sans le trait d'union :</p>
+<p style=""text-align: center;""><strong>Sannla </strong>(PRON)<br /><strong>Kisannla </strong>(PRON)<strong><br /></strong></p> »"
+PRON+ADV,Contraction,"« <p>Utilisez l'&eacute;tiquette <strong>PRON+ADV </strong>quand&nbsp;<span style=""text-decoration: underline;"">pronom</span> est agglutin&eacute; avec un <span style=""text-decoration: underline;"">adverbe</span> (souvent l'adverbe <em>osi</em>):</p>
+<p style=""text-align: center;""><strong>Mo'si</strong> mo le vini</p>
+<p style=""text-align: center;"">To ti bizin vini <strong>to'si</strong></p>
+<p style=""text-align: center;"">Ale kriye<strong> zot'si<br /></strong></p> »"
+PRON+PART_TMA,Contraction,"« <p>Utilisez l'&eacute;tiquette <strong>PRON+PART_TMA </strong>quand le <span style=""text-decoration: underline;"">pronom</span> est agglutin&eacute; avec une <span style=""text-decoration: underline;"">particule qui modifie le verbe</span> :</p>
+<p style=""text-align: center;""><strong>Mo'nn</strong> resi pass oral-la</p>
+<p style=""text-align: center;"">Zan pa ti kone <strong>to'nn</strong> marye</p>
+<p style=""text-align: center;""><strong>Li'ava</strong> sonn toi</p>
+<p style=""text-align: center;"">Mo krwar <strong>li'nn</strong> vini</p> »"
+PRON+VERB,Contraction,"« <p>Utilisez l'&eacute;tiquette <strong>PRON+VERB </strong>quand&nbsp;<span style=""text-decoration: underline;"">pronom</span> est agglutin&eacute; avec un <span style=""text-decoration: underline;"">verbe</span> (souvent le verbe <em>oule</em>):</p>
+<p style=""text-align: center;""><strong>Mo'le</strong> bwar alouda</p>
+<p style=""text-align: center;""><strong>To'le</strong> vinn ar mwa?</p>
+<p style=""text-align: center;""><strong>Li'le</strong> manz min bwi</p>
+<p style=""text-align: center;""><strong>Ou'le </strong>mo fer li?</p> »"
+PROPN,Nom propre,"« <p>Les noms propres d&eacute;signent un endroit, une personne, une marque, etc :</p>
+<p style=""text-align: center;""><strong>Zan</strong> inn al laboutik</p>
+<p style=""text-align: center;"">Dan <strong>Moris</strong></p>
+<p style=""text-align: center;"">&nbsp;</p> »"
+PUNCT,Ponctuation,"« <ul>
+<li>Point final, d'exclamation, d'interrogation : <em><strong>. ! ?<br /></strong></em></li>
+<li>Virgule : <em><strong>,</strong></em></li>
+<li>Parenth&egrave;ses : <em><strong>()</strong></em></li>
+<li>Tirets : <em><strong>-</strong></em></li>
+<li>Guillemets : <strong><em>"" ""</em></strong></li>
+</ul>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p>Les ponctuations n'incluent <strong>pas</strong> les &eacute;l&eacute;ments tels que : <strong><em>$</em></strong>, <strong><em>%</em></strong>, et <strong><em>&sect;</em></strong></p>
+<p style=""text-align: center;"">&nbsp;</p> »"
+SCONJ,Conjonction de subordination,"« <p>Les conjonctions de subordination relient deux phrases simples :</p>
+<p style=""text-align: center;"">Mo pa pou manze <strong>exsepte</strong> si twa ki'nn kwi</p>
+<p style=""text-align: center;"">Pou bizin plis sez <strong>si</strong> ena enn ta dimounn</p>
+<p style=""text-align: center;""><strong>Kouma</strong> to'nn arive li'nn tas ar twa</p>
+<p style=""text-align: center;""><strong>Kot</strong> to ale mo pou swiv twa</p>
+<p style=""text-align: center;"">Mo pe fer vit <strong>pou</strong> ki mo pa rat mo bis</p>
+<p style=""text-align: center;""><strong>Akoz</strong> mo'nn ale, li nepli koz ar mwa </p>
+<p style=""text-align: center;"">Pa blier amen liv-la <strong>kan</strong> to vi'nn kot li</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;""><strong>Kouma</strong> peut vouloir dire ""comme"" (CCONJ). </p>
+<p style=""text-align: left;""><strong>Kouma</strong> est une SCONJ quand il prend le sens de ""d&egrave;s que"".</p> »"
+SYM,Symbole,"« <p>Tout ce qui n'est pas un caract&egrave;re alphanum&eacute;rique ou une pontuation : </p>
+<p style=""text-align: center;""><strong>$</strong>,<strong> %</strong>,<strong> &sect;</strong>,<strong> &copy;</strong></p>
+<p style=""text-align: center;""><strong>+</strong>,<strong> &minus;</strong>,<strong> &times;</strong>,<strong> &divide;</strong>,<strong> =</strong>,<strong> &lt;</strong>,<strong> &gt;</strong></p>
+<p style=""text-align: center;""><strong>:)</strong>,<strong> &hearts;‿&hearts;</strong>,<strong> 😝</strong></p>
+<p style=""text-align: center;""><strong>addresse@email.org</strong>,<strong> http://siteweb.com/</strong>,<strong> 1-800-TEL</strong></p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<ul>
+<li style=""text-align: left;"">Les <span style=""color: #ff0000;"">abbr&eacute;viations</span> comme<em> Mr.</em> (monsieur), <em>kg</em> (kilogramme), <em>km</em> (kilom&egrave;tre), <em>Dr</em> (docteur) sont des noms communs (<strong>NOUN)<br /></strong></li>
+<li style=""text-align: left;"">Les <span style=""color: #ff0000;"">acronymes</span> comme <em>SSR</em>, <em>NASA</em>, etc. sont des noms propres (<strong>PROPN</strong>)</li>
+<li style=""text-align: left;"">Les <span style=""color: #ff0000;"">puces</span> pour les listes &agrave; puces <em>(&bull;, ‣)</em> sont des pontuations (<strong>PUNCT</strong>) et non des symboles.</li>
+</ul>
+<p style=""text-align: center;"">&nbsp;</p> »"
+VERB,Verbe,"« <p>Un verbe exprime une action, un &eacute;tat ou un &eacute;v&egrave;nement : </p>
+<p style=""text-align: center;"">li pa'nn <strong>manze</strong> nanye zordi </p>
+<p style=""text-align: center;""><strong>azut</strong> enn ti kuyer disel</p>
+<p style=""text-align: center;"">ki ler to pou <strong>arive</strong>?</p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: left;"">Un verbe peut aussi &ecirc;tre un <em>nom</em> ! Aidez vous du contexte pour trouver la bonne cat&eacute;gorie :</p>
+<p style=""text-align: center;"">mo kontan <strong>manze</strong> (VERB)<br /><strong>manze</strong>-la ti bon (NOUN)</p> »"
+X,Mot étranger,"« <p>Pour tout les mots qui n'appartiennent &agrave; aucune autre cat&eacute;gorie :</p>
+<p style=""text-align: center;"">Mari kass nisa <strong>azjsf dorgdkfjlgh</strong></p>
+<p style=""text-align: center;"">&nbsp;</p>
+<p style=""text-align: center;""><span style=""text-decoration: underline;"">ATTENTION</span></p>
+<p style=""text-align: center;""><strong><span style=""color: #ff0000;"">&Eacute;VITEZ d'utiliser cette &eacute;tiquette autant que possible</span></strong></p>
+<p style=""text-align: left;""><span style=""color: #000000;"">Ne <strong>pas</strong> cat&eacute;goriser les mots emprunt&eacute;s d'une autre langue avec cette &eacute;tiquette: </span></p>
+<p style=""text-align: center;""><span style=""color: #000000;"">Bizin fer enn <strong>servicing </strong>(<span style=""text-decoration: underline;"">NOUN</span>, et non X)</span></p> »"

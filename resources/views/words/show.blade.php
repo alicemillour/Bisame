@@ -19,7 +19,7 @@
                         {{--{{$pos[$word->annotation_user(1)->postag_id]}}--}}
                         @endif
                         
-                        <h3 class="card-header title text-center belle-allure" style="color:#b12078 ; background-color: transparent; border-bottom-color: transparent">
+                        <h3 class="card-header text-center " style="font-size:3em; color:#b12078 ; background-color: transparent; border-bottom-color: transparent">
                             <div class="original_word" id="original_word" data-value="{{$word->value}}" data-id="{{$word->id}}" >{{$word->value}}
                                 <!--<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <i class="fa fa-question" aria-hidden="true"></i> 
@@ -157,13 +157,11 @@
 <script type="text/javascript">
     
     var user = {!! json_encode((array)auth()->user()) !!};
-    //    var original_word = {{ $cur_word['value'] }};
     function AddVariant(event){      
         console.log( $('#alternative-text-value').val());
         var new_text = $('#alternative-text-value').val();
         var original_text = $('#original_word').data("value");
         var word_id = $('#original_word').data("id");
-        //      var original_text = {!! json_encode($cur_word['value']) !!};
 
   
         console.log(original_text);

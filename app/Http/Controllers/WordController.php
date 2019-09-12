@@ -94,6 +94,11 @@ class WordController extends Controller {
         
         $word_recipes=null;
         $word_owners=null;
+        
+        Log::debug("word controller");   
+        Log::debug($sentences);
+        Log::debug($word_count);
+
         foreach ($word_variants_unique as $key=>$variant){
             Log::debug($variant);
         }

@@ -9,5 +9,6 @@ return [
      	'langue-de' => "de l'alsacien",
         'precision_langue' => ' ùf Elsàssisch',
         'variantes-types' => "dialectales ou orthographiques",
+        'what' => 'Recettes de Grammaire ? Wàs ìsch dàs ?'
 
 ];

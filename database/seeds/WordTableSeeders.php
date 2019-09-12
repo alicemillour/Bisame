@@ -77,6 +77,8 @@ class WordTableSeeder extends CsvSeeder {
                  * $corpus_id_cur = $data_full[$row_count]["corpus_id"];
                   $sentence_pos_cur = $data_full[$row_count]["sentence_position"];
                  */
+                
+                Log::debug($row_full['corpus_name']);
                 $corpus_id_cur = DB::table('corpora')
                                 ->where('name', $row_full['corpus_name'])
                                 ->pluck('id')[0];

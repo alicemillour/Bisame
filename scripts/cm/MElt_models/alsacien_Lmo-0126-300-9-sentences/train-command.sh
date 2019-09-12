@@ -1,0 +1,1 @@
+./MElt-train alsacien_Lmo-0126-300-9-sentences ../data/als/lexicons/lexicon_Lmo.txt /home/alice/Projets/Bisame/Corpus/analyse_annotations/data/brown/training_corpus/size_splitted/corpus-training-bisame-0126-300-sentences-9.txt /home/alice/Projets/Bisame/Corpus/analyse_annotations/data/brown/test_corpus/size_splitted/corpus-bisame-0126-Lmo-300-9-test.txt

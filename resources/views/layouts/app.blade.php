@@ -11,7 +11,10 @@
 
         {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
         <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css'>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery_confirm.css') }}" />
@@ -20,6 +23,7 @@
             @font-face {font-family: "Ostrich-Rounded"; src: url({{asset('/images/ostrich-rounded.ttf')}}) ;}
             @font-face {font-family: "Cicle-Fina"; src: url({{asset('/images/cicle/Cicle_Semi.ttf')}}) ;}
             @font-face {font-family: "Belle-Allure"; src: url({{asset('/fonts/belleAllure/BelleAllure-CMMoyenDemo.otf')}}) ;}
+            @font-face {font-family: "Montserrat"; src: url({{asset('/fonts/montserrat/Montserrat-Regular.ttf')}}) ;}
             .custom-fonts {font-family: "Cicle-Fina" }
             body { -webkit-text-size-adjust: none; }
 
@@ -97,16 +101,16 @@
                 .title { 
                     /*margin-top: 10vh;*/
                     color: white;
-                    font-size: 250%;
+                    font-size: 500%;
                     font-weight: 300;
                     text-align: center;
-                    line-height: 3.2;
+                    line-height: 2.2;
                 }
                 .subtitle { 
                     /*margin-top: 10vh;*/
                     color: white;
                     font-weight: 600;
-                    font-size: 100%;
+                    font-size: 150%;
                     text-align: center;
                     line-height: 2.8;
                 }
@@ -124,7 +128,8 @@
                 }
 
                 .belle-allure{
-                    font-family: 'Belle-Allure';
+                    /*font-family: 'Belle-Allure';*/
+                    font-family: 'Montserrat';
                 }
 
                 .foreground {
@@ -155,7 +160,7 @@
                 .welcome-card-header {
                     background-color: transparent; 
                     border-bottom-color: transparent;
-                    font-family: 'Belle-Allure';
+                    font-family: 'Montserrat';
                     text-align: center;
                 }
                 .play-button {
@@ -399,7 +404,6 @@
         <body class="fill" id="app" style="max-width:100%; margin:0 auto;">
 
             @include('partials.nav')
-
             @include('shared/badges')
 
             @include('discussion/report')

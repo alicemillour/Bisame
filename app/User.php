@@ -53,6 +53,21 @@ class User  extends Authenticatable
         return $this->hasMany('App\Recipe');
     }
 
+    public function poems()
+    {
+        return $this->hasMany('App\Poem');
+    }
+
+    public function freetexts()
+    {
+        return $this->hasMany('App\Freetext');
+    }
+
+    public function proverbs()
+    {
+        return $this->hasMany('App\Proverb');
+    }
+
     public function anecdotes()
     {
         return $this->hasMany('App\Anecdote');
