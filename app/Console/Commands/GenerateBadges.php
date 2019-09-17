@@ -66,7 +66,7 @@ class GenerateBadges extends Command
             '12' => ['fill'=>'#f61e1e', 'stroke'=>'#f61e1e'],
         ];
         $badges_directory = $this->app['path.public']. DIRECTORY_SEPARATOR . 'img'. DIRECTORY_SEPARATOR . 'badges'.DIRECTORY_SEPARATOR;        
-        $sources_directory = $this->app['path.public']. DIRECTORY_SEPARATOR . 'img'. DIRECTORY_SEPARATOR . 'badges'. DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . App::getLocale();
+        $sources_directory = $this->app['path.public']. DIRECTORY_SEPARATOR . 'img'. DIRECTORY_SEPARATOR . 'badges'. DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'cm';
         $files_source = $this->files->allFiles($sources_directory);
         foreach($files_source as $file_source){
             $source = $this->files->get($file_source);

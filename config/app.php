@@ -58,7 +58,7 @@ return [
       |
      */
     /* value of locale : bisame or krik */
-    'locale' => 'cm',
+    'locale' => 'bisame',
     /*
       |--------------------------------------------------------------------------
       | Application Fallback Locale

@@ -190,7 +190,8 @@
                     <div class="card background-colored fancy-border">
                             
                             <div id="wordcloud" class="card-body">
-                                @include('info.personal_wordcloud')</div>
+                                @include('info.personal_wordcloud')
+                            </div>
                         </div> 
                     <br>
                     

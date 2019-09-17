@@ -16,7 +16,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="shortcut icon" href="{{ asset('images/favicon-'.App::getLocale().'.png') }}" >
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app-'.App::getLocale().'.css') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery_confirm.css') }}" />
 
         <style>
@@ -127,10 +127,7 @@
                     align-items: center;
                 }
 
-                .belle-allure{
-                    /*font-family: 'Belle-Allure';*/
-                    font-family: 'Montserrat';
-                }
+
 
                 .foreground {
                     z-index:1 !important;
@@ -157,12 +154,7 @@
                     color: black !important;
                 }
 
-                .welcome-card-header {
-                    background-color: transparent; 
-                    border-bottom-color: transparent;
-                    font-family: 'Montserrat';
-                    text-align: center;
-                }
+
                 .play-button {
                     /*width: 33vw;*/
                     white-space: normal;
