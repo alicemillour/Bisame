@@ -179,7 +179,7 @@
             </ul>
             <a class="btn btn-navbar btn-link" href="{{ route('contact') }}">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i> Contactez </a>
-            <a class="btn btn-navbar btn-link" href="{{ route('downloads') }}">
+            <a class="btn btn-navbar btn-link" href="{{ route('corpora') }}">
                 Ressources
             </a>
             <a class="btn btn-navbar btn-link" href="{{ route('info') }}">
