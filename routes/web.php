@@ -46,6 +46,7 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
     Route::resource('corpora', 'CorporaController@index');
     Route::resource('downloads', 'DownloadController@index');
     Route::get('downloads', 'DownloadController@index')->name('downloads');
+    Route::get('corpora', 'CorporaController@index')->name('corpora');
     Route::get('/stats', 'StatsController@index');
     Route::get('contact', 'ContactController@showForm')->name('contact');
     Route::post('contact', 'ContactController@sendContactInfo');
