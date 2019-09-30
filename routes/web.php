@@ -43,7 +43,7 @@ Route::get('/', 'WelcomeController@welcome')->name('home');
     Route::get('/postags/by-word', 'PostagController@getByWord');
     Route::resource('postag', 'PostagController');
     Route::get('/textes', 'TexteController@index');
-    Route::resource('corpora', 'CorporaController');
+    Route::resource('corpora', 'CorporaController@index');
     Route::resource('downloads', 'DownloadController@index');
     Route::get('downloads', 'DownloadController@index')->name('downloads');
     Route::get('/stats', 'StatsController@index');
