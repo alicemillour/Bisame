@@ -46,8 +46,8 @@
 
 
 
-<div class="card-text text-truncate">{{ $poem->content }}</div>
-<div class="card-text text-right">{{ link_to_route('poems.show', "lire la suite...", $poem) }}</div>
+<div class="card-text">{{ $poem->content }}</div>
+<!--<div class="card-text text-right">{{ link_to_route('poems.show', "lire la suite...", $poem) }}</div>-->
 
 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
 

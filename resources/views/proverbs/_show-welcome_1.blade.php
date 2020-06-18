@@ -47,7 +47,7 @@
                 
         </div>-->
     @if($proverb->medias->count()>0)
-    <h4>{{ link_to_route('proverbs.show', $proverb->title, $proverb) }}</h4>
+    <!--<h4>{{ link_to_route('proverbs.show', $proverb->title, $proverb) }}</h4>-->
     <div class="container">
         <div class="row">
             <div class="col-md-6">            

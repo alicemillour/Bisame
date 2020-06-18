@@ -28,7 +28,7 @@
                 @endif
                 <hr style="height: 1px; color: white; background-color: whitesmoke; width: 50%; ">
                 {{ $nb_total_users }}  participants <br>
-                {{ $nb_recipes }}&nbsp;recettes / {{ $nb_poems }}&nbsp;poèmes / {{ $nb_proverbs }}&nbsp;proverbes / {{ $nb_freetexts }}&nbsp;textes libres <br>
+                {{ $nb_recipes }}&nbsp;recettes / {{ $nb_poems }}&nbsp;poèmes / {{ $nb_proverbs }}&nbsp;phrase / {{ $nb_freetexts }}&nbsp;textes libres <br>
                 déjà {{ $nb_words }}  mots {{ trans('home.precision_langue') }} ! <br>
                 {{ $nb_recipe_annotations }} annotations <br> 
                 <!--({{ $nb_recipe_words_annotated }}  mots) <br>-->
@@ -110,7 +110,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('recipes.create') }}">Ajouter une recette</a>
                     <a class="dropdown-item" href="{{ route('poems.create') }}">Ajouter un poème</a>
-                    <a class="dropdown-item" href="{{ route('proverbs.create') }}">Ajouter un proverbe</a>
+                    <a class="dropdown-item" href="{{ route('proverbs.create') }}">Ajouter une phrase / un proverbe</a>
                     <a class="dropdown-item" href="{{ route('freetexts.create') }}">Ajouter un texte libre</a>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('recipes.index') }}">Voir les recettes</a>
                     <a class="dropdown-item" href="{{ route('poems.index') }}">Voir les poèmes</a>
-                    <a class="dropdown-item" href="{{ route('proverbs.index') }}">Voir les proverbes</a>
+                    <a class="dropdown-item" href="{{ route('proverbs.index') }}">Voir les phrases / les proverbes</a>
                     <a class="dropdown-item" href="{{ route('freetexts.index') }}">Voir les textes libres</a>
                 </div>
             </div>

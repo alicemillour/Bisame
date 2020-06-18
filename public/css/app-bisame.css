@@ -13702,3 +13702,11 @@ body > #app > .container-fluid {
     font-family: 'Belle-Allure';
     text-align: center;
 }
+
+.ellipsis {
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}

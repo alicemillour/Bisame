@@ -21,8 +21,9 @@
         <img class="" style="width:20px;" src="{{ asset('img/badges/laurel.svg') }}"  data-toggle="tooltip" data-placement="bottom" title="Recette complétement annotée" />
         @endif
     </div>
-        <span style="font-size: 1.8em; text-align: center;">
-            {{ link_to_route('proverbs.show', $proverb->title, $proverb) }} </span></h4>
+<!--        <span style="font-size: 1.8em; text-align: center;">
+            {{ link_to_route('proverbs.show', $proverb->title, $proverb) }} </span>-->
+    </h4>
 </div>
 <p class="card-text">
     <span class="text-muted">
@@ -46,8 +47,8 @@
 
 
 
-<div class="card-text text-truncate">{{ $proverb->content }}</div>
-<div class="card-text text-right">{{ link_to_route('proverbs.show', "lire la suite...", $proverb) }}</div>
+<div class="card-text">{{ $proverb->content }}</div>
+<!--<div class="card-text text-right">{{ link_to_route('proverbs.show', "lire la suite...", $proverb) }}</div>-->
 
 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
 

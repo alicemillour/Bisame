@@ -35,7 +35,7 @@
                         <br>
                         <div class="card background-colored fancy-border">
                             <div class="card-body">
-                                <h3 class=" welcome-card-header">Proverbe du jour</h3>
+                                <h3 class=" welcome-card-header">Phrase ou proverbe du jour</h3>
 
                                 @each('proverbs/_show-day', $proverb_of_the_day, 'proverb', 'proverbs/_empty')
                             </div>
@@ -128,7 +128,7 @@
                                 <div class="row" style="text-align:center">
                                     
                                     <div class="col-md-4"  >
-                                        <a href="{{ route('recipes.create') }}" class="btn play-button active-button" > Nouvelle recette</a> <a href="{{ route('poems.create') }}" class="btn play-button active-button" > Nouveau poème</a> <a href="{{ route('proverbs.create') }}" class="btn play-button active-button" > Nouveau proverbe</a> <a href="{{ route('freetexts.create') }}" class="btn play-button active-button" > Nouveau texte libre</a> <br> <br>
+                                        <a href="{{ route('recipes.create') }}" class="btn play-button active-button" > Nouvelle recette</a> <a href="{{ route('poems.create') }}" class="btn play-button active-button" > Nouveau poème</a> <a href="{{ route('proverbs.create') }}" class="btn play-button active-button" > Nouvelle phrase</a> <a href="{{ route('freetexts.create') }}" class="btn play-button active-button" > Nouveau texte libre</a> <br> <br>
                                         <div class="belle-allure"> Je partage un texte {{ trans('home.precision_langue') }}</div> 
                                     </div>                                    
                                     
@@ -202,7 +202,7 @@
                             <!-- Fonctionnalité annotation : décommenter ci-dessous -->
                             <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#recipes"> Recettes </a></li>
                             <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#poems"> Poèmes </a></li>
-                            <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#proverbs"> Proverbes </a></li>
+                            <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#proverbs"> Phrases </a></li>
                             <li class="nav-item" style="font-size: 1em;" ><a class="nav-link "  data-toggle="pill" style="color:black" href="#freetexts"> Textes libres </a></li>
                             <li class="nav-item" style="font-size: 1em;" ><a class="nav-link active" data-toggle="pill" style="color:black" href="#annotations"> Annotations </a></li>
                             <!-- Fonctionnalité annotation : commenter ci-dessous -->
@@ -254,11 +254,11 @@
                                     <div class="score" style="color:black;">
                                         @foreach($top5_nb_proverbs as $key=>$user)
                                         @if($key == 0)
-                                        <div  style="font-size: 2em;"> {{$key + 1}}.  @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->proverb_count)}}&nbsp;proverbes)
+                                        <div  style="font-size: 2em;"> {{$key + 1}}.  @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->proverb_count)}}&nbsp;phrases)
                                         </div>
                                         
                                         @else
-                                        <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->proverb_count)}}&nbsp;proverbes)
+                                        <div  style="font-size: 1.5em;"> {{$key + 1}}. @component('users._avatar', ['user' => $user])@endcomponent {{$user->name}} ({{intval($user->proverb_count)}}&nbsp;phrases)
                                         </div>
                                         
                                         @endif

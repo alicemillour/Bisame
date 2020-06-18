@@ -46,8 +46,8 @@
 
 
 
-<div class="card-text text-truncate">{{ $freetext->content }}</div>
-<div class="card-text text-right">{{ link_to_route('freetexts.show', "lire la suite...", $freetext) }}</div>
+<div class="card-text">{{ $freetext->content }}</div>
+<!--<div class="card-text text-right">{{ link_to_route('freetexts.show', "lire la suite...", $freetext) }}</div>-->
 
 <!-- Fonctionnalité annotation : décommenter ci-dessous -->
 

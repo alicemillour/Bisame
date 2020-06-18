@@ -29,7 +29,7 @@
                 @endif
 
             </div>
-            <h4>{{ link_to_route('proverbs.show', $proverb->title, $proverb) }}</h4>
+            <!--<h4>{{ link_to_route('proverbs.show', $proverb->title, $proverb) }}</h4>-->
         </div>
         <p class="card-text">
             <span class="text-muted">
