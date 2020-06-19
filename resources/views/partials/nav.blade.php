@@ -28,7 +28,7 @@
                 @endif
                 <hr style="height: 1px; color: white; background-color: whitesmoke; width: 50%; ">
                 {{ $nb_total_users }}  participants <br>
-                {{ $nb_recipes }}&nbsp;recettes / {{ $nb_poems }}&nbsp;poèmes / {{ $nb_proverbs }}&nbsp;phrase / {{ $nb_freetexts }}&nbsp;textes libres <br>
+                {{ $nb_recipes }}&nbsp;recettes / {{ $nb_poems }}&nbsp;poèmes / {{ $nb_proverbs }}&nbsp;phrases ou proverbes / {{ $nb_freetexts }}&nbsp;textes libres <br>
                 déjà {{ $nb_words }}  mots {{ trans('home.precision_langue') }} ! <br>
                 {{ $nb_recipe_annotations }} annotations <br> 
                 <!--({{ $nb_recipe_words_annotated }}  mots) <br>-->

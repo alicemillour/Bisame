@@ -765,7 +765,7 @@ $alternative_texts = $proverb->alternative_texts()->with('user')->get()->toArray
           arr.sort(function (a, b) {
             var offsets_a = a[0].split('_');
             var offsets_b = b[0].split('_');
-            return (offsets_a[1] - owffsets_a[0]) - (offsets_b[1] - offsets_b[0]);
+            return (offsets_a[1] - offsets_a[0]) - (offsets_b[1] - offsets_b[0]);
           });
           $('.popper').remove();
           var text_popper ='';

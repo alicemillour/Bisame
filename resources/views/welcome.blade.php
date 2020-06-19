@@ -55,12 +55,12 @@
                     </div>
                     <div class="col-md-6"  >
                     @if(App::getLocale()==='bisame')
-                    <div class="card background-colored fancy-border">
+<!--                    <div class="card background-colored fancy-border">
                             
                             <div id="survey" class="card-body" style="font-size: 1.5em">
                                 Participez au sondage sur les pratiques de l'alsacien sur Internet : <a style="color:red" href="https://framaforms.org/lalsacien-internet-et-vous-1546808704"> Cliquez ici !</a></div>
                         </div> 
-                    <br>
+                    <br>-->
                     
                     @elseif(App::getLocale()==='cm')
 )                    <div class="card background-colored fancy-border">

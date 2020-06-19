@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Traits\Badgeable;
 use App\Postag;
 use App\Corpus;
+use Log;
 use Auth;
 use DB; 
 
@@ -41,6 +42,7 @@ class TrainingController extends GameController {
    */
   public function training(Postag $postag)
   {
+
       $corpus_training = Corpus::where('name','like','corpus_'.$postag->name)->firstOrFail();
       $postags = Postag::orderBy('order')->get();
       return view('training.show',compact('postag','postags','corpus_training'));
